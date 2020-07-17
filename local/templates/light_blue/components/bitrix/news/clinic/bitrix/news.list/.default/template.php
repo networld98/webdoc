@@ -38,14 +38,18 @@ $this->setFrameMode(true);
                         <?}?>
                     </a>
                 </div>
+                <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arItem['ID']);} ?>
                 <div class="clinic-card-img__ratings">
+                    <?=CApiReviews::getElementRatingHtml($arItem['ID']);?>
+                </div>
+               <?/* <div class="clinic-card-img__ratings">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-none-filled.png" alt="">
-                </div>
-                <a class="clinic-card-img__link"href="">539 отзывов</a>
+                </div>*/?>
+                <a class="clinic-card-img__link" href="#"><?=$arRaing['COUNT']?> отзывов</a>
             </div>
             <div class="clinic-card-desc">
                 <a href="<?=$arItem['DETAIL_PAGE_URL']?>">

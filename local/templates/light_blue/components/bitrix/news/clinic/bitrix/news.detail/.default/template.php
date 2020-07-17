@@ -36,7 +36,7 @@ $clinicName = $arResult["NAME"];
             <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'61%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
             <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'81%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
         </div>*/?>
-        <a class="clinic-card-img__link"><?=$arRaing['COUNT']?> отзывов</a>
+        <a class="clinic-card-img__link" href="#"><?=$arRaing['COUNT']?> отзывов</a>
     </div>
     <div class="clinic-card-desc-detail">
         <h1 class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></h1>
