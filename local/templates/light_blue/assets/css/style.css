@@ -508,6 +508,7 @@ input[type="submit"] {
     font-size: 35px;
     line-height: 43px;
     color: var(--primary);
+    text-transform: capitalize;
 }
 
 .specializations .col__list {

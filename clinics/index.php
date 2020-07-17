@@ -225,180 +225,93 @@ $APPLICATION->SetTitle("Клиники");
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="row">
-                    <div class="col-xl-2 col-md-3 col-6">
-                        <div class="col__heading">
-                            А
+                    <?
+                    $doctors = [];
+                    $arSelect = array("NAME");
+                    $arFilter = array("IBLOCK_ID"=>11);
+                    $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+                    while($ar_result = $obSections->GetNext())
+                    {
+                        $doctors[mb_strtoupper(substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
+                    }?>
+                    <?foreach (array_slice($doctors, 0, 6) as $key=> $doctor){?>
+                        <div class="col-xl-2 col-md-3 col-6">
+                            <div class="col__heading">
+                                <?=$key?>
+                            </div>
+                            <ul class="col__list">
+                                <?foreach ($doctor as $specialization){?>
+                                    <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                                <?}?>
+                            </ul>
                         </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
+                    <?}?>
                 </div>
                 <div class="load_more">
                     Показать ещё
                 </div>
                 <div class="specializations__list expand">
                     <div class="row">
-                        <div class="col-xl-2 col-md-3 col-6">
-                            <div class="col__heading">
-                                А
+                        <?foreach (array_slice($doctors, 7) as $key=> $doctor){?>
+                            <div class="col-xl-2 col-md-3 col-6">
+                                <div class="col__heading">
+                                    <?=$key?>
+                                </div>
+                                <ul class="col__list">
+                                    <?foreach ($doctor as $specialization){?>
+                                        <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                                    <?}?>
+                                </ul>
                             </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
+                        <?}?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div>
-                    2
+                <div class="row">
+                    <?
+                    $clinicks = [];
+                    $arSelect = array("NAME");
+                    $arFilter = array("IBLOCK_ID"=>13);
+                    $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
+                    while($ob = $res->GetNextElement())
+                    {
+                        $arFields = $ob->GetFields();
+                        $clinicks[mb_strtoupper(substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+                    }?>
+                    <?
+                    foreach (array_slice($clinicks, 0, 6) as $key=> $clinick){?>
+                        <div class="col-xl-2 col-md-3 col-6">
+                            <div class="col__heading">
+                                <?=$key?>
+                            </div>
+                            <ul class="col__list">
+                                <?foreach ($clinick as $specialization){?>
+                                    <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                                <?}?>
+                            </ul>
+                        </div>
+                    <?}?>
                 </div>
                 <div class="load_more">
                     Показать ещё
                 </div>
                 <div class="specializations__list expand">
-                    hide
+                    <div class="row">
+                        <?
+                        foreach (array_slice($clinicks, 7) as $key=> $clinick){?>
+                            <div class="col-xl-2 col-md-3 col-6">
+                                <div class="col__heading">
+                                    <?=$key?>
+                                </div>
+                                <ul class="col__list">
+                                    <?foreach ($clinick as $specialization){?>
+                                        <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                                    <?}?>
+                                </ul>
+                            </div>
+                        <?}?>
+                    </div>
                 </div>
             </div>
         </div>
