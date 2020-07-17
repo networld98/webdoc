@@ -102,7 +102,7 @@ CModule::IncludeModule("iblock")
                             <?foreach ($arItem["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
                                 <?$res = CIBlockElement::GetByID($item);
                                 if($ar_res = $res->GetNext()){?>
-                                    <p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p>
+                                    <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p></a>
                                 <?}?>
                             <?}?>
                         <?endif;?>
