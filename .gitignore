@@ -1,0 +1,11 @@
+# common, PHPStorm
+.DS_Store
+.idea/
+# exclude bitrix
+/bitrix/*
+/upload/*
+
+# settings
+!/.gitignore
+
+!/local/

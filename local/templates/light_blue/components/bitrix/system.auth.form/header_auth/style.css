@@ -1,0 +1,69 @@
+div.bx-system-auth-form span.bx-auth-secure {
+    background-color: #FFFAE3;
+    border: 1px solid #DEDBC8;
+    padding: 2px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-top: -1px;
+}
+
+div.bx-system-auth-form div.bx-auth-secure-icon {
+    background-image: url(images/sec.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 19px;
+    height: 18px;
+}
+
+div.bx-system-auth-form div.bx-auth-secure-unlock {
+    background-image: url(images/sec-unlocked.png);
+}
+
+.auth-popup__table{
+    margin: 0 auto;
+}
+
+.login{
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 40px;
+}
+
+.forget-password{
+    color: #32B4C3;
+    text-decoration-line: underline;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    margin-top: 20px;
+    display: block;
+    text-align: left;
+}
+
+.auth-popup__phone, .auth-popup__password{
+    font-size: 15px;
+    color: #000000;
+    padding: 13px 15px;
+    margin: 0 auto;
+    width: 308px;
+    height: 50px;
+}
+
+.auth-popup__phone {
+    margin-top: 60px;
+}
+
+.auth-popup__password {
+    margin-top: 20px;
+}
+
+.form-after{
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: #8A8A8A;
+    padding-top: 40px;
+    display: block;
+}
+
+

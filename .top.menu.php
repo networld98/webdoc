@@ -1,0 +1,32 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Стоматология", 
+		"", 
+		Array(), 
+		Array("ICON_FILE"=>"local/templates/light_blue/assets/images/tooth-dentist.svg"), 
+		"" 
+	),
+	Array(
+		"Анализы", 
+		"", 
+		Array(), 
+		Array("ICON_FILE"=>"local/templates/light_blue/assets/images/Frame%20163-1.svg"), 
+		"" 
+	),
+	Array(
+		"Аптеки", 
+		"", 
+		Array(), 
+		Array("ICON_FILE"=>"local/templates/light_blue/assets/images/Frame%20163.svg"), 
+		"" 
+	),
+	Array(
+		"Телемедицина", 
+		"", 
+		Array(), 
+		Array("ICON_FILE"=>"local/templates/light_blue/assets/images/Frame%20163-2.svg"), 
+		"" 
+	)
+);
+?>
