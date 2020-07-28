@@ -1,15 +1,12 @@
-<?
-    require_once 'include/Mobile_Detect.php';
-	$detect = new Mobile_Detect;
-    if ($detect->isMobile() && !$detect->isTablet()) {
-        $specializationCount = 2;
-    }elseif($detect->isTablet()){
-        $specializationCount = 4;
-    }elseif(!$detect->isMobile()){
-        $specializationCount = 6;
-    }?>
-
-
+<?require_once $_SERVER['DOCUMENT_ROOT'] . '/include/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+if ($detect->isMobile() && !$detect->isTablet()) {
+    $specializationCount = 2;
+}elseif($detect->isTablet()){
+    $specializationCount = 4;
+}elseif(!$detect->isMobile()){
+    $specializationCount = 6;
+}?>
 <ul class="nav nav-pills" id="pills-tab" role="tablist">
     <li class="nav-item"><a class="nav-link active" id="pills-home-tab" data-toggle="pill"
                             href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Специализации

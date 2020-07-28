@@ -63,60 +63,18 @@ $APPLICATION->SetTitle(""); ?>
         Бесплатный сервис подбора медицинских услуг
         <img src="/local/templates/light_blue/assets/images/plus-mobile.svg" alt="plus">
     </div>
-    <div class="statistics__items">
-        <div class="statistics__item">
-            <div class="statistics__icon">
-                <img alt="build" src="/local/templates/light_blue/assets/images/hospital_building.svg">
-            </div>
-            <div class="statistics__block">
-                <div class="statistics__number">
-                    2396+
-                </div>
-                <div class="statistics__text">
-                    клиник в нашей базе
-                </div>
-            </div>
-        </div>
-        <div class="statistics__item">
-            <div class="statistics__icon">
-                <img alt="doctor" src="/local/templates/light_blue/assets/images/doctor_3_.svg">
-            </div>
-            <div class="statistics__block">
-                <div class="statistics__number">
-                    10418+
-                </div>
-                <div class="statistics__text">
-                    врачей в нашей базе
-                </div>
-            </div>
-        </div>
-        <div class="statistics__item">
-            <div class="statistics__icon">
-                <img alt="order" src="/local/templates/light_blue/assets/images/order_in_progress.svg">
-            </div>
-            <div class="statistics__block">
-                <div class="statistics__number">
-                    5162+
-                </div>
-                <div class="statistics__text">
-                    пациента записались
-                </div>
-            </div>
-        </div>
-        <div class="statistics__item">
-            <div class="statistics__icon">
-                <img alt="like" src="/local/templates/light_blue/assets/images/influence_1_.svg">
-            </div>
-            <div class="statistics__block">
-                <div class="statistics__number">
-                    41628+
-                </div>
-                <div class="statistics__text">
-                    отзывов о врачах
-                </div>
-            </div>
-        </div>
-    </div>
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        ".default",
+        array(
+            "AREA_FILE_SHOW" => "file",
+            "AREA_FILE_SUFFIX" => "inc",
+            "EDIT_TEMPLATE" => "",
+            "COMPONENT_TEMPLATE" => ".default",
+            "PATH" => "/include/count-element-main.php"
+        ),
+        false
+    ); ?>
 </section>
 <section class="container specializations">
     <? $APPLICATION->IncludeComponent(
