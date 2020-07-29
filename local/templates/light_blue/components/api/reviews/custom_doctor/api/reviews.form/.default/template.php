@@ -40,6 +40,7 @@ if($arParams['INCLUDE_CSS'] == 'Y') {
 
 $formId  = trim($arParams['FORM_ID']);
 $modalId = $formId . '_modal';
+global $doctorName;
 ?>
 <div class="api-reviews-form">
 		<div class="api-shop-stat">
@@ -53,7 +54,7 @@ $modalId = $formId . '_modal';
 			<? if($arParams['MESS_FORM_TITLE'] || $arParams['MESS_FORM_SUBTITLE']): ?>
 				<div class="api_modal_header">
                     <div class="clinic-card-full-desc__content__feedback arbt-color-blue">
-                        <h4 class="title-h4">Отзыв о клинике</h4>
+                        <h4 class="title-h4">Отзыв о враче</h4>
                     </div>
 				</div>
 			<? endif ?>
@@ -110,6 +111,7 @@ $modalId = $formId . '_modal';
 									</div>
 								<? elseif($FIELD == 'TITLE' || $FIELD == 'ORDER_ID' || $FIELD == 'COMPANY' || $FIELD == 'WEBSITE'): ?>
 								<input type="text" class="api-field" name="<?=$FIELD?>"
+                                       <?if( $FIELD == 'COMPANY'){?>value="<?=$doctorName?>" readonly <?}?>
 								       placeholder="<?=$fieldPlaceholder?>">
 								<? elseif($FIELD == 'DELIVERY'): ?>
 									<select id="API_REVIEWS_FORM_DELIVERY" name="DELIVERY" class="api-field">

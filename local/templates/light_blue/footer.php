@@ -57,7 +57,7 @@ IncludeTemplateLangFile(__FILE__);
                     false
                 ); ?>
             </div>
-            <div class="footer__col-3 col-xl-3 col-lg-3 offset-lg-1  offset-xl-0 col-sm-4 col-6 pt-2 pt-xl-0">
+            <div class="footer__col-3 col-xl-3 col-lg-3 offset-lg-1  offset-xl-0 col-sm-4 col-12 pt-2 pt-xl-0">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:main.include",
                     ".default",
@@ -71,7 +71,7 @@ IncludeTemplateLangFile(__FILE__);
                     false
                 ); ?>
             </div>
-            <div class="footer__col-4 col-xl-3 col-lg-4 col-sm-4 col-6 pt-2 pt-xl-0">
+            <div class="footer__col-4 col-xl-3 col-lg-4 col-sm-4 col-12 pt-2 pt-xl-0">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:main.include",
                     ".default",

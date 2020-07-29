@@ -11,26 +11,15 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-CModule::IncludeModule("iblock")
+CModule::IncludeModule("iblock");
+global $clinicName;
 ?>
-<?if($arParams["DISPLAY_TOP_PAGER"]):?>
-	<?=$arResult["NAV_STRING"]?><br />
-<?endif;?>
-<section class="container result-filter">
-    <div class="options-block">
-        <div class="sort-block">
-            <ul class="sort-block-list">
-                <li class="sort-block-list-item active">Популярные</li>
-                <li class="sort-block-list-item">Рейтинг</li>
-                <li class="sort-block-list-item">Стаж</li>
-                <li class="sort-block-list-item">Стоимость</li>
-                <li class="sort-block-list-item">Отзывы</li>
-            </ul>
-        </div>
-        <div class="calendar-block">
-            <div class="calendar">Расписание на <a href="">все дни</a></div>
-        </div>
+<?if(count($arResult["ITEMS"])>0){?>
+    <div class="container">
+        <h2 class="title-h2">Врачи <?=$clinicName?></h2>
     </div>
+<?}?>
+<section class="container result-filter">
     <div class="list-item doctors-list">
         <?foreach($arResult["ITEMS"] as $arItem):?>
             <?
@@ -104,7 +93,7 @@ CModule::IncludeModule("iblock")
                                 <?$res = CIBlockElement::GetByID($item);
                                 if($ar_res = $res->GetNext()){?>
                                     <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p></a>
-                                <?break;}?>
+                                <?}?>
                             <?}?>
                         <?endif;?>
                         <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
@@ -146,17 +135,6 @@ CModule::IncludeModule("iblock")
         <?endforeach;?>
     </div>
 </section>
-<?if($GLOBALS['titleFilterClinic']!=NULL){?>
-<?$this->SetViewTarget('filterTitle');?>
-    <div class="container">
-        <h2 class="title-h2">Врачи-<?=mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1));?>и - (<?=$arResult['NAV_RESULT']->NavRecordCount ?>)</h2>
-    </div>
-<?$this->EndViewTarget();?>
-<?}else{?>
-    <?$this->SetViewTarget('filterTitle');?>
-    <br><br>
-    <?$this->EndViewTarget();?>
-<?}?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>

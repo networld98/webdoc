@@ -22,6 +22,11 @@ $(document).ready(()=>{
 
     });
 
+    // $(window).resize(function() {
+        if ($(window).width() <= 450) {
+            $('.statistics__header span').html("Бесплатный сервис</br> подбора медицинских услуг");
+        }
+    // });
 
     $( ".doctor-card-favorites" ).on( "click", function() {
         $( this ).toggleClass("active");
@@ -306,6 +311,20 @@ $(document).ready(()=>{
         $('html').scrollTop(scrollPos);
     });
 
+
+    $('.personal-cabinet-content__doctors-page-box-item__desc__redactor span').click(function() {
+        if($(this).text() === 'Редактировать данные') {
+            $(this).text('Закрыть');
+            $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc-left')
+            .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
+            .slideDown();
+        } else {
+            $(this).text('Редактировать данные');
+            $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc-left')
+            .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
+            .slideUp();
+        }
+    });
 
 //     var slice = [].slice;
 

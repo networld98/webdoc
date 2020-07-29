@@ -52,7 +52,10 @@ CJSCore::Init("popup", "jquery");
         </div>
     </div>
     <div class="container">
-        <a href="/" class="logo"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo"></a>
+        <a href="/" class="logo">
+            <img class="desktop" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
+            <img class="mobile" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO-mobile.svg" alt="logo">
+        </a>
         <nav class="top-menu">
             <div id="main-menu">
                 <? $APPLICATION->IncludeComponent("bitrix:menu", "horizontal", array(
@@ -80,10 +83,10 @@ CJSCore::Init("popup", "jquery");
             <a href="tel:+74950952020" class="contacts-phone">+7 (495) 095-20-20</a>
         </div>
         <div id="header-auth">
-            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle.svg" alt="user">
+            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
         </div>
         <div id="header-records">
-            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_.svg" alt="folder" class="records">
+            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_new.svg" alt="folder" class="records">
         </div>
     </div>
     <div class="container mobile">

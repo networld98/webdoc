@@ -11,8 +11,8 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-global $clinicName;
-$clinicName = $arResult["NAME"];
+global $doctorName;
+$doctorName = $arResult['NAME'];
 ?>
 <section class="container doctor-card">
     <div class="flex-left">
@@ -67,7 +67,7 @@ $clinicName = $arResult["NAME"];
                         <?$res = CIBlockElement::GetByID($item);
                         if($ar_res = $res->GetNext()){?>
                             <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctor-card__clinic-name"><?=$ar_res['NAME']?></p></a>
-                        <?}?>
+                        <?break;}?>
                     <?}?>
                 <?endif;?>
                 <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
@@ -96,13 +96,20 @@ $clinicName = $arResult["NAME"];
         <div class="doctor-card-top-content">
             <h3 class="title-h3">Информация о враче</h3>
             <div class="doctor-card__img-info-ratings">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
+                <?if($arRaing['RATING']>=1){?>
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-1">
+                <?}if ($arRaing['RATING']>=2){?>
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-2">
+                <?}if ($arRaing['RATING']>=3){?>
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-3">
+                <?}if ($arRaing['RATING']>=4){?>
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-4">
+                <?}if ($arRaing['RATING']>=5){?>
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-5">
+                <?}?>
             </div>
-            <p class="doctor-card__img-info-commend">100% пациентов рекомендуют врача на основе 131 отзыва<a href="">Все отзывы о враче</a></p>
+            <p class="doctor-card__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <?=$arRaing['COUNT']?> отзывов(а)<a href="">Все отзывы о враче</a></p>
             <ul class="doctor-card_options-list">
                 <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
                     <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
@@ -167,78 +174,125 @@ $clinicName = $arResult["NAME"];
 </section>
 <section class="container checked-feedback">
     <h2 class="title-h2">Проверенные отзывы о враче</h2>
-    <div class="checked-feedback-list slick-slider2">
-        <div class="checked-feedback-list-item">
-            <div class="checked-feedback-list-item__doctor-info">
-                <div class="checked-feedback-list-item__img-info-ratings starrr">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <span>Отлично</span>
-                </div>
-                <p class="checked-feedback-list-item__from">Марина, 16 февраля 2020,<span>прием в клинике</span></p>
-                <p class="checked-feedback-list-item__feedback">Доброжелательный и приятный врач. Видно, что это профессионал своего дела. Она все спросила, узнала историю, причину. Все доступно объяснила, рассказала, дала рекомендации и назначения.</p>
-            </div>
-        </div>
-        <div class="checked-feedback-list-item">
-            <div class="checked-feedback-list-item__doctor-info">
-                <div class="checked-feedback-list-item__img-info-ratings">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <span>Отлично</span>
-                </div>
-                <p class="checked-feedback-list-item__from">Дмитрий, 18 января 2020,<span>прием в клинике</span></p>
-                <p class="checked-feedback-list-item__feedback">Очень внимательный доктор. Она досконально все выяснила, спросила какие были операции, заболевания в детстве. Составила диету, чтобы исключить продукты, которые могут вызывать аллергию. Прописала лечение, сказала какие препараты нужно употреблять и обозначила несколько анализов, которые нужно сдать, подешевле и подороже. Я давно мучаюсь с аллергией, но не встречал еще лучше врача! Я услышал все, что хотел!</p>
-            </div>
-        </div>
-        <div class="checked-feedback-list-item">
-            <div class="checked-feedback-list-item__doctor-info">
-                <div class="checked-feedback-list-item__img-info-ratings">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <span>Отлично</span>
-                </div>
-                <p class="checked-feedback-list-item__from">Дмитрий, 18 января 2020,<span>прием в клинике</span></p>
-                <p class="checked-feedback-list-item__feedback">Очень приятный и спокойный человек. Я и мой муж посещаем не первый раз данного специалиста и очень удовлетворены ей! Результат от первого этапа лечения уже есть! Доктор все спрашивает, вникает в проблему, обсуждает всю информацию и отвечает абсолютно на все вопросы! От врача не уходишь пока все не решишь, не смотря на то, что иногда прием занимает больше времени чем положено!</p>
-            </div>
-        </div>
-        <div class="checked-feedback-list-item">
-            <div class="checked-feedback-list-item__doctor-info">
-                <div class="checked-feedback-list-item__img-info-ratings">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-none-filled.png" alt="">
-                    <span>Хорошо</span>
-                </div>
-                <p class="checked-feedback-list-item__from">Дмитрий, 18 января 2020,<span>прием в клинике</span></p>
-                <p class="checked-feedback-list-item__feedback">Очень приятный и спокойный человек. Я и мой муж посещаем не первый раз данного специалиста и очень удовлетворены ей! Результат от первого этапа лечения уже есть! Доктор все спрашивает, вникает в проблему, обсуждает всю информацию и отвечает абсолютно на все вопросы! От врача не уходишь пока все не решишь, не смотря на то, что иногда прием занимает больше времени чем положено!</p>
-            </div>
-        </div>
-        <div class="checked-feedback-list-item">
-            <div class="checked-feedback-list-item__doctor-info">
-                <div class="checked-feedback-list-item__img-info-ratings">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
-                    <span>Отлично</span>
-                </div>
-                <p class="checked-feedback-list-item__from">Марина, 16 февраля 2020,<span>прием в клинике</span></p>
-                <p class="checked-feedback-list-item__feedback">Доброжелательный и приятный врач. Видно, что это профессионал своего дела. Она все спросила, узнала историю, причину. Все доступно объяснила, рассказала, дала рекомендации и назначения.</p>
-            </div>
-        </div>
-    </div>
+    <?$APPLICATION->IncludeComponent(
+        "api:reviews",
+        "custom_doctor",
+        array(
+            "CACHE_TIME" => "31536000",
+            "CACHE_TYPE" => "A",
+            "COLOR" => "blue",
+            "DETAIL_HASH" => "",
+            "DISPLAY_BOTTOM_PAGER" => "Y",
+            "DISPLAY_TOP_PAGER" => "N",
+            "ELEMENT_ID" => $arResult["ID"],
+            "EMAIL_TO" => "",
+            "FORM_CITY_VIEW" => "N",
+            "FORM_DELIVERY" => array(
+            ),
+            "FORM_DISPLAY_FIELDS" => array(
+                0 => "RATING",
+                1 => "COMPANY",
+                2 => "ADVANTAGE",
+                3 => "DISADVANTAGE",
+                4 => "ANNOTATION",
+                5 => "GUEST_NAME",
+                6 => "GUEST_EMAIL",
+            ),
+            "FORM_FORM_SUBTITLE" => "",
+            "FORM_FORM_TITLE" => "Отзыв о клинике",
+            "FORM_MESS_ADD_REVIEW_ERROR" => "Внимание!<br>Ошибка добавления отзыва",
+            "FORM_MESS_ADD_REVIEW_EVENT_TEXT" => "<p>#USER_NAME# добавил(а) новый отзыв (оценка: #RATING#) ##ID#</p>
+    <p>Открыть в админке #LINK_ADMIN#</p>
+    <p>Открыть на сайте #LINK#</p>",
+            "FORM_MESS_ADD_REVIEW_EVENT_THEME" => "Отзыв о Клинике (оценка: #RATING#) ##ID#",
+            "FORM_MESS_ADD_REVIEW_MODERATION" => "Спасибо!<br>Ваш отзыв отправлен на модерацию",
+            "FORM_MESS_ADD_REVIEW_VIZIBLE" => "Спасибо!<br>Ваш отзыв №#ID# опубликован",
+            "FORM_MESS_EULA" => "Нажимая кнопку «Отправить отзыв», я принимаю условия Пользовательского соглашения и даю своё согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных Политикой конфиденциальности.",
+            "FORM_MESS_EULA_CONFIRM" => "Для продолжения вы должны принять условия Пользовательского соглашения",
+            "FORM_MESS_PRIVACY" => "Я согласен на обработку персональных данных",
+            "FORM_MESS_PRIVACY_CONFIRM" => "Для продолжения вы должны принять соглашение на обработку персональных данных",
+            "FORM_MESS_PRIVACY_LINK" => "",
+            "FORM_MESS_STAR_RATING_1" => "Ужасно",
+            "FORM_MESS_STAR_RATING_2" => "Плохо",
+            "FORM_MESS_STAR_RATING_3" => "Нормально",
+            "FORM_MESS_STAR_RATING_4" => "Хорошо",
+            "FORM_MESS_STAR_RATING_5" => "Отлично",
+            "FORM_PREMODERATION" => "N",
+            "FORM_REQUIRED_FIELDS" => array(
+                0 => "RATING",
+                1 => "ANNOTATION",
+            ),
+            "FORM_RULES_LINK" => "http://doc.btx.bz/rules/",
+            "FORM_RULES_TEXT" => "Правила публикации отзывов",
+            "FORM_SHOP_BTN_TEXT" => "Оставить свой отзыв",
+            "FORM_SHOP_TEXT" => "Отзывы о клиние",
+            "FORM_USE_EULA" => "Y",
+            "FORM_USE_PRIVACY" => "Y",
+            "IBLOCK_ID" => "",
+            "INCLUDE_CSS" => "Y",
+            "INCLUDE_JQUERY" => "jquery2",
+            "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
+            "LIST_ITEMS_LIMIT" => "10",
+            "LIST_MESS_ADD_UNSWER_EVENT_TEXT" => "#USER_NAME#, здравствуйте! 
+    К Вашему отзыву добавлен официальный ответ, для просмотра перейдите по ссылке #LINK#",
+            "LIST_MESS_ADD_UNSWER_EVENT_THEME" => "Официальный ответ к вашему отзыву",
+            "LIST_MESS_HELPFUL_REVIEW" => "Отзыв полезен?",
+            "LIST_MESS_TRUE_BUYER" => "Проверенный покупатель",
+            "LIST_SET_TITLE" => "N",
+            "LIST_SHOP_NAME_REPLY" => "Интернет-магазин DOC.BTX.BZ",
+            "LIST_SHOW_THUMBS" => "N",
+            "LIST_SORT_FIELDS" => array(
+                0 => "ACTIVE",
+                1 => "ACTIVE_FROM",
+                2 => "RATING",
+                3 => "THUMBS",
+            ),
+            "LIST_SORT_FIELD_1" => "ACTIVE_FROM",
+            "LIST_SORT_FIELD_2" => "DATE_CREATE",
+            "LIST_SORT_FIELD_3" => "ID",
+            "LIST_SORT_ORDER_1" => "DESC",
+            "LIST_SORT_ORDER_2" => "DESC",
+            "LIST_SORT_ORDER_3" => "DESC",
+            "MESSAGE_404" => "",
+            "PAGER_DESC_NUMBERING" => "Y",
+            "PAGER_DESC_NUMBERING_CACHE_TIME" => "31536000",
+            "PAGER_SHOW_ALWAYS" => "N",
+            "PAGER_TEMPLATE" => ".default",
+            "PAGER_THEME" => "blue",
+            "PAGER_TITLE" => "Отзывы",
+            "PICTURE" => array(
+            ),
+            "RESIZE_PICTURE" => "48x48",
+            "SECTION_ID" => "",
+            "SEF_MODE" => "N",
+            "SET_STATUS_404" => "N",
+            "SHOP_NAME" => "DOC.BTX.BZ",
+            "SHOW_404" => "N",
+            "STAT_MESS_CUSTOMER_RATING" => "На основе #N# оценок покупателей",
+            "STAT_MESS_CUSTOMER_REVIEWS" => "Отзывы покупателей <span class=\"api-reviews-count\"></span>",
+            "STAT_MESS_TOTAL_RATING" => "Рейтинг покупателей",
+            "STAT_MIN_AVERAGE_RATING" => "5",
+            "THEME" => "aspro",
+            "THUMBNAIL_HEIGHT" => "72",
+            "THUMBNAIL_WIDTH" => "114",
+            "UPLOAD_FILE_LIMIT" => "8",
+            "UPLOAD_FILE_SIZE" => "10M",
+            "UPLOAD_FILE_TYPE" => "",
+            "UPLOAD_VIDEO_LIMIT" => "8",
+            "URL" => "",
+            "USE_FORM_MESS_FIELD_PLACEHOLDER" => "N",
+            "USE_MESS_FIELD_NAME" => "N",
+            "USE_STAT" => "Y",
+            "USE_SUBSCRIBE" => "N",
+            "USE_USER" => "N",
+            "COMPONENT_TEMPLATE" => "custom",
+            "VARIABLE_ALIASES" => array(
+                "review_id" => "review_id",
+                "user_id" => "user_id",
+            )
+        ),
+        false
+    );?>
 </section>
 <section id="anchor-spec-info" class="container spec-info">
     <h2 class="title-h2">Информация о специалисте</h2>
@@ -285,4 +339,14 @@ $clinicName = $arResult["NAME"];
             <?endif;?>
         </ul>
     </div>
+<!--    --><?//if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
+<!--    --><?// global $USER;
+//    if ($USER->IsAdmin()) {
+//        echo"<pre>";
+//        print_r($arRaing );
+//        echo"</pre>";
+//    }
+//    ?>
+
 </section>
+
