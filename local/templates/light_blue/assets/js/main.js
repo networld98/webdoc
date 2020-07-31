@@ -91,15 +91,19 @@ $(document).ready(()=>{
         slidesToScroll: 1,
         responsive: [
             {
-              breakpoint: 1105,
-              settings: {
-                slidesToShow: 2,
-              }
+                breakpoint: 1200,
+                settings: {
+                  slidesToShow: 3,
+                  variableWidth: true,
+                  infinite:false,
+                }
             },
             {
-                breakpoint: 605,
+                breakpoint: 650,
                 settings: {
-                  slidesToShow: 1,
+                    slidesToShow: 1,
+                    variableWidth: true,
+                    infinite:false,
                 }
               },
         ]
@@ -108,15 +112,50 @@ $(document).ready(()=>{
         arrows: true,
         speed: 300,
         slidesToShow: 4,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 3,
+                variableWidth: true,
+                infinite:false,
+              }
+            },
+            {
+                breakpoint: 650,
+                settings: {
+                    slidesToShow: 1,
+                    variableWidth: true,
+                    infinite:false,
+                }
+              },
+        ]
       });
-      $('.slick-slider3').slick({
+    $('.slick-slider3').slick({
         arrows: true,
         speed: 300,
         slidesToShow: 5,
-        slidesToScroll: 1
-      });
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 650,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 4,
+                    variableWidth: true,
+                    infinite:false,
+                }
+            },
+        ]
+    });
 
+    $('.search-doctors').on( "click", function() {
+        $(this).hide();
+        $('.clinic-card .main-filter').css({'padding-top': '32px', 'padding-bottom': '29px'});
+        $(this).prev().slideDown();
+        console.log($(this));
+    });
       /* messange-to-doctor-popup*/
 
       var mess = {
@@ -258,7 +297,9 @@ $(document).ready(()=>{
          
         /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
         $('.popup-box .map-popup').css('display', 'block');
-        $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        console.log($(this).parents('.clinic-card'));
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $($(this).parents('main').find('.map-wrapper .popup-box')).show();
         $('#blackout').show();
         $('html,body').css('overflow', 'hidden');
          

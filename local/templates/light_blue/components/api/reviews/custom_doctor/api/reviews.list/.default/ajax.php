@@ -134,11 +134,4 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
         </div>
 	<? endif ?>
 </div>
-<script>
-    $('.slick-slider2').slick({
-        arrows: true,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 1
-    });
-</script>
+<script src="<?= SITE_TEMPLATE_PATH ?>/assets/js/main.js"></script>

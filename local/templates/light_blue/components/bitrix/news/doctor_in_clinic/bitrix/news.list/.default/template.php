@@ -93,7 +93,7 @@ global $clinicName;
                                 <?$res = CIBlockElement::GetByID($item);
                                 if($ar_res = $res->GetNext()){?>
                                     <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p></a>
-                                <?}?>
+                                    <?break;}?>
                             <?}?>
                         <?endif;?>
                         <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
@@ -136,5 +136,5 @@ global $clinicName;
     </div>
 </section>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><?=$arResult["NAV_STRING"]?>
+	 <?=$arResult["NAV_STRING"]?>
 <?endif;?>

@@ -121,15 +121,19 @@ CJSCore::Init("popup", "jquery");
         );?>
     </div>
     <div id="mess-popup" class="mess-popup">
-        <div class="mess-popup__header">Оставьте Ваше сообщение</div>
-        <input class="mess-popup__name" type="text" name="" placeholder="ФИО">
-        <input class="mess-popup__email" type="text" name="" placeholder="E-mail">
-        <textarea class="mess-popup__message" type="text" name="" placeholder="Текст сообщения"></textarea>
-        <p class="mess-popup__desc">Нажимая «Отправить», я принимаю <a href="">условия пользовательского соглашения и даю согласие</a> на обработку персональных данных.</p>
-        <input type="submit" name="" class="send" value="Отправить">
+        <!-- Временно скрыл попап -->
+        <div style="display:none;">
+            <div class="mess-popup__header">Оставьте Ваше сообщение</div>
+            <input class="mess-popup__name" type="text" name="" placeholder="ФИО">
+            <input class="mess-popup__email" type="text" name="" placeholder="E-mail">
+            <textarea class="mess-popup__message" type="text" name="" placeholder="Текст сообщения"></textarea>
+            <p class="mess-popup__desc">Нажимая «Отправить», я принимаю <a href="">условия пользовательского соглашения и даю согласие</a> на обработку персональных данных.</p>
+            <input type="submit" name="" class="send" value="Отправить">
+        </div>
     </div>
     <div id="reception-popup" class="reception-popup">
-        <div class="doctors-list">
+        <!-- Временно скрыл попап -->
+        <div class="doctors-list" style="display:none;">
             <div class="doctors-list-item">
                 <div class="flex-content">
                 <a href="/" class="logo"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo"></a>
@@ -231,7 +235,8 @@ CJSCore::Init("popup", "jquery");
         </div>
     </div>
     <div id="call-popup" class="call-popup">
-        <div class="doctors-list">
+        <!-- Временно скрыл попап -->
+        <div class="doctors-list" style="display:none;"> 
             <div class="doctors-list-item">
                 <div class="flex-content">
                 <a href="/" class="logo"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo"></a>
@@ -361,7 +366,7 @@ CJSCore::Init("popup", "jquery");
 
 </header>
 <main class="">
-    <?if($APPLICATION->GetCurPage() != '/clinics/' && $APPLICATION->GetCurPage() != '/'){?>
+    <?if( $APPLICATION->GetCurPage() != '/'){?>
         <section class="container">
             <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
                 "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка

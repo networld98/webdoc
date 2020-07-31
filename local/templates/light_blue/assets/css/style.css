@@ -65,7 +65,7 @@ input[type="submit"] {
     color: #000000;
 }
 .title-h3 {
-    font-family: "Montserrat Alternates";
+    font-family: "Montserrat Alternates-Bold";
     font-style: normal;
     font-weight: bold;
     font-size: 25px;
@@ -710,12 +710,13 @@ input[type="submit"] {
     justify-content: space-between;
     align-items: center;
 }
-.sort-block-list-item {
+
+.sort-block-list-item,.sort-block-list__select {
     padding: 10px 15px;
     background: transparent;
     border: 1px dashed #B4B4B4;
     border-radius: 5px;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -727,12 +728,16 @@ input[type="submit"] {
     background: #E3EAEA;
     border: 1px solid #E3EAEA;
 }
+.sort-block-list__select {
+    display: none;
+    border: 1px solid #B4B4B4;
+}
 .calendar {
     padding: 10px 15px;
     background: #E3EAEA;
     border: 1px solid #E3EAEA;
     border-radius: 5px;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -777,10 +782,12 @@ input[type="submit"] {
     background-repeat: no-repeat;
     background-position-y: 103px;
     background-size: cover;
+    max-width: 512px;
+    width: 100%;
 }
 .doctors-list-item__img {
     max-width: 275px;
-    max-height: 433px;
+    max-height: 443px;
     width: 100%;
     height: 100%;
     position: relative;
@@ -788,12 +795,19 @@ input[type="submit"] {
 }
 .doctors-list-item__img img {
     width: 100%;
-    max-width: 100%;
+    height: 100%;
+}
+.doctors-list-item__img .doctors-list-item__img-none-photo,.doctors-list-item__img .doctors-list-item__img-photo {
+    width: 275px;
+    /* margin: 51px 37px 37px; */
+    /* width: 100%; */
+    height: 443px;
 }
 .doctors-list-item__img .doctors-list-item__img-none-photo {
-    width: auto;
-    max-width: 100%;
-    margin: 51px 37px 37px;
+    padding-left: 38px;
+    padding-right: 38px;
+    padding-bottom: 192px;
+    padding-top: 52px;
 }
 .doctors-list-item__img-info {
     position: absolute;
@@ -843,7 +857,7 @@ input[type="submit"] {
     flex-wrap: wrap;
 }
 .doctors-list-item__description-position {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -859,7 +873,7 @@ input[type="submit"] {
     line-height: 29px;    
     color: #000000;
     margin-bottom: 10px;
-    max-width: 99%;
+    max-width: 80%;
 }
 .doctors-list-item__description-exp {
     font-family: "Ubuntu";
@@ -871,7 +885,7 @@ input[type="submit"] {
     margin-bottom: 1px;
 }
 .doctors-list-item__description-degree {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -889,7 +903,7 @@ input[type="submit"] {
     margin-bottom: 2px;
 }
 .doctors-list-item__description-price span {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -907,7 +921,7 @@ input[type="submit"] {
     color: #000000;
 }
 .doctors-list-item__description-phone span {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -917,7 +931,7 @@ input[type="submit"] {
     margin-bottom: 2px;
 }
 .doctors-list-item__description-counts {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -937,7 +951,7 @@ input[type="submit"] {
     margin-right: 10px;
 }
 .doctors-list-item_timing {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -954,7 +968,7 @@ input[type="submit"] {
     background: #98D7DC;
     border-radius: 5px;
     padding: 10px;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -964,6 +978,9 @@ input[type="submit"] {
     cursor: pointer;
     position: relative;
     transition: 0.3s;
+}
+.doctors-list-item__days-list-item:last-child {
+    margin-right: 0;
 }
 .doctors-list-item__days-list-item.active::before {
     content: '';
@@ -982,14 +999,14 @@ input[type="submit"] {
     border: 1px solid #E3EAEA;
     border-radius: 5px;
     padding: 4px 13px;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
     line-height: 24px;
     color: #000000;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    margin-right: 6px;
+    margin-bottom: 3px;
     cursor: pointer;
 }
 .doctors-list-item__days-list-item.not-worked {
@@ -1053,7 +1070,7 @@ input[type="submit"] {
     margin-bottom: 10px;
 }
 .doctors-list-item__clinic-adress {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1066,7 +1083,7 @@ input[type="submit"] {
     position: relative;
 }
 .doctors-list-item_metro-list-item {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1269,7 +1286,7 @@ input[type="submit"] {
     margin-bottom: 5px;
 }
 .doctors-lastfeedback-list-item__doctor-info__content__counts {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1278,7 +1295,7 @@ input[type="submit"] {
     margin: 0;
 }
 .doctors-lastfeedback-list-item__from {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1289,7 +1306,7 @@ input[type="submit"] {
     max-width: 275px;
 }
 .doctors-lastfeedback-list-item__feedback {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1317,10 +1334,13 @@ input[type="submit"] {
 .doctor-card .flex-left {
     display: flex;
     flex-direction: column;
+    max-width: 695px;
+    width: 100%;
 }
 .doctor-card .flex-right {
     position: relative;
     max-width: 485px;
+    width: 100%;
 }
 .doctor-card-top-content {
     display: flex;
@@ -1328,16 +1348,22 @@ input[type="submit"] {
 .doctor-card__img {
     position: relative;
     background: #E3EAEA;
-    width: 275px;
+    max-width: 275px;
+    width: 100%;
 }
-.doctor-card__img.doctor-card-img {
+/* .doctor-card__img.doctor-card-img {
     display: flex;
     align-items: flex-end;
-}
+} */
 .doctor-card__img .doctors-list-item__img-none-photo {
-    width: auto;
-    max-width: 100%;
-    margin: 51px 37px 37px;
+    width: 275px;
+    /* margin: 51px 37px 37px; */
+    /* width: 100%; */
+    height: 443px;
+    padding-left: 38px;
+    padding-right: 38px;
+    padding-bottom: 192px;
+    padding-top: 52px;
 }
 .doctor-card__img-info {
     position: absolute;
@@ -1350,7 +1376,7 @@ input[type="submit"] {
     text-align: center;
 }
 .doctor-card__img-info > a {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1361,13 +1387,19 @@ input[type="submit"] {
     text-decoration: underline;
 }
 .doctor-card__img-link {
-    display: block;
+    /* display: block; */
+    display: flex;
     position: relative;
     height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 .doctor-card__img-photo {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    /* height: 100%; */
 }
 .flex-left .doctor-card__description {
     padding-left: 40px;
@@ -1390,7 +1422,7 @@ input[type="submit"] {
     flex-wrap: wrap;
 }
 .doctor-card__description-position {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1418,7 +1450,7 @@ input[type="submit"] {
     margin-bottom: 1px;
 }
 .doctor-card__description-degree {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1436,7 +1468,7 @@ input[type="submit"] {
     margin-bottom: 2px;
 }
 .doctor-card__description-price span {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -1454,7 +1486,7 @@ input[type="submit"] {
     color: #000000;
 }
 .doctor-card__description-phone span {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -1474,7 +1506,7 @@ input[type="submit"] {
     margin-top: 20px;
 }
 .doctor-card__clinic-adress {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1486,11 +1518,15 @@ input[type="submit"] {
     margin-bottom: 43px !important;
     position: relative;
     flex-direction: column;
+    font-family: 'Ubuntu-Light';
+    font-size: 15px;
+    line-height: 24px;
+    color: #000000;
 }
 .clinic-card .main-filter {
     margin-top: 0;
     padding-top: 32px;
-    padding-bottom: 29px;f
+    padding-bottom: 29px;
 }
 .clinic-card__metro-list {
     position: relative;
@@ -1499,7 +1535,7 @@ input[type="submit"] {
     margin-bottom: 0 !important;
 }
 .clinic-card_metro-list-item {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1510,7 +1546,7 @@ input[type="submit"] {
     margin-bottom: 5px;
 }
 .clinic-card_metro-list-item {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1574,7 +1610,7 @@ input[type="submit"] {
     color: #32B4C3;
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1596,7 +1632,8 @@ input[type="submit"] {
     font-size: 18px;
     line-height: 26px;
     color: #000000;
-    width: 273px;
+    max-width: 273px;
+    width: 100%;
     height: 60px;
     background: #98D7DC;
     border: 2px solid #98D7DC;
@@ -1625,7 +1662,8 @@ input[type="submit"] {
     font-size: 18px;
     line-height: 26px;
     color: #000000;
-    width: 378px;
+    max-width: 378px;
+    width: 100%;
     height: 60px;
     background: #E3EAEA;
     border: 2px solid #E3EAEA;
@@ -1650,7 +1688,10 @@ input[type="submit"] {
 .flex-right .doctor-card-top-content {
     display: flex;
     flex-direction: column;
-    min-height: 492.5px;
+    min-height: 516px
+}
+.flex-left .doctor-card-top-content{
+    min-height: 516px;
 }
 .doctor-card__img-info-ratings {
     margin-bottom: 10px;
@@ -1661,7 +1702,7 @@ input[type="submit"] {
     height: 24px;
 }
 .doctor-card__img-info-commend {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1681,7 +1722,7 @@ input[type="submit"] {
     margin-bottom: 20px;
 }
 .doctor-card_options-list-item {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1700,7 +1741,7 @@ input[type="submit"] {
     margin-right: 10px;
 }
 .doctor-card__position-desc {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1709,7 +1750,7 @@ input[type="submit"] {
     margin-bottom: 10px;
 }
 .doctor-card__metro-list-show_more {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1730,8 +1771,9 @@ input[type="submit"] {
     font-weight: normal;
     font-size: 18px;
     line-height: 21px;
-    color: #32B4C3;
-    width: 380px;
+    color: #32B4C3 !important;
+    max-width: 380px;
+    width: 100%;
     height: 58px;
     border-radius: 5px;
     border: 2px dashed #32B4C3;
@@ -1743,8 +1785,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 .doctor-card-popUp-group__route:hover {
-    color: #32B4C3;
-    border: transparent;
+    color: #32B4C3 !important;
 }
 .doctor-card-popUp-group__route::before {
     content: '';
@@ -1755,8 +1796,12 @@ input[type="submit"] {
     margin-right: 10px;
 }
 .doctor-card-popUp-group__route span {
-    padding: 4px;
-    border-bottom: 1px dashed;
+    /* padding: 4px;
+    border-bottom: 1px dashed; */
+    color: #32B4C3;
+}
+.doctor-card .flex-left .doctor-card-popUp-group__route {
+    display: none;
 }
 .doctor-card-top-content .title-h3 {
     margin-bottom: 20px;
@@ -1806,7 +1851,7 @@ input[type="submit"] {
     align-items: flex-end;
 }
 .choosing-time_block-list-item {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1864,7 +1909,7 @@ input[type="submit"] {
     flex-wrap: wrap;
 }
 .choosing-time__worktimming-list-item {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1983,7 +2028,7 @@ input[type="submit"] {
     color: #000000;
 }
 .checked-feedback-list-item__from {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -1997,7 +2042,7 @@ input[type="submit"] {
     display: block;
 }
 .checked-feedback-list-item__feedback {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2018,6 +2063,7 @@ input[type="submit"] {
 .spec-info-block .title-h3 {
     color: #98D7DC;
     margin-bottom: 20px;
+    max-width: 290px;
 }
 .spec-info-block__education-list .title-h3, .spec-info-block__exp-list .title-h3 {
     margin-bottom: 40px;
@@ -2049,7 +2095,7 @@ input[type="submit"] {
 }
 .spec-info-block__spec-list-item  a {
     color: #32B4C3;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2057,6 +2103,7 @@ input[type="submit"] {
     padding: 5px 10px;
     border: 1px solid #32B4C3;
     border-radius: 5px;
+    display: inline-block;
 }
 .spec-info-block__spec-list-item  a:hover {
     background: #32B4C3;
@@ -2067,7 +2114,7 @@ input[type="submit"] {
     padding: 0;
 }
 .spec-info-block__education-list ol li, .spec-info-block__exp-list ol li {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2076,11 +2123,15 @@ input[type="submit"] {
     display: flex;
     margin-bottom: 30px;
 }
+.spec-info-block__education-list ol li:last-child, .spec-info-block__exp-list ol li:last-child {
+    margin-bottom: 0;
+}
 .spec-info-block__education-list ol li span , .spec-info-block__exp-list ol li span {
     display: block;
     line-height: 17px;
     margin-right: 24px;
     width: 39px;
+    font-family: "Ubuntu";
 }
 
 /* spec-list */
@@ -2095,10 +2146,11 @@ input[type="submit"] {
 .spec-list-list {
     padding: 0;
     max-width: 565px;
+    margin-bottom: 0;
 }
 .spec-list-list li {
     margin-left: 20px;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -3725,6 +3777,7 @@ input[type="submit"] {
     margin-top: 60px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 120px;
 }
 .clinic-card-full-desc__tabs {
     width: 275px;
@@ -4666,6 +4719,28 @@ input[type="submit"] {
 .specializations .nav-pills > li:first-child {
     margin-right: 16px;
 }
+.search-doctors {
+    display: none;
+    background: #9DD4B3;
+    border-radius: 5px;
+    width: 100%;
+    font-family: "Ubuntu-Light";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+    padding: 12px 20px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    border: 1px solid #9DD4B3;
+}
+.search-doctors:hover {
+    background: #ACE4C3;
+    border: 1px solid #ACE4C3;
+}
 /*.bx_filter.bx_blue.bx_horizontal {*/
     /*background: #F3F4EF;*/
     /*}*/
@@ -4789,6 +4864,21 @@ input[type="submit"] {
     /* .contacts-phone {
         margin-top: 0;
     } */
+    .doctor-card .flex-left {
+        max-width: 600px;
+    }
+    .doctor-card .flex-right {
+        max-width: 435px;
+    }
+    .flex-right .doctor-card-top-content,.flex-left .doctor-card-top-content {
+        min-height: 516x;
+    }
+    .doctor-card-popUp-group__call {
+        max-width: 275px;
+    }
+    .doctor-card .doctor-card-location-map {
+        left: -83px;
+    }
 }
 @media (max-width: 1200px) {
     .clinic-card-full-desc__content__feedback__radio-group > ul {
@@ -4817,6 +4907,223 @@ input[type="submit"] {
     }
     .main {
         background: none;
+    }
+
+
+    .doctor-card .flex-left .doctor-card-popUp-group__route {
+        display: flex;
+    }
+    .doctor-card .flex-right .doctor-card-popUp-group__route {
+        display: none;
+    }
+    .doctor-card {
+        flex-direction: column;
+    }
+    .doctor-card .flex-left {
+        max-width: 100%;
+    }
+    .doctor-card .flex-right {
+        max-width: 100%;
+        margin-top: 32px;
+    }
+    .flex-left .doctor-card__description {
+        width: 100%;
+        max-width: 100%;
+    }
+    .doctor-card_options-list {
+        justify-content: initial;
+    }
+    .flex-right .doctor-card-top-content, .flex-left .doctor-card-top-content {
+        min-height: initial;
+    }
+    .flex-left .doctor-card__description {
+        padding-left: 20px;
+    }
+    .doctor-card__img {
+        height: 456px;
+    }
+    .doctor-card__img .doctor-card__img-photo ,.doctor-card__img .doctors-list-item__img-none-photo {
+        max-height: 398px;
+        height: 398px;
+    }
+    .doctor-card__description-degree {
+        margin-bottom: 9px;
+    }
+    .doctor-card__description-phone span {
+        margin-bottom: 9px;
+    }
+    .doctor-card__clinic-name {
+        margin-bottom: 6px;
+        margin-top: 19px;
+    }
+    .doctor-card__img-info {
+        bottom: 43px;
+    }
+    .doctor-card__clinic-adress {
+        margin-bottom: 5px;
+    }
+    .doctor-card_metro-list-item {
+        margin-bottom: 5px;
+    }
+    .doctor-card_metro-list-item:last-child {
+        margin-bottom: 0;
+    }
+    .doctor-card__metro-list {
+        margin-bottom: 0 !important;
+    }
+    .doctor-card-popUp-group {
+        margin-top: 28px;
+    }
+    .doctor-card-popUp-group__reception,.doctor-card-popUp-group__call,.doctor-card-popUp-group__route {
+        font-size: 15px;
+        line-height: 17px;
+    }
+    .doctor-card-popUp-group__route {
+        max-width: 226px;
+    }
+    .doctor-card-popUp-group__call {
+        max-width: 193px;
+    }
+    .doctor-card-popUp-group__reception {
+        max-width: 275px;
+    }
+    .doctor-card-popUp-group__call span {
+        max-width: 104px;
+    }
+    .doctor-card__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .doctor-card-top-content .title-h3 {
+        margin-bottom: 12px;
+    }
+    .doctor-card__img-info-commend a {
+        margin-bottom: 0;
+    }
+    .doctor-card_options-list-item {
+        margin-right: 36px;
+    }
+    .doctor-card_options-list-item::before {
+        margin-right: 15px;
+    }
+    .doctor-card__position-desc {
+        margin-bottom: 22px;
+    }
+    .choosing-time .title-h3 {
+        text-align: center;
+    }
+    .doctor-card__img-info-commend {
+        margin-bottom: 20px;
+    }
+    .doctor-card {
+        margin-bottom: 11px;
+    }
+    .choosing-time_block,.choosing-time__worktimming-list {
+        width: 100%;
+        max-width: 628px;
+        margin: 0 auto;
+    }
+    .choosing-time_block {
+        margin-bottom: 19px;
+    }
+    .choosing-time_block .slick-prev {
+        margin-right: 6px;
+    }
+    .choosing-time_block-list-item {
+        padding: 10px 13px;
+        margin-right: 5px;
+    }
+    .choosing-time_block .slick-list {
+        padding-top: 29px;
+    }
+    .choosing-time__worktimming-list-item {
+        margin-right: 5px;
+        padding: 4px 14px;
+    }
+    .choosing-time__worktimming-list-item:nth-child(9) {
+        display: none;
+    }
+    .checked-feedback {
+        margin-top: 30px;
+        margin-bottom: 128px;
+    }
+    .checked-feedback-list-item__from {
+        margin-top: 21px;
+        margin-bottom: 11px;
+    }
+    .checked-feedback-list-item__doctor-info {
+        max-width: 305px;
+    }
+    .checked-feedback .slick-prev, .checked-feedback .slick-next {
+        bottom: -120px;
+    }
+    .checked-feedback-list-item__from,.checked-feedback-list-item__feedback {
+        max-width: 100%;
+    }
+    .spec-info .title-h2 {
+        margin-bottom: 20px;
+    }
+    .spec-info-block {
+        display: grid;
+        grid-template-areas: "a a"
+                             "b c";
+        /* grid-column-gap: 20px; */
+        justify-content: initial;
+    }
+    .spec-info-block .spec-info-block__spec-list {
+        grid-area: a;
+        margin-bottom: 6px;
+    }
+    .spec-info-block .title-h3 {
+        max-width: 100%;
+        margin-bottom: 22px;
+    }
+    .spec-info-block__spec-list__title {
+        margin-bottom: 18px;
+    }
+    .spec-info-block__education-list ol li, .spec-info-block__exp-list ol li {
+        max-width: 354px;
+        margin-bottom: 20px;
+    }
+    .spec-info-block__education-list ol li span, .spec-info-block__exp-list ol li span {
+        margin-right: 20px;
+    }
+    .spec-list {
+        margin-top: -37px;
+    }
+    .spec-list .title-h2 {
+        margin-bottom: 39px;
+    }
+    .spec-list .flex-between {
+        flex-direction: column;
+        margin-bottom: 80px;
+    }
+    .spec-list .flex-between ul:first-child .spec-list-list__title {
+        max-width: 97%;
+    }
+    .spec-list-list {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .spec-list-list li {
+        margin-bottom: 8px;
+        margin-left: 12px;
+    }
+    .doctor-card .doctor-card-location-map {
+        left: initial;
+        bottom: initial;
+        top: -198px;
+        right: 5px;
+    }
+    .choosing-time__worktimming-list {
+        padding-left: 18px;
+    }
+    .checked-feedback-list-item {
+        margin-right: 25px;
+    }
+    .doctors-lastfeedback-list-item {
+        margin-right: 40px;
     }
 }
 @media (max-width: 1023px) {
@@ -5027,6 +5334,7 @@ input[type="submit"] {
     .clinic-card-full-desc {
         flex-direction: column;
         align-items: center;
+        margin-bottom: 60px;
     }
     .clinic-card-full-desc__content {
         width: 100%;
@@ -5147,6 +5455,9 @@ input[type="submit"] {
     .doctors-list .flex-right {
         background: #F8F8F8;
     }
+    .doctors-list .flex-right {
+        max-width: 100%;
+    }
     .flex-right .doctors-list-item__description {
         max-width: 100%;
         padding: 20px 42px 30px 20px;
@@ -5162,15 +5473,17 @@ input[type="submit"] {
     }
     .flex-right .doctors-list-item__description .adapt > div:first-child {
         max-width: 403px;
+        margin-right: 20px;
+        width: 100%;
     }
     .flex-right .doctors-list-item__description .adapt > div:last-child {
-        margin-top: 30px;
+        margin-top: 33px;
     }
     .doctors-list-item_options {
         justify-content: initial;
     }
     .doctors-list-item_options-list-item {
-        margin-right: 20px;
+        margin-right: 25px;
     }
     .doctors-list-item_options-list-item:last-child {
         margin-right: 0;
@@ -5187,18 +5500,56 @@ input[type="submit"] {
     .doctors-list-item__img {
         max-width: 250px;
         max-height: 382px;
+        border-radius: 10px 0;
+    }
+    .doctors-list-item__img .doctors-list-item__img-none-photo,.doctors-list-item__img .doctors-list-item__img-photo {
+        max-width: 250px;
+        height: 382px;
     }
     .flex-left .doctors-list-item__description {
-        padding: 30px 32px 31px 30px;
+        padding: 32px 32px 31px 30px;
         max-width: 100%;
     }
     .doctors-list-item__img-info {
         bottom: 32px;
         left: 42px;
+        padding: 10px 16px 16px;
     }
     .doctors-list-item__description .doctors-list-item__days-list {
         padding-left: 0;
     }
+    .doctors-list-item-favorites {
+        top: 31px;
+        right: 35px;
+    }
+    .doctors-list-item__description-position {
+        margin-bottom: 6px;
+    }
+    .doctors-list-item__description-exp {
+        margin-bottom: 7px;
+    }
+    .doctors-list-item__description-degree {
+        margin-bottom: 19px;
+    }
+    .doctors-list-item__description-price {
+        margin-bottom: -8px;
+    }
+    .doctors-list-item__description-phone span {
+        margin-bottom: 3px;
+    }
+    .doctors-list-item__description-counts {
+        margin-top: 19px;
+    }
+    .doctors-list-item_timing {
+        padding-left: 0px;
+    }
+    .doctors-list-item__description .doctors-list-item__worktimming-list {
+        margin-bottom: 24px;
+    }
+
+    /*doctor-detail*/
+
+    
 }
 
 @media (max-width: 750px) {
@@ -5303,7 +5654,60 @@ input[type="submit"] {
         margin-right: 0;
         width: initial !important;
     }
+
+    
+    .sort-block-list__select {
+        display: block;
+    }
+    .sort-block-list {
+        display: none;
+    }
+    .flex-right .doctors-list-item__description .adapt > div:first-child {
+        margin-right: 0;
+    }
+
+
+    /*doctor-detail*/
+    .doctor-card-popUp-group {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .doctor-card-popUp-group__reception, .doctor-card-popUp-group__call, .doctor-card-popUp-group__route {
+        max-width: 100%;
+    }
+    .doctor-card-popUp-group a {
+        margin-bottom: 7px;
+    }
+    .doctor-card-popUp-group a:last-child {
+        margin-bottom: 0;
+    }
+    .doctor-card-popUp-group__call span {
+        max-width: initial;
+    }
+    .doctor-card .doctor-card-location-map {
+        top: -360px;
+    }
+    .doctors-lastfeedback-list-item {
+        margin-right: 20px;
+    }
+    .doctors-lastfeedback .slick-prev {
+        left: 110px;
+    }
+    .doctors-lastfeedback .slick-next {
+        left: 195px;
+    }
  }
+@media (max-width: 680px) {
+    .flex-right .doctors-list-item__description .adapt {
+        flex-direction: column;
+    }
+    .flex-right .doctors-list-item__description .adapt > div:first-child {
+        max-width: 100%;
+    }
+    .flex-right .doctors-list-item__description .adapt > div:last-child {
+        margin-top: 33px;
+    }
+}
 @media (max-width: 650px) {
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(6) {
         width: 36% !important;
@@ -5319,6 +5723,9 @@ input[type="submit"] {
 	}
 }
 @media (max-width: 600px) {
+    .clinic-card-full-desc {
+        margin-bottom: 30px;
+    }
     .clinic-card-full-desc__tabs > ul > li {
         margin-right: 0;
     }
@@ -5367,6 +5774,9 @@ input[type="submit"] {
         font-size: 18px;
         margin-top: 20px;
     }
+    .clinic-card .bx_filter_section.container {
+        padding-top: 0;
+    }
     .main-filter .row > div:first-child > div:first-child {
         margin-right: 0;
         margin-bottom: 8px;
@@ -5377,6 +5787,404 @@ input[type="submit"] {
     .bx_filter .bx_filter_button_box .bx_filter_block {
         margin-left: 0;
         width: initial;
+    }
+    .clinic-card .main-filter .row {
+        display: none;
+    }
+    .clinic-card .main-filter {
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    .search-doctors {
+        display: block;
+    }
+    .doctors-list-item__img {
+        max-width: 105px;
+        max-height: initial;
+    }
+    .doctors-list-item__img-info {
+        position: initial;
+        padding: 10px 10px 20px;
+    }
+    .doctors-list-item__img-info-ratings img {
+        width: 14px;
+    }
+    .title-h2 {
+        font-size: 22px;
+        line-height: 27px;
+    }
+    .doctors-list-item__description-position,.doctors-list-item__description-degree,.doctors-list-item_timing,.doctors-list-item__clinic-adress,.doctors-list-item_metro-list-item {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .sort-block-list__select,.calendar {
+        font-size: 13px;
+        line-height: 23px;
+    }
+    .doctors-list-item__description-title {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 6px;
+    }
+    .doctors-list-item__description-exp,.doctors-list-item__clinic-name {
+        font-size: 15px;
+        line-height: 24px;
+        font-family: "Ubuntu-Light";
+    }
+    .doctors-list-item__description-price,.doctors-list-item__description-phone {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .doctors-list-item__img-info-commend,.doctors-list-item__days-list-item {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .doctors-list-item_options-list-item {
+        font-size: 13px;
+        line-height: 15px;
+        margin-bottom: 10px;
+    }
+    .doctors-list-item__worktimming-list-item {
+        font-size: 14px;
+        line-height: 16px;
+        margin-right: 0;
+    }
+    .doctors-list-item-favorites {
+        top: 11px;
+        right: 8px;
+    }
+    
+    .doctors-list-item__img .doctors-list-item__img-photo,.doctors-list-item__img .doctors-list-item__img-none-photo {
+        height: 160px;
+        width: 105px;
+    }
+    .doctors-list-item__img .doctors-list-item__img-none-photo {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .doctors-list-item__img-info-ratings {
+        margin-bottom: 3px;
+    }
+    .flex-left .doctors-list-item__description {
+        padding: 10px;
+    }
+    .doctors-list-item__description-exp {
+        margin-bottom: 4px;
+    }
+    .doctors-list-item__description-degree {
+        margin-bottom: 11px;
+    }
+    .doctors-list-item__description-price span {
+        margin-bottom: 21px;
+    }
+    .doctors-list-item__description-phone span {
+        margin-bottom: 0;
+    }
+    .doctors-list-item__description-counts {
+        margin-top: 6px;
+    }
+    .flex-right .doctors-list-item__description {
+        padding: 13px 20px 22px 23px;
+    }
+    .doctors-list-item__days-list-item {
+        padding: 7px;
+    }
+    .doctors-list-item_timing {
+        margin-bottom: 8px;
+    }
+    .doctors-list-item__days-list-item {
+        margin-right: 0;
+    }
+    .doctors-list-item__description .doctors-list-item__days-list {
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .doctors-list-item__days-list-item.active::before {
+        left: 10;
+    }
+    .doctors-list-item__worktimming-list-item {
+        padding: 4px 6px;
+    }
+    .doctors-list-item__description .doctors-list-item__worktimming-list {
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
+    .flex-right .doctors-list-item__description .adapt > div:last-child {
+        margin-top: 8px;
+    }
+    .doctors-list-item__description .doctors-list-item_options {
+        margin-top: 8px;
+    }
+    .doctors-lastfeedback .title-h2 {
+        text-align: center;
+    }
+
+
+    
+    /*doctor-detail*/
+    .doctor-card {
+        margin-bottom: 0;
+    }
+    .doctor-card__img {
+        height: 112px;
+        max-width: 68px;
+    }
+    .doctor-card__img .doctor-card__img-photo, .doctor-card__img .doctors-list-item__img-none-photo {
+        max-height: 98px;
+        height: 98px;
+        width: 100%;
+    }
+    .doctor-card__img .doctors-list-item__img-none-photo {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .doctor-card__img-info {
+        position: initial;
+        width: 100%;
+        padding: 0px;
+        text-align: initial;
+        margin-top: 13px;  
+    }
+    .doctor-card__img-info > a {
+        font-size: 13px;
+        line-height: 17px;
+        display: inline-block;
+        text-decoration: underline;
+    }
+    .doctor-card__img-info > a:hover {
+        text-decoration: none;
+    }
+    .doctor-card-favorites {
+        position: initial;
+        margin-left: 16px;
+        margin-top: 13px;
+    }
+    .doctor-card__description-position,.doctor-card__clinic-adress,.doctor-card__description ul {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .doctor-card__description-title,.doctor-card__description-price,.doctor-card__description-phone,.doctor-card__clinic-name {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .flex-left .doctor-card__description {
+        min-height: 380px;
+    }
+    .doctor-card__description-exp {
+        font-family: "Ubuntu-Light";
+        font-size: 15px;
+        line-height: 24px;
+        margin-bottom: -2px;
+    }
+    .doctor-card__description-degree,.doctor-card__description-price span,.doctor-card__description-phone span {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .doctor-card__description-degree {
+        margin-bottom: 16px;
+    }
+    .doctor-card__description-price span {
+        margin-bottom: 15px;
+    }
+    .doctor-card__description-phone span {
+        margin-bottom: 4px;
+    }
+    .doctor-card__description__adapt {
+        margin-left: -89px;
+        margin-top: 70px;
+    }
+    .doctor-card__clinic-name {
+        margin-bottom: 11px;
+    }
+    .doctor-card__clinic-adress {
+        margin-bottom: 9px;
+    }
+    .doctor-card__description ul {
+        flex-direction: row;
+        margin-bottom: 11px !important;
+        text-decoration: underline;
+    }
+    .doctor-card_metro-list-item {
+        margin-bottom: 0;
+        margin-right: 5px;
+    }
+    .doctor-card_metro-list-item:last-child {
+        margin-right: 0;
+    }
+    .doctor-card .doctor-card-location-map {
+        top: -278px;
+        right: 0px;
+    }
+    .doctor-card-top-content .title-h3,.choosing-time .title-h3 {
+        font-size: 20px;
+        line-height: 35px;
+        margin-bottom: 8px;
+    }
+    .doctor-card__title {
+        flex-direction: column;
+        align-items: initial;
+    }
+    .doctor-card__img-info-commend,.doctor-card_options-list-item {
+        font-size: 13px;
+        line-height: 20px;
+        
+    }
+    .doctor-card__img-info-ratings {
+        margin-bottom: 11px;
+    }
+    .doctor-card__img-info-commend {
+        max-width: 80%;
+        margin-bottom: 10px;
+    }
+    .doctor-card_options-list-item {
+        margin-right: 11px;
+        margin-bottom: 10px;
+    }
+    .doctor-card_options-list-item:last-child {
+        margin-right: 0;
+    }
+    .doctor-card_options-list-item::before {
+        margin-right: 9px;
+    }
+    .doctor-card_options-list {
+        max-width: 90%;
+        margin-bottom: -1px;
+    }
+    .doctor-card__position-desc {
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 14px;
+    }
+    .choosing-time .title-h3 {
+        font-size: 18px;
+        line-height: 26px;
+        max-width: 253px;
+        margin: 0 auto;
+    }
+    .choosing-time_block {
+        margin-bottom: 13px;
+    }
+    .choosing-time_block .slick-list {
+        padding-top: 14px;
+    }
+    .choosing-time_block-list-item {
+        padding: 10px 22px;
+    }
+    .choosing-time__worktimming-list {
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-column-gap: 14px;
+        grid-row-gap: 5px;
+    }
+    .choosing-time__worktimming-list-item {
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+    
+    .choosing-time__worktimming-list-item:last-child {
+        display: none;
+    }
+    .checked-feedback {
+        margin-top: 19px;
+        margin-bottom: 99px;
+    }
+    .checked-feedback .title-h2 {
+        font-size: 18px;
+        line-height: 26px;
+        text-align: center;
+        max-width: 237px;
+        text-align: center;
+        margin: 0 auto 32px;
+    }
+    .checked-feedback-list-item__img-info-ratings span {
+        font-family: "Ubuntu-Light";
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .checked-feedback-list-item__from {
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 17px
+    }
+    .checked-feedback-list-item__feedback {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .checked-feedback-list-item__doctor-info {
+        max-width: 245px;
+    }
+    .checked-feedback .slick-prev, .checked-feedback .slick-next {
+        bottom: -110px;
+    }
+    .spec-info .title-h2 {
+        font-size: 20px;
+        line-height: 35px;
+        margin-bottom: 10px;
+    }
+    .spec-info-block .title-h3 {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 12px;
+    }
+    .spec-info-block__spec-list__title {
+        font-size: 15px;
+        line-height: 24px;
+        font-family: "Ubuntu-Light";
+        margin-bottom: 8px;
+    }
+    .spec-info-block__spec-list-item a {
+        font-size: 13px;
+        line-height: 20px;
+        padding: 4px 9px;
+    }
+    .spec-info-block__spec-list-item {
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    .spec-info-block {
+        grid-template-areas: "a"
+                             "b"
+                             "c";
+    }
+    .spec-info-block__education-list .title-h3, .spec-info-block__exp-list .title-h3 {
+        font-size: 20px;
+        line-height: 35px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .spec-info-block__education-list ol li, .spec-info-block__exp-list ol li {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 21px;
+    }
+    .spec-info-block__education-list ol li span, .spec-info-block__exp-list ol li span {
+        margin-top: 3px;
+    }
+    .spec-list .flex-between ul:first-child .spec-list-list__title {
+        font-family: "Ubuntu-Light";
+        font-size: 15px;
+        line-height: 24px;
+        max-width: 79%;
+    }
+    .spec-list .title-h2 {
+        margin-bottom: 12px;
+    }
+    .spec-list-list li {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    }
+    .spec-list .flex-between {
+        margin-bottom: 60px;
     }
 }
 @media (max-width: 560px) {

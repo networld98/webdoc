@@ -86,29 +86,6 @@ $clinickId = $arResult["ID"];
                             });
                             myMap_<?=$arResult['ID']?>.geoObjects.add(myPlacemark_<?=$arResult['ID']?>);
 
-                            var myMap_view_<?=$arResult['ID']?> = new ymaps.Map("map_view_<?=$arResult['ID']?>", {
-                                center: [<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>],
-                                zoom: 12,
-                                controls: [
-                                    'zoomControl', // Ползунок масштаба
-                                    'rulerControl', // Линейка
-                                    'routeButtonControl', // Панель маршрутизации
-                                    'trafficControl', // Пробки
-                                    'typeSelector', // Переключатель слоев карты
-                                    'fullscreenControl', // Полноэкранный режим
-                                    new ymaps.control.SearchControl({
-                                        options: {
-                                            size: 'large',
-                                            provider: 'yandex#search'
-                                        }
-                                    })
-                                ]
-                            });
-                            var myPlacemark_view_<?=$arResult['ID']?> = new ymaps.Placemark([<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>], {
-                                hintContent: '<?=$arResult["NAME"]?>'
-                            });
-                            myMap_view_<?=$arResult['ID']?>.geoObjects.add(myPlacemark_view_<?=$arResult['ID']?>);
-
                             var myMap_track_<?=$arResult['ID']?> = new ymaps.Map('map_track_<?=$arResult["ID"]?>', {
                                 center: [<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>],
                                 zoom: 12,
@@ -163,22 +140,22 @@ $clinickId = $arResult["ID"];
                 <?endif;?>
             </div>
             <ul class="doctors-list-item_options-list">
-                <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
+                <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]!='Y'):?>
                     <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
                 <?endif;?>
-                <?if($arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["VALUE"]=='Y'):?>
+                <?if($arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["VALUE"]!='Y'):?>
                     <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["NAME"]?></li>
                 <?endif;?>
-                <?if($arResult["PROPERTIES"]["DMC"]["VALUE"]=='Y'):?>
+                <?if($arResult["PROPERTIES"]["DMC"]["VALUE"]!='Y'):?>
                     <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["DMC"]["NAME"]?></li>
                 <?endif;?>
-                <?if($arResult["PROPERTIES"]["UMC"]["VALUE"]=='Y'):?>
+                <?if($arResult["PROPERTIES"]["UMC"]["VALUE"]!='Y'):?>
                     <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["UMC"]["NAME"]?></li>
                 <?endif;?>
-                <?if($arResult["PROPERTIES"]["ONLINE"]["VALUE"]=='Y'):?>
+                <?if($arResult["PROPERTIES"]["ONLINE"]["VALUE"]!='Y'):?>
                     <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["ONLINE"]["NAME"]?></li>
                 <?endif;?>
-                <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
+                <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]!='Y'):?>
                     <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["NAME"]?></li>
                 <?endif;?>
             </ul>

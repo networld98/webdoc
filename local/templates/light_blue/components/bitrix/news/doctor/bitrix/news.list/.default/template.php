@@ -18,19 +18,28 @@ CModule::IncludeModule("iblock")
 <?endif;?>
 <section class="container result-filter">
     <div class="options-block">
-        <div class="sort-block">
-            <ul class="sort-block-list">
-                <li class="sort-block-list-item active">Популярные</li>
-                <li class="sort-block-list-item">Рейтинг</li>
-                <li class="sort-block-list-item">Стаж</li>
-                <li class="sort-block-list-item">Стоимость</li>
-                <li class="sort-block-list-item">Отзывы</li>
-            </ul>
-        </div>
-        <div class="calendar-block">
-            <div class="calendar">Расписание на <a href="">все дни</a></div>
-        </div>
-    </div>
+		<div class="sort-block">
+			<ul class="sort-block-list">
+				<li class="sort-block-list-item active">Популярные</li>
+				<li class="sort-block-list-item">Рейтинг</li>
+				<li class="sort-block-list-item">Стаж</li>
+				<li class="sort-block-list-item">Стоимость</li>
+				<li class="sort-block-list-item">Отзывы</li>
+			</ul>
+			<select name="" id="" class="sort-block-list__select">
+				<option value="">Популярные</option>
+				<option value="">Рейтинг</option>
+				<option value="">Стаж</option>
+				<option value="">Стоимость</option>
+				<option value="">Отзывы</option>
+			</select>
+		</div>
+		<div class="calendar-block">
+			<select class="calendar">
+				<option value="">Расписание на <a href="">все дни</a></option>
+			</select>
+		</div>
+	</div>
     <div class="list-item doctors-list">
         <?foreach($arResult["ITEMS"] as $arItem):?>
             <?
@@ -83,43 +92,49 @@ CModule::IncludeModule("iblock")
                 </div>
                 <div class="flex-right">
                     <div class="doctors-list-item__description">
-                        <p class="doctors-list-item_timing">Выберите время приема для записи онлайн</p>
-                        <ul class="doctors-list-item__days-list">
-                            <li class="doctors-list-item__days-list-item active">понедельник, 6</li>
-                            <li class="doctors-list-item__days-list-item">вторник, 7</li>
-                            <li class="doctors-list-item__days-list-item not-worked">среда, 8</li>
-                            <li class="doctors-list-item__days-list-item">четверг, 9</li>
-                        </ul>
-                        <?if($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
-                            <ul class="doctors-list-item__worktimming-list">
-    <!--                            <li class="doctors-list-item__worktimming-list-item closed">10:10</li>-->
-    <!--                            <li class="doctors-list-item__worktimming-list-item pass">10:50</li>-->
-                                <?foreach ($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){?>
-                                    <li class="doctors-list-item__worktimming-list-item"><?=$item?></li>
-                                <?}?>
-                            </ul>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["CLINIK"]["VALUE"]):?>
-                            <?foreach ($arItem["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
-                                <?$res = CIBlockElement::GetByID($item);
-                                if($ar_res = $res->GetNext()){?>
-                                    <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p></a>
-                                <?break;}?>
-                            <?}?>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
-                            <p class="doctors-list-item__clinic-adress"><?=$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?></p>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["METRO"]["VALUE"]):?>
-                            <ul class="doctors-list-item__metro-list">
-                                <?foreach ($arItem["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
-                                    <?$res = CIBlockElement::GetByID($item);
-                                    if($ar_res = $res->GetNext()){?>
-                                        <li class="doctors-list-item_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                        <div class="adapt">
+                            <div>
+                                <p class="doctors-list-item_timing">Выберите время приема для записи онлайн</p>
+                                <ul class="doctors-list-item__days-list">
+                                    <li class="doctors-list-item__days-list-item active">понедельник, 6</li>
+                                    <li class="doctors-list-item__days-list-item">вторник, 7</li>
+                                    <li class="doctors-list-item__days-list-item not-worked">среда, 8</li>
+                                    <li class="doctors-list-item__days-list-item">четверг, 9</li>
+                                </ul>
+                                <?if($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
+                                    <ul class="doctors-list-item__worktimming-list">
+            <!--                            <li class="doctors-list-item__worktimming-list-item closed">10:10</li>-->
+            <!--                            <li class="doctors-list-item__worktimming-list-item pass">10:50</li>-->
+                                        <?foreach ($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){?>
+                                            <li class="doctors-list-item__worktimming-list-item"><?=$item?></li>
+                                        <?}?>
+                                    </ul>
+                                <?endif;?>
+                            </div>
+                            <div>
+                                <?if($arItem["PROPERTIES"]["CLINIK"]["VALUE"]):?>
+                                    <?foreach ($arItem["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
+                                        <?$res = CIBlockElement::GetByID($item);
+                                        if($ar_res = $res->GetNext()){?>
+                                            <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p></a>
+                                        <?break;}?>
                                     <?}?>
-                                <?}?>
-                            </ul>
-                        <?endif;?>
+                                <?endif;?>
+                                <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
+                                    <p class="doctors-list-item__clinic-adress"><?=$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?></p>
+                                <?endif;?>
+                                <?if($arItem["PROPERTIES"]["METRO"]["VALUE"]):?>
+                                    <ul class="doctors-list-item__metro-list">
+                                        <?foreach ($arItem["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
+                                            <?$res = CIBlockElement::GetByID($item);
+                                            if($ar_res = $res->GetNext()){?>
+                                                <li class="doctors-list-item_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                                            <?}?>
+                                        <?}?>
+                                    </ul>
+                                <?endif;?>
+                            </div>
+                        </div>
                         <ul class="doctors-list-item_options">
                             <?if($arItem["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
                                 <li class="doctors-list-item_options-list-item"><?=$arItem["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
@@ -145,6 +160,32 @@ CModule::IncludeModule("iblock")
             </div>
         <?endforeach;?>
     </div>
+    <!--
+        
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   
+    Кусок кода по макету , но я не разобрался где отрисовывается .show-more , чтобы подставить все
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    <div class="doctor-pagination">
+		<div class="doctor-pagination_show-more">
+			<button>Показать ещё</button>
+		</div>
+		<div class="doctor-pagination_block">
+			<span class="doctor-pagination_block__arrows arrow-left"></span>
+			<ul class="doctor-pagination_block-list">
+				<li class="doctor-pagination_block-list-item">1</li>
+				<li class="doctor-pagination_block-list-item active">2</li>
+				<li class="doctor-pagination_block-list-item">3</li>
+				<li class="doctor-pagination_block-list-item">4</li>
+				<li class="doctor-pagination_block-list-item">5</li>
+				<li class="doctor-pagination_block-list-item">6</li>
+				<li class="doctor-pagination_block-list-item">7</li>
+				<li class="doctor-pagination_block-list-item">...</li>
+				<li class="doctor-pagination_block-list-item">25</li>
+			</ul>
+			<span class="doctor-pagination_block__arrows arrow-right"></span>
+		</div>
+	</div> -->
 </section>
 <?if($GLOBALS['titleFilterClinic']!=NULL){?>
 <?$this->SetViewTarget('filterTitle');?>
@@ -154,9 +195,8 @@ CModule::IncludeModule("iblock")
 <?$this->EndViewTarget();?>
 <?}else{?>
     <?$this->SetViewTarget('filterTitle');?>
-    <br><br>
     <?$this->EndViewTarget();?>
 <?}?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><?=$arResult["NAV_STRING"]?>
+    <?=$arResult["NAV_STRING"]?>
 <?endif;?>
