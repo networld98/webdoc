@@ -366,17 +366,6 @@ CJSCore::Init("popup", "jquery");
 
 </header>
 <main class="">
-    <?if( $APPLICATION->GetCurPage() != '/'){?>
-        <section class="container">
-            <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
-                "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
-                    "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
-                    "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
-                ),
-                false
-            );?>
-        </section>
-    <?}?>
     <?function mb_ucfirst($text) {
         return mb_strtoupper(mb_substr($text, 0, 1)) . mb_substr($text, 1);
     }?>

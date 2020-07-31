@@ -17,9 +17,15 @@ $this->setFrameMode(true);
             width: calc(100% - 26px);
         }
     </style>
-<?if($arParams["DISPLAY_TOP_PAGER"]):?>
-	<?=$arResult["NAV_STRING"]?><br />
-<?endif;?>
+    <section class="container">
+        <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
+            "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
+            "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+            "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
+        ),
+            false
+        );?>
+    </section>
 <div class="list-item clinic-list container">
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?
@@ -212,7 +218,6 @@ $this->setFrameMode(true);
 <?$this->EndViewTarget();?>
 <?}else{?>
     <?$this->SetViewTarget('filterTitle');?>
-    <br><br>
     <?$this->EndViewTarget();?>
 <?}?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>

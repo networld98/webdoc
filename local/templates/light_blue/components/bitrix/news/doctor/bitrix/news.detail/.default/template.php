@@ -14,6 +14,15 @@ $this->setFrameMode(true);
 global $doctorName;
 $doctorName = $arResult['NAME'];
 ?>
+<section class="container">
+    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
+        "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
+        "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+        "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
+    ),
+        false
+    );?>
+</section>
 <section class="container doctor-card">
     <div class="flex-left">
         <div class="doctor-card-top-content">
