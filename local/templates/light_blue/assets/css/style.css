@@ -762,6 +762,7 @@ input[type="submit"] {
 .doctors-list {
     
 }
+
 .doctors-list-item {
     display: flex;
     justify-content: space-between;
@@ -1107,9 +1108,9 @@ input[type="submit"] {
     justify-content: space-between;
 }
 .doctors-list-item_options-list-item {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
-    font-weight: normal;
+    font-weight: 300;
     font-size: 15px;
     line-height: 17px;
     color: #000000;
@@ -1323,7 +1324,7 @@ input[type="submit"] {
 }
 
 .doctor-card {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     margin-bottom: 80px;
 }
 .doctor-card {
@@ -1522,6 +1523,9 @@ input[type="submit"] {
     font-size: 15px;
     line-height: 24px;
     color: #000000;
+}
+.clinic-card-item .clone-adapt {
+    display: none;
 }
 .clinic-card .main-filter {
     margin-top: 0;
@@ -2512,7 +2516,7 @@ input[type="submit"] {
 }
 .clinic-card-img__link, .clinic-card-img-detail__link {
     display: block;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2528,6 +2532,7 @@ input[type="submit"] {
 .clinic-card-desc {
     position: relative;
     flex-basis: 53.5%;
+    margin-right: 25px;
 }
 .clinic-card-desc .doctor-card-location-map {
     top:0;
@@ -2544,7 +2549,7 @@ input[type="submit"] {
     max-width: 80%;
 }
 .clinic-card-desc__price {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -2553,7 +2558,7 @@ input[type="submit"] {
     margin-bottom: 10px;
 }
 .clinic-card-desc__about {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2587,7 +2592,7 @@ input[type="submit"] {
 }
 .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
     color: #32B4C3;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2595,6 +2600,7 @@ input[type="submit"] {
     padding: 5px 10px;
     border: 1px solid #32B4C3;
     border-radius: 5px;
+    display: inline-block;
 }
 .clinic-card-desc__result-filter li a:hover, .clinic-card-desc__spec-list li a:hover {
     background: #32B4C3;
@@ -2637,7 +2643,7 @@ input[type="submit"] {
     background-image: url(../images/time-ico.svg);
 }
 .clinic-card-info__block span {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2661,6 +2667,12 @@ input[type="submit"] {
     width: initial;
     border: none;
     color: #32B4C3;
+}
+.clinic-card-info .doctor-card-popUp-group__route span {
+   border-bottom: 1px dashed #32B4C3;;
+}
+.clinic-card-info .doctor-card-popUp-group__route:hover span {
+    border-bottom: 1px dashed transparent;
 }
 .clinic-card-desc-detail {
     position: relative;
@@ -4636,6 +4648,7 @@ input[type="submit"] {
 }
 .clinic-card .bx_filter.bx_blue.bx_horizontal {
     background: #F3F4EF;
+    /* margin-bottom: 30px; */
 }
 
 .api-reviews-filter .clinic-card-full-desc__content__feedback-item-left__mark .text {
@@ -5321,15 +5334,25 @@ input[type="submit"] {
     
 }
 @media (max-width: 900px) {
+    .clinic-card-img {
+        margin-right: 22px;
+    }
+    .clinic-card-info .doctor-card-popUp-group__route::before {
+        display: inline-table;
+    }
     .clinic-card-item {
-        flex-direction: column;
-        align-items: center;
+        padding: 20px 30px 20px 20px;
     }
-    .clinic-card-desc-detail {
+    .clinic-card-info {
+        flex-basis: 31%;
+    }
+    .clinic-card-img__img {
+        height: 99px;
+        width: 99px;
+    }
+    .clinic-card-img__img > a {
         width: 100%;
-    }
-    .clinic-card-img, .clinic-card-img-detail {
-        margin-right: 0;
+        height: 100%;
     }
     .clinic-card-full-desc {
         flex-direction: column;
@@ -5770,6 +5793,10 @@ input[type="submit"] {
     }
 }
 @media (max-width: 576px) {
+    .bx-breadcrumb {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
     .bx_filter .bx_filter_search_button {
         font-size: 18px;
         margin-top: 20px;
@@ -6186,6 +6213,124 @@ input[type="submit"] {
     .spec-list .flex-between {
         margin-bottom: 60px;
     }
+    /*clinic-list*/
+    .clinic-card-item {
+        flex-direction: column;
+        padding: 10px 10px 14px 10px;
+    }
+    .clinic-card-item:last-child {
+        margin-bottom: 0;
+    }
+    .clinic-card-img-detail {
+        margin-right: 0;
+    }
+    .clinic-card-desc-detail {
+        width: 100%;
+    }
+    .clinic-card-item .clone-adapt {
+        display: block;
+    }
+    .clinic-card-desc > a ,.clinic-card-desc .clinic-card-desc__price ,.clinic-card-desc .clinic-card-desc__spec-list.list-2 {
+        display: none;
+    }
+    .clinic-card-img {
+        margin-right: 0;
+        text-align: initial;
+        display: flex;
+    }
+    .clinic-card-img__link {
+        text-align: initial;
+        padding-left: 7px;
+    }
+    .clinic-card-img__img {
+        margin-bottom: 8px;
+    }
+    .clinic-card-img__ratings {
+        margin-bottom: 7px;
+    }
+    .clinic-card-im-flex-right {
+        margin-right: 12px;
+    }
+    .clinic-card-desc__clinic-name {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .clinic-card-desc__price {
+        font-size: 13px;
+        line-height: 20px;
+        max-width: 70%;
+        margin-bottom: 53px;
+    }
+    .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
+        font-size: 13px;
+        line-height: 15px;
+    }
+    .clinic-card-desc__about {
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 15px;
+    }
+    .clinic-card-desc__clinic-doctors-title {
+        line-height: 21px;
+        margin-bottom: 10px;
+    }
+    .clinic-card-desc {
+        margin-right: 0;
+    }
+    .clinic-card-desc .doctor-card-location-map {
+        right: initial;
+        left: 110px;
+        top: -123px;
+    }
+    .clinic-card-desc__result-filter li, .clinic-card-desc__spec-list li {
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
+    .clinic-card-info {
+        margin-top: 10px;
+    }
+    .clinic-card-info .grey-block {
+        background: #ECF2F2;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .clinic-card-info__title {
+        line-height: 21px;
+        margin-bottom: 10px;
+    }
+    .clinic-card-info__block span {
+        line-height: 17px;
+    }
+    .clinic-card-info .doctors-list-item_options-list-item {
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .clinic-card-info .doctors-list-item_options-list-item:last-child {
+        margin-bottom: 0;
+    }
+    .clinic-card-info__block span {
+        padding-left: 34px;
+    }
+    .clinic-card-info .doctors-list-item_options-list {
+        margin-bottom: 0;
+    }
+    .clinic-card-info .doctor-card-popUp-group {
+        margin-top: 15px;
+    }
+    .clinic-card .load_more {
+        max-width: 335px;
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .clinic-card .doctors-lastfeedback {
+        margin-top: 40px;
+        margin-bottom: 156px;
+    }
+    .clinic-card-info .doctors-list-item_options-list-item {
+        margin-bottom: 10px;
+    }
 }
 @media (max-width: 560px) {
     .clinic-card-full-desc__content__feedback-item {
@@ -6220,9 +6365,9 @@ input[type="submit"] {
     }
 }
 @media (max-width: 500px) {
-    .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
+    /* .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
         display: block;
-    }
+    } */
     .header {
         padding-top: 28px;
     }
