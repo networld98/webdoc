@@ -5815,7 +5815,7 @@ input[type="submit"] {
         margin-left: 0;
         width: initial;
     }
-    .clinic-card .main-filter .row {
+    .clinic-card .main-filter .row,  .main-block-filter .main-filter .search-doctors {
         display: none;
     }
     .clinic-card .main-filter {

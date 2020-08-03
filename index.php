@@ -20,12 +20,13 @@ $APPLICATION->SetTitle(""); ?>
                 и клиник в своем городе
             </div>
         </h1>
-        <img alt="plus" src="/local/templates/light_blue/assets/images/Vector.svg">
+        <img alt="plus" src="/local/templates/light_blue/assets/images/Vector.svg" class="desktop-plus">
+        <img src="/local/templates/light_blue/assets/images/plus-tablet.svg" alt="plus">
     </div>
     <div class="main__img2"></div>
     <img src="/local/templates/light_blue/assets/images/Vector%20(1).svg" class="main__img" alt="">
 </div>
-<section class="container">
+<section class="container main-block-filter">
     <? $APPLICATION->IncludeComponent(
         "bitrix:catalog.smart.filter",
         "custom",
@@ -59,8 +60,8 @@ $APPLICATION->SetTitle(""); ?>
     );
     ?></section>
 <section class="statistics container">
-    <div class="statistics__header">
-        Бесплатный сервис подбора медицинских услуг
+<div class="statistics__header">
+        <span>Бесплатный сервис подбора медицинских услуг</span>
         <img src="/local/templates/light_blue/assets/images/plus-mobile.svg" alt="plus">
     </div>
     <? $APPLICATION->IncludeComponent(

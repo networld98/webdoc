@@ -62,8 +62,6 @@ $this->setFrameMode(true);
 	false
 );
     ?>
-<?$APPLICATION->ShowViewContent('filterTitle');?>
-
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
@@ -117,3 +115,64 @@ $this->setFrameMode(true);
 	),
 	$component
 );?>
+
+<section class="container doctors-lastfeedback">
+    <h2 class="title-h2">Аллергологи - последние отзывы</h2>
+    <div class="doctors-lastfeedback-list slick-slider1">
+        <div class="doctors-lastfeedback-list-item">
+            <div class="doctors-lastfeedback-list-item__doctor-info">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
+                <div class="doctors-lastfeedback-list-item__doctor-info__content">
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
+                </div>
+            </div>
+            <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
+            <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
+        </div>
+        <div class="doctors-lastfeedback-list-item">
+            <div class="doctors-lastfeedback-list-item__doctor-info">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
+                <div class="doctors-lastfeedback-list-item__doctor-info__content">
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
+                </div>
+            </div>
+            <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
+            <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
+        </div>
+        <div class="doctors-lastfeedback-list-item">
+            <div class="doctors-lastfeedback-list-item__doctor-info">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
+                <div class="doctors-lastfeedback-list-item__doctor-info__content">
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
+                </div>
+            </div>
+            <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
+            <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
+        </div>
+        <div class="doctors-lastfeedback-list-item">
+            <div class="doctors-lastfeedback-list-item__doctor-info">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
+                <div class="doctors-lastfeedback-list-item__doctor-info__content">
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
+                </div>
+            </div>
+            <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
+            <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
+        </div>
+        <div class="doctors-lastfeedback-list-item">
+            <div class="doctors-lastfeedback-list-item__doctor-info">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
+                <div class="doctors-lastfeedback-list-item__doctor-info__content">
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
+                    <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
+                </div>
+            </div>
+            <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
+            <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
+        </div>
+    </div>
+</section>
