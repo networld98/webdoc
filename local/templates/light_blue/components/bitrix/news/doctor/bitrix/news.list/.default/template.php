@@ -16,15 +16,6 @@ CModule::IncludeModule("iblock")
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
 	<?=$arResult["NAV_STRING"]?><br />
 <?endif;?>
-<section class="container">
-    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
-        "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
-        "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
-        "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
-    ),
-        false
-    );?>
-</section>
 <section class="container result-filter">
     <div class="options-block">
 		<div class="sort-block">
@@ -204,8 +195,9 @@ CModule::IncludeModule("iblock")
 <?$this->EndViewTarget();?>
 <?}else{?>
     <?$this->SetViewTarget('filterTitle');?>
+    <br><br>
     <?$this->EndViewTarget();?>
 <?}?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-    <?=$arResult["NAV_STRING"]?>
+	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>

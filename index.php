@@ -26,7 +26,7 @@ $APPLICATION->SetTitle(""); ?>
     <div class="main__img2"></div>
     <img src="/local/templates/light_blue/assets/images/Vector%20(1).svg" class="main__img" alt="">
 </div>
-<section class="container main-block-filter">
+<section class="container">
     <? $APPLICATION->IncludeComponent(
         "bitrix:catalog.smart.filter",
         "custom",

@@ -33,6 +33,14 @@ CJSCore::Init("popup", "jquery");
             <div></div>
         </label>
         <div class="side-menu">
+            <div class="contacts">
+                <select name="city" class="city">
+                    <option selected="selected">Москва</option>
+                    <option>Санкт-Петербург</option>
+                    <option>Санкт-Петербург</option>
+                </select>
+                <a href="tel:+74950952020" class="contacts-phone">+7 (495) 095-20-20</a>
+            </div>
             <? $APPLICATION->IncludeComponent(
                 "bitrix:menu",
                 "side_menu",
@@ -49,6 +57,23 @@ CJSCore::Init("popup", "jquery");
                     "USE_EXT" => "N"
                 )
             ); ?>
+            <div class="side-menu-nav">
+                <? $APPLICATION->IncludeComponent("bitrix:menu", "horizontal", array(
+                    "ROOT_MENU_TYPE" => "top",
+                    "MENU_CACHE_TYPE" => "A",
+                    "MENU_CACHE_TIME" => "36000000",
+                    "MENU_CACHE_USE_GROUPS" => "N",
+                    "MENU_CACHE_GET_VARS" => array(),
+                    "MAX_LEVEL" => "1",
+                    "CHILD_MENU_TYPE" => "left",
+                    "USE_EXT" => "N",
+                    "DELAY" => "N",
+                    "ALLOW_MULTI_SELECT" => "N"
+                ),
+                    false
+                ); ?>
+            </div>
+            
         </div>
     </div>
     <div class="container">

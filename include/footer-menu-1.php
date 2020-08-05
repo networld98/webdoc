@@ -1,3 +1,4 @@
+
 <div class="col__block">
     <div class="col-header">Врачу и клиникам</div>
     <ul>
@@ -12,3 +13,4 @@
         <li><a href="#">Регистрация</a></li>
     </ul>
 </div>
+

@@ -121,13 +121,34 @@ input[type="submit"] {
 
 .burger .side-menu {
     position: absolute;
-    left: -37px;
+    /* left: -37px; */
+    left: 0;
     width: 400px;
     height: 104vh;
     top: -35px;
     z-index: 2;
+    text-align: initial;
 }
-
+.burger .side-menu > ul {
+    max-width: 168px;
+    margin: 0 auto;
+    padding: 0;
+}
+.side-menu .contacts {
+    display: none;
+}
+.side-menu-nav {
+    display: none;
+}
+.burger input:checked + label {
+    background-color: #98D7DC;
+}
+.burger input:checked + label div {
+    background-color: #fff;
+}
+.burger input:checked + label  div:not(:last-child) {
+    margin-bottom: 0.67px;
+}
 .burger input:checked + label div:nth-child(2) {
     display: none;
 }
@@ -160,7 +181,9 @@ input[type="submit"] {
     padding-right: 0;
     max-width: 1320px;
 }
-
+.side-menu li {
+    font-family: "Montserrat Alternates-Bold", sans-serif;
+}
 .container {
     padding-right: 15px;
     padding-left: 15px;
@@ -298,12 +321,11 @@ input[type="submit"] {
 
 
 
-.map-popup {
+.map-popup,.map-popup-marker {
     display: none;
+    min-height: 700px;
 }
-.map-popup-marker {
-    display: none;
-}
+
 .popup-box {
     position: fixed;
     border-radius: 5px;
@@ -313,7 +335,8 @@ input[type="submit"] {
     font-family: Arial, sans-serif;
     z-index: 9999999;
     font-size: 14px;
-    width: 65%;
+    width: 100%;
+    max-width: 1200px;
 }
 .popup-box .close {
     position: absolute;
@@ -331,6 +354,8 @@ input[type="submit"] {
     background-image: url("/local/templates/light_blue/assets/images/emojione-monotone_cross-mark.svg");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 42px 42px;
+    z-index: 2;
 }
 .popup-box .close:hover {
     color: #000;
@@ -1133,7 +1158,7 @@ input[type="submit"] {
     height: 32px;
     position: absolute;
     top: 44px;
-    right: 44px;
+    right: 27px;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -2175,10 +2200,11 @@ input[type="submit"] {
     margin-bottom: 20px;
 }
 /* 404-page */
-.page-404 {
+.container.page-404 {
     text-align: center;
     margin-top: 105px;
     margin-bottom: 234px;
+    max-width: 696px;
 }
 .page-404 .page-404__accent-text {
     display: block;
@@ -2222,10 +2248,16 @@ input[type="submit"] {
 }
 
 /* services-list */
+.services-list {
+    margin-bottom: 120px;
+}
 
 .services-list .title-h2 {
     margin-bottom: 20px;
     margin-top: 20px;
+}
+.services-list .sort-block {
+    margin-bottom: 20px;
 }
 .services-list .sort-block-list {
     justify-content: initial;
@@ -2235,7 +2267,10 @@ input[type="submit"] {
     cursor: pointer;
 }
 .services-list-item {
-    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.services-list-item:last-child {
+    margin-bottom: 0;
 }
 .services-list-item .title-h3 {
     margin-bottom: 20px;
@@ -2263,7 +2298,7 @@ input[type="submit"] {
 }
 .services-list-item__list li a {
     color: #32B4C3;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2271,6 +2306,7 @@ input[type="submit"] {
     padding: 5px 10px;
     border: 1px solid #32B4C3;
     border-radius: 5px;
+    display: inline-block;
 }
 .services-list-item__list li a:hover {
     background: #32B4C3;
@@ -2291,7 +2327,7 @@ input[type="submit"] {
             text-decoration-style: dashed;
     -webkit-text-decoration-color: #32B4C3;
             text-decoration-color: #32B4C3;
-    margin-top: 20px;
+    margin-top: 10px;
     display: block;
 }
 .services-list__show-more:hover {
@@ -2302,7 +2338,7 @@ input[type="submit"] {
 
 /* popup-group */
 .mess-popup__header {
-    font-family: "Montserrat Alternates";
+    font-family: "Montserrat Alternates-Bold";
     font-weight: bold;
     font-size: 25px;
     line-height: 35px;
@@ -2310,13 +2346,18 @@ input[type="submit"] {
     margin-top: 80px;
 }
 .mess-popup__name, .mess-popup__email, .mess-popup__message {
-    font-size: 15px;
     color: #000000;
     padding: 13px 15px;
     margin: 0 auto;
-    width: 396px;
+    max-width: 396px;
+    width: 100%;
     height: 50px;
     margin-bottom: 20px;
+    font-family: "Ubunt-Light";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
 }
 .mess-popup__message {
     border: 2px solid #9DD4B3;
@@ -2325,15 +2366,22 @@ input[type="submit"] {
     box-shadow: unset;
     resize: none;
     height: 150px;
+    font-family: "Ubunt-Light";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: #000000;
 }
 .mess-popup__desc  {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
     line-height: 15px;
     color: #000000;
     margin-bottom: 40px;
+    max-width: 396px;
 }
 .mess-popup__desc a {
     color: #98D7DC;
@@ -2345,6 +2393,12 @@ input[type="submit"] {
     width: 222px;
     height: 45px;
     outline: none;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
 }
 .send:hover {
     background: #ACE4C3;
@@ -2353,20 +2407,46 @@ input[type="submit"] {
     background: #8CCAA5;
 }
 
-.reception-popup .doctors-list,.call-popup .doctors-list {
+.reception-popup .doctors-list,.call-popup .doctors-list, .message-to-doctor {
     margin-top: 0;
+    min-height: 692px;
 }
 .reception-popup .flex-content, .call-popup .flex-content {
     background: #F8F8F8;
+    max-width: 551px;
+    width: 100%;
 }
 .reception-popup .doctors-list .flex-left,.call-popup .doctors-list .flex-left {
-    margin-bottom: 90px;
+    /* margin-bottom: 90px; */
+}
+.call-popup .flex-left,.reception-popup .flex-left {
+    flex-direction: row;
+}
+.call-popup .doctors-list-item,.reception-popup .doctors-list-item {
+    height: 100%;
+}
+.message-to-doctor {
+    flex-direction: column;
+    align-items: center;
 }
 .reception-popup .logo, .call-popup .logo {
     display: block;
     margin-left: 60px;
     margin-top: 60px;
     margin-bottom: 70px;
+}
+.reception-popup .logo img, .call-popup .logo img {
+    width: 288px;
+}
+.reception-popup .logo .title-h2.tablet-title, .call-popup .logo .title-h2.tablet-title {
+    display: none;
+}
+.reception-popup .flex-left .doctors-list-item__description .title-h2.mobile-title, .call-popup .flex-left .doctors-list-item__description .title-h2.mobile-title {
+    display: none;
+}
+.clinic-card .reception-popup .title-h2, .clinic-card .call-popup .title-h2 {
+    margin-bottom: 74px;
+    margin-top: 0;
 }
 .reception-popup .flex-left .doctors-list-item__description, .call-popup .flex-left .doctors-list-item__description {
     padding-top: 0;
@@ -2383,19 +2463,40 @@ input[type="submit"] {
     margin-top: 66px;
     padding-right: 60px;
     padding-left: 40px;
-    width: 649px;
+    max-width: 649px;
+    width: 100%;
+}
+.reception-popup .close, .call-popup .close, .mess-popup .close {
+    top: 66px;
+    right: 60px;
+    background-size: 33px 33px;
+    width: 42px;
+    height: 42px;
 }
 .reception-popup .title-h2, .call-popup .title-h2 {
     margin-bottom: 74px;
+}
+.reception-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .reception-popup .doctors-list-item__img .doctors-list-item__img-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-photo {
+    height: 420px;
+}
+.reception-popup .doctors-list-item__img, .call-popup .doctors-list-item__img {
+    margin-bottom: 90px;
+}
+.reception-popup .doctors-list-item__img-info, .call-popup .doctors-list-item__img-info {
+    bottom: 50px;
+    left: 54px;
 }
 .reception-select-group {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+.reception-select-group:last-child {
+    margin-top: 20px;
+}
 .reception-select-group label {
     display: block;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -2409,7 +2510,7 @@ input[type="submit"] {
     background: #FFFFFF;
     border-radius: 5px;
     padding: 12px 20px 11px 15px;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 15px;
@@ -2417,18 +2518,22 @@ input[type="submit"] {
     color: #000000;
     outline: none;
     margin-bottom: 20px;
+    width: 100%;
 }
 .reception-select-group input {
     width: 100%;
+}
+.reception-select-group .reception-select-group__left {
+    margin-right: 29px;
 }
 .reception-select-group > div:not(.reception-select-group__left) ,.reception-select-group > div:not(.reception-select-group__right) {
     width: 100%;
 }
 .reception-select-group select[name="clinic"] {
-    width: 98%;
+    /* width: 98%; */
 }
 .reception-select-group__desc {
-    font-family: "Ubuntu";
+    font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
@@ -4894,6 +4999,103 @@ input[type="submit"] {
     }
 }
 @media (max-width: 1200px) {
+    .popup-box {
+        max-width: 728px;
+    }
+    .popup-box .close {
+        top: 30px;
+        right: 30px;
+        background-color: transparent;
+    }
+    .map-popup, .map-popup-marker {
+        min-height: 989px;
+    }
+    .reception-popup .close, .call-popup .close, .mess-popup .close {
+        background-color: transparent;
+        top: 36px;
+        right: 30px;
+    }
+    .call-popup .doctors-list-item, .reception-popup .doctors-list-item {
+        flex-direction: column;
+    }
+    .reception-popup .flex-content, .call-popup .flex-content {
+        max-width: 100%;
+    }
+    .reception-popup .logo .title-h2.tablet-title, .call-popup .logo .title-h2.tablet-title {
+        display: block;
+        margin-left: 64px;
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .reception-popup .logo, .call-popup .logo {
+        display: flex;
+        margin-left: 30px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        align-items: center;
+    }
+    .reception-popup .doctors-list .flex-right, .call-popup .doctors-list .flex-right {
+        max-width: 100%;
+        margin-top: 0;
+        padding: 30px;
+        background: transparent;
+    }
+    .reception-popup .doctors-list .flex-right .title-h2, .call-popup .doctors-list .flex-right .title-h2 {
+        display: none
+    }
+    .reception-select-group .reception-select-group__left {
+        margin-right: 18px;
+    }
+    .reception-popup .doctors-list-item__img, .call-popup .doctors-list-item__img {
+        margin-bottom: 0;
+        max-width: 352px;
+        max-height: initial;
+    }
+    .reception-select-group select, .reception-select-group input {
+        margin-bottom: 10px;
+    }
+    .reception-select-group:last-child {
+        margin-top: 12px;
+    }
+    .reception-select-group button {
+        width: 100%;
+    }
+    .reception-popup .doctors-list-item__img-info, .call-popup .doctors-list-item__img-info {
+        bottom: 42px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+    .reception-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .reception-popup .doctors-list-item__img .doctors-list-item__img-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-photo {
+        max-width: 352px;
+        width: 100%;
+    }
+    .side-menu-nav {
+        display: block;
+        max-width: 168px;
+        margin: 40px auto 0;
+        padding: 0;
+    }
+    .side-menu-nav .nav {
+        flex-direction: column;
+    }
+    .side-menu-nav .nav li {
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 26px;
+        color: #000000;
+        margin-bottom: 40px;
+    }
+    .side-menu-nav .nav li:last-child {
+        margin-bottom: 0;
+    }
+    .side-menu-nav .nav li .nav__header {
+        padding-left: 7px;
+    }
     .clinic-card-full-desc__content__feedback__radio-group > ul {
         flex-direction: column;
         align-items: initial;
@@ -5137,6 +5339,20 @@ input[type="submit"] {
     }
     .doctors-lastfeedback-list-item {
         margin-right: 40px;
+    }
+    .services-list {
+        margin-bottom: 60px;
+    }
+    .container.page-404 {
+        margin-top: 40px;
+        margin-bottom: 89px;
+    }
+    .page-404 .page-404__accent-text {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    .page-404 .page-404__desc {
+        margin-bottom: 20px;
     }
 }
 @media (max-width: 1023px) {
@@ -5617,6 +5833,18 @@ input[type="submit"] {
     .bx_filter_select_container {
         width: 100%;
     }
+    .popup-box {
+        max-width: 600px;
+    }
+    .reception-popup .logo .title-h2.tablet-title, .call-popup .logo .title-h2.tablet-title {
+        display: none;
+    }
+    .reception-popup .flex-left .doctors-list-item__description .title-h2.mobile-title, .call-popup .flex-left .doctors-list-item__description .title-h2.mobile-title {
+        display: block;
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 6px;
+    }
     .statistics__items {
         grid-template-columns: 1fr;
     }
@@ -5685,6 +5913,9 @@ input[type="submit"] {
     .sort-block-list {
         display: none;
     }
+    .services-list .sort-block-list {
+        display: flex;
+    }
     .flex-right .doctors-list-item__description .adapt > div:first-child {
         margin-right: 0;
     }
@@ -5719,6 +5950,31 @@ input[type="submit"] {
     .doctors-lastfeedback .slick-next {
         left: 195px;
     }
+    /* 404 */
+    .container.page-404 {
+        max-width: 370px;
+        margin-top: 53px;
+        margin-bottom: 132px;
+    }
+    .container.page-404 > img {
+        width: 287px;
+        height: 114px;
+    }
+    .page-404 .page-404__accent-text {
+        font-size: 70px;
+        line-height: 80px;
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+    .page-404 .page-404__desc {
+        font-size: 15px;
+        line-height: 24px;
+        margin-bottom: 54px;
+        font-family: "Ubuntu-Light";
+    }
+    .page-404 .page-404__toHome {
+        width: 341px;
+    }
  }
 @media (max-width: 680px) {
     .flex-right .doctors-list-item__description .adapt {
@@ -5746,6 +6002,30 @@ input[type="submit"] {
 	}
 }
 @media (max-width: 600px) {
+    .popup-box {
+        max-width: 414px;
+    }
+    .reception-select-group {
+        flex-wrap: wrap;
+    }
+    .reception-select-group .reception-select-group__left {
+        margin-right: 0;
+    }
+    .reception-select-group__desc {
+        max-width: 100%;
+    }
+    .reception-select-group.date-birth {
+        flex-wrap: initial;
+    }
+    .reception-select-group.date-birth .reception-select-group__left {
+        margin-right: 20px;
+    }
+    .reception-select-group.date-birth select, .reception-select-group.date-birth input {
+        min-width: 176px;
+    }
+    .reception-select-group:last-child {
+        flex-direction: column-reverse;
+    }
     .clinic-card-full-desc {
         margin-bottom: 30px;
     }
@@ -5801,6 +6081,49 @@ input[type="submit"] {
         font-size: 18px;
         margin-top: 20px;
     }
+    .reception-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .reception-popup .doctors-list-item__img .doctors-list-item__img-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-photo {
+        height: 120px;
+        max-width: 112px;
+    }
+    .reception-popup .doctors-list-item__img, .call-popup .doctors-list-item__img {
+        max-width: 112px;
+    }
+    .reception-popup .doctors-list-item__img-info, .call-popup .doctors-list-item__img-info {
+        -webkit-transform: initial;
+        transform: initial;
+    }
+    .reception-popup .logo img, .call-popup .logo img {
+        width: 212px;
+    }
+    .reception-popup .logo, .call-popup .logo {
+        margin-left: 20px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .reception-popup .close, .call-popup .close, .mess-popup .close {
+        background-size: 19px 19px;
+        width: 28px;
+        height: 28px;
+        top: 46px;
+        right: 29px;
+    }
+    .reception-popup .doctors-list .flex-right, .call-popup .doctors-list .flex-right {
+        padding: 20px;
+    }
+    .reception-select-group:last-child {
+        margin-top: 10px;
+    }
+    .reception-select-group button {
+        margin-top: 10px;
+    }
+    .reception-popup .flex-left .doctors-list-item__description, .call-popup .flex-left .doctors-list-item__description {
+        padding-left: 22px;
+        padding-right: 20px;
+    }
+    .mess-popup__name, .mess-popup__email, .mess-popup__message, .mess-popup__desc, .send , .mess-popup__header {
+        max-width: 300px;
+        width: 100%;
+    }
     .clinic-card .bx_filter_section.container {
         padding-top: 0;
     }
@@ -5821,6 +6144,30 @@ input[type="submit"] {
     .clinic-card .main-filter {
         padding-bottom: 10px;
         padding-top: 10px;
+    }
+    .side-menu {
+        padding-top: 75px;
+    }
+    .burger .side-menu {
+        width: 315px;
+    }
+    .side-menu li {
+        font-size: 25px;
+    }
+    .side-menu .contacts {
+        display: block;
+        max-width: 153px;
+        margin: 0 auto 31px;
+    }
+    .side-menu .contacts .city {
+        width: 100%;
+        max-width: 81px;
+    }
+    .side-menu-nav .nav li {
+        margin-bottom: 20px;
+    }
+    .side-menu-nav .nav li:last-child {
+        margin-bottom: 0;
     }
     .search-doctors {
         display: block;
@@ -5923,6 +6270,10 @@ input[type="submit"] {
     }
     .doctors-list-item__days-list-item {
         margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .doctors-list-item__days-list-item:last-child {
+        margin-bottom: 0;
     }
     .doctors-list-item__description .doctors-list-item__days-list {
         justify-content: space-between;
@@ -6330,6 +6681,39 @@ input[type="submit"] {
     }
     .clinic-card-info .doctors-list-item_options-list-item {
         margin-bottom: 10px;
+    }
+    /*services-list */
+    .services-list .title-h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .services-list .sort-block-list-item {
+        font-size: 13px;
+        line-height: 23px;
+        padding: 10 15px;
+    }
+    .services-list-item .title-h3 {
+        font-size: 20px;
+        line-height: 35px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .services-list-item__list li a {
+        font-size: 13px;
+        line-height: 15px;
+    }
+    .services-list-item__list li {
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    .services-list-item {
+        margin-bottom: 15px;
+    }
+    .services-list-item:last-child {
+        margin-bottom: 0;
+    }
+    .services-list {
+        margin-bottom: 40px;
     }
 }
 @media (max-width: 560px) {

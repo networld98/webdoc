@@ -37,7 +37,7 @@ $doctorName = $arResult['NAME'];
                 <?}?>
                 </div>
                 <div class="doctor-card__img-info">
-                    <a id="header-mess" style="cursor:pointer;">Написать доктору</a>
+                    <a class="popup-mess-click" style="cursor:pointer;">Написать доктору</a>
                     <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>">Позвонить</a>
                 </div>
                 <div class="doctor-card-favorites"></div>
@@ -101,11 +101,242 @@ $doctorName = $arResult['NAME'];
             </div>
         </div>
         <div class="doctor-card-popUp-group">
-            <a id="header-reception" class="doctor-card-popUp-group__reception"><span>Записаться на прием</span></a>
-			<a id="header-call" class="doctor-card-popUp-group__call"><span>Вызвать врача на дом</span></a>
+            <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
+			<a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
+        </div>
+        <div class="reception-popup">
+            <div class="popup-box">
+                <div class="close"></div>
+                <div class="doctors-list reception" style="width: 100%;">
+                    <div class="doctors-list-item">
+                        <div class="flex-content">
+                            <a href="/" class="logo">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
+                                <h2 class="title-h2 tablet-title">Запись на приём</h2>
+                            </a>
+                            <div class="flex-left">
+                                <div class="doctors-list-item__img">
+                                    <a href=""><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctor-photo.png" alt="doctor-photo" class="doctors-list-item__img-photo"></a>
+                                    <div class="doctors-list-item__img-info">
+                                        <div class="doctors-list-item__img-info-ratings">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                        </div>
+                                        <p class="doctors-list-item__img-info-commend">100% пациентов рекомендуют врача на основе <a href="">256 отзыва</a></p>
+                                    </div>
+                                </div>
+                                <div class="doctors-list-item__description">
+                                    <h2 class="title-h2 mobile-title">Запись на приём</h2>
+                                    <p class="doctors-list-item__description-position">Аллерголог</p>
+                                    <p class="doctors-list-item__description-title">Баранова Ирина Дмитриевна</p>
+                                    <p class="doctors-list-item__description-price">2 000 Р<span>Цена приема в клинике</span></p>
+                                    <a href="tel:+8(812)000-00-00" class="doctors-list-item__description-phone"><span>Телефон для записи:</span>8 (812) 000-00-00</a>
+                                    <p class="doctor-card__clinic-name">Центр амбулаторной хирургии</p>
+                                    <p class="doctor-card__clinic-adress">Санкт-Петербург, ул. Чекистов, д. 22 (м. Проспект ветеранов)</p>
+                                    <ul class="doctor-card__metro-list">
+                                        <li class="doctor-card_metro-list-item metro2">м. Беговая</li>
+                                        <li class="doctor-card_metro-list-item metro3">м. Старая Деревня</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-right">
+                            <h2 class="title-h2">Запись на приём</h2>
+                            <form action="">
+                                <div class="reception-select-group">
+                                    <div class="reception-select-group__left">
+                                        <label for="spec">Специальноcть</label>
+                                        <select name="spec" id="">
+                                            <option value="">Аллерголог</option>
+                                        </select>
+                                    </div>
+                                        
+                                    <div class="reception-select-group__right">
+                                        <label for="fio">ФИО</label>
+                                            <select name="fio" id="">
+                                                <option value="">Иванов Степан Викторович</option>
+                                            </select>
+                                    </div>   
+                                </div>
+                                <div class="reception-select-group">
+                                    <div>
+                                        <label for="clinic">Клиника</label>
+                                            <select name="clinic" id="">
+                                                <option value="">Центр семейной медицины на Савушкина</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="reception-select-group date-birth">
+                                    <div class="reception-select-group__left">
+                                        <label for="date-and-time">Дата и время приёма</label>
+                                        <select name="date-and-time" id="">
+                                            <option value="">07.04.2020</option>
+                                        </select>
+                                    </div>
+                                        
+                                    <div class="reception-select-group__right">
+                                    <label for="birth">Дата рождения</label>
+                                        <select name="birth" id="">
+                                            <option value="">15.12.1985</option>
+                                        </select>
+                                    </div>   
+                                </div>
+                                <div class="reception-select-group">
+
+                                    <div class="reception-select-group__left">
+                                    <label for="phone">Телефон для подтверждения записи</label>
+                                        <select name="phone" id="">
+                                            <option value="">+7 (***) ***-**-**</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="reception-select-group__right">
+                                        <p class="reception-select-group__desc">На этот номер вы получите SMS с кодом подтверждения и информацию о записи</p>
+                                    </div> 
+                                </div>
+                                <div class="reception-select-group">
+
+                                    <div class="reception-select-group__left">
+                                        <button>Записаться</button>
+                                    </div>
+                                    
+                                    <div class="reception-select-group__right">
+                                        <p class="reception-select-group__desc">Нажимая «Записаться», я принимаю <a href="">условия пользовательского соглашения</a> и даю согласие на обработку персональных данных.</p>
+                                    </div> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="call-popup">
+            <div class="popup-box">
+                <div class="close"></div>
+                <div class="doctors-list call" style="width: 100%;"> 
+                    <div class="doctors-list-item">
+                        <div class="flex-content">
+                            <a href="/" class="logo">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
+                                <h2 class="title-h2 tablet-title">Вызов врача на дом</h2>
+                            </a>
+                            <div class="flex-left">
+                                <div class="doctors-list-item__img">
+                                    <a href="">
+                                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctor-photo.png" alt="doctor-photo" class="doctors-list-item__img-photo">
+                                    </a>
+                                    <div class="doctors-list-item__img-info">
+                                        <div class="doctors-list-item__img-info-ratings">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="">
+                                        </div>
+                                        <p class="doctors-list-item__img-info-commend">100% пациентов рекомендуют врача на основе <a href="">256 отзыва</a></p>
+                                    </div>
+                                </div>
+                                <div class="doctors-list-item__description">
+                                <h2 class="title-h2 mobile-title">Вызов врача на дом</h2>
+                                    <p class="doctors-list-item__description-position">Аллерголог</p>
+                                    <p class="doctors-list-item__description-title">Баранова Ирина Дмитриевна</p>
+                                    <p class="doctors-list-item__description-price">2 000 Р<span>Цена приема в клинике</span></p>
+                                    <a href="tel:+8(812)000-00-00" class="doctors-list-item__description-phone"><span>Телефон для записи:</span>8 (812) 000-00-00</a>
+                                    <p class="doctor-card__clinic-name">Центр амбулаторной хирургии</p>
+                                    <p class="doctor-card__clinic-adress">Санкт-Петербург, ул. Чекистов, д. 22 (м. Проспект ветеранов)</p>
+                                    <ul class="doctor-card__metro-list">
+                                        <li class="doctor-card_metro-list-item metro2">м. Беговая</li>
+                                        <li class="doctor-card_metro-list-item metro3">м. Старая Деревня</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-right">
+                            <h2 class="title-h2">Вызов врача на дом</h2>
+                            <form action="">
+                                <div class="reception-select-group">
+                                    <div class="reception-select-group__left">
+                                        <label for="spec">Специальноcть</label>
+                                        <select name="spec" id="">
+                                            <option value="">Аллерголог</option>
+                                        </select>
+                                    </div>
+                                        
+                                    <div class="reception-select-group__right">
+                                    <label for="fio">ФИО</label>
+                                        <select name="fio" id="">
+                                            <option value="">Иванов Степан Викторович</option>
+                                        </select>
+                                    </div>   
+                                </div>
+                                <div class="reception-select-group">
+                                    <div>
+                                    <label for="clinic">Адресс проживания</label>
+                                        <input type="text" placeholder="Введите адресс">
+                                    </div>
+                                </div>
+                                <div class="reception-select-group date-birth">
+                                    <div class="reception-select-group__left">
+                                        <label for="date-and-time">Дата и время приёма</label>
+                                        <select name="date-and-time" id="">
+                                            <option value="">07.04.2020</option>
+                                        </select>
+                                    </div>
+                                        
+                                    <div class="reception-select-group__right">
+                                    <label for="birth">Дата рождения</label>
+                                        <select name="birth" id="">
+                                            <option value="">15.12.1985</option>
+                                        </select>
+                                    </div>   
+                                </div>
+                                <div class="reception-select-group">
+
+                                    <div class="reception-select-group__left">
+                                    <label for="phone">Телефон для подтверждения записи</label>
+                                        <select name="phone" id="">
+                                            <option value="">+7 (***) ***-**-**</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="reception-select-group__right">
+                                        <p class="reception-select-group__desc">На этот номер вы получите SMS с кодом подтверждения и информацию о записи</p>
+                                    </div> 
+                                </div>
+                                <div class="reception-select-group">
+
+                                    <div class="reception-select-group__left">
+                                        <button>Записаться</button>
+                                    </div>
+                                    
+                                    <div class="reception-select-group__right">
+                                        <p class="reception-select-group__desc">Нажимая «Записаться», я принимаю <a href="">условия пользовательского соглашения</a> и даю согласие на обработку персональных данных.</p>
+                                    </div> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mess-popup">
+            <div class="popup-box">
+                <div class="close"></div>
+                <div class="message-to-doctor" style="width: 100%;">
+                    <div class="mess-popup__header">Оставьте Ваше сообщение</div>
+                    <input class="mess-popup__name" type="text" name="" placeholder="ФИО">
+                    <input class="mess-popup__email" type="text" name="" placeholder="E-mail">
+                    <textarea class="mess-popup__message" type="text" name="" placeholder="Текст сообщения"></textarea>
+                    <p class="mess-popup__desc">Нажимая «Отправить», я принимаю <a href="">условия пользовательского соглашения и даю согласие</a> на обработку персональных данных.</p>
+                    <input type="submit" name="" class="send" value="Отправить">
+                </div>
+            </div>
         </div>
     </div>
     <div class="flex-right">
@@ -159,8 +390,8 @@ $doctorName = $arResult['NAME'];
                 <div class="doctor-card-location-map popup-link-marker"></div>
                 <div class="popup-box">
 					<div class="close"></div>
-                    <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%; height: 500px;"></div>
-                    <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%; height: 500px;"></div>
+                    <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%;"></div>
+                    <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%;"></div>
                     <script type="text/javascript">
                         ymaps.ready(init);
                         function init() {

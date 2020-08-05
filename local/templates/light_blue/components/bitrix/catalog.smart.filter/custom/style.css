@@ -597,7 +597,6 @@
 .bx_filter_select_popup ul li label.disabled {
 	color: #b8b8b8;
 	background: transparent;
-	display: none;
 }
 
 .bx_filter_select_popup ul li .bx_filter_param_text {

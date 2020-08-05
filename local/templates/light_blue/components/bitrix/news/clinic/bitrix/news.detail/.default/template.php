@@ -67,8 +67,8 @@ $clinickId = $arResult["ID"];
                 <div class="doctor-card-location-map popup-link-marker"></div>
                 <div class="popup-box">
                     <div class="close"></div>
-                    <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%; height: 500px;"></div>
-                    <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%; height: 500px;"></div>
+                    <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%;"></div>
+                    <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%;"></div>
                     <script type="text/javascript">
                         ymaps.ready(init);
                         function init() {

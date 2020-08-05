@@ -326,7 +326,76 @@ $(document).ready(()=>{
         /* Убираем баг в Firefox */
         $('html').scrollTop(scrollPos);
     });
+    
+    $('.popup-reception-click').click(function(e) {
      
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+         
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+         
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        $('.popup-box .doctors-list.reception').css('display', 'block');
+        console.log($(this).parents('.clinic-card'));
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $($(this).parents('main').find('.reception-popup .popup-box')).show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+         
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
+
+    $('.popup-call-click').click(function(e) {
+     
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+         
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+         
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        $('.popup-box .doctors-list.call').css('display', 'block');
+        console.log($(this).parents('.clinic-card'));
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $($(this).parents('main').find('.call-popup .popup-box')).show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+         
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
+
+    $('.popup-mess-click').click(function(e) {
+     
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+         
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+         
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        $('.popup-box .message-to-doctor').css('display', 'flex');
+        console.log($(this).parents('.clinic-card'));
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $($(this).parents('main').find('.mess-popup .popup-box')).show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+         
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
+
     $('[class*=popup-box]').click(function(e) { 
         /* Предотвращаем работу ссылки, если она являеться нашим popup окном */
         e.stopPropagation(); 
@@ -337,6 +406,9 @@ $(document).ready(()=>{
         $('.popup-box').hide(); 
         $('.popup-box .map-popup').css('display', 'none');
         $('.popup-box .map-popup-marker').css('display', 'none');
+        $('.popup-box .doctors-list.reception').css('display', 'none');
+        $('.popup-box .doctors-list.call').css('display', 'none');
+        $('.popup-box .message-to-doctor').css('display', 'none');
         $('#blackout').hide(); 
         $("html,body").css("overflow","auto");
         $('html').scrollTop(scrollPos);
@@ -347,6 +419,9 @@ $(document).ready(()=>{
         $('.popup-box').hide();
         $('.popup-box .map-popup').css('display', 'none');
         $('.popup-box .map-popup-marker').css('display', 'none');
+        $('.popup-box .doctors-list.reception').css('display', 'none');
+        $('.popup-box .doctors-list.call').css('display', 'none');
+        $('.popup-box .message-to-doctor').css('display', 'none');
         $('#blackout').hide(); 
         $("html,body").css("overflow","auto");
         $('html').scrollTop(scrollPos);
