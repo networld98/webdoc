@@ -275,7 +275,7 @@ input[type="submit"] {
     height: 38px;
 }
 .popup-window {
-    max-height: 60%;
+    max-height: 40vh;
     overflow: auto;
 }
 
@@ -7267,4 +7267,18 @@ input[type="submit"] {
     .burger__btn {
         left: 11px;
     }
+}
+
+.city_input {
+    background: transparent;
+    border: none;
+    position: absolute;
+    height: calc(100% - 4px);
+    width: calc(100% - 15px);
+    margin-top: 2px;
+}
+.city_input::selection, .city_input:active, .city_input:focus   {
+    outline-color:transparent;
+    background: #fff;
+    border: none;
 }
