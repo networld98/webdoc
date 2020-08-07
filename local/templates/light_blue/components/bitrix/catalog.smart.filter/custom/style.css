@@ -597,6 +597,7 @@
 .bx_filter_select_popup ul li label.disabled {
 	color: #b8b8b8;
 	background: transparent;
+	display: none!important;
 }
 
 .bx_filter_select_popup ul li .bx_filter_param_text {
@@ -965,6 +966,7 @@
 	background: #9DD4B3;
 	border: none;
 	width: 100%;
+	text-align: center;
 }
 
 .bx_filter .bx_filter_search_reset {
@@ -1032,8 +1034,8 @@
 }
 
 .bx_filter.bx_horizontal .bx_filter_popup_result {
-	position: static !important;
-	display: inline-block
+	/*position: static !important;*/
+	display: inline-block;
 }
 
 .bx_filter.bx_horizontal .bx_filter_popup_result .arrow {
@@ -1051,6 +1053,11 @@
 .bx_filter .bx_filter_popup_result.right .arrow {
 	left: -8px;
 	background: url(images/arr_left.png) no-repeat center;
+}
+.bx_filter .bx_filter_popup_result.left {
+	position: absolute;
+	top: 100%;
+	right: 50%;
 }
 
 .bx_filter .bx_filter_popup_result.left .arrow {

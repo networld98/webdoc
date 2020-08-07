@@ -17,6 +17,7 @@ $templateData = array(
 	'TEMPLATE_CLASS' => 'bx_'.$arParams['TEMPLATE_THEME']
 );
 ?>
+
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
 	<div class="bx_filter_section container">
 	<?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
@@ -163,14 +164,15 @@ $templateData = array(
                                     ?>
                                         <div class="bx_filter_select_container">
                                             <div class="bx_filter_select_block" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
-                                                <div class="bx_filter_select_text" data-role="currentOption">
-
-                                                    <?
+                                                <?if ($arItem['CODE'] != "SPECIALIZATION") {?>
+                                                    <input type="text" class="city_input" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" id="city_input_search_<?=CUtil::JSEscape($key)?>">
+                                                <?}?>
+                                                <div class="bx_filter_select_text" data-role="currentOption"><?
                                                     foreach ($arItem["VALUES"] as $val => $ar)
                                                     {
                                                         if ($ar["CHECKED"])
                                                         {
-                                                            echo $ar["VALUE"];
+                                                            echo trim($ar["VALUE"], ".");
                                                             if ($arItem['CODE'] == "SPECIALIZATION") {
                                                                 $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
                                                             }
@@ -225,7 +227,7 @@ $templateData = array(
                                                                 $class.= " disabled";
                                                             ?>
                                                             <li>
-                                                                <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?=$ar["VALUE"]?></label>
+                                                                <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?=CUtil::JSEscape($key)?>  bx_filter_param_label_<?echo trim($ar["VALUE"], ".")?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
                                                             </li>
                                                         <?endforeach?>
                                                     </ul>
@@ -379,10 +381,13 @@ $templateData = array(
                 <div class="col-12 col-sm-1">
                     <div class="bx_filter_button_box active">
                         <div class="bx_filter_block">
-                            <div class="bx_filter_parameters_box_container">
-                                <input class="bx_filter_search_button" type="submit" id="set_filter" name="set_filter" value="<?=GetMessage("CT_BCSF_SET_FILTER")?>" />
+                            <div class="bx_filter_parameters_box_container" id="modez">
+                                <? if ($APPLICATION->GetCurPage(false) === '/'){?>
+                                    <a href="/clinics<?echo $arResult["FILTER_URL"]?>" class="bx_filter_search_button"><?=GetMessage("CT_BCSF_SET_FILTER")?></a>
+                                <?}else{?>
+                                    <input class="bx_filter_search_button" type="submit" id="set_filter" name="set_filter" value="<?=GetMessage("CT_BCSF_SET_FILTER")?>" />
+                                <?}?>
                                 <?/*<input class="bx_filter_search_reset" type="submit" id="del_filter" name="del_filter" value="<?=GetMessage("CT_BCSF_DEL_FILTER")?>" />*/?>
-
                                <div class="bx_filter_popup_result left" id="modef" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?> style="display: inline-block;">
                                     <?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
                                     <span class="arrow"></span>
@@ -678,4 +683,44 @@ $templateData = array(
 </div>
 <script>
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
+    $(document).ready(function () {
+        $('.city_input').on('focus',function() {
+            $(this).css('color','black');
+        });
+        $('.city_input').on('keyup',function() {
+            var select = $(this).val();
+            if (select.length >= 1) {
+                $(this).parent('.bx_filter_select_block').find('.bx_filter_select_text').hide();
+                $('.bx_filter_param_label_94').hide();
+                $('.bx_filter_param_label_115').hide();
+                $('#smartFilterDropDown94 .bx_filter_param_label').each(function( index ) {
+                    if ($(this).text().toLowerCase().indexOf(select) === 0) {
+                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
+                    }else if ($(this).text().indexOf(select) === 0) {
+                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
+                    }
+                });
+                $('#smartFilterDropDown115 .bx_filter_param_label').each(function( index ) {
+                    if ($(this).text().toLowerCase().indexOf(select) === 0) {
+                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
+                    }else if ($(this).text().indexOf(select) === 0) {
+                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
+                    }
+                });
+
+            }else{
+                $('.bx_filter_param_label_94').show();
+                $('.bx_filter_param_label_115').show();
+                $(this).parent('.bx_filter_select_block').find('bx_filter_select_text').show();
+            }
+        });
+        $('.bx_filter_param_label_94').on('click',function () {
+            $('.bx_filter_select_text').show();
+            $('.city_input').css('color','transparent');
+        });
+        $('.bx_filter_param_label_115').on('click',function () {
+            $('.bx_filter_select_text').show();
+            $('.city_input').css('color','transparent');
+        });
+    });
 </script>

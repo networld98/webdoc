@@ -82,8 +82,21 @@ $doctorName = $arResult['NAME'];
                         <?break;}?>
                     <?}?>
                 <?endif;?>
-                <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
-                    <p class="doctor-card__clinic-adress"><?=$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?></p>
+                    <? global $USER;
+                    if ($USER->IsAdmin()) {
+
+
+
+                    }?>
+
+                <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] || $arResult["PROPERTIES"]["CITY"]["VALUE"] ):
+                    $res = CIBlockSection::GetByID($arResult["PROPERTIES"]["CITY"]["VALUE"]);?>
+                    <p class="doctor-card__clinic-adress">
+                        <? if($ar_res = $res->GetNext()){
+                            echo $ar_res['NAME'];
+                        }?><?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] && $arResult["PROPERTIES"]["CITY"]["VALUE"] ){?>, <?}?>
+                        <?=$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?>
+                    </p>
                 <?endif;?>
                 <!-- <div class="doctor-card-location-map"></div> -->
                 <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>

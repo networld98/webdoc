@@ -120,8 +120,14 @@ CModule::IncludeModule("iblock")
                                         <?break;}?>
                                     <?}?>
                                 <?endif;?>
-                                <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
-                                    <p class="doctors-list-item__clinic-adress"><?=$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?></p>
+                                <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] || $arItem["PROPERTIES"]["CITY"]["VALUE"] ):
+                                    $res = CIBlockSection::GetByID($arItem["PROPERTIES"]["CITY"]["VALUE"]);?>
+                                    <p class="doctors-list-item__clinic-adress">
+                                        <? if($ar_res = $res->GetNext()){
+                                            echo $ar_res['NAME'];
+                                        }?><?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] && $arItem["PROPERTIES"]["CITY"]["VALUE"] ){?>, <?}?>
+                                        <?=$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?>
+                                    </p>
                                 <?endif;?>
                                 <?if($arItem["PROPERTIES"]["METRO"]["VALUE"]):?>
                                     <ul class="doctors-list-item__metro-list">
