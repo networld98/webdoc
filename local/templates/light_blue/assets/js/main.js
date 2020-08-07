@@ -79,6 +79,39 @@ $(document).ready(()=>{
         });
     });
 
+
+    $('.personal-cabinet-content__price-page__tabs .title-h5').on( "click", function() {
+        $('.personal-cabinet-content__price-page__tabs .title-h5').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+
+    $('.personal-cabinet-content__price-page__tabs .title-h5').hover(function () {
+        $('.personal-cabinet-content__price-page__tabs .title-h5').removeClass('active');
+        $(this).toggleClass('active');
+        $(this).on("click" , function () {
+            $('.personal-cabinet-content__price-page__content').removeClass('active');
+            var data = $(this).data('tabs');
+            $(`.personal-cabinet-content__price-page__content[data-tabs="${data}"]`).toggleClass('active');
+        });
+    });
+
+    $('.personal-cabinet-content__price-page__content__list > li').on( "click", function() {
+        $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+
+    $('.personal-cabinet-content__price-page__content__list > li').hover(function () {
+        $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
+        $(this).toggleClass('active');
+        $(this).on("click" , function () {
+            $('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
+            var data = $(this).data('tabs');
+            $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
+        });
+    });
+
     $(".go-to").on('click', function(e){
 		$('html,body').stop().animate({ scrollTop: $(this.hash).offset().top-150 }, 1500);
 		e.preventDefault();
