@@ -15,6 +15,11 @@ global $clinicName;
 global $clinickId;
 $clinicName = $arResult["NAME"];
 $clinickId = $arResult["ID"];
+function propsClinic($prop){
+     if($prop["VALUE"]=='Y'):?>
+        <li class="doctors-list-item_options-list-item"><?=$prop["NAME"]?></li>
+    <?endif;
+}
 ?>
 <section class="container">
     <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
@@ -170,24 +175,11 @@ $clinickId = $arResult["ID"];
                 <?endif;?>
             </div>
             <ul class="doctors-list-item_options-list">
-                <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
-                    <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["VALUE"]=='Y'):?>
-                    <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["DMC"]["VALUE"]=='Y'):?>
-                    <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["DMC"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["UMC"]["VALUE"]=='Y'):?>
-                    <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["UMC"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["ONLINE"]["VALUE"]=='Y'):?>
-                    <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["ONLINE"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
-                    <li class="doctors-list-item_options-list-item"><?=$arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["NAME"]?></li>
-                <?endif;?>
+                <?propsClinic($arResult["PROPERTIES"]["DIAGNOSTICS"])?>
+                <?propsClinic($arResult["PROPERTIES"]["CHILDREN_DOCTOR"])?>
+                <?propsClinic($arResult["PROPERTIES"]["DMC"])?>
+                <?propsClinic($arResult["PROPERTIES"]["ONLINE"])?>
+                <?propsClinic($arResult["PROPERTIES"]["DEPARTURE_HOUSE"])?>
             </ul>
         </div>
         <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
@@ -385,13 +377,13 @@ $clinickId = $arResult["ID"];
                 </div>
                 <div class="clinic-card-full-desc__content__info-left__name">
                     <?if($arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]):?>
-                        <span class="clinic-card-full-desc__content__info-left__name__text">Официальное название</span>
+                        <span class="clinic-card-full-desc__content__info-left__name__text"><?=$arResult["PROPERTIES"]["OFFICIAL_NAME"]["NAME"]?></span>
                         <p><?=$arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]?></p>
                     <?endif;?>
                 </div>
                 <div class="clinic-card-full-desc__content__info-left__head">
                     <?if($arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]):?>
-                        <span class="clinic-card-full-desc__content__info-left__head__text">Руководитель</span>
+                        <span class="clinic-card-full-desc__content__info-left__head__text"><?=$arResult["PROPERTIES"]["DIRECTOR"]["NAME"]?></span>
                         <p><?=$arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]?></p>
                     <?endif;?>
                 </div>
@@ -427,8 +419,17 @@ $clinickId = $arResult["ID"];
                         <?if($arResult["PROPERTIES"]["SITE"]["VALUE"]!=NULL):?>
                             <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></a></li>
                         <?endif;?>
-                        <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'):?>
-                            <li class="icon5"><?=$arResult["PROPERTIES"]["LICENSE"]["NAME"]?></li>
+                        <?if($arResult["PROPERTIES"]["WIFI"]["VALUE"]!=NULL):?>
+                            <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></a></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["SMS_MESSAGE"]["VALUE"]!=NULL):?>
+                            <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SMS_MESSAGE"]["NAME"]?></a></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["EMAIL_MESSAGE"]["VALUE"]!=NULL):?>
+                            <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["EMAIL_MESSAGE"]["NAME"]?></a></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["LICENSE"]["VALUE"]):?>
+                            <li class="icon5"><a href="<?=CFile::GetPath($arResult["PROPERTIES"]["LICENSE"]["VALUE"])?>"><?=$arResult["PROPERTIES"]["LICENSE"]["NAME"]?></a></li>
                         <?endif;?>
                     </ul>
                 </div>
@@ -463,124 +464,124 @@ $clinickId = $arResult["ID"];
     </div>
     <div class="clinic-card-full-desc__content" data-tabs="2">
         <?$APPLICATION->IncludeComponent(
-	"api:reviews",
-	"custom",
-	array(
-		"CACHE_TIME" => "31536000",
-		"CACHE_TYPE" => "A",
-		"COLOR" => "blue",
-		"DETAIL_HASH" => "",
-		"DISPLAY_BOTTOM_PAGER" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"ELEMENT_ID" => $arResult["ID"],
-		"EMAIL_TO" => "",
-		"FORM_CITY_VIEW" => "N",
-		"FORM_DELIVERY" => array(
-		),
-		"FORM_DISPLAY_FIELDS" => array(
-			0 => "RATING",
-			1 => "COMPANY",
-			2 => "ADVANTAGE",
-			3 => "DISADVANTAGE",
-			4 => "ANNOTATION",
-			5 => "GUEST_NAME",
-			6 => "GUEST_EMAIL",
-		),
-		"FORM_FORM_SUBTITLE" => "",
-		"FORM_FORM_TITLE" => "Отзыв о клинике",
-		"FORM_MESS_ADD_REVIEW_ERROR" => "Внимание!<br>Ошибка добавления отзыва",
-		"FORM_MESS_ADD_REVIEW_EVENT_TEXT" => "<p>#USER_NAME# добавил(а) новый отзыв (оценка: #RATING#) ##ID#</p>
-<p>Открыть в админке #LINK_ADMIN#</p>
-<p>Открыть на сайте #LINK#</p>",
-		"FORM_MESS_ADD_REVIEW_EVENT_THEME" => "Отзыв о Клинике (оценка: #RATING#) ##ID#",
-		"FORM_MESS_ADD_REVIEW_MODERATION" => "Спасибо!<br>Ваш отзыв отправлен на модерацию",
-		"FORM_MESS_ADD_REVIEW_VIZIBLE" => "Спасибо!<br>Ваш отзыв №#ID# опубликован",
-		"FORM_MESS_EULA" => "Нажимая кнопку «Отправить отзыв», я принимаю условия Пользовательского соглашения и даю своё согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных Политикой конфиденциальности.",
-		"FORM_MESS_EULA_CONFIRM" => "Для продолжения вы должны принять условия Пользовательского соглашения",
-		"FORM_MESS_PRIVACY" => "Я согласен на обработку персональных данных",
-		"FORM_MESS_PRIVACY_CONFIRM" => "Для продолжения вы должны принять соглашение на обработку персональных данных",
-		"FORM_MESS_PRIVACY_LINK" => "",
-		"FORM_MESS_STAR_RATING_1" => "Ужасно",
-		"FORM_MESS_STAR_RATING_2" => "Плохо",
-		"FORM_MESS_STAR_RATING_3" => "Нормально",
-		"FORM_MESS_STAR_RATING_4" => "Хорошо",
-		"FORM_MESS_STAR_RATING_5" => "Отлично",
-		"FORM_PREMODERATION" => "N",
-		"FORM_REQUIRED_FIELDS" => array(
-			0 => "RATING",
-			1 => "ANNOTATION",
-		),
-		"FORM_RULES_LINK" => "http://doc.btx.bz/rules/",
-		"FORM_RULES_TEXT" => "Правила публикации отзывов",
-		"FORM_SHOP_BTN_TEXT" => "Оставить свой отзыв",
-		"FORM_SHOP_TEXT" => "Отзывы о клиние",
-		"FORM_USE_EULA" => "Y",
-		"FORM_USE_PRIVACY" => "Y",
-		"IBLOCK_ID" => "",
-		"INCLUDE_CSS" => "Y",
-		"INCLUDE_JQUERY" => "jquery2",
-		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"LIST_ITEMS_LIMIT" => "10",
-		"LIST_MESS_ADD_UNSWER_EVENT_TEXT" => "#USER_NAME#, здравствуйте! 
-К Вашему отзыву добавлен официальный ответ, для просмотра перейдите по ссылке #LINK#",
-		"LIST_MESS_ADD_UNSWER_EVENT_THEME" => "Официальный ответ к вашему отзыву",
-		"LIST_MESS_HELPFUL_REVIEW" => "Отзыв полезен?",
-		"LIST_MESS_TRUE_BUYER" => "Проверенный покупатель",
-		"LIST_SET_TITLE" => "N",
-		"LIST_SHOP_NAME_REPLY" => "Интернет-магазин DOC.BTX.BZ",
-		"LIST_SHOW_THUMBS" => "N",
-		"LIST_SORT_FIELDS" => array(
-			0 => "ACTIVE",
-			1 => "ACTIVE_FROM",
-			2 => "RATING",
-			3 => "THUMBS",
-		),
-		"LIST_SORT_FIELD_1" => "ACTIVE_FROM",
-		"LIST_SORT_FIELD_2" => "DATE_CREATE",
-		"LIST_SORT_FIELD_3" => "ID",
-		"LIST_SORT_ORDER_1" => "DESC",
-		"LIST_SORT_ORDER_2" => "DESC",
-		"LIST_SORT_ORDER_3" => "DESC",
-		"MESSAGE_404" => "",
-		"PAGER_DESC_NUMBERING" => "Y",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "31536000",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
-		"PAGER_THEME" => "blue",
-		"PAGER_TITLE" => "Отзывы",
-		"PICTURE" => array(
-		),
-		"RESIZE_PICTURE" => "48x48",
-		"SECTION_ID" => "",
-		"SEF_MODE" => "N",
-		"SET_STATUS_404" => "N",
-		"SHOP_NAME" => "DOC.BTX.BZ",
-		"SHOW_404" => "N",
-		"STAT_MESS_CUSTOMER_RATING" => "На основе #N# оценок покупателей",
-		"STAT_MESS_CUSTOMER_REVIEWS" => "Отзывы покупателей <span class=\"api-reviews-count\"></span>",
-		"STAT_MESS_TOTAL_RATING" => "Рейтинг покупателей",
-		"STAT_MIN_AVERAGE_RATING" => "5",
-		"THEME" => "aspro",
-		"THUMBNAIL_HEIGHT" => "72",
-		"THUMBNAIL_WIDTH" => "114",
-		"UPLOAD_FILE_LIMIT" => "8",
-		"UPLOAD_FILE_SIZE" => "10M",
-		"UPLOAD_FILE_TYPE" => "",
-		"UPLOAD_VIDEO_LIMIT" => "8",
-		"URL" => "",
-		"USE_FORM_MESS_FIELD_PLACEHOLDER" => "N",
-		"USE_MESS_FIELD_NAME" => "N",
-		"USE_STAT" => "Y",
-		"USE_SUBSCRIBE" => "N",
-		"USE_USER" => "N",
-		"COMPONENT_TEMPLATE" => "custom",
-		"VARIABLE_ALIASES" => array(
-			"review_id" => "review_id",
-			"user_id" => "user_id",
-		)
-	),
-	false
-);?>
+        "api:reviews",
+        "custom",
+        array(
+            "CACHE_TIME" => "31536000",
+            "CACHE_TYPE" => "A",
+            "COLOR" => "blue",
+            "DETAIL_HASH" => "",
+            "DISPLAY_BOTTOM_PAGER" => "Y",
+            "DISPLAY_TOP_PAGER" => "N",
+            "ELEMENT_ID" => $arResult["ID"],
+            "EMAIL_TO" => "",
+            "FORM_CITY_VIEW" => "N",
+            "FORM_DELIVERY" => array(
+            ),
+            "FORM_DISPLAY_FIELDS" => array(
+                0 => "RATING",
+                1 => "COMPANY",
+                2 => "ADVANTAGE",
+                3 => "DISADVANTAGE",
+                4 => "ANNOTATION",
+                5 => "GUEST_NAME",
+                6 => "GUEST_EMAIL",
+            ),
+            "FORM_FORM_SUBTITLE" => "",
+            "FORM_FORM_TITLE" => "Отзыв о клинике",
+            "FORM_MESS_ADD_REVIEW_ERROR" => "Внимание!<br>Ошибка добавления отзыва",
+            "FORM_MESS_ADD_REVIEW_EVENT_TEXT" => "<p>#USER_NAME# добавил(а) новый отзыв (оценка: #RATING#) ##ID#</p>
+    <p>Открыть в админке #LINK_ADMIN#</p>
+    <p>Открыть на сайте #LINK#</p>",
+            "FORM_MESS_ADD_REVIEW_EVENT_THEME" => "Отзыв о Клинике (оценка: #RATING#) ##ID#",
+            "FORM_MESS_ADD_REVIEW_MODERATION" => "Спасибо!<br>Ваш отзыв отправлен на модерацию",
+            "FORM_MESS_ADD_REVIEW_VIZIBLE" => "Спасибо!<br>Ваш отзыв №#ID# опубликован",
+            "FORM_MESS_EULA" => "Нажимая кнопку «Отправить отзыв», я принимаю условия Пользовательского соглашения и даю своё согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных Политикой конфиденциальности.",
+            "FORM_MESS_EULA_CONFIRM" => "Для продолжения вы должны принять условия Пользовательского соглашения",
+            "FORM_MESS_PRIVACY" => "Я согласен на обработку персональных данных",
+            "FORM_MESS_PRIVACY_CONFIRM" => "Для продолжения вы должны принять соглашение на обработку персональных данных",
+            "FORM_MESS_PRIVACY_LINK" => "",
+            "FORM_MESS_STAR_RATING_1" => "Ужасно",
+            "FORM_MESS_STAR_RATING_2" => "Плохо",
+            "FORM_MESS_STAR_RATING_3" => "Нормально",
+            "FORM_MESS_STAR_RATING_4" => "Хорошо",
+            "FORM_MESS_STAR_RATING_5" => "Отлично",
+            "FORM_PREMODERATION" => "N",
+            "FORM_REQUIRED_FIELDS" => array(
+                0 => "RATING",
+                1 => "ANNOTATION",
+            ),
+            "FORM_RULES_LINK" => "http://doc.btx.bz/rules/",
+            "FORM_RULES_TEXT" => "Правила публикации отзывов",
+            "FORM_SHOP_BTN_TEXT" => "Оставить свой отзыв",
+            "FORM_SHOP_TEXT" => "Отзывы о клиние",
+            "FORM_USE_EULA" => "Y",
+            "FORM_USE_PRIVACY" => "Y",
+            "IBLOCK_ID" => "",
+            "INCLUDE_CSS" => "Y",
+            "INCLUDE_JQUERY" => "jquery2",
+            "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
+            "LIST_ITEMS_LIMIT" => "10",
+            "LIST_MESS_ADD_UNSWER_EVENT_TEXT" => "#USER_NAME#, здравствуйте! 
+    К Вашему отзыву добавлен официальный ответ, для просмотра перейдите по ссылке #LINK#",
+            "LIST_MESS_ADD_UNSWER_EVENT_THEME" => "Официальный ответ к вашему отзыву",
+            "LIST_MESS_HELPFUL_REVIEW" => "Отзыв полезен?",
+            "LIST_MESS_TRUE_BUYER" => "Проверенный покупатель",
+            "LIST_SET_TITLE" => "N",
+            "LIST_SHOP_NAME_REPLY" => "Интернет-магазин DOC.BTX.BZ",
+            "LIST_SHOW_THUMBS" => "N",
+            "LIST_SORT_FIELDS" => array(
+                0 => "ACTIVE",
+                1 => "ACTIVE_FROM",
+                2 => "RATING",
+                3 => "THUMBS",
+            ),
+            "LIST_SORT_FIELD_1" => "ACTIVE_FROM",
+            "LIST_SORT_FIELD_2" => "DATE_CREATE",
+            "LIST_SORT_FIELD_3" => "ID",
+            "LIST_SORT_ORDER_1" => "DESC",
+            "LIST_SORT_ORDER_2" => "DESC",
+            "LIST_SORT_ORDER_3" => "DESC",
+            "MESSAGE_404" => "",
+            "PAGER_DESC_NUMBERING" => "Y",
+            "PAGER_DESC_NUMBERING_CACHE_TIME" => "31536000",
+            "PAGER_SHOW_ALWAYS" => "N",
+            "PAGER_TEMPLATE" => ".default",
+            "PAGER_THEME" => "blue",
+            "PAGER_TITLE" => "Отзывы",
+            "PICTURE" => array(
+            ),
+            "RESIZE_PICTURE" => "48x48",
+            "SECTION_ID" => "",
+            "SEF_MODE" => "N",
+            "SET_STATUS_404" => "N",
+            "SHOP_NAME" => "DOC.BTX.BZ",
+            "SHOW_404" => "N",
+            "STAT_MESS_CUSTOMER_RATING" => "На основе #N# оценок покупателей",
+            "STAT_MESS_CUSTOMER_REVIEWS" => "Отзывы покупателей <span class=\"api-reviews-count\"></span>",
+            "STAT_MESS_TOTAL_RATING" => "Рейтинг покупателей",
+            "STAT_MIN_AVERAGE_RATING" => "5",
+            "THEME" => "aspro",
+            "THUMBNAIL_HEIGHT" => "72",
+            "THUMBNAIL_WIDTH" => "114",
+            "UPLOAD_FILE_LIMIT" => "8",
+            "UPLOAD_FILE_SIZE" => "10M",
+            "UPLOAD_FILE_TYPE" => "",
+            "UPLOAD_VIDEO_LIMIT" => "8",
+            "URL" => "",
+            "USE_FORM_MESS_FIELD_PLACEHOLDER" => "N",
+            "USE_MESS_FIELD_NAME" => "N",
+            "USE_STAT" => "Y",
+            "USE_SUBSCRIBE" => "N",
+            "USE_USER" => "N",
+            "COMPONENT_TEMPLATE" => "custom",
+            "VARIABLE_ALIASES" => array(
+                "review_id" => "review_id",
+                "user_id" => "user_id",
+            )
+        ),
+        false
+    );?>
     </div>
     <div class="clinic-card-full-desc__content" data-tabs="3">
         <div class="clinic-card-full-desc__content__actions">
