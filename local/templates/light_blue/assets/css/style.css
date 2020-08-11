@@ -27,6 +27,7 @@
 body {
     font-family: "Ubuntu", sans-serif;
     margin: 0;
+    max-width: 1920px;
 }
 
 :root {
@@ -79,6 +80,14 @@ input[type="submit"] {
     font-size: 20px;
     line-height: 26px;
     color: #000000
+}
+.title-h5 {
+    font-family: "Montserrat Alternates-Bold";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000000;
 }
 .header {
     padding-top: 31px;
@@ -2880,6 +2889,7 @@ input[type="submit"] {
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     display: flex;
+    max-width: 1840px;
 }
 .personal-cabinet-menu {
     background: #fff;
@@ -3070,6 +3080,7 @@ input[type="submit"] {
 }
 .personal-cabinet-content__my-profile , .personal-cabinet-content__schedule-page, .personal-cabinet-content__doctors-page , .personal-cabinet-content__price-page {
     padding: 30px 30px 60px;
+    max-width: 1480px;
 }
 .personal-cabinet-content__my-profile .title-h2 , .personal-cabinet-content__schedule-page .title-h2 , .personal-cabinet-content__doctors-page .title-h2 , .personal-cabinet-content__price-page .title-h2 {
     margin-top: 20px;
@@ -3179,6 +3190,16 @@ input[type="submit"] {
     align-items: center;
     justify-content: center;
 }
+.checkbox-group input:checked + .checkbox {
+    background: #9DD4B3;
+}
+.checkbox-group .checkbox img {
+    cursor: pointer;
+    opacity: 0;
+}
+.checkbox-group input:checked + .checkbox img {
+    opacity: 1;
+}
 
 .personal-cabinet-content__my-profile__info-form select {
     width: 100%;
@@ -3243,6 +3264,7 @@ input[type="submit"] {
     padding: 5px 10px;
     border: 1px solid #32B4C3;
     border-radius: 5px;
+    display: inline-block;
 }
 .personal-cabinet-content__my-profile__services ul > li > a:hover {
     background: #32B4C3;
@@ -3887,6 +3909,200 @@ input[type="submit"] {
     border-bottom: 1px dashed transparent;
 }
 
+
+.personal-cabinet-content__price-page {
+    width: 100%;
+}
+.personal-cabinet-content__price-page__tabs {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+.personal-cabinet-content__price-page__tabs .title-h5 {
+    border-bottom: 5px solid transparent;
+    padding-bottom: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.personal-cabinet-content__price-page__tabs .title-h5:first-child {
+    margin-right: 50px;
+}
+.personal-cabinet-content__price-page__tabs .title-h5.active {
+    border-bottom: 5px solid #32B4C3;
+}
+.personal-cabinet-content__price-page__box {
+    max-width: 940px;
+    width: 100%;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+.personal-cabinet-content__price-page__content {
+    display: none;
+}
+.personal-cabinet-content__price-page__content.active {
+    display: flex;
+}
+.personal-cabinet-content__price-page__content__list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: 0;
+    list-style-type: none;
+    max-width: 252px;
+    background: #F7F7F7;
+    border-radius: 10px 0px 0px 10px;
+}
+.personal-cabinet-content__price-page__content__list > li {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #000000;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.personal-cabinet-content__price-page__content__list > li.active {
+    color: #32B4C3;
+    background: #FFFFFF;
+}
+.personal-cabinet-content__price-page__content__list-box {
+    max-width: 688px;
+    width: 100%;
+    padding: 30px 30px 39px 30px;
+}
+.personal-cabinet-content__price-page__content__list-content {
+    display: none;
+}
+.personal-cabinet-content__price-page__content__list-content.active {
+    display: block;
+}
+.personal-cabinet-content__price-page__content__list-content__equipment .title-h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat Alternates-Bold";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+}
+.personal-cabinet-content__price-page__content__list-content__equipment .title-h4 span {
+    margin-left: 20px;
+    font-family: "Ubuntu-Light";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: #000000;
+}
+.personal-cabinet-content__price-page__content__list-content__equipment table {
+    width: 100%;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+    color: #000000;
+}
+.personal-cabinet-content__price-page__content__list-content__equipment table tr {
+    border-bottom: 1px solid #E3EAEA;
+}
+.personal-cabinet-content__price-page__content__list-content__equipment table tr td {
+    padding-bottom: 10px;
+}
+.personal-cabinet-content__price-page__content__list-content__equipment-add {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #E3EAEA;
+}
+.personal-cabinet-content__price-page__content__list-content__equipment-add p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: "Ubuntu-Light";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: #000000;
+    
+}
+.personal-cabinet-content__price-page__content__list-content__equipment-add__btn {
+    color: #32B4C3;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 17px;
+    outline: none;
+    border: 1px dashed #32B4C3;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    background: transparent;
+    transition: 0.3s;
+}
+.personal-cabinet-content__price-page__content__list-content__price .title-h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat Alternates-Bold";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+}
+.personal-cabinet-content__price-page__content__list-content__price table {
+    font-family: "Ubuntu-Light";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: #000000;
+    width: 100%;
+}
+.personal-cabinet-content__price-page__content__list-content__price table tbody tr {
+    border-bottom: 1px solid #E3EAEA;
+}
+.personal-cabinet-content__price-page__content__list-content__price table tbody tr td {
+    padding-bottom: 10px;
+}
+.personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child input {
+    max-width: 65px;
+    padding: 5px 10px;
+}
+.personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child span {
+    font-size: 13px;
+    line-height: 15px;
+    color: #8A8A8A;
+    margin-left: 20px;
+}
+.personal-cabinet-content__price-page__content__list-content__price table thead tr td {
+    font-family: "Ubuntu";
+    padding-bottom: 20px;
+}
+.personal-cabinet-content__price-page__content__list-content__price table thead tr td:last-child {
+    width: 25%;
+}
+.personal-cabinet-content__price-page__content__list-content__price table thead tr td:first-child {
+    width: 7%;
+}
 
 /*details-clinic-tabs*/
 

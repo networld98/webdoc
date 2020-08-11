@@ -93,29 +93,24 @@ $this->setFrameMode(true);
                     </ul>
                 <?endif;?>
                 <p class="clinic-card-desc__about"><?=$arItem["PREVIEW_TEXT"]?></p>
-                <?if($arItem["PROPERTIES"]["DOCTORS"]["VALUE"]):?>
-                    <p class="clinic-card-desc__clinic-doctors-title">Врачи-специалисты</p>
+                <?
+                $arFilter = Array("IBLOCK_ID"=>"10","ACTIVE"=>"Y", "PROPERTY_CLINIK" =>$arItem['ID']);
+                $arSelect = Array("PROPERTY_SPECIALIZATION_MAIN");
+                $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
+                while($ob = $res->GetNextElement()){
+                    $arFields = $ob->GetFields();
+                    $specs[] = $arFields['PROPERTY_SPECIALIZATION_MAIN_VALUE'];
+                }?>
+                <?if($specs){?>
                     <ul class="clinic-card-desc__spec-list">
-                        <?foreach ($arItem["PROPERTIES"]["DOCTORS"]["VALUE"] as $item){
-                            $arSelect = Array();
-                            $arFilter = Array("IBLOCK_ID"=>10, "ID"=>$item, "ACTIVE" => "Y");
-                            $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
-                            $specs = [];
-                            while($ob = $res->GetNextElement()) {
-                                $arProps = $ob->GetProperties();
-                                if(!in_array($arProps['SPECIALIZATION_MAIN']['VALUE'], $spec)){
-                                    $specs[] = $arProps['SPECIALIZATION_MAIN']['VALUE'];
-                                }
-                            }
-                            foreach ($specs as $spec){
-                                $res = CIBlockSection::GetByID($spec);
-                                if($ar_res = $res->GetNext()){?>
-                                    <li><a href=""><?=$ar_res['NAME']?></a></li>
-                                <?}
-                            }
-                        } ?>
+                        <?foreach ($specs as $spec){
+                            $res = CIBlockSection::GetByID($spec);
+                            if($ar_res = $res->GetNext()){?>
+                                <li><a href=""><?=$ar_res['NAME']?></a></li>
+                            <?}
+                        }?>
                     </ul>
-                <?endif;?>
+                <?}?>
                 <?if($arItem["PROPERTIES"]["MAP"]["VALUE"]):?>
                     <div class="map-wrapper">
                         <div class="doctor-card-location-map popup-link-marker"></div>

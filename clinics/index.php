@@ -2,8 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Клиники");
 ?>
-    <section class="clinic-card">
-      <?$APPLICATION->ShowViewContent('filterTitle');?>
+<section class="clinic-card">
        <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
 	"clinic", 
@@ -142,7 +141,7 @@ $APPLICATION->SetTitle("Клиники");
 			14 => "REGION",
 			15 => "METRO",
 			16 => "CATEGORY",
-			17 => "",
+			17 => "RATING",
 		),
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
@@ -153,256 +152,20 @@ $APPLICATION->SetTitle("Клиники");
 	false
 );?>
     </section>
-    <section class="container doctors-lastfeedback">
-        <h2 class="title-h2">Аллергологи - последние отзывы</h2>
-        <div class="doctors-lastfeedback-list slick-slider1">
-            <div class="doctors-lastfeedback-list-item">
-                <div class="doctors-lastfeedback-list-item__doctor-info">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
-                    <div class="doctors-lastfeedback-list-item__doctor-info__content">
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
-                    </div>
-                </div>
-                <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
-                <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
-            </div>
-            <div class="doctors-lastfeedback-list-item">
-                <div class="doctors-lastfeedback-list-item__doctor-info">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
-                    <div class="doctors-lastfeedback-list-item__doctor-info__content">
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
-                    </div>
-                </div>
-                <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
-                <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
-            </div>
-            <div class="doctors-lastfeedback-list-item">
-                <div class="doctors-lastfeedback-list-item__doctor-info">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
-                    <div class="doctors-lastfeedback-list-item__doctor-info__content">
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
-                    </div>
-                </div>
-                <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
-                <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
-            </div>
-            <div class="doctors-lastfeedback-list-item">
-                <div class="doctors-lastfeedback-list-item__doctor-info">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
-                    <div class="doctors-lastfeedback-list-item__doctor-info__content">
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
-                    </div>
-                </div>
-                <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
-                <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
-            </div>
-            <div class="doctors-lastfeedback-list-item">
-                <div class="doctors-lastfeedback-list-item__doctor-info">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/doctors-photo-small/kuznetsova.png" alt="photo" class="doctors-lastfeedback-list-item__doctor-info__photo">
-                    <div class="doctors-lastfeedback-list-item__doctor-info__content">
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__name">Кузнецова Светлана Владимировна</p>
-                        <p class="doctors-lastfeedback-list-item__doctor-info__content__counts">131 отзыв</p>
-                    </div>
-                </div>
-                <p class="doctors-lastfeedback-list-item__from">Ольга, 03 апреля 2020</p>
-                <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
-            </div>
-        </div>
-    </section>
-
+    <?if($APPLICATION->GetCurPage() == '/clinics/') {?>
     <section class="container specializations">
-        <ul class="nav nav-pills" id="pills-tab" role="tablist">
-            <li class="nav-item"><a class="nav-link active" id="pills-home-tab" data-toggle="pill"
-                                    href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Специализации
-                    врачей</a></li>
-            <li class="nav-item"><a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-                                    role="tab" aria-controls="pills-profile" aria-selected="false">Специализации
-                    клиник</a></li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="row">
-                    <div class="col-xl-2 col-md-3 col-6">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                        <div class="col__heading">
-                            А
-                        </div>
-                        <ul class="col__list">
-                            <li class="col__item"><a href="#">Акушер</a></li>
-                            <li class="col__item"><a href="#">Аллерголог</a></li>
-                            <li class="col__item"><a href="#">Андролог</a></li>
-                            <li class="col__item"><a href="#">Анестезиолог</a></li>
-                            <li class="col__item"><a href="#">Аритмолог</a></li>
-                            <li class="col__item"><a href="#">Артролог</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="load_more">
-                    Показать ещё
-                </div>
-                <div class="specializations__list expand">
-                    <div class="row">
-                        <div class="col-xl-2 col-md-3 col-6">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-md-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-6 d-none d-xl-block">
-                            <div class="col__heading">
-                                А
-                            </div>
-                            <ul class="col__list">
-                                <li class="col__item"><a href="#">Акушер</a></li>
-                                <li class="col__item"><a href="#">Аллерголог</a></li>
-                                <li class="col__item"><a href="#">Андролог</a></li>
-                                <li class="col__item"><a href="#">Анестезиолог</a></li>
-                                <li class="col__item"><a href="#">Аритмолог</a></li>
-                                <li class="col__item"><a href="#">Артролог</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div>
-                    2
-                </div>
-                <div class="load_more">
-                    Показать ещё
-                </div>
-                <div class="specializations__list expand">
-                    hide
-                </div>
-            </div>
-        </div>
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            ".default",
+            array(
+                "AREA_FILE_SHOW" => "file",
+                "AREA_FILE_SUFFIX" => "inc",
+                "EDIT_TEMPLATE" => "",
+                "COMPONENT_TEMPLATE" => ".default",
+                "PATH" => "/include/specialization.php"
+            ),
+            false
+        ); ?>
     </section>
-
+    <?}?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

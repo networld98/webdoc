@@ -400,16 +400,34 @@ $clinickId = $arResult["ID"];
                         <?if($arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]=='Y'):?>
                             <li class="icon1"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></li>
                         <?endif;?>
-                        <?if($arResult["PROPERTIES"]["PAY"]["VALUE"]!=NULL):?>
-                            <li class="icon2"><?=$arResult["PROPERTIES"]["PAY"]["VALUE"]?></li>
+                        <?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'):?>
+                            <li class="icon2">
+                                <?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y'){ echo $arResult["PROPERTIES"]["PAY_MONEY"]["NAME"];}?><?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){?>, <?}?>
+                                <?if($arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){
+                                    if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){
+                                        echo mb_strtolower($arResult["PROPERTIES"]["PAY_CARD"]["NAME"]);
+                                    }else{
+                                        echo $arResult["PROPERTIES"]["PAY_CARD"]["NAME"];
+                                    }
+                                }?>
+                            </li>
                         <?endif;?>
-                        <?if($arResult["PROPERTIES"]["AGE"]["VALUE"]!=NULL):?>
-                            <li class="icon3"><?=$arResult["PROPERTIES"]["AGE"]["VALUE"]?></li>
+                        <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'):?>
+                            <li class="icon3">
+                                <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y'){ echo $arResult["PROPERTIES"]["CHILD"]["NAME"];}?><?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){?>, <?}?>
+                                <?if($arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){
+                                    if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){
+                                        echo mb_strtolower($arResult["PROPERTIES"]["ADULT"]["NAME"]);
+                                    }else{
+                                        echo $arResult["PROPERTIES"]["ADULT"]["NAME"];
+                                    }
+                                }?>
+                            </li>
                         <?endif;?>
                         <?if($arResult["PROPERTIES"]["SITE"]["VALUE"]!=NULL):?>
                             <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></a></li>
                         <?endif;?>
-                        <?if($arResult["PROPERTIES"]["LICENSE"]["VALUE"]=='Y'):?>
+                        <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'):?>
                             <li class="icon5"><?=$arResult["PROPERTIES"]["LICENSE"]["NAME"]?></li>
                         <?endif;?>
                     </ul>
@@ -425,7 +443,7 @@ $clinickId = $arResult["ID"];
                 <?if($arResult["PROPERTIES"]["SERVICES"]["VALUE"]!=NULL):?>
                     <div class="clinic-card-full-desc__content__info-right__services">
                         <h4 class="title-h4">Услуги</h4>
-                        <p><?=$arResult["PROPERTIES"]["SERVICES"]["VALUE"]['TEXT']?></p>
+                        <p><?=htmlspecialchars_decode($arResult["PROPERTIES"]["SERVICES"]["VALUE"]['TEXT'])?></p>
                     </div>
                 <?endif;?>
                 <?if($arResult["PROPERTIES"]["PARKING"]["VALUE"]!=NULL):?>
