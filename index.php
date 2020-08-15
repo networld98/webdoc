@@ -41,10 +41,8 @@ $APPLICATION->SetTitle(""); ?>
             "FILTER_VIEW_MODE" => "vertical",
             "HIDE_NOT_AVAILABLE" => "N",
             "IBLOCK_TYPE" => "content",
-            "IBLOCK_ID" => "9",
+            "IBLOCK_ID" => 9,
             "PAGER_PARAMS_NAME" => "arrPager",
-            "SEF_RULE"=>"",
-            "SMART_FILTER_PATH" => '/clinics/',
             "PREFILTER_NAME" => "",
             "SAVE_IN_SESSION" => "N",
             "SECTION_CODE" => "",
@@ -54,7 +52,8 @@ $APPLICATION->SetTitle(""); ?>
             "SEF_MODE" => "N",
             "TEMPLATE_THEME" => "blue",
             "XML_EXPORT" => "N",
-            "POPUP_POSITION" => "left"
+            "POPUP_POSITION" => "left",
+            "NOT_FILTER" => "N"
         ),
         false
     );

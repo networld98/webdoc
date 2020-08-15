@@ -12,21 +12,20 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-    <style>
-        .clinic-card-desc__clinic-name {
-            width: calc(100% - 26px);
-        }
-    </style>
-    <section class="container">
-        <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
-            "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
-            "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
-            "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
-        ),
-            false
-        );?>
-    </section>
+<section class="container">
+    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
+        "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
+        "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+        "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
+    ),
+        false
+    );?>
+</section>
 <?$APPLICATION->ShowViewContent('filterTitle');?>
+ <?function propsClinic($prop){
+    if($prop["VALUE"]=='Y'):?>
+    <li class="doctors-list-item_options-list-item"><?=$prop["NAME"]?></li>
+<?endif;}?>
 <div class="list-item clinic-list container">
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?
@@ -195,28 +194,30 @@ $this->setFrameMode(true);
                     <div class="clinic-card-info__block">
                         <?if($arItem["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
                             <p class="clinic-card-info__title time">Время работы</p>
-                            <span><?=$arItem["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
+                            <?if($arItem["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"] == "Круглосуточно"):?>
+                                <span><?=$arItem["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
+                            <?else:?>
+                               <? $work_time = explode(";", $arItem["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]);
+                                foreach ($work_time as $day){
+                                    $time = explode("/", $day);?>
+                                    <?if(count($time)==2){?>
+                                        <span><?=$time[0]?> - <?=$time[1]?></span>
+                                    <?}elseif(count($time)==5){?>
+                                        <span><?=$time[0]?> -  c <?=$time[1]?>:<?=$time[2]?> до <?=$time[3]?>:<?=$time[4]?></span>
+                                    <?}?>
+                                <?}?>
+                            <?endif;?>
                         <?endif;?>
                     </div>
                     <ul class="doctors-list-item_options-list">
-                        <?if($arItem["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
-                            <li class="doctors-list-item_options-list-item"><?=$arItem["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["CHILDREN_DOCTOR"]["VALUE"]=='Y'):?>
-                            <li class="doctors-list-item_options-list-item"><?=$arItem["PROPERTIES"]["CHILDREN_DOCTOR"]["NAME"]?></li>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["DMC"]["VALUE"]=='Y'):?>
-                            <li class="doctors-list-item_options-list-item"><?=$arItem["PROPERTIES"]["DMC"]["NAME"]?></li>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["UMC"]["VALUE"]=='Y'):?>
-                            <li class="doctors-list-item_options-list-item"><?=$arItem["PROPERTIES"]["UMC"]["NAME"]?></li>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["ONLINE"]["VALUE"]=='Y'):?>
-                            <li class="doctors-list-item_options-list-item"><?=$arItem["PROPERTIES"]["ONLINE"]["NAME"]?></li>
-                        <?endif;?>
-                        <?if($arItem["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
-                            <li class="doctors-list-item_options-list-item"><?=$arItem["PROPERTIES"]["DEPARTURE_HOUSE"]["NAME"]?></li>
-                        <?endif;?>
+                        <?propsClinic($arItem["PROPERTIES"]["DIAGNOSTICS"])?>
+                        <?propsClinic($arItem["PROPERTIES"]["CHILDREN_DOCTOR"])?>
+                        <?propsClinic($arItem["PROPERTIES"]["DMC"])?>
+                        <?propsClinic($arItem["PROPERTIES"]["UMC"])?>
+                        <?propsClinic($arItem["PROPERTIES"]["ONLINE"])?>
+                        <?propsClinic($arItem["PROPERTIES"]["DEPARTURE_HOUSE"])?>
+                        <?propsClinic($arItem["PROPERTIES"]["HOSPITAL"])?>
+                        <?propsClinic($arItem["PROPERTIES"]["DAY_HOSPITAL"])?>
                     </ul>
                 </div>
                 <?if($arItem["PROPERTIES"]["MAP"]["VALUE"]):?>

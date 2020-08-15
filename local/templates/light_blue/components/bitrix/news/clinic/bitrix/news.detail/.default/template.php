@@ -170,8 +170,20 @@ function propsClinic($prop){
             </div>
             <div class="clinic-card-info-detail__block">
                 <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
-                    <p class="clinic-card-info-detail__title time">Время работы</p>
-                    <span><?=$arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
+                    <p class="clinic-card-info__title time">Время работы</p>
+                    <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"] == "Круглосуточно"):?>
+                        <span><?=$arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
+                    <?else:?>
+                        <? $work_time = explode(";", $arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]);
+                        foreach ($work_time as $day){
+                            $time = explode("/", $day);?>
+                            <?if(count($time)==2){?>
+                                <span><?=$time[0]?> - <?=$time[1]?></span>
+                            <?}elseif(count($time)==5){?>
+                                <span><?=$time[0]?> -  c <?=$time[1]?>:<?=$time[2]?> до <?=$time[3]?>:<?=$time[4]?></span>
+                            <?}?>
+                        <?}?>
+                    <?endif;?>
                 <?endif;?>
             </div>
             <ul class="doctors-list-item_options-list">
@@ -180,6 +192,8 @@ function propsClinic($prop){
                 <?propsClinic($arResult["PROPERTIES"]["DMC"])?>
                 <?propsClinic($arResult["PROPERTIES"]["ONLINE"])?>
                 <?propsClinic($arResult["PROPERTIES"]["DEPARTURE_HOUSE"])?>
+                <?propsClinic($arResult["PROPERTIES"]["HOSPITAL"])?>
+                <?propsClinic($arResult["PROPERTIES"]["DAY_HOSPITAL"])?>
             </ul>
         </div>
         <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>

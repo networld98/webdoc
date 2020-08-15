@@ -103,15 +103,33 @@ IncludeTemplateLangFile(__FILE__);
     </div>
 </footer>
 <script>
-        $('body').on('click', '.load_more', function () {
-            let content = this.parentNode.lastElementChild;
-            this.remove();
-            if (!content) {
-                return false;
-            } else if (content.classList.contains('expand')) {
-                content.classList.remove('expand');
-            }
-        })
-    </script>
+    var auth = {
+        popup: null, //наш popup
+        showPopup: function (url) {
+            this.popup = BX.PopupWindowManager.create("modal_auth", '', {
+                closeIcon: true,
+                autoHide: true,
+                offsetLeft: 0,
+                offsetTop: 0,
+                closeByEsc: true,
+                content: BX('auth-popup')
+            });
+
+            this.popup.show();
+        }
+    };
+    $('#header-auth').click(()=>{
+        auth.showPopup();
+    });
+    $('body').on('click', '.load_more', function () {
+        let content = this.parentNode.lastElementChild;
+        this.remove();
+        if (!content) {
+            return false;
+        } else if (content.classList.contains('expand')) {
+            content.classList.remove('expand');
+        }
+    })
+</script>
 </body>
 </html>

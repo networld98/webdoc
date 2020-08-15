@@ -57,7 +57,8 @@ $this->setFrameMode(true);
 		"SEF_MODE" => "N",
 		"TEMPLATE_THEME" => "blue",
 		"XML_EXPORT" => "N",
-		"POPUP_POSITION" => "left"
+		"POPUP_POSITION" => "left",
+        "NOT_FILTER" => "N"
 	),
 	false
 );

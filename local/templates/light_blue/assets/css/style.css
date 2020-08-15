@@ -27,7 +27,6 @@
 body {
     font-family: "Ubuntu", sans-serif;
     margin: 0;
-    max-width: 1920px;
 }
 
 :root {
@@ -284,7 +283,7 @@ input[type="submit"] {
     height: 38px;
 }
 .popup-window {
-    max-height: 40vh;
+    max-height: 90vh;
     overflow: auto;
 }
 
@@ -2716,6 +2715,9 @@ input[type="submit"] {
     border-radius: 5px;
     display: inline-block;
 }
+.clinic-card-desc__result-filter li a:first-letter , .clinic-card-desc__spec-list li a:first-letter {
+    text-transform: uppercase;
+}
 .clinic-card-desc__result-filter li a:hover, .clinic-card-desc__spec-list li a:hover {
     background: #32B4C3;
     color: #FFFFFF;
@@ -3117,6 +3119,10 @@ input[type="submit"] {
     align-items: center;
     margin-bottom: 20px;
 }
+
+.personal-cabinet-content__my-profile__info-form > ul > li:last-child, .personal-cabinet-content__my-profile__info-desc > ul > li:last-child {
+    margin-bottom: 0;
+}
 .personal-cabinet-content__my-profile__info-form > ul > li > a {
     color: #32B4C3;
     -webkit-text-decoration-line: underline;
@@ -3160,7 +3166,7 @@ input[type="submit"] {
     margin-bottom: 0;
     margin-left: 5px;
 }
-.personal-cabinet-content__my-profile__info-form .save {
+.personal-cabinet .save {
     font-family: "Ubuntu";
     font-style: normal;
     font-weight: normal;
@@ -3175,8 +3181,9 @@ input[type="submit"] {
     outline: none;
     padding: 12px 20px;
     margin-left: auto;
+    margin-top: 20px;
 }
-.personal-cabinet-content__my-profile__info-form .save:hover {
+.personal-cabinet .save:hover {
     background: transparent;
     color:#9DD4B3;
 }
@@ -3274,12 +3281,12 @@ input[type="submit"] {
     background: #29A2B0;
 }
 .personal-cabinet-content__my-profile__services-col {
-    max-width: 509px;
-    margin-right: 100px;
+    /*max-width: 509px;*/
+    /*margin-right: 100px;*/
 }
-.personal-cabinet-content__my-profile__services-col:last-child {
-    margin-right: 0px;
-}
+/*.personal-cabinet-content__my-profile__services-col:last-child {*/
+    /*margin-right: 0px;*/
+/*}*/
 
 .personal-cabinet-content__schedule-page__adress-info {
     display: flex;
@@ -3395,6 +3402,7 @@ input[type="submit"] {
     font-size: 15px;
     line-height: 24px;
     color: #000000;
+    align-items: center;
 }
 .personal-cabinet-content__schedule-page__block .select-time-list select {
     border: 2px solid #9DD4B3;
@@ -3617,14 +3625,14 @@ input[type="submit"] {
     content: 'есть запись';
     left: 15px;
   }
-  .personal-cabinet-content__doctors-page-box-item__desc-switch #normal:checked + label {
+  .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label {
     background: #32B4C3;
   }
-.personal-cabinet-content__doctors-page-box-item__desc-switch #normal:checked + label:before {
+.personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label:before {
     left: 97px;
     background: #32B4C3;
   }
-.personal-cabinet-content__doctors-page-box-item__desc-switch #normal:checked + label:after {
+.personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label:after {
     content: 'есть запись';
     left: 15px;
   }

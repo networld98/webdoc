@@ -185,7 +185,9 @@ $templateData = array(
                                                     if (!$checkedItemExist) {
                                                         if ($arItem['CODE'] == "SPECIALIZATION") {
                                                             echo GetMessage("CT_BCSF_FILTER_SPECIALIZATION");
-                                                        } elseif ($arItem['CODE'] == "CITY") {
+                                                        } else if ($arItem['CODE'] == "SPECIALIZATION_MAIN") {
+                                                            echo GetMessage("CT_BCSF_FILTER_SPECIALIZATION");
+                                                        }elseif ($arItem['CODE'] == "CITY") {
                                                             echo GetMessage("CT_BCSF_FILTER_CITY");
                                                         } else {
                                                             echo GetMessage("CT_BCSF_FILTER_ALL");
@@ -383,7 +385,9 @@ $templateData = array(
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container" id="modez">
                                 <? if ($APPLICATION->GetCurPage(false) === '/'){?>
-                                    <a href="/clinics<?echo $arResult["FILTER_URL"]?>" class="bx_filter_search_button"><?=GetMessage("CT_BCSF_SET_FILTER")?></a>
+                                    <div id="modef" <?if(!isset($arResult["ELEMENT_COUNT"]))?>>
+                                        <a class="bx_filter_search_button"  href="/clinics<?echo $arResult["FILTER_URL"]?>"><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
+                                    </div>
                                 <?}else{?>
                                     <input class="bx_filter_search_button" type="submit" id="set_filter" name="set_filter" value="<?=GetMessage("CT_BCSF_SET_FILTER")?>" />
                                 <?}?>
@@ -417,13 +421,18 @@ $templateData = array(
                             )
                         )
                             continue;
-                        ?>
 
+                        if($arParams['NOT_FILTER'] == 'N'){
+                            $show = false;
+                        }elseif($arParams['NOT_FILTER'] == 'Y'){
+                            $show = true;
+                        }
+                         if (strpos($arItem["CODE"], 'NOT') === $show) {?>
                         <div class="bx_filter_parameters_box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>active<?endif?>" <?if ($arItem["DISPLAY_TYPE"] == "P") :?>style="display: none"<?endif?>>
                             <span class="bx_filter_container_modef"></span>
                             <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">--><?//=$arItem["NAME"]?><!--</div>-->
                             <div class="bx_filter_block">
-                                <div class="bx_filter_parameters_box_container checkboxes">
+                                <div class="bx_filter_parameters_box_container checkboxes 1">
                                     <?
                                     $arCur = current($arItem["VALUES"]);
                                     switch ($arItem["DISPLAY_TYPE"])
@@ -671,7 +680,7 @@ $templateData = array(
                                 </div>
                             </div>
                         </div>
-                        <?
+                        <?}
                     }
                     ?>
                 </div>
