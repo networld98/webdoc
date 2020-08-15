@@ -3625,18 +3625,54 @@ input[type="submit"] {
     content: 'есть запись';
     left: 15px;
   }
-  .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label {
+
+/*ПЕРЕВЕРНУТЫЕ СТИЛИ ДЛЯ ДОКТОРОВ */
+
+.personal-cabinet-content__doctors-page-box-item__desc-switch .reverse_switch label {
     background: #32B4C3;
+}
+.personal-cabinet-content__doctors-page-box-item__desc-switch .reverse_switch label:before {
+    content: '';
+    position: absolute;
+    border: none;
+    width: 35px;
+    height: 35px;
+    background: #32B4C3;
+    border: 5px solid #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transform: rotate(-25deg);
+    top: 0;
+    left: 97px;
+    z-index: 1;
+}
+.personal-cabinet-content__doctors-page-box-item__desc-switch .reverse_switch label:after {
+    content: 'есть запись';
+    position: absolute;
+    background: transparent;
+    height: calc(100% + 8px);
+    border-radius: 30px;
+    top: 10px;
+    width: calc(100% + 8px);
+    left: 15px;
+    z-index: 0;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000;
+    transition: .3s ease;
+}
+  .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label {
+  background: #EBEBEB;
   }
 .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label:before {
-    left: 97px;
-    background: #32B4C3;
+    left: 0;
+    background: #EBEBEB;
   }
 .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label:after {
-    content: 'есть запись';
-    left: 15px;
+    content: 'нет записи';
+    left: 40px;
   }
-
+/*ЗАКОНЧИЛИСЬ ПЕРЕВЕРНУТЫЕ СТИЛИ*/
 
 .personal-cabinet-content__doctors-page-box-item__desc__name {
     font-family: "Ubuntu";

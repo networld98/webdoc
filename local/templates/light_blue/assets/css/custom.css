@@ -103,7 +103,24 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
-.personal-cabinet-content__my-profile .add:hover
+
+.personal-cabinet-content__doctors-page-box .add{
+    width: 235px;
+    height: 45px;
+    border: 2px solid #9DD4B3;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #9DD4B3;
+    font-weight: bold;
+    display: flex;
+    padding: 12px 5px;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    cursor: pointer;
+    margin-bottom: 35px;
+}
+.personal-cabinet-content__my-profile .add:hover, .personal-cabinet-content__doctors-page-box .add:hover
 {
     color:#fff;
     background-color: #9DD4B3;
