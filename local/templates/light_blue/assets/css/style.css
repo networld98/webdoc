@@ -43,7 +43,7 @@ a:hover {
     text-decoration: none;
 }
 
-input {
+input:not([type="file"]):not(.city_input){
     border: 2px solid #9DD4B3;
     box-sizing: border-box;
     border-radius: 5px;

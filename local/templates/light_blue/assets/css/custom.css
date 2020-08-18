@@ -185,16 +185,18 @@
     flex-basis: auto;
     display: flex;
 }
-.personal-cabinet-none-card {
+.personal-cabinet-none-doctor, .personal-cabinet-none-card {
     font-family: "Montserrat Alternates";
-    background: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
     font-weight: bold;
     font-size: 25px;
     line-height: 25px;
     color:red;
+}
+.personal-cabinet-none-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .personal-cabinet label {
     display: inline-flex;

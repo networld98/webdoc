@@ -16,9 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $trans = Cutil::translit($_POST['NAME_DOCTOR'],"ru",$arParams);
         CIBlockElement::SetPropertyValuesEx($_POST['ID_DOCTOR'], false, $PROPS);
         $nameClinic = $obEl->Update($_POST['ID_DOCTOR'],array('NAME' => $_POST['NAME_DOCTOR'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT']));
-    echo"<pre>";
-    print_r($PROPS);
-    echo"</pre>";
     ?>
 Данные сохранены
 

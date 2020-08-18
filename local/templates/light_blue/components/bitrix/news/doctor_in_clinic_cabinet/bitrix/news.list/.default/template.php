@@ -12,6 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CModule::IncludeModule("iblock");
+global $idClinic;
 ?>
 <?function propview($prop,$id,$iblock){
     $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
@@ -47,13 +48,14 @@ CModule::IncludeModule("iblock");
     </li>
 <?}?>
     <div class="add" value="0" title="Добавить нового врача">Добавить нового врача</div>
-    <form id="form_doctor_NEW" name="form_doctor_NEW" action="" method="post" class="personal-cabinet-content__doctors-page-box-item"></form>
+    <form id="form_doctor_NEW" name="form_doctor_NEW" action="" method="post" class="personal-cabinet-content__doctors-page-box-item">
+    </form>
 <?foreach($arResult["ITEMS"] as $arItem):?>
     <?
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
-        <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item">
+    <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item">
             <input type="hidden" name="ID_DOCTOR" value="<?=$arItem['ID']?>">
             <div class="personal-cabinet-content__doctors-page-box-item__img">
                 <?if($arItem['DETAIL_PICTURE']['SRC']!=NULL){?>
@@ -71,7 +73,7 @@ CModule::IncludeModule("iblock");
                             <span class="personal-cabinet-content__doctors-page-box-item__desc__name">
                                 <input type="text" name="NAME_DOCTOR" value="<?=$arItem['NAME']?>">
                             </span>
-                            <span class="personal-cabinet-content__doctors-page-box-item__desc__status">не работает в клинике</span>
+                           <? /*<span class="personal-cabinet-content__doctors-page-box-item__desc__status">не работает в клинике</span>*/?>
                         </div>
                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor">
                             <span>Редактировать данные</span>
@@ -160,7 +162,7 @@ CModule::IncludeModule("iblock");
                 let formMs = $("#message-form_<?=$arItem['ID']?>");
                 $.ajax({
                     type: "POST",
-                    url: '/lc/doctor-in-clinic-save.php',
+                    url: '/lc/doctor-save.php',
                     data: formNm.serialize(),
                     success: function (data) {
                         // Вывод текста результата отправки
@@ -169,158 +171,103 @@ CModule::IncludeModule("iblock");
                 });
                 return false;
             });
+        });
+    </script>
+<?endforeach;?>
+<?if(count($arResult["ITEMS"])<1){?>
+    <div class="personal-cabinet-none-doctor text-center">
+        В вашей клинике нет привязанных врачей
+    </div>
+<?}?>
+    <script>
+        $(document).ready(function () {
             $('.add').on('click', function () {
                 var str = ' <input type="hidden" name="ID_DOCTOR" value="NEW">\n' +
-                    '    <div class="personal-cabinet-content__doctors-page-box-item__img">\n' +
-                    '        <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">\n' +
-                    '    </div>\n' +
+                    ' <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">\n' +
+                    ' <input type="hidden" name="PHOTO" value="<?=$photoFile?>">\n' +
                     '    <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +
                     '        <div class="personal-cabinet-content__doctors-page-box-item__desc__head">\n' +
                     '            <div class="personal-cabinet-content__doctors-page-box-item__desc-left">\n' +
                     '                <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">\n' +
-                    '                            <span class="personal-cabinet-content__doctors-page-box-item__desc__name">\n' +
-                    '                                <input type="text" name="NAME_DOCTOR" value="">\n' +
-                    '                            </span>\n' +
-                    '                    <span class="personal-cabinet-content__doctors-page-box-item__desc__status">не работает в клинике</span>\n' +
-                    '                </div>\n' +
-                    '                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor">\n' +
-                    '                    <span>Редактировать данные</span>\n' +
-                    '                </div>\n' +
-                    '                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop">\n' +
-                    '                    <ul>\n' +
-                    '                        <li class="active">Основное</li>\n' +
-                    '                        <li>Профиль лечения</li>\n' +
-                    '                        <li>Образование</li>\n' +
-                    '                        <li>Опыт работы</li>\n' +
-                    '                        <li>Курсы</li>\n' +
-                    '                    </ul>\n' +
-                    '                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content main-block">\n' +
-                    '                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">\n' +
-                    '                            <span>Главная специальность</span>\n' +
-                    '                            <select name="" id="">\n' +
-                    '                                <option value="">Хирург</option>\n' +
-                    '                            </select>\n' +
-                    '                        </div>\n' +
-                    '                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">\n' +
-                    '                            <span>Степень</span>\n' +
-                    '                            <select name="" id="">\n' +
-                    '                                <option value="">-----------------</option>\n' +
-                    '                            </select>\n' +
-                    '                        </div>\n' +
-                    '                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">\n' +
-                    '                            <span>Категория</span>\n' +
-                    '                            <select name="" id="">\n' +
-                    '                                <option value="">-----------------</option>\n' +
-                    '                            </select>\n' +
-                    '                        </div>\n' +
-                    '                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row last">\n' +
-                    '                            <span>Главная специальность</span>\n' +
-                    '                            <input type="text" name="" id="" value="0">\n' +
-                    '                            <span>лет</span>\n' +
-                    '                            <span>с</span>\n' +
-                    '                            <select name="" id="">\n' +
-                    '                                <option value="">2000</option>\n' +
-                    '                            </select>\n' +
-                    '                            <span>года</span>\n' +
-                    '                        </div>\n' +
-                    '                        <button class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__btn">Сохранить</button>\n' +
+                    '                    <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">\n' +
+                    '                        <ul class="checkbox-group">\n' +
+                    '                            <li>\n' +
+                    '                                <label for="">ФИО\n' +
+                    '                                    <input type="text" name="NAME_DOCTOR" value="">\n' +
+                    '                                </label>\n' +
+                    '                            </li>\n' +
+                    '                           <li>\n' +
+                    '                                <label for="">Номер телефона для привязки врача*\n' +
+                    '                                    <input type="text" name="PHONE" value="">\n' +
+                    '                                </label>\n' +
+                    '                            </li>\n' +
+                    '                            <li>\n' +
+                    '                                <label for="">Фото\n' +
+                    '                                    <input type="file" id="photoFile" name="DETAIL_PICTURE" value="">\n' +
+                    '                                </label>\n' +
+                    '                            </li>\n' +
+                    '                            <li>\n' +
+                    '                                <label for="">Пол\n' +
+                    '                                    <select name="GENDER" id="GENDER" value="">\n' +
+                    '                                        <option value="70">Мужчина</option>\n' +
+                    '                                        <option value="71">Женщина</option>\n' +
+                    '                                    </select>\n' +
+                    '                                </label>\n' +
+                    '                            </li>\n' +
+                    '                        </ul>\n' +
                     '                    </div>\n' +
                     '                </div>\n' +
                     '            </div>\n' +
                     '            <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">\n' +
-                    '                <div class="toggle reverse_switch">\n' +
-                    '                    <input type="checkbox" id="normal_NEW" name="NOT_ON" value="98" class="swith">\n' +
-                    '                    <label class="toggle-item" for="normal_NEW"></label>\n' +
-                    '                    <input type="hidden" name="FULL_PROPERTY[]" value="NOT_ON">\n' +
+                    '                <div class="text-view">\n' +
+                    '                    <div id="message-form_NEW"></div>\n' +
+                    '                    <div id="photo-form_NEW" style="display:none;"></div>\n' +
+                    '                    <button type="submit" name="saveProfile" class="save">Добавить врача</button>\n' +
                     '                </div>\n' +
-                    '            </div>\n' +
-                    '        </div>\n' +
-                    '        <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">\n' +
-                    '            <ul class="checkbox-group">\n' +
-                    '                <li>\n' +
-                    '                    <label for="">Пол</label>\n' +
-                    '                    <select name="GENDER" id="GENDER" value="">\n' +
-                    '                        <option value="70">Мужчина</option>\n' +
-                    '                        <option value="71">Женщина</option>\n' +
-                    '                    </select>\n' +
-                    '                </li>\n' +
-                    '                <li>\n' +
-                    '                    <label for="">Возраст пациентов</label>\n' +
-                    '                    <input type="text" name="AGE_PACIENT" value="">\n' +
-                    '                </li>\n' +
-                    '                <li>\n' +
-                    '                    <label data-role="label_CHILDREN_DOCTOR_NEW" class="bx_filter_param_label " for="CHILDREN_DOCTOR_NEW">\n' +
-                    '            <span class="bx_filter_input_checkbox">\n' +
-                    '                <input type="checkbox" value="58" name="CHILDREN_DOCTOR" id="CHILDREN_DOCTOR_NEW">\n' +
-                    '                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>\n' +
-                    '                <span class="bx_filter_param_text">Детский врач</span>\n' +
-                    '            </span>\n' +
-                    '                    </label>\n' +
-                    '                    <input type="hidden" name="FULL_PROPERTY[]" value="CHILDREN_DOCTOR">\n' +
-                    '                </li>\n' +
-                    '                <li>\n' +
-                    '                    <label data-role="label_DEPARTURE_HOUSE_NEW" class="bx_filter_param_label " for="DEPARTURE_HOUSE_NEW">\n' +
-                    '            <span class="bx_filter_input_checkbox">\n' +
-                    '                <input type="checkbox" value="59" name="DEPARTURE_HOUSE" id="DEPARTURE_HOUSE_NEW">\n' +
-                    '                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>\n' +
-                    '                <span class="bx_filter_param_text">Выезд на дом</span>\n' +
-                    '            </span>\n' +
-                    '                    </label>\n' +
-                    '                    <input type="hidden" name="FULL_PROPERTY[]" value="DEPARTURE_HOUSE">\n' +
-                    '                </li>\n' +
-                    '                <li>\n' +
-                    '                    <label data-role="label_ONLINE_NEW" class="bx_filter_param_label " for="ONLINE_NEW">\n' +
-                    '            <span class="bx_filter_input_checkbox">\n' +
-                    '                <input type="checkbox" value="68" name="ONLINE" id="ONLINE_NEW">\n' +
-                    '                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>\n' +
-                    '                <span class="bx_filter_param_text">Онлайн</span>\n' +
-                    '            </span>\n' +
-                    '                    </label>\n' +
-                    '                    <input type="hidden" name="FULL_PROPERTY[]" value="ONLINE">\n' +
-                    '                </li>\n' +
-                    '                <li>\n' +
-                    '                    <label data-role="label_UMC_NEW" class="bx_filter_param_label " for="UMC_NEW">\n' +
-                    '            <span class="bx_filter_input_checkbox">\n' +
-                    '                <input type="checkbox" value="86" name="UMC" id="UMC_NEW">\n' +
-                    '                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>\n' +
-                    '                <span class="bx_filter_param_text">По полису ОМС</span>\n' +
-                    '            </span>\n' +
-                    '                    </label>\n' +
-                    '                    <input type="hidden" name="FULL_PROPERTY[]" value="UMC">\n' +
-                    '                </li>\n' +
-                    '                <li>\n' +
-                    '                    <label data-role="label_DMC_NEW" class="bx_filter_param_label " for="DMC_NEW">\n' +
-                    '            <span class="bx_filter_input_checkbox">\n' +
-                    '                <input type="checkbox" value="87" name="DMC" id="DMC_NEW">\n' +
-                    '                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>\n' +
-                    '                <span class="bx_filter_param_text">По полису ДМС</span>\n' +
-                    '            </span>\n' +
-                    '                    </label>\n' +
-                    '                    <input type="hidden" name="FULL_PROPERTY[]" value="DMC">\n' +
-                    '                </li>\n' +
-                    '                <li>\n' +
-                    '                    <label data-role="label_DIAGNOSTICS_NEW" class="bx_filter_param_label " for="DIAGNOSTICS_NEW">\n' +
-                    '            <span class="bx_filter_input_checkbox">\n' +
-                    '                <input type="checkbox" value="88" name="DIAGNOSTICS" id="DIAGNOSTICS_NEW">\n' +
-                    '                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>\n' +
-                    '                <span class="bx_filter_param_text">Диагностика</span>\n' +
-                    '            </span>\n' +
-                    '                    </label>\n' +
-                    '                    <input type="hidden" name="FULL_PROPERTY[]" value="DIAGNOSTICS">\n' +
-                    '                </li>\n' +
-                    '            </ul>\n' +
-                    '            <div class="text-view">\n' +
-                    '                <div id="message-form_NEW"></div>\n' +
-                    '                <button type="submit" name="saveProfile" class="save">Сохранить</button>\n' +
                     '            </div>\n' +
                     '        </div>\n' +
                     '    </div>';
                 document.getElementById('form_doctor_NEW').innerHTML = str;
                 $('.add').hide();
             });
+            $(document).on('change', '#photoFile', function(){
+                let file_data = $(this).prop('files')[0];
+                let form_data = new FormData();
+                let formPhoto= $("#photo-form_NEW");
+                form_data.append('file', file_data);
+                $.ajax({
+                    url: '/lc/file_upload.php', // point to server-side PHP script
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function(form_data){
+                        $(formPhoto).html(form_data);
+                        let file = $('#photo-form_NEW').text();
+                        $('input[name="PHOTO"]').val(file);
+                    }
+                });
+                return false;
+            });
+            $("#form_doctor_NEW").submit(function () {
+                let formID = $(this).attr('id');
+                let formNm = $('#' + formID);
+                let formMs = $("#message-form_NEW");
+                $.ajax({
+                    type: "POST",
+                    url: '/lc/doctor-add.php',
+                    data: formNm.serialize(),
+                    success: function (data) {
+                        // Вывод текста результата отправки
+                        $(formMs).html(data);
+                    }
+                });
+                return false;
+            });
         });
     </script>
-<?endforeach;?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	 <?=$arResult["NAV_STRING"]?>
 <?endif;?>

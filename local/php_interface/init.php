@@ -6,7 +6,7 @@ class UserGroup
     function searchClinic($id, $param)
     {
         CModule::IncludeModule('iblock');
-        $arFilter = Array("IBLOCK_ID" => $id, "ACTIVE" => "Y", $param);
+        $arFilter = Array("IBLOCK_ID" => $id, $param);
 
         $arSelect = Array();
         $res = CIBlockElement::GetList(Array("SORT" => "ASC"), $arFilter, false, false, $arSelect);
@@ -38,7 +38,7 @@ class UserGroup
                     "IBLOCK_ID" => 9,
                     "PROPERTY_VALUES" => $PROP,
                     "NAME" => $arUser['UF_NAME_CLINIC'],
-                    "CODE" => $trans,
+                    "CODE" => substr($arUser['LOGIN'], -4)."_".$trans,
                     "ACTIVE" => "N",
                 );
                 $PRODUCT_ID = $el->Add($arLoadProductArray);
