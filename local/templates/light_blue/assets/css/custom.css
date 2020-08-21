@@ -231,3 +231,15 @@
     margin-left: 0;
     width: auto;
 }
+.personal-cabinet .save {
+    margin-left: 20px;
+}
+.personal-cabinet .delete-doctor{
+    background: #E74C77;
+    border: 2px solid #E74C77;
+    cursor: pointer;
+}
+.personal-cabinet .delete-doctor:hover {
+    background: transparent;
+    color: #E74C77;
+}
