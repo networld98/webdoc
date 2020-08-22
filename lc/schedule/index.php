@@ -95,9 +95,11 @@ foreach ($work_time as $time){
             <?if($arProps['ADDRESS']['VALUE'] && $arProps['CITY']['VALUE']){?>
             <div class="adress">
                 <span>Адрес</span>
-                <?$res = CIBlockElement::GetByID($arProps['CITY']['VALUE']);
-                if($ar_res = $res->GetNext()) ?>
-                <p>г.<?=$ar_res['NAME'];?>,<?=$arProps['ADDRESS']['VALUE']?></p>
+                <?$res = CIBlockSection::GetByID($arProps['CITY']['VALUE']);
+                if($ar_res = $res->GetNext()){?>
+                    <p>г. <?=$ar_res['NAME']?>, <?=$arProps['ADDRESS']['VALUE']?></p>
+                <?}?>
+
             </div>
             <?}?>
         </div>

@@ -82,7 +82,7 @@ $this->setFrameMode(true);
     </div>
 </div>
 
-<div class="personal-cabinet-content__doctors-page-box">
+<div class="personal-cabinet-content__doctors-page-box list-item">
     <? global $arrFilter;
     global $idClinic;
     $arrFilter[] = array("PROPERTY_CLINIK" => $idClinic); ?>

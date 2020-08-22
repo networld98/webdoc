@@ -9,6 +9,11 @@ foreach ($_POST['FULL_PROPERTY'] as $data) {
         $PROPS[$data] = NULL;
     }
 }
+if(empty($_POST['PHOTO'])){
+    $PROPS[141] = 107;
+}else{
+    $PROPS[141] = NULL;
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();

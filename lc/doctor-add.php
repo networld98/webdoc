@@ -38,9 +38,11 @@ if($_POST['PHONE']!=NULL){
             echo '<span style="color:red">Врач, с таким номером, уже привязан к вашей клинике</span>';
         }
     }elseif ($phoneDoctor==NULL && $_POST['NAME_DOCTOR']!=NULL){
-
         $el = new CIBlockElement;
         $PROP = array();
+        if(empty($_POST['PHOTO'])){
+            $PROP[141] = 107;
+        }
         $PROP[74] = $_POST['ID_CLINIC'];
         $PROP[139] = 98;
         $PROP[148] = $_POST['PHONE'];

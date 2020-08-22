@@ -55,7 +55,7 @@ global $idClinic;
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
-    <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item">
+    <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
             <input type="hidden" name="ID_DOCTOR" value="<?=$arItem['ID']?>">
             <div class="personal-cabinet-content__doctors-page-box-item__img">
                 <?if($arItem['DETAIL_PICTURE']['SRC']!=NULL){?>
@@ -129,13 +129,6 @@ global $idClinic;
                         </div>
                     </div>
                 </div>
-                <?/* global $USER;
-                if ($USER->IsAdmin()) {
-                    echo"<pre>";
-                    print_r($arItem['PROPERTIES']);
-                    echo"</pre>";
-                }
-                */?>
                 <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
                     <ul class="checkbox-group">
                         <? propselect($arItem['PROPERTIES']['GENDER'],$arParams['IBLOCK_ID'])?>
