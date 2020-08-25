@@ -27,6 +27,8 @@
 body {
     font-family: "Ubuntu", sans-serif;
     margin: 0;
+    font-size: 15px;
+    line-height: 24px;
 }
 
 :root {
@@ -43,18 +45,36 @@ a:hover {
     text-decoration: none;
 }
 
+input {
+    outline: none;
+}
+
+.profile-table td {
+    padding-bottom: 20px;
+}
+
 input:not([type="file"]):not(.city_input){
     border: 2px solid #9DD4B3;
     box-sizing: border-box;
     border-radius: 5px;
     box-shadow: unset;
+    height: auto;
+}
+input:not([type="file"]).changedInput  {
+    border: none;
+    border-bottom: 2px solid #9DD4B3;
+    border-radius: 0;
 }
 
-input[type="submit"] {
+input[type="submit"],input[type="reset"] {
     border-radius: 5px;
     background: #9DD4B3;
     border: none;
     font-size: 18px;
+}
+input[type="reset"] {
+    background: transparent;
+
 }
 .title-h2 {
     font-family: "Montserrat Alternates-Bold";
@@ -192,10 +212,10 @@ input[type="submit"] {
 .side-menu li {
     font-family: "Montserrat Alternates-Bold", sans-serif;
 }
-.container {
+main.container {
     padding-right: 15px;
     padding-left: 15px;
-    margin: 0 auto;
+    margin: 0 auto 118px;
 }
 .header .logo img{
     max-width: 318px;
@@ -533,6 +553,21 @@ input[type="submit"] {
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
     padding: 8px;
+}
+
+.load_more {
+    padding: 14px 23px;
+    color: var(--primary);
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.25em;
+    border: 1px solid #98D7DC;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 225px;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-top: 75px;
 }
 
 .specializations .load_more {
@@ -2891,7 +2926,6 @@ input[type="submit"] {
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     display: flex;
-    max-width: 1840px;
 }
 .personal-cabinet-menu {
     background: #fff;
@@ -3181,7 +3215,6 @@ input[type="submit"] {
     outline: none;
     padding: 12px 20px;
     margin-left: auto;
-    margin-top: 20px;
 }
 .personal-cabinet .save:hover {
     background: transparent;
@@ -3539,6 +3572,9 @@ input[type="submit"] {
     display: flex;
     justify-content: space-between;
 }
+.personal-cabinet-content__doctors-page-box-item__desc__head.none-margin {
+    margin-bottom: 0;
+}
 .personal-cabinet-content__doctors-page-box-item__desc-switch {
 
 }
@@ -3605,6 +3641,7 @@ input[type="submit"] {
     top: 10px;
     width: calc(100% + 8px);
     left: 40px;
+    text-align: left;
     z-index: 0;
     font-family: "Ubuntu";
     font-style: normal;
@@ -3681,7 +3718,25 @@ input[type="submit"] {
     font-size: 18px;
     line-height: 26px;
     color: #000000;
-    margin-right: 20px;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__name > span {
+    display: flex;
+    align-items: center;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__name > input {
+    display: none;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__name .edit {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/edit.svg);
+    content: '';
+    display: block;
+    margin-left: 15px;
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    cursor: pointer;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__status {
     font-family: "Ubuntu";
@@ -3709,9 +3764,14 @@ input[type="submit"] {
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content.main-block {
     max-width: 455px;
-    width: 100%;
-    display: flex;
     flex-direction: column;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content {
+    display: none;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content.active {
+    display: flex;
+    width: 100%;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row {
     display: flex;
@@ -3918,20 +3978,21 @@ input[type="submit"] {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 20px;
-    margin-right: 20px;
-}
+    /* margin-left: 20px;
+    margin-right: 20px; */
+}                                       
 .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li:last-child {
     margin-right: 0;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li  > label {
     margin-bottom: 0;
-    margin-left: 10px;
+    margin-right: 10px;
     font-family: "Ubuntu";
     font-style: normal;
     font-weight: normal;

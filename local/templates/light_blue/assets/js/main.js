@@ -80,6 +80,30 @@ $(document).ready(()=>{
     });
 
 
+
+
+    $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').on( "click", function() {
+        $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+    $('.personal-cabinet-content__doctors-page-box-item__desc__name .edit').on( "click", function() {
+        console.log('aaasa');
+        $('.personal-cabinet-content__doctors-page-box-item__desc__name > span').hide();
+        $('.personal-cabinet-content__doctors-page-box-item__desc__name > input').fadeIn(2000);
+    });
+
+    $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').hover(function () {
+        $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').removeClass('active');
+        $(this).toggleClass('active');
+        $(this).on("click" , function () {
+            $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content').removeClass('active');
+            var data = $(this).data('tabs');
+            $(`.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content[data-tabs="${data}"]`).toggleClass('active');
+        });
+    });
+
+
     $('.personal-cabinet-content__price-page__tabs .title-h5').on( "click", function() {
         $('.personal-cabinet-content__price-page__tabs .title-h5').removeClass('active');
         $(this).toggleClass('active');
@@ -111,6 +135,9 @@ $(document).ready(()=>{
             $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
         });
     });
+
+
+
 
     $(".go-to").on('click', function(e){
 		$('html,body').stop().animate({ scrollTop: $(this.hash).offset().top-150 }, 1500);
@@ -464,14 +491,16 @@ $(document).ready(()=>{
     $('.personal-cabinet-content__doctors-page-box-item__desc__redactor span').click(function() {
         if($(this).text() === 'Редактировать данные') {
             $(this).text('Закрыть');
-            $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc-left')
-            .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
-            .slideDown();
+            $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc').find('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop').slideDown();
+            // $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc')
+            // .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
+            // .slideDown();
         } else {
             $(this).text('Редактировать данные');
-            $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc-left')
-            .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
-            .slideUp();
+            // $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc')
+            // .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
+            // .slideUp();
+            $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc').find('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop').slideUp();
         }
     });
 
