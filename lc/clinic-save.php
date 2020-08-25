@@ -20,6 +20,9 @@ foreach ($_POST['FULL_PROPERTY'] as $data){
         $PROPS[$data] = NULL;
     }
 }
+echo"<pre>";
+print_r($PROPS);
+echo"</pre>";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();

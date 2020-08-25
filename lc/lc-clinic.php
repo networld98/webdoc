@@ -142,6 +142,9 @@ while($ob = $res->GetNextElement()){
                             <? propview($arProps["GUEST_PARKING"])?>
                             <? propview($arProps["DEPARTURE_HOUSE"])?>
                             <? propview($arProps["CHILDREN_DOCTOR"])?>
+                            <? propview($arProps["WIFI"])?>
+                            <? propview($arProps["SMS_MESSAGE"])?>
+                            <? propview($arProps["EMAIL_MESSAGE"])?>
                         </ul>
                     </li>
                     <!--                        <li>-->
