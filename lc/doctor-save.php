@@ -22,6 +22,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         CIBlockElement::SetPropertyValuesEx($_POST['ID_DOCTOR'], false, $PROPS);
         $nameClinic = $obEl->Update($_POST['ID_DOCTOR'],array('NAME' => $_POST['NAME_DOCTOR'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT']));
     ?>
-Данные сохранены
-
+    <span style="color:green">Данные сохранены</span>
 <?}?>

@@ -215,18 +215,16 @@
     flex-basis: auto;
     display: flex;
 }
-.personal-cabinet-none-doctor, .personal-cabinet-none-card {
+.personal-cabinet-none-card {
     font-family: "Montserrat Alternates";
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
     font-weight: bold;
     font-size: 25px;
     line-height: 25px;
     color:red;
-}
-.personal-cabinet-none-card {
-    background: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .personal-cabinet label {
     display: inline-flex;
@@ -278,4 +276,18 @@
 .personal-cabinet .delete-doctor:hover {
     background: transparent;
     color: #E74C77;
+}
+.bx_btn {
+    cursor: pointer;
+    outline: none;
+    font-size: 18px;
+    line-height: 26px;
+    display: inline-block;
+    padding: 12px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    background: #9DD4B3;
+    border: none;
+    width: 100%;
+    text-align: center;
 }

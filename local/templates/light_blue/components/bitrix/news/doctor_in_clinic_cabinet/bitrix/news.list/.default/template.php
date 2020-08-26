@@ -47,7 +47,7 @@ global $idClinic;
         <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
     </li>
 <?}?>
-    <div class="add" value="0" title="Добавить нового врача">Добавить нового врача</div>
+    <div class="add" value="0" title="Добавить нового врача">+ Добавить нового врача</div>
     <form id="form_doctor_NEW" name="form_doctor_NEW" action="" method="post" class="personal-cabinet-content__doctors-page-box-item">
     </form>
 <?foreach($arResult["ITEMS"] as $arItem):?>
@@ -193,44 +193,48 @@ global $idClinic;
                     ' <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">\n' +
                     ' <input type="hidden" name="PHOTO" value="<?=$photoFile?>">\n' +
                     '    <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +
-                    '        <div class="personal-cabinet-content__doctors-page-box-item__desc__head">\n' +
+                    '        <div class="personal-cabinet-content__doctors-page-box-item__desc__head none-margin">\n' +
                     '            <div class="personal-cabinet-content__doctors-page-box-item__desc-left">\n' +
                     '                <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">\n' +
                     '                    <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">\n' +
                     '                        <ul class="checkbox-group">\n' +
                     '                            <li>\n' +
                     '                                <label for="">ФИО\n' +
-                    '                                    <input type="text" name="NAME_DOCTOR" value="">\n' +
+
                     '                                </label>\n' +
+                    '                                    <input type="text" name="NAME_DOCTOR" value="">\n' +
                     '                            </li>\n' +
                     '                           <li>\n' +
                     '                                <label for="">Номер телефона для привязки врача*\n' +
-                    '                                    <input type="text" name="PHONE" value="">\n' +
+
                     '                                </label>\n' +
+                    '                                    <input type="text" name="PHONE" value="">\n' +
                     '                            </li>\n' +
                     '                            <li>\n' +
                     '                                <label for="">Фото\n' +
-                    '                                    <input type="file" id="photoFile" name="DETAIL_PICTURE" value="">\n' +
+
                     '                                </label>\n' +
+                    '                                    <input type="file" id="photoFile" name="DETAIL_PICTURE" value="">\n' +
                     '                            </li>\n' +
                     '                            <li>\n' +
                     '                                <label for="">Пол\n' +
+
+                    '                                </label>\n' +
                     '                                    <select name="GENDER" id="GENDER" value="">\n' +
                     '                                        <option value="70">Мужчина</option>\n' +
                     '                                        <option value="71">Женщина</option>\n' +
                     '                                    </select>\n' +
-                    '                                </label>\n' +
                     '                            </li>\n' +
                     '                        </ul>\n' +
+                            '                <div class="text-view">\n' +
+                            '                    <div id="message-form_NEW"></div>\n' +
+                            '                    <div id="photo-form_NEW" style="display:none;"></div>\n' +
+                            '                    <button type="submit" name="saveProfile" class="save">Добавить врача</button>\n' +
+                            '                </div>\n' +
                     '                    </div>\n' +
                     '                </div>\n' +
                     '            </div>\n' +
                     '            <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">\n' +
-                    '                <div class="text-view">\n' +
-                    '                    <div id="message-form_NEW"></div>\n' +
-                    '                    <div id="photo-form_NEW" style="display:none;"></div>\n' +
-                    '                    <button type="submit" name="saveProfile" class="save">Добавить врача</button>\n' +
-                    '                </div>\n' +
                     '            </div>\n' +
                     '        </div>\n' +
                     '    </div>';

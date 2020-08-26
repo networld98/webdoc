@@ -24,5 +24,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");
     CIBlockElement::SetPropertyValuesEx($_POST['ID_CLINIC'], false, $PROPS);
     ?>
-    Данные сохранены
+    <span style="color:green">Данные сохранены</span>
 <?}?>

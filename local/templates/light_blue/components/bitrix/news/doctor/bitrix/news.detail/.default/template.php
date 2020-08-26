@@ -82,13 +82,6 @@ $doctorName = $arResult['NAME'];
                         <?break;}?>
                     <?}?>
                 <?endif;?>
-                    <? global $USER;
-                    if ($USER->IsAdmin()) {
-
-
-
-                    }?>
-
                 <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] || $arResult["PROPERTIES"]["CITY"]["VALUE"] ):
                     $res = CIBlockSection::GetByID($arResult["PROPERTIES"]["CITY"]["VALUE"]);?>
                     <p class="doctor-card__clinic-adress">

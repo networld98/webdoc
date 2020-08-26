@@ -16,7 +16,7 @@ global $clinicName;
 ?>
 <?if(count($arResult["ITEMS"])>0){?>
     <div class="container">
-        <h2 class="title-h2">Врачи <?=$clinicName?></h2>
+        <h1 class="title-h2">Врачи <?=$clinicName?></h1>
     </div>
 <?}?>
 <section class="container result-filter">

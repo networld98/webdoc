@@ -90,7 +90,7 @@ foreach ($work_time as $time){
 <?if($idClinic !=NULL){?>
 <form id="form_clinic" name="form_clinic" action="" method="post">
     <div class="personal-cabinet-content__schedule-page">
-        <h2 class="title-h2"><?$APPLICATION->ShowTitle()?></h2>
+        <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
         <div class="personal-cabinet-content__schedule-page__adress-info">
             <?if($arProps['ADDRESS']['VALUE'] && $arProps['CITY']['VALUE']){?>
             <div class="adress">

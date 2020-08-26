@@ -212,7 +212,7 @@ input[type="reset"] {
 .side-menu li {
     font-family: "Montserrat Alternates-Bold", sans-serif;
 }
-main.container {
+main .container {
     padding-right: 15px;
     padding-left: 15px;
     margin: 0 auto 118px;

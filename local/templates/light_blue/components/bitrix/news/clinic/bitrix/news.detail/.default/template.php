@@ -366,7 +366,7 @@ function propsClinic($prop){
                 <li data-tabs="3">Акции<span><?=count($arResult["PROPERTIES"]["STOCKS"]["VALUE"])?></span></li>
             <?endif;?>
             <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]):?>
-                <li data-tabs="4">Цены<span><?=count($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"])?></span></li>
+                <li data-tabs="4">Цены<span><?=count($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"])+count($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"])?></span></li>
             <?endif;?>
         </ul>
     </div>
@@ -644,6 +644,10 @@ function propsClinic($prop){
                 $price = explode('/',$item);
                 $doctorPrice[$price[0]][] = array('SERVICE'=>$price[1],'PRICE'=>$price[2]);
             } ?>
+            <?foreach ($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"] as $item){
+                $price = explode('/',$item);
+                $diagnistPrice[$price[0]][] = array('SERVICE'=>$price[1],'PRICE'=>$price[2]);
+            } ?>
              <?foreach ($doctorPrice as $key => $doctor){?>
                  <div class="clinic-card-full-desc__content__price-item">
                      <table>
@@ -664,6 +668,27 @@ function propsClinic($prop){
                      </table>
                      <hr/>
                  </div>
+            <?}?>
+            <?foreach ($diagnistPrice as $key => $doctor){?>
+                <div class="clinic-card-full-desc__content__price-item">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td><?=$key?></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?foreach ($doctor as $item){?>
+                            <tr>
+                                <td><?=$item['SERVICE']?></td>
+                                <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
+                                <td><button>Запись на услугу</button></td>
+                            </tr>
+                        <?}?>
+                        </tbody>
+                    </table>
+                    <hr/>
+                </div>
             <?}?>
         </div>
     </div>

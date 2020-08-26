@@ -14,4 +14,5 @@ $rsUser = CUser::GetByID($USER->GetID());
     <?include 'lc-doctor.php';?>
     <? include 'menu.php';?>
 <?}?>
+
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

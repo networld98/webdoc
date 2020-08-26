@@ -90,4 +90,18 @@ $APPLICATION->SetTitle(""); ?>
         false
     ); ?>
 </section>
+<section class="container">
+<? $APPLICATION->IncludeComponent(
+    "bitrix:main.include",
+    ".default",
+    array(
+        "AREA_FILE_SHOW" => "file",
+        "AREA_FILE_SUFFIX" => "inc",
+        "EDIT_TEMPLATE" => "",
+        "COMPONENT_TEMPLATE" => ".default",
+        "PATH" => "/include/main_text.php"
+    ),
+    false
+); ?>
+</section>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
