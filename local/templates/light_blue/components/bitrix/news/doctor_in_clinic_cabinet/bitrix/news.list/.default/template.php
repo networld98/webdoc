@@ -155,20 +155,20 @@ global $idClinic;
                                         <?propselectspan($arItem['PROPERTIES']['CATEGORY'],$arParams['IBLOCK_ID'])?>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="1">
-                                        <div class="row personal-cabinet-content__doctors-page-box-item">
-                                            <div class="col-lg-12">
+                                        <div class="row personal-cabinet-content-item">
+                                            <div class="col-lg-12 no-padding">
                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                     <span>Фото</span>
                                                     <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 no-padding">
                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                     <span>О враче</span>
                                                     <textarea name="PREVIEW_TEXT"><?=$arItem['PREVIEW_TEXT']?></textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12 no-padding">
                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                     <span>Описание специализации</span>
                                                     <textarea name="DETAIL_TEXT"><?=$arItem['DETAIL_TEXT']?></textarea>
@@ -177,6 +177,7 @@ global $idClinic;
                                         </div>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="2">
+                                        <span class="time-block-span"><?=$arItem['PROPERTIES']['SPECIALIZATIONS']['NAME']?></span>
                                         <ul class="link-checkbox">
                                             <?$arFilter = Array("IBLOCK_ID"=>"11","ACTIVE"=>"Y");
                                             $arSelect = Array("NAME","CODE","ID");
@@ -195,12 +196,58 @@ global $idClinic;
                                         </ul>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="3">
-                                        <h1>3</h1>
+                                        <div class="row place-education-block">
+                                            <div class="col-lg-12 no-padding">
+                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                    <span><?=$arItem['PROPERTIES']['STANDING']['NAME']?></span>
+                                                    <input type="text" name="<?=$arItem['PROPERTIES']['STANDING']['CODE']?>" value="<?=$arItem['PROPERTIES']['STANDING']['VALUE']?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 no-padding">
+                                                <?
+                                                foreach ($arItem['PROPERTIES']['EXPERIENCE']['VALUE'] as $plaсe) {
+                                                    $work_plaсe[] = array('PERIOD' => explode("/", $plaсe)[0], 'PLAСE' => explode("/", $plaсe)[1]);
+                                                }?>
+                                                <?foreach ($work_plaсe as $key => $str){?>
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <span>Период</span>
+                                                        <input type="text" class="place-education-block_period" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PERIOD']?>">
+                                                        <span>Место работы</span>
+                                                        <input type="text" class="place-education-block_place" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PLAСE']?>">
+                                                    </div>
+                                                <?
+                                                    $place_key = $key+1;
+                                                }
+                                                $place_key_last = 0 + $place_key;?>
+                                                <div id="input_work<?=$place_key_last?>"></div>
+                                                <div class="add-place" value="<?=$place_key_last?>" title="Добавить место работы">+</div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="4">
-                                        <h1>4</h1>
+                                        <div class="row place-education-block">
+                                            <div class="col-lg-12 no-padding">
+                                                <?foreach ($arItem['PROPERTIES']['EDUCATION']['VALUE'] as $education) {
+                                                    $education_plaсe[] = array('PERIOD' => explode("/", $education)[0], 'PLAСE' => explode("/", $education)[1]);
+                                                }?>
+                                                <?foreach ($education_plaсe as $key => $str){?>
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <span>Период</span>
+                                                        <input type="text" class="place-education-block_period" name="EDUCATION_<?=$key?>[]" value="<?=$str['PERIOD']?>">
+                                                        <span>Место учебы</span>
+                                                        <input type="text" class="place-education-block_place" name="EDUCATION_<?=$key?>[]" value="<?=$str['PLAСE']?>">
+                                                    </div>
+                                                    <?
+                                                    $education_key = $key+1;
+                                                }
+                                                $education_key_last = 0 + $education_key;?>
+                                                <div id="input_education<?=$education_key_last?>"></div>
+                                                <div class="add-education" value="<?=$education_key_last?>" title="Добавить место учебы">+</div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
+                                        <span class="time-block-span"><?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['NAME']?></span>
                                         <ul class="checkbox-group time-group">
                                             <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
                                                 <li>
@@ -210,9 +257,9 @@ global $idClinic;
                                                 $contact_key = $key+1;
                                             }
                                             $contact_key_last = 0 + $contact_key;?>
-                                            <ul id="input<?=$contact_key_last?>" class="checkbox-group contacts-group"></ul>
+                                            <ul id="input<?=$contact_key_last?>"></ul>
                                         </ul>
-                                        <div class="add-time" value="<?=$contact_key_last?>" title="Добавить время телефон">+</div>
+                                        <div class="add-time" value="<?=$contact_key_last?>" title="Добавить время">+</div>
                                     </div>
                                 </div>
                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
@@ -290,14 +337,37 @@ global $idClinic;
                 });
                 return false;
             });
-            var x = <?=$contact_key_last?>;
+            let x = <?=$contact_key_last?>;
             $('.add-time').on('click', function () {
                 if (x < 10) {
-                    var str = '<li><input type="text" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + (x + 1) + '"></ul>';
+                    console.log(x);
+                    let str = '<li><input type="text" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + (x + 1) + '"></ul>';
                     document.getElementById('input' + x).innerHTML = str;
                     x++;
                 }else{
                     $('.add-time').hide();
+                }
+            });
+            let y = <?=$place_key_last?>;
+            $('.add-place').on('click', function () {
+                if (y < 10) {
+                    console.log(y);
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Период</span> <input type="text" class="place-education-block_period" name="EXPERIENCE_' + (y + 1) + '[]"> <span>Место работы</span><input type="text" class="place-education-block_place" name="EXPERIENCE_' + (y + 1) + '[]"></div><div id="input_work' + (y + 1) + '"></div>';
+                    document.getElementById('input_work' + y).innerHTML = str;
+                    y++;
+                }else{
+                    $('.add-place').hide();
+                }
+            });
+           let z = <?=$education_key_last?>;
+            $('.add-education').on('click', function () {
+                if (z < 10) {
+                    console.log(z);
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Период</span> <input type="text" class="place-education-block_period" name="EDUCATION_' + (z + 1) + '[]"> <span>Место учебы</span><input type="text" class="place-education-block_place" name="EDUCATION_' + (z + 1) + '[]"></div><div id="input_education' + (z + 1) + '"></div>';
+                    document.getElementById('input_education' + z).innerHTML = str;
+                    z++;
+                }else{
+                    $('.add-education').hide();
                 }
             });
         });

@@ -6,6 +6,14 @@ foreach ($_POST as $key => $data){
         $PROPS['SPECIALIZATIONS'] = $data;
     } elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false) {
         $PROPS['RECEPTION_SCHEDULE'] = $data;
+    } elseif (strpos($key, 'EXPERIENCE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+        if (is_array($data)) {
+            $PROPS['EXPERIENCE'][] = $data[0].'/'.$data[1];
+        }
+    } elseif (strpos($key, 'EDUCATION') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+        if (is_array($data)) {
+            $PROPS['EDUCATION'][] = $data[0].'/'.$data[1];
+        }
     } else {
         $PROPS[$key] = $data;
     }
@@ -15,9 +23,6 @@ foreach ($_POST['FULL_PROPERTY'] as $data) {
         $PROPS[$data] = NULL;
     }
 }
-echo"<pre>";
-print_r($_POST);
-echo"</pre>";
 if(empty($_POST['PHOTO'])){
     $PROPS[141] = 107;
 }else{

@@ -98,10 +98,10 @@ $(document).ready(()=>{
 
 
 
-  /*  $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').on( "click", function() {
+    $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').on( "click", function() {
         $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').removeClass('active');
         $(this).toggleClass('active');
-    });*/
+    });
 
     $('.personal-cabinet-content__doctors-page-box-item__desc__name .edit').on( "click", function() {
         $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc__name').children('span').hide();
@@ -169,9 +169,6 @@ $(document).ready(()=>{
             $(`.library-content[data-tabs="${data}"]`).toggleClass('active');
         });
     });
-
-
-
 
     $(".go-to").on('click', function(e){
 		$('html,body').stop().animate({ scrollTop: $(this.hash).offset().top-150 }, 1500);
@@ -242,6 +239,55 @@ $(document).ready(()=>{
                 }
             },
         ]
+    });
+    
+    $('.slick-slider4').slick({
+        arrows: true,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        variableWidth: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                  slidesToShow: 3,
+                  variableWidth: true,
+                  infinite:false,
+                }
+            },
+            {
+                breakpoint: 650,
+                settings: {
+                    slidesToShow: 1,
+                    variableWidth: true,
+                    infinite:false,
+                }
+              },
+        ]
+    });
+
+    $('.flowing-scroll').on( 'click', function(){ 
+        var el = $(this);
+        var dest = el.attr('href'); // получаем направление
+        // var dest = el.data('href'); // получаем направление
+        if(dest !== undefined && dest !== '') { // проверяем существование
+            if($('.anchor-block').css('position') == 'fixed') {
+                console.log('fixed');
+                $('html').animate({ 
+                    scrollTop: $(dest).offset().top - 140 // прокручиваем страницу к требуемому элементу
+                }, 1000 // скорость прокрутки
+                );
+            } else {
+                console.log('no-fixed');
+                $('html').animate({ 
+                    scrollTop: $(dest).offset().top - 265 // прокручиваем страницу к требуемому элементу
+                }, 1000 // скорость прокрутки
+                );
+            }
+            
+        }
+        return false;
     });
 
     $('.search-doctors').on( "click", function() {

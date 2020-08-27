@@ -77,7 +77,7 @@ $strContID = 'bx_catalog_slider_'.$this->randString();
 					</a>
 				</div>
 				<div class="bx_slider_content_container">
-					<h1 class="bx_slider_title"><a href="<? echo $arItem['DETAIL_PAGE_URL']; ?>" title="<? echo $productTitle; ?>"><? echo $productTitle; ?></a></h1>
+					<h2 class="bx_slider_title"><a href="<? echo $arItem['DETAIL_PAGE_URL']; ?>" title="<? echo $productTitle; ?>"><? echo $productTitle; ?></a></h2>
 					<?
 					if ('' != $arItem['PREVIEW_TEXT'])
 					{

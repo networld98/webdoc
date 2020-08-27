@@ -15,6 +15,7 @@
     box-sizing: border-box;
     border-radius: 5px;
     box-shadow: unset;
+    padding: 8px 0 8px 11px;
 }
 
 .personal-cabinet-content__my-profile__info-desc ul > li > input {
@@ -49,16 +50,16 @@
     max-height: 120px;
     overflow: auto;
 }
-.personal-cabinet-content__my-profile .metro-container::-webkit-scrollbar-track {
+.personal-cabinet-content__my-profile .metro-container::-webkit-scrollbar-track, textarea::-webkit-scrollbar-track  {
     box-shadow: inset 0 0 5px #c1c1c1;
     border-radius: 10px;
   }
-  .personal-cabinet-content__my-profile .metro-container::-webkit-scrollbar {
+  .personal-cabinet-content__my-profile .metro-container::-webkit-scrollbar, textarea::-webkit-scrollbar  {
     background: transparent;
     width: 5px;
 
 }
-.personal-cabinet-content__my-profile .metro-container::-webkit-scrollbar-thumb {
+.personal-cabinet-content__my-profile .metro-container::-webkit-scrollbar-thumb, textarea::-webkit-scrollbar-thumb  {
     background: #9DD4B3;
     border-radius: 10px;
     cursor: pointer;
@@ -107,12 +108,9 @@
     border-radius: 10px;
     cursor: pointer;
 }
-.personal-cabinet-content__my-profile .contacts-group{
+.personal-cabinet-content__my-profile .contacts-group, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group{
     width: calc(100% - 215px);
 }
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group{
-      width: calc(100% - 40px);
-  }
 .personal-cabinet-content__my-profile .contacts-group li {
     width: 100%;
     margin:0;
@@ -121,7 +119,7 @@
 .personal-cabinet-content__my-profile .contacts-group li:last-child {
     margin-bottom: 0;
 }
-.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time
+.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time, .place-education-block .add-place, .place-education-block .add-education
 {
     width: 35px;
     height: 35px;
@@ -136,6 +134,13 @@
     align-self: flex-end;
     cursor: pointer;
     margin-bottom: 10px;
+    margin-left: 10px;
+    float: right;
+}
+.place-education-block .add-place, .place-education-block .add-education {
+    position: absolute;
+    right: -43px;
+    bottom: 0;
 }
 
 
@@ -271,6 +276,7 @@
 }
 .personal-cabinet .save {
     margin-left: 20px;
+    margin-top: 20px;
 }
 .personal-cabinet .delete-doctor{
     background: #E74C77;
@@ -295,8 +301,8 @@
     width: 100%;
     text-align: center;
 }
-.personal-cabinet-content__doctors-page-box-item {
-    width: 100%;
+.personal-cabinet-content-item, .place-education-block {
+    width: calc(100% - 24px);
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content ul {
     list-style: none;
@@ -311,7 +317,7 @@
     margin-bottom: 10px;
 }
 
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child{
     max-width: 166px;
     width: 100%;
     font-family: "Ubuntu";
@@ -321,4 +327,34 @@
     line-height: 24px;
     text-align: right;
     color: #000000;
+}
+.time-block-span{
+    max-width: 166px;
+    width: 100%;
+    line-height: 1;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.place-education-block span {
+max-width: 101px;
+width: 100%;
+}
+.no-padding{
+padding-left: 0!important;
+padding-right: 0!important;
+}
+.place-education-block input:not(.place-education-block_place) {
+width: 100px!important;
+}
+
+@media (max-width: 1430px) {
+.personal-cabinet-content__my-profile .contacts-group {
+    width: 100%;
+}
+}
+@media (max-width: 730px) {
+.header .container.cabinet .contacts {
+    display: none;
+}
 }
