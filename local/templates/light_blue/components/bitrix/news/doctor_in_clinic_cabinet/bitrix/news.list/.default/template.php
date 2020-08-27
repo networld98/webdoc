@@ -17,20 +17,17 @@ global $idClinic;
 <?function propview($prop,$id,$iblock){
     $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
     if($ar_enum_list = $db_enum_list->GetNext()) ?>
-        <li>
-        <label data-role="label_<?=$prop["CODE"]?>_<?=$id?>" class="bx_filter_param_label " for="<?=$prop["CODE"]?>_<?=$id?>">
-            <span class="bx_filter_input_checkbox">
-                <input type="checkbox" <?if($prop["VALUE"] == 'Y'){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$prop["CODE"]?>" id="<?=$prop["CODE"]?>_<?=$id?>">
-                    <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
-                <span class="bx_filter_param_text"><?=$prop["NAME"]?></span>
-            </span>
-        </label>
+    <label data-role="label_<?=$prop["CODE"]?>_<?=$id?>" class="bx_filter_param_label " for="<?=$prop["CODE"]?>_<?=$id?>">
+        <span class="bx_filter_input_checkbox">
+            <input type="checkbox" <?if($prop["VALUE"] == 'Y'){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$prop["CODE"]?>" id="<?=$prop["CODE"]?>_<?=$id?>">
+                <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
+            <span class="bx_filter_param_text"><?=$prop["NAME"]?></span>
+        </span>
+    </label>
     <input type="hidden" name="FULL_PROPERTY[]" value="<?=$prop["CODE"]?>">
-    </li>
 <?}?>
 <?function propselect($prop,$iblock){?>
-<li>
-        <label for=""><?=$prop['NAME']?></label>
+    <label for=""><?=$prop['NAME']?></label>
     <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
         <?
         $property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$iblock, "CODE"=>$prop["CODE"]));
@@ -39,13 +36,54 @@ global $idClinic;
             <option value="<?=$enum_fields["ID"]?>" <?if($prop['VALUE']==$enum_fields["VALUE"]){?>selected<?}?>><?=$enum_fields["VALUE"]?></option>
        <? }?>
     </select>
-    </li>
+<?}?>
+<?function propselectspan($prop,$iblock){?>
+    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+        <span><?=$prop['NAME']?></span>
+        <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
+            <?
+            $property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$iblock, "CODE"=>$prop["CODE"]));
+            while($enum_fields = $property_enums->GetNext())
+            {?>
+                <option value="<?=$enum_fields["ID"]?>" <?if($prop['VALUE']==$enum_fields["VALUE"]){?>selected<?}?>><?=$enum_fields["VALUE"]?></option>
+            <? }?>
+        </select>
+    </div>
+<?}?>
+<?function propselectSpecSec($prop,$iblock){?>
+    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+        <span><?=$prop['NAME']?></span>
+        <select name="SPECIALIZATION_MAIN" id="SPECIALIZATION_MAIN" value="">
+            <?
+            $arSelect = array("ID", "NAME");
+            $arFilter = array("IBLOCK_ID"=>$iblock);
+            $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+            while($ar_result = $obSections->GetNext())
+            {?>
+                ?>
+                <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
+            <?}?>
+        </select>
+    </div>
+<?}?>
+<?function propselectSpecElm($prop,$iblock){?>
+    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+        <span><?=$prop['NAME']?></span>
+        <select name="SPECIALIZATION_MAIN" id="SPECIALIZATION_MAIN" value="">
+            <?
+            $arSelect = array("ID", "NAME");
+            $arFilter = array("IBLOCK_ID"=>$iblock);
+            $obSections = CIBlockElement::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+            while($ar_result = $obSections->GetNext())
+            {?>
+                <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
+            <?}?>
+        </select>
+    </div>
 <?}?>
 <?function propofficial($prop){?>
-    <li>
-        <label for=""><?=$prop['NAME']?></label>
-        <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
-    </li>
+    <label for=""><?=$prop['NAME']?></label>
+    <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
 <?}?>
     <div class="add" value="0" title="Добавить нового врача">+ Добавить нового врача</div>
     <form id="form_doctor_NEW" name="form_doctor_NEW" action="" method="post" class="personal-cabinet-content__doctors-page-box-item">
@@ -57,93 +95,146 @@ global $idClinic;
     ?>
     <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
             <input type="hidden" name="ID_DOCTOR" value="<?=$arItem['ID']?>">
-            <div class="personal-cabinet-content__doctors-page-box-item__img">
-                <?if($arItem['DETAIL_PICTURE']['SRC']!=NULL){?>
-                    <img src="<?= $arItem['DETAIL_PICTURE']['SRC'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
-                <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']==NULL || $arItem['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                <?}?>
-            </div>
-            <div class="personal-cabinet-content__doctors-page-box-item__desc">
-                <div class="personal-cabinet-content__doctors-page-box-item__desc__head">
-                    <div class="personal-cabinet-content__doctors-page-box-item__desc-left">
-                        <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">
-                            <span class="personal-cabinet-content__doctors-page-box-item__desc__name">
-                                <input type="text" name="NAME_DOCTOR" value="<?=$arItem['NAME']?>">
-                            </span>
-                           <? /*<span class="personal-cabinet-content__doctors-page-box-item__desc__status">не работает в клинике</span>*/?>
-                        </div>
-                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor">
-                            <span>Редактировать данные</span>
-                        </div>
-                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop">
-                            <ul>
-                                <li class="active">Основное</li>
-                                <li>Профиль лечения</li>
-                                <li>Образование</li>
-                                <li>Опыт работы</li>
-                                <li>Курсы</li>
-                            </ul>
-                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content main-block">
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                    <span>Главная специальность</span>
-                                    <select name="" id="">
-                                        <option value="">Хирург</option>
-                                    </select>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                    <span>Степень</span>
-                                    <select name="" id="">
-                                        <option value="">-----------------</option>
-                                    </select>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                    <span>Категория</span>
-                                    <select name="" id="">
-                                        <option value="">-----------------</option>
-                                    </select>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row last">
-                                    <span>Главная специальность</span>
-                                    <input type="text" name="" id="" value="0">
-                                    <span>лет</span>
-                                    <span>с</span>
-                                    <select name="" id="">
-                                        <option value="">2000</option>
-                                    </select>
-                                    <span>года</span>
-                                </div>
-                                <button class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__btn">Сохранить</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">
-                        <div class="toggle reverse_switch">
-                            <?$db_enum_list = CIBlockProperty::GetPropertyEnum($arItem['PROPERTIES']['NOT_ON']['CODE'], Array(), Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "VALUE"=>"Y"));
-                            if($ar_enum_list = $db_enum_list->GetNext()) ?>
-                            <input type="checkbox"  id="normal_<?=$arItem['ID']?>" <?if($arItem['PROPERTIES']['NOT_ON']['VALUE']=='Y'){?>checked<?}?> name="<?=$arItem['PROPERTIES']['NOT_ON']['CODE']?>" value="<?=$ar_enum_list['ID']?>" class="swith" type="checkbox"/>
-                            <label class="toggle-item" for="normal_<?=$arItem['ID']?>"></label>
-                            <input type="hidden" name="FULL_PROPERTY[]" value="<?=$arItem['PROPERTIES']['NOT_ON']['CODE']?>">
-                        </div>
+             <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
+            <div class="row">
+                <div class="col-lg-1">
+                    <div class="personal-cabinet-content__doctors-page-box-item__img">
+                        <?if($arItem['DETAIL_PICTURE']['SRC']!=NULL){?>
+                            <img src="<?= $arItem['DETAIL_PICTURE']['SRC'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
+                        <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']==NULL || $arItem['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
+                        <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
+                        <?}?>
                     </div>
                 </div>
-                <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
-                    <ul class="checkbox-group">
-                        <? propselect($arItem['PROPERTIES']['GENDER'],$arParams['IBLOCK_ID'])?>
-                        <?propofficial($arItem['PROPERTIES']['AGE_PACIENT'])?>
-                        <?propview($arItem['PROPERTIES']['CHILDREN_DOCTOR'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
-                        <?propview($arItem['PROPERTIES']['DEPARTURE_HOUSE'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
-                        <?propview($arItem['PROPERTIES']['ONLINE'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
-                        <?propview($arItem['PROPERTIES']['UMC'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
-                        <?propview($arItem['PROPERTIES']['DMC'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
-                        <?propview($arItem['PROPERTIES']['DIAGNOSTICS'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
-                    </ul>
-                    <div class="text-view">
-                        <div id="message-form_<?=$arItem['ID']?>"></div>
-                        <span class="save delete-doctor" id="delete_<?=$arItem['ID']?>">Отвязать врача от клиники</span>
-                        <button type="submit" name="saveProfile" class="save">Сохранить</button>
+                <div class="col-lg-11">
+                    <div class="personal-cabinet-content__doctors-page-box-item__desc">
+                        <div class="row personal-cabinet-content__doctors-page-box-item__desc__head">
+                            <div class="col-lg-10">
+                                <div class="personal-cabinet-content__doctors-page-box-item__desc-left">
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">
+                                            <span class="personal-cabinet-content__doctors-page-box-item__desc__name"><span><a href="/doctors/<?=$arItem['CODE']?>/"><?=$arItem['NAME']?></a><div class="edit"></div></span>
+                                                <input type="text" name="NAME_DOCTOR" value="<?=$arItem['NAME']?>" class="changedInput">
+                                            </span>
+                                        </div>
+                                        <? /*<span class="personal-cabinet-content__doctors-page-box-item__desc__status">не работает в клинике</span>*/?>
+                                    </div>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor">
+                                        <span>Редактировать данные</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">
+                                    <div class="toggle reverse_switch">
+                                        <?$db_enum_list = CIBlockProperty::GetPropertyEnum($arItem['PROPERTIES']['NOT_ON']['CODE'], Array(), Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "VALUE"=>"Y"));
+                                        if($ar_enum_list = $db_enum_list->GetNext()) ?>
+                                        <input type="checkbox"  id="normal_<?=$arItem['ID']?>" <?if($arItem['PROPERTIES']['NOT_ON']['VALUE']=='Y'){?>checked<?}?> name="<?=$arItem['PROPERTIES']['NOT_ON']['CODE']?>" value="<?=$ar_enum_list['ID']?>" class="swith" type="checkbox"/>
+                                        <label class="toggle-item" for="normal_<?=$arItem['ID']?>"></label>
+                                        <input type="hidden" name="FULL_PROPERTY[]" value="<?=$arItem['PROPERTIES']['NOT_ON']['CODE']?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop">
+                                    <ul>
+                                        <li class="active" data-tabs="0">Основное</li>
+                                        <li data-tabs="1">О враче</li>
+                                        <li data-tabs="2">Профиль лечения</li>
+                                        <li data-tabs="3">Опыт работы</li>
+                                        <li data-tabs="4">Образование</li>
+                                        <li data-tabs="5">График</li>
+                                    </ul>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content main-block active" data-tabs="0">
+                                        <?propselectSpecSec($arItem['PROPERTIES']['SPECIALIZATION_MAIN'],11)?>
+                                        <?propselectSpecSec($arItem['PROPERTIES']['SPECIALIZATION_DOP'],11)?>
+                                        <?propselectspan($arItem['PROPERTIES']['RANK'],$arParams['IBLOCK_ID'])?>
+                                        <?propselectspan($arItem['PROPERTIES']['SCIENCE_DEGREE'],$arParams['IBLOCK_ID'])?>
+                                        <?propselectspan($arItem['PROPERTIES']['CATEGORY'],$arParams['IBLOCK_ID'])?>
+                                    </div>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="1">
+                                        <div class="row personal-cabinet-content__doctors-page-box-item">
+                                            <div class="col-lg-12">
+                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                    <span>Фото</span>
+                                                    <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                    <span>О враче</span>
+                                                    <textarea name="PREVIEW_TEXT"><?=$arItem['PREVIEW_TEXT']?></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                    <span>Описание специализации</span>
+                                                    <textarea name="DETAIL_TEXT"><?=$arItem['DETAIL_TEXT']?></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="2">
+                                        <ul class="link-checkbox">
+                                            <?$arFilter = Array("IBLOCK_ID"=>"11","ACTIVE"=>"Y");
+                                            $arSelect = Array("NAME","CODE","ID");
+                                            $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
+                                            while($ob = $res->GetNextElement()){
+                                                $arFields = $ob->GetFields(); ?>
+                                                <li>
+                                                    <input type="checkbox" <?if(in_array($arFields['ID'],$arItem['PROPERTIES']['SPECIALIZATIONS']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>" name="<?=$arItem['PROPERTIES']['SPECIALIZATIONS']['CODE']?>[]" id="<?=$arFields['ID']?>_<?=$arItem['ID']?>">
+                                                    <label data-role="label_<?=$arFields['ID']?>_<?=$arItem['ID']?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>_<?=$arItem['ID']?>">
+                                                        <span class="bx_filter_input_checkbox">
+                                                            <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            <?}?>
+                                        </ul>
+                                    </div>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="3">
+                                        <h1>3</h1>
+                                    </div>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="4">
+                                        <h1>4</h1>
+                                    </div>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
+                                        <ul class="checkbox-group time-group">
+                                            <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
+                                                <li>
+                                                    <input type="text" name="<?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
+                                                </li>
+                                                <?
+                                                $contact_key = $key+1;
+                                            }
+                                            $contact_key_last = 0 + $contact_key;?>
+                                            <ul id="input<?=$contact_key_last?>" class="checkbox-group contacts-group"></ul>
+                                        </ul>
+                                        <div class="add-time" value="<?=$contact_key_last?>" title="Добавить время телефон">+</div>
+                                    </div>
+                                </div>
+                                <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
+                                    <ul class="checkbox-group">
+                                        <li><?propselect($arItem['PROPERTIES']['GENDER'],$arParams['IBLOCK_ID'])?></li>
+                                        <li><?propofficial($arItem['PROPERTIES']['AGE_PACIENT'])?></li>
+                                        <li><?propview($arItem['PROPERTIES']['CHILDREN_DOCTOR'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
+                                        <li><?propview($arItem['PROPERTIES']['DEPARTURE_HOUSE'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
+                                        <li><?propview($arItem['PROPERTIES']['ONLINE'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
+                                        <li><?propview($arItem['PROPERTIES']['UMC'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
+                                        <li><?propview($arItem['PROPERTIES']['DMC'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
+                                        <li><?propview($arItem['PROPERTIES']['DIAGNOSTICS'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
+                                    </ul>
+                                    <div class="text-view">
+                                        <div id="message-form_<?=$arItem['ID']?>"></div>
+                                        <div id="photo-form_<?=$arItem['ID']?>" style="display:none;"></div>
+                                        <span class="save delete-doctor" id="delete_<?=$arItem['ID']?>">Отвязать врача от клиники</span>
+                                        <button type="submit" name="saveProfile" class="save">Сохранить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -177,6 +268,37 @@ global $idClinic;
                     }
                 });
                 return false;
+            });
+            $(document).on('change', '.photoFile', function(){
+                let file_data = $(this).prop('files')[0];
+                let form_data = new FormData();
+                let formPhoto= $("#photo-form_<?=$arItem['ID']?>");
+                form_data.append('file', file_data);
+                $.ajax({
+                    url: '/lc/file_upload.php', // point to server-side PHP script
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function(form_data){
+                        $(formPhoto).html(form_data);
+                        let file = $("#photo-form_<?=$arItem['ID']?>").text();
+                        $('input[name="PHOTO"]').val(file);
+                    }
+                });
+                return false;
+            });
+            var x = <?=$contact_key_last?>;
+            $('.add-time').on('click', function () {
+                if (x < 10) {
+                    var str = '<li><input type="text" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + (x + 1) + '"></ul>';
+                    document.getElementById('input' + x).innerHTML = str;
+                    x++;
+                }else{
+                    $('.add-time').hide();
+                }
             });
         });
     </script>
@@ -214,7 +336,7 @@ global $idClinic;
                     '                                <label for="">Фото\n' +
 
                     '                                </label>\n' +
-                    '                                    <input type="file" id="photoFile" name="DETAIL_PICTURE" value="">\n' +
+                    '                                    <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">\n' +
                     '                            </li>\n' +
                     '                            <li>\n' +
                     '                                <label for="">Пол\n' +
@@ -241,7 +363,22 @@ global $idClinic;
                 document.getElementById('form_doctor_NEW').innerHTML = str;
                 $('.add').hide();
             });
-            $(document).on('change', '#photoFile', function(){
+            $("#form_doctor_NEW").submit(function () {
+                let formID = $(this).attr('id');
+                let formNm = $('#' + formID);
+                let formMs = $("#message-form_NEW");
+                $.ajax({
+                    type: "POST",
+                    url: '/lc/doctor-add.php',
+                    data: formNm.serialize(),
+                    success: function (data) {
+                        // Вывод текста результата отправки
+                        $(formMs).html(data);
+                    }
+                });
+                return false;
+            });
+            $(document).on('change', '.photoFile', function(){
                 let file_data = $(this).prop('files')[0];
                 let form_data = new FormData();
                 let formPhoto= $("#photo-form_NEW");
@@ -258,21 +395,6 @@ global $idClinic;
                         $(formPhoto).html(form_data);
                         let file = $('#photo-form_NEW').text();
                         $('input[name="PHOTO"]').val(file);
-                    }
-                });
-                return false;
-            });
-            $("#form_doctor_NEW").submit(function () {
-                let formID = $(this).attr('id');
-                let formNm = $('#' + formID);
-                let formMs = $("#message-form_NEW");
-                $.ajax({
-                    type: "POST",
-                    url: '/lc/doctor-add.php',
-                    data: formNm.serialize(),
-                    success: function (data) {
-                        // Вывод текста результата отправки
-                        $(formMs).html(data);
                     }
                 });
                 return false;

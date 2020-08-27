@@ -229,7 +229,6 @@ while($ob = $res->GetNextElement()){
                 hintContent: '<?=$arFields['NAME']?>'
             }, {
                 searchControlProvider: 'yandex#search',
-
             });
             var myPlacemark = new ymaps.Placemark([<?=$arProps["MAP"]['VALUE']?>], {
                 hintContent: 'Содержимое всплывающей подсказки',

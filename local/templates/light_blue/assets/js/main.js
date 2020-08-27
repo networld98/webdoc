@@ -22,6 +22,22 @@ $(document).ready(()=>{
 
     });
 
+    $(function () {
+        var elem = $('.fixed-block');
+        var top = $(this).scrollTop();
+
+        $(window).scroll(function () {
+            top = $(this).scrollTop();
+
+            if (top < 24) {
+                elem.css({'top': 0, position: 'relative',backgroundColor: 'transparent'});
+            } else {
+                elem.css({top: '133px', position: 'fixed', backgroundColor: '#fff'});
+            }
+        });
+
+    });
+
     // $(window).resize(function() {
         if ($(window).width() <= 450) {
             $('.statistics__header span').html("Бесплатный сервис</br> подбора медицинских услуг");
@@ -82,19 +98,20 @@ $(document).ready(()=>{
 
 
 
-    $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').on( "click", function() {
+  /*  $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').on( "click", function() {
         $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').removeClass('active');
         $(this).toggleClass('active');
-    });
+    });*/
 
     $('.personal-cabinet-content__doctors-page-box-item__desc__name .edit').on( "click", function() {
-        console.log('aaasa');
-        $('.personal-cabinet-content__doctors-page-box-item__desc__name > span').hide();
-        $('.personal-cabinet-content__doctors-page-box-item__desc__name > input').fadeIn(2000);
+        $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc__name').children('span').hide();
+        $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc__name').children('input').fadeIn(2000);
+        // $('.personal-cabinet-content__doctors-page-box-item__desc__name > span').hide();
+        // $('.personal-cabinet-content__doctors-page-box-item__desc__name > input').fadeIn(2000);
     });
 
-    $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').hover(function () {
-        $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop ul > li').removeClass('active');
+    $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul > li').hover(function () {
+        $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul > li').removeClass('active');
         $(this).toggleClass('active');
         $(this).on("click" , function () {
             $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content').removeClass('active');
@@ -133,6 +150,23 @@ $(document).ready(()=>{
             $('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
             var data = $(this).data('tabs');
             $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
+        });
+    });
+
+    $('.library-sort > li').on( "click", function() {
+        $('.library-sort > li').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+
+    $('.library-sort > li').hover(function () {
+        $('.library-sort > li').removeClass('active');
+        $(this).toggleClass('active');
+        console.log('as');
+        $(this).on("click" , function () {
+            $('.library-content').removeClass('active');
+            var data = $(this).data('tabs');
+            $(`.library-content[data-tabs="${data}"]`).toggleClass('active');
         });
     });
 
@@ -449,6 +483,41 @@ $(document).ready(()=>{
         console.log($(this).parents('.clinic-card'));
         // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
         $($(this).parents('main').find('.mess-popup .popup-box')).show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+         
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
+
+    $('.popup-alp-click').click(function(e) {
+     
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+         
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+         
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        console.log($(this).parents('.alp-item').children('.col__heading').text());
+        if($(this).parents('.fixed-block')) {
+            let search2 = $(this).text();
+            console.log(search2 + "fixed");
+            $($('.library').find(`.col__heading:contains('${search2}')`).parents('.alp-item').children('.popup-box')).show();
+            $('.popup-box .alp-detail').css('display', 'block'); 
+        }
+        if($(this).parents('.alp-item')) {
+            let search = $(this).parents('.alp-item').children('.col__heading').text();
+            console.log(search + 'alp-item');
+            $($(this).parents('.library').find(`.col__heading:contains('${search}')`).parents('.alp-item').children('.popup-box')).show();
+            $('.popup-box .alp-detail').css('display', 'block');   
+        }
+        
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        // $($(this).parents('.library').find('.popup-box')).show();
         $('#blackout').show();
         $('html,body').css('overflow', 'hidden');
          

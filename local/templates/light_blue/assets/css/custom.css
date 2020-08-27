@@ -8,7 +8,7 @@
 .personal-cabinet .bx_filter_param_text {
     margin-left: 5px;
 }
-.personal-cabinet-content__my-profile__info-desc input, .personal-cabinet-content__my-profile__info-desc textarea {
+.personal-cabinet input:not([type="file"]):not(.city_input):not(.photoFile), .personal-cabinet textarea {
     width: 100%;
     outline: none;
     border: 2px solid #9DD4B3;
@@ -110,6 +110,9 @@
 .personal-cabinet-content__my-profile .contacts-group{
     width: calc(100% - 215px);
 }
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group{
+      width: calc(100% - 40px);
+  }
 .personal-cabinet-content__my-profile .contacts-group li {
     width: 100%;
     margin:0;
@@ -118,7 +121,7 @@
 .personal-cabinet-content__my-profile .contacts-group li:last-child {
     margin-bottom: 0;
 }
-.personal-cabinet-content__my-profile .add
+.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time
 {
     width: 35px;
     height: 35px;
@@ -134,6 +137,7 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
+
 
 .personal-cabinet-content__doctors-page-box .add{
     width: 235px;
@@ -290,4 +294,31 @@
     border: none;
     width: 100%;
     text-align: center;
+}
+.personal-cabinet-content__doctors-page-box-item {
+    width: 100%;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content ul > li {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
+    max-width: 166px;
+    width: 100%;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: right;
+    color: #000000;
 }
