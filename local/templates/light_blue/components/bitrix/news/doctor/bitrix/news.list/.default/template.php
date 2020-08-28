@@ -26,7 +26,7 @@ CModule::IncludeModule("iblock")
     );?>
 </section>
 <section class="container result-filter">
-    <div class="options-block">
+   <?/* <div class="options-block">
 		<div class="sort-block">
 			<ul class="sort-block-list">
 				<li class="sort-block-list-item active">Популярные</li>
@@ -48,7 +48,7 @@ CModule::IncludeModule("iblock")
 				<option value="">Расписание на <a href="">все дни</a></option>
 			</select>
 		</div>
-	</div>
+	</div>*/?>
     <div class="list-item doctors-list">
         <?foreach($arResult["ITEMS"] as $arItem):?>
             <?

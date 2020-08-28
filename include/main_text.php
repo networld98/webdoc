@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container main-seo-text">
     <div class="row">
         <div class="col-lg-6">
             <h3 class="text-center">Почему WebDoc:</h3>

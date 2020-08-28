@@ -2,14 +2,28 @@
 $aMenuLinks = Array(
     Array(
         "Личный кабинет",
-        "#",
+        "/lc/",
         Array(),
         Array(),
         ""
     ),
     Array(
         "Регистрация",
-        "#",
+        "/lc/?register=yes",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Врачам",
+        "/for_doctors/",
+        Array(),
+        Array(),
+        ""
+    ),
+      Array(
+        "Клиникам",
+        "/for_clinics/",
         Array(),
         Array(),
         ""

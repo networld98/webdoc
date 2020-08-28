@@ -117,7 +117,7 @@ $this->setFrameMode(true);
 	$component
 );?>
 
-<section class="container doctors-lastfeedback">
+<?/*<section class="container doctors-lastfeedback">
     <h2 class="title-h2">Аллергологи - последние отзывы</h2>
     <div class="doctors-lastfeedback-list slick-slider1">
         <div class="doctors-lastfeedback-list-item">
@@ -176,4 +176,4 @@ $this->setFrameMode(true);
             <p class="doctors-lastfeedback-list-item__feedback">Очень хороший, внимательный и уверенный врач, который внушает доверие. Она осмотрела меня, изучила результаты анализов, назначила новые и дала рекомендации. Я пойду к доктору ещё.</p>
         </div>
     </div>
-</section>
+</section>*/?>

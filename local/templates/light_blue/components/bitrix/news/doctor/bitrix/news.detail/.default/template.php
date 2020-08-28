@@ -106,13 +106,13 @@ $doctorName = $arResult['NAME'];
                 </div>
             </div>
         </div>
-        <div class="doctor-card-popUp-group">
+       <?/* <div class="doctor-card-popUp-group">
             <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
 			<a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
-        </div>
+        </div>*/?>
         <div class="reception-popup">
             <div class="popup-box">
                 <div class="close"></div>
@@ -458,7 +458,7 @@ $doctorName = $arResult['NAME'];
         <?endif;?>
     </div>
 </section>
-<section class="container choosing-time">
+<?/*<section class="container choosing-time">
     <h3 class="title-h3">Выберите время приема для записи онлайн</h3>
     <?if($arResult["PROPERTIES"]["DAY_RECEPTION"]["VALUE"]):?>
     <div class="choosing-time_block">
@@ -486,7 +486,7 @@ $doctorName = $arResult['NAME'];
             <?}?>
         </ul>
     <?endif;?>
-</section>
+</section>*/?>
 <section class="container checked-feedback" id="full-feedback">
     <h2 class="title-h2">Проверенные отзывы о враче</h2>
     <?$APPLICATION->IncludeComponent(
