@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Врачи");
-?>
+$APPLICATION->SetPageProperty("description", "Врачи отзывы, контактные телефоны, время и место работы.");
+$APPLICATION->SetTitle("Врачи отзывы, время работы, запись на прием."); ?>
     <section class="clinic-card">
         <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
@@ -104,9 +104,9 @@ $APPLICATION->SetTitle("Врачи");
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"SEF_FOLDER" => "/doctors/",
 		"SEF_MODE" => "Y",
-		"SET_LAST_MODIFIED" => "N",
+		"SET_LAST_MODIFIED" => "Y",
 		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_404" => "N",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",

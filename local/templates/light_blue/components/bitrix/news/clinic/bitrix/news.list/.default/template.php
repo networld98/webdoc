@@ -232,9 +232,13 @@ $this->setFrameMode(true);
 <?if($GLOBALS['titleFilterClinic']!=NULL){?>
 <?$this->SetViewTarget('filterTitle');?>
     <div class="container">
-        <h2 class="title-h2"><?=$GLOBALS['titleFilterClinic']?> - (<?=$arResult['NAV_RESULT']->NavRecordCount ?>)</h2>
+        <h1 class="title-h2"><?=$GLOBALS['titleFilterClinic']?> - (<?=$arResult['NAV_RESULT']->NavRecordCount ?>)</h1>
     </div>
 <?$this->EndViewTarget();?>
+    <?
+    $APPLICATION->SetPageProperty("description", "Клиники " .$GLOBALS['titleFilterClinic']." информация о врачах, отзывы, услуги, актуальная информация, контактные данные.");
+    $APPLICATION->SetTitle("Клиники ".$GLOBALS['titleFilterClinic'].", отзывы, время работы, запись на прием."); ?>
+    ?>
 <?}else{?>
     <?$this->SetViewTarget('filterTitle');?>
     <?$this->EndViewTarget();?>

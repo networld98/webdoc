@@ -67,7 +67,7 @@ global $clinicName;
                         <?endif;?>
                         <a href="tel:<?=$arItem['PROPERTIES']['PHONE']['VALUE']?>" class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?=$arItem['PROPERTIES']['PHONE']['VALUE']?></a>
                         <span class="doctors-list-item__description-counts">Всего записалось 582 человека</span>
-                        <div class="doctors-list-item-favorites"></div>
+                        <?/*<div class="doctors-list-item-favorites"></div>*/?>
                     </div>
                 </div>
                 <div class="flex-right">

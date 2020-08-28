@@ -96,7 +96,7 @@ CModule::IncludeModule("iblock")
                         <?endif;?>
                         <a href="tel:<?=$arItem['PROPERTIES']['PHONE']['VALUE']?>" class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?=$arItem['PROPERTIES']['PHONE']['VALUE']?></a>
                         <span class="doctors-list-item__description-counts">Всего записалось 582 человека</span>
-                        <div class="doctors-list-item-favorites"></div>
+                        <?/*<div class="doctors-list-item-favorites"></div>*/?>
                     </div>
                 </div>
                 <div class="flex-right">
@@ -208,6 +208,10 @@ CModule::IncludeModule("iblock")
         <h2 class="title-h2">Врачи-<?=mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1));?>и - (<?=$arResult['NAV_RESULT']->NavRecordCount ?>)</h2>
     </div>
 <?$this->EndViewTarget();?>
+    <?
+    $APPLICATION->SetPageProperty("description", "Врачи-".mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1))."и отзывы, контактные телефоны, время и место работы.");
+    $APPLICATION->SetTitle("Врачи-".mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1))."и, отзывы, время работы, запись на прием."); ?>
+    ?>
 <?}else{?>
     <?$this->SetViewTarget('filterTitle');?>
     <?$this->EndViewTarget();?>

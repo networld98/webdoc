@@ -21,7 +21,7 @@ CJSCore::Init("popup", "jquery");
     <script src="<?= SITE_TEMPLATE_PATH ?>/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= SITE_TEMPLATE_PATH ?>/assets/js/main.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f471c6ff-1ad1-4847-8940-573cea31904e&lang=ru_RU" type="text/javascript"></script>
-    <title><? $APPLICATION->ShowTitle() ?></title>
+    <title><? $APPLICATION->ShowTitle() ?><?$APPLICATION->ShowProperty("meta_title");?></title>
 </head>
 <body>
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
