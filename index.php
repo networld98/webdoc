@@ -90,7 +90,6 @@ $APPLICATION->SetTitle(""); ?>
         false
     ); ?>
 </section>
-<section class="container">
 <? $APPLICATION->IncludeComponent(
     "bitrix:main.include",
     ".default",
@@ -103,5 +102,4 @@ $APPLICATION->SetTitle(""); ?>
     ),
     false
 ); ?>
-</section>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

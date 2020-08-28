@@ -6,6 +6,8 @@ foreach ($_POST as $key => $data){
         $PROPS['METRO'][] = $data;
     } elseif (strpos($key, 'SPECIALIZATION') !== false) {
         $PROPS['SPECIALIZATION'][] = $data;
+    } elseif (strpos($key, 'DAY_RECEPTION') !== false) {
+    $PROPS['DAY_RECEPTION'][] = $data;
     } elseif (strpos($key, 'CONTACTS') !== false) {
         $PROPS['CONTACTS'][] = $data;
     }else{
@@ -13,6 +15,9 @@ foreach ($_POST as $key => $data){
     }
     if ($PROPS['METRO'] == NULL) {
         $PROPS['METRO'] = NULL;
+    }
+    if ($PROPS['DAY_RECEPTION'] == NULL) {
+        $PROPS['DAY_RECEPTION'] = NULL;
     }
 }
 foreach ($_POST['FULL_PROPERTY'] as $data){

@@ -6,6 +6,8 @@ foreach ($_POST as $key => $data){
         $PROPS['SPECIALIZATIONS'] = $data;
     } elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false) {
         $PROPS['RECEPTION_SCHEDULE'] = $data;
+    } elseif (strpos($key, 'DAY_RECEPTION') !== false) {
+        $PROPS['DAY_RECEPTION'] = $data;
     } elseif (strpos($key, 'EXPERIENCE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
         if (is_array($data)) {
             $PROPS['EXPERIENCE'][] = $data[0].'/'.$data[1];
@@ -27,7 +29,7 @@ if(empty($_POST['PHOTO'])){
     $PROPS[141] = 107;
 }else{
     $PROPS[141] = NULL;
-}
+};
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();

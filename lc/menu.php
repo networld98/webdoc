@@ -27,7 +27,7 @@ $rsUser = CUser::GetByID($USER->GetID());
 	),
 	false
 ); ?>
-    <div class="personal-cabinet-menu__manager">
+    <div class="personal-cabinet-menu__manager mobile-display-none">
         <div class="personal-cabinet-menu__manager__photo">
             <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/manager-photo.png" alt="photo">
         </div>

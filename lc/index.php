@@ -10,9 +10,11 @@ $rsUser = CUser::GetByID($USER->GetID());
 <?}elseif($arUser['UF_TYPE_USER']==6){?>
     <? include 'menu.php';?>
     <?include 'lc-clinic.php';?>
+    <?include 'mobile-manager.php';?>
 <?}elseif($arUser['UF_TYPE_USER']==7){?>
     <?include 'lc-doctor.php';?>
     <? include 'menu.php';?>
+    <?include 'mobile-manager.php';?>
 <?}?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

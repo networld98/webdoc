@@ -119,7 +119,7 @@
 .personal-cabinet-content__my-profile .contacts-group li:last-child {
     margin-bottom: 0;
 }
-.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time, .place-education-block .add-place, .place-education-block .add-education
+.personal-cabinet-content__my-profile .add, .place-education-block .add-place, .place-education-block .add-education, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time
 {
     width: 35px;
     height: 35px;
@@ -137,13 +137,17 @@
     margin-left: 10px;
     float: right;
 }
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time {
+    position: absolute;
+    bottom: 5px;
+    right: 30px;
+}
+
 .place-education-block .add-place, .place-education-block .add-education {
     position: absolute;
     right: -43px;
-    bottom: 0;
+    bottom: 2px;
 }
-
-
 .personal-cabinet-content__doctors-page-box .add{
     width: 235px;
     height: 45px;
@@ -334,18 +338,23 @@
     line-height: 1;
     text-align: right;
     margin-right: 20px;
+    float: left;
+    height: 54px;
 }
 
 .place-education-block span {
-max-width: 101px;
-width: 100%;
+    max-width: 101px;
+    width: 100%;
 }
 .no-padding{
-padding-left: 0!important;
-padding-right: 0!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
 }
 .place-education-block input:not(.place-education-block_place) {
-width: 100px!important;
+    width: 100px!important;
+}
+.contacts-group-add {
+    width: 100%;
 }
 
 @media (max-width: 1430px) {
@@ -357,4 +366,25 @@ width: 100px!important;
 .header .container.cabinet .contacts {
     display: none;
 }
+}
+@media (max-width: 768px) {
+.time-block-span {
+    max-width: 132px;
+}
+}
+@media (max-width: 650px) {
+    .personal-cabinet .text-view {
+        flex-direction: column-reverse;
+        align-items: initial;
+        text-align: center;
+    }
+    .personal-cabinet .delete-doctor,.personal-cabinet .save {
+        margin-left: 0;
+    }
+    .personal-cabinet .delete-doctor {
+        margin-bottom: 20px;
+    }
+    .personal-cabinet-content__doctors-page__filter__options .title-h4 {
+        margin-bottom: 0;
+    }
 }

@@ -115,7 +115,7 @@ input[type="reset"] {
     padding-top: 31px;
     padding-bottom: 39px;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     position: relative;
 }
 
@@ -3270,9 +3270,8 @@ main > .container:last-child {
     align-items: flex-start;
 }
 .personal-cabinet-content__my-profile__info-desc > ul > li > label {
-    min-width: 155px;
+    width: 32%;
     margin-right: 37px;
-    text-align: right;
     margin-bottom: 0;
 }
 
@@ -3453,6 +3452,9 @@ main > .container:last-child {
     outline: none;
     margin-right: 10px;
 }
+.personal-cabinet-content__schedule-page .day-selects {
+    display: flex;
+}
 /*personal-cabinet doctors */
 .personal-cabinet-content__doctors-page .title-h2 {
     font-family: "Montserrat Alternates-Bold";
@@ -3558,8 +3560,10 @@ main > .container:last-child {
     margin-bottom: 30px;
     display: flex;
 }
+
 .personal-cabinet-content__doctors-page-box-item:last-child {
     margin-bottom: 0;
+    border-bottom: 1px solid transparent;
 }
 .personal-cabinet-content__doctors-page-box-item__img {
     margin-right: 20px;
@@ -3580,6 +3584,7 @@ main > .container:last-child {
     display: flex;
     justify-content: space-between;
 }
+
 .personal-cabinet-content__doctors-page-box-item__desc__head.none-margin {
     margin-bottom: 0;
 }
@@ -5613,6 +5618,16 @@ main > .container:last-child {
     margin-top: 0;
     margin-bottom: 25px;
 }
+.personal-cabinet-menu__manager.mobile-display-none {
+    display: flex;
+}
+.mobile-display-none {
+    display: block;
+}
+.mobile-display {
+    display: none;
+}
+
 /*.bx_filter.bx_blue.bx_horizontal {*/
     /*background: #F3F4EF;*/
     /*}*/
@@ -5692,8 +5707,28 @@ main > .container:last-child {
         padding-top: 0;
         padding-left: 5px;
     }
+    .personal-cabinet-content__my-profile__info-form > ul > li, .personal-cabinet-content__my-profile__info-desc > ul > li {
+        flex-direction: column;
+        align-items: initial;
+    }
+    .personal-cabinet-content__my-profile__info-form > ul > li > label,.personal-cabinet-content__my-profile__info-desc > ul > li > label {
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+    .personal-cabinet-content__my-profile__info-form > ul > li, .personal-cabinet-content__my-profile__info-desc > ul > li {
+        margin-bottom: 10px;
+    }
 }
 @media (max-width: 1279px) {
+    .personal-cabinet-menu {
+        padding: 15px;
+        width: 100%;
+        max-width: 260px;
+        min-width: initial;
+    }
+    .personal-cabinet-menu__list-item.active::before {
+        right: -15px;
+    }
     #header-auth {
         margin-left: 5px;
     }
@@ -5753,6 +5788,39 @@ main > .container:last-child {
     }
 }
 @media (max-width: 1200px) {
+    .personal-cabinet-content__doctors-page__filter {
+        max-width: 100%;
+    }
+    .personal-cabinet {
+        flex-direction: column;
+    }
+    .personal-cabinet-menu,.personal-cabinet-menu__manager {
+        max-width: 100%;
+        border-radius: 10px 10px 10px 10px;
+    }
+    .personal-cabinet-menu__list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .mobile-display-none,.personal-cabinet-menu__manager.mobile-display-none {
+        display: none;
+    }
+    .personal-cabinet-menu__manager.mobile-display {
+        display: flex;
+        background: #fff;
+        padding: 20px 0;
+    }
+    .personal-cabinet-menu__list-item {
+        flex-basis: 33%;
+        margin-bottom: 10px;
+    }
+    .personal-cabinet-menu__list-item.active::before {
+        display: none;
+    }
+    .personal-cabinet-content__my-profile, .personal-cabinet-content__schedule-page, .personal-cabinet-content__doctors-page, .personal-cabinet-content__price-page {
+        padding: 0px 10px 30px;
+    }
     .popup-box {
         max-width: 728px;
     }
@@ -6113,6 +6181,22 @@ main > .container:last-child {
     
 }
 @media (max-width: 1000px) {
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul {
+        flex-wrap: wrap;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul > li {
+        flex-basis: 30%;
+    }
+    .personal-cabinet-content__my-profile__info {
+        flex-direction: column;
+    }
+    .personal-cabinet-content__my-profile__info-form {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .personal-cabinet-menu__list-item > a {
+        align-items: initial;
+    }
     .clinic-card-info-detail {
         flex-direction: column;
     }
@@ -6304,6 +6388,9 @@ main > .container:last-child {
     
 }
 @media (max-width: 900px) {
+    .personal-cabinet-content__doctors-page__filter {
+        flex-direction: column-reverse;
+    }
     .clinic-card-img {
         margin-right: 22px;
     }
@@ -6392,6 +6479,58 @@ main > .container:last-child {
     }
 }
 @media (max-width: 768px) {
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content {
+        max-width: 100%;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content.main-block {
+        max-width: 100%;
+    }
+    .personal-cabinet-content-item {
+        width: 100%;
+    }
+    .time-block-span {
+        max-width: 132px;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul {
+        flex-direction: column;
+        align-items: flex-start;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    .personal-cabinet-content__my-profile .title-h2, .personal-cabinet-content__schedule-page .title-h2, .personal-cabinet-content__doctors-page .title-h2, .personal-cabinet-content__price-page .title-h2 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .personal-cabinet-content__my-profile__info-form, .personal-cabinet-content__my-profile__info-desc, .personal-cabinet-content__my-profile__services {
+        padding: 15px;
+    }
+    .personal-cabinet-content__my-profile, .personal-cabinet-content__schedule-page, .personal-cabinet-content__doctors-page, .personal-cabinet-content__price-page {
+        padding: 0px 0px 30px;
+    }
+    .personal-cabinet-content__my-profile__services {
+        flex-direction: column;
+    }
+    .personal-cabinet {
+        margin: 20px 15px 20px;
+    }
+    .personal-cabinet-menu__list-item {
+        flex-basis: 49%;
+        padding-right: 10px;
+    }
+    .personal-cabinet-menu__icon {
+        margin-right: 5px;
+        flex-basis: 30%;
+    }
+    .personal-cabinet-menu__desc {
+        flex-basis: 70%;
+    }
+    .personal-cabinet-menu__desc h5 {
+        font-size: 15px;
+        line-height: 17px;
+        margin-bottom: 5px;
+    }
     .bx_filter .main-filter .bx_filter_param_label .checkbox {
         width: 16px;
         height: 16px;
@@ -6742,6 +6881,32 @@ main > .container:last-child {
     }
 }
 @media (max-width: 650px) {
+    .personal-cabinet-content__doctors-page-box-item__desc__head > div:nth-child(2) {
+        position: relative;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc-switch {
+        top: -140px;
+        right: 30px;
+        position: absolute;
+    }
+    
+    .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li {
+       flex-basis: 50%;
+       margin-right: 0px;
+        margin-bottom: 15px;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group {
+        justify-content: space-between;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li:nth-child(1) {
+        flex-basis: 100%;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li:nth-child(2) {
+        flex-basis: 100%;
+    }
+    .personal-cabinet-content__doctors-page__filter__options .main-filter .row > div:last-child {
+        padding-top: 0;
+    }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(6) {
         width: 36% !important;
     }
@@ -6753,7 +6918,100 @@ main > .container:last-child {
     }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box:nth-child(2n+2) {
 		clear: none;
-	}
+    }
+    .bx-touch .personal-cabinet-content__doctors-page__filter__options .bx_filter.bx_horizontal .bx_filter_parameters_box.active {
+        width: 50% !important;
+    }
+    .personal-cabinet-content__doctors-page__filter__options .bx_filter.bx_horizontal .bx_filter_parameters_box {
+        float: left;
+    }
+    .select-time-list > li {
+        flex-direction: column;
+        align-items: initial;
+    }
+    .select-time-list > li span:last-child {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .personal-cabinet-content__schedule-page .day-selects {
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .personal-cabinet-content__schedule-page__block .select-time-list select {
+        width: 39%;
+    }
+    .personal-cabinet-content__schedule-page__block .checkbox-group > li {
+        margin-bottom: 10px;
+    }
+    .day-selects.first::before {
+        content: 'от';
+        display: block;
+        width: 20px;
+        margin-right: 10px;
+    }
+    .day-selects.second::before {
+        content: 'до';
+        display: block;
+        width: 20px;
+        margin-right: 10px;
+    }
+    .personal-cabinet-content__price-page__content__list-content__price {
+
+    }
+    .personal-cabinet-content__price-page__content__list-content__price table, .personal-cabinet-content__price-page__content__list-content__price thead, .personal-cabinet-content__price-page__content__list-content__price tbody, .personal-cabinet-content__price-page__content__list-content__price th, .personal-cabinet-content__price-page__content__list-content__price td, .personal-cabinet-content__price-page__content__list-content__price tr {
+        display: block; }
+        .personal-cabinet-content__price-page__content__list-content__price table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; }
+        .personal-cabinet-content__price-page__content__list-content__price table thead tr th:last-child {
+          padding-left: 15px; }
+          .personal-cabinet-content__price-page__content__list-content__price table tbody tr td {
+        word-break: break-all;
+        padding-left: 50% !important;
+        border: none;
+        position: relative; }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td::before {
+          /* Now like a table header */
+          position: absolute;
+          /* Top/left values mimic padding */
+          top: 6px;
+          left: 6px;
+          width: 45%;
+          padding-right: 10px;
+          white-space: nowrap; }
+          .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:first-child {
+        padding-right: 10px; }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child div {
+        display: flex;
+        align-items: center; }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child a {
+        margin-left: 15px;
+        padding: 4px 6px; }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:nth-of-type(1):before {
+        content: "Вкл"; }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:nth-of-type(2):before {
+        content: "Вид"; }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:nth-of-type(3):before {
+        content: "Цена,руб."; }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child {
+            display: flex;
+            flex-direction: column;
+        }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child span {
+            margin-left: 0;
+            margin-top: 10px;
+        }
+        .personal-cabinet-content__price-page__content__list-content__price table tbody tr {
+            padding-top: 10px;
+        }
+        .personal-cabinet-content__price-page__content__list-content__price .title-h4 {
+            margin-top: 0;
+        }
+        .personal-cabinet-content__price-page__tabs .title-h5 {
+            width: 35%;
+        }
 }
 @media (max-width: 600px) {
     .popup-box {
@@ -6827,6 +7085,12 @@ main > .container:last-child {
     }
 }
 @media (max-width: 576px) {
+    .personal-cabinet-content__doctors-page-box-item__desc-switch {
+        top: -230px;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__name .edit {
+        margin-left: auto;
+    }
     .bx-breadcrumb {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -6892,7 +7156,7 @@ main > .container:last-child {
         margin-left: 0;
         width: initial;
     }
-    .clinic-card .main-filter .row,  .main-block-filter .main-filter .search-doctors {
+    .main__header ~ .container .main-filter .search-doctors , .clinic-card .main-filter .row,  .main-block-filter .main-filter .search-doctors, .personal-cabinet-content__doctors-page__filter__options .main-filter .row {
         display: none;
     }
     .clinic-card .main-filter {
@@ -7721,9 +7985,15 @@ main > .container:last-child {
     /*}*/
 /*}*/
 @media (max-width: 414px) {
+    .personal-cabinet-menu__icon {
+        flex-basis: 15%;
+    }
     /* .statistics__header > img {
         padding-left: 32px;
     } */
+    .personal-cabinet-menu__list-item {
+        flex-basis: 100%;
+    }
     .statistics__item:nth-child(1) {
         padding-right: 13px;
     }
@@ -7897,7 +8167,7 @@ main > .container:last-child {
         margin-bottom: 1rem;
     }
     .footer__col-4 .two-column ul:last-child {
-        padding-top: 15px;
+        padding-left: 80px;
     }
     .footer__col-5 {
         padding-top: 15px !important;
@@ -8009,7 +8279,16 @@ main > .container:last-child {
         padding-left: 0;
     }
 } */
+@media (max-width: 400px) {
+    .personal-cabinet-menu__list-item {
+        flex-basis: 100%;
+    }
+    .personal-cabinet-menu__icon {
+        flex-basis: 20%;
+    }
+}
 @media (max-width: 360px) {
+    
     .bx_filter_parameters_box.active {
         width: 50% !important;
     }

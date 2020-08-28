@@ -65,7 +65,7 @@ $this->setFrameMode(true);
     */?>
 <? global $arrFilter;
 global $clinickId;
-$arrFilter = array("PROPERTY_CLINIK" => $clinickId); ?>
+$arrFilter = array("PROPERTY_CLINIK" => $clinickId, "PROPERTY_NOT_ON" => !98); ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",

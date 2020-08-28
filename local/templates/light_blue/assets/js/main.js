@@ -170,6 +170,9 @@ $(document).ready(()=>{
         });
     });
 
+
+
+
     $(".go-to").on('click', function(e){
 		$('html,body').stop().animate({ scrollTop: $(this.hash).offset().top-150 }, 1500);
 		e.preventDefault();
@@ -294,6 +297,7 @@ $(document).ready(()=>{
         $(this).hide();
         $('.clinic-card .main-filter').css({'padding-top': '32px', 'padding-bottom': '29px'});
         $(this).prev().slideDown();
+        $(this).prev().css({'display': 'flex'});
         console.log($(this));
     });
       /* messange-to-doctor-popup*/

@@ -42,6 +42,7 @@ foreach ($work_time as $time){
 <?function day($prop, $key, $day, $daynight){?>
     <li >
         <span><?=$prop?></span>
+        <div class="day-selects first">
         <select name="<?=$prop?>[]" <?if(count($day[$key]) == 2 || $daynight['VALUE'] == 'Y'){?>disabled="disabled"<?}?>>
             <?$x=-1;
             while ($x++<24){
@@ -57,7 +58,9 @@ foreach ($work_time as $time){
                 <option <?if($num==$day[$key][2]){?>selected<?}?> value="<?=$num?>"><?=$num?></option>
             <?}?>
         </select>
-        <span>—</span>
+        </div>
+        <span class="mobile-display-none">—</span>
+        <div class="day-selects second">
         <select name="<?=$prop?>[]" <?if(count($day[$key]) == 2 || $daynight['VALUE'] == 'Y'){?>disabled="disabled"<?}?>>
             <?$x=-1;
             while ($x++<24){
@@ -73,6 +76,7 @@ foreach ($work_time as $time){
                 <option <?if($num==$day[$key][4]){?>selected<?}?> value="<?=$num?>"><?=$num?></option>
             <?}?>
         </select>
+        </div>
         <span>
             <div class="checkbox-group">
                  <label class="label-holiday" data-role="label_<?=$prop?>" for="<?=$prop?>">

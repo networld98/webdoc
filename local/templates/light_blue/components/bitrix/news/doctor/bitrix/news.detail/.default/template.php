@@ -102,7 +102,7 @@ $doctorName = $arResult['NAME'];
                         <?}?>
                     </ul>
                 <?endif;?>
-                <a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>
+                <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
                 </div>
             </div>
         </div>
@@ -364,7 +364,7 @@ $doctorName = $arResult['NAME'];
                     <?}?>
                 </div>
             </div>
-            <p class="doctor-card__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <?=$arRaing['COUNT']?> отзывов(а)<a href="">Все отзывы о враче</a></p>
+            <p class="doctor-card__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <?=$arRaing['COUNT']?> отзывов(а)<a href="#full-feedback">Все отзывы о враче</a></p>
             <ul class="doctor-card_options-list">
                 <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
                     <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
@@ -460,6 +460,7 @@ $doctorName = $arResult['NAME'];
 </section>
 <section class="container choosing-time">
     <h3 class="title-h3">Выберите время приема для записи онлайн</h3>
+    <?if($arResult["PROPERTIES"]["DAY_RECEPTION"]["VALUE"]):?>
     <div class="choosing-time_block">
         <!-- <span class="choosing-time_block__arrows arrow-left"></span> -->
         <ul class="choosing-time_block-list slick-slider3">
@@ -469,30 +470,24 @@ $doctorName = $arResult['NAME'];
             <li class="choosing-time_block-list-item not-worked">Четверг</br> 9 апреля</li>
             <li class="choosing-time_block-list-item">Пятница</br> 10 апреля</li>
             <li class="choosing-time_block-list-item">Cуббота</br> 11 апреля</li>
+            <?foreach ($arResult["PROPERTIES"]["DAY_RECEPTION"]["VALUE"] as $item){?>
+                <li class="choosing-time_block-list-item"><?=$item?></li>
+            <?}?>
         </ul>
         <!-- <span class="choosing-time_block__arrows arrow-right"></span> -->
     </div>
-    <ul class="choosing-time__worktimming-list">
-        <li class="choosing-time__worktimming-list-item">09:00</li>
-        <li class="choosing-time__worktimming-list-item closed">09:40</li>
-        <li class="choosing-time__worktimming-list-item closed">10:10</li>
-        <li class="choosing-time__worktimming-list-item pass">10:50</li>
-        <li class="choosing-time__worktimming-list-item">11:30</li>
-        <li class="choosing-time__worktimming-list-item">12:10</li>
-        <li class="choosing-time__worktimming-list-item">12:50</li>
-        <li class="choosing-time__worktimming-list-item">13:30</li>
-        <li class="choosing-time__worktimming-list-item">14:10</li>
-        <li class="choosing-time__worktimming-list-item pass">14:50</li>
-        <li class="choosing-time__worktimming-list-item pass">15:30</li>
-        <li class="choosing-time__worktimming-list-item">16:00</li>
-        <li class="choosing-time__worktimming-list-item">16:40</li>
-        <li class="choosing-time__worktimming-list-item closed">17:20</li>
-        <li class="choosing-time__worktimming-list-item">18:00</li>
-        <li class="choosing-time__worktimming-list-item closed">18:40</li>
-        <li class="choosing-time__worktimming-list-item">19:00</li>
-    </ul>
+    <?endif;?>
+    <?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
+        <ul class="choosing-time__worktimming-list">
+<!--            <li class="choosing-time__worktimming-list-item closed">10:10</li>-->
+<!--            <li class="choosing-time__worktimming-list-item pass">10:50</li>-->
+            <?foreach ($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){?>
+                <li class="choosing-time__worktimming-list-item popup-reception-click"><?=$item?></li>
+            <?}?>
+        </ul>
+    <?endif;?>
 </section>
-<section class="container checked-feedback">
+<section class="container checked-feedback" id="full-feedback">
     <h2 class="title-h2">Проверенные отзывы о враче</h2>
     <?$APPLICATION->IncludeComponent(
 	"api:reviews",

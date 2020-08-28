@@ -114,7 +114,7 @@ while($ob = $res->GetNextElement()){
                                 $contact_key = $key+1;
                             }
                             $contact_key_last = 0 + $contact_key;?>
-                            <ul id="input<?=$contact_key_last?>" class="checkbox-group contacts-group"></ul>
+                            <ul id="input<?=$contact_key_last?>" class="contacts-group-add"></ul>
                         </ul>
                         <div class="add" value="<?=$contact_key_last?>" title="Добавить телефон">+</div>
                     </li>
@@ -322,7 +322,7 @@ while($ob = $res->GetNextElement()){
         var x = <?=$contact_key_last?>;
         $('.add').on('click', function () {
             if (x < 10) {
-                var str = '<li><input type="text" name="CONTACTS_' + x + '"></li><ul class="checkbox-group contacts-group" id="input' + (x + 1) + '"></ul>';
+                var str = '<li><input type="text" name="CONTACTS_' + x + '"></li><ul class="contacts-group-add" id="input' + (x + 1) + '"></ul>';
                 document.getElementById('input' + x).innerHTML = str;
                 x++;
             }else{
