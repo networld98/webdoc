@@ -196,7 +196,7 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 
             if (result.FILTER_URL && hrefFILTER)
             {
-                hrefFILTER[0].href = BX.util.htmlspecialcharsback(result.FILTER_URL);
+                hrefFILTER[0].href = '/clinics'+BX.util.htmlspecialcharsback(result.FILTER_URL);
             }
 
             if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)

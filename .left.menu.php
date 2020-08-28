@@ -28,12 +28,12 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
+	/*Array(
 		"Отзывы", 
 		"", 
 		Array(), 
 		Array(), 
 		"" 
-	)
+	)*/
 );
 ?>
