@@ -1,6 +1,0 @@
-<?
-$sSectionName = "Врачи";
-$arDirProperties = Array(
-
-);
-?>

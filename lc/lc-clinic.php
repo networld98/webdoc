@@ -38,7 +38,13 @@ while($ob = $res->GetNextElement()){
         <div class="personal-cabinet-content__my-profile__info">
             <div class="personal-cabinet-content__my-profile__info-form">
                 <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
+                <input type="hidden" name="LOGO" value="<?=$photoFile?>">
                 <ul>
+                    <li>
+                        <?$file = CFile::ResizeImageGet($arProps['LOGO']['VALUE'], array('width'=>84, 'height'=>84), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
+                        <label><img src="<?=$file['src']?>" alt="logo_clinic"></label>
+                        <p>Загрузить новое лого <input type="file" class="photoFile" name="DETAIL_PICTURE" value=""></p>
+                    </li>
                     <li>
                         <label for="">Логин</label>
                         <p><?=$arUser['EMAIL']?> или <?=$arUser['LOGIN']?></p>
@@ -156,6 +162,7 @@ while($ob = $res->GetNextElement()){
                 </ul>
                 <div class="text-view">
                     <div id="message-form"></div>
+                    <div id="photo-form" style="display:none;"></div>
                     <button type="submit" name="saveProfile" class="save" id="saveProfile">Сохранить</button>
                 </div>
             </div>
@@ -315,6 +322,27 @@ while($ob = $res->GetNextElement()){
                 success: function (data) {
                     // Вывод текста результата отправки
                     $(block).html(data);
+                }
+            });
+            return false;
+        });
+        $(document).on('change', '.photoFile', function(){
+            let file_data = $(this).prop('files')[0];
+            let form_data = new FormData();
+            let formPhoto= $("#photo-form");
+            form_data.append('file', file_data);
+            $.ajax({
+                url: '/lc/file_upload.php', // point to server-side PHP script
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function(form_data){
+                    $(formPhoto).html(form_data);
+                    let file = $("#photo-form").text();
+                    $('input[name="LOGO"]').val(file);
                 }
             });
             return false;

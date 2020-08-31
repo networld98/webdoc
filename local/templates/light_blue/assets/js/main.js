@@ -51,14 +51,14 @@ $(document).ready(()=>{
         $( this ).toggleClass("active");
     });
 
-    $('.sort-block-list-item').on( "click", function() {
+   /* $('.sort-block-list-item').on( "click", function() {
             $('.sort-block-list-item').removeClass('active');
             $(this).toggleClass('active');
     });
     $('.services-list .sort-block-list-item').on( "click", function() {
         $('.services-list .sort-block-list-item').removeClass('active');
         $(this).toggleClass('active');
-    });
+    });*/
     $('.personal-cabinet-menu__list-item').on( "click", function() {
         $('.personal-cabinet-menu__list-item').removeClass('active');
         $('.personal-cabinet-menu__icon').removeClass('active');
@@ -86,8 +86,8 @@ $(document).ready(()=>{
 
 
     $('.clinic-card-full-desc__tabs ul li').hover(function () {
-        $('.clinic-card-full-desc__tabs ul li').removeClass('active');
-        $(this).toggleClass('active');
+        // $('.clinic-card-full-desc__tabs ul li').removeClass('active');
+        // $(this).toggleClass('active');
         $(this).on("click" , function () {
             $('.clinic-card-full-desc__content').removeClass('active');
             var data = $(this).data('tabs');
@@ -111,9 +111,11 @@ $(document).ready(()=>{
     });
 
     $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul > li').hover(function () {
-        $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul > li').removeClass('active');
-        $(this).toggleClass('active');
+        
+        
         $(this).on("click" , function () {
+            $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul > li').removeClass('active');
+            $(this).toggleClass('active');
             $('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content').removeClass('active');
             var data = $(this).data('tabs');
             $(`.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content[data-tabs="${data}"]`).toggleClass('active');
@@ -128,8 +130,8 @@ $(document).ready(()=>{
 
 
     $('.personal-cabinet-content__price-page__tabs .title-h5').hover(function () {
-        $('.personal-cabinet-content__price-page__tabs .title-h5').removeClass('active');
-        $(this).toggleClass('active');
+        // $('.personal-cabinet-content__price-page__tabs .title-h5').removeClass('active');
+        // $(this).toggleClass('active');
         $(this).on("click" , function () {
             $('.personal-cabinet-content__price-page__content').removeClass('active');
             var data = $(this).data('tabs');
@@ -144,8 +146,8 @@ $(document).ready(()=>{
 
 
     $('.personal-cabinet-content__price-page__content__list > li').hover(function () {
-        $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
-        $(this).toggleClass('active');
+        // $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
+        // $(this).toggleClass('active');
         $(this).on("click" , function () {
             $('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
             var data = $(this).data('tabs');
@@ -159,16 +161,16 @@ $(document).ready(()=>{
     });
 
 
-    $('.library-sort > li').hover(function () {
-        $('.library-sort > li').removeClass('active');
-        $(this).toggleClass('active');
-        console.log('as');
-        $(this).on("click" , function () {
-            $('.library-content').removeClass('active');
-            var data = $(this).data('tabs');
-            $(`.library-content[data-tabs="${data}"]`).toggleClass('active');
-        });
-    });
+    // $('.library-sort > li').hover(function () {
+    //     // $('.library-sort > li').removeClass('active');
+    //     // $(this).toggleClass('active');
+    //     console.log('as');
+    //     $(this).on("click" , function () {
+    //         $('.library-content').removeClass('active');
+    //         var data = $(this).data('tabs');
+    //         $(`.library-content[data-tabs="${data}"]`).toggleClass('active');
+    //     });
+    // });
 
 
 

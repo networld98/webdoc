@@ -90,6 +90,10 @@
     outline: none;
     padding:6px 20px 6px 15px;
 }
+.personal-cabinet-content__my-profile input.photoFile{
+    padding-right: 0;
+    padding-left: 0;
+}
 .personal-cabinet-content__my-profile textarea {
     padding: 12px 20px 11px 15px;
     resize: none;
@@ -328,6 +332,11 @@
     text-align: right;
     color: #000000;
 }
+.card-item:last-child{
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
 .time-block-span{
     max-width: 166px;
     width: 100%;
@@ -351,21 +360,28 @@ width: 100px!important;
 main >.main-seo-text {
     margin-top: 75px;
 }
-
-@media (max-width: 1430px) {
-.personal-cabinet-content__my-profile .contacts-group {
-    width: 100%;
+.full-screen__filter-bg {
+    background-color: #F3F4EF;
+    padding-top: 1px;
+    padding-bottom: 29px;
 }
+.services-list .nav-tabs {
+    border-bottom: none;
+}
+@media (max-width: 1430px) {
+    .personal-cabinet-content__my-profile .contacts-group {
+        width: 100%;
+    }
 }
 @media (max-width: 730px) {
-.header .container.cabinet .contacts {
-    display: none;
-}
+    .header .container.cabinet .contacts {
+        display: none;
+    }
 }
 @media (max-width: 768px) {
-.time-block-span {
-    max-width: 132px;
-}
+    .time-block-span {
+        max-width: 132px;
+    }
 }
 @media (max-width: 650px) {
     .personal-cabinet .text-view {

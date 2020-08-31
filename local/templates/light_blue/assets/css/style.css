@@ -5178,9 +5178,9 @@ main > .container:last-child {
     width: 146px;
     padding-right: 0;
 }
-.main-filter {
-    margin-top: 38px;
-}
+/*.main-filter {*/
+    /*margin-top: 38px;*/
+/*}*/
 .specializations .nav-pills > li:first-child {
     margin-right: 16px;
 }

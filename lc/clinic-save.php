@@ -19,7 +19,11 @@ foreach ($_POST as $key => $data){
     if ($PROPS['DAY_RECEPTION'] == NULL) {
         $PROPS['DAY_RECEPTION'] = NULL;
     }
+    if ($PROPS['LOGO'] != NULL) {
+        $PROPS['LOGO'] = CFile::MakeFileArray(str_replace($_SERVER["DOCUMENT_ROOT"], $_SERVER['HTTP_ORIGIN'], $_POST['LOGO']));
+    }
 }
+
 foreach ($_POST['FULL_PROPERTY'] as $data){
     if (!array_key_exists($data,$_POST)){
         $PROPS[$data] = NULL;
@@ -32,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $trans = Cutil::translit($_POST['NAME_CLINIC'],"ru",$arParams);
         CIBlockElement::SetPropertyValuesEx($_POST['ID_CLINIC'], false, $PROPS);
         $nameClinic = $obEl->Update($_POST['ID_CLINIC'],array('NAME' => $_POST['NAME_CLINIC'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT']));
+    unlink($_POST['LOGO']);
     ?>
     <span style="color:green">Данные сохранены</span>
 
