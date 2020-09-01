@@ -25,14 +25,25 @@ $(document).ready(()=>{
     $(function () {
         var elem = $('.fixed-block');
         var top = $(this).scrollTop();
-
+        var footer= $('#footer-wrapper').offset();
         $(window).scroll(function () {
+            // console.log(top);
+            // console.log(footer);
+            footer= $('#footer-wrapper').offset();
             top = $(this).scrollTop();
-
             if (top < 24) {
-                elem.css({'top': 0, position: 'relative',backgroundColor: 'transparent'});
+                elem.css({'top': 0, position: 'relative',backgroundColor: 'transparent',bottom:'initial'});
+                $('.container h1').show();
+                $('.bx-breadcrumb').show();
             } else {
-                elem.css({top: '133px', position: 'fixed', backgroundColor: '#fff'});
+                if(top < footer.top) {
+                    console.log();
+                    elem.css({top: '100px', position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
+                } else {
+                    elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '0'});
+                }
+                $('.container h1').hide();
+                $('.bx-breadcrumb').hide();
             }
         });
 
@@ -272,7 +283,9 @@ $(document).ready(()=>{
         ]
     });
 
-    $('.flowing-scroll').on( 'click', function(){ 
+    $('.flowing-scroll').on( 'click', function(){
+        event.preventDefault();
+        console.log('click');
         var el = $(this);
         var dest = el.attr('href'); // получаем направление
         // var dest = el.data('href'); // получаем направление

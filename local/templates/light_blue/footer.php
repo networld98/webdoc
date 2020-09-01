@@ -99,6 +99,20 @@ IncludeTemplateLangFile(__FILE__);
                     false
                 ); ?>
             </div>
+            <div class="col-lg-12 text-center">
+                <? $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    ".default",
+                    array(
+                        "AREA_FILE_SHOW" => "file",
+                        "AREA_FILE_SUFFIX" => "inc",
+                        "EDIT_TEMPLATE" => "",
+                        "COMPONENT_TEMPLATE" => ".default",
+                        "PATH" => "/include/alarm.php"
+                    ),
+                    false
+                ); ?>
+            </div>
         </div>
     </div>
 </footer>

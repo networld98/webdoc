@@ -384,7 +384,7 @@ $templateData = array(
                     <div class="bx_filter_button_box active">
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container" id="modez">
-                                <? if ($APPLICATION->GetCurPage(false) === '/'){?>
+                                <? if (!CSite::InDir('/clinics/') && !CSite::InDir('/doctors/')){?>
                                     <div id="modef" <?if(!isset($arResult["ELEMENT_COUNT"]))?>>
                                         <a class="bx_filter_search_button"  href="/clinics<?echo $arResult["FILTER_URL"]?>"><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
                                     </div>

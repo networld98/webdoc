@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("О портале WebDoc.Clinic");
 ?>
-    <section class="container">
+    <section class="container about-page">
         <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
             "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
             "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
@@ -16,10 +16,10 @@ $APPLICATION->SetTitle("О портале WebDoc.Clinic");
         <p>WebDocClinic не заинтересована в получении прибыли за количество записей на прием в клинику или к доктору и не получает % от обращений пациентов в медицинское учреждение.Мы видим свою миссию в предоставлении информации для бесплатного выбора лучших медицинских услуг, опираясь на реальные отзывы пациентов, получивших помощь.</p>
         <p>Обратившись в нашу виртуальную клинику вы выбираете специалиста на основе фактической информации и отзывов, а не вслепую. В результате вы экономите время, деньги, и получаете качественные медицинские услуги в полном объеме и в удобное время. Отзывы реальных пациентов дают возможность оценить и сделать правильный выбор.</p>
         <div class="row">
-            <div class="col-lg-3"><p>Полная база медицинских клиник в вашем регионе</p></div>
-            <div class="col-lg-3"><p>Настоящие отзывы</p></div>
-            <div class="col-lg-3"><p>Экономия времени на поиск специалиста</p></div>
-            <div class="col-lg-3"><p>Все услуги портала абсолютно бесплатны для пациента</p></div>
+            <div class="col-lg-3 icons-block"><img src="<?= SITE_TEMPLATE_PATH ?>/icon/about_1.svg" alt="about_1"><span>Полная база медицинских клиник в вашем регионе</span></div>
+            <div class="col-lg-3 icons-block"><img src="<?= SITE_TEMPLATE_PATH ?>/icon/about_2.svg" alt="about_1"><span>Настоящие отзывы</span></div>
+            <div class="col-lg-3 icons-block"><img src="<?= SITE_TEMPLATE_PATH ?>/icon/about_3.svg" alt="about_1"><span>Экономия времени на поиск специалиста</span></div>
+            <div class="col-lg-3 icons-block"><img src="<?= SITE_TEMPLATE_PATH ?>/icon/about_4.svg" alt="about_1"><span>Все услуги портала абсолютно бесплатны для пациента</span></div>
         </div>
     </section>
 

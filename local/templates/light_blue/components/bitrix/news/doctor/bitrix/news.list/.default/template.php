@@ -211,7 +211,6 @@ CModule::IncludeModule("iblock")
     <?
     $APPLICATION->SetPageProperty("description", "Врачи-".mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1))."и отзывы, контактные телефоны, время и место работы.");
     $APPLICATION->SetTitle("Врачи-".mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1))."и, отзывы, время работы, запись на прием."); ?>
-    ?>
 <?}else{?>
     <?$this->SetViewTarget('filterTitle');?>
     <?$this->EndViewTarget();?>

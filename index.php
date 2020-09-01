@@ -20,11 +20,11 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
                 и клиник в своем городе
             </div>
         </h1>
-        <img alt="plus" src="/local/templates/light_blue/assets/images/Vector.svg" class="desktop-plus">
-        <img src="/local/templates/light_blue/assets/images/plus-tablet.svg" alt="plus">
+        <img alt="plus" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/Vector.svg" class="desktop-plus">
+        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/plus-tablet.svg" alt="plus">
     </div>
     <div class="main__img2"></div>
-    <img src="/local/templates/light_blue/assets/images/Vector%20(1).svg" class="main__img" alt="">
+    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/Vector%20(1).svg" class="main__img" alt="">
 </div>
 <section class="container">
     <? $APPLICATION->IncludeComponent(
@@ -61,7 +61,7 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
 <section class="statistics container">
 <div class="statistics__header">
         <span>Бесплатный сервис подбора медицинских услуг</span>
-        <img src="/local/templates/light_blue/assets/images/plus-mobile.svg" alt="plus">
+        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/plus-mobile.svg" alt="plus">
     </div>
     <? $APPLICATION->IncludeComponent(
         "bitrix:main.include",

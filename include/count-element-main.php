@@ -8,6 +8,7 @@ function count_element($iblock){
     echo $res_count;
 }
 ?>
+
 <div class="statistics__items">
     <div class="statistics__item">
         <div class="statistics__icon">
@@ -54,10 +55,10 @@ function count_element($iblock){
         </div>
         <div class="statistics__block">
             <div class="statistics__number">
-                41628+
+                1750+
             </div>
             <div class="statistics__text">
-                отзывов о врачах
+                отзывов
             </div>
         </div>
     </div>

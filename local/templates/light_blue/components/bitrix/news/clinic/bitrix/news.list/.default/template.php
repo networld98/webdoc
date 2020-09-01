@@ -238,7 +238,6 @@ $this->setFrameMode(true);
     <?
     $APPLICATION->SetPageProperty("description", "Клиники " .$GLOBALS['titleFilterClinic']." информация о врачах, отзывы, услуги, актуальная информация, контактные данные.");
     $APPLICATION->SetTitle("Клиники ".$GLOBALS['titleFilterClinic'].", отзывы, время работы, запись на прием."); ?>
-    ?>
 <?}else{?>
     <?$this->SetViewTarget('filterTitle');?>
     <?$this->EndViewTarget();?>
