@@ -4780,13 +4780,19 @@ main > .container:last-child {
     background: #FFFFFF;
 }
 .count.green {
-    background: #35C273;
+    background: #03C03C;
+}
+.count.chartreuse{
+    background: #66FF00;
 }
 .count.orange {
-    background: #FFB13D;
+    background: #FFA500;
 }
 .count.pink {
-    background: #E74C77;
+    background: #FF2400;
+}
+.count.red {
+    background: #C41E3A;
 }
 .clinic-card-full-desc__content__feedback-item {
     display: flex;
