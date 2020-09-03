@@ -71,7 +71,7 @@ if(method_exists($this, 'setFrameMode'))
                             <?}elseif ($i==2){?>
                                 Плохо
                             <?}elseif ($i==3){?>
-                                Нормально
+                                Удовлетворительно
                             <?}elseif ($i==4){?>
                                 Хорошо
                             <?}elseif ($i==5){?>

@@ -538,7 +538,7 @@ main > .container:last-child {
 }
 
 .specializations{
-    margin-top: 118px;
+    margin-top: 118px !important;
     margin-bottom: 121px;
 }
 .specializations.container:last-child {
@@ -5369,6 +5369,23 @@ main > .container:last-child {
     padding: 30px 40px 20px;
     margin-bottom: 20px;
 }
+.variable-block-item .title-article {
+    font-family: 'Ubuntu';
+    font-size: 18px;
+    line-height: 26px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.variable-block-item .article-preview {
+    font-family: 'Ubuntu-Light';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: #000000;
+    margin-bottom: 0;
+    margin-top: 0;
+}
 .variable-block-item .title-h3 {
     margin-bottom: 20px;
     color: #8A8A8A;
@@ -5552,6 +5569,7 @@ main > .container:last-child {
 .doctors-slider-item .doctors-list-item__description {
     max-width: 100%;
     padding: 10px;
+    position: relative;
 }
 .doctors-slider-item .doctors-list-item__description-position {
     margin-bottom: 6px;
@@ -6268,7 +6286,7 @@ main > .container:last-child {
         padding-top: 28px;
     }
     .specializations {
-        margin-top: 60px;
+        margin-top: 60px !important;
         margin-bottom: 61px;
     }
     .specializations .nav-pills {
@@ -7095,7 +7113,7 @@ main > .container:last-child {
     .reception-select-group .reception-select-group__left {
         margin-right: 0;
     }
-    .reception-select-group__desc {
+    .reception-select-group__desс {
         max-width: 100%;
     }
     .reception-select-group.date-birth {
@@ -7157,6 +7175,10 @@ main > .container:last-child {
     }
 }
 @media (max-width: 576px) {
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row {
+        flex-direction: column;
+        align-items: initial;
+    }
     .specializations.container:last-child {
         margin-top: 40px;
     }
@@ -8026,7 +8048,7 @@ main > .container:last-child {
         margin-top: 4px;
     }
     .specializations {
-        margin-top: 40px;
+        margin-top: 40px !important;
     }
     .specializations .nav-pills .nav-link.active, .specializations .nav-pills .nav-link {
         padding-left: 51px;

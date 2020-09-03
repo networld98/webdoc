@@ -38,7 +38,7 @@ $(document).ready(()=>{
             } else {
                 if(top < footer.top) {
                     console.log();
-                    elem.css({top: '100px', position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
+                    elem.css({top: '153px', position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
                 } else {
                     elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '0'});
                 }

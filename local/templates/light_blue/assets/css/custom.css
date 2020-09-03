@@ -334,7 +334,6 @@
 }
 .card-item:last-child{
     border: none;
-    padding-bottom: 0;
     margin-bottom: 0;
 }
 .time-block-span{
@@ -383,6 +382,16 @@ main >.main-seo-text {
     font-family: "Ubuntu";
     font-weight: normal;
 }
+.services-detail h1 {
+    font-family: "Montserrat Alternates-Bold";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 43px;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
 .services-detail h2 {
     font-family: "Montserrat Alternates-Bold";
     font-style: normal;
@@ -403,18 +412,18 @@ main >.main-seo-text {
     margin-top: 0;
     margin-bottom: 30px;
 }
-.services-detail img{
+.services-detail .row > div:last-child > img {
     border-radius: 9px;
 }
-.services-detail img {
+.services-detail .row > div:last-child > img {
     max-width: 421px;
     max-height: 320px;
 }
-.services-detail img:nth-of-type(even){
+.services-detail .row > div:last-child > img:nth-of-type(even) {
     float: left;
     margin-right: 40px;
 }
-.services-detail img:nth-of-type(odd){
+.services-detail .row > div:last-child > img:nth-of-type(odd) {
     float: right;
     margin-left: 40px;
     max-width: 486px;
@@ -459,6 +468,12 @@ main >.main-seo-text {
 .bx_filter_select_popup ul li label:first-letter, .link-checkbox .bx_filter_param_label span:first-letter  {
     text-transform: uppercase;
 }
+.api-icon-star .count {
+    opacity: 0.1;
+}
+.api-icon-star.active .count {
+    opacity: 1;
+}
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
         width: 100%;
@@ -483,14 +498,14 @@ main >.main-seo-text {
     .header .container.cabinet .contacts {
         display: none;
     }
-    .services-detail img:nth-of-type(odd),.services-detail img:nth-of-type(even) {
+    .services-detail .row > div:last-child > img:nth-of-type(odd) ,.services-detail .row > div:last-child >  img:nth-of-type(even) {
         max-width: 300px;
         height: 300px;
     }
-    .services-detail img:nth-of-type(odd) {
+    .services-detail .row > div:last-child >  img:nth-of-type(odd) {
         margin-left: 20px;
     }
-    .services-detail img:nth-of-type(even) {
+    .services-detail .row > div:last-child >  img:nth-of-type(even) {
         margin-right: 20px;
     }
 }
@@ -510,12 +525,33 @@ main >.main-seo-text {
         margin-bottom: 0;
     }
 }
+@media (max-width: 576px) {
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
+        text-align: left;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span {
+        text-align: left;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
 @media (max-width: 450px) {
-    .services-detail img:nth-of-type(odd),.services-detail img:nth-of-type(even) {
+    .services-detail .row > div:last-child >  img:nth-of-type(odd),.services-detail .row > div:last-child >  img:nth-of-type(even) {
         float: initial;
         margin-bottom: 20px;
         margin-left: 0;
         margin-right: 0;
+    }
+    .place-education-block .add-place, .place-education-block .add-education {
+        right: -32px;
+        bottom: -36px;
+    }
+    .time-block-span {
+        max-width: 100px;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .row .col-lg-12 {
+        display: flex;
+        flex-direction: column;
     }
     .services-detail h3,.services-detail h2 {
         margin-bottom: 10px;
@@ -531,7 +567,11 @@ main >.main-seo-text {
         width: 100%;
     }
     .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group {
-        width: 48%;
+        width: 100%;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group > li {
+        width: 100%;
+        margin-right: 0;
     }
     .time-block-span {
         text-align: left;

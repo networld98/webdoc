@@ -6,7 +6,7 @@ $APPLICATION->SetTitle("Услуги");
 $curPagePath = $APPLICATION->GetCurDir();
 $curPagePath = explode("/", $curPagePath);
 ?>
-<div class="full-screen__filter-bg">
+<div class="full-screen__filter-bg services-filter">
     <section class="container">
         <? $APPLICATION->IncludeComponent(
             "bitrix:catalog.smart.filter",
@@ -50,7 +50,7 @@ $curPagePath = explode("/", $curPagePath);
             false
         );?>
     </section>
-<section class="container services-list">
+<section class="container services-list services-detail">
 <?if($curPagePath[2]==NULL){?>
     <?php
     header("HTTP/1.1 301 Moved Permanently");
@@ -125,7 +125,7 @@ $curPagePath = explode("/", $curPagePath);
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "Y",
 		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "N",
+		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",

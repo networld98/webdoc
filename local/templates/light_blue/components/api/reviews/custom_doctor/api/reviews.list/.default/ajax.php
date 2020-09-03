@@ -24,34 +24,37 @@
 use \Bitrix\Main\Localization\Loc;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
-	die();
+    die();
 
 Loc::loadMessages(dirname(__FILE__) . '/template.php');
 
 if(method_exists($this, 'setFrameMode'))
-	$this->setFrameMode(true);
+    $this->setFrameMode(true);
 
 $bCanEdit = $arParams['IS_EDITOR'];
 global $clinicName;
 if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
-	ob_start();
-	$this->addExternalCss('/bitrix/components/bitrix/main.pagenavigation/templates/.default/style.css');
-	$APPLICATION->IncludeComponent('bitrix:main.pagenavigation', '', array(
-		 'NAV_OBJECT'     => $arResult['NAV_OBJECT'],
-		 'SEF_MODE'       => $arParams['SEF_MODE'],
-		 'TEMPLATE_THEME' => $arParams['PAGER_THEME'],
-	),
-		 false,
-		 array('HIDE_ICONS' => 'Y')
-	);
-	$pagenavigation = ob_get_contents();
-	ob_end_clean();
+    ob_start();
+    $this->addExternalCss('/bitrix/components/bitrix/main.pagenavigation/templates/.default/style.css');
+    $APPLICATION->IncludeComponent('bitrix:main.pagenavigation', '', array(
+        'NAV_OBJECT'     => $arResult['NAV_OBJECT'],
+        'SEF_MODE'       => $arParams['SEF_MODE'],
+        'TEMPLATE_THEME' => $arParams['PAGER_THEME'],
+    ),
+        false,
+        array('HIDE_ICONS' => 'Y')
+    );
+    $pagenavigation = ob_get_contents();
+    ob_end_clean();
 }
 ?>
 <div class="api-reviews-list">
-	<? $APPLICATION->IncludeComponent('api:reviews.filter', "", $arParams, $component->getParent()); ?>
-	<? if($arResult['ITEMS']): ?>
-        <div class="api-items checked-feedback-list slick-slider2">
+    <? $APPLICATION->IncludeComponent('api:reviews.filter', "", $arParams, $component->getParent()); ?>
+    <? if($arResult['ITEMS']): ?>
+        <? if($arParams['DISPLAY_TOP_PAGER'] && $pagenavigation): ?>
+            <div class="api-pagination"><?=$pagenavigation?></div>
+        <? endif; ?>
+        <div class="api-items">
             <? foreach($arResult['ITEMS'] as $arItem): ?>
                 <?
                 $item_class = '';
@@ -60,27 +63,28 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                 }
                 $arElement = $arItem['ELEMENT_FIELDS'];
                 ?>
-                <div class="checked-feedback-list-item <?=$item_class?> " id="review<?=$arItem['ID']?>" itemprop="review" itemscope itemtype="http://schema.org/Review">
-                    <div class="checked-feedback-list-item__doctor-info">
-                        <div class="checked-feedback-list-item__img-info-ratings starrr">
-                            <?if($arItem['RATING']>=1){?>
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-1">
-                            <?}if ($arItem['RATING']>=2){?>
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-2">
-                            <?}if ($arItem['RATING']>=3){?>
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-3">
-                            <?}if ($arItem['RATING']>=4){?>
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-4">
-                            <?}if ($arItem['RATING']>=5){?>
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-5">
-                            <?}?>
-                            <span>
+                <div id="review<?=$arItem['ID']?>" class="<?=$item_class?> clinic-card-full-desc__content__feedback-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                    <div class="clinic-card-full-desc__content__feedback-item-left">
+                        <? if($arItem['GUEST_NAME']): ?>
+                            <p class="clinic-card-full-desc__content__feedback-item-left__name" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                            <span itemprop="name">
+                                <? if($arParams['USE_USER'] == 'Y' && $arItem['USER_URL']): ?>
+                                    <?=$arItem['GUEST_NAME']?>
+                                <? else: ?>
+                                    <?=$arItem['GUEST_NAME']?>
+                                <? endif ?>
+                            </span>
+                            </p>
+                        <? endif; ?>
+                        <div class="clinic-card-full-desc__content__feedback-item-left__mark <?if($arItem['RATING']==1||$arItem['RATING']==2){?>pink<?}elseif ($arItem['RATING']==3||$arItem['RATING']==4){?>orange<?}else{?>green<?}?>" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                            <span class="count" itemprop="ratingValue"><?=($arItem['RATING'] ? $arItem['RATING'] : 5)?></span>
+                            <span class="text">
                                 <?if($arItem['RATING']==1){?>
                                     Ужасно
                                 <?}elseif ($arItem['RATING']==2){?>
                                     Плохо
                                 <?}elseif ($arItem['RATING']==3){?>
-                                    Нормально
+                                    Удовлетворительно
                                 <?}elseif ($arItem['RATING']==4){?>
                                     Хорошо
                                 <?}elseif ($arItem['RATING']==5){?>
@@ -88,17 +92,48 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                 <?}?>
                             </span>
                         </div>
-                        <p class="checked-feedback-list-item__from">
-                            <span itemprop="name">
-                                <? if($arParams['USE_USER'] == 'Y' && $arItem['USER_URL']): ?>
-                                    <?=$arItem['GUEST_NAME']?>
-                                <? else: ?>
-                                    <?=$arItem['GUEST_NAME']?>
-                                <? endif ?>
-                            </span>,
-                            <span itemprop="datePublished" content="<?=$arItem['DISPLAY_DATE_PUBLISHED']?>"><?=$arItem['DISPLAY_ACTIVE_FROM']?></span>
-                        </p>
-                        <p class="checked-feedback-list-item__feedback" data-edit="ANNOTATION" itemprop="reviewBody"><?=$arItem['ANNOTATION']?></p>
+                        <?/* <div class="clinic-card-full-desc__content__feedback-item-left__visit">
+                            <span class="clinic-card-full-desc__content__feedback-item-left__visit__text">Посетили врача</span>
+                            <span class="clinic-card-full-desc__content__feedback-item-left__visit__date">Апрель 2020</span>
+                        </div>*/?>
+                        <div class="clinic-card-full-desc__content__feedback-item-left__from">
+                            <span class="clinic-card-full-desc__content__feedback-item-left__from__text">Отзыв оставлен</span>
+                            <span class="clinic-card-full-desc__content__feedback-item-left__from__source"itemprop="datePublished" content="<?=$arItem['DISPLAY_DATE_PUBLISHED']?>"><?=$arItem['DISPLAY_ACTIVE_FROM']?></span>
+                        </div>
+                    </div>
+                    <div class="clinic-card-full-desc__content__feedback-item-right">
+                        <? if($arItem['ADVANTAGE']): ?>
+                            <div class="clinic-card-full-desc__content__feedback-item-right__liked">
+                                <span>Понравилось</span>
+                                <p data-edit="ADVANTAGE"><?=$arItem['ADVANTAGE']?></p>
+                            </div>
+                        <? endif ?>
+                        <? if($arItem['DISADVANTAGE']): ?>
+                            <div class="clinic-card-full-desc__content__feedback-item-right__disliked">
+                                <span>Не понравилось</span>
+                                <p data-edit="DISADVANTAGE"><?=$arItem['DISADVANTAGE']?></p>
+                            </div>
+                        <? endif ?>
+                        <? if($arItem['ANNOTATION']): ?>
+                            <div class="clinic-card-full-desc__content__feedback-item-right__comment">
+                                <span>Комментарий</span>
+                                <p  data-edit="ANNOTATION" itemprop="reviewBody"><?=$arItem['ANNOTATION']?></p>
+                            </div>
+                        <? endif ?>
+                        <? if($arItem['COMPANY']): ?>
+                            <div class="clinic-card-full-desc__content__feedback-item-right__doctor">
+                                <span>Лечащий врач:&nbsp;</span>
+                                <span class="doctor-name"><?=$arItem['COMPANY']?></span>
+                            </div>
+                        <? endif ?>
+
+                        <div class="clinic-card-full-desc__content__feedback-item-right__reply">
+                            <? if($arItem['REPLY']): ?>
+                                <span class="clinic-card-full-desc__content__feedback-item-right__reply__clinic"><?=$clinicName?></span>
+                                <?/* <span class="clinic-card-full-desc__content__feedback-item-right__reply__date-time">30 июня 20 в 10:00</span>*/?>
+                                <p id="api-answer-text-<?=$arItem['ID']?>"><?=$arItem['REPLY']?></p>
+                            <? endif ?>
+                        </div>
                     </div>
                 </div>
                 <?/*
@@ -132,6 +167,8 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
 					</div>*/?>
             <? endforeach ?>
         </div>
-	<? endif ?>
+        <? if($arParams['DISPLAY_BOTTOM_PAGER'] && $pagenavigation): ?>
+            <div class="api-pagination"><?=$pagenavigation?></div>
+        <? endif; ?>
+    <? endif ?>
 </div>
-<script src="<?= SITE_TEMPLATE_PATH ?>/assets/js/main.js"></script>

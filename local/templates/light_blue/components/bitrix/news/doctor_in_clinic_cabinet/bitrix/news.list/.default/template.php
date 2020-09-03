@@ -177,6 +177,8 @@ global $idClinic;
                                         </div>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="2">
+                                        <div class="row">
+                                        <div class="col-lg-12">
                                         <span class="time-block-span"><?=$arItem['PROPERTIES']['SPECIALIZATIONS']['NAME']?></span>
                                         <ul class="link-checkbox">
                                             <?$arFilter = Array("IBLOCK_ID"=>"11","ACTIVE"=>"Y");
@@ -194,6 +196,8 @@ global $idClinic;
                                                 </li>
                                             <?}?>
                                         </ul>
+                                        </div>
+                                        </div>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="3">
                                         <div class="row place-education-block">
