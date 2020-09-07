@@ -438,12 +438,14 @@ main > .container:last-child {
 }
 
 
-
-
-
+#auth-popup > img:first-child {
+    padding-bottom: 62px;
+}
+.auth-popup__phone {
+    margin-top: 0;
+}
 .auth-popup__header{
     font-family: "Montserrat Alternates";
-    padding-top: 62px;
     font-weight: bold;
     font-size: 25px;
     line-height: 35px;
@@ -2961,7 +2963,7 @@ main {
 /*personal-cabinet*/
 
 .personal-cabinet {
-    margin: 20px 40px 60px;
+    margin: 134px 40px 60px;
     background: #F3F4EF;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -3806,13 +3808,20 @@ main {
     margin-bottom: 15px;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop {
+    display: none;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__active {
+    display: block;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__active,.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop {
     background: #F6F6F6;
     border-radius: 10px;
     margin-bottom: 15px;
     padding: 20px 22px 30px;
     margin-top: 15px;
-    display: none;
 }
+
+
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content.main-block {
     max-width: 455px;
     flex-direction: column;
@@ -3847,7 +3856,7 @@ main {
     margin-right: 0;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row select {
-    border: 1px solid #9DD4B3;
+    border: 2px solid #9DD4B3;
     background: #FFFFFF;
     border-radius: 5px;
     padding: 8px 0 8px 11px;
@@ -6679,7 +6688,7 @@ main {
         flex-direction: column;
     }
     .personal-cabinet {
-        margin: 20px 15px 20px;
+        margin: 134px 15px 20px;
     }
     .personal-cabinet-menu__list-item {
         flex-basis: 49%;
@@ -8015,6 +8024,9 @@ main {
     /* .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
         display: block;
     } */
+    .personal-cabinet {
+        margin: 104px 15px 20px;
+    }
     .library .title-h2 {
         margin-top: 0;
     }

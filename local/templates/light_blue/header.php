@@ -22,6 +22,7 @@ CJSCore::Init("popup", "jquery");
     <script src="<?= SITE_TEMPLATE_PATH ?>/assets/js/main.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=f471c6ff-1ad1-4847-8940-573cea31904e&lang=ru_RU" type="text/javascript"></script>
     <title><? $APPLICATION->ShowTitle() ?><?$APPLICATION->ShowProperty("meta_title");?></title>
+<meta name="yandex-verification" content="4a254ce6a8470c55" />
 </head>
 <body>
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
@@ -135,6 +136,7 @@ CJSCore::Init("popup", "jquery");
                 <?}?>
             <?}?>
     </div>
+    <?if(!CSite::InDir('/lc/')){?>
     <div class="container mobile">
         <nav class="top-menu-mobile">
             <? $APPLICATION->IncludeComponent("bitrix:menu", "horizontal", array(
@@ -153,6 +155,7 @@ CJSCore::Init("popup", "jquery");
             ); ?>
         </nav>
     </div>
+    <?}?>
     <div id="auth-popup" class="auth-popup">
         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
         <?$APPLICATION->IncludeComponent(
@@ -382,7 +385,7 @@ CJSCore::Init("popup", "jquery");
         </div>
     </div>
 </header>
-<main class="<?if(CSite::InDir('/lc/')){?>personal-cabinet<?}?>">
+    <main class="<?if(CSite::InDir('/lc/')){?>personal-cabinet<?}elseif($APPLICATION->GetCurPage(false) === '/'){?>main-screen<?}?>">
     <?function mb_ucfirst($text) {
         return mb_strtoupper(mb_substr($text, 0, 1)) . mb_substr($text, 1);
     }?>

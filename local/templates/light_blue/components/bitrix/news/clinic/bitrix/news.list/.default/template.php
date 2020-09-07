@@ -62,6 +62,7 @@ $this->setFrameMode(true);
                                 <?}
                             }?>
                         </ul>
+                        <div class="doctor-card-location-map popup-link-marker"></div>
                     <?endif;?>
                 </div>
             </div>

@@ -200,7 +200,7 @@
 .header .container.cabinet {
     width: 100%;
     max-width: 1840px;
-    padding: 0 30px 0 100px;
+    padding: 34px 30px 0 100px;
 }
 .header .container.cabinet .contacts {
     min-width: 170px;
@@ -281,6 +281,10 @@
 .personal-cabinet .save {
     margin-left: 20px;
     margin-top: 20px;
+}
+.personal-cabinet .bx-auth-table .save {
+    margin-left: 0;
+    margin-top: 0;
 }
 .personal-cabinet .delete-doctor{
     background: #E74C77;
