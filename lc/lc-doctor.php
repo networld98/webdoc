@@ -10,29 +10,22 @@ while($ob = $res->GetNextElement()){
     $arFields = $ob->GetFields();
     $arProps = $ob->GetProperties();
     $idDoctor = $arFields['ID'];
+    $IBLOCK_ID = $arFields['IBLOCK_ID'];
 }?>
-<?//function propview($prop,$id,$iblock){
-//    $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
-//    if($ar_enum_list = $db_enum_list->GetNext()) ?>
-<!--        <label data-role="label_--><?//=$prop["CODE"]?><!--_--><?//=$id?><!--" class="bx_filter_param_label " for="--><?//=$prop["CODE"]?><!--_--><?//=$id?><!--">-->
-<!--    <span class="bx_filter_input_checkbox">-->
-<!--            <input type="checkbox" --><?//if($prop["VALUE"] == 'Y'){?><!--checked--><?//}?><!-- value="--><?//=$ar_enum_list['ID']?><!--" name="--><?//=$prop["CODE"]?><!--" id="--><?//=$prop["CODE"]?><!--_--><?//=$id?><!--">-->
-<!--                <div class="checkbox"><img src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/checkbox.svg" alt=""></div>-->
-<!--            <span class="bx_filter_param_text">--><?//=$prop["NAME"]?><!--</span>-->
-<!--        </span>-->
-<!--    </label>-->
-<!--    <input type="hidden" name="FULL_PROPERTY[]" value="--><?//=$prop["CODE"]?><!--">-->
-<?//}?>
+<?function propview($prop,$id,$iblock){
+    $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
+    if($ar_enum_list = $db_enum_list->GetNext()) ?>
+        <label data-role="label_<?=$prop["CODE"]?>_<?=$id?>" class="bx_filter_param_label " for="<?=$prop["CODE"]?>_<?=$id?>">
+    <span class="bx_filter_input_checkbox">
+            <input type="checkbox" <?if($prop["VALUE"] == 'Y'){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$prop["CODE"]?>" id="<?=$prop["CODE"]?>_<?=$id?>">
+                <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
+            <span class="bx_filter_param_text"><?=$prop["NAME"]?></span>
+        </span>
+    </label>
+    <input type="hidden" name="FULL_PROPERTY[]" value="<?=$prop["CODE"]?>">
+<?}?>
 <?function propselect($prop,$iblock){?>
     <label for=""><?=$prop['NAME']?></label>
-    <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
-        <?
-        $property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$iblock, "CODE"=>$prop["CODE"]));
-        while($enum_fields = $property_enums->GetNext())
-        {?>
-            <option value="<?=$enum_fields["ID"]?>" <?if($prop['VALUE']==$enum_fields["VALUE"]){?>selected<?}?>><?=$enum_fields["VALUE"]?></option>
-        <? }?>
-    </select>
 <?}?>
 <?function propselectspan($prop,$iblock){?>
     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
@@ -78,253 +71,349 @@ while($ob = $res->GetNextElement()){
         </select>
     </div>
 <?}?>
-<?//function propofficial($prop){?>
-<!--    <label for="">--><?//=$prop['NAME']?><!--</label>-->
-<!--    <input type="text" name="--><?//=$prop['CODE']?><!--" value="--><?//=$prop['VALUE']?><!--">-->
-<?//}?>
+<?function propofficial($prop){?>
+    <label for=""><?=$prop['NAME']?></label>
+    <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
+<?}?>
+<?function propofficialspan($prop){?>
+    <span><?=$prop['NAME']?></span>
+    <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
+<?}?>
 <?if($idDoctor !=NULL){?>
-    <?function propview($prop){
-        $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>9, "VALUE"=>"Y"));
-        if($ar_enum_list = $db_enum_list->GetNext()) ?>
-            <li>
-            <label data-role="label_<?=$prop["CODE"]?>" class="bx_filter_param_label " for="<?=$prop["CODE"]?>">
-        <span class="bx_filter_input_checkbox">
-                    <input type="checkbox" <?if($prop["VALUE"] == 'Y'){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$prop["CODE"]?>" id="<?=$prop["CODE"]?>">
-                        <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
-                    <span class="bx_filter_param_text"><?=$prop["NAME"]?></span>
-                </span>
-        </label>
-        <input type="hidden" name="FULL_PROPERTY[]" value="<?=$prop["CODE"]?>">
-        </li>
-    <?}?>
-    <?function propofficial($prop){?>
-        <li>
-            <label for=""><?=$prop['NAME']?></label>
-            <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
-        </li>
-    <?}?>
-    <form id="form_doctor_<?=$idDoctor?>" name="form_doctor_<?=$idDoctor?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
-        <input type="hidden" name="ID_DOCTOR" value="<?=$idDoctor?>">
-        <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
-        <div class="row">
-            <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
-                <div class="personal-cabinet-content__doctors-page-box-item__img">
-                    <?if($arItem['DETAIL_PICTURE']['SRC']!=NULL){?>
-                        <img src="<?= $arItem['DETAIL_PICTURE']['SRC'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
-                    <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']==NULL || $arItem['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                    <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                    <?}?>
-                </div>
-            </div>
-            <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
-                <div class="personal-cabinet-content__doctors-page-box-item__desc">
-                    <div class="row personal-cabinet-content__doctors-page-box-item__desc__head">
-                        <div class="col-sm-10 col-12">
-                            <div class="personal-cabinet-content__doctors-page-box-item__desc-left">
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">
-                                    <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">
-                                            <span class="personal-cabinet-content__doctors-page-box-item__desc__name"><span><a href="/doctors/<?=$arItem['CODE']?>/"><?=$arItem['NAME']?></a><div class="edit"></div></span>
-                                                <input type="text" name="NAME_DOCTOR" value="<?=$arItem['NAME']?>" class="changedInput">
+    <div class="personal-cabinet-content__doctors-page">
+        <div class="personal-cabinet-content__doctors-page-box">
+            <form id="form_doctor_<?=$idDoctor?>" name="form_doctor_<?=$idDoctor?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
+                <input type="hidden" name="ID_DOCTOR" value="<?=$idDoctor?>">
+                <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
+                <div class="row">
+                    <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
+                        <div class="personal-cabinet-content__doctors-page-box-item__img">
+                            <?if($arFields['DETAIL_PICTURE']!=NULL){?>
+                                <?
+                                    $file = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                ?>
+                                <img src="<?= $file['src'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
+                            <?}elseif($arProps['GENDER']['VALUE']==NULL || $arProps['GENDER']['VALUE']=="Мужчина" ){?>
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
+                            <?}elseif($arProps['GENDER']['VALUE']=="Женщина" ){?>
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
+                            <?}?>
+                        </div>
+                    </div>
+                    <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
+                        <div class="personal-cabinet-content__doctors-page-box-item__desc">
+                            <div class="row personal-cabinet-content__doctors-page-box-item__desc__head">
+                                <div class="col-sm-10 col-12">
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc-left">
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">
+                                            <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">
+                                            <span class="personal-cabinet-content__doctors-page-box-item__desc__name">
+                                                <a href="/doctors/<?=$arFields['CODE']?>/"><?=$arFields['NAME']?></a>
                                             </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <? /*<span class="personal-cabinet-content__doctors-page-box-item__desc__status">не работает в клинике</span>*/?>
                                 </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor">
-                                    <span>Редактировать данные</span>
+                                <div class="col-sm-2 col-12">
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">
+                                        <div class="toggle reverse_switch">
+                                            <?$db_enum_list = CIBlockProperty::GetPropertyEnum($arProps['NOT_ON']['CODE'], Array(), Array("IBLOCK_ID"=>$IBLOCK_ID, "VALUE"=>"Y"));
+                                            if($ar_enum_list = $db_enum_list->GetNext()) ?>
+                                            <input type="checkbox"  id="normal_<?=$idDoctor?>" <?if($arProps['NOT_ON']['VALUE']=='Y'){?>checked<?}?> name="<?=$arProps['NOT_ON']['CODE']?>" value="<?=$ar_enum_list['ID']?>" class="swith" type="checkbox"/>
+                                            <label class="toggle-item" for="normal_<?=$idDoctor?>"></label>
+                                            <input type="hidden" name="FULL_PROPERTY[]" value="<?=$arProps['NOT_ON']['CODE']?>">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-2 col-12">
-                            <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">
-                                <div class="toggle reverse_switch">
-                                    <?$db_enum_list = CIBlockProperty::GetPropertyEnum($arItem['PROPERTIES']['NOT_ON']['CODE'], Array(), Array("IBLOCK_ID"=>$arParams['IBLOCK_ID'], "VALUE"=>"Y"));
-                                    if($ar_enum_list = $db_enum_list->GetNext()) ?>
-                                    <input type="checkbox"  id="normal_<?=$idDoctor?>" <?if($arItem['PROPERTIES']['NOT_ON']['VALUE']=='Y'){?>checked<?}?> name="<?=$arItem['PROPERTIES']['NOT_ON']['CODE']?>" value="<?=$ar_enum_list['ID']?>" class="swith" type="checkbox"/>
-                                    <label class="toggle-item" for="normal_<?=$idDoctor?>"></label>
-                                    <input type="hidden" name="FULL_PROPERTY[]" value="<?=$arItem['PROPERTIES']['NOT_ON']['CODE']?>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop">
-                                <ul>
-                                    <li class="active" data-tabs="0">Основное</li>
-                                    <li data-tabs="1">О враче</li>
-                                    <li data-tabs="2">Профиль лечения</li>
-                                    <li data-tabs="3">Опыт работы</li>
-                                    <li data-tabs="4">Образование</li>
-                                    <li data-tabs="5">График</li>
-                                </ul>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content main-block active" data-tabs="0">
-                                    <?propselectSpecSec($arItem['PROPERTIES']['SPECIALIZATION_MAIN'],11)?>
-                                    <?propselectSpecSec($arItem['PROPERTIES']['SPECIALIZATION_DOP'],11)?>
-                                    <?propselectspan($arItem['PROPERTIES']['RANK'],$arParams['IBLOCK_ID'])?>
-                                    <?propselectspan($arItem['PROPERTIES']['SCIENCE_DEGREE'],$arParams['IBLOCK_ID'])?>
-                                    <?propselectspan($arItem['PROPERTIES']['CATEGORY'],$arParams['IBLOCK_ID'])?>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="1">
-                                    <div class="row personal-cabinet-content-item">
-                                        <div class="col-lg-12 no-padding">
-                                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                                <span>Фото</span>
-                                                <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">
+                                <div class="col-12">
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop personal-cabinet-content__doctors-page-box-item__desc__redactor__active">
+                                        <ul>
+                                            <li data-tabs="0" class="active">Личные данные</li>
+                                            <li data-tabs="1">Основное</li>
+                                            <li data-tabs="2">Профиль лечения</li>
+                                            <li data-tabs="3">Опыт работы</li>
+                                            <li data-tabs="4">Образование</li>
+                                            <li data-tabs="5">График</li>
+                                            <li data-tabs="6">Клиники</li>
+                                        </ul>
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content active" data-tabs="0">
+                                            <div class="row personal-cabinet-content-item">
+                                                <div class="col-lg-12 no-padding">
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <span>Фото</span>
+                                                        <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-padding">
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <span>ФИО</span>
+                                                        <textarea name="NAME_DOCTOR"><?=$arFields['NAME']?></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-padding">
+                                                    <?propselectspan($arProps['GENDER'],$IBLOCK_ID)?>
+                                                </div>
+                                                <div class="col-lg-12 no-padding">
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <span>О враче</span>
+                                                        <textarea name="PREVIEW_TEXT"><?=$arFields['PREVIEW_TEXT']?></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-padding">
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <?propofficialspan($arProps['PHONE'],$idDoctor,$IBLOCK_ID)?>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 no-padding">
-                                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                                <span>О враче</span>
-                                                <textarea name="PREVIEW_TEXT"><?=$arItem['PREVIEW_TEXT']?></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 no-padding">
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content main-block " data-tabs="1">
+                                            <?propselectSpecSec($arProps['SPECIALIZATION_MAIN'],11)?>
+                                            <?propselectSpecSec($arProps['SPECIALIZATION_DOP'],11)?>
                                             <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                 <span>Описание специализации</span>
-                                                <textarea name="DETAIL_TEXT"><?=$arItem['DETAIL_TEXT']?></textarea>
+                                                <textarea name="DETAIL_TEXT"><?=$arFields['DETAIL_TEXT']?></textarea>
                                             </div>
+                                            <?propselectspan($arProps['RANK'],$IBLOCK_ID)?>
+                                            <?propselectspan($arProps['SCIENCE_DEGREE'],$IBLOCK_ID)?>
+                                            <?propselectspan($arProps['CATEGORY'],$IBLOCK_ID)?>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="2">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <span class="time-block-span"><?=$arItem['PROPERTIES']['SPECIALIZATIONS']['NAME']?></span>
-                                            <ul class="link-checkbox">
-                                                <?$arFilter = Array("IBLOCK_ID"=>"11","ACTIVE"=>"Y");
-                                                $arSelect = Array("NAME","CODE","ID");
-                                                $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
-                                                while($ob = $res->GetNextElement()){
-                                                    $arFields = $ob->GetFields(); ?>
-                                                    <li>
-                                                        <input type="checkbox" <?if(in_array($arFields['ID'],$arItem['PROPERTIES']['SPECIALIZATIONS']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>" name="<?=$arItem['PROPERTIES']['SPECIALIZATIONS']['CODE']?>[]" id="<?=$arFields['ID']?>_<?=$idDoctor?>">
-                                                        <label data-role="label_<?=$arFields['ID']?>_<?=$idDoctor?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>_<?=$idDoctor?>">
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="2">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <span class="time-block-span"><?=$arProps['SPECIALIZATIONS']['NAME']?></span>
+                                                    <ul class="link-checkbox">
+                                                        <?$arFilter = Array("IBLOCK_ID"=>"11","ACTIVE"=>"Y");
+                                                        $arSelect = Array("NAME","CODE","ID");
+                                                        $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
+                                                        while($ob = $res->GetNextElement()){
+                                                            $arFields = $ob->GetFields(); ?>
+                                                            <li>
+                                                                <input type="checkbox" <?if(in_array($arFields['ID'],$arProps['SPECIALIZATIONS']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>" name="<?=$arProps['SPECIALIZATIONS']['CODE']?>[]" id="<?=$arFields['ID']?>_<?=$idDoctor?>">
+                                                                <label data-role="label_<?=$arFields['ID']?>_<?=$idDoctor?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>_<?=$idDoctor?>">
                                                         <span class="bx_filter_input_checkbox">
                                                             <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>
                                                         </span>
-                                                        </label>
-                                                    </li>
-                                                <?}?>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="3">
-                                    <div class="row place-education-block">
-                                        <div class="col-lg-12 no-padding">
-                                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                                <span><?=$arItem['PROPERTIES']['STANDING']['NAME']?></span>
-                                                <input type="text" name="<?=$arItem['PROPERTIES']['STANDING']['CODE']?>" value="<?=$arItem['PROPERTIES']['STANDING']['VALUE']?>">
+                                                                </label>
+                                                            </li>
+                                                        <?}?>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 no-padding">
-                                            <?
-                                            foreach ($arItem['PROPERTIES']['EXPERIENCE']['VALUE'] as $plaсe) {
-                                                $work_plaсe[] = array('PERIOD' => explode("/", $plaсe)[0], 'PLAСE' => explode("/", $plaсe)[1]);
-                                            }?>
-                                            <?foreach ($work_plaсe as $key => $str){?>
-                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                                    <span>Период</span>
-                                                    <input type="text" class="place-education-block_period" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PERIOD']?>">
-                                                    <span>Место работы</span>
-                                                    <input type="text" class="place-education-block_place" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PLAСE']?>">
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="3">
+                                            <div class="row place-education-block">
+                                                <div class="col-lg-12 no-padding">
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <span><?=$arProps['STANDING']['NAME']?></span>
+                                                        <input type="text" name="<?=$arProps['STANDING']['CODE']?>" value="<?=$arProps['STANDING']['VALUE']?>">
+                                                    </div>
                                                 </div>
-                                                <?
-                                                $place_key = $key+1;
-                                            }
-                                            if($arItem['PROPERTIES']['EXPERIENCE']['VALUE']!=NULL){
-                                                $place_key_last = 0 + $place_key;
-                                            }else{
-                                                $place_key_last = 1;
-                                            }?>
-                                            <div id="input_work<?=$idDoctor?><?=$place_key_last?>"></div>
-                                            <div class="add-place" value="<?=$idDoctor?><?=$place_key_last?>" title="Добавить место работы">+</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="4">
-                                    <div class="row place-education-block">
-                                        <div class="col-lg-12 no-padding">
-                                            <?foreach ($arItem['PROPERTIES']['EDUCATION']['VALUE'] as $education) {
-                                                $education_plaсe[] = array('PERIOD' => explode("/", $education)[0], 'PLAСE' => explode("/", $education)[1]);
-                                            }?>
-                                            <?foreach ($education_plaсe as $key => $str){?>
-                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                                    <span>Период</span>
-                                                    <input type="text" class="place-education-block_period" name="EDUCATION_<?=$key?>[]" value="<?=$str['PERIOD']?>">
-                                                    <span>Место учебы</span>
-                                                    <input type="text" class="place-education-block_place" name="EDUCATION_<?=$key?>[]" value="<?=$str['PLAСE']?>">
+                                                <div class="col-lg-12 no-padding">
+                                                    <?
+                                                    foreach ($arProps['EXPERIENCE']['VALUE'] as $plaсe) {
+                                                        $work_plaсe[] = array('PERIOD' => explode("/", $plaсe)[0], 'PLAСE' => explode("/", $plaсe)[1]);
+                                                    }?>
+                                                    <?foreach ($work_plaсe as $key => $str){?>
+                                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                            <span>Период</span>
+                                                            <input type="text" class="place-education-block_period" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PERIOD']?>">
+                                                            <span>Место работы</span>
+                                                            <input type="text" class="place-education-block_place" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PLAСE']?>">
+                                                        </div>
+                                                        <?
+                                                        $place_key = $key+1;
+                                                    }
+                                                    if($arProps['EXPERIENCE']['VALUE']!=NULL){
+                                                        $place_key_last = 0 + $place_key;
+                                                    }else{
+                                                        $place_key_last = 1;
+                                                    }?>
+                                                    <div id="input_work<?=$idDoctor?><?=$place_key_last?>"></div>
+                                                    <div class="add-place" value="<?=$idDoctor?><?=$place_key_last?>" title="Добавить место работы">+</div>
                                                 </div>
-                                                <?
-                                                $education_key = $key+1;
-                                            }
-                                            $education_key_last = 0 + $education_key;?>
-                                            <div id="input_education<?=$idDoctor?><?=$education_key_last?>"></div>
-                                            <div class="add-education" value="<?=$idDoctor?><?=$education_key_last?>" title="Добавить место учебы">+</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <span class="time-block-span"><?=$arItem['PROPERTIES']['DAY_RECEPTION']['NAME']?></span>
-                                            <ul class="link-checkbox">
-                                                <?
-                                                $db_enum_list = CIBlockProperty::GetPropertyEnum("DAY_RECEPTION", Array('SORT'=>'ASC'), Array("IBLOCK_ID"=>10));
-                                                while($ar_enum_list = $db_enum_list->GetNext()) {?>
-                                                    <li>
-                                                        <input type="checkbox" <?if(in_array($ar_enum_list['VALUE'],$arItem['PROPERTIES']['DAY_RECEPTION']['VALUE'])){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$arItem['PROPERTIES']['DAY_RECEPTION']['CODE']?>[]" id="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>">
-                                                        <label data-role="label_<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>" class="bx_filter_param_label" for="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>">
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="4">
+                                            <div class="row place-education-block">
+                                                <div class="col-lg-12 no-padding">
+                                                    <?foreach ($arProps['EDUCATION']['VALUE'] as $education) {
+                                                        $education_plaсe[] = array('PERIOD' => explode("/", $education)[0], 'PLAСE' => explode("/", $education)[1]);
+                                                    }?>
+                                                    <?foreach ($education_plaсe as $key => $str){?>
+                                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                            <span>Период</span>
+                                                            <input type="text" class="place-education-block_period" name="EDUCATION_<?=$key?>[]" value="<?=$str['PERIOD']?>">
+                                                            <span>Место учебы</span>
+                                                            <input type="text" class="place-education-block_place" name="EDUCATION_<?=$key?>[]" value="<?=$str['PLAСE']?>">
+                                                        </div>
+                                                        <?
+                                                        $education_key = $key+1;
+                                                    }
+                                                    $education_key_last = 0 + $education_key;?>
+                                                    <div id="input_education<?=$idDoctor?><?=$education_key_last?>"></div>
+                                                    <div class="add-education" value="<?=$idDoctor?><?=$education_key_last?>" title="Добавить место учебы">+</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <span class="time-block-span"><?=$arProps['DAY_RECEPTION']['NAME']?></span>
+                                                    <ul class="link-checkbox">
+                                                        <?
+                                                        $db_enum_list = CIBlockProperty::GetPropertyEnum("DAY_RECEPTION", Array('SORT'=>'ASC'), Array("IBLOCK_ID"=>10));
+                                                        while($ar_enum_list = $db_enum_list->GetNext()) {?>
+                                                            <li>
+                                                                <input type="checkbox" <?if(in_array($ar_enum_list['VALUE'],$arProps['DAY_RECEPTION']['VALUE'])){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$arProps['DAY_RECEPTION']['CODE']?>[]" id="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>">
+                                                                <label data-role="label_<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>" class="bx_filter_param_label" for="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>">
                                                                 <span class="bx_filter_input_checkbox">
                                                                     <span class="bx_filter_param_text"><?=$ar_enum_list["VALUE"]?></span>
                                                                 </span>
-                                                        </label>
-                                                    </li>
-                                                <?}?>
-                                            </ul>
+                                                                </label>
+                                                            </li>
+                                                        <?}?>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <span class="time-block-span"><?=$arProps['RECEPTION_SCHEDULE']['NAME']?></span>
+                                                    <ul class="checkbox-group time-group">
+                                                        <?foreach ($arProps['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
+                                                            <li>
+                                                                <input type="text" name="<?=$arProps['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
+                                                            </li>
+                                                            <?
+                                                            $contact_key = $key+1;
+                                                        }
+                                                        $contact_key_last = 0 + $contact_key;?>
+                                                        <ul id="input<?=$idDoctor?><?=$contact_key_last?>"></ul>
+                                                    </ul>
+                                                    <div class="add-time" value="<?=$idDoctor?><?=$contact_key_last?>" title="Добавить время">+</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-12">
-                                            <span class="time-block-span"><?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['NAME']?></span>
-                                            <ul class="checkbox-group time-group">
-                                                <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
-                                                    <li>
-                                                        <input type="text" name="<?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
-                                                    </li>
-                                                    <?
-                                                    $contact_key = $key+1;
-                                                }
-                                                $contact_key_last = 0 + $contact_key;?>
-                                                <ul id="input<?=$idDoctor?><?=$contact_key_last?>"></ul>
-                                            </ul>
-                                            <div class="add-time" value="<?=$idDoctor?><?=$contact_key_last?>" title="Добавить время">+</div>
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="6">
+                                            <div class="row">
+                                                <div class="col-lg-12 list-clinics-cabinet-doctor">
+                                                    <?if($arProps['CLINIK']['VALUE'][0]!=NULL){?>
+                                                        <h5>Вы привязаны к клиникам:</h5>
+                                                        <ul class="checkbox-group">
+                                                            <?foreach ($arProps['CLINIK']['VALUE'] as $key => $clinic){
+                                                                $res = CIBlockElement::GetByID($clinic);
+                                                                if($ar_res = $res->GetNext())?>
+                                                                <li>
+                                                                <label class="clinics-cabinet-doctor clinics-cabinet-doctor_<?=$clinic?>" for="<?=$arProps['CLINIK']['CODE']?>"><?=$ar_res['NAME']?>
+                                                                <input type="text" id="<?=$clinic?>" title='<?=$ar_res['NAME'];?>' name='<?=$arProps['CLINIK']['CODE']?>[]' value="<?=$clinic?>">
+                                                                <div class="del" data-val="<?=$clinic?>" title="Отвязаться от клиники"> x</div></label>
+                                                                </li>
+                                                             <?}?>
+                                                        </ul>
+                                                    <?}else{?>
+                                                        <p>Вас не привязала не одна клиника</p>
+                                                    <?}?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
-                                <ul class="checkbox-group">
-                                    <li><?propselect($arItem['PROPERTIES']['GENDER'],$arParams['IBLOCK_ID'])?></li>
-                                    <li><?propofficial($arItem['PROPERTIES']['AGE_PACIENT'])?></li>
-                                    <li><?propview($arItem['PROPERTIES']['CHILDREN_DOCTOR'],$idDoctor,$arParams['IBLOCK_ID'])?></li>
-                                    <li><?propview($arItem['PROPERTIES']['DEPARTURE_HOUSE'],$idDoctor,$arParams['IBLOCK_ID'])?></li>
-                                    <li><?propview($arItem['PROPERTIES']['ONLINE'],$idDoctor,$arParams['IBLOCK_ID'])?></li>
-                                    <li><?propview($arItem['PROPERTIES']['UMC'],$idDoctor,$arParams['IBLOCK_ID'])?></li>
-                                    <li><?propview($arItem['PROPERTIES']['DMC'],$idDoctor,$arParams['IBLOCK_ID'])?></li>
-                                    <li><?propview($arItem['PROPERTIES']['DIAGNOSTICS'],$idDoctor,$arParams['IBLOCK_ID'])?></li>
-                                </ul>
-                                <div class="text-view">
-                                    <div id="message-form_<?=$idDoctor?>"></div>
-                                    <div id="photo-form_<?=$idDoctor?>" style="display:none;"></div>
-                                    <span class="save delete-doctor" id="delete_<?=$idDoctor?>">Отвязать врача от клиники</span>
-                                    <button type="submit" name="saveProfile" class="save">Сохранить</button>
+                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
+                                        <ul class="checkbox-group">
+                                            <li><?propofficial($arProps['AGE_PACIENT'],$idDoctor,$IBLOCK_ID)?></li>
+                                            <li><?propview($arProps['CHILDREN_DOCTOR'],$idDoctor,$IBLOCK_ID)?></li>
+                                            <li><?propview($arProps['DEPARTURE_HOUSE'],$idDoctor,$IBLOCK_ID)?></li>
+                                            <li><?propview($arProps['ONLINE'],$idDoctor,$IBLOCK_ID)?></li>
+                                            <li><?propview($arProps['UMC'],$idDoctor,$IBLOCK_ID)?></li>
+                                            <li><?propview($arProps['DMC'],$idDoctor,$IBLOCK_ID)?></li>
+                                            <li><?propview($arProps['DIAGNOSTICS'],$idDoctor,$IBLOCK_ID)?></li>
+                                        </ul>
+                                        <div class="text-view">
+                                            <div id="message-form_<?=$idDoctor?>"></div>
+                                            <div id="photo-form_<?=$idDoctor?>" style="display:none;"></div>
+                                            <button type="submit" name="saveProfile" class="save">Сохранить</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#form_doctor_<?=$idDoctor?>").submit(function () {
+                let formID = $(this).attr('id');
+                let formNm = $('#' + formID);
+                let formMs = $("#message-form_<?=$idDoctor?>");
+                $.ajax({
+                    type: "POST",
+                    url: '/lc/doctor-save.php',
+                    data: formNm.serialize(),
+                    success: function (data) {
+                        // Вывод текста результата отправки
+                        $(formMs).html(data);
+                    }
+                });
+                return false;
+            });
+            $(document).on('change', '.photoFile', function(){
+                let file_data = $(this).prop('files')[0];
+                let form_data = new FormData();
+                let formPhoto= $("#photo-form_<?=$idDoctor?>");
+                form_data.append('file', file_data);
+                $.ajax({
+                    url: '/lc/file_upload.php', // point to server-side PHP script
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function(form_data){
+                        $(formPhoto).html(form_data);
+                        let file = $("#photo-form_<?=$idDoctor?>").text();
+                        $('input[name="PHOTO"]').val(file);
+                    }
+                });
+                return false;
+            });
+            let id = <?=$idDoctor?>;
+            let x = <?=$contact_key_last?>;
+            $('.add-time').on('click', function () {
+                if (x < 10) {
+                    let str = '<li><input type="text" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + id + (x + 1) + '"></ul>';
+                    document.getElementById('input' + id + x).innerHTML = str;
+                    x++;
+                }else{
+                    $('.add-time').hide();
+                }
+            });
+            let y = <?=$place_key_last?>;
+            $('.add-place').on('click', function () {
+                if (y < 10) {
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Период</span> <input type="text" class="place-education-block_period" name="EXPERIENCE_' + (y + 1) + '[]"> <span>Место работы</span><input type="text" class="place-education-block_place" name="EXPERIENCE_' + (y + 1) + '[]"></div><div id="input_work' + id + (y + 1) + '"></div>';
+                    document.getElementById('input_work'+ id + y).innerHTML = str;
+                    y++;
+                }else{
+                    $('.add-place').hide();
+                }
+            });
+            let z = <?=$education_key_last?>;
+            $('.add-education').on('click', function () {
+                if (z < 10) {
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Период</span> <input type="text" class="place-education-block_period" name="EDUCATION_' + (z + 1) + '[]"> <span>Место учебы</span><input type="text" class="place-education-block_place" name="EDUCATION_' + (z + 1) + '[]"></div><div id="input_education' + id + (z + 1) + '"></div>';
+                    document.getElementById('input_education' + id + z).innerHTML = str;
+                    z++;
+                }else{
+                    $('.add-education').hide();
+                }
+            });
+            $('.del').on('click', function () {
+                let del = $(this).data('val');
+                $('.clinics-cabinet-doctor_'+ del).css('text-decoration','line-through');
+                $('#'+ del).val('');
+            });
+        });
+    </script>
 <?}else{?>
     <?include 'none-cabinet.php';?>
 <?}?>

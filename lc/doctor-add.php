@@ -31,6 +31,9 @@ $clinics = doctorInClinic(10, array("PROPERTY_TECH_PHONE"=> $_POST['PHONE']));
 if($_POST['PHONE']!=NULL){
     if ($phoneDoctor['ID']!=NULL){
         if(!in_array($_POST['ID_CLINIC'],$clinics['CLINIK']['VALUE'])){
+            if(count(count($clinics['CLINIK']['VALUE'][0])==0)){
+                $clinics['CLINIK']['VALUE'] = $_POST['ID_CLINIC'];
+            }
             $addClinics[] = array_push($clinics['CLINIK']['VALUE'],$_POST['ID_CLINIC']);
             CIBlockElement::SetPropertyValuesEx($phoneDoctor['ID'], false, array("CLINIK" => $clinics['CLINIK']['VALUE']));
             echo '<span style="color:green">Врач, с таким номером, существовал и привязан к вашей клинике, редактирование будет доступно после перезагрузки страницы</span>';

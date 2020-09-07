@@ -8,7 +8,7 @@
 .personal-cabinet .bx_filter_param_text {
     margin-left: 5px;
 }
-.personal-cabinet input:not([type="file"]):not(.city_input):not(.photoFile), .personal-cabinet textarea {
+.personal-cabinet input:not([type="file"]):not(.city_input):not(.photoFile):not(.clinics-cabinet-doctor), .personal-cabinet textarea {
     width: 100%;
     outline: none;
     border: 2px solid #9DD4B3;
@@ -43,6 +43,7 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    width: 100%;
 }
 
 .personal-cabinet-content__my-profile .metro-container {
@@ -479,6 +480,16 @@ main >.main-seo-text {
 }
 .api-icon-star.active .count {
     opacity: 1;
+}
+.personal-cabinet .list-clinics-cabinet-doctor [type="text"] {
+    display: none;
+}
+.personal-cabinet .del {
+    color: red;
+    font-style: normal;
+    font-weight: bold;
+    font-family: "Montserrat Alternates";
+    cursor: pointer;
 }
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
