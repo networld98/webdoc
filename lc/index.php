@@ -12,8 +12,8 @@ $rsUser = CUser::GetByID($USER->GetID());
     <?include 'lc-clinic.php';?>
     <?include 'mobile-manager.php';?>
 <?}elseif($arUser['UF_TYPE_USER']==7){?>
-    <?include 'lc-doctor.php';?>
     <? include 'menu.php';?>
+    <?include 'lc-doctor.php';?>
     <?include 'mobile-manager.php';?>
 <?}?>
 

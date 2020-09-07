@@ -46,7 +46,24 @@ class UserGroup
                 CIBlockElement::SetPropertyValuesEx($nameClinic, false, array("PHONE" => $arUser['LOGIN']));
             }
         }elseif($arUser['UF_TYPE_USER']==7) {
-
+            $login = self::searchClinic(10, array("PROPERTY_PHONE"=> $arUser['LOGIN']));
+            if($login == NULL) {
+                $el = new CIBlockElement;
+                $PROP = array();
+                $PROP[73] = $arUser['LOGIN'];
+                $arParams = array("replace_space"=>"-","replace_other"=>"-");
+                $trans = Cutil::translit($arUser['NAME'].' '.$arUser['LAST_NAME'] ,"ru",$arParams);
+                $arLoadProductArray = Array(
+                    "MODIFIED_BY" => $USER->GetID(),
+                    "IBLOCK_SECTION_ID" => false,
+                    "IBLOCK_ID" => 10,
+                    "PROPERTY_VALUES" => $PROP,
+                    "NAME" => $arUser['NAME'].' '.$arUser['LAST_NAME'],
+                    "CODE" => substr($arUser['LOGIN'], -4)."_".$trans,
+                    "ACTIVE" => "N",
+                );
+                $PRODUCT_ID = $el->Add($arLoadProductArray);
+            }
         }
 
     }

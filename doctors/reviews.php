@@ -8,7 +8,7 @@
 		"DETAIL_HASH" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"ELEMENT_ID" => $arResult["ID"],
+		"ELEMENT_ID" => $arParams["ID"],
 		"EMAIL_TO" => "",
 		"FORM_CITY_VIEW" => "N",
 		"FORM_DELIVERY" => array(
@@ -52,7 +52,7 @@
 		"FORM_SHOP_TEXT" => "Отзывы о враче",
 		"FORM_USE_EULA" => "Y",
 		"FORM_USE_PRIVACY" => "Y",
-		"IBLOCK_ID" => "",
+		"IBLOCK_ID" => "10",
 		"INCLUDE_CSS" => "Y",
 		"INCLUDE_JQUERY" => "jquery",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
