@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $arParams = array("replace_space"=>"-","replace_other"=>"-");
     $trans = Cutil::translit($_POST['NAME_DOCTOR'],"ru",$arParams);
         CIBlockElement::SetPropertyValuesEx($_POST['ID_DOCTOR'], false, $PROPS);
-        $nameClinic = $obEl->Update($_POST['ID_DOCTOR'],array('NAME' => $_POST['NAME_DOCTOR'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT'], "DETAIL_PICTURE" => CFile::MakeFileArray($_POST['PHOTO'])));
+        $nameClinic = $obEl->Update($_POST['ID_DOCTOR'],array('NAME' => $_POST['NAME_DOCTOR'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT'], 'PREVIEW_TEXT' => $_POST['PREVIEW_TEXT'], "DETAIL_PICTURE" => CFile::MakeFileArray($_POST['PHOTO'])));
     unlink($_POST['PHOTO']);
 ?>
     <span style="color:green">Данные сохранены</span>

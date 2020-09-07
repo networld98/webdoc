@@ -50,7 +50,7 @@ class UserGroup
             if($login == NULL) {
                 $el = new CIBlockElement;
                 $PROP = array();
-                $PROP[73] = $arUser['LOGIN'];
+                $PROP[148] = $arUser['LOGIN'];
                 $arParams = array("replace_space"=>"-","replace_other"=>"-");
                 $trans = Cutil::translit($arUser['NAME'].' '.$arUser['LAST_NAME'] ,"ru",$arParams);
                 $arLoadProductArray = Array(

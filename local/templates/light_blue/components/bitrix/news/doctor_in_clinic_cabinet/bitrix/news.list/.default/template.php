@@ -169,6 +169,9 @@ global $idClinic;
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 no-padding">
+                                                <?propselectspan($arItem['PROPERTIES']['GENDER'],$arParams['IBLOCK_ID'])?>
+                                            </div>
+                                            <div class="col-lg-12 no-padding">
                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                     <span>Описание специализации</span>
                                                     <textarea name="DETAIL_TEXT"><?=$arItem['DETAIL_TEXT']?></textarea>
@@ -293,7 +296,6 @@ global $idClinic;
                                 </div>
                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
                                     <ul class="checkbox-group">
-                                        <li><?propselect($arItem['PROPERTIES']['GENDER'],$arParams['IBLOCK_ID'])?></li>
                                         <li><?propofficial($arItem['PROPERTIES']['AGE_PACIENT'])?></li>
                                         <li><?propview($arItem['PROPERTIES']['CHILDREN_DOCTOR'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
                                         <li><?propview($arItem['PROPERTIES']['DEPARTURE_HOUSE'],$arItem['ID'],$arParams['IBLOCK_ID'])?></li>
