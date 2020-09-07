@@ -70,7 +70,7 @@ $aMenuLinks = Array(
             "SPAN"=> "по продвижению клиники"
         ),
     ),
-    Array(
+    /*Array(
         "Виджеты",
         "/lc/",
         Array(),
@@ -79,6 +79,6 @@ $aMenuLinks = Array(
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon8-un.svg",
             "SPAN"=> "для сайта клиники"
         ),
-    )
+    )*/
 );
 ?>

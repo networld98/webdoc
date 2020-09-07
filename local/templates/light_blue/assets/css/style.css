@@ -24,6 +24,7 @@
     font-weight: normal;
 }
 
+
 body {
     font-family: "Ubuntu", sans-serif;
     margin: 0;
@@ -112,11 +113,10 @@ input[type="reset"] {
     color: #000000;
 }
 .header {
-    padding-top: 31px;
-    padding-bottom: 39px;
     width: 100%;
     z-index: 2;
     position: relative;
+    padding-bottom: 20px;
 }
 
 .burger__toggle {
@@ -207,13 +207,31 @@ input[type="reset"] {
 .header .container {
     display: flex;
     align-items: center;
-    padding-top: 3px;
+    padding-top: 34px;
+    /* padding-bottom: 39px; */
     padding-left: 50px;
     padding-right: 0;
     max-width: 1320px;
+    background-color: #fff;
+}
+.container.mobile {
+    background-color: transparent !important;
+    display: none;
 }
 .side-menu li {
     font-family: "Montserrat Alternates-Bold", sans-serif;
+}
+/* main.main__header {
+    margin-top: 136px;
+} */
+/* main {
+    margin-top: 136px;
+} */
+.main-screen {
+    margin-top: 136px;
+}
+main {
+    margin-top: 77px;
 }
 main .container {
     padding-right: 15px;
@@ -357,7 +375,7 @@ main > .container:last-child {
 
 .map-popup,.map-popup-marker {
     display: none;
-    min-height: 700px;
+    max-height: 700px;
 }
 
 .popup-box {
@@ -371,6 +389,12 @@ main > .container:last-child {
     font-size: 14px;
     width: 100%;
     max-width: 1200px;
+    height: 70%;
+}
+.popup-box.popup-library {
+    max-width: 100%;
+    height: 100%;
+    overflow: scroll;
 }
 .popup-box .close {
     position: absolute;
@@ -390,6 +414,13 @@ main > .container:last-child {
     background-position: center;
     background-size: 42px 42px;
     z-index: 2;
+}
+.popup-box.popup-library .close {
+    top: 82px;
+    right: 80px;
+    width: 42px;
+    height: 42px;
+    background-size: 33px 33px;
 }
 .popup-box .close:hover {
     color: #000;
@@ -423,7 +454,7 @@ main > .container:last-child {
     position: relative;
 }
 
-.main__header {
+main {
     position: relative;
     /* background-image: url("/local/templates/light_blue/assets/images/Vector%20(1).svg");
     background-repeat: no-repeat; */
@@ -5238,6 +5269,7 @@ main > .container:last-child {
 }
 .library .sort-block {
     margin-bottom: 20px;
+    padding-top: 1px;
 }
 .library .sort-block-list {
     justify-content: initial;
@@ -5246,12 +5278,15 @@ main > .container:last-child {
     margin-right: 10px;
     cursor: pointer;
 }
-.fixed-block {
+.fixed-block,.fixed-block-alp {
     z-index: 1;
-    margin-bottom: 40px;
+    padding-bottom: 30px;
 }
-.anchor-block.fixed-block {
+.anchor-block.fixed-block,.anchor-block.fixed-block-alp {
     margin-bottom: 0;
+}
+.fixed-block-alp {
+    left: 15px;
 }
 
 .illness-box {
@@ -5283,6 +5318,10 @@ main > .container:last-child {
 .alphabet-block-list > li a:hover {
     color: #6A969A;
 }
+.alp-detail {
+    margin-top: 60px !important;
+    margin-bottom: 120px !important;
+}
 .library .col__heading {
     font-family: 'Montserrat Alternates-Bold', sans-serif;
     font-size: 35px;
@@ -5291,7 +5330,13 @@ main > .container:last-child {
     text-transform: capitalize;
     margin-bottom: 5px;
 }
-
+.library .popup-box .col__heading {
+    font-size: 70px;
+    line-height: 85px;
+}
+.library .popup-box .col__list {
+    margin-bottom: 40px;
+}
 .library .col__list {
     list-style: none;
     padding-left: 0;
@@ -5337,6 +5382,7 @@ main > .container:last-child {
     background: #FFFFFF;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    height: 100%;
 }
 .general-block-item .title-h3 {
     margin-bottom: 20px;
@@ -5361,6 +5407,16 @@ main > .container:last-child {
 }
 .general-block-item-list > li > a:hover {
     border-bottom: 1px dashed transparent;
+}
+.variable-blocks {
+    column-gap: 20px;
+    column-count: 3;
+    display: block;
+}
+.variable-blocks > div {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
 }
 .variable-block-item {
     border-radius: 10px;
@@ -5696,6 +5752,11 @@ main > .container:last-child {
 .container.spec-info {
     padding-top: 160px;
 }
+
+.fixed-block-alp .container > div {
+    padding-left: 0;
+    padding-right: 0;
+}
 /*.bx_filter.bx_blue.bx_horizontal {*/
     /*background: #F3F4EF;*/
     /*}*/
@@ -5745,8 +5806,10 @@ main > .container:last-child {
         max-width: 1300px;
     } */
 }
-@media (min-width: 1920px) {
-
+@media (min-width: 1024px) {
+    .header {
+        background-color: #fff;
+    }
 }
 @media (max-width: 1430px) {
     .top-menu {
@@ -5788,6 +5851,12 @@ main > .container:last-child {
     }
 }
 @media (max-width: 1279px) {
+    .container.mobile {
+        display: flex;
+    }
+    main {
+        margin-top: 140px;
+    }
     .personal-cabinet-menu {
         padding: 15px;
         width: 100%;
@@ -5805,18 +5874,24 @@ main > .container:last-child {
         width: 100%;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         max-width: 100%;
-        margin-top: 16px;
         
     }
     .top-menu-mobile {
         display: block;
         width: 100%;
     }
+    .header .container {
+        padding-bottom: 20px !important;
+    }
     .header .container.mobile {
         padding-left: 0;
         margin-top: 11px;
         padding-right: 0;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
     }
+    
     .top-menu {
         display: none;
     }
@@ -5905,7 +5980,7 @@ main > .container:last-child {
         background-color: transparent;
     }
     .map-popup, .map-popup-marker {
-        min-height: 989px;
+        max-height: 989px;
     }
     .reception-popup .close, .call-popup .close, .mess-popup .close {
         background-color: transparent;
@@ -6336,7 +6411,7 @@ main > .container:last-child {
         left: 20px;
     }
     .header {
-        padding-bottom: 10px;
+        
     }
     .nav__item {
         padding-left: 0;
@@ -6392,7 +6467,8 @@ main > .container:last-child {
     }
     .header .container {
         padding-left: 100px;
-        padding-top: 0;
+        padding-top: 31px;
+        padding-bottom: 10px;
     }
     .header .container.mobile {
         margin-top: 21px;
@@ -6463,7 +6539,18 @@ main > .container:last-child {
     .anchor-block {
         padding: 15px 10px 0px 10px;
     }
-
+    .general-blocks > div {
+        margin-bottom: 20px;
+    }
+    .general-block-item > div:last-child {
+        margin-bottom: 0;
+    }
+    .general-blocks {
+        margin-bottom: 0;
+    }
+    .variable-blocks {
+        column-count: 2;
+    }
 }
 @media (max-width: 900px) {
     .personal-cabinet-content__doctors-page__filter {
@@ -6524,7 +6611,7 @@ main > .container:last-child {
     .clinic-card-desc-detail .doctor-card-location-map {
         top: 30px;
     }
-    .header {
+    .header .container {
         padding-bottom: 20px;
     }
     .statistics__header {
@@ -6643,7 +6730,7 @@ main > .container:last-child {
     .header .container.mobile {
         margin-top: 33px;
     }
-    .header {
+    .header .container {
         padding-top: 35px;
     }
     .top-menu-mobile .nav .nav__item:nth-child(2) {
@@ -6795,6 +6882,39 @@ main > .container:last-child {
     }
 }
 @media (max-width:720px) {
+    /* main.main__header {
+        margin-top: 160px;
+    } */
+    .fixed-block-alp .sort-block-list .sort-block-list-item {
+        padding: 7px;
+    }
+    .library .sort-block {
+        margin-bottom: 8px;
+    }
+    .alphabet-block-list > li {
+        width: 15px;
+    }
+    .alphabet-block-list > li a {
+        font-size: 14px;
+    }
+    .fixed-block-alp {
+        padding-bottom: 10px !important;
+    }
+    /* main {
+        margin-top: 160px;
+    } */
+    .main-screen {
+        margin-top: 160px;
+    }
+    main {
+        margin-top: 170px;
+    }
+    .container.main__header {
+        padding-top: 20px;
+    } 
+    .alphabet-block-list {
+        flex-wrap: wrap;
+    }
     .popup-window {left: 15px!important;
         max-width: calc(100% - 30px)!important;
     }
@@ -6884,7 +7004,7 @@ main > .container:last-child {
     .sort-block-list {
         display: none;
     }
-    .services-list .sort-block-list {
+    .services-list .sort-block-list, .library .sort-block-list {
         display: flex;
     }
     .flex-right .doctors-list-item__description .adapt > div:first-child {
@@ -7101,6 +7221,9 @@ main > .container:last-child {
         }
         .personal-cabinet-content__price-page__tabs .title-h5 {
             width: 35%;
+        }
+        .variable-blocks {
+            column-count: 1;
         }
 }
 @media (max-width: 600px) {
@@ -7705,6 +7828,11 @@ main > .container:last-child {
     }
     .clinic-card-item .clone-adapt {
         display: block;
+        position: relative;
+    }
+    .clone-adapt .doctor-card-location-map {
+        top: -30px;
+        right: 0;
     }
     .clinic-card-desc > a ,.clinic-card-desc .clinic-card-desc__price ,.clinic-card-desc .clinic-card-desc__spec-list.list-2 {
         display: none;
@@ -7713,6 +7841,7 @@ main > .container:last-child {
         margin-right: 0;
         text-align: initial;
         display: flex;
+        flex-direction: column;
     }
     .clinic-card-img__link {
         text-align: initial;
@@ -7730,12 +7859,20 @@ main > .container:last-child {
     .clinic-card-desc__clinic-name {
         font-size: 16px;
         line-height: 18px;
+        margin-top: 10px;
+        max-width: 100%;
     }
     .clinic-card-desc__price {
         font-size: 13px;
         line-height: 20px;
-        max-width: 70%;
+        max-width: 100%;
         margin-bottom: 53px;
+    }
+    .clinic-list .clinic-card-desc__price {
+        margin-bottom: 15px;
+    }
+    .clinic-list .map-wrapper .popup-link-marker {
+        display: none;
     }
     .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
         font-size: 13px;
@@ -7877,7 +8014,16 @@ main > .container:last-child {
     /* .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
         display: block;
     } */
-    .header {
+    .library .title-h2 {
+        margin-top: 0;
+    }
+    .header .container {
+        padding-bottom: 0 !important;
+    }
+    .container.main__header {
+        padding-top: 0;
+    }
+    .header .container {
         padding-top: 28px;
     }
     .header .container .logo img {
@@ -7889,9 +8035,6 @@ main > .container:last-child {
     }
     .header .container .logo .mobile {
         display: block;
-    }
-    .header .container {
-        height: 60px;
     }
     .header .container.mobile {
         margin-top: 13px;
@@ -7936,6 +8079,18 @@ main > .container:last-child {
     }
 }
 @media (max-width: 450px) {
+    /* main {
+        margin-top: 130px;
+    } */
+    .main-screen {
+        margin-top: 130px;
+    }
+    main {
+        margin-top: 135px;
+    }
+    /* main.main__header {
+        margin-top: 130px;
+    } */
     .footer .col__block ul li {
         font-size: 14px;
         font-family: "Ubuntu-Light";
@@ -8137,7 +8292,6 @@ main > .container:last-child {
     .header .container {
         padding-left: 80px;
         padding-right: 20px;
-        padding-top: 2px;
     }
     .head > img {
         bottom: -555px;

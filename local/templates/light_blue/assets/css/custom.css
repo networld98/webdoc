@@ -265,7 +265,7 @@
     background-color: #fff;
 }
 .clinic-card-desc__clinic-name {
-    width: calc(100% - 26px);
+    /* width: calc(100% - 26px); */
 }
 .no-padding {
     padding-left: 0!important;
@@ -367,7 +367,9 @@ main >.main-seo-text {
 .services-list .nav-tabs {
     border-bottom: none;
 }
-
+/* main .services-detail {
+    margin-bottom: 120px;
+} */
 .services-detail p {
     font-family: 'Ubuntu-Light';
     font-weight: 300;
@@ -483,9 +485,13 @@ main >.main-seo-text {
     .services-detail ul.anchor-block-list {
         flex-direction: row;
         flex-wrap: wrap;
+        padding-bottom: 5px;
     }
     .services-detail ul li {
         margin-right: 10px;
+    }
+    .services-detail > .row > div:last-child {
+        margin-top: 60px;
     }
 }
 
