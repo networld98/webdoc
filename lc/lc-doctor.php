@@ -87,18 +87,17 @@ while($ob = $res->GetNextElement()){
                 <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
                 <div class="row">
                     <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
-                        <div class="personal-cabinet-content__doctors-page-box-item__img">
-                            <?if($arFields['DETAIL_PICTURE']!=NULL){?>
-                                <?
-                                    $file = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                ?>
-                                <img src="<?= $file['src'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
-                            <?}elseif($arProps['GENDER']['VALUE']==NULL || $arProps['GENDER']['VALUE']=="Мужчина" ){?>
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                            <?}elseif($arProps['GENDER']['VALUE']=="Женщина" ){?>
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                            <?}?>
-                        </div>
+                        <?if($arFields['DETAIL_PICTURE']!=NULL){?>
+                            <?
+                            $file = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                            ?>
+                            <div style="background-image: url('<?= $file['src'] ?>')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image">
+                        <?}elseif($arProps['GENDER']['VALUE']==NULL || $arProps['GENDER']['VALUE']=="Мужчина" ){?>
+                           <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image">
+                        <?}elseif($arProps['GENDER']['VALUE']=="Женщина" ){?>
+                           <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image">
+                        <?}?>
+                           </div>
                     </div>
                     <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
                         <div class="personal-cabinet-content__doctors-page-box-item__desc">

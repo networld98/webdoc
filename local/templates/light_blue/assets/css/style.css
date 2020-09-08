@@ -5767,6 +5767,14 @@ main {
     padding-left: 0;
     padding-right: 0;
 }
+.photo-back-image, .photo-back-image-contain {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.photo-back-image-contain {
+    background-size: contain;
+}
 /*.bx_filter.bx_blue.bx_horizontal {*/
     /*background: #F3F4EF;*/
     /*}*/
