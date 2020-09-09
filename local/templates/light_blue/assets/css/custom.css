@@ -124,7 +124,7 @@
 .personal-cabinet-content__my-profile .contacts-group li:last-child {
     margin-bottom: 0;
 }
-.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time, .place-education-block .add-place, .place-education-block .add-education
+.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time, .place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address
 {
     width: 35px;
     height: 35px;
@@ -142,7 +142,7 @@
     margin-left: 10px;
     float: right;
 }
-.place-education-block .add-place, .place-education-block .add-education {
+.place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
     position: absolute;
     right: -43px;
     bottom: 0;
@@ -484,12 +484,16 @@ main >.main-seo-text {
 .personal-cabinet .list-clinics-cabinet-doctor [type="text"] {
     display: none;
 }
-.personal-cabinet .del {
-    color: red;
-    font-style: normal;
-    font-weight: bold;
-    font-family: "Montserrat Alternates";
+.personal-cabinet .close {
     cursor: pointer;
+    width: 14px;
+    height: 14px;
+    opacity: 1;
+    background-image: url(/local/templates/light_blue/assets/images/emojione-monotone_cross-mark-small.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 5px;
+    background-size: contain;
 }
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
@@ -563,7 +567,7 @@ main >.main-seo-text {
         margin-left: 0;
         margin-right: 0;
     }
-    .place-education-block .add-place, .place-education-block .add-education {
+    .place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
         right: -32px;
         bottom: -36px;
     }

@@ -88,16 +88,17 @@ while($ob = $res->GetNextElement()){
                 <div class="row">
                     <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
                         <?if($arFields['DETAIL_PICTURE']!=NULL){?>
-                            <?
-                            $file = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                            ?>
-                            <div style="background-image: url('<?= $file['src'] ?>')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image">
-                        <?}elseif($arProps['GENDER']['VALUE']==NULL || $arProps['GENDER']['VALUE']=="Мужчина" ){?>
-                           <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image">
-                        <?}elseif($arProps['GENDER']['VALUE']=="Женщина" ){?>
-                           <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image">
-                        <?}?>
-                           </div>
+                        <?
+                        $file = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                        ?>
+                        <div style="background-image: url('<?= $file['src'] ?>')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image">
+                            <?}elseif($arProps['GENDER']['VALUE']==NULL || $arProps['GENDER']['VALUE']=="Мужчина" ){?>
+                            <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image-contain">
+                                <?}elseif($arProps['GENDER']['VALUE']=="Женщина" ){?>
+                                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image-contain">
+                                    <?}?>
+                                </div>
+                        </div>
                     </div>
                     <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
                         <div class="personal-cabinet-content__doctors-page-box-item__desc">
@@ -134,6 +135,7 @@ while($ob = $res->GetNextElement()){
                                             <li data-tabs="4">Образование</li>
                                             <li data-tabs="5">График</li>
                                             <li data-tabs="6">Клиники</li>
+                                            <li data-tabs="7">Адреса</li>
                                         </ul>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content active" data-tabs="0">
                                             <div class="row personal-cabinet-content-item">
@@ -302,13 +304,46 @@ while($ob = $res->GetNextElement()){
                                                                 <li>
                                                                 <label class="clinics-cabinet-doctor clinics-cabinet-doctor_<?=$clinic?>" for="<?=$arProps['CLINIK']['CODE']?>"><?=$ar_res['NAME']?>
                                                                 <input type="text" id="<?=$clinic?>" title='<?=$ar_res['NAME'];?>' name='<?=$arProps['CLINIK']['CODE']?>[]' value="<?=$clinic?>">
-                                                                <div class="del" data-val="<?=$clinic?>" title="Отвязаться от клиники"> x</div></label>
-                                                                </li>
+                                                                <div class="del close" data-val="<?=$clinic?>" title="Отвязаться от клиники"></div></label>                                                                </li>
                                                              <?}?>
                                                         </ul>
                                                     <?}else{?>
                                                         <p>Вас не привязала не одна клиника</p>
                                                     <?}?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="7">
+                                            <div class="row place-education-block">
+                                                <div class="col-lg-12 no-padding">
+                                                        <?foreach ($arProps['RECEPTION_ADDRESSES']['VALUE'] as $key => $address){?>
+                                                            <?$str = explode('/',$address);
+                                                            $city = $str[0];
+                                                            $addr = $str[1]; ?>
+                                                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                                <div class="del-city close" data-val="<?=$key?>" title="Удалить адрес"></div>
+                                                                <div id="city_<?=$key?>">
+                                                                    <span><?=$arProps['CITY']['NAME']?></span>
+                                                                    <select name="ADDRESSES_<?=$key?>[]" id="city" value="">
+                                                                        <?
+                                                                        $arSelect = array("ID", "NAME");
+                                                                        $arFilter = array("IBLOCK_ID"=>14);
+                                                                        $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+                                                                        while($ar_result = $obSections->GetNext())
+                                                                        {?>
+                                                                            <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$city){?>selected<?}?>><?=$ar_result['NAME']?></option>
+                                                                        <?}?>
+                                                                    </select>
+                                                                    <span>Адрес</span>
+                                                                    <input type="text" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
+                                                                </div>
+                                                            </div>
+                                                            <?
+                                                            $address_key = $key+1;
+                                                        }
+                                                        $address_key_last = 0 + $address_key;?>
+                                                    <div id="input_address<?=$idDoctor?><?=$address_key_last?>"></div>
+                                                    <div class="add-address" value="<?=$idDoctor?><?=$address_key_last?>" title="Добавить адрес">+</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -406,10 +441,25 @@ while($ob = $res->GetNextElement()){
                     $('.add-education').hide();
                 }
             });
+            let w = <?=$address_key_last?>;
+            $('.add-address').on('click', function () {
+                if (w < 10) {
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Город</span><select name="ADDRESSES_' + (w + 1) + '[]" id="city" value=""><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>14);$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);while($ar_result = $obSections->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select><span>Адрес</span><input type="text" class="place-education-block_place" name="ADDRESSES_' + (w + 1) + '[]"></div><div id="input_address' + id + (w + 1) + '"></div>';
+                    document.getElementById('input_address' + id + w).innerHTML = str;
+                    w++;
+                }else{
+                    $('.add-address').hide();
+                }
+            });
             $('.del').on('click', function () {
                 let del = $(this).data('val');
                 $('.clinics-cabinet-doctor_'+ del).css('text-decoration','line-through');
                 $('#'+ del).val('');
+            });
+            $('.del-city').on('click', function () {
+                let del = $(this).data('val');
+                $('#city_'+ del).css('text-decoration','line-through');
+                $('#address_'+ del).val('');
             });
         });
     </script>

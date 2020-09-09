@@ -16,6 +16,12 @@ foreach ($_POST as $key => $data){
         if (is_array($data)) {
             $PROPS['EDUCATION'][] = $data[0].'/'.$data[1];
         }
+    } elseif (strpos($key, 'ADDRESSES') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+        if (is_array($data)) {
+            $city = explode('/', $data[0]);
+            $PROPS['RECEPTION_ADDRESSES'][] = $city[1].'/'.$data[1];
+            $PROPS['CITY'][] = $city[0];
+        }
     } else {
         $PROPS[$key] = $data;
     }
