@@ -43,27 +43,11 @@ while($ob = $res->GetNextElement()){
 <?function propselectSpecSec($prop,$iblock){?>
     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
         <span><?=$prop['NAME']?></span>
-        <select name="SPECIALIZATION_MAIN" id="SPECIALIZATION_MAIN" value="">
+        <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
             <?
             $arSelect = array("ID", "NAME");
             $arFilter = array("IBLOCK_ID"=>$iblock);
             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
-            while($ar_result = $obSections->GetNext())
-            {?>
-                ?>
-                <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
-            <?}?>
-        </select>
-    </div>
-<?}?>
-<?function propselectSpecElm($prop,$iblock){?>
-    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-        <span><?=$prop['NAME']?></span>
-        <select name="SPECIALIZATION_MAIN" id="SPECIALIZATION_MAIN" value="">
-            <?
-            $arSelect = array("ID", "NAME");
-            $arFilter = array("IBLOCK_ID"=>$iblock);
-            $obSections = CIBlockElement::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext())
             {?>
                 <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
@@ -98,8 +82,8 @@ while($ob = $res->GetNextElement()){
                                 <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image-contain">
                                     <?}?>
                                 </div>
+                            </div>
                         </div>
-                    </div>
                     <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
                         <div class="personal-cabinet-content__doctors-page-box-item__desc">
                             <div class="row personal-cabinet-content__doctors-page-box-item__desc__head">
@@ -280,7 +264,7 @@ while($ob = $res->GetNextElement()){
                                                     <ul class="checkbox-group time-group">
                                                         <?foreach ($arProps['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
                                                             <li>
-                                                                <input type="text" name="<?=$arProps['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
+                                                                <input type="text" class="lc-doctor-time" name="<?=$arProps['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
                                                             </li>
                                                             <?
                                                             $contact_key = $key+1;

@@ -72,8 +72,8 @@ function propsClinic($prop){
                 <div class="doctor-card-location-map popup-link-marker"></div>
                 <div class="popup-box">
                     <div class="close"></div>
-                    <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%;"></div>
-                    <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%;"></div>
+                    <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%;height:500px;"></div>
+                    <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%;height:500px;"></div>
                     <script type="text/javascript">
                         ymaps.ready(init);
                         function init() {
@@ -158,6 +158,9 @@ function propsClinic($prop){
                 <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
                     <p class="clinic-card-info-detail__title map">Адрес</p>
                     <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                    <?$this->SetViewTarget('address_clinic');?>
+                        <p class="doctors-list-item__clinic-adress"><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></p>
+                    <?$this->EndViewTarget();?>
                 <?endif;?>
             </div>
             <div class="clinic-card-info-detail__block">

@@ -1,6 +1,7 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 IncludeTemplateLangFile(__FILE__);
 CJSCore::Init("popup", "jquery");
+//CJSCore::Init(['masked_input']);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?= LANGUAGE_ID ?>" lang="<?= LANGUAGE_ID ?>">
@@ -9,18 +10,20 @@ CJSCore::Init("popup", "jquery");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="<?= SITE_TEMPLATE_PATH ?>/favicon.ico"/>
     <? $APPLICATION->ShowHead(); ?>
-    <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH ?>/assets/libraries/bootstrap-4.5.0-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH ?>/assets/libraries/slick/slick.css">
-    <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH ?>/assets/libraries/slick/slick-theme.css">
-    <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH ?>/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH ?>/assets/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH ?>/assets/css/custom.css"/>
+    <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/bootstrap-4.5.0-dist/css/bootstrap.css", false); ?>
+    <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/slick/slick.css", false); ?>
+    <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/slick/slick-theme.css", false); ?>
+    <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/font-awesome.min.css", false); ?>
+    <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/style.css", false); ?>
+    <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/custom.css", false); ?>
 
-    <script type="text/javascript" src="<?= SITE_TEMPLATE_PATH ?>/assets/js/jquery-2.2.4.min.js"></script>
-    <script src="<?= SITE_TEMPLATE_PATH ?>/assets/libraries/slick/slick.min.js"></script>
-    <script src="<?= SITE_TEMPLATE_PATH ?>/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= SITE_TEMPLATE_PATH ?>/assets/js/main.js"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=f471c6ff-1ad1-4847-8940-573cea31904e&lang=ru_RU" type="text/javascript"></script>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery-2.2.4.min.js', false); ?>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/slick/slick.min.js', false); ?>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js', false); ?>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery.mask.min.js', false); ?>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/main.js', false); ?>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/custom.js', false); ?>
+    <? $APPLICATION->AddHeadScript('https://api-maps.yandex.ru/2.1/?apikey=f471c6ff-1ad1-4847-8940-573cea31904e&lang=ru_RU', false); ?>
     <title><? $APPLICATION->ShowTitle() ?><?$APPLICATION->ShowProperty("meta_title");?></title>
 <meta name="yandex-verification" content="4a254ce6a8470c55" />
 </head>

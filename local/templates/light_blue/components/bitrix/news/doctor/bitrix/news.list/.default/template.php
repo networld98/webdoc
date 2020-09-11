@@ -112,21 +112,20 @@ CModule::IncludeModule("iblock")
                                 <?endif;?>
                             </div>
                             <div>
-                                <?if($arItem["PROPERTIES"]["CLINIK"]["VALUE"]):?>
+                                <?if($arItem["PROPERTIES"]["CLINIK"]["VALUE"]){?>
                                     <?foreach ($arItem["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
                                         <?$res = CIBlockElement::GetByID($item);
                                         if($ar_res = $res->GetNext()){?>
                                             <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p></a>
                                         <?break;}?>
+
                                     <?}?>
-                                <?endif;?>
-                                <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] || $arItem["PROPERTIES"]["CITY"]["VALUE"] ):
-                                    $res = CIBlockSection::GetByID($arItem["PROPERTIES"]["CITY"]["VALUE"]);?>
-                                    <p class="doctors-list-item__clinic-adress">
-                                        <? if($ar_res = $res->GetNext()){
-                                            echo $ar_res['NAME'];
-                                        }?><?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] && $arItem["PROPERTIES"]["CITY"]["VALUE"] ){?>, <?}?>
-                                        <?=$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?>
+                                <?}else{?>
+                                    <p class="doctor-card__description-address-title">Адрес</p>
+                                <?}?>
+                                <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
+                                    <p class="doctor-card__clinic-adress">
+                                        г. <?=str_replace('/',', ',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
                                     </p>
                                 <?endif;?>
                                 <?if($arItem["PROPERTIES"]["METRO"]["VALUE"]):?>
