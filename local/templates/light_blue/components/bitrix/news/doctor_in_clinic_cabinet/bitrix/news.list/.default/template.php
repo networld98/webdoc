@@ -13,6 +13,7 @@
 $this->setFrameMode(true);
 CModule::IncludeModule("iblock");
 global $idClinic;
+$week = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
 ?>
 <?function propview($prop,$id,$iblock){
     $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
@@ -94,6 +95,7 @@ global $idClinic;
     ?>
     <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
             <input type="hidden" name="ID_DOCTOR" value="<?=$arItem['ID']?>">
+            <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
              <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
             <div class="row">
                 <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
@@ -259,7 +261,7 @@ global $idClinic;
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
                                         <div class="row">
-                                            <div class="col-lg-12">
+                                            <?/*<div class="col-lg-12">
                                                 <span class="time-block-span"><?=$arItem['PROPERTIES']['DAY_RECEPTION']['NAME']?></span>
                                                 <ul class="link-checkbox">
                                                     <?
@@ -275,13 +277,19 @@ global $idClinic;
                                                         </li>
                                                     <?}?>
                                                 </ul>
-                                            </div>
+                                            </div>*/?>
                                             <div class="col-lg-12">
                                                 <span class="time-block-span"><?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['NAME']?></span>
                                                 <ul class="checkbox-group time-group">
-                                                    <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
+                                                    <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){
+                                                        $contacts_array = explode('/',$contacts)?>
                                                         <li>
-                                                            <input type="text" name="<?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
+                                                            <select name="RECEPTION_SCHEDULE_<?=$key?>[]">
+                                                                <?foreach($week as $item){?>
+                                                                    <option <?if($item==$contacts_array[0]){?>selected<?}?> value="<?=$item?>"><?=$item?></option>
+                                                                <?}?>
+                                                            </select>
+                                                            <input type="text" name="RECEPTION_SCHEDULE_<?=$key?>[]" value="<?=$contacts_array[1]?>">
                                                         </li>
                                                         <?
                                                         $contact_key = $key+1;

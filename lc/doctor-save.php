@@ -1,13 +1,18 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 $PROPS = [];
+if($_POST['ID_CLINIC']!=NULL){
+    $SCHEDULE = $_POST['ID_CLINIC'];
+}else{
+    $SCHEDULE = $_POST['ID_DOCTOR'];
+}
 foreach ($_POST as $key => $data){
     if (strpos($key, 'SPECIALIZATIONS') !== false) {
         $PROPS['SPECIALIZATIONS'] = $data;
-    } elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false) {
-        $PROPS['RECEPTION_SCHEDULE'] = $data;
-    } elseif (strpos($key, 'DAY_RECEPTION') !== false) {
-        $PROPS['DAY_RECEPTION'] = $data;
+    } elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+        if (is_array($data)) {
+            $PROPS['RECEPTION_SCHEDULE'][] = $data[0].'/'.$data[1].'/'.$SCHEDULE;
+        }
     } elseif (strpos($key, 'EXPERIENCE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
         if (is_array($data)) {
             $PROPS['EXPERIENCE'][] = $data[0].'/'.$data[1];
@@ -36,6 +41,9 @@ if(empty($_POST['PHOTO'])){
 }else{
     $PROPS[141] = NULL;
 };
+echo"<pre>";
+print_r($PROPS);
+echo"</pre>";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();
