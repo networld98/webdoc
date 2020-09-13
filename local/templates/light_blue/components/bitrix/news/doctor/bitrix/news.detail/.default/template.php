@@ -11,11 +11,12 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-global $doctorName;
+global $doctorPhone;
 global $doctorEmail;
 global $doctorSpecialization;
 global $noneClinic;
 global $doctorClinic;
+global $doctorName;
 $doctorName = $arResult['NAME'];
 ?>
 <?function formRecord($arResult){?>
@@ -72,9 +73,7 @@ $doctorName = $arResult['NAME'];
                     <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctor-card__clinic-name"><?=$ar_res['NAME']?></p></a>
                     <?break;}?>
             <?}?>
-        <?}else{
-            $noneClinic = "Y";
-            ?>
+        <?}else{?>
             <p class="doctor-card__clinic-name">Адрес</p>
         <?}?>
         <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
@@ -121,7 +120,8 @@ $doctorName = $arResult['NAME'];
                     $arUser = $rsUser->Fetch();
                     ?>
                     <?if($arUser!=NULL){
-                        $doctorEmail = $arUser['EMAIL']; ?>
+                        $doctorEmail = $arUser['EMAIL'];
+                        $doctorPhone = $arUser['LOGIN'];?>
                         <a class="popup-mess-click" style="cursor:pointer;">Написать доктору</a>
                     <?}?>
                     <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>">Позвонить</a>
@@ -160,18 +160,23 @@ $doctorName = $arResult['NAME'];
                     <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctor-card__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
                 <?endif;?>
                 <div class="doctor-card__description__adapt">
-                <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
-
-                    <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
-                        <?$res = CIBlockElement::GetByID($item);
-                        if($ar_res = $res->GetNext()){
-                            $doctorClinic[] = $ar_res['NAME'];
-                        }?>
-                        <a href="<?=$ar_re[0]['DETAIL_PAGE_URL']?>"><p class="doctor-card__clinic-name"><?=$ar_res[0]['NAME']?></p></a>
+                    <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
+                        <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
+                            <?$res = CIBlockElement::GetByID($item);
+                            if($ar_res = $res->GetNext()){
+                                $db_props = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"PHONE"));
+                                if($ar_props = $db_props->Fetch()) {
+                                    $phone = IntVal($ar_props["VALUE"]);
+                                }
+                                $doctorClinic[] = array("NAME" => $ar_res['NAME'],"PHONE"=> $phone, "URL" => $ar_res['DETAIL_PAGE_URL']);
+                            }?>
+                        <?}?>
+                        <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
+                    <?}else{
+                        $noneClinic = "Y";
+                        ?>
+                        <p class="doctor-card__clinic-name">Адрес</p>
                     <?}?>
-                <?}else{?>
-                    <p class="doctor-card__description-address-title">Адрес</p>
-                <?}?>
                 <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
                     <p class="doctor-card__clinic-adress">
                         г. <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
@@ -245,9 +250,11 @@ $doctorName = $arResult['NAME'];
             <p class="doctor-card__position-desc"><?=$arResult['PREVIEW_TEXT']?></p>
             <a href="#anchor-spec-info" class="doctor-card__metro-list-show_more go-to">Подробная информация о специалисте</a>
         </div>
-        <div class="doctor-card-popUp-group">
-            <a class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
-        </div>
+        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
+            <div class="doctor-card-popUp-group">
+                <a class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
+            </div>
+        <?endif;?>
         <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
         <div class="map-wrapper">
                 <div class="doctor-card-location-map popup-link-marker"></div>
@@ -429,7 +436,7 @@ $doctorName = $arResult['NAME'];
                 <div class="flex-right">
                     <h2 class="title-h2">Запись на приём</h2>
                     <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_record",Array(
-                            "SEF_MODE" => "Y",
+                            "SEF_MODE" => "N",
                             "WEB_FORM_ID" => "4",
                             "AJAX_MODE" => "Y",
                             "AJAX_OPTION_SHADOW" => "N",
@@ -471,6 +478,28 @@ $doctorName = $arResult['NAME'];
                 </div>
                 <div class="flex-right">
                     <h2 class="title-h2">Вызов врача на дом</h2>
+                    <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_record",Array(
+                            "SEF_MODE" => "N",
+                            "WEB_FORM_ID" => "5",
+                            "AJAX_MODE" => "Y",
+                            "AJAX_OPTION_SHADOW" => "N",
+                            "AJAX_OPTION_JUMP" => "Y",
+                            "AJAX_OPTION_STYLE" => "Y",
+                            "AJAX_OPTION_HISTORY" => "N",
+                            "LIST_URL" => "result_list.php",
+                            "EDIT_URL" => "result_edit.php",
+                            "SUCCESS_URL" => "",
+                            "CHAIN_ITEM_TEXT" => "",
+                            "CHAIN_ITEM_LINK" => "",
+                            "IGNORE_CUSTOM_TEMPLATE" => "Y",
+                            "USE_EXTENDED_ERRORS" => "Y",
+                            "CACHE_TYPE" => "A",
+                            "CACHE_TIME" => "3600",
+                            "SEF_FOLDER" => "/",
+                            "VARIABLE_ALIASES" => Array(
+                            )
+                        )
+                    );?>
                 </div>
             </div>
         </div>

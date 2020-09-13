@@ -1,5 +1,5 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-IncludeTemplateLangFile(__FILE__);
+//IncludeTemplateLangFile(__FILE__);
 CJSCore::Init("popup", "jquery");
 //CJSCore::Init(['masked_input']);
 ?>
@@ -20,8 +20,8 @@ CJSCore::Init("popup", "jquery");
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery-2.2.4.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/slick/slick.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js', false); ?>
-    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery.mask.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/main.js', false); ?>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery.mask.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/custom.js', false); ?>
     <? $APPLICATION->AddHeadScript('https://api-maps.yandex.ru/2.1/?apikey=f471c6ff-1ad1-4847-8940-573cea31904e&lang=ru_RU', false); ?>
     <title><? $APPLICATION->ShowTitle() ?><?$APPLICATION->ShowProperty("meta_title");?></title>
