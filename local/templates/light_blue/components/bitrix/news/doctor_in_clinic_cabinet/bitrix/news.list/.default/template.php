@@ -13,6 +13,7 @@
 $this->setFrameMode(true);
 CModule::IncludeModule("iblock");
 global $idClinic;
+$week = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
 ?>
 <?function propview($prop,$id,$iblock){
     $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
@@ -53,14 +54,13 @@ global $idClinic;
 <?function propselectSpecSec($prop,$iblock){?>
     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
         <span><?=$prop['NAME']?></span>
-        <select name="SPECIALIZATION_MAIN" id="SPECIALIZATION_MAIN" value="">
+        <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
             <?
             $arSelect = array("ID", "NAME");
             $arFilter = array("IBLOCK_ID"=>$iblock);
             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext())
             {?>
-                ?>
                 <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
             <?}?>
         </select>
@@ -95,17 +95,19 @@ global $idClinic;
     ?>
     <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
             <input type="hidden" name="ID_DOCTOR" value="<?=$arItem['ID']?>">
+            <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
              <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
             <div class="row">
                 <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
                     <div class="personal-cabinet-content__doctors-page-box-item__img">
-                        <?if($arItem['DETAIL_PICTURE']['SRC']!=NULL){?>
-                            <img src="<?= $arItem['DETAIL_PICTURE']['SRC'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
-                        <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']==NULL || $arItem['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
-                            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                        <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-                            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                        <?}?>
+                        <?if($arItem['DETAIL_PICTURE']!=NULL){?>
+                        <div style="background-image: url('<?= $arItem['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link photo-back-image photo-back-image">
+                            <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']==NULL || $arItem['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
+                        <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
+                            <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
+                        <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctor-card__img-link photo-back-image-contain">
+                            <?}?>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
@@ -259,7 +261,7 @@ global $idClinic;
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
                                         <div class="row">
-                                            <div class="col-lg-12">
+                                            <?/*<div class="col-lg-12">
                                                 <span class="time-block-span"><?=$arItem['PROPERTIES']['DAY_RECEPTION']['NAME']?></span>
                                                 <ul class="link-checkbox">
                                                     <?
@@ -275,13 +277,19 @@ global $idClinic;
                                                         </li>
                                                     <?}?>
                                                 </ul>
-                                            </div>
+                                            </div>*/?>
                                             <div class="col-lg-12">
                                                 <span class="time-block-span"><?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['NAME']?></span>
                                                 <ul class="checkbox-group time-group">
-                                                    <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
+                                                    <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){
+                                                        $contacts_array = explode('/',$contacts)?>
                                                         <li>
-                                                            <input type="text" name="<?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
+                                                            <select name="RECEPTION_SCHEDULE_<?=$key?>[]">
+                                                                <?foreach($week as $item){?>
+                                                                    <option <?if($item==$contacts_array[0]){?>selected<?}?> value="<?=$item?>"><?=$item?></option>
+                                                                <?}?>
+                                                            </select>
+                                                            <input type="text" name="RECEPTION_SCHEDULE_<?=$key?>[]" value="<?=$contacts_array[1]?>">
                                                         </li>
                                                         <?
                                                         $contact_key = $key+1;
@@ -372,7 +380,7 @@ global $idClinic;
             let x = <?=$contact_key_last?>;
             $('.add-time').on('click', function () {
                 if (x < 10) {
-                    let str = '<li><input type="text" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + id + (x + 1) + '"></ul>';
+                    let str = '<li><input type="text" class="lc-doctor-time" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + id + (x + 1) + '"></ul>';
                     document.getElementById('input' + id + x).innerHTML = str;
                     x++;
                 }else{

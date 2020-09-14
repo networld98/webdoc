@@ -114,7 +114,7 @@ while($ob = $res->GetNextElement()){
                         <ul class="checkbox-group contacts-group">
                             <?foreach ($arProps['CONTACTS']['VALUE'] as $key => $contact){?>
                                 <li>
-                                    <input type="text" name="<?=$arProps['CONTACTS']['CODE']?>_<?=$key?>" value="<?=$contact?>">
+                                    <input type="text" class="contact-phone" name="<?=$arProps['CONTACTS']['CODE']?>_<?=$key?>" value="<?=$contact?>">
                                 </li>
                                 <?
                                 $contact_key = $key+1;
@@ -350,7 +350,7 @@ while($ob = $res->GetNextElement()){
         var x = <?=$contact_key_last?>;
         $('.add').on('click', function () {
             if (x < 10) {
-                var str = '<li><input type="text" name="CONTACTS_' + x + '"></li><ul class="contacts-group-add" id="input' + (x + 1) + '"></ul>';
+                var str = '<li><input type="text" class="contact-phone" name="CONTACTS_' + x + '"></li><ul class="contacts-group-add" id="input' + (x + 1) + '"></ul>';
                 document.getElementById('input' + x).innerHTML = str;
                 x++;
             }else{

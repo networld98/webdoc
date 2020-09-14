@@ -73,12 +73,12 @@ global $clinicName;
                 <div class="flex-right">
                     <div class="doctors-list-item__description">
                         <p class="doctors-list-item_timing">Выберите время приема для записи онлайн</p>
-                        <ul class="doctors-list-item__days-list">
+                        <?/* <ul class="doctors-list-item__days-list">
                             <li class="doctors-list-item__days-list-item active">понедельник, 6</li>
                             <li class="doctors-list-item__days-list-item">вторник, 7</li>
                             <li class="doctors-list-item__days-list-item not-worked">среда, 8</li>
                             <li class="doctors-list-item__days-list-item">четверг, 9</li>
-                        </ul>
+                        </ul>*/?>
                         <?if($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
                             <ul class="doctors-list-item__worktimming-list">
     <!--                            <li class="doctors-list-item__worktimming-list-item closed">10:10</li>-->
@@ -96,9 +96,7 @@ global $clinicName;
                                     <?break;}?>
                             <?}?>
                         <?endif;?>
-                        <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):?>
-                            <p class="doctors-list-item__clinic-adress"><?=$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?></p>
-                        <?endif;?>
+                        <?$APPLICATION->ShowViewContent('address_clinic');?>
                         <?if($arItem["PROPERTIES"]["METRO"]["VALUE"]):?>
                             <ul class="doctors-list-item__metro-list">
                                 <?foreach ($arItem["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>

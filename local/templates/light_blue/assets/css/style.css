@@ -2430,7 +2430,7 @@ main {
     margin-bottom: 40px;
     margin-top: 80px;
 }
-.mess-popup__name, .mess-popup__email, .mess-popup__message {
+.message-to-doctor textarea, .message-to-doctor input {
     color: #000000;
     padding: 13px 15px;
     margin: 0 auto;
@@ -2444,7 +2444,7 @@ main {
     font-size: 15px;
     line-height: 24px;
 }
-.mess-popup__message {
+.message-to-doctor textarea {
     border: 2px solid #9DD4B3;
     box-sizing: border-box;
     border-radius: 5px;
@@ -7380,7 +7380,7 @@ main {
         padding-left: 22px;
         padding-right: 20px;
     }
-    .mess-popup__name, .mess-popup__email, .mess-popup__message, .mess-popup__desc, .send , .mess-popup__header {
+    .message-to-doctor textarea, .message-to-doctor input, .mess-popup__desc, .mess-popup__header {
         max-width: 300px;
         width: 100%;
     }
