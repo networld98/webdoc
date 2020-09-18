@@ -445,10 +445,10 @@ function propsClinic($prop){
                                 <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></a></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["WIFI"]["VALUE"]!=NULL):?>
-                                <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></a></li>
+                                <li class="icon7"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></a></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["SMS_MESSAGE"]["VALUE"]!=NULL):?>
-                                <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SMS_MESSAGE"]["NAME"]?></a></li>
+                                <li class="icon6"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SMS_MESSAGE"]["NAME"]?></a></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["EMAIL_MESSAGE"]["VALUE"]!=NULL):?>
                                 <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["EMAIL_MESSAGE"]["NAME"]?></a></li>

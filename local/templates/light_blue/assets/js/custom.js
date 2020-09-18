@@ -9,5 +9,20 @@ $(document).ready(function () {
         let phone = $(this).find(':selected').data("phone");
         $('.option_phone').val(phone);
         $('.option_mail').val(email);
-    })
+    });
+    $(".select-doctor-day").click(function () {
+        let day = $(this).data('day');
+        let doctor = $(this).data('doctor');
+        let block = $('#doctor-day-block-ajax');
+        $.ajax({
+            type: "POST",
+            url: '/ajax/ajax_time.php',
+            data:  { day: day, doctor: doctor },
+            success: function (data) {
+                // Вывод текста результата отправки
+                $(block).html(data);
+            }
+        });
+        return false;
+    });
 });

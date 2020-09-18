@@ -17,7 +17,12 @@ global $doctorSpecialization;
 global $noneClinic;
 global $doctorClinic;
 global $doctorName;
+global $doctorId;
+global $doctorTime;
+global $doctorId;
 $doctorName = $arResult['NAME'];
+$doctorId = $arResult['ID'];
+$doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 ?>
 <?function formRecord($arResult){?>
     <div class="doctors-list-item__img">
@@ -168,10 +173,10 @@ $doctorName = $arResult['NAME'];
                                 if($ar_props = $db_props->Fetch()) {
                                     $phone = IntVal($ar_props["VALUE"]);
                                 }
-                                $doctorClinic[] = array("NAME" => $ar_res['NAME'],"PHONE"=> $phone, "URL" => $ar_res['DETAIL_PAGE_URL']);
+                                $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
                             }?>
                         <?}?>
-                        <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
+                        <a href="<?=$doctorClinik[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinik[0]['NAME']?></p></a>
                     <?}else{
                         $noneClinic = "Y";
                         ?>
@@ -197,11 +202,11 @@ $doctorName = $arResult['NAME'];
                 </div>
             </div>
         </div>
-       <? global $USER;
-        if ($USER->IsAdmin()){ ?> <div class="doctor-card-popUp-group">
+       <?/* global $USER;
+        if ($USER->IsAdmin()){ */?> <div class="doctor-card-popUp-group">
             <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
 			<a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
-        <?}?>
+        <?/*}*/?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
@@ -322,35 +327,53 @@ $doctorName = $arResult['NAME'];
         <?endif;?>
     </div>
 </section>
-<?/*<section class="container choosing-time">
+<?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
+<section class="container choosing-time">
     <h3 class="title-h3">Выберите время приема для записи онлайн</h3>
-    <?if($arResult["PROPERTIES"]["DAY_RECEPTION"]["VALUE"]):?>
+    <?foreach ($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){
+        $date = explode('/',$item);
+        $res = CIBlockElement::GetByID($date[2]);
+        if($ar_res = $res->GetNext())
+        $day[] = $date[0];
+        $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME']];
+    }?>
+    <?usort($times, function($a, $b){
+        return ($a['TIME'] - $b['TIME']);
+    });?>
+    <?
+    $days = array(1 => 'Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' );
+    $_monthsList = array(
+        "01"=>"Января","02"=>"Февраля","03"=>"Марта",
+        "04"=>"Апреля","05"=>"Мая", "06"=>"Июня",
+        "07"=>"Июля","08"=>"Августя","09"=>"Сентября",
+        "10"=>"Октября","11"=>"Ноября","12"=>"Декабря");
+
+    $begin = new DateTime( date('Y-m-d') );
+    $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+    $end = $end->modify( '+1 day' );
+
+    $interval = new DateInterval('P1D');
+    $daterange = new DatePeriod($begin, $interval ,$end);
+    ?>
     <div class="choosing-time_block">
-        <!-- <span class="choosing-time_block__arrows arrow-left"></span> -->
         <ul class="choosing-time_block-list slick-slider3">
-            <li class="choosing-time_block-list-item active">Сегодня</br> 6 апреля</li>
-            <li class="choosing-time_block-list-item">Завтра</br> 7 апреля</li>
-            <li class="choosing-time_block-list-item">Среда</br> 8 апреля</li>
-            <li class="choosing-time_block-list-item not-worked">Четверг</br> 9 апреля</li>
-            <li class="choosing-time_block-list-item">Пятница</br> 10 апреля</li>
-            <li class="choosing-time_block-list-item">Cуббота</br> 11 апреля</li>
-            <?foreach ($arResult["PROPERTIES"]["DAY_RECEPTION"]["VALUE"] as $item){?>
-                <li class="choosing-time_block-list-item"><?=$item?></li>
+            <?foreach($daterange as $date){?>
+                <?if ($date->format("Ymd") == date('Ymd')){
+                    $selectDay = date($days[$date->format("N")]);
+                }?>
+                <li class="select-doctor-day choosing-time_block-list-item <?if (!in_array($days[$date->format("N")],$day)){?>pass<?}elseif (in_array($days[$date->format("N")],$day) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arResult['ID']?>"><?if ($date->format("Ymd") == date('Ymd')){?>Сегодня<?}else{?><?= date( $days[$date->format("N")]);?><?}?><br><?= date($date->format("d"). ' '. $_monthsList[$date->format("m")] );?></li>
             <?}?>
         </ul>
-        <!-- <span class="choosing-time_block__arrows arrow-right"></span> -->
     </div>
-    <?endif;?>
-    <?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
-        <ul class="choosing-time__worktimming-list">
-<!--            <li class="choosing-time__worktimming-list-item closed">10:10</li>-->
-<!--            <li class="choosing-time__worktimming-list-item pass">10:50</li>-->
-            <?foreach ($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){?>
-                <li class="choosing-time__worktimming-list-item popup-reception-click"><?=$item?></li>
-            <?}?>
+        <ul class="choosing-time__worktimming-list" id="doctor-day-block-ajax">
+            <?foreach ($times as $item){
+                if($item['DAY'] == $selectDay ){?>
+                <li class="choosing-time__worktimming-list-item popup-reception-click" data-clinic="<?=$item['CLINIC']?>" data-time="<?=$item['DAY']?>_<?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><?=$item['TIME']?></li>
+            <?}
+            }?>
         </ul>
-    <?endif;?>
-</section>*/?>
+</section>
+<?endif;?>
 <section class="container checked-feedback" id="full-feedback">
     <h2 class="title-h2">Проверенные отзывы о враче</h2>
     <?
@@ -416,7 +439,7 @@ $doctorName = $arResult['NAME'];
 <section class="container spec-list">
     <h2 class="title-h2">Специализация</h2>
     <div class="flex-between">
-        <?=$arResult['DETAIL_TEXT']?>
+        <? echo htmlspecialchars_decode($arResult['DETAIL_TEXT'])?>
     </div>
 </section>
 <div class="reception-popup">

@@ -5,8 +5,11 @@ global $doctorPhone;
 global $doctorSpecialization;
 global $doctorClinic;
 global $noneClinic;
-global $doctorClinic;
 global $doctorName;
+global $doctorTime;
+global $doctorId;
+$timeForId = $doctorId;
+$week = array('Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' );
 ?>
 <?if ($arResult["isFormErrors"] == "Y"):?><?=$arResult["FORM_ERRORS_TEXT"];?><?endif;?>
 
@@ -16,6 +19,10 @@ global $doctorName;
 {
 ?>
 <?=$arResult["FORM_HEADER"]?>
+    <?foreach($doctorTime as  $item){
+    $str = explode('/',$item);
+        $timeinClinic[] = $str[2];
+    }?>
 	<?
 	foreach ($arResult["QUESTIONS"] as $FIELD_SID => $arQuestion)
 	{
@@ -31,26 +38,60 @@ global $doctorName;
             <?}elseif($arQuestion["CAPTION"]=="Клиника" && $noneClinic==NULL){?>
                 <label><?=$arQuestion["CAPTION"]?>
                     <select id="selectClinic" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>">
-                        <?foreach($doctorClinic as $key => $item){
-                            $ClinicName = $item['NAME'];
-                            $rsUser = CUser::GetByLogin('+'.$item['PHONE']);
-                            $arUser = $rsUser->Fetch();
-                            if($key == 0){
-                                $doctorEmail = $arUser['EMAIL'];
-                                $clinicPhone = $arUser['LOGIN'];
+                        <?foreach($doctorClinic as $key => $item) {
+                            if (in_array($item['ID'], $timeinClinic)) {
+                                $ClinicName = $item['NAME'];
+                                $rsUser = CUser::GetByLogin('+' . $item['PHONE']);
+                                $arUser = $rsUser->Fetch();
+                                $timeForIdNext = $item['ID'];
+                                if ($key == 0) {
+                                    $doctorEmail = $arUser['EMAIL'];
+                                    $clinicPhone = $arUser['LOGIN'];
+                                    $timeForId = $item['ID'];
+                                }
+                                if ($arUser['EMAIL'] == NULL) {
+                                    $arUser['EMAIL'] = 'Нет почты';
+                                }
+                                if ($arUser['LOGIN'] == NULL) {
+                                    $arUser['LOGIN'] = 'Нет номера';
+                                }
+                                ?>
+                                <option data-email="<?= $arUser['EMAIL'] ?>" data-id="<?= $timeForIdNext ?>"
+                                        data-phone="<?= $arUser['LOGIN'] ?>"
+                                        value="<?= $item['NAME'] ?>"><?= $item['NAME'] ?></option>
+                            <?
                             }
-                            if($arUser['EMAIL'] == NULL){
-                                $arUser['EMAIL'] = 'Нет почты';
-                            }
-                            if($arUser['LOGIN'] == NULL){
-                                $arUser['LOGIN'] = 'Нет номера';
-                            }
-                            ?>
-                            <option data-email="<?=$arUser['EMAIL']?>" data-phone="<?=$arUser['LOGIN']?>" value="<?=$item['NAME']?>"><?=$item['NAME']?></option>
-                        <?}?>
+                        }?>
                     </select>
                 </label>
-            <?}elseif($arQuestion["CAPTION"]!="E-mail врача/клиники" && $arQuestion["CAPTION"]!="Специальность" && $arQuestion["CAPTION"]!="Клиника" && $arQuestion["CAPTION"]!="ФИО/Телефон врача" && $arQuestion["CAPTION"]!="Телефон клиники"){?>
+        <?}elseif($arQuestion["CAPTION"]=="Дата и время приёма"){?>
+            <label><?=$arQuestion["CAPTION"]?>
+                <select id="selectTime" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>">
+                    <?
+                    foreach($doctorTime as $key => $item){
+                        $str = explode('/',$item);
+                        if( $str[2] == $timeForId ){
+                            $timeForm[$str[0]][] = $str[1];
+                        }
+                      }
+                      foreach ($week as $day){
+                          if($timeForm[$day]!=NULL){
+                              if (is_array($timeForm[$day])) {
+                                  foreach ($timeForm[$day] as $time){
+                                      $sortTimeForm[] = $day.' '.$time;
+                                  }
+                              }else{
+                                  $sortTimeForm[] = $day.'_'.$timeForm[$day];
+                              }
+                          }
+                      }
+                      ?>
+                    <?foreach ($sortTimeForm as $item){?>
+                        <option value="<?=$item?>"><?=$item?></option>
+                    <?}?>
+                </select>
+            </label>
+            <?}elseif($arQuestion["CAPTION"]!="Дата и время приёма" && $arQuestion["CAPTION"]!="E-mail врача/клиники" && $arQuestion["CAPTION"]!="Специальность" && $arQuestion["CAPTION"]!="Клиника" && $arQuestion["CAPTION"]!="ФИО/Телефон врача" && $arQuestion["CAPTION"]!="Телефон клиники"){?>
             <div>
                 <?if (is_array($arResult["FORM_ERRORS"]) && array_key_exists($FIELD_SID, $arResult['FORM_ERRORS'])):?>
                     <span class="error-fld" title="<?=htmlspecialcharsbx($arResult["FORM_ERRORS"][$FIELD_SID])?>"></span>
@@ -60,11 +101,11 @@ global $doctorName;
                 </label>
             </div>
     <?}elseif($arQuestion["CAPTION"]=="E-mail врача/клиники"){?>
-        <input type="hidden" class="option_mail" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorEmail?>" size="0">
+        <input type="hidden" id="option_mail" class="inputtext" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorEmail?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="ФИО/Телефон врача"){?>
         <input type="hidden" class="inputtext" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?if($noneClinic==NULL){echo $doctorName.'/';}?><?=$doctorPhone?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="Телефон клиники"){?>
-        <input type="hidden" class="option_phone" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$clinicPhone?>" size="0">
+        <input type="hidden" id="option_phone" class="inputtext" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$clinicPhone?>" size="0">
         <?}?>
 	<?
 	} //endwhile
@@ -73,7 +114,6 @@ global $doctorName;
 if($arResult["isUseCaptcha"] == "Y")
 {
 ?>
-
         <input type="hidden" name="captcha_sid" value="<?=htmlspecialcharsbx($arResult["CAPTCHACode"]);?>" />
         <img src="/bitrix/tools/captcha.php?captcha_sid=<?=htmlspecialcharsbx($arResult["CAPTCHACode"]);?>" width="180" height="40" /><br>
         <?=GetMessage("FORM_CAPTCHA_FIELD_TITLE")?><?=$arResult["REQUIRED_SIGN"];?><br>
@@ -87,3 +127,26 @@ if($arResult["isUseCaptcha"] == "Y")
 <?
 } //endif (isFormNote)
 ?>
+<script>
+    $(document).ready(function () {
+        $("#selectClinic").change(function () {
+            let id = $(this).find('option:selected').data('id');
+            let doc = <?=$doctorId?>;
+            let phone = $(this).find('option:selected').data('phone');
+            let email = $(this).find('option:selected').data('email');
+            let block = $('#selectTime');
+            $('#option_phone').val(phone);
+            $('#option_mail').val(email);
+            $.ajax({
+                type: "POST",
+                url: '/ajax/ajax_time_form.php',
+                data: {id: id, doctor: doc},
+                success: function (data) {
+                    // Вывод текста результата отправки
+                    $(block).html(data);
+                }
+            });
+            return false;
+        });
+    });
+</script>

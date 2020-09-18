@@ -22,7 +22,7 @@ $templateData = array(
         <form name="<? echo $arResult["FILTER_NAME"] . "_form" ?>" action="<? echo $arResult["FORM_ACTION"] ?>"
               method="get" class="smartfilter main-filter">
             <? foreach ($arResult["HIDDEN"] as $arItem): ?>
-                <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" id="<? echo $arItem["CONTROL_ID"] ?>"
+                <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" <?/*id="<? echo $arItem["CONTROL_ID"] ?>*/?>"
                        value="<? echo $arItem["HTML_VALUE"] ?>"/>
             <?endforeach;
             //prices

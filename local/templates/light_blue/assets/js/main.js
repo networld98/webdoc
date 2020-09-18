@@ -577,9 +577,16 @@ $(document).ready(()=>{
         /* Убираем баг в Firefox */
         $('html').scrollTop(scrollPos);
     });
-    
+    /* CUSTOM*/
+    function splitMulti(str, tokens){
+        var tempChar = tokens[0]; // We can use the first token as a temporary join character
+        for(var i = 1; i < tokens.length; i++){
+            str = str.split(tokens[i]).join(tempChar);
+        }
+        str = str.split(tempChar);
+        return str;
+    }
     $('.popup-reception-click').click(function(e) {
-     
         /* Предотвращаем действия по умолчанию */
         e.preventDefault();
         e.stopPropagation();
@@ -862,3 +869,36 @@ $(document).ready(()=>{
 //   })
 
 });
+
+/* CUSTOM*/
+function splitMulti(str, tokens){
+    var tempChar = tokens[0]; // We can use the first token as a temporary join character
+    for(var i = 1; i < tokens.length; i++){
+        str = str.split(tokens[i]).join(tempChar);
+    }
+    str = str.split(tempChar);
+    return str;
+}
+$(document).ready(function () {
+    let urlParams = String(new URLSearchParams(window.location.search));
+    let params = splitMulti(urlParams, ['=', '&']);
+    if(params[0]==='clinic' && params[1]!==null && params[2]==="time" && params[3]!==null){
+        $('.popup-reception-click').trigger('click');
+        // params[1].replace('+', ' ');
+        // console.log(decodeURIComponent(params[1]));
+        // console.log(decodeURIComponent(params[3]));
+        // $("#selectClinic").val(params[1]);
+        // $("#selectTime").val(decodeURIComponent(params[3]));
+    }
+    $('.popup-reception-click').click(function() {
+        let clinic = $(this).data('clinic');
+        let time = $(this).data('time');
+        const params = new URLSearchParams(location.search);
+        if(time!==undefined && clinic!==undefined){
+            params.set('clinic', clinic);
+            params.set('time', time);
+            window.history.replaceState({}, '', `${location.pathname}?${params}`);
+        }
+    });
+});
+

@@ -1109,7 +1109,6 @@ main {
     background: #E3EAEA;
     border: 1px solid #E3EAEA;
     border-radius: 5px;
-    padding: 4px 13px;
     font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
@@ -1119,6 +1118,10 @@ main {
     margin-right: 6px;
     margin-bottom: 3px;
     cursor: pointer;
+}
+.doctors-list-item__worktimming-list-item a {
+    display: block;
+    padding: 4px 13px;
 }
 .doctors-list-item__days-list-item.not-worked {
     position: relative;
@@ -1136,13 +1139,14 @@ main {
     width: 160px;
     height: 47px;
 }
-.doctors-list-item__worktimming-list-item.pass {
+.doctors-list-item__worktimming-list-item.pass, .choosing-time_block-list-item.pass, .doctors-list-item__days-list-item.pass  {
     color: #DBDBDB;
     border: 1px solid #DBDBDB;
     background: transparent;
     position: relative;
+    cursor: default;
 }
-.doctors-list-item__worktimming-list-item.pass:hover:before {
+.doctors-list-item__worktimming-list-item.pass:hover:before, .choosing-time_block-list-item.pass:hover:before, .doctors-list-item__days-list-item.pass:hover:before  {
     content: '';
     position: absolute;
     top: -45px;
@@ -1151,6 +1155,7 @@ main {
     background-image: url(../images/passed-time.svg);
     width: 153px;
     height: 47px;
+    cursor: default;
 }
 .doctors-list-item__worktimming-list-item.closed {
     color: #98D7DC;
@@ -1167,9 +1172,6 @@ main {
     background-image: url(../images/closed-time.svg);
     top: -45px;
     left: 0;
-}
-.doctors-list-item__worktimming-list-item {
-    
 }
 .doctors-list-item__clinic-name {
     font-family: "Ubuntu";
@@ -3840,6 +3842,7 @@ main {
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > span {
     margin-right: 20px;
+    text-align: right;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > span:first-child {
     max-width: 166px;
@@ -4486,6 +4489,12 @@ main {
 }
 .clinic-card-full-desc__content__info-left__facilities .icon5::before {
     background-image: url(../images/license.svg);
+}
+.clinic-card-full-desc__content__info-left__facilities .icon6::before {
+    background-image: url(../images/sms.svg);
+}
+.clinic-card-full-desc__content__info-left__facilities .icon7::before {
+    background-image: url(../images/wifi.svg);
 }
 .clinic-card-full-desc__content__info-right {
     max-width: 482px;

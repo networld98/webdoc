@@ -169,6 +169,14 @@
     color:#fff;
     background-color: #9DD4B3;
 }
+.place-schedule-block select, .place-schedule-block input{
+    margin: 0 10px 0 15px;
+}
+
+.place-schedule-block select:first-child, .place-schedule-block input:first-child{
+    margin-left: 60px;
+}
+
 .link-checkbox .bx_filter_param_label {
     line-height: 17px;
     padding: 5px 10px;
@@ -201,7 +209,7 @@
 .header .container.cabinet {
     width: 100%;
     max-width: 1840px;
-    padding: 34px 30px 0 100px;
+    padding: 34px 0 0 100px;
 }
 .header .container.cabinet .contacts {
     min-width: 170px;
@@ -336,6 +344,9 @@
     line-height: 24px;
     text-align: right;
     color: #000000;
+}
+.place-education-block span:first-child {
+    max-width: 100px;
 }
 .card-item:last-child{
     border: none;

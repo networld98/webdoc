@@ -14,9 +14,9 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 
 <?if($arResult["FORM_TYPE"] == "login"):?>
 
-<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="/lc/">
 <?if($arResult["BACKURL"] <> ''):?>
-	<input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
+	<input type="hidden" name="backurl" value="/lc/" />
 <?endif?>
 <?foreach ($arResult["POST"] as $key => $value):?>
 	<input type="hidden" name="<?=$key?>" value="<?=$value?>" />
@@ -135,9 +135,9 @@ $APPLICATION->IncludeComponent("bitrix:socserv.auth.form", "",
 elseif($arResult["FORM_TYPE"] == "otp"):
 ?>
 
-<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
+<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="/lc/">
 <?if($arResult["BACKURL"] <> ''):?>
-	<input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>" />
+	<input type="hidden" name="backurl" value="/lc/" />
 <?endif?>
 	<input type="hidden" name="AUTH_FORM" value="Y" />
 	<input type="hidden" name="TYPE" value="OTP" />
@@ -176,7 +176,7 @@ elseif($arResult["FORM_TYPE"] == "otp"):
 else:
 ?>
 
-<form action="<?=$arResult["AUTH_URL"]?>">
+<form action="/lc/">
 	<table width="95%">
 		<tr>
 			<td align="center">

@@ -1,4 +1,5 @@
 <?
+$week = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
 CModule::IncludeModule('iblock');
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
@@ -241,40 +242,30 @@ while($ob = $res->GetNextElement()){
                                             </div>
                                         </div>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <span class="time-block-span"><?=$arProps['DAY_RECEPTION']['NAME']?></span>
-                                                    <ul class="link-checkbox">
+                                            <div class="row place-education-block place-schedule-block">
+                                                <?foreach ($arProps['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){
+                                                    $contacts_array = explode('/',$contacts);
+                                                       if($contacts_array[2] == $idDoctor){?>
+                                                        <div class="col-lg-12 no-padding">
+                                                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                                <select class="place-education-block_place"  name="RECEPTION_SCHEDULE_<?=$key?>[]">
+                                                                    <?foreach($week as $item){?>
+                                                                        <option <?if($item==$contacts_array[0]){?>selected<?}?> value="<?=$item?>"><?=$item?></option>
+                                                                    <?}?>
+                                                                </select>
+                                                                <input class="lc-doctor-time" type="text" name="RECEPTION_SCHEDULE_<?=$key?>[]" value="<?=$contacts_array[1]?>">
+                                                            </div>
+                                                        </div>
                                                         <?
-                                                        $db_enum_list = CIBlockProperty::GetPropertyEnum("DAY_RECEPTION", Array('SORT'=>'ASC'), Array("IBLOCK_ID"=>10));
-                                                        while($ar_enum_list = $db_enum_list->GetNext()) {?>
-                                                            <li>
-                                                                <input type="checkbox" <?if(in_array($ar_enum_list['VALUE'],$arProps['DAY_RECEPTION']['VALUE'])){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$arProps['DAY_RECEPTION']['CODE']?>[]" id="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>">
-                                                                <label data-role="label_<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>" class="bx_filter_param_label" for="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$idDoctor?>">
-                                                                <span class="bx_filter_input_checkbox">
-                                                                    <span class="bx_filter_param_text"><?=$ar_enum_list["VALUE"]?></span>
-                                                                </span>
-                                                                </label>
-                                                            </li>
-                                                        <?}?>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <span class="time-block-span"><?=$arProps['RECEPTION_SCHEDULE']['NAME']?></span>
-                                                    <ul class="checkbox-group time-group">
-                                                        <?foreach ($arProps['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
-                                                            <li>
-                                                                <input type="text" class="lc-doctor-time" name="<?=$arProps['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
-                                                            </li>
-                                                            <?
-                                                            $contact_key = $key+1;
-                                                        }
-                                                        $contact_key_last = 0 + $contact_key;?>
-                                                        <ul id="input<?=$idDoctor?><?=$contact_key_last?>"></ul>
-                                                    </ul>
-                                                    <div class="add-time" value="<?=$idDoctor?><?=$contact_key_last?>" title="Добавить время">+</div>
-                                                </div>
+                                                        }else{?>
+                                                           <input type="hidden" name="RECEPTION_SCHEDULE_<?=$key?>[]" value="<?=$contacts?>">
+                                                       <?}
+                                                    $contact_key = $key+1;
+                                                }
+                                                $contact_key_last = 0 + $contact_key;?>
+                                                <div class="col-lg-12 no-padding" id="input<?=$idDoctor?><?=$contact_key_last?>"></div>
                                             </div>
+                                            <div class="add-time" value="<?=$idDoctor?><?=$contact_key_last?>" title="Добавить время">+</div>
                                         </div>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="6">
                                             <div class="row">
@@ -397,13 +388,9 @@ while($ob = $res->GetNextElement()){
             let id = <?=$idDoctor?>;
             let x = <?=$contact_key_last?>;
             $('.add-time').on('click', function () {
-                if (x < 10) {
-                    let str = '<li><input type="text" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + id + (x + 1) + '"></ul>';
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><select class="place-education-block_place" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]"><?foreach($week as $item){?><option value="<?=$item?>"><?=$item?></option><?}?></select> <input class="lc-doctor-time" type="text" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]" value="<?=$contacts_array[1]?>"> </div><div class="col-lg-12 no-padding" id="input' + id + (x + 1) + '"></div>';
                     document.getElementById('input' + id + x).innerHTML = str;
                     x++;
-                }else{
-                    $('.add-time').hide();
-                }
             });
             let y = <?=$place_key_last?>;
             $('.add-place').on('click', function () {

@@ -9,11 +9,12 @@ if($_POST['ID_CLINIC']!=NULL){
 foreach ($_POST as $key => $data){
     if (strpos($key, 'SPECIALIZATIONS') !== false) {
         $PROPS['SPECIALIZATIONS'] = $data;
-    } elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
-        if (is_array($data)) {
-            $PROPS['RECEPTION_SCHEDULE'][] = $data[0].'/'.$data[1].'/'.$SCHEDULE;
-        }
-    } elseif (strpos($key, 'EXPERIENCE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+    }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]==NULL ) {
+        $PROPS['RECEPTION_SCHEDULE'][] = $data[0];
+    }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+        $PROPS['RECEPTION_SCHEDULE'][] = $data[0].'/'.$data[1].'/'.$SCHEDULE;
+    }
+    elseif (strpos($key, 'EXPERIENCE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
         if (is_array($data)) {
             $PROPS['EXPERIENCE'][] = $data[0].'/'.$data[1];
         }
@@ -41,9 +42,7 @@ if(empty($_POST['PHOTO'])){
 }else{
     $PROPS[141] = NULL;
 };
-echo"<pre>";
-print_r($PROPS);
-echo"</pre>";
+$PROPS['RECEPTION_SCHEDULE'] = array_unique($PROPS['RECEPTION_SCHEDULE']);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();
