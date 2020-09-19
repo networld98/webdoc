@@ -70,7 +70,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         }?>
                     </select>
                 </label>
-            <?}elseif($arQuestion["CAPTION"]=="Дата и время приёма"){?>
+            <?}elseif($arQuestion["CAPTION"]=="Дата приёма"){?>
                     <?foreach($doctorTime as  $item){
                         $str = explode('/',$item);
                         if( $str[2] == $timeForId) {
@@ -88,17 +88,9 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                             <?}?>
                         <?}?>
                     </select>
-                    <select id="selectTime">
-                        <?foreach($doctorTime as $time){
-                            $str = explode('/',$time);?>
-                            <?if ($str[0]==$dayOfTime){?>
-                                <option value="<?=$str[1]?>"><?=$str[1]?></option>
-                            <?}?>
-                        <?}?>
-                    </select>
                     <input type="hidden" id="fullTime" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$week[0]?>" size="0">
                 </label>
-            <?}elseif($arQuestion["CAPTION"]!="ID врача" && $arQuestion["CAPTION"]!="Дата и время приёма" && $arQuestion["CAPTION"]!="E-mail врача/клиники" && $arQuestion["CAPTION"]!="Специальность" && $arQuestion["CAPTION"]!="Клиника" && $arQuestion["CAPTION"]!="ФИО/Телефон врача" && $arQuestion["CAPTION"]!="Телефон клиники"){?>
+            <?}elseif($arQuestion["CAPTION"]!="ID врача" && $arQuestion["CAPTION"]!="Дата приёма" && $arQuestion["CAPTION"]!="E-mail врача/клиники" && $arQuestion["CAPTION"]!="Специальность" && $arQuestion["CAPTION"]!="Клиника" && $arQuestion["CAPTION"]!="ФИО/Телефон врача" && $arQuestion["CAPTION"]!="Телефон клиники"){?>
             <div>
                 <?if (is_array($arResult["FORM_ERRORS"]) && array_key_exists($FIELD_SID, $arResult['FORM_ERRORS'])):?>
                     <span class="error-fld" title="<?=htmlspecialcharsbx($arResult["FORM_ERRORS"][$FIELD_SID])?>"></span>
@@ -158,28 +150,8 @@ if($arResult["isUseCaptcha"] == "Y")
             return false;
         });
         $("#selectDay").change(function () {
-            let id = $(this).find('option:selected').data('id');
-            let day = $(this).find('option:selected').data('day');
-            let doc = <?=$doctorId?>;
-            let block = $('#selectTime');
             let date = $('#selectDay').val();
-            let time = $('#selectTime').val();
-            $.ajax({
-                type: "POST",
-                url: '/ajax/ajax_time_form.php',
-                data: {id: id, doctor: doc ,day: day},
-                success: function (data) {
-                    // Вывод текста результата отправки
-                    $(block).html(data);
-                }
-            });
-            $('#fullTime').val(date + '/' + time );
-            return false;
-        });
-        $("#selectTime").change(function () {
-            let date = $('#selectDay').val();
-            let time = $('#selectTime').val();
-            $('#fullTime').val(date + '/' + time );
+            $('#fullTime').val(date);
         });
     });
 </script>

@@ -85,7 +85,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                 $res = CIBlockElement::GetByID($date[2]);
                                 if($ar_res = $res->GetNext())
                                 $day[$arItem['ID']][] = $date[0];
-                                $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME']];
+                                $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME'],"CLINIC_ID" =>$ar_res['ID']];
                             }
                         }?>
                         <?usort($times, function($a, $b){
@@ -96,16 +96,17 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                             <ul class="doctors-list-item__days-list">
                                 <?foreach($daterange as $date){?>
                                     <?if ($date->format("Ymd") == date('Ymd')){
+                                        $selectDate = $date->format("d.m.Y");
                                         $selectDay = date($days[$date->format("N")]);
                                     }?>
-                                    <li class="select-doctor-day_<?=$arItem['ID']?> doctors-list-item__days-list-item <?if (!in_array($days[$date->format("N")],$day[$arItem['ID']])){?>pass<?}elseif (in_array($days[$date->format("N")],$day[$arItem['ID']]) && $date->format("Ymd") == date('Ymd')){?>active<?}?>"  data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arItem['ID']?>"><?= date( $days[$date->format("N")]);?>, <?= date($date->format("d"));?></li>
+                                    <li class="select-doctor-day_<?=$arItem['ID']?> doctors-list-item__days-list-item <?if (!in_array($days[$date->format("N")],$day[$arItem['ID']])){?>pass<?}elseif (in_array($days[$date->format("N")],$day[$arItem['ID']]) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-date="<?=date($date->format("d.m.Y"))?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arItem['ID']?>"><?= date( $days[$date->format("N")]);?>, <?= date($date->format("d"));?></li>
                                 <?}?>
                             </ul>
                             <ul class="doctors-list-item__worktimming-list" id="doctor-day-block-ajax_<?=$arItem['ID']?>">
                                 <?foreach ($times as $item){
                                     if($item['DAY'] == $selectDay){?>
                                         <li class="doctors-list-item__worktimming-list-item" title="<?=$item['CLINIC']?>">
-                                            <a href="<?=$arItem['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$item['DAY']?>_<?=$item['TIME']?>"><?=$item['TIME']?></a>
+                                            <a href="<?=$arItem['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$selectDate?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
                                         </li>
                                     <?}
                                 }?>

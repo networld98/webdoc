@@ -13,11 +13,12 @@ $(document).ready(function () {
     $(".select-doctor-day").click(function () {
         let day = $(this).data('day');
         let doctor = $(this).data('doctor');
+        let date = $(this).data('date');
         let block = $('#doctor-day-block-ajax');
         $.ajax({
             type: "POST",
             url: '/ajax/ajax_time.php',
-            data:  { day: day, doctor: doctor },
+            data:  { day: day, doctor: doctor, date: date },
             success: function (data) {
                 // Вывод текста результата отправки
                 $(block).html(data);

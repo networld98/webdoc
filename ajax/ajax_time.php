@@ -12,7 +12,7 @@ foreach ($arProps["RECEPTION_SCHEDULE"]["VALUE"] as $item){
     $date = explode('/',$item);
     $res = CIBlockElement::GetByID($date[2]);
     if($ar_res = $res->GetNext())
-        $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME']];
+        $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME'],"CLINIC_ID" =>$ar_res['ID']];
 }
 usort($times, function($a, $b){
     return ($a['TIME'] - $b['TIME']);
@@ -20,7 +20,7 @@ usort($times, function($a, $b){
 foreach ($times as $item){
     if($item['DAY'] == $_POST['day'] ){?>
         <li class="choosing-time__worktimming-list-item popup-reception-click" title="<?=$item['CLINIC']?>">
-            <a href="<?=$arFields['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$item['DAY']?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
+            <a href="<?=$arFields['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$_POST['date']?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
         </li>
     <?}
 }?>

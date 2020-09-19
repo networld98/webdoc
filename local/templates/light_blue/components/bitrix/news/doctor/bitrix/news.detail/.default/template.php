@@ -202,11 +202,11 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 </div>
             </div>
         </div>
-       <?/* global $USER;
-        if ($USER->IsAdmin()){ */?> <div class="doctor-card-popUp-group">
+       <?global $USER;
+        if ($USER->IsAdmin()){ ?> <div class="doctor-card-popUp-group">
             <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
 			<a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
-        <?/*}*/?>
+        <?}?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
@@ -335,7 +335,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         $res = CIBlockElement::GetByID($date[2]);
         if($ar_res = $res->GetNext())
         $day[] = $date[0];
-        $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME']];
+        $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME'],"CLINIC_ID" =>$ar_res['ID']];
     }?>
     <?usort($times, function($a, $b){
         return ($a['TIME'] - $b['TIME']);
@@ -359,16 +359,17 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <ul class="choosing-time_block-list slick-slider3">
             <?foreach($daterange as $date){?>
                 <?if ($date->format("Ymd") == date('Ymd')){
+                    $selectDate = $date->format("d.m.Y");
                     $selectDay = date($days[$date->format("N")]);
                 }?>
-                <li class="select-doctor-day choosing-time_block-list-item <?if (!in_array($days[$date->format("N")],$day)){?>pass<?}elseif (in_array($days[$date->format("N")],$day) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arResult['ID']?>"><?if ($date->format("Ymd") == date('Ymd')){?>Сегодня<?}else{?><?= date( $days[$date->format("N")]);?><?}?><br><?= date($date->format("d"). ' '. $_monthsList[$date->format("m")] );?></li>
+                <li class="select-doctor-day choosing-time_block-list-item <?if (!in_array($days[$date->format("N")],$day)){?>pass<?}elseif (in_array($days[$date->format("N")],$day) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-date="<?=date($date->format("d.m.Y"))?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arResult['ID']?>"><?if ($date->format("Ymd") == date('Ymd')){?>Сегодня<?}else{?><?= date( $days[$date->format("N")]);?><?}?><br><?= date($date->format("d"). ' '. $_monthsList[$date->format("m")] );?></li>
             <?}?>
         </ul>
     </div>
         <ul class="choosing-time__worktimming-list" id="doctor-day-block-ajax">
             <?foreach ($times as $item){
                 if($item['DAY'] == $selectDay ){?>
-                <li class="choosing-time__worktimming-list-item popup-reception-click" data-clinic="<?=$item['CLINIC']?>" data-time="<?=$item['DAY']?>_<?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><?=$item['TIME']?></li>
+                <li class="choosing-time__worktimming-list-item popup-reception-click" data-clinic="<?=$item['CLINIC']?>" data-time="<?=$selectDate?> <?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><span><?=$item['TIME']?></span></li>
             <?}
             }?>
         </ul>
@@ -501,7 +502,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 </div>
                 <div class="flex-right">
                     <h2 class="title-h2">Вызов врача на дом</h2>
-                    <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_record",Array(
+                    <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_home",Array(
                             "SEF_MODE" => "N",
                             "WEB_FORM_ID" => "5",
                             "AJAX_MODE" => "Y",

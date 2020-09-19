@@ -11,21 +11,17 @@ while($ob = $res->GetNextElement()){
 }
 foreach($arProps["RECEPTION_SCHEDULE"]["VALUE"] as $key => $item){
     $str = explode('/',$item);;
-    if( $str[2] == $_POST['id'] ){
-        $timeForm[$str[0]][] = $str[1];
+    if( $str[2] == $_POST['id'] && $str[0] == $_POST['day'] ){
+        $timeForm[] = $str[1];
     }
 }
-foreach ($week as $day){
-    if($timeForm[$day]!=NULL){
-        if (is_array($timeForm[$day])) {
-            foreach ($timeForm[$day] as $time){
-                $sortTimeForm[] = $day.' '.$time;
-            }
-        }else{
-            $sortTimeForm[] = $day.'_'.$timeForm[$day];
-        }
-    }
-}
-foreach ($sortTimeForm as $item){?>
-    <option data-email="<?=$arUser['EMAIL']?>" data-phone="<?=$arUser['LOGIN']?>" value="<?=$item?>"><?=$item?></option>
+foreach ($timeForm as $item){?>
+    <option value="<?=$item?>"><?=$item?></option>
 <?}?>
+<script>
+    $(document).ready(function () {
+            let date = $('#selectDay').val();
+            let time = $('#selectTime').val();
+            $('#fullTime').val(date + '/' + time );
+    });
+</script>

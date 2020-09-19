@@ -2031,13 +2031,16 @@ main {
     font-size: 15px;
     line-height: 24px;
     color: #000000;
-    padding: 4px 13px;
     background: #E3EAEA;
     border-radius: 5px;
     margin-right: 10px;
     margin-bottom: 10px;
     border: 1px solid #E3EAEA;
     cursor: pointer;
+}
+.choosing-time__worktimming-list-item a, .choosing-time__worktimming-list-item span{
+    display: block;
+    padding: 4px 13px;
 }
 .choosing-time__worktimming-list-item.pass {
     color: #DBDBDB;

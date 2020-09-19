@@ -882,6 +882,7 @@ function splitMulti(str, tokens){
 $(document).ready(function () {
     let urlParams = String(new URLSearchParams(window.location.search));
     let params = splitMulti(urlParams, ['=', '&']);
+    alert(decodeURIComponent(params));
     if(params[0]==='clinic' && params[1]!==null && params[2]==="time" && params[3]!==null){
         $('.popup-reception-click').trigger('click');
         // params[1].replace('+', ' ');
