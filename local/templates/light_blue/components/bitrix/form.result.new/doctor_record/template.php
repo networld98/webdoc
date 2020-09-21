@@ -173,6 +173,7 @@ if($arResult["isUseCaptcha"] == "Y")
                     $(block).html(data);
                 }
             });
+            $("#selectTime").trigger('click');
             $('#fullTime').val(date + '/' + time );
             return false;
         });

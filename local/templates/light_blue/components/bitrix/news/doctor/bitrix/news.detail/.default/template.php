@@ -23,6 +23,7 @@ global $doctorId;
 $doctorName = $arResult['NAME'];
 $doctorId = $arResult['ID'];
 $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
+CModule::IncludeModule("form");
 ?>
 <?function formRecord($arResult){?>
     <div class="doctors-list-item__img">
@@ -327,6 +328,29 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <?endif;?>
     </div>
 </section>
+<?
+$FORM_ID = 4;
+$arFilter = array();
+$result = CFormResult::GetList(v, $by = 's_id', $order = 'asc', $arFilter, $is_filtered, 'N', false);
+while($arRes = $result->Fetch())
+{
+    $arID[] = $arRes['ID'];
+}
+// получим данные по результату ID=145
+CForm::GetResultAnswerArray($FORM_ID,
+    $arrColumns,
+    $arrAnswers,
+    $arrAnswersVarname,
+    array("RESULT_ID" => $arID));
+foreach ($arrAnswersVarname as $answer){
+    global $USER;
+    if ($USER->IsAdmin()) {
+        echo"<pre>";
+        print_r($answer['SIMPLE_RECORD_2']['0']['USER_TEXT']);
+        echo"</pre>";
+    }
+}
+?>
 <?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
 <section class="container choosing-time">
     <h3 class="title-h3">Выберите время приема для записи онлайн</h3>
@@ -367,11 +391,16 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         </ul>
     </div>
         <ul class="choosing-time__worktimming-list" id="doctor-day-block-ajax">
-            <?foreach ($times as $item){
-                if($item['DAY'] == $selectDay ){?>
+            <?$i=0;
+            foreach ($times as $item){
+                if($item['DAY'] == $selectDay || in_array($days[$date->format("N")],$day)){
+                    $i++;?>
                 <li class="choosing-time__worktimming-list-item popup-reception-click" data-clinic="<?=$item['CLINIC']?>" data-time="<?=$selectDate?> <?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><span><?=$item['TIME']?></span></li>
             <?}
             }?>
+            <?if($i==0){?>
+            <h6 style="color:red;">В этот день нет приема</h6>
+            <?}?>
         </ul>
 </section>
 <?endif;?>

@@ -1,8 +1,11 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Title");
-?>
-
+$APPLICATION->SetPageProperty("description", "Выбор врача и клиники по отзывам от настоящих пользователей, по месторасположению и ценам. Актуальные контактные данные клиник, статьи по медицине и полезные материалы.");
+$APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
+<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){
+    header('Location: http://lib.webdoc.clinic/');
+    exit;
+}?>
 
     <section class="container library">
         <?$APPLICATION->IncludeComponent(
@@ -16,7 +19,7 @@ $APPLICATION->SetTitle("Title");
 		"AJAX_MODE" => "N",
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "20",
-		"NEWS_COUNT" => "20",
+		"NEWS_COUNT" => "1000",
 		"USE_SEARCH" => "N",
 		"USE_RSS" => "N",
 		"USE_RATING" => "N",

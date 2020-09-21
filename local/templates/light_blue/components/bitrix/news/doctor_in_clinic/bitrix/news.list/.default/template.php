@@ -103,13 +103,19 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                 <?}?>
                             </ul>
                             <ul class="doctors-list-item__worktimming-list" id="doctor-day-block-ajax_<?=$arItem['ID']?>">
-                                <?foreach ($times as $item){
-                                    if($item['DAY'] == $selectDay){?>
+                                <?
+                                $i=0;
+                                foreach ($times as $item){
+                                    if($item['DAY'] == $selectDay || in_array($days[$date->format("N")],$day)){
+                                        $i++;?>
                                         <li class="doctors-list-item__worktimming-list-item" title="<?=$item['CLINIC']?>">
                                             <a href="<?=$arItem['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$selectDate?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
                                         </li>
                                     <?}
                                 }?>
+                                <?if($i==0){?>
+                                    <h6 style="color:red;">В этот день нет приема</h6>
+                                <?}?>
                             </ul>
                         <?endif;?>
                         <?if($arItem["PROPERTIES"]["CLINIK"]["VALUE"]):?>

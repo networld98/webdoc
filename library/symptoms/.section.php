@@ -1,3 +1,3 @@
 <?
-$sSectionName="symptoms";
+$sSectionName="Симптомы";
 ?>
