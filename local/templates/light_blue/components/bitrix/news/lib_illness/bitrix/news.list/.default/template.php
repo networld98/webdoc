@@ -27,12 +27,15 @@ function console_log( $data ){
     echo '</script>';
   }
 ?>
+
 <? 
 $items = [];
 foreach($arResult['ITEMS'] as $item)
 {
+
     $items[mb_strtoupper(substr($item['NAME'], 0,1))][] = array("NAME" => $item['NAME'],"URL"=> $item['DETAIL_PAGE_URL']);
 }
+console_log($arResult);
 ?>
     <h1 class="title-h2">Библиотека</h1>
     <div class="row fixed-block-alp">
@@ -40,10 +43,10 @@ foreach($arResult['ITEMS'] as $item)
         <div class="col-lg-12">
             <div class="sort-block">
                 <ul class="sort-block-list library-sort">
-                    <li class="sort-block-list-item active" data-tabs='0'><a href="/library/">Болезни</a></li>
-                    <li class="sort-block-list-item" data-tabs='1'><a href="symptoms/">Симптомы</a></li>
+                    <li class="sort-block-list-item active" data-tabs='0'><a href="javascript:void(0);">Болезни</a></li>
+                    <li class="sort-block-list-item" data-tabs='1'><a href="../symptoms/">Симптомы</a></li>
                     <!-- <li class="sort-block-list-item" data-tabs='2'>Врачи</li> -->
-                    <li class="sort-block-list-item" data-tabs='3'><a href="articles/">Статьи</a></li>
+                    <li class="sort-block-list-item" data-tabs='3'><a href="../articles/">Статьи</a></li>
                 </ul>
             </div>
         </div>

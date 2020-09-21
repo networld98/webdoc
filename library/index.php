@@ -2,7 +2,10 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Библиотека");
 ?>
-
+<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){
+    header('Location: http://lib.webdoc.clinic/');
+    exit;
+}?>
 <section class="container library">
     <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
@@ -15,7 +18,7 @@ $APPLICATION->SetTitle("Библиотека");
         "AJAX_MODE" => "N",
         "IBLOCK_TYPE" => "content",
         "IBLOCK_ID" => "21",
-        "NEWS_COUNT" => "20",
+        "NEWS_COUNT" => "1000",
         "USE_SEARCH" => "N",
         "USE_RSS" => "N",
         "USE_RATING" => "N",
@@ -58,7 +61,6 @@ $APPLICATION->SetTitle("Библиотека");
         "PAGER_PARAMS_NAME" => "arrPager",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
         "USE_PERMISSIONS" => 'N',
-        "GROUP_PERMISSIONS" => Array("1"),
         "CACHE_TYPE" => "A",
         "CACHE_TIME" => "3600",
         "CACHE_FILTER" => "Y",
@@ -90,7 +92,7 @@ $APPLICATION->SetTitle("Библиотека");
         "URL_TEMPLATES_READ" => "",
         "SHOW_LINK_TO_FORUM" => "Y",
         "POST_FIRST_MESSAGE" => "Y",
-        "SEF_FOLDER" => "/library/",
+        "SEF_FOLDER" => "/illness/",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
         "AJAX_OPTION_HISTORY" => "N",

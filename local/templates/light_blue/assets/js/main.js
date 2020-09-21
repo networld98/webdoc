@@ -56,31 +56,31 @@ $(document).ready(()=>{
                 top = $(this).scrollTop();
                 if($(window).width() <= 992) {
                     if ((top + $('#header').innerHeight()) + widthDevice < elemFixedPos) {
-                        console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
-                        console.log((top + $('#header').innerHeight()));
-                        console.log("ABSOLUTED");
+                        // console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
+                        // console.log((top + $('#header').innerHeight()));
+                        // console.log("ABSOLUTED");
                         elem.css({'top': 'initial', position: 'absolute',backgroundColor: 'transparent',bottom:'initial'});
                         // $('.container h1').fadeIn();
                         // $('.bx-breadcrumb').show();
                     } else {
                         if($(window).width() <= 500) {
                             if(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + widthDevice/3 < footer.top) {
-                                console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
-                                console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
-                                console.log("FIXED");
+                                // console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
+                                // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
+                                // console.log("FIXED");
                                 elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
                             } else {
-                                console.log('ABSOLUTED');
+                                // console.log('ABSOLUTED');
                                 elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
                             }
                         } else {
                             if(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + widthDevice < footer.top) {
-                                console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
-                                console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
-                                console.log("FIXED");
+                                // console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
+                                // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
+                                // console.log("FIXED");
                                 elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
                             } else {
-                                console.log('ABSOLUTED');
+                                // console.log('ABSOLUTED');
                                 elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
                             }
                         }
@@ -88,20 +88,20 @@ $(document).ready(()=>{
                     }
                 } else {
                 if ((top + $('#header').innerHeight()) + widthDevice < elemFixedPos) {
-                    console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
-                    console.log((top + $('#header').innerHeight()));
-                    console.log("RELATIVED");
+                    // console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
+                    // console.log((top + $('#header').innerHeight()));
+                    // console.log("RELATIVED");
                     elem.css({'top': 0, position: 'relative',backgroundColor: 'transparent',bottom:'initial'});
                     // $('.container h1').fadeIn();
                     // $('.bx-breadcrumb').show();
                 } else {
                     if(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + widthDevice*2 < footer.top) {
-                        console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
-                        console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
-                        console.log("FIXED");
+                        // console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
+                        // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
+                        // console.log("FIXED");
                         elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
                     } else {
-                        console.log('ABSOLUTED');
+                        // console.log('ABSOLUTED');
                         elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
                     }
                     // $('.container h1').fadeIn();
@@ -140,22 +140,22 @@ $(document).ready(()=>{
             footer2= $('#footer-wrapper').offset();
             top2 = $(this).scrollTop();
             if ((top2 + $('#header').innerHeight()) < elemFixedPos2) {
-                console.log(top2 + $('#header').innerHeight() + " pos --- offset " + `${elem2.offset().top}`);
-                console.log((top2 + $('#header').innerHeight()));
-                console.log("RELATIVED");
+                // console.log(top2 + $('#header').innerHeight() + " pos --- offset " + `${elem2.offset().top}`);
+                // console.log((top2 + $('#header').innerHeight()));
+                // console.log("RELATIVED");
                 elem2.css({'top': 0, position: 'relative',backgroundColor: 'transparent',bottom:'initial',paddingBottom: '30px'});
                 elem2.children('.container').css({paddingLeft: '0',paddingRight: '0'});
                 $('.container h1').fadeIn();
                 $('.bx-breadcrumb').show();
             } else {
                 if(top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight() < footer2.top) {
-                    console.log(top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight() + " pos --- offset " + `${footer2.top}`);
-                    console.log((top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight()));
-                    console.log("FIXED");
+                    // console.log(top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight() + " pos --- offset " + `${footer2.top}`);
+                    // console.log((top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight()));
+                    // console.log("FIXED");
                     elem2.css({'top': topfixed2, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${100}%`,paddingBottom: '30px'});
                     elem2.children('.container').css({paddingLeft: '15px',paddingRight: '15px'});
                 } else {
-                    console.log('ABSOLUTED');
+                    // console.log('ABSOLUTED');
                     elem2.css({'top': 'initial', position: 'absolute', backgroundColor: '#fff', bottom: elemAbsolutePos2 ,paddingBottom: '30px'});
                     elem2.children('.container').css({paddingLeft: '15px',paddingRight: '15px'});
                 }
@@ -577,9 +577,16 @@ $(document).ready(()=>{
         /* Убираем баг в Firefox */
         $('html').scrollTop(scrollPos);
     });
-    
+    /* CUSTOM*/
+    function splitMulti(str, tokens){
+        var tempChar = tokens[0]; // We can use the first token as a temporary join character
+        for(var i = 1; i < tokens.length; i++){
+            str = str.split(tokens[i]).join(tempChar);
+        }
+        str = str.split(tempChar);
+        return str;
+    }
     $('.popup-reception-click').click(function(e) {
-     
         /* Предотвращаем действия по умолчанию */
         e.preventDefault();
         e.stopPropagation();
@@ -862,3 +869,36 @@ $(document).ready(()=>{
 //   })
 
 });
+
+/* CUSTOM*/
+function splitMulti(str, tokens){
+    var tempChar = tokens[0]; // We can use the first token as a temporary join character
+    for(var i = 1; i < tokens.length; i++){
+        str = str.split(tokens[i]).join(tempChar);
+    }
+    str = str.split(tempChar);
+    return str;
+}
+$(document).ready(function () {
+    let urlParams = String(new URLSearchParams(window.location.search));
+    let params = splitMulti(urlParams, ['=', '&']);
+    if(params[0]==='clinic' && params[1]!==null && params[2]==="time" && params[3]!==null){
+        $('.popup-reception-click').trigger('click');
+        // params[1].replace('+', ' ');
+        // console.log(decodeURIComponent(params[1]));
+        // console.log(decodeURIComponent(params[3]));
+        // $("#selectClinic").val(params[1]);
+        // $("#selectTime").val(decodeURIComponent(params[3]));
+    }
+    $('.popup-reception-click').click(function() {
+        let clinic = $(this).data('clinic');
+        let time = $(this).data('time');
+        const params = new URLSearchParams(location.search);
+        if(time!==undefined && clinic!==undefined){
+            params.set('clinic', clinic);
+            params.set('time', time);
+            window.history.replaceState({}, '', `${location.pathname}?${params}`);
+        }
+    });
+});
+

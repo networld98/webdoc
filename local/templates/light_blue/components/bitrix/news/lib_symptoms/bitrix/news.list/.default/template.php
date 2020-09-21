@@ -32,10 +32,10 @@ function console_log( $data ){
     <div class="col-lg-12">
         <div class="sort-block">
             <ul class="sort-block-list library-sort">
-                <li class="sort-block-list-item" data-tabs='0'><a href="/library/">Болезни</a></li>
+                <li class="sort-block-list-item" data-tabs='0'><a href="../illness/">Болезни</a></li>
                 <li class="sort-block-list-item active" data-tabs='1'><a href="javascript:void(0);">Симптомы</a></li>
                 <!-- <li class="sort-block-list-item" data-tabs='2'>Врачи</li> -->
-                <li class="sort-block-list-item" data-tabs='3'><a href="/library/articles/">Статьи</a></li>
+                <li class="sort-block-list-item" data-tabs='3'><a href="../articles/">Статьи</a></li>
             </ul>
         </div>
     </div>
