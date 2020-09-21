@@ -64,7 +64,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                 ?>
                                 <option data-email="<?= $arUser['EMAIL'] ?>" data-id="<?= $timeForIdNext ?>"
                                         data-phone="<?= $arUser['LOGIN'] ?>"
-                                        value="<?= $item['NAME'] ?>"><?= $item['NAME'] ?></option>
+                                        value="<?= $item['NAME'] ?>/<?= $timeForIdNext ?>"><?= $item['NAME'] ?></option>
                             <?
                             }
                         }?>
@@ -84,7 +84,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                 <?if ($dayOfTime == NULL) {
                                 $dayOfTime = date($week[$date->format("N")]);
                                 }?>
-                            <option data-id="<?= $timeForIdNext ?>" data-day="<?= $dayOfTime ?>" value="<?= date($week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?>"><?= date( $week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?></option>
+                            <option data-id="<?= $timeForIdNext ?>" data-day="<?= date($week[$date->format("N")]) ?>" value="<?= date($week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?>"><?= date( $week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?></option>
                             <?}?>
                         <?}?>
                     </select>
@@ -98,7 +98,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                     </select>
                     <input type="hidden" id="fullTime" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$week[0]?>" size="0">
                 </label>
-            <?}elseif($arQuestion["CAPTION"]!="ID врача" && $arQuestion["CAPTION"]!="Дата и время приёма" && $arQuestion["CAPTION"]!="E-mail врача/клиники" && $arQuestion["CAPTION"]!="Специальность" && $arQuestion["CAPTION"]!="Клиника" && $arQuestion["CAPTION"]!="ФИО/Телефон врача" && $arQuestion["CAPTION"]!="Телефон клиники"){?>
+            <?}elseif($arQuestion["CAPTION"]!="Дата и время приёма" && $arQuestion["CAPTION"]!="E-mail врача/клиники" && $arQuestion["CAPTION"]!="Специальность" && $arQuestion["CAPTION"]!="Клиника" && $arQuestion["CAPTION"]!="ID/ФИО/Телефон врача" && $arQuestion["CAPTION"]!="Телефон клиники"){?>
             <div>
                 <?if (is_array($arResult["FORM_ERRORS"]) && array_key_exists($FIELD_SID, $arResult['FORM_ERRORS'])):?>
                     <span class="error-fld" title="<?=htmlspecialcharsbx($arResult["FORM_ERRORS"][$FIELD_SID])?>"></span>
@@ -109,12 +109,12 @@ $daterange = new DatePeriod($begin, $interval ,$end);
             </div>
     <?}elseif($arQuestion["CAPTION"]=="E-mail врача/клиники"){?>
         <input type="hidden" id="option_mail"  name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorEmail?>" size="0">
-    <?}elseif($arQuestion["CAPTION"]=="ФИО/Телефон врача"){?>
-        <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?if($noneClinic==NULL){echo $doctorName.'/';}?><?=$doctorPhone?>" size="0">
+    <?}elseif($arQuestion["CAPTION"]=="ID/ФИО/Телефон врача"){?>
+        <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorId?>/<?if($noneClinic==NULL){echo $doctorName.'/';}?><?=$doctorPhone?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="Телефон клиники"){?>
         <input type="hidden" id="option_phone" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$clinicPhone?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="ID врача"){?>
-        <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorId?>" size="0">
+        <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="" size="0">
     <?}?>
 	<?
 	} //endwhile
@@ -138,6 +138,9 @@ if($arResult["isUseCaptcha"] == "Y")
 ?>
 <script>
     $(document).ready(function () {
+        let date = $('#selectDay').val();
+        let time = $('#selectTime').val();
+        $('#fullTime').val(date + '/' + time );
         $("#selectClinic").change(function () {
             let id = $(this).find('option:selected').data('id');
             let doc = <?=$doctorId?>;
@@ -173,7 +176,6 @@ if($arResult["isUseCaptcha"] == "Y")
                     $(block).html(data);
                 }
             });
-            $("#selectTime").trigger('click');
             $('#fullTime').val(date + '/' + time );
             return false;
         });

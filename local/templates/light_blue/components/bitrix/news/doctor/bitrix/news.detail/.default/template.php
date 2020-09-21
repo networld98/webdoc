@@ -342,14 +342,12 @@ CForm::GetResultAnswerArray($FORM_ID,
     $arrAnswers,
     $arrAnswersVarname,
     array("RESULT_ID" => $arID));
-foreach ($arrAnswersVarname as $answer){
-    global $USER;
-    if ($USER->IsAdmin()) {
-        echo"<pre>";
-        print_r($answer['SIMPLE_RECORD_2']['0']['USER_TEXT']);
-        echo"</pre>";
+    foreach ($arrAnswersVarname as $answer){
+        $strDoctor = explode('/',$answer['SIMPLE_RECORD_PHONE']['0']['USER_TEXT']);
+        if($strDoctor[0] == $arResult['ID']){
+            $record[] = $answer['SIMPLE_RECORD_2']['0']['USER_TEXT'];
+        }
     }
-}
 ?>
 <?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
 <section class="container choosing-time">
@@ -393,9 +391,11 @@ foreach ($arrAnswersVarname as $answer){
         <ul class="choosing-time__worktimming-list" id="doctor-day-block-ajax">
             <?$i=0;
             foreach ($times as $item){
-                if($item['DAY'] == $selectDay || in_array($days[$date->format("N")],$day)){
-                    $i++;?>
-                <li class="choosing-time__worktimming-list-item popup-reception-click" data-clinic="<?=$item['CLINIC']?>" data-time="<?=$selectDate?> <?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><span><?=$item['TIME']?></span></li>
+                if($item['DAY'] == $selectDay && in_array( date($days[$date->format("N")]),$day)){
+                    $i++;
+                    $fullDate = $days[$date->format("N")].', '.$selectDate.'/'.$item['TIME'];
+                    ?>
+                <li class="choosing-time__worktimming-list-item popup-reception-click <?if(in_array($fullDate,$record)){?>closed"<?}?> data-clinic="<?=$item['CLINIC']?>" data-time="<?=$selectDate?> <?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><span><?=$item['TIME']?></span></li>
             <?}
             }?>
             <?if($i==0){?>
