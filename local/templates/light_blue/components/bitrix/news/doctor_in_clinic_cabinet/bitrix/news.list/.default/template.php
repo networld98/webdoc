@@ -13,6 +13,7 @@
 $this->setFrameMode(true);
 CModule::IncludeModule("iblock");
 global $idClinic;
+$week = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
 ?>
 <?function propview($prop,$id,$iblock){
     $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
@@ -53,14 +54,13 @@ global $idClinic;
 <?function propselectSpecSec($prop,$iblock){?>
     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
         <span><?=$prop['NAME']?></span>
-        <select name="SPECIALIZATION_MAIN" id="SPECIALIZATION_MAIN" value="">
+        <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
             <?
             $arSelect = array("ID", "NAME");
             $arFilter = array("IBLOCK_ID"=>$iblock);
             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext())
             {?>
-                ?>
                 <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
             <?}?>
         </select>
@@ -95,17 +95,19 @@ global $idClinic;
     ?>
     <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
             <input type="hidden" name="ID_DOCTOR" value="<?=$arItem['ID']?>">
+            <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
              <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
             <div class="row">
                 <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
                     <div class="personal-cabinet-content__doctors-page-box-item__img">
-                        <?if($arItem['DETAIL_PICTURE']['SRC']!=NULL){?>
-                            <img src="<?= $arItem['DETAIL_PICTURE']['SRC'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
-                        <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']==NULL || $arItem['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
-                            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                        <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-                            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-                        <?}?>
+                        <?if($arItem['DETAIL_PICTURE']!=NULL){?>
+                        <div style="background-image: url('<?= $arItem['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link photo-back-image photo-back-image">
+                            <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']==NULL || $arItem['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
+                        <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
+                            <?}elseif($arItem['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
+                        <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctor-card__img-link photo-back-image-contain">
+                            <?}?>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
@@ -258,40 +260,30 @@ global $idClinic;
                                         </div>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <span class="time-block-span"><?=$arItem['PROPERTIES']['DAY_RECEPTION']['NAME']?></span>
-                                                <ul class="link-checkbox">
+                                        <div class="row place-education-block place-schedule-block">
+                                            <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){
+                                                $contacts_array = explode('/',$contacts);
+                                                if($contacts_array[2] == $idClinic){?>
+                                                    <div class="col-lg-12 no-padding">
+                                                        <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                            <select class="place-education-block_place"  name="RECEPTION_SCHEDULE_<?=$key?>[]">
+                                                                <?foreach($week as $item){?>
+                                                                    <option <?if($item==$contacts_array[0]){?>selected<?}?> value="<?=$item?>"><?=$item?></option>
+                                                                <?}?>
+                                                            </select>
+                                                            <input class="lc-doctor-time" type="text" name="RECEPTION_SCHEDULE_<?=$key?>[]" value="<?=$contacts_array[1]?>">
+                                                        </div>
+                                                    </div>
                                                     <?
-                                                    $db_enum_list = CIBlockProperty::GetPropertyEnum("DAY_RECEPTION", Array('SORT'=>'ASC'), Array("IBLOCK_ID"=>10));
-                                                    while($ar_enum_list = $db_enum_list->GetNext()) {?>
-                                                        <li>
-                                                            <input type="checkbox" <?if(in_array($ar_enum_list['VALUE'],$arItem['PROPERTIES']['DAY_RECEPTION']['VALUE'])){?>checked<?}?> value="<?=$ar_enum_list['ID']?>" name="<?=$arItem['PROPERTIES']['DAY_RECEPTION']['CODE']?>[]" id="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$arItem['ID']?>">
-                                                            <label data-role="label_<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$arItem['ID']?>" class="bx_filter_param_label" for="<?=$ar_enum_list['PROPERTY_ID']?>_<?=$ar_enum_list['ID']?>_<?=$arItem['ID']?>">
-                                                                <span class="bx_filter_input_checkbox">
-                                                                    <span class="bx_filter_param_text"><?=$ar_enum_list["VALUE"]?></span>
-                                                                </span>
-                                                            </label>
-                                                        </li>
-                                                    <?}?>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <span class="time-block-span"><?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['NAME']?></span>
-                                                <ul class="checkbox-group time-group">
-                                                    <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contact){?>
-                                                        <li>
-                                                            <input type="text" name="<?=$arItem['PROPERTIES']['RECEPTION_SCHEDULE']['CODE']?>[]" value="<?=$contact?>">
-                                                        </li>
-                                                        <?
-                                                        $contact_key = $key+1;
-                                                    }
-                                                    $contact_key_last = 0 + $contact_key;?>
-                                                    <ul id="input<?=$arItem['ID']?><?=$contact_key_last?>"></ul>
-                                                </ul>
-                                                <div class="add-time" value="<?=$arItem['ID']?><?=$contact_key_last?>" title="Добавить время">+</div>
-                                            </div>
+                                                }else{?>
+                                                    <input type="hidden" name="RECEPTION_SCHEDULE_<?=$key?>[]" value="<?=$contacts?>">
+                                                <?}
+                                                $contact_key = $key+1;
+                                            }
+                                            $contact_key_last = 0 + $contact_key;?>
+                                            <div class="col-lg-12 no-padding" id="input<?=$arItem['ID']?><?=$contact_key_last?>"></div>
                                         </div>
+                                        <div class="add-time" value="<?=$arItem['ID']?><?=$contact_key_last?>" title="Добавить время">+</div>
                                     </div>
                                 </div>
                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">
@@ -371,13 +363,9 @@ global $idClinic;
             let id = <?=$arItem['ID']?>;
             let x = <?=$contact_key_last?>;
             $('.add-time').on('click', function () {
-                if (x < 10) {
-                    let str = '<li><input type="text" name="RECEPTION_SCHEDULE[]"></li><ul class="checkbox-group contacts-group" id="input' + id + (x + 1) + '"></ul>';
-                    document.getElementById('input' + id + x).innerHTML = str;
-                    x++;
-                }else{
-                    $('.add-time').hide();
-                }
+                let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><select class="place-education-block_place" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]"><?foreach($week as $item){?><option value="<?=$item?>"><?=$item?></option><?}?></select> <input class="lc-doctor-time" type="text" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]" value="<?=$contacts_array[1]?>"> </div><div class="col-lg-12 no-padding" id="input' + id + (x + 1) + '"></div>';
+                document.getElementById('input' + id + x).innerHTML = str;
+                x++;
             });
             let y = <?=$place_key_last?>;
             $('.add-place').on('click', function () {

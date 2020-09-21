@@ -124,7 +124,7 @@
 .personal-cabinet-content__my-profile .contacts-group li:last-child {
     margin-bottom: 0;
 }
-.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time, .place-education-block .add-place, .place-education-block .add-education
+.personal-cabinet-content__my-profile .add, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .add-time, .place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address
 {
     width: 35px;
     height: 35px;
@@ -142,7 +142,7 @@
     margin-left: 10px;
     float: right;
 }
-.place-education-block .add-place, .place-education-block .add-education {
+.place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
     position: absolute;
     right: -43px;
     bottom: 0;
@@ -169,6 +169,14 @@
     color:#fff;
     background-color: #9DD4B3;
 }
+.place-schedule-block select, .place-schedule-block input{
+    margin: 0 10px 0 15px;
+}
+
+.place-schedule-block select:first-child, .place-schedule-block input:first-child{
+    margin-left: 60px;
+}
+
 .link-checkbox .bx_filter_param_label {
     line-height: 17px;
     padding: 5px 10px;
@@ -201,7 +209,7 @@
 .header .container.cabinet {
     width: 100%;
     max-width: 1840px;
-    padding: 34px 30px 0 100px;
+    padding: 34px 0 0 100px;
 }
 .header .container.cabinet .contacts {
     min-width: 170px;
@@ -336,6 +344,9 @@
     line-height: 24px;
     text-align: right;
     color: #000000;
+}
+.place-education-block span:first-child {
+    max-width: 100px;
 }
 .card-item:last-child{
     border: none;
@@ -484,12 +495,25 @@ main >.main-seo-text {
 .personal-cabinet .list-clinics-cabinet-doctor [type="text"] {
     display: none;
 }
-.personal-cabinet .del {
-    color: red;
-    font-style: normal;
-    font-weight: bold;
-    font-family: "Montserrat Alternates";
+.personal-cabinet .close {
     cursor: pointer;
+    width: 14px;
+    height: 14px;
+    opacity: 1;
+    background-image: url(/local/templates/light_blue/assets/images/emojione-monotone_cross-mark-small.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 5px;
+    background-size: contain;
+}
+.photo-back-image {
+    background-position: center;
+    background-size: cover;
+}
+.photo-back-image-contain{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
@@ -563,7 +587,7 @@ main >.main-seo-text {
         margin-left: 0;
         margin-right: 0;
     }
-    .place-education-block .add-place, .place-education-block .add-education {
+    .place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
         right: -32px;
         bottom: -36px;
     }

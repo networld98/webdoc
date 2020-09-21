@@ -1109,7 +1109,6 @@ main {
     background: #E3EAEA;
     border: 1px solid #E3EAEA;
     border-radius: 5px;
-    padding: 4px 13px;
     font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
@@ -1119,6 +1118,10 @@ main {
     margin-right: 6px;
     margin-bottom: 3px;
     cursor: pointer;
+}
+.doctors-list-item__worktimming-list-item a {
+    display: block;
+    padding: 4px 13px;
 }
 .doctors-list-item__days-list-item.not-worked {
     position: relative;
@@ -1136,13 +1139,14 @@ main {
     width: 160px;
     height: 47px;
 }
-.doctors-list-item__worktimming-list-item.pass {
+.doctors-list-item__worktimming-list-item.pass, .choosing-time_block-list-item.pass, .doctors-list-item__days-list-item.pass  {
     color: #DBDBDB;
     border: 1px solid #DBDBDB;
     background: transparent;
     position: relative;
+    cursor: default;
 }
-.doctors-list-item__worktimming-list-item.pass:hover:before {
+.doctors-list-item__worktimming-list-item.pass:hover:before, .choosing-time_block-list-item.pass:hover:before, .doctors-list-item__days-list-item.pass:hover:before  {
     content: '';
     position: absolute;
     top: -45px;
@@ -1151,6 +1155,7 @@ main {
     background-image: url(../images/passed-time.svg);
     width: 153px;
     height: 47px;
+    cursor: default;
 }
 .doctors-list-item__worktimming-list-item.closed {
     color: #98D7DC;
@@ -1167,9 +1172,6 @@ main {
     background-image: url(../images/closed-time.svg);
     top: -45px;
     left: 0;
-}
-.doctors-list-item__worktimming-list-item {
-    
 }
 .doctors-list-item__clinic-name {
     font-family: "Ubuntu";
@@ -2029,13 +2031,16 @@ main {
     font-size: 15px;
     line-height: 24px;
     color: #000000;
-    padding: 4px 13px;
     background: #E3EAEA;
     border-radius: 5px;
     margin-right: 10px;
     margin-bottom: 10px;
     border: 1px solid #E3EAEA;
     cursor: pointer;
+}
+.choosing-time__worktimming-list-item a, .choosing-time__worktimming-list-item span{
+    display: block;
+    padding: 4px 13px;
 }
 .choosing-time__worktimming-list-item.pass {
     color: #DBDBDB;
@@ -2430,7 +2435,7 @@ main {
     margin-bottom: 40px;
     margin-top: 80px;
 }
-.mess-popup__name, .mess-popup__email, .mess-popup__message {
+.message-to-doctor textarea, .message-to-doctor input {
     color: #000000;
     padding: 13px 15px;
     margin: 0 auto;
@@ -2444,7 +2449,7 @@ main {
     font-size: 15px;
     line-height: 24px;
 }
-.mess-popup__message {
+.message-to-doctor textarea {
     border: 2px solid #9DD4B3;
     box-sizing: border-box;
     border-radius: 5px;
@@ -3840,6 +3845,7 @@ main {
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > span {
     margin-right: 20px;
+    text-align: right;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > span:first-child {
     max-width: 166px;
@@ -3862,14 +3868,16 @@ main {
     padding: 8px 0 8px 11px;
     outline: none;
     font-family: "Ubuntu";
-    font-style: normal;
     font-weight: 300;
     font-size: 15px;
     line-height: 24px;
     color: #000000;
     max-width: 100%;
-    width: 100%;
+    /*width: 100%;*/
     height: 40px;
+}
+.personal-cabinet-content-item select {
+    width: 100%;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row input:not([type="file"]):not(.city_input):not(.photoFile) {
     border: 1px solid #9DD4B3;
@@ -4484,6 +4492,12 @@ main {
 }
 .clinic-card-full-desc__content__info-left__facilities .icon5::before {
     background-image: url(../images/license.svg);
+}
+.clinic-card-full-desc__content__info-left__facilities .icon6::before {
+    background-image: url(../images/sms.svg);
+}
+.clinic-card-full-desc__content__info-left__facilities .icon7::before {
+    background-image: url(../images/wifi.svg);
 }
 .clinic-card-full-desc__content__info-right {
     max-width: 482px;
@@ -5766,14 +5780,6 @@ main {
 .fixed-block-alp .container > div {
     padding-left: 0;
     padding-right: 0;
-}
-.photo-back-image, .photo-back-image-contain {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-.photo-back-image-contain {
-    background-size: contain;
 }
 /*.bx_filter.bx_blue.bx_horizontal {*/
     /*background: #F3F4EF;*/
@@ -7386,7 +7392,7 @@ main {
         padding-left: 22px;
         padding-right: 20px;
     }
-    .mess-popup__name, .mess-popup__email, .mess-popup__message, .mess-popup__desc, .send , .mess-popup__header {
+    .message-to-doctor textarea, .message-to-doctor input, .mess-popup__desc, .mess-popup__header {
         max-width: 300px;
         width: 100%;
     }
@@ -7970,7 +7976,7 @@ main {
     .services-list .sort-block-list-item {
         font-size: 13px;
         line-height: 23px;
-        padding: 10 15px;
+        padding: 10px 15px;
     }
     .services-list-item .title-h3 {
         font-size: 20px;

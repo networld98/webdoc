@@ -25,7 +25,7 @@ $templateData = array(
             <div class="row">
                 <div class="col-12 col-sm-8 order-2">
                     <?foreach($arResult["HIDDEN"] as $arItem):?>
-                        <input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" id="<?echo $arItem["CONTROL_ID"]?>" value="<?echo $arItem["HTML_VALUE"]?>" />
+                        <input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" <?/*id="<?echo $arItem["CONTROL_ID"]?>" */?> value="<?echo $arItem["HTML_VALUE"]?>" />
                     <?endforeach;
                     //not prices
                     foreach($arResult["ITEMS"] as $key=>$arItem)

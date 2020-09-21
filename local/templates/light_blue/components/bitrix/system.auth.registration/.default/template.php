@@ -73,7 +73,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
                 </tr>
                 <tr>
                     <td><span class="starrequired">*</span><?=GetMessage("AUTH_LOGIN_MIN")?></td>
-                    <td><input type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" class="bx-auth-input" /></td>
+                    <td><input type="text" name="USER_LOGIN" maxlength="50" value="<?=$arResult["USER_LOGIN"]?>" class="bx-auth-input bx-register-phone" /></td>
                 </tr>
                 <tr>
                     <td><span class="starrequired">*</span><?=GetMessage("AUTH_PASSWORD_REQ")?></td>
@@ -174,7 +174,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
             $(document).ready(function () {
                 $(".doctor-type").hide();
                 let type = 6;
-                $(`form[name=${document.bform.name}]`).trigger(reset);
+                $(`form[name=${document.bform.name}]`).trigger('reset');
                 $('input[value=6]').parent('label').css({'color':'#fff','background': '#32B4C3'});
                 $('input[name=UF_NAME_CLINIC]').keyup(function () {
                     let clinic = $(this).val();

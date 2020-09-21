@@ -1,20 +1,32 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 $PROPS = [];
+if($_POST['ID_CLINIC']!=NULL){
+    $SCHEDULE = $_POST['ID_CLINIC'];
+}else{
+    $SCHEDULE = $_POST['ID_DOCTOR'];
+}
 foreach ($_POST as $key => $data){
     if (strpos($key, 'SPECIALIZATIONS') !== false) {
         $PROPS['SPECIALIZATIONS'] = $data;
-    } elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false) {
-        $PROPS['RECEPTION_SCHEDULE'] = $data;
-    } elseif (strpos($key, 'DAY_RECEPTION') !== false) {
-        $PROPS['DAY_RECEPTION'] = $data;
-    } elseif (strpos($key, 'EXPERIENCE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+    }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]==NULL ) {
+        $PROPS['RECEPTION_SCHEDULE'][] = $data[0];
+    }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+        $PROPS['RECEPTION_SCHEDULE'][] = $data[0].'/'.$data[1].'/'.$SCHEDULE;
+    }
+    elseif (strpos($key, 'EXPERIENCE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
         if (is_array($data)) {
             $PROPS['EXPERIENCE'][] = $data[0].'/'.$data[1];
         }
     } elseif (strpos($key, 'EDUCATION') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
         if (is_array($data)) {
             $PROPS['EDUCATION'][] = $data[0].'/'.$data[1];
+        }
+    } elseif (strpos($key, 'ADDRESSES') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
+        if (is_array($data)) {
+            $city = explode('/', $data[0]);
+            $PROPS['RECEPTION_ADDRESSES'][] = $city[1].'/'.$data[1];
+            $PROPS['CITY'][] = $city[0];
         }
     } else {
         $PROPS[$key] = $data;
@@ -30,6 +42,7 @@ if(empty($_POST['PHOTO'])){
 }else{
     $PROPS[141] = NULL;
 };
+$PROPS['RECEPTION_SCHEDULE'] = array_unique($PROPS['RECEPTION_SCHEDULE']);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();

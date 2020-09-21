@@ -94,39 +94,61 @@ CModule::IncludeModule("iblock")
                     <div class="doctors-list-item__description">
                         <div class="adapt">
                             <div>
+                                <?foreach ($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){
+                                    $date = explode('/',$item);
+                                    $res = CIBlockElement::GetByID($date[2]);
+                                    if($ar_res = $res->GetNext())
+                                    $day[] = $date[0];
+                                    $times[] = ["TIME" =>$date[1], "DAY" =>$date[0],"CLINIC" =>$ar_res['NAME'],"CLINIC_ID" =>$ar_res['ID']];
+                                }?>
+                                <?usort($times, function($a, $b){
+                                    return ($a['TIME'] - $b['TIME']);
+                                });?>
+                                <?$days = array(1 => 'Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' );
+                                $begin = new DateTime( date('Y-m-d') );
+                                $end = new DateTime( date('Y-m-d', strtotime('+3 days')));
+                                $end = $end->modify( '+1 day' );
+
+                                $interval = new DateInterval('P1D');
+                                $daterange = new DatePeriod($begin, $interval ,$end);
+                                ?>
+                                <?if($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
                                 <p class="doctors-list-item_timing">Выберите время приема для записи онлайн</p>
                                 <ul class="doctors-list-item__days-list">
-                                    <li class="doctors-list-item__days-list-item active">понедельник, 6</li>
-                                    <li class="doctors-list-item__days-list-item">вторник, 7</li>
-                                    <li class="doctors-list-item__days-list-item not-worked">среда, 8</li>
-                                    <li class="doctors-list-item__days-list-item">четверг, 9</li>
+                                    <?foreach($daterange as $date){?>
+                                        <?if ($date->format("Ymd") == date('Ymd')){
+                                            $selectDate = $date->format("d.m.Y");
+                                            $selectDay = date($days[$date->format("N")]);
+                                        }?>
+                                        <li class="select-doctor-day_<?=$arItem['ID']?> doctors-list-item__days-list-item <?if (!in_array($days[$date->format("N")],$day)){?>pass<?}elseif (in_array($days[$date->format("N")],$day) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-date="<?=date($date->format("d.m.Y"))?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arItem['ID']?>"><?= date( $days[$date->format("N")]);?>, <?= date($date->format("d"));?></li>
+                                    <?}?>
                                 </ul>
-                                <?if($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
-                                    <ul class="doctors-list-item__worktimming-list">
-            <!--                            <li class="doctors-list-item__worktimming-list-item closed">10:10</li>-->
-            <!--                            <li class="doctors-list-item__worktimming-list-item pass">10:50</li>-->
-                                        <?foreach ($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){?>
-                                            <li class="doctors-list-item__worktimming-list-item"><?=$item?></li>
-                                        <?}?>
-                                    </ul>
+                                <ul class="doctors-list-item__worktimming-list" id="doctor-day-block-ajax_<?=$arItem['ID']?>">
+                                    <?foreach ($times as $item){
+                                           if($item['DAY'] == $selectDay ){?>
+                                        <li class="doctors-list-item__worktimming-list-item" title="<?=$item['CLINIC']?>">
+                                            <a href="<?=$arItem['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$selectDate?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
+                                        </li>
+                                    <?}
+                                    }?>
+                                </ul>
                                 <?endif;?>
                             </div>
                             <div>
-                                <?if($arItem["PROPERTIES"]["CLINIK"]["VALUE"]):?>
+                                <?if($arItem["PROPERTIES"]["CLINIK"]["VALUE"]){?>
                                     <?foreach ($arItem["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
                                         <?$res = CIBlockElement::GetByID($item);
                                         if($ar_res = $res->GetNext()){?>
                                             <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctors-list-item__clinic-name"><?=$ar_res['NAME']?></p></a>
                                         <?break;}?>
+
                                     <?}?>
-                                <?endif;?>
-                                <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] || $arItem["PROPERTIES"]["CITY"]["VALUE"] ):
-                                    $res = CIBlockSection::GetByID($arItem["PROPERTIES"]["CITY"]["VALUE"]);?>
-                                    <p class="doctors-list-item__clinic-adress">
-                                        <? if($ar_res = $res->GetNext()){
-                                            echo $ar_res['NAME'];
-                                        }?><?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] && $arItem["PROPERTIES"]["CITY"]["VALUE"] ){?>, <?}?>
-                                        <?=$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]?>
+                                <?}else{?>
+                                    <p class="doctor-card__description-address-title">Адрес</p>
+                                <?}?>
+                                <?if($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
+                                    <p class="doctor-card__clinic-adress">
+                                        г. <?=str_replace('/',', ',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
                                     </p>
                                 <?endif;?>
                                 <?if($arItem["PROPERTIES"]["METRO"]["VALUE"]):?>
@@ -164,6 +186,26 @@ CModule::IncludeModule("iblock")
                     </div>
                 </div>
             </div>
+            <script>
+                $(document).ready(function () {
+                    $(".select-doctor-day_<?=$arItem['ID']?>").click(function () {
+                        let day = $(this).data('day');
+                        let doctor = $(this).data('doctor');
+                        let id = <?=$arItem['ID']?>;
+                        let block = $('#doctor-day-block-ajax_'+ id);
+                        $.ajax({
+                            type: "POST",
+                            url: '/ajax/ajax_time.php',
+                            data: {day: day, doctor: doctor},
+                            success: function (data) {
+                                // Вывод текста результата отправки
+                                $(block).html(data);
+                            }
+                        });
+                        return false;
+                    });
+                });
+            </script>
         <?endforeach;?>
     </div>
     <!--
