@@ -1,6 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 CModule::IncludeModule("iblock");
+include_once $_SERVER['DOCUMENT_ROOT'].'/include/result_record_in_form.php';
 $arSelect = Array();//IBLOCK_ID и ID обязательно должны быть указаны, см. описание arSelectFields выше
 $arFilter = Array("IBLOCK_ID"=>10, "ID"=>$_POST['doctor']);
 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>1), $arSelect);
@@ -20,8 +21,10 @@ usort($times, function($a, $b){
 $i=0;
 foreach ($times as $item){
     if($item['DAY'] == $_POST['day'] ){
-        $i++;?>
-        <li class="choosing-time__worktimming-list-item popup-reception-click" title="<?=$item['CLINIC']?>">
+        $i++;
+        $fullDate = $_POST['day'].', '.$_POST['date'].'/'.$item['TIME'];
+        ?>
+        <li class="choosing-time__worktimming-list-item popup-reception-click <?if(in_array($fullDate,$record)){?>closed<?}?>" title="<?=$item['CLINIC']?>">
             <a href="<?=$arFields['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$_POST['date']?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
         </li>
     <?}
