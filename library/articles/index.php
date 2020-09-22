@@ -113,7 +113,7 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
 		"URL_TEMPLATES_READ" => "",
 		"SHOW_LINK_TO_FORUM" => "Y",
 		"POST_FIRST_MESSAGE" => "Y",
-		"SEF_FOLDER" => "/library/articles/",
+		"SEF_FOLDER" => "/articles/",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
 		"AJAX_OPTION_HISTORY" => "N",

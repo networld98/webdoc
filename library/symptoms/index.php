@@ -115,7 +115,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"URL_TEMPLATES_READ" => "",
 		"SHOW_LINK_TO_FORUM" => "Y",
 		"POST_FIRST_MESSAGE" => "Y",
-		"SEF_FOLDER" => "/library/symptoms/",
+		"SEF_FOLDER" => "/symptoms/",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
 		"AJAX_OPTION_HISTORY" => "N",
