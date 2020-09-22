@@ -102,13 +102,15 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                     <li class="select-doctor-day_<?=$arItem['ID']?> doctors-list-item__days-list-item <?if (!in_array($days[$date->format("N")],$day[$arItem['ID']])){?>pass<?}elseif (in_array($days[$date->format("N")],$day[$arItem['ID']]) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-date="<?=date($date->format("d.m.Y"))?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arItem['ID']?>"><?= date( $days[$date->format("N")]);?>, <?= date($date->format("d"));?></li>
                                 <?}?>
                             </ul>
+                            <?include $_SERVER['DOCUMENT_ROOT'].'/include/result_record_in_form_list.php';?>
                             <ul class="doctors-list-item__worktimming-list" id="doctor-day-block-ajax_<?=$arItem['ID']?>">
                                 <?
                                 $i=0;
                                 foreach ($times as $item){
                                     if($item['DAY'] == $selectDay || in_array($days[$date->format("N")],$day)){
-                                        $i++;?>
-                                        <li class="doctors-list-item__worktimming-list-item" title="<?=$item['CLINIC']?>">
+                                        $i++;
+                                        $fullDate = $selectDay . ', ' . $selectDate . '/' . $item['TIME']; ?>
+                                        <li class="doctors-list-item__worktimming-list-item <?if (in_array($fullDate, $record)) {?>closed"<?}?>"" title="<?=$item['CLINIC']?>">
                                             <a href="<?=$arItem['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$selectDate?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
                                         </li>
                                     <?}
@@ -165,12 +167,13 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                     $(".select-doctor-day_<?=$arItem['ID']?>").click(function () {
                         let day = $(this).data('day');
                         let doctor = $(this).data('doctor');
+                        let date = $(this).data('date');
                         let id = <?=$arItem['ID']?>;
                         let block = $('#doctor-day-block-ajax_'+ id);
                         $.ajax({
                             type: "POST",
                             url: '/ajax/ajax_time.php',
-                            data: {day: day, doctor: doctor},
+                            data: {day: day, doctor: doctor, date: date},
                             success: function (data) {
                                 // Вывод текста результата отправки
                                 $(block).html(data);

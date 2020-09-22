@@ -82,9 +82,9 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         <?foreach($daterange as $key => $date){?>
                             <?if (in_array(date($week[$date->format("N")]),$dayinClinic)){?>
                                 <?if ($dayOfTime == NULL) {
-                                $dayOfTime = date($week[$date->format("N")]);
+                                    $dayOfTime = date($week[$date->format("N")]);
                                 }?>
-                            <option data-id="<?= $timeForIdNext ?>" data-day="<?= $dayOfTime ?>" value="<?= date($week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?>"><?= date( $week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?></option>
+                                <option data-id="<?= $timeForId ?>" data-day="<?= date($week[$date->format("N")]) ?>" value="<?= date($week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?>"><?= date( $week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?></option>
                             <?}?>
                         <?}?>
                     </select>

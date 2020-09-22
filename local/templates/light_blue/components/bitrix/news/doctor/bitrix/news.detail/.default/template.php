@@ -23,7 +23,6 @@ global $doctorId;
 $doctorName = $arResult['NAME'];
 $doctorId = $arResult['ID'];
 $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
-CModule::IncludeModule("form");
 ?>
 <?function formRecord($arResult){?>
     <div class="doctors-list-item__img">
@@ -177,7 +176,7 @@ CModule::IncludeModule("form");
                                 $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
                             }?>
                         <?}?>
-                        <a href="<?=$doctorClinik[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinik[0]['NAME']?></p></a>
+                        <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
                     <?}else{
                         $noneClinic = "Y";
                         ?>
@@ -328,27 +327,7 @@ CModule::IncludeModule("form");
         <?endif;?>
     </div>
 </section>
-<?
-$FORM_ID = 4;
-$arFilter = array();
-$result = CFormResult::GetList(v, $by = 's_id', $order = 'asc', $arFilter, $is_filtered, 'N', false);
-while($arRes = $result->Fetch())
-{
-    $arID[] = $arRes['ID'];
-}
-// получим данные по результату ID=145
-CForm::GetResultAnswerArray($FORM_ID,
-    $arrColumns,
-    $arrAnswers,
-    $arrAnswersVarname,
-    array("RESULT_ID" => $arID));
-    foreach ($arrAnswersVarname as $answer){
-        $strDoctor = explode('/',$answer['SIMPLE_RECORD_PHONE']['0']['USER_TEXT']);
-        if($strDoctor[0] == $arResult['ID']){
-            $record[] = $answer['SIMPLE_RECORD_2']['0']['USER_TEXT'];
-        }
-    }
-?>
+<?include $_SERVER['DOCUMENT_ROOT'].'/include/result_record_in_form.php';?>
 <?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
 <section class="container choosing-time">
     <h3 class="title-h3">Выберите время приема для записи онлайн</h3>
@@ -395,7 +374,7 @@ CForm::GetResultAnswerArray($FORM_ID,
                     $i++;
                     $fullDate = $days[$date->format("N")].', '.$selectDate.'/'.$item['TIME'];
                     ?>
-                <li class="choosing-time__worktimming-list-item popup-reception-click <?if(in_array($fullDate,$record)){?>closed"<?}?> data-clinic="<?=$item['CLINIC']?>" data-time="<?=$selectDate?> <?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><span><?=$item['TIME']?></span></li>
+                <li class="choosing-time__worktimming-list-item popup-reception-click <?if(in_array($fullDate,$record)){?>closed<?}?>" data-clinic="<?=$item['CLINIC']?>" data-time="<?=$selectDate?> <?=$item['TIME']?>" title="<?=$item['CLINIC']?>"><span><?=$item['TIME']?></span></li>
             <?}
             }?>
             <?if($i==0){?>
