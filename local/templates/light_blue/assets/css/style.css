@@ -126,6 +126,7 @@ input[type="reset"] {
 .burger__btn {
     position: absolute;
     margin-bottom: 0;
+    cursor: pointer;
     top: 35px;
     left: 48px;
     width: 60px;
@@ -837,6 +838,10 @@ main {
 .sort-block-list-item.active,.sort-block-list-item:hover {
     background: #E3EAEA;
     border: 1px solid #E3EAEA;
+    cursor: default;
+}
+.sort-block-list-item.active a {
+    cursor: default;
 }
 .sort-block-list__select {
     display: none;
@@ -1163,6 +1168,9 @@ main {
     background: transparent;
     position: relative;
 }
+.doctors-list-item__worktimming-list-item.closed a {
+    cursor: default;
+}
 .doctors-list-item__worktimming-list-item.closed:hover:before {
     content: '';
     position: absolute;
@@ -1172,6 +1180,7 @@ main {
     background-image: url(../images/closed-time.svg);
     top: -45px;
     left: 0;
+    cursor: default;
 }
 .doctors-list-item__clinic-name {
     font-family: "Ubuntu";
@@ -2047,12 +2056,17 @@ main {
     border: 1px solid #DBDBDB;
     background: transparent;
     position: relative;
+    cursor: default;
 }
 .choosing-time__worktimming-list-item.closed {
     color: #98D7DC;
     border: 1px solid #98D7DC;
     background: transparent;
     position: relative;
+    cursor: default;
+}
+.choosing-time__worktimming-list-item.closed a ,.choosing-time__worktimming-list-item.pass a {
+    cursor: default;
 }
 .choosing-time__worktimming-list-item.pass:hover:before {
     content: '';
@@ -2063,6 +2077,7 @@ main {
     background-image: url(../images/passed-time.svg);
     width: 153px;
     height: 47px;
+    cursor: default;
 }
 .choosing-time__worktimming-list-item.closed:hover:before {
     content: '';
@@ -2073,6 +2088,7 @@ main {
     background-image: url(../images/closed-time.svg);
     top: -45px;
     left: 0;
+    cursor: default;
 }
 .choosing-time .title-h3 {
     margin-bottom: 0;
@@ -2555,6 +2571,7 @@ main {
     padding-left: 40px;
     max-width: 649px;
     width: 100%;
+    background-color: #fff;
 }
 .reception-popup .close, .call-popup .close, .mess-popup .close {
     top: 66px;
@@ -5301,6 +5318,9 @@ main {
 .library .sort-block-list-item {
     margin-right: 10px;
     cursor: pointer;
+}
+.library .sort-block-list-item.active {
+    cursor: default;
 }
 .fixed-block,.fixed-block-alp {
     z-index: 1;

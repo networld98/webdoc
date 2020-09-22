@@ -47,17 +47,14 @@ CModule::IncludeModule("form"); ?>
                 <div class="flex-left">
                     <div class="doctors-list-item__img">
                         <? if ($arItem['DETAIL_PICTURE']['SRC'] != NULL) { ?>
-                            <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>"><img
-                                        src="<?= $arItem['DETAIL_PICTURE']['SRC'] ?>" alt="doctor-photo"
-                                        class="doctors-list-item__img-photo"></a>
+                            <a style="background-image: url('<?= $arItem['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image" href="<?= $arItem['DETAIL_PAGE_URL'] ?>">
+                            </a>
                         <? } elseif ($arItem['PROPERTIES']['GENDER']['VALUE'] == NULL || $arItem['PROPERTIES']['GENDER']['VALUE'] == "Мужчина") { ?>
-                            <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>"><img
-                                        src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo"
-                                        class="doctors-list-item__img-none-photo"></a>
+                            <a style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image photo-back-image-contain" href="<?= $arItem['DETAIL_PAGE_URL'] ?>">
+                            </a>
                         <? } elseif ($arItem['PROPERTIES']['GENDER']['VALUE'] == "Женщина") { ?>
-                            <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>"><img
-                                        src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo"
-                                        class="doctors-list-item__img-none-photo"></a>
+                            <a style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image photo-back-image-contain" href="<?= $arItem['DETAIL_PAGE_URL'] ?>">
+                            </a>
                         <? } ?>
                         <div class="doctors-list-item__img-info">
                             <? if (CModule::IncludeModule('api.reviews')) {
@@ -152,7 +149,7 @@ CModule::IncludeModule("form"); ?>
                                                 $i++;
                                                 $fullDate = $selectDay . ', ' . $selectDate . '/' . $item['TIME']; ?>
                                                 <li class="doctors-list-item__worktimming-list-item <?if (in_array($fullDate, $record)) {?>closed"<?}?>" title="<?= $item['CLINIC'] ?>">
-                                                    <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>?clinic=<?= $item['CLINIC'] ?>&time=<?= $selectDate ?> <?= $item['TIME'] ?>"><?= $item['TIME'] ?></a>
+                                                    <a href="<?if (in_array($fullDate, $record)){?>javascript:void(0);<?}else {?><?= $arItem['DETAIL_PAGE_URL'] ?>?clinic=<?= $item['CLINIC'] ?>&time=<?= $selectDate ?> <?= $item['TIME'] ?><?}?>"><?= $item['TIME']?></a>
                                                 </li>
                                             <?
                                             }
