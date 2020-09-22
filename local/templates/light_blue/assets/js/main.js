@@ -202,9 +202,13 @@ $(document).ready(()=>{
         }
     });
     $('.doctors-list-item__days-list-item').on( "click", function() {
-        if(!$(this).hasClass( 'not-worked' )) {
-            $('.doctors-list-item__days-list-item').removeClass('active');
+        if(!$(this).hasClass( 'pass' )) {
+            console.log($(this).parents('.doctors-list-item__days-list'));
+            // $('.doctors-list-item__days-list-item').removeClass('active');
+            $(this).parents('.doctors-list-item__days-list').children('.doctors-list-item__days-list-item').removeClass('active');
             $(this).toggleClass('active');
+        } else {
+            $(this).parents('.doctors-list-item__days-list').children('.doctors-list-item__days-list-item').removeClass('active');
         }
     });
     $('.clinic-card-full-desc__tabs > ul > li').on( "click", function() {

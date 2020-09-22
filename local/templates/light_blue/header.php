@@ -124,9 +124,9 @@ CJSCore::Init("popup", "jquery");
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </a>
                 <?}?>
-                <div id="header-records">
+                <a id="header-records" href="/library/">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_new.svg" alt="folder" class="records">
-                </div>
+                </a>
             <?}else{?>
                 <?if (!$USER->IsAuthorized()){?>
                     <div id="header-auth">

@@ -116,7 +116,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']==NULL || $arResult['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
                 <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
                     <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctor-card__img-link photo-back-image-contain">
+                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
                 <?}?>
                 </div>
                 <div class="doctor-card__img-info">
