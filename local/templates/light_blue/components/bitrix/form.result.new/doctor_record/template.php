@@ -55,6 +55,7 @@ $daterange = new DatePeriod($begin, $interval, $end);
         ?>
         <? if ($arQuestion["CAPTION"] == "Специальность") {
             ?>
+<!--            <div class="reception-select-group">-->
             <label><?= $arQuestion["CAPTION"] ?>
                 <select name="form_text_<?= $arQuestion['STRUCTURE'][0]['ID'] ?>">
                     <? foreach ($doctorSpecialization as $item):?>
@@ -62,6 +63,7 @@ $daterange = new DatePeriod($begin, $interval, $end);
                     <? endforeach ?>
                 </select>
             </label>
+<!--            </div>-->
         <? } elseif ($arQuestion["CAPTION"] == "Клиника" && $noneClinic == NULL) {
             ?>
             <label><?= $arQuestion["CAPTION"] ?>
