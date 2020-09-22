@@ -209,7 +209,7 @@
 .header .container.cabinet {
     width: 100%;
     max-width: 1840px;
-    padding: 34px 0 0 100px;
+    padding: 34px 15px 0 100px;
 }
 .header .container.cabinet .contacts {
     min-width: 170px;

@@ -38,7 +38,7 @@ $(document).ready(()=>{
                     widthDevice = -20; 
                 }
                 if($(window).width() <= 500) {
-                    widthDevice = -60;
+                    widthDevice = -20;
                 }
                 if($(window).width() <= 1279 && $(window).width() > 1024) {
                     topfixed = 156 + 'px';
@@ -56,10 +56,10 @@ $(document).ready(()=>{
                 top = $(this).scrollTop();
                 if($(window).width() <= 992) {
                     if ((top + $('#header').innerHeight()) + widthDevice < elemFixedPos) {
-                        // console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
-                        // console.log((top + $('#header').innerHeight()));
-                        // console.log("ABSOLUTED");
-                        elem.css({'top': 'initial', position: 'absolute',backgroundColor: 'transparent',bottom:'initial'});
+                        console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
+                        console.log((top + $('#header').innerHeight()));
+                        console.log("relatived");
+                        elem.css({'top': 'initial', position: 'relative',backgroundColor: 'transparent',bottom:'initial'});
                         // $('.container h1').fadeIn();
                         // $('.bx-breadcrumb').show();
                     } else {

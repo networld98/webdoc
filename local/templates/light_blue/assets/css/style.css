@@ -231,7 +231,7 @@ input[type="reset"] {
     margin-top: 136px;
 }
 main {
-    margin-top: 77px;
+    margin-top: 114px;
 }
 main .container {
     padding-right: 15px;
@@ -5878,8 +5878,11 @@ main {
     .container.mobile {
         display: flex;
     }
+    .main-screen {
+        margin-top: 170px;
+    }
     main {
-        margin-top: 140px;
+        margin-top: 173px;
     }
     .personal-cabinet-menu {
         padding: 15px;
@@ -6928,10 +6931,10 @@ main {
         margin-top: 160px;
     } */
     .main-screen {
-        margin-top: 160px;
+        margin-top: 190px;
     }
     main {
-        margin-top: 170px;
+        margin-top: 200px;
     }
     .container.main__header {
         padding-top: 20px;
@@ -7322,6 +7325,13 @@ main {
     }
 }
 @media (max-width: 576px) {
+    .library .popup-box .col__list {
+        margin-bottom: 10px;
+    }
+    .alp-detail {
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+    }
     .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row {
         flex-direction: column;
         align-items: initial;
@@ -8038,6 +8048,9 @@ main {
     /* .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
         display: block;
     } */
+    main {
+        margin-top: 170px;
+    }
     .personal-cabinet {
         margin: 104px 15px 20px;
     }
@@ -8110,11 +8123,11 @@ main {
         margin-top: 130px;
     } */
     .main-screen {
-        margin-top: 130px;
+        margin-top: 150px;
     }
-    main {
-        margin-top: 135px;
-    }
+    /*main {*/
+    /*    margin-top: 135px;*/
+    /*}*/
     /* main.main__header {
         margin-top: 130px;
     } */
