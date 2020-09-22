@@ -1,15 +1,16 @@
 <?
+define("NEED_AUTH", false);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Библиотека");
-?>
+$APPLICATION->SetPageProperty("description", "Выбор врача и клиники по отзывам от настоящих пользователей, по месторасположению и ценам. Актуальные контактные данные клиник, статьи по медицине и полезные материалы.");
+$APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
 <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){
     header('Location: http://lib.webdoc.clinic/');
     exit;
 }?>
 <section class="container library">
     <?$APPLICATION->IncludeComponent(
-	"bitrix:news", 
-	"lib_illness", 
+	"bitrix:news",
+	"lib_illness",
     array(
         "DISPLAY_DATE" => "Y",
         "DISPLAY_PICTURE" => "Y",
@@ -18,7 +19,7 @@ $APPLICATION->SetTitle("Библиотека");
         "AJAX_MODE" => "N",
         "IBLOCK_TYPE" => "content",
         "IBLOCK_ID" => "21",
-        "NEWS_COUNT" => "1000",
+        "NEWS_COUNT" => "100000",
         "USE_SEARCH" => "N",
         "USE_RSS" => "N",
         "USE_RATING" => "N",
@@ -115,7 +116,7 @@ $APPLICATION->SetTitle("Библиотека");
         ),
 	false
     );?>
-    
+
     <!-- <div class="library-content symptoms-box" data-tabs='1'>
         <div class="row general-blocks">
             <div class="col-lg-6">

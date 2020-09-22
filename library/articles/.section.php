@@ -1,3 +1,3 @@
 <?
-$sSectionName="articles";
+$sSectionName="Статьи";
 ?>

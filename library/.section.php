@@ -1,3 +1,6 @@
 <?
-$sSectionName=" library";
+$sSectionName = "Главная";
+$arDirProperties = Array(
+   "ROBOTS" => "index, follow"
+);
 ?>

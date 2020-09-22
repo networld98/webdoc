@@ -1,5 +1,4 @@
 <?
-$timeForm = [];
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 CModule::IncludeModule("iblock");
 $week = array('Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' );
@@ -15,6 +14,12 @@ foreach($arProps["RECEPTION_SCHEDULE"]["VALUE"] as $key => $item){
         $timeForm[] = $str[1];
     }
 }
+echo"<pre>";
+print_r($_POST['id']);
+echo"</pre>";
+echo"<pre>";
+print_r($_POST['day']);
+echo"</pre>";
 foreach ($timeForm as $item){?>
     <option value="<?=$item?>"><?=$item?></option>
 <?}?>
