@@ -1,7 +1,11 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Симптомы");?>
-
+    $APPLICATION->SetPageProperty("description", "Выбор врача и клиники по отзывам от настоящих пользователей, по месторасположению и ценам. Актуальные контактные данные клиник, статьи по медицине и полезные материалы.");
+    $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
+<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){
+    header('Location: http://lib.webdoc.clinic/');
+    exit;
+}?>
 
 <section class="container library">
     <?$APPLICATION->IncludeComponent(
@@ -15,7 +19,7 @@ $APPLICATION->SetTitle("Симптомы");?>
 		"AJAX_MODE" => "N",
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "22",
-		"NEWS_COUNT" => "20",
+		"NEWS_COUNT" => "1000",
 		"USE_SEARCH" => "N",
 		"USE_RSS" => "N",
 		"USE_RATING" => "N",
@@ -59,7 +63,7 @@ $APPLICATION->SetTitle("Симптомы");?>
 		"DETAIL_PAGER_SHOW_ALL" => "Y",
 		"STRICT_SECTION_CHECK" => "Y",
 		"SET_TITLE" => "Y",
-		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_SECTIONS_CHAIN" => "N",
 		"ADD_ELEMENT_CHAIN" => "N",
 		"SET_LAST_MODIFIED" => "Y",
 		"PAGER_BASE_LINK_ENABLE" => "Y",
@@ -68,7 +72,7 @@ $APPLICATION->SetTitle("Симптомы");?>
 		"MESSAGE_404" => "",
 		"PAGER_BASE_LINK" => "",
 		"PAGER_PARAMS_NAME" => "arrPager",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"USE_PERMISSIONS" => "N",
 		"GROUP_PERMISSIONS" => array(
 			0 => "1",

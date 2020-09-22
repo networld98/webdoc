@@ -17,10 +17,16 @@ foreach ($arProps["RECEPTION_SCHEDULE"]["VALUE"] as $item){
 usort($times, function($a, $b){
     return ($a['TIME'] - $b['TIME']);
 });
+$i=0;
 foreach ($times as $item){
-    if($item['DAY'] == $_POST['day'] ){?>
+    if($item['DAY'] == $_POST['day'] ){
+        $i++;?>
         <li class="choosing-time__worktimming-list-item popup-reception-click" title="<?=$item['CLINIC']?>">
             <a href="<?=$arFields['DETAIL_PAGE_URL']?>?clinic=<?=$item['CLINIC']?>&time=<?=$_POST['date']?> <?=$item['TIME']?>"><?=$item['TIME']?></a>
         </li>
     <?}
 }?>
+<?if($i==0){?>
+    <h6 style="color:red;">В этот день нет приема</h6>
+<?}
+
