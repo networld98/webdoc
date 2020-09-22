@@ -85,6 +85,10 @@ $week = array('Понедельник','Вторник','Среда','Четве
     <label for=""><?=$prop['NAME']?></label>
     <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
 <?}?>
+<?function propofficialspan($prop){?>
+    <span><?=$prop['NAME']?></span>
+    <input type="text" name="<?=$prop['CODE']?>" value="<?=$prop['VALUE']?>">
+<?}?>
     <div class="add" value="0" title="Добавить нового врача">+ Добавить нового врача</div>
     <form id="form_doctor_NEW" name="form_doctor_NEW" action="" method="post" class="personal-cabinet-content__doctors-page-box-item">
     </form>
@@ -261,6 +265,11 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
                                         <div class="row place-education-block place-schedule-block">
+                                            <div class="col-lg-12">
+                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                    <?propofficialspan($arItem['PROPERTIES']['PEDIOD'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
+                                                </div>
+                                            </div>
                                             <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){
                                                 $contacts_array = explode('/',$contacts);
                                                 if($contacts_array[2] == $idClinic){?>

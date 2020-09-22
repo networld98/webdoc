@@ -243,10 +243,15 @@ while($ob = $res->GetNextElement()){
                                         </div>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="5">
                                             <div class="row place-education-block place-schedule-block">
+                                                <div class="col-lg-12">
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <?propofficialspan($arProps['PEDIOD'],$idDoctor,$IBLOCK_ID)?>
+                                                    </div>
+                                                </div>
                                                 <?foreach ($arProps['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){
                                                     $contacts_array = explode('/',$contacts);
                                                        if($contacts_array[2] == $idDoctor){?>
-                                                        <div class="col-lg-12 no-padding">
+                                                        <div class="col-lg-12">
                                                             <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                                 <select class="place-education-block_place"  name="RECEPTION_SCHEDULE_<?=$key?>[]">
                                                                     <?foreach($week as $item){?>

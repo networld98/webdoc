@@ -82,7 +82,7 @@ CJSCore::Init("popup", "jquery");
         </div>
     </div>
     <div class="container <?if(CSite::InDir('/lc/')){?>cabinet<?}?>">
-        <a href="/" class="logo">
+        <a href="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/<?}else{?>https://webdoc.clinic/<?}?>" class="logo">
             <img class="desktop" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
             <img class="mobile" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO-mobile.svg" alt="logo">
         </a>
@@ -120,13 +120,16 @@ CJSCore::Init("popup", "jquery");
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </div>
                 <?}else{?>
-                    <a class="header-auth" href="/lc/">
+                    <a class="header-auth" href="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>https://webdoc.clinic/<?}?>">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </a>
                 <?}?>
-                <div id="header-records">
-                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_new.svg" alt="folder" class="records">
-                </div>
+                <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>
+                    <a id="header-records" href="https://lib.webdoc.clinic/">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_new.svg" alt="folder" class="records">
+                    </a>
+                <?}?>
+
             <?}else{?>
                 <?if (!$USER->IsAuthorized()){?>
                     <div id="header-auth">
