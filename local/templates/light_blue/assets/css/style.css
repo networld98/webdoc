@@ -402,6 +402,10 @@ main > .container:last-child {
     overflow: scroll;
     height: auto;
 }
+.popup-box.popup-scroll::-webkit-scrollbar {
+    opacity: 0;
+    width: 0.1px;
+}
 .popup-box.popup-library {
     max-width: 100%;
     height: 100%;
@@ -1940,6 +1944,9 @@ main {
 .doctor-card-top-content .title-h3 {
     margin-bottom: 20px;
 }
+.doctor-card .flex-left > .doctor-card__description__adapt {
+    display: none;
+}
 /* choosing time */
 
 .choosing-time_block {
@@ -2540,7 +2547,8 @@ main {
 .call-popup .doctors-list-item,.reception-popup .doctors-list-item {
     height: 100%;
 }
-.message-to-doctor {
+.message-to-doctor, .message-to-doctor > div > form {
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -3529,7 +3537,7 @@ main {
 }
 .personal-cabinet-content__doctors-page__filter {
     display: flex;
-    max-width: 1090px;
+    /*max-width: 1090px;*/
     width: 100%;
     border-radius: 10px;
     background: #FFFFFF;
@@ -5830,13 +5838,19 @@ main {
 
 @media (max-width: 1600px) {
     .main__img2 {
-        right: -60px;
+        right: -90px;
+        width: 352px;
+        top: 115px;
     }
+}
+@media (max-width: 1440px) {
+
+
 }
 @media (max-width: 1400px) {
     .main__img2 {
         right: 0px;
-        /* top: 108px; */
+         top: 26px;
         width: 270px;
         /* background-position-x: 73px; */
     }
@@ -6226,6 +6240,7 @@ main {
     }
     .doctor-card-popUp-group {
         margin-top: 28px;
+        justify-content: initial;
     }
     .doctor-card-popUp-group__reception,.doctor-card-popUp-group__call,.doctor-card-popUp-group__route {
         font-size: 15px;
@@ -6239,6 +6254,7 @@ main {
     }
     .doctor-card-popUp-group__reception {
         max-width: 275px;
+        margin-right: 30px;
     }
     .doctor-card-popUp-group__call span {
         max-width: 104px;
@@ -6274,7 +6290,7 @@ main {
     }
     .choosing-time_block,.choosing-time__worktimming-list {
         width: 100%;
-        max-width: 628px;
+        /*max-width: 628px;*/
         margin: 0 auto;
     }
     .choosing-time_block {
@@ -6405,6 +6421,7 @@ main {
     }
     .personal-cabinet-content__my-profile__info {
         flex-direction: column;
+        align-items: center;
     }
     .personal-cabinet-content__my-profile__info-form {
         margin-right: 0;
@@ -7663,6 +7680,12 @@ main {
         margin-left: 16px;
         margin-top: 13px;
     }
+    .doctor-card__description > .doctor-card__description__adapt{
+        display: none;
+    }
+    .doctor-card .flex-left > .doctor-card__description__adapt {
+        display: block;
+    }
     .doctor-card__description-position,.doctor-card__clinic-adress,.doctor-card__description ul {
         font-size: 13px;
         line-height: 20px;
@@ -7672,7 +7695,8 @@ main {
         line-height: 18px;
     }
     .flex-left .doctor-card__description {
-        min-height: 380px;
+        min-height: 240px;
+        position: relative;
     }
     .doctor-card__description-exp {
         font-family: "Ubuntu-Light";
@@ -7694,8 +7718,8 @@ main {
         margin-bottom: 4px;
     }
     .doctor-card__description__adapt {
-        margin-left: -89px;
-        margin-top: 70px;
+        /*margin-left: -89px;*/
+        /*margin-top: 70px;*/
     }
     .doctor-card__clinic-name {
         margin-bottom: 11px;
@@ -8087,6 +8111,9 @@ main {
     /* .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
         display: block;
     } */
+    .personal-cabinet-content__my-profile.personal-cabinet-content-auth {
+        padding-top: 80px;
+    }
     main {
         margin-top: 170px;
     }
