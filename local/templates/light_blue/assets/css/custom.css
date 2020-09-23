@@ -550,6 +550,24 @@ main >.main-seo-text {
     background-size: contain;
     background-repeat: no-repeat;
 }
+.delete-doctor-modal {
+    position: fixed;
+    display: none;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+    font-size: 14px;
+    width: 450px;
+    max-width: 100%;
+    text-align: center;
+    padding: 20px;
+    top: 40vh;
+    left: calc((100vw - 450px)/2);
+}
+.delete-doctor-modal .save.close-modal {
+    cursor: pointer;
+}
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
         width: 100%;
@@ -601,9 +619,6 @@ main >.main-seo-text {
     .personal-cabinet .delete-doctor,.personal-cabinet .save {
         margin-left: 0;
     }
-    .personal-cabinet .delete-doctor {
-        margin-bottom: 20px;
-    }
     .personal-cabinet-content__doctors-page__filter__options .title-h4 {
         margin-bottom: 0;
     }
@@ -619,6 +634,9 @@ main >.main-seo-text {
     }
 }
 @media (max-width: 450px) {
+    .delete-doctor-modal {
+        left: 0;
+    }
     .services-detail .row > div:last-child >  img:nth-of-type(odd),.services-detail .row > div:last-child >  img:nth-of-type(even) {
         float: initial;
         margin-bottom: 20px;
