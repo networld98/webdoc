@@ -309,6 +309,11 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                     <div class="text-view">
                                         <div id="message-form_<?=$arItem['ID']?>"></div>
                                         <div id="photo-form_<?=$arItem['ID']?>" style="display:none;"></div>
+                                        <div class="delete-doctor-modal">
+                                            <h5>Вы точно хотите отвязать от клиники ?</h5>
+                                            <button class="save delete-doctor" id="delete_<?=$arItem['ID']?>">Да</button>
+                                            <button class="close-modal">Нет</button>
+                                        </div>
                                         <span class="save delete-doctor" id="delete_<?=$arItem['ID']?>">Отвязать врача от клиники</span>
                                         <button type="submit" name="saveProfile" class="save">Сохранить</button>
                                     </div>

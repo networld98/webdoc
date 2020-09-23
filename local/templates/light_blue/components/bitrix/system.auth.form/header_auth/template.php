@@ -14,9 +14,9 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 
 <?if($arResult["FORM_TYPE"] == "login"):?>
 
-<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="/lc/">
+<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>">
 <?if($arResult["BACKURL"] <> ''):?>
-	<input type="hidden" name="backurl" value="/lc/" />
+	<input type="hidden" name="backurl" value="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>" />
 <?endif?>
 <?foreach ($arResult["POST"] as $key => $value):?>
 	<input type="hidden" name="<?=$key?>" value="<?=$value?>" />
@@ -135,9 +135,9 @@ $APPLICATION->IncludeComponent("bitrix:socserv.auth.form", "",
 elseif($arResult["FORM_TYPE"] == "otp"):
 ?>
 
-<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="/lc/">
+<form name="system_auth_form<?=$arResult["RND"]?>" method="post" target="_top" action="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>">
 <?if($arResult["BACKURL"] <> ''):?>
-	<input type="hidden" name="backurl" value="/lc/" />
+	<input type="hidden" name="backurl" value="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>" />
 <?endif?>
 	<input type="hidden" name="AUTH_FORM" value="Y" />
 	<input type="hidden" name="TYPE" value="OTP" />
@@ -176,7 +176,7 @@ elseif($arResult["FORM_TYPE"] == "otp"):
 else:
 ?>
 
-<form action="/lc/">
+<form action="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>">
 	<table width="95%">
 		<tr>
 			<td align="center">

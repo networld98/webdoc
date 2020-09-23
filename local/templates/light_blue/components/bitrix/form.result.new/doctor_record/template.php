@@ -34,7 +34,7 @@ foreach ($arrAnswersVarname as $answer) {
 }
 $week = array(1 => 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
 $begin = new DateTime(date('Y-m-d'));
-if (isset($period)) {
+if (!empty($period)) {
     $end = new DateTime( date('Y-m-d', strtotime('+'.$period.' days')));
 }else{
     $end = new DateTime( date('Y-m-d', strtotime('+14 days')));

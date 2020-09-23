@@ -353,12 +353,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 
     $begin = new DateTime( date('Y-m-d') );
 
-    if (isset($arResult["PROPERTIES"]['PERIOD']['VALUE'])) {
-        $period = $arResult["PROPERTIES"]['PERIOD']['VALUE'];
-        $end = new DateTime( date('Y-m-d', strtotime('+'.$arResult["PROPERTIES"]['PERIOD']['VALUE'].' days')));
-    }else{
-        $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
-    }if (isset($arResult["PROPERTIES"]['PERIOD']['VALUE'])) {
+    if (!empty($arResult["PROPERTIES"]['PERIOD']['VALUE'])) {
         $period = $arResult["PROPERTIES"]['PERIOD']['VALUE'];
         $end = new DateTime( date('Y-m-d', strtotime('+'.$arResult["PROPERTIES"]['PERIOD']['VALUE'].' days')));
     }else{
@@ -510,7 +505,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 <div class="call-popup">
     <div class="popup-box popup-scroll">
         <div class="close"></div>
-        <div class="doctors-list call" style="width: 100%;height:500px;">
+        <div class="doctors-list call" style="width: 100%;">
             <div class="doctors-list-item">
                 <div class="flex-content">
                     <a href="/" class="logo">

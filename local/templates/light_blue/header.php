@@ -120,7 +120,7 @@ CJSCore::Init("popup", "jquery");
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </div>
                 <?}else{?>
-                    <a class="header-auth" href="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>https://webdoc.clinic/<?}?>">
+                    <a class="header-auth" href=" <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </a>
                 <?}?>
