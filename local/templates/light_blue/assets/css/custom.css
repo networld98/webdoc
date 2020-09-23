@@ -206,11 +206,7 @@
 .metro-container {
     margin-bottom: 20px;
 }
-.header .container.cabinet {
-    width: 100%;
-    max-width: 1840px;
-    padding: 34px 15px 0 100px;
-}
+
 .header .container.cabinet .contacts {
     min-width: 170px;
     display: flex;
@@ -251,6 +247,45 @@
 .personal-cabinet label {
     display: inline-flex;
     margin-bottom: 0.5rem;
+}
+.photoFile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+label.photoFile-label {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    outline: none;
+    padding: 12px 20px;
+    text-align: center;
+    margin-bottom: 0;
+    color: #000000;
+    background: #9DD4B3;
+    border-radius: 5px;
+    display: block;
+    transition: 0.3s;
+    border: 2px solid #9DD4B3;
+    outline: none;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+.photoFile-name {
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    text-overflow: ellipsis;
+    max-width: 150px;
+    margin-left: 15px;
+}
+label.photoFile-label:hover {
+    background: transparent;
+    color: #9DD4B3;
 }
 .select-time-list span.bx_filter_input_checkbox:first-child, .select-time-list span.bx_filter_param_text:last-child {
     margin: 0;
@@ -555,6 +590,9 @@ main >.main-seo-text {
     }
 }
 @media (max-width: 650px) {
+    label.photoFile-label {
+        width: 100%;
+    }
     .personal-cabinet .text-view {
         flex-direction: column-reverse;
         align-items: initial;

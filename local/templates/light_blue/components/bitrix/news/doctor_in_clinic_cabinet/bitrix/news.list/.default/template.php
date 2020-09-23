@@ -102,7 +102,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
             <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
              <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
             <div class="row">
-                <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
+                <div class="" style="padding-left: 15px;">
                     <div class="personal-cabinet-content__doctors-page-box-item__img">
                         <?if($arItem['DETAIL_PICTURE']!=NULL){?>
                         <div style="background-image: url('<?= $arItem['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link photo-back-image photo-back-image">
@@ -114,7 +114,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
+                <div class="col-md">
                     <div class="personal-cabinet-content__doctors-page-box-item__desc">
                         <div class="row personal-cabinet-content__doctors-page-box-item__desc__head">
                             <div class="col-sm-10 col-12">
@@ -165,7 +165,8 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                             <div class="col-lg-12 no-padding">
                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                     <span>Фото</span>
-                                                    <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">
+                                                    <label class="photoFile-label">Добавить<input type="file" class="photoFile" name="DETAIL_PICTURE" value=""></label>
+                                                    <div class="photoFile-name"></div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 no-padding">
@@ -365,6 +366,8 @@ $week = array('Понедельник','Вторник','Среда','Четве
                         $(formPhoto).html(form_data);
                         let file = $("#photo-form_<?=$arItem['ID']?>").text();
                         $('input[name="PHOTO"]').val(file);
+                        let fileRes = file.split("/");
+                        $('#form_doctor_<?=$arItem['ID']?> .photoFile-name').text(fileRes[fileRes.length - 1 ]);
                     }
                 });
                 return false;
@@ -432,7 +435,8 @@ $week = array('Понедельник','Вторник','Среда','Четве
                     '                                <label for="">Фото\n' +
 
                     '                                </label>\n' +
-                    '                                    <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">\n' +
+                    '                                    <label class="photoFile-label">Добавить<input type="file" class="photoFile" name="DETAIL_PICTURE" value=""></label>\n' +
+                                                        '<div class="photoFile-name"></div>\n' +
                     '                            </li>\n' +
                     '                            <li>\n' +
                     '                                <label for="">Пол\n' +
@@ -491,6 +495,8 @@ $week = array('Понедельник','Вторник','Среда','Четве
                         $(formPhoto).html(form_data);
                         let file = $('#photo-form_NEW').text();
                         $('input[name="PHOTO"]').val(file);
+                        let fileRes = file.split("/");
+                        $('#form_doctor_NEW .photoFile-name').text(fileRes[fileRes.length - 1 ]);
                     }
                 });
                 return false;

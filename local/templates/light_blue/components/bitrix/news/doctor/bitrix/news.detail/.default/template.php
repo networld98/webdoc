@@ -27,13 +27,14 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 ?>
 <?function formRecord($arResult){?>
     <div class="doctors-list-item__img">
-        <?if($arResult['DETAIL_PICTURE']){?>
-            <img src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>" alt="doctor-photo" class="doctors-list-item__img-photo">
-        <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']==NULL || $arResult['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
-            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/male.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-        <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-            <img src="<?= SITE_TEMPLATE_PATH ?>/icon/female.svg" alt="no-photo" class="doctors-list-item__img-none-photo">
-        <?}?>
+        <?if($arResult['DETAIL_PICTURE']!=NULL){?>
+        <div style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?>')" class="doctors-list-item__img-photo doctor-card__img-link photo-back-image photo-back-image">
+            <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']==NULL || $arResult['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
+            <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctors-list-item__img-photo doctor-card__img-link photo-back-image photo-back-image-contain">
+                <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
+                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctors-list-item__img-photo doctor-card__img-link photo-back-image photo-back-image-contain">
+                    <?}?>
+                </div>
         <div class="doctors-list-item__img-info">
             <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
             <div class="doctors-list-item__img-info-ratings">
@@ -464,9 +465,9 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
     </div>
 </section>
 <div class="reception-popup">
-    <div class="popup-box">
+    <div class="popup-box popup-scroll">
         <div class="close"></div>
-        <div class="doctors-list reception" style="width: 100%;height:500px;">
+        <div class="doctors-list reception" style="width: 100%;">
             <div class="doctors-list-item">
                 <div class="flex-content">
                     <a href="/" class="logo">
@@ -507,7 +508,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
     </div>
 </div>
 <div class="call-popup">
-    <div class="popup-box">
+    <div class="popup-box popup-scroll">
         <div class="close"></div>
         <div class="doctors-list call" style="width: 100%;height:500px;">
             <div class="doctors-list-item">
@@ -550,7 +551,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
     </div>
 </div>
 <div class="mess-popup">
-    <div class="popup-box">
+    <div class="popup-box popup-scroll">
         <div class="close"></div>
         <div class="message-to-doctor" style="width: 100%;">
             <div class="mess-popup__header">Оставьте Ваше сообщение</div>

@@ -60,6 +60,8 @@ $daterange = new DatePeriod($begin, $interval, $end);
         ?>
         <? if ($arQuestion["CAPTION"] == "Специальность") {
             ?>
+        <div class="reception-select-group">
+            <div>
             <label><?= $arQuestion["CAPTION"] ?>
                 <select name="form_text_<?= $arQuestion['STRUCTURE'][0]['ID'] ?>">
                     <? foreach ($doctorSpecialization as $item):?>
@@ -67,9 +69,13 @@ $daterange = new DatePeriod($begin, $interval, $end);
                     <? endforeach ?>
                 </select>
             </label>
+            </div>
+        </div>
         <? } elseif ($arQuestion["CAPTION"] == "Клиника" && $noneClinic == NULL) {
             ?>
-            <label><?= $arQuestion["CAPTION"] ?>
+            <div class="reception-select-group">
+                <div>
+            <label for="selectClinic"><?= $arQuestion["CAPTION"] ?>
                 <select id="selectClinic" name="form_text_<?= $arQuestion['STRUCTURE'][0]['ID'] ?>">
                     <? foreach ($doctorClinic as $key => $item) {
                         $timeForIdNext = NULL;
@@ -98,6 +104,8 @@ $daterange = new DatePeriod($begin, $interval, $end);
                     } ?>
                 </select>
             </label>
+                </div>
+            </div>
         <? } elseif ($arQuestion["CAPTION"] == "Дата и время приёма") {
             ?>
             <? foreach ($doctorTime as $item) {
@@ -106,6 +114,8 @@ $daterange = new DatePeriod($begin, $interval, $end);
                     $dayinClinic[] = $str[0];
                 }
             } ?>
+            <div class="reception-select-group">
+                <div class="reception-select-group__left">
             <label><?= $arQuestion["CAPTION"] ?>
                 <select id="selectDay">
                     <? foreach ($daterange as $key => $date) {
@@ -122,6 +132,8 @@ $daterange = new DatePeriod($begin, $interval, $end);
                         <? } ?>
                     <? } ?>
                 </select>
+                </div>
+                <div class="eception-select-group__right">
                 <select id="selectTime">
                     <? foreach ($doctorTime as $time) {
                         $str = explode('/', $time); ?>
@@ -134,9 +146,12 @@ $daterange = new DatePeriod($begin, $interval, $end);
                 <input type="hidden" id="fullTime" name="form_text_<?= $arQuestion['STRUCTURE'][0]['ID'] ?>"
                        value="<?= $week[0] ?>" size="0">
             </label>
+                </div>
+            </div>
         <? } elseif ($arQuestion["CAPTION"] != "Дата и время приёма" && $arQuestion["CAPTION"] != "E-mail врача/клиники" && $arQuestion["CAPTION"] != "Специальность" && $arQuestion["CAPTION"] != "Клиника" && $arQuestion["CAPTION"] != "ID/ФИО/Телефон врача" && $arQuestion["CAPTION"] != "Телефон клиники") {
             ?>
-            <div>
+            <div class="reception-select-group">
+                <div>
                 <? if (is_array($arResult["FORM_ERRORS"]) && array_key_exists($FIELD_SID, $arResult['FORM_ERRORS'])):?>
                     <span class="error-fld"
                           title="<?= htmlspecialcharsbx($arResult["FORM_ERRORS"][$FIELD_SID]) ?>"></span>
@@ -144,6 +159,7 @@ $daterange = new DatePeriod($begin, $interval, $end);
                 <label><?= $arQuestion["CAPTION"] ?>
                     <?= $arQuestion["HTML_CODE"] ?>
                 </label>
+                </div>
             </div>
         <? } elseif ($arQuestion["CAPTION"] == "E-mail врача/клиники") {
             ?>
@@ -177,11 +193,20 @@ $daterange = new DatePeriod($begin, $interval, $end);
         <?
     } // isUseCaptcha
     ?>
-    <p class="mess-popup__desc">Нажимая «Отправить», я принимаю <a href="">условия пользовательского соглашения и даю
-            согласие</a> на обработку персональных данных.</p>
-    <input <?= (intval($arResult["F_RIGHT"]) < 10 ? "disabled=\"disabled\"" : ""); ?> type="submit"
-                                                                                      name="web_form_submit"
-                                                                                      value="<?= htmlspecialcharsbx(strlen(trim($arResult["arForm"]["BUTTON"])) <= 0 ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]); ?>"/>
+
+    <div class="reception-select-group">
+        <div class="reception-select-group__left">
+            <input <?= (intval($arResult["F_RIGHT"]) < 10 ? "disabled=\"disabled\"" : ""); ?> type="submit"
+                                                                                              name="web_form_submit"
+                                                                                              value="<?= htmlspecialcharsbx(strlen(trim($arResult["arForm"]["BUTTON"])) <= 0 ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]); ?>"/>
+        </div>
+
+        <div class="reception-select-group__right">
+            <p class="mess-popup__desc">Нажимая «Отправить», я принимаю <a href="">условия пользовательского соглашения и даю
+                    согласие</a> на обработку персональных данных.</p>
+        </div>
+    </div>
+
     <?= $arResult["FORM_FOOTER"] ?>
     <?
 } //endif (isFormNote)

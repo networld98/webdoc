@@ -215,6 +215,11 @@ input[type="reset"] {
     max-width: 1320px;
     background-color: #fff;
 }
+.header .container.cabinet {
+    width: 100%;
+    max-width: 1840px;
+    padding: 34px 15px 0 120px;
+}
 .container.mobile {
     background-color: transparent !important;
     display: none;
@@ -392,6 +397,10 @@ main > .container:last-child {
     width: 100%;
     max-width: 1200px;
     height: 70%;
+}
+.popup-box.popup-scroll {
+    overflow: scroll;
+    height: auto;
 }
 .popup-box.popup-library {
     max-width: 100%;
@@ -2486,7 +2495,7 @@ main {
     font-size: 13px;
     line-height: 15px;
     color: #000000;
-    margin-bottom: 40px;
+    /*margin-bottom: 40px;*/
     max-width: 396px;
 }
 .mess-popup__desc a {
@@ -2569,6 +2578,7 @@ main {
     margin-top: 66px;
     padding-right: 60px;
     padding-left: 40px;
+    padding-bottom: 60px;
     max-width: 649px;
     width: 100%;
     background-color: #fff;
@@ -2595,7 +2605,7 @@ main {
 }
 .reception-select-group {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 }
 .reception-select-group:last-child {
@@ -2609,7 +2619,7 @@ main {
     font-size: 13px;
     line-height: 15px;
     color: #7A7A7A;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 .reception-select-group select , .reception-select-group input {
     min-width: 260px;
@@ -2626,6 +2636,7 @@ main {
     outline: none;
     margin-bottom: 20px;
     width: 100%;
+    margin-top: 10px;
 }
 .reception-select-group input {
     width: 100%;
@@ -5865,7 +5876,7 @@ main {
     .nav__item, .nav__item:nth-child(1), .nav__item:nth-child(2), .nav__item:nth-child(3), .nav__item:nth-child(4) {
         padding-left: 10px;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-left: 120px;
         padding-right: 15px;
     }
@@ -5927,7 +5938,7 @@ main {
         display: block;
         width: 100%;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-bottom: 20px !important;
     }
     .header .container.mobile {
@@ -5980,6 +5991,14 @@ main {
 @media (max-width: 1200px) {
     .container.spec-info {
         padding-top: 120px;
+    }
+    .popup-box.popup-scroll {
+        max-width: 100%;
+        height: 100%;
+        overflow: scroll;
+    }
+    .call-popup .doctors-list-item, .reception-popup .doctors-list-item {
+        height: initial;
     }
     .container.choosing-time  {
         margin-top: 40px;
@@ -6512,7 +6531,7 @@ main {
     .footer__contacts .politics {
         display: none;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-left: 100px;
         padding-top: 31px;
         padding-bottom: 10px;
@@ -6658,7 +6677,7 @@ main {
     .clinic-card-desc-detail .doctor-card-location-map {
         top: 30px;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-bottom: 20px;
     }
     .statistics__header {
@@ -6777,7 +6796,7 @@ main {
     .header .container.mobile {
         margin-top: 33px;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-top: 35px;
     }
     .top-menu-mobile .nav .nav__item:nth-child(2) {
@@ -8072,7 +8091,7 @@ main {
         margin-top: 170px;
     }
     .personal-cabinet {
-        margin: 104px 15px 20px;
+        margin: 70px 15px 20px;
     }
     .library .title-h2 {
         margin-top: 0;
@@ -8083,7 +8102,7 @@ main {
     .container.main__header {
         padding-top: 0;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-top: 28px;
     }
     .header .container .logo img {
@@ -8156,7 +8175,7 @@ main {
         font-family: "Ubuntu-Light";
         line-height: 24px;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-left: 83px;
     }
     .container.main__header {
@@ -8349,7 +8368,7 @@ main {
         margin-left: 15px;
         transform: scale(1.05);
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-left: 80px;
         padding-right: 20px;
     }
@@ -8617,7 +8636,7 @@ main {
     .header .container .logo {
         transform: initial;
     }
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-left: 65px;
     }
     .footer .col__block:nth-child(2) {
@@ -8634,7 +8653,7 @@ main {
     }
 }
 @media (max-width: 320px) {
-    .header .container {
+    .header .container,.header .container.cabinet {
         padding-left: 61px;
     }
     .burger__btn {

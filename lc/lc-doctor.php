@@ -71,7 +71,7 @@ while($ob = $res->GetNextElement()){
                 <input type="hidden" name="ID_DOCTOR" value="<?=$idDoctor?>">
                 <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
                 <div class="row">
-                    <div class="col-xl-1 col-lg-2 col-md-12 col-sm-12 col-12">
+                    <div style="padding-left: 15px;" class="">
                         <?if($arFields['DETAIL_PICTURE']!=NULL){?>
                         <?
                         $file = CFile::ResizeImageGet($arFields['DETAIL_PICTURE'], array('width'=>150, 'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -85,7 +85,7 @@ while($ob = $res->GetNextElement()){
                                 </div>
                             </div>
                         </div>
-                    <div class="col-xl-11 col-lg-10 col-md-12 col-sm-12 col-12">
+                    <div class="col-md">
                         <div class="personal-cabinet-content__doctors-page-box-item__desc">
                             <div class="row personal-cabinet-content__doctors-page-box-item__desc__head">
                                 <div class="col-sm-10 col-12">
