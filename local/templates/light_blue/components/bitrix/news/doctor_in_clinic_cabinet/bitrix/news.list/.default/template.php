@@ -267,7 +267,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                         <div class="row place-education-block place-schedule-block">
                                             <div class="col-lg-12">
                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                                    <?propofficialspan($arItem['PROPERTIES']['PEDIOD'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
+                                                    <?propofficialspan($arItem['PROPERTIES']['PERIOD'],$arItem['ID'],$arParams['IBLOCK_ID'])?>
                                                 </div>
                                             </div>
                                             <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){

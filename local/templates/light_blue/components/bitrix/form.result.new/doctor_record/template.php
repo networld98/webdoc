@@ -8,6 +8,7 @@ global $noneClinic;
 global $doctorName;
 global $doctorTime;
 global $doctorId;
+global $period;
 $timeForId = $doctorId;
 //данные для выборки записей из результатов формы
 CModule::IncludeModule("form");
@@ -33,7 +34,11 @@ foreach ($arrAnswersVarname as $answer) {
 }
 $week = array(1 => 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
 $begin = new DateTime(date('Y-m-d'));
-$end = new DateTime(date('Y-m-d', strtotime('+14 days')));
+if (isset($period)) {
+    $end = new DateTime( date('Y-m-d', strtotime('+'.$period.' days')));
+}else{
+    $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+}
 $end = $end->modify('+1 day');
 
 $interval = new DateInterval('P1D');
@@ -85,7 +90,7 @@ $daterange = new DatePeriod($begin, $interval, $end);
                                 $arUser['LOGIN'] = 'Нет номера';
                             }
                             ?>
-                            <option data-email="<?= $arUser['EMAIL'] ?>" data-id="<?= $timeForIdNext ?>"
+                            <option data-doctor="<?=$doctorId?>" data-period="<?=$period?>" data-email="<?= $arUser['EMAIL'] ?>" data-id="<?= $timeForIdNext ?>"
                                     data-phone="<?= $arUser['LOGIN'] ?>"
                                     value="<?= $item['NAME'] ?>/<?= $timeForIdNext ?>"><?= $item['NAME'] ?></option>
                             <?
@@ -111,7 +116,7 @@ $daterange = new DatePeriod($begin, $interval, $end);
                                 $dateOfTime = date($date->format("d.m.Y"));
                                 $dayOfTime = date($week[$date->format("N")]);
                             } ?>
-                            <option data-id="<?= $timeForId ?>" data-day="<?= date($week[$date->format("N")]) ?>"
+                            <option data-doctor="<?=$doctorId?>" data-id="<?= $timeForId ?>" data-day="<?= date($week[$date->format("N")]) ?>"
                                     value="<?= date($week[$date->format("N")]); ?>, <?= date($date->format("d.m.Y")); ?>"><?= date($week[$date->format("N")]); ?>
                                 , <?= date($date->format("d.m.Y")); ?></option>
                         <? } ?>
@@ -181,53 +186,3 @@ $daterange = new DatePeriod($begin, $interval, $end);
     <?
 } //endif (isFormNote)
 ?>
-<script>
-    $(document).ready(function () {
-        let date = $('#selectDay').val();
-        let time = $('#selectTime').val();
-        $('#fullTime').val(date + '/' + time);
-        $("#selectClinic").change(function () {
-            let id = $(this).find('option:selected').data('id');
-            let doc = <?=$doctorId?>;
-            let phone = $(this).find('option:selected').data('phone');
-            let email = $(this).find('option:selected').data('email');
-            let block = $('#selectDay');
-            $('#option_phone').val(phone);
-            $('#option_mail').val(email);
-            $.ajax({
-                type: "POST",
-                url: '/ajax/ajax_days_form.php',
-                data: {id: id, doctor: doc},
-                success: function (data) {
-                    // Вывод текста результата отправки
-                    $(block).html(data);
-                }
-            });
-            return false;
-        });
-        $("#selectDay").change(function () {
-            let id = $(this).find('option:selected').data('id');
-            let day = $(this).find('option:selected').data('day');
-            let doc = <?=$doctorId?>;
-            let block = $('#selectTime');
-            let date = $('#selectDay').val();
-            let time = block.val();
-            $.ajax({
-                type: "POST",
-                url: '/ajax/ajax_time_form.php',
-                data: {id: id, doctor: doc, day: day, date: date},
-                success: function (data) {
-                    // Вывод текста результата отправки
-                    $(block).html(data);
-                }
-            });
-            $('#fullTime').val(date + '/' + time);
-            return false;
-        });
-        $("#selectTime").change(function () {
-            let date = $('#selectDay').val();
-            let time = $('#selectTime').val();
-            $('#fullTime').val(date + '/' + time);
-        });
-    });
-</script>

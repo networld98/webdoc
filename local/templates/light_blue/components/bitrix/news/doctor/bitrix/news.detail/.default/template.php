@@ -20,6 +20,7 @@ global $doctorName;
 global $doctorId;
 global $doctorTime;
 global $doctorId;
+global $period;
 $doctorName = $arResult['NAME'];
 $doctorId = $arResult['ID'];
 $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
@@ -202,11 +203,11 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 </div>
             </div>
         </div>
-       <?global $USER;
-        if ($USER->IsAdmin()){ ?> <div class="doctor-card-popUp-group">
+       <?/*global $USER;
+        if ($USER->IsAdmin()){ */?> <div class="doctor-card-popUp-group">
             <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
 			<a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
-        <?}?>
+        <?/*}*/?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
@@ -350,7 +351,18 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         "10"=>"Октября","11"=>"Ноября","12"=>"Декабря");
 
     $begin = new DateTime( date('Y-m-d') );
-    $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+
+    if (isset($arResult["PROPERTIES"]['PERIOD']['VALUE'])) {
+        $period = $arResult["PROPERTIES"]['PERIOD']['VALUE'];
+        $end = new DateTime( date('Y-m-d', strtotime('+'.$arResult["PROPERTIES"]['PERIOD']['VALUE'].' days')));
+    }else{
+        $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+    }if (isset($arResult["PROPERTIES"]['PERIOD']['VALUE'])) {
+        $period = $arResult["PROPERTIES"]['PERIOD']['VALUE'];
+        $end = new DateTime( date('Y-m-d', strtotime('+'.$arResult["PROPERTIES"]['PERIOD']['VALUE'].' days')));
+    }else{
+        $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+    }
     $end = $end->modify( '+1 day' );
 
     $interval = new DateInterval('P1D');
@@ -363,7 +375,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     $selectDate = $date->format("d.m.Y");
                     $selectDay = date($days[$date->format("N")]);
                 }?>
-                <li class="select-doctor-day choosing-time_block-list-item <?if (!in_array($days[$date->format("N")],$day)){?>pass<?}elseif (in_array($days[$date->format("N")],$day) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-date="<?=date($date->format("d.m.Y"))?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arResult['ID']?>"><?if ($date->format("Ymd") == date('Ymd')){?>Сегодня<?}else{?><?= date( $days[$date->format("N")]);?><?}?><br><?= date($date->format("d"). ' '. $_monthsList[$date->format("m")] );?></li>
+                <li class="select-doctor-day choosing-time_block-list-item <?if (!in_array($days[$date->format("N")],$day)){?>pass<?}elseif (in_array($days[$date->format("N")],$day) && $date->format("Ymd") == date('Ymd')){?>active<?}?>" data-period="<?=$period?>" data-date="<?=date($date->format("d.m.Y"))?>" data-day="<?=date($days[$date->format("N")])?>" data-doctor="<?=$arResult['ID']?>"><?if ($date->format("Ymd") == date('Ymd')){?>Сегодня<?}else{?><?= date( $days[$date->format("N")]);?><?}?><br><?= date($date->format("d"). ' '. $_monthsList[$date->format("m")] );?></li>
             <?}?>
         </ul>
     </div>

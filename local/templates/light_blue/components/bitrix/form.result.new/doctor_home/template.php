@@ -8,10 +8,15 @@ global $noneClinic;
 global $doctorName;
 global $doctorTime;
 global $doctorId;
+global $period;
 $timeForId = $doctorId;
 $week = array(1 => 'Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' );
 $begin = new DateTime( date('Y-m-d') );
-$end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+if (isset($period)) {
+    $end = new DateTime( date('Y-m-d', strtotime('+'.$period.' days')));
+}else{
+    $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+}
 $end = $end->modify( '+1 day' );
 
 $interval = new DateInterval('P1D');
@@ -43,7 +48,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                 </label>
             <?}elseif($arQuestion["CAPTION"]=="Клиника" && $noneClinic==NULL){?>
                 <label><?=$arQuestion["CAPTION"]?>
-                    <select id="selectClinic" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>">
+                    <select id="selectClinicHome" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>">
                         <?foreach($doctorClinic as $key => $item) {
                             if (in_array($item['ID'], $timeinClinic)) {
                                 $ClinicName = $item['NAME'];
@@ -62,7 +67,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                     $arUser['LOGIN'] = 'Нет номера';
                                 }
                                 ?>
-                                <option data-email="<?= $arUser['EMAIL'] ?>" data-id="<?= $timeForIdNext ?>"
+                                <option  data-doctor="<?=$doctorId?>" data-period="<?=$period?>" data-email="<?= $arUser['EMAIL'] ?>" data-id="<?= $timeForIdNext ?>"
                                         data-phone="<?= $arUser['LOGIN'] ?>"
                                         value="<?= $item['NAME'] ?>"><?= $item['NAME'] ?></option>
                             <?
@@ -78,7 +83,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         }
                     }?>
                 <label><?=$arQuestion["CAPTION"]?>
-                    <select id="selectDay">
+                    <select id="selectDayHome">
                         <?foreach($daterange as $key => $date){?>
                             <?if (in_array(date($week[$date->format("N")]),$dayinClinic)){?>
                                 <?if ($dayOfTime == NULL) {
@@ -88,7 +93,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                             <?}?>
                         <?}?>
                     </select>
-                    <input type="hidden" id="fullTime" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$week[0]?>" size="0">
+                    <input type="hidden" id="fullTimeHome" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$week[0]?>" size="0">
                 </label>
             <?}elseif($arQuestion["CAPTION"]!="ID врача" && $arQuestion["CAPTION"]!="Дата приёма" && $arQuestion["CAPTION"]!="E-mail врача/клиники" && $arQuestion["CAPTION"]!="Специальность" && $arQuestion["CAPTION"]!="Клиника" && $arQuestion["CAPTION"]!="ФИО/Телефон врача" && $arQuestion["CAPTION"]!="Телефон клиники"){?>
             <div>
@@ -100,11 +105,11 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                 </label>
             </div>
     <?}elseif($arQuestion["CAPTION"]=="E-mail врача/клиники"){?>
-        <input type="hidden" id="option_mail"  name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorEmail?>" size="0">
+        <input type="hidden" id="option_mailHome"  name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorEmail?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="ФИО/Телефон врача"){?>
         <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?if($noneClinic==NULL){echo $doctorName.'/';}?><?=$doctorPhone?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="Телефон клиники"){?>
-        <input type="hidden" id="option_phone" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$clinicPhone?>" size="0">
+        <input type="hidden" id="option_phoneHome" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$clinicPhone?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="ID врача"){?>
         <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorId?>" size="0">
     <?}?>
@@ -128,30 +133,3 @@ if($arResult["isUseCaptcha"] == "Y")
 <?
 } //endif (isFormNote)
 ?>
-<script>
-    $(document).ready(function () {
-        $("#selectClinic").change(function () {
-            let id = $(this).find('option:selected').data('id');
-            let doc = <?=$doctorId?>;
-            let phone = $(this).find('option:selected').data('phone');
-            let email = $(this).find('option:selected').data('email');
-            let block = $('#selectDay');
-            $('#option_phone').val(phone);
-            $('#option_mail').val(email);
-            $.ajax({
-                type: "POST",
-                url: '/ajax/ajax_days_form.php',
-                data: {id: id, doctor: doc},
-                success: function (data) {
-                    // Вывод текста результата отправки
-                    $(block).html(data);
-                }
-            });
-            return false;
-        });
-        $("#selectDay").change(function () {
-            let date = $('#selectDay').val();
-            $('#fullTime').val(date);
-        });
-    });
-</script>

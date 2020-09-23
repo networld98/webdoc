@@ -245,7 +245,7 @@ while($ob = $res->GetNextElement()){
                                             <div class="row place-education-block place-schedule-block">
                                                 <div class="col-lg-12">
                                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
-                                                        <?propofficialspan($arProps['PEDIOD'],$idDoctor,$IBLOCK_ID)?>
+                                                        <?propofficialspan($arProps['PERIOD'],$idDoctor,$IBLOCK_ID)?>
                                                     </div>
                                                 </div>
                                                 <?foreach ($arProps['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){

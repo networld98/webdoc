@@ -10,7 +10,11 @@ while($ob = $res->GetNextElement()){
 }
 $week = array(1=> 'Понедельник' , 'Вторник' , 'Среда' , 'Четверг' , 'Пятница' , 'Суббота' , 'Воскресенье' );
 $begin = new DateTime( date('Y-m-d') );
-$end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+if (isset($arProps['PERIOD']['VALUE'])) {
+    $end = new DateTime( date('Y-m-d', strtotime('+'.$arProps['PERIOD']['VALUE'].' days')));
+}else{
+    $end = new DateTime( date('Y-m-d', strtotime('+14 days')));
+}
 $end = $end->modify( '+1 day' );
 
 $interval = new DateInterval('P1D');
