@@ -21,8 +21,8 @@ $idClinic = $arFields['ID'];
     <div class="personal-cabinet-content__price-page">
         <div class="personal-cabinet-content__schedule-page__block">
             <h5>Выберете срок платного размещения на сайте</h5>
-            <form id="form_requisites" name="form_requisites" action="" method="post">
-                <ul>
+            <form id="form_requisites" name="form_requisites" action="" method="post" class="form-requistment">
+                <ul class="checkbox-group radio-group radio-group-column">
                     <?$arSelect = Array("ID","NAME", "PROPERTY_PRICE");
                     $arFilter = Array("IBLOCK_ID"=>23);
                     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
@@ -32,7 +32,7 @@ $idClinic = $arFields['ID'];
                             <label data-role="label_<?=$arFields['ID']?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>">
                         <span class="bx_filter_input_radio">
                             <input type="radio" value="<?=$arFields['PROPERTY_PRICE_VALUE']?>" name="PERIOD_PRICE" id="<?=$arFields['ID']?>">
-                                <div class="radio"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
+                                <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
                             <span class="bx_filter_param_text"><?=$arFields["NAME"]?> <?=$arFields['PROPERTY_PRICE_VALUE']?> рублей</span>
                         </span>
                             </label>

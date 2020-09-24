@@ -3261,8 +3261,30 @@ main {
     height: 40px;
     outline: none;
 }
-.checkbox-group input[type=checkbox] {
+.checkbox-group input[type=checkbox],.checkbox-group input[type=radio] {
     display: none;
+}
+.radio-group-column {
+    flex-direction: column;
+}
+.bx_filter_input_radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.personal-cabinet-content__schedule-page__block .radio-group > li {
+    margin-bottom: 15px;
+    margin-right: 0;
+}
+.personal-cabinet-content__schedule-page__block .radio-group.radio-group-column {
+    margin-top: 15px;
+}
+.radio-group .bx_filter_input_radio .checkbox {
+    border-radius: 50%;
+}
+.personal-cabinet .form-requistment .save {
+    margin-left: 0;
+    margin-top: 0;
 }
 .personal-cabinet-content__my-profile__info-form > ul > li > ul {
     padding: 0;
