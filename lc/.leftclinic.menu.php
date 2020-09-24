@@ -70,6 +70,15 @@ $aMenuLinks = Array(
             "SPAN"=> "по продвижению клиники"
         ),
     ),
+    Array(
+        "Пополнить счет",
+        "/lc/finance/",
+        Array(),
+        Array(
+            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
+            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
+        ),
+    ),
     /*Array(
         "Виджеты",
         "/lc/",

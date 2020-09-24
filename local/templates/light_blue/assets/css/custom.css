@@ -568,6 +568,9 @@ main >.main-seo-text {
 .delete-doctor-modal .save.close-modal {
     cursor: pointer;
 }
+.requisites-block{
+    margin-top: 20px;
+}
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
         width: 100%;

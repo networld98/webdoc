@@ -198,6 +198,17 @@ while($ob = $res->GetNextElement()){
                     </li>
                     <? propofficial($arProps['MAP']);?>
                 </ul>
+                <div class="requisites-block">
+                    <h4 class="title-h4">Реквизиты</h4>
+                    <ul class="checkbox-group">
+                        <? propofficial($arProps["INN"])?>
+                        <? propofficial($arProps["OGRN"])?>
+                        <? propofficial($arProps["KPP"])?>
+                        <? propofficial($arProps["BIK"])?>
+                        <? propofficial($arProps["OKATO"])?>
+                        <? propofficial($arProps["URADRESS"])?>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="personal-cabinet-content__my-profile__services link-checkbox">
