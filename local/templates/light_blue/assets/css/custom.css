@@ -8,7 +8,7 @@
 .personal-cabinet .bx_filter_param_text {
     margin-left: 5px;
 }
-.personal-cabinet input:not([type="file"]):not(.city_input):not(.photoFile):not(.clinics-cabinet-doctor), .personal-cabinet textarea {
+.personal-cabinet input:not([type="file"]):not(.city_input):not(.photoFile):not(.clinics-cabinet-doctor):not(.input-doctor-address) , .personal-cabinet textarea {
     width: 100%;
     outline: none;
     border: 2px solid #9DD4B3;
@@ -372,6 +372,9 @@ label.photoFile-label:hover {
     margin-right: 10px;
     margin-bottom: 10px;
 }
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > div {
+    width: 100%;
+}
 
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child{
     max-width: 166px;
@@ -408,8 +411,8 @@ width: 100%;
 padding-left: 0!important;
 padding-right: 0!important;
 }
-.place-education-block input:not(.place-education-block_place) {
-width: 100px!important;
+.place-education-block input:not(.place-education-block_place):not(.input-doctor-address) {
+    width: 100px!important;
 }
 main >.main-seo-text {
     margin-top: 75px;
@@ -574,6 +577,10 @@ main >.main-seo-text {
 }
 .requisites-block{
     margin-top: 20px;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row .input-doctor-address {
+    width: 50%;
+    padding: 8px 0 8px 11px;
 }
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {

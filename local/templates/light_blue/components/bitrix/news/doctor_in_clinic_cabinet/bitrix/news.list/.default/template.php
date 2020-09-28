@@ -43,7 +43,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
         <span><?=$prop['NAME']?></span>
         <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
             <?
-            $property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$iblock, "CODE"=>$prop["CODE"]));
+            $property_enums = CIBlockPropertyEnum::GetList(Array("SORT"=>"ASC"), Array("IBLOCK_ID"=>$iblock, "CODE"=>$prop["CODE"]));
             while($enum_fields = $property_enums->GetNext())
             {?>
                 <option value="<?=$enum_fields["ID"]?>" <?if($prop['VALUE']==$enum_fields["VALUE"]){?>selected<?}?>><?=$enum_fields["VALUE"]?></option>
@@ -148,9 +148,9 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                     <ul>
                                         <li class="active" data-tabs="0">Основное</li>
                                         <li data-tabs="1">О враче</li>
-                                        <li data-tabs="2">Профиль лечения</li>
-                                        <li data-tabs="3">Опыт работы</li>
                                         <li data-tabs="4">Образование</li>
+                                        <li data-tabs="3">Опыт работы</li>
+                                        <li data-tabs="2">Профиль лечения</li>
                                         <li data-tabs="5">График</li>
                                     </ul>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content main-block active" data-tabs="0">
@@ -365,6 +365,8 @@ $week = array('Понедельник','Вторник','Среда','Четве
                 return false;
             });
             $("#form_doctor_<?=$arItem['ID']?>").submit(function () {
+                let file = $("#photo-form_<?=$arItem['ID']?>").text();
+                $('input[name="PHOTO"]').val(file);
                 let formID = $(this).attr('id');
                 let formNm = $('#' + formID);
                 let formMs = $("#message-form_<?=$arItem['ID']?>");
@@ -395,7 +397,6 @@ $week = array('Понедельник','Вторник','Среда','Четве
                     success: function(form_data){
                         $(formPhoto).html(form_data);
                         let file = $("#photo-form_<?=$arItem['ID']?>").text();
-                        $('input[name="PHOTO"]').val(file);
                         let fileRes = file.split("/");
                         $('#form_doctor_<?=$arItem['ID']?> .photoFile-name').text(fileRes[fileRes.length - 1 ]);
                     }

@@ -37,7 +37,7 @@ $aMenuLinks = Array(
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon7.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon7-un.svg",
-            "SPAN"=> "по продвижению клиники"
+            "SPAN"=> "Как сделать так, чтобы про вас узнали пациенты"
         ),
     ),
     /*Array(

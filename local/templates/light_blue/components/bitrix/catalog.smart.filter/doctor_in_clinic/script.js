@@ -179,10 +179,10 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 			}
 			else
 			{
-				if (modef.style.display === 'none')
-				{
-					modef.style.display = 'inline-block';
-				}
+				// if (modef.style.display === 'none')
+				// {
+				// 	modef.style.display = 'inline-block';
+				// }
 				if (this.viewMode == "vertical")
 				{
 					curProp = BX.findChild(BX.findParent(this.curFilterinput, {'class':'bx_filter_parameters_box'}), {'class':'bx_filter_container_modef'}, true, false);

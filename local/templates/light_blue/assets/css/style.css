@@ -3938,7 +3938,7 @@ main {
 .personal-cabinet-content-item select {
     width: 100%;
 }
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row input:not([type="file"]):not(.city_input):not(.photoFile) {
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row input:not([type="file"]):not(.city_input):not(.photoFile):not(.input-doctor-address)  {
     border: 1px solid #9DD4B3;
     background: #FFFFFF;
     border-radius: 5px;

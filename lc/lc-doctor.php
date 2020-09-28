@@ -33,7 +33,7 @@ while($ob = $res->GetNextElement()){
         <span><?=$prop['NAME']?></span>
         <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
             <?
-            $property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>$iblock, "CODE"=>$prop["CODE"]));
+            $property_enums = CIBlockPropertyEnum::GetList(Array("SORT"=>"ASC"), Array("IBLOCK_ID"=>$iblock, "CODE"=>$prop["CODE"]));
             while($enum_fields = $property_enums->GetNext())
             {?>
                 <option value="<?=$enum_fields["ID"]?>" <?if($prop['VALUE']==$enum_fields["VALUE"]){?>selected<?}?>><?=$enum_fields["VALUE"]?></option>
@@ -115,9 +115,9 @@ while($ob = $res->GetNextElement()){
                                         <ul>
                                             <li data-tabs="0" class="active">Личные данные</li>
                                             <li data-tabs="1">Основное</li>
-                                            <li data-tabs="2">Профиль лечения</li>
-                                            <li data-tabs="3">Опыт работы</li>
                                             <li data-tabs="4">Образование</li>
+                                            <li data-tabs="3">Опыт работы</li>
+                                            <li data-tabs="2">Профиль лечения</li>
                                             <li data-tabs="5">График</li>
                                             <li data-tabs="6">Клиники</li>
                                             <li data-tabs="7">Адреса</li>
@@ -315,7 +315,7 @@ while($ob = $res->GetNextElement()){
                                                                         <?}?>
                                                                     </select>
                                                                     <span>Адрес</span>
-                                                                    <input type="text" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
+                                                                    <input type="text" class="input-doctor-address" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
                                                                 </div>
                                                             </div>
                                                             <?

@@ -42,6 +42,12 @@ if(empty($_POST['PHOTO'])){
 }else{
     $PROPS[141] = NULL;
 };
+if ($PROPS['EXPERIENCE'] == NULL) {
+    $PROPS['EXPERIENCE'] = NULL;
+}
+if ($PROPS['EDUCATION'] == NULL) {
+    $PROPS['EDUCATION'] = NULL;
+}
 $PROPS['RECEPTION_SCHEDULE'] = array_unique($PROPS['RECEPTION_SCHEDULE']);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     CModule::IncludeModule("iblock");

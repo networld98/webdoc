@@ -26,25 +26,48 @@ $idClinic = $arFields['ID'];
         border-color: #9DD4B3;
         background-color: transparent;
     }
-    #invoice .acc table, #invoice .acc  tr, #invoice .acc  td {
-        border: 1px solid #000;
-        padding: 5px;
-    }
     #invoice .invoice-link {
         background: #E74C77;
         border: 2px solid #E74C77;
         cursor: pointer;
         margin: 20px 0 20px 0;
-        display: inline-block;
+        display: block;
+        float: left;
+    }
+    #invoice .tinkoff-btn {
+        cursor: pointer;
+        margin: 20px 0 20px 20px;
+        display: block;
+        float: left;
+        padding: 12px 20px;
+        font-family: "Ubuntu";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+    }
+    #invoice .tinkoff-btn:hover{
+        color: #E74C77;
+    }
+    #invoice form{
+        display: block;
+        float: left;
+    }
+    #invoice .sign img {
+        display: none;
     }
 </style>
 <? include '../menu.php';?>
 <?if($idClinic !=NULL){?>
     <div class="personal-cabinet-content__price-page">
+        <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
         <div class="personal-cabinet-content__schedule-page__block">
-            <h5>Выберете срок платного размещения на сайте</h5>
+            <h5>Выберите вариант платного размещения на сайте</h5>
             <form id="form_requisites" name="form_requisites" action="" method="post" class="form-requistment">
                 <input type="hidden" name="CLIENT" value="<?=$arProps['OFFICIAL_NAME']['VALUE']?>, ИНН: <?=$arProps['INN']['VALUE']?>, <?=$arProps['URADRESS']['VALUE']?>">
+                <input type="hidden" name="NAME" value="<?=$arProps['OFFICIAL_NAME']['VALUE']?>">
+                <input type="hidden" name="PHONE" value="<?=$arUser['LOGIN']?>">
+                <input type="hidden" name="EMAIL" value="<?=$arUser['EMAIL']?>">
                 <ul class="checkbox-group radio-group radio-group-column">
                     <?$arSelect = Array("ID","NAME", "PROPERTY_PRICE");
                     $arFilter = Array("IBLOCK_ID"=>23);
@@ -70,6 +93,7 @@ $idClinic = $arFields['ID'];
     <script>
         $(document).ready(function () {
             $("input[name=NAME_PRICE]").change(function () {
+                $('.invoice-btn').show();
                 $('.invoice-btn').removeAttr('disabled');
             });
             $("#form_requisites").submit(function () {
@@ -85,6 +109,7 @@ $idClinic = $arFields['ID'];
                         $(formMs).html(data);
                     }
                 });
+                $('.invoice-btn').hide();
                 return false;
             });
         });
