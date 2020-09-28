@@ -77,7 +77,7 @@ document.getElementById('bx_auth_secure<?=$arResult["RND"]?>').style.display = '
 			<td><noindex><a class="forget-password" href="<?=$arResult["AUTH_FORGOT_PASSWORD_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></a></noindex></td>
 		</tr>
 		<tr>
-		<td><noindex><a class="forget-password" href="<?=$arResult["AUTH_FORGOT_PASSWORD_URL"]?>" rel="nofollow">Регистрация</a></noindex></td>
+		<td><noindex><a class="forget-password" href="<?=$arResult["AUTH_REGISTER_URL"]?>" rel="nofollow">Регистрация</a></noindex></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" name="Login" class="login" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>" /></td>
