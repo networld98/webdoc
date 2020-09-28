@@ -272,7 +272,8 @@ $(document).ready(()=>{
     });
 
     $('.personal-cabinet-content__price-page__content__list > li').on( "click", function() {
-        $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
+        $(this).parent().children().removeClass('active');
+        // $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
         $(this).toggleClass('active');
     });
 
@@ -281,7 +282,8 @@ $(document).ready(()=>{
         // $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
         // $(this).toggleClass('active');
         $(this).on("click" , function () {
-            $('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
+            $(this).parents('.personal-cabinet-content__price-page__content').find('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
+            // $('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
             var data = $(this).data('tabs');
             $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
         });

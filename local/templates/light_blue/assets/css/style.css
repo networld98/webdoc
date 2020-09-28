@@ -454,6 +454,7 @@ main > .container:last-child {
 
 #auth-popup > img:first-child {
     padding-bottom: 62px;
+    display: none;
 }
 .auth-popup__phone {
     margin-top: 0;
@@ -3979,6 +3980,7 @@ main {
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul {
     display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -7403,6 +7405,43 @@ main {
     }
 }
 @media (max-width: 576px) {
+    #modal_auth, #modal_auth2 {
+        width: 100%;
+        padding: 80px 20px 30px;
+        text-align: initial;
+        height: auto;
+    }
+    a.forget-password {
+        text-align: center;
+        margin-top: 10px;
+    }
+    input.login {
+        width: 308px;
+        margin-top: 10px;
+    }
+    input.auth-popup__phone {
+        margin-top: 20px;
+    }
+    .auth-popup__header {
+        text-align: center;
+    }
+    .bx-system-auth-form {
+        text-align: center;
+    }
+    .form-after {
+        text-align: center;
+        padding-top: 20px;
+    }
+    .popup-window-close-icon:after {
+        background-position: center;
+        background-size: 33px 33px;
+        top: 45px;
+        left: -20px;
+    }
+    #auth-popup > img:first-child {
+        padding-bottom: 25px;
+        width: 200px;
+    }
     .library .popup-box .col__list {
         margin-bottom: 10px;
     }
