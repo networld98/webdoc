@@ -197,6 +197,10 @@
     background: #32B4C3;
     color: #fff;
 }
+.link-checkbox > label:hover {
+    background: initial;
+    color: initial;
+}
 .link-checkbox input {
     display: none;
 }
