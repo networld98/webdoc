@@ -224,7 +224,7 @@ $doctorName = $arResult['NAME'];
         var dest = el.attr('href'); // получаем направление
         // var dest = el.data('href'); // получаем направление
         if(dest !== undefined && dest !== '') { // проверяем существование
-            if($(window).width() <= 992) {
+            if($(window).width() <= 992 && $(window).width() > 500 ) {
                 if($('.anchor-block').css('position') == 'fixed') {
                     console.log('fixed');
                     $('html').animate({
@@ -238,7 +238,21 @@ $doctorName = $arResult['NAME'];
                         }, 1000 // скорость прокрутки
                     );
                 }
-            } else {
+            } else if ($(window).width() <= 500) {
+                if ($('.anchor-block').css('position') == 'fixed') {
+                    console.log('fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').height()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                } else {
+                    console.log('no-fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight() + $('.nav-bar-service').height()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                }
+            }else {
                 if($('.anchor-block').css('position') == 'fixed') {
                     console.log('fixed');
                     $('html').animate({
