@@ -42,7 +42,6 @@ CJSCore::Init("popup", "jquery");
                 <select name="city" class="city">
                     <option selected="selected">Москва</option>
                     <option>Санкт-Петербург</option>
-                    <option>Санкт-Петербург</option>
                 </select>
                 <a href="tel:+74950952020" class="contacts-phone">+7 (495) 095-20-20</a>
             </div>
@@ -109,7 +108,6 @@ CJSCore::Init("popup", "jquery");
         <div class="contacts">
             <select name="city" class="city">
                 <option selected="selected">Москва</option>
-                <option>Санкт-Петербург</option>
                 <option>Санкт-Петербург</option>
             </select>
             <a href="tel:+74950952020" class="contacts-phone">+7 (495) 095-20-20</a>
