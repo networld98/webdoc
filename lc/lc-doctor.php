@@ -67,7 +67,7 @@ while($ob = $res->GetNextElement()){
 <?if($idDoctor !=NULL){?>
     <div class="personal-cabinet-content__doctors-page">
         <div class="personal-cabinet-content__doctors-page-box">
-            <form id="form_doctor_<?=$idDoctor?>" name="form_doctor_<?=$idDoctor?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
+            <form id="form_doctor_<?=$idDoctor?>" name="form_doctor_<?=$idDoctor?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item doctor-lc">
                 <input type="hidden" name="ID_DOCTOR" value="<?=$idDoctor?>">
                 <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
                 <div class="row">
@@ -82,7 +82,6 @@ while($ob = $res->GetNextElement()){
                                 <?}elseif($arProps['GENDER']['VALUE']=="Женщина" ){?>
                                 <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="personal-cabinet-content__doctors-page-box-item__img photo-back-image-contain">
                                     <?}?>
-                                </div>
                             </div>
                         </div>
                     <div class="col-md">
@@ -124,28 +123,28 @@ while($ob = $res->GetNextElement()){
                                         </ul>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content active" data-tabs="0">
                                             <div class="row personal-cabinet-content-item">
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                         <span>Фото</span>
-                                                        <input type="file" class="photoFile" name="DETAIL_PICTURE" value="">
+                                                        <label class="photoFile-label">Добавить<input type="file" class="photoFile" name="DETAIL_PICTURE" value=""></label>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                         <span>ФИО</span>
                                                         <textarea name="NAME_DOCTOR"><?=$arFields['NAME']?></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <?propselectspan($arProps['GENDER'],$IBLOCK_ID)?>
                                                 </div>
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                         <span>О враче</span>
                                                         <textarea name="PREVIEW_TEXT"><?=$arFields['PREVIEW_TEXT']?></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                         <?propofficialspan($arProps['PHONE'],$idDoctor,$IBLOCK_ID)?>
                                                     </div>
@@ -188,13 +187,13 @@ while($ob = $res->GetNextElement()){
                                         </div>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="3">
                                             <div class="row place-education-block">
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                         <span><?=$arProps['STANDING']['NAME']?></span>
                                                         <input type="text" name="<?=$arProps['STANDING']['CODE']?>" value="<?=$arProps['STANDING']['VALUE']?>">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <?
                                                     foreach ($arProps['EXPERIENCE']['VALUE'] as $plaсe) {
                                                         $work_plaсe[] = array('PERIOD' => explode("/", $plaсe)[0], 'PLAСE' => explode("/", $plaсe)[1]);
@@ -203,7 +202,7 @@ while($ob = $res->GetNextElement()){
                                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                             <span>Период</span>
                                                             <input type="text" class="place-education-block_period" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PERIOD']?>">
-                                                            <span>Место работы</span>
+                                                            <span class="place-work">Место работы</span>
                                                             <input type="text" class="place-education-block_place" name="EXPERIENCE_<?=$key?>[]" value="<?=$str['PLAСE']?>">
                                                         </div>
                                                         <?
@@ -221,7 +220,7 @@ while($ob = $res->GetNextElement()){
                                         </div>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="4">
                                             <div class="row place-education-block">
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                     <?foreach ($arProps['EDUCATION']['VALUE'] as $education) {
                                                         $education_plaсe[] = array('PERIOD' => explode("/", $education)[0], 'PLAСE' => explode("/", $education)[1]);
                                                     }?>
@@ -268,7 +267,7 @@ while($ob = $res->GetNextElement()){
                                                     $contact_key = $key+1;
                                                 }
                                                 $contact_key_last = 0 + $contact_key;?>
-                                                <div class="col-lg-12 no-padding" id="input<?=$idDoctor?><?=$contact_key_last?>"></div>
+                                                <div class="col-lg-12" id="input<?=$idDoctor?><?=$contact_key_last?>"></div>
                                             </div>
                                             <div class="add-time" value="<?=$idDoctor?><?=$contact_key_last?>" title="Добавить время">+</div>
                                         </div>
@@ -295,7 +294,7 @@ while($ob = $res->GetNextElement()){
                                         </div>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="7">
                                             <div class="row place-education-block">
-                                                <div class="col-lg-12 no-padding">
+                                                <div class="col-lg-12">
                                                         <?foreach ($arProps['RECEPTION_ADDRESSES']['VALUE'] as $key => $address){?>
                                                             <?$str = explode('/',$address);
                                                             $city = $str[0];
@@ -314,7 +313,7 @@ while($ob = $res->GetNextElement()){
                                                                             <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$city){?>selected<?}?>><?=$ar_result['NAME']?></option>
                                                                         <?}?>
                                                                     </select>
-                                                                    <span>Адрес</span>
+                                                                    <span class="doctor-adress">Адрес</span>
                                                                     <input type="text" class="input-doctor-address" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
                                                                 </div>
                                                             </div>
@@ -354,6 +353,9 @@ while($ob = $res->GetNextElement()){
     </div>
     <script>
         $(document).ready(function () {
+            if($('.personal-cabinet-content__doctors-page-box-item').hasClass('doctor-lc')) {
+                $('.personal-cabinet-menu__manager.mobile-display').css({display : 'none'});
+            }
             $("#form_doctor_<?=$idDoctor?>").submit(function () {
                 let formID = $(this).attr('id');
                 let formNm = $('#' + formID);
@@ -393,14 +395,14 @@ while($ob = $res->GetNextElement()){
             let id = <?=$idDoctor?>;
             let x = <?=$contact_key_last?>;
             $('.add-time').on('click', function () {
-                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><select class="place-education-block_place" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]"><?foreach($week as $item){?><option value="<?=$item?>"><?=$item?></option><?}?></select> <input class="lc-doctor-time" type="text" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]" value="<?=$contacts_array[1]?>"> </div><div class="col-lg-12 no-padding" id="input' + id + (x + 1) + '"></div>';
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><select class="place-education-block_place" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]"><?foreach($week as $item){?><option value="<?=$item?>"><?=$item?></option><?}?></select> <input class="lc-doctor-time" type="text" name="RECEPTION_SCHEDULE_' + (x + 1) + '[]" value="<?=$contacts_array[1]?>"> </div><div class="col-lg-12 " id="input' + id + (x + 1) + '"></div>';
                     document.getElementById('input' + id + x).innerHTML = str;
                     x++;
             });
             let y = <?=$place_key_last?>;
             $('.add-place').on('click', function () {
                 if (y < 10) {
-                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Период</span> <input type="text" class="place-education-block_period" name="EXPERIENCE_' + (y + 1) + '[]"> <span>Место работы</span><input type="text" class="place-education-block_place" name="EXPERIENCE_' + (y + 1) + '[]"></div><div id="input_work' + id + (y + 1) + '"></div>';
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Период</span> <input type="text" class="place-education-block_period" name="EXPERIENCE_' + (y + 1) + '[]"> <span class="place-work">Место работы</span><input type="text" class="place-education-block_place" name="EXPERIENCE_' + (y + 1) + '[]"></div><div id="input_work' + id + (y + 1) + '"></div>';
                     document.getElementById('input_work'+ id + y).innerHTML = str;
                     y++;
                 }else{
@@ -420,7 +422,7 @@ while($ob = $res->GetNextElement()){
             let w = <?=$address_key_last?>;
             $('.add-address').on('click', function () {
                 if (w < 10) {
-                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Город</span><select name="ADDRESSES_' + (w + 1) + '[]" id="city" value=""><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>14);$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);while($ar_result = $obSections->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select><span>Адрес</span><input type="text" class="place-education-block_place" name="ADDRESSES_' + (w + 1) + '[]"></div><div id="input_address' + id + (w + 1) + '"></div>';
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Город</span><select name="ADDRESSES_' + (w + 1) + '[]" id="city" value=""><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>14);$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);while($ar_result = $obSections->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select><span class="doctor-adress">Адрес</span><input type="text" class="place-education-block_place" name="ADDRESSES_' + (w + 1) + '[]"></div><div id="input_address' + id + (w + 1) + '"></div>';
                     document.getElementById('input_address' + id + w).innerHTML = str;
                     w++;
                 }else{

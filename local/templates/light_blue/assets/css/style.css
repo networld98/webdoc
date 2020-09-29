@@ -3935,8 +3935,14 @@ main {
     /*width: 100%;*/
     height: 40px;
 }
+.doctor-lc .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row select {
+    width: 100%;
+}
 .personal-cabinet-content-item select {
     width: 100%;
+}
+.doctor-adress {
+    margin-top: 10px;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row input:not([type="file"]):not(.city_input):not(.photoFile):not(.input-doctor-address)  {
     border: 1px solid #9DD4B3;
@@ -3997,6 +4003,13 @@ main {
     margin-right: 30px;
     cursor: pointer;
     transition: 0.3;
+}
+.doctor-lc .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row input:not([type="file"]):not(.city_input):not(.photoFile):not(.input-doctor-address) {
+    margin-right: 0;
+}
+.input-doctor-address {
+    padding: 6px 0 6px 11px;
+    width: 100%;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul > li:last-child {
     margin-right: 0;
@@ -5858,8 +5871,13 @@ main {
     color: #FFD119;
     text-decoration: none;
 } */
-  
 
+.personal-cabinet .del-city {
+    align-self: normal;
+}
+.place-work {
+    margin-left: 10px;
+}
 @media (max-width: 1600px) {
     .main__img2 {
         right: -90px;
@@ -5905,6 +5923,9 @@ main {
     }
 }
 @media (max-width: 1430px) {
+    .logo-clinic-in-cabinet {
+        margin-bottom: 20px;
+    }
     .top-menu {
         margin-left: 5px;
     }
@@ -7405,6 +7426,12 @@ main {
     }
 }
 @media (max-width: 576px) {
+    .place-work {
+        margin-left: 0;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > input {
+        margin-bottom: 10px;
+    }
     #modal_auth, #modal_auth2 {
         width: 100%;
         padding: 80px 20px 30px;
@@ -7468,6 +7495,9 @@ main {
     }
     .personal-cabinet-content__doctors-page-box-item__desc-switch {
         top: -230px;
+    }
+    .doctor-lc .personal-cabinet-content__doctors-page-box-item__desc-switch {
+        top: -166px;
     }
     .personal-cabinet-content__doctors-page-box-item__desc__name .edit {
         margin-left: auto;
@@ -8179,7 +8209,7 @@ main {
         margin-top: 170px;
     }
     .personal-cabinet {
-        margin: 70px 15px 20px;
+        margin: 110px 15px 20px;
     }
     .library .title-h2 {
         margin-top: 0;
@@ -8258,6 +8288,9 @@ main {
     /* main.main__header {
         margin-top: 130px;
     } */
+    .personal-cabinet-content-item {
+        margin-left: 0;
+    }
     .footer .col__block ul li {
         font-size: 14px;
         font-family: "Ubuntu-Light";

@@ -170,11 +170,11 @@
     background-color: #9DD4B3;
 }
 .place-schedule-block select, .place-schedule-block input{
-    margin: 0 10px 0 15px;
+    /*margin: 0 10px 0 15px;*/
 }
 
 .place-schedule-block select:first-child, .place-schedule-block input:first-child{
-    margin-left: 60px;
+    margin-right: 60px;
 }
 
 .link-checkbox .bx_filter_param_label {
@@ -360,6 +360,7 @@ label.photoFile-label:hover {
 .personal-cabinet-content-item, .place-education-block {
     width: calc(100% - 24px);
 }
+
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content ul {
     list-style: none;
     padding: 0;
@@ -579,8 +580,8 @@ main >.main-seo-text {
     margin-top: 20px;
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row .input-doctor-address {
-    width: 50%;
-    padding: 8px 0 8px 11px;
+    width: 100%;
+    padding: 6px 0 6px 11px;
 }
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
@@ -602,8 +603,15 @@ main >.main-seo-text {
 }
 
 @media (max-width: 768px) {
+    .doctor-lc .personal-cabinet-content__doctors-page-box-item__desc__name {
+        margin-top: 15px;
+        display: block;
+    }
     .time-block-span {
         max-width: 132px;
+    }
+    .personal-cabinet-content-item {
+        width: 100%;
     }
 }
 @media (max-width: 730px) {
@@ -638,6 +646,9 @@ main >.main-seo-text {
     }
 }
 @media (max-width: 576px) {
+    .place-schedule-block select:first-child, .place-schedule-block input:first-child {
+        margin-bottom: 20px;
+    }
     .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
         text-align: left;
     }
@@ -645,6 +656,7 @@ main >.main-seo-text {
         text-align: left;
         margin-right: 0;
         margin-bottom: 10px;
+        display: block;
     }
 }
 @media (max-width: 450px) {
@@ -667,6 +679,7 @@ main >.main-seo-text {
     .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .row .col-lg-12 {
         display: flex;
         flex-direction: column;
+        padding-right: 0;
     }
     .services-detail h3,.services-detail h2 {
         margin-bottom: 10px;
