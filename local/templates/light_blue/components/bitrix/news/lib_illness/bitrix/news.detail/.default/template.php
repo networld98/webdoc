@@ -216,25 +216,43 @@ $doctorName = $arResult['NAME'];
             });
             $('.flowing-scroll').on( 'click', function(){
         event.preventDefault();
-        console.log('click');
         var el = $(this);
+        var scrollPos = 140;
+        if($(window).width() <= 992) {
+            scrollPos = 250;
+        }
         var dest = el.attr('href'); // получаем направление
         // var dest = el.data('href'); // получаем направление
         if(dest !== undefined && dest !== '') { // проверяем существование
-            if($('.anchor-block').css('position') == 'fixed') {
-                console.log('fixed');
-                $('html').animate({ 
-                    scrollTop: $(dest).offset().top - 140 // прокручиваем страницу к требуемому элементу
-                }, 1000 // скорость прокрутки
-                );
+            if($(window).width() <= 992) {
+                if($('.anchor-block').css('position') == 'fixed') {
+                    console.log('fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').height()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                } else {
+                    console.log('no-fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                }
             } else {
-                console.log('no-fixed');
-                $('html').animate({ 
-                    scrollTop: $(dest).offset().top - 200 // прокручиваем страницу к требуемому элементу
-                }, 1000 // скорость прокрутки
-                );
+                if($('.anchor-block').css('position') == 'fixed') {
+                    console.log('fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                } else {
+                    console.log('no-fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                }
             }
-            
         }
         return false;
         });

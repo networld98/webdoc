@@ -220,37 +220,68 @@ $doctorName = $arResult['NAME'];
         var el = $(this);
         var dest = el.attr('href'); // получаем направление
         // var dest = el.data('href'); // получаем направление
-        if(dest !== undefined && dest !== '') { // проверяем существование
-            if($(window).width() <= 992) {
-                if($('.anchor-block').css('position') == 'fixed') {
-                console.log('fixed');
-                $('html').animate({ 
-                    scrollTop: $(dest).offset().top - $('#header').innerHeight() - $('.anchor-block.fixed-block').innerHeight() // прокручиваем страницу к требуемому элементу
-                }, 1000 // скорость прокрутки
-                );
-            } else {
-                console.log('no-fixed');
-                $('html').animate({ 
-                    scrollTop: $(dest).offset().top - $('#header').innerHeight() - $('.anchor-block.fixed-block').innerHeight()// прокручиваем страницу к требуемому элементу
-                }, 1000 // скорость прокрутки
-                );
-            }
-            } else {
-                if($('.anchor-block').css('position') == 'fixed') {
-                console.log('fixed');
-                $('html').animate({ 
-                    scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
-                }, 1000 // скорость прокрутки
-                );
-            } else {
-                console.log('no-fixed');
-                $('html').animate({ 
-                    scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
-                }, 1000 // скорость прокрутки
-                );
-            }
-            }
-            
+        // if(dest !== undefined && dest !== '') { // проверяем существование
+        //     if($(window).width() <= 992) {
+        //         if($('.anchor-block').css('position') == 'fixed') {
+        //         console.log('fixed');
+        //         $('html').animate({
+        //             scrollTop: $(dest).offset().top - $('#header').innerHeight() - $('.anchor-block.fixed-block').innerHeight() // прокручиваем страницу к требуемому элементу
+        //         }, 1000 // скорость прокрутки
+        //         );
+        //     } else {
+        //         console.log('no-fixed');
+        //         $('html').animate({
+        //             scrollTop: $(dest).offset().top - $('#header').innerHeight() - $('.anchor-block.fixed-block').innerHeight()// прокручиваем страницу к требуемому элементу
+        //         }, 1000 // скорость прокрутки
+        //         );
+        //     }
+        //     } else {
+        //         if($('.anchor-block').css('position') == 'fixed') {
+        //         console.log('fixed');
+        //         $('html').animate({
+        //             scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+        //         }, 1000 // скорость прокрутки
+        //         );
+        //     } else {
+        //         console.log('no-fixed');
+        //         $('html').animate({
+        //             scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+        //         }, 1000 // скорость прокрутки
+        //         );
+        //     }
+        //     }
+        //
+                if(dest !== undefined && dest !== '') { // проверяем существование
+                    if($(window).width() <= 992) {
+                        if($('.anchor-block').css('position') == 'fixed') {
+                            console.log('fixed');
+                            $('html').animate({
+                                    scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').height()) // прокручиваем страницу к требуемому элементу
+                                }, 1000 // скорость прокрутки
+                            );
+                        } else {
+                            console.log('no-fixed');
+                            $('html').animate({
+                                    scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight()) // прокручиваем страницу к требуемому элементу
+                                }, 1000 // скорость прокрутки
+                            );
+                        }
+                    } else {
+                        if($('.anchor-block').css('position') == 'fixed') {
+                            console.log('fixed');
+                            $('html').animate({
+                                    scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+                                }, 1000 // скорость прокрутки
+                            );
+                        } else {
+                            console.log('no-fixed');
+                            $('html').animate({
+                                    scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+                                }, 1000 // скорость прокрутки
+                            );
+                        }
+                    }
+                }
         }
         return false;
         });
