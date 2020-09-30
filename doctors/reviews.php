@@ -3,7 +3,7 @@
 	"custom_doctor", 
 	array(
 		"CACHE_TIME" => "31536000",
-		"CACHE_TYPE" => "A",
+		"CACHE_TYPE" => "N",
 		"COLOR" => "blue",
 		"DETAIL_HASH" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",

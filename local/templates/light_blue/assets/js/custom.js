@@ -142,7 +142,4 @@ $(window).scroll(function()
     var bottom = $(window).height() - 603;
     var top = $(this).scrollTop();
     bottom = top - bottom;
-    if(bottom == $(window).height()) {
-        alert(bottom);
-    }
 });

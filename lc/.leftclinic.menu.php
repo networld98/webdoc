@@ -52,12 +52,12 @@ $aMenuLinks = Array(
     ),
     Array(
         "Отзывы",
-        "/lc/",
+        "/lc/reviews/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon6.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon6-un.svg",
-            "SPAN"=> "Ответы на отзывы, чат"
+            "SPAN"=> "Ответы на отзывы"
         ),
     ),
     Array(

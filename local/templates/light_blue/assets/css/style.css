@@ -4925,7 +4925,7 @@ main {
 .clinic-card-full-desc__content__feedback-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 5px;
 }
 .clinic-card-full-desc__content__feedback-item:last-child {
     margin-bottom: 15px;

@@ -583,6 +583,9 @@ main >.main-seo-text {
     width: 100%;
     padding: 6px 0 6px 11px;
 }
+.api-reviews-list .api-footer {
+    margin-bottom: 40px;
+}
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
         width: 100%;
