@@ -5956,6 +5956,10 @@ main {
         flex-direction: column;
         align-items: initial;
     }
+    .personal-cabinet-content__my-profile__info-form > ul > li:first-child {
+        flex-direction: initial;
+        align-items: center;
+    }
     .personal-cabinet-content__my-profile__info-form > ul > li > label,.personal-cabinet-content__my-profile__info-desc > ul > li > label {
         margin-bottom: 0;
         margin-right: 0;
@@ -8202,6 +8206,9 @@ main {
     /* .clinic-card-desc__result-filter li a, .clinic-card-desc__spec-list li a {
         display: block;
     } */
+    .clinic-card-full-desc__content__info-left__phone a {
+        font-size: 20px;
+    }
     .personal-cabinet-content__my-profile.personal-cabinet-content-auth {
         padding-top: 80px;
     }
