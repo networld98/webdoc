@@ -373,8 +373,14 @@ function propsClinic($prop){
             <?if($arResult["PROPERTIES"]["STOCKS"]["VALUE"]):?>
                 <li data-tabs="3">Акции<span><?=count($arResult["PROPERTIES"]["STOCKS"]["VALUE"])?></span></li>
             <?endif;?>
-            <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]):?>
-                <li data-tabs="4">Цены<span><?=count($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"])+count($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"])?></span></li>
+            <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"]!=NULL):?>
+                <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"][0]!=NULL){
+                    $countUslug = count($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]);
+                }
+                if($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"][0]!=NULL){
+                    $countDiagnost = count($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"]);
+                }?>
+                <li data-tabs="4">Цены<span><?=$countUslug + $countDiagnost?></span></li>
             <?endif;?>
         </ul>
     </div>
