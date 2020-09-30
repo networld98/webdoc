@@ -4931,8 +4931,8 @@ main {
     margin-bottom: 15px;
 }
 .clinic-card-full-desc__content__feedback-item-left {
-    max-width: 182px;
-    min-width: 182px;
+    /*max-width: 182px;*/
+    /*min-width: 182px;*/
     width: 100%;
     margin-right: 40px;
 }
@@ -4949,7 +4949,7 @@ main {
 .clinic-card-full-desc__content__feedback-item-left__mark {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     margin-bottom: 20px;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark .count {
@@ -4962,6 +4962,9 @@ main {
     background: #35C273;
     border-radius: 5px;
     padding: 6px 10px;
+    margin-right: 10px;
+    width: 40px;
+    text-align: center;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark .text {
     font-family: "Montserrat Alternates";
@@ -4975,6 +4978,8 @@ main {
     padding: 10px 20px;
     border-width: 2px;
     border-style: solid;
+    width: 232px;
+    text-align: center;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.green .count {
     background: #03C03C;
