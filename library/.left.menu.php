@@ -1,0 +1,39 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Главная", 
+		"https://webdoc.clinic/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Клиники", 
+		"https://webdoc.clinic/clinics/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Врачи", 
+		"https://webdoc.clinic/doctors/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		" Услуги", 
+		"https://webdoc.clinic/services/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	/*Array(
+		"Отзывы", 
+		"", 
+		Array(), 
+		Array(), 
+		"" 
+	)*/
+);
+?>

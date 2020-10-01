@@ -2,21 +2,21 @@
 $aMenuLinks = Array(
 	Array(
 		"Справочник заболеваний",
-		"https://lib.webdoc.clinic/",
+		"/",
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
 		"Все врачи",
-		"/doctors/",
+		"https://webdoc.clinic/doctors/",
 		Array(), 
 		Array(), 
 		"" 
 	),
     Array(
         "Все клиники",
-        "/clinics/",
+        "https://webdoc.clinic/clinics/",
         Array(),
         Array(),
         ""

@@ -2,14 +2,14 @@
 $aMenuLinks = Array(
 	Array(
 		"Врачи",
-		"/doctors/",
+		"https://webdoc.clinic/doctors/",
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
 		"Клиники",
-		"/clinics/",
+		"https://webdoc.clinic/clinics/",
 		Array(), 
 		Array(), 
 		"" 
@@ -23,14 +23,14 @@ $aMenuLinks = Array(
     ),
     Array(
         "Услуги",
-        "/services/",
+        "https://webdoc.clinic/services/",
         Array(),
         Array(),
         ""
     ),
     Array(
         "Медицинская библиотека",
-        "https://lib.webdoc.clinic/",
+        "/",
         Array(),
         Array(),
         ""

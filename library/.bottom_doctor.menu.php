@@ -1,0 +1,32 @@
+<?
+$aMenuLinks = Array(
+    Array(
+        "Личный кабинет",
+        "https://webdoc.clinic/lc/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Регистрация",
+        "https://webdoc.clinic/lc/?register=yes",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Врачам",
+        "https://webdoc.clinic/for_doctors/",
+        Array(),
+        Array(),
+        ""
+    ),
+      Array(
+        "Клиникам",
+        "https://webdoc.clinic/for_clinics/",
+        Array(),
+        Array(),
+        ""
+    )
+);
+?>

@@ -7289,6 +7289,7 @@ main {
         width: 39%;
     }
     .personal-cabinet-content__schedule-page__block .checkbox-group > li {
+        margin-right: 10px;
         margin-bottom: 10px;
     }
     .day-selects.first::before {
@@ -8459,6 +8460,10 @@ main {
     /*}*/
 /*}*/
 @media (max-width: 414px) {
+    .radio-group .bx_filter_input_radio .checkbox{
+        min-width: 18px;
+        margin-right: 10px;
+    }
     .personal-cabinet-menu__icon {
         flex-basis: 15%;
     }
