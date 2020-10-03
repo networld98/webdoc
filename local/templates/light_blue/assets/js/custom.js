@@ -1,4 +1,36 @@
 $(document).ready(function () {
+    let anc = window.location.hash.replace("#","");
+    if (anc === "otzivy-yakor") {
+        $('.clinic-card-full-desc__tabs li').removeClass('active');
+        $('#openBlockOtzivy').addClass('active');
+        $('.clinic-card-full-desc__content').removeClass('active');
+        $('.otzivy-block').addClass('active');
+    }
+    let $page = $('html, body');
+    $('#goToOtzivy').on('click',function () {
+        $('.clinic-card-full-desc__tabs li').removeClass('active');
+        $('#openBlockOtzivy').addClass('active');
+        $('.clinic-card-full-desc__content').removeClass('active');
+        $('.otzivy-block').addClass('active');
+        $page.animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 400);
+        return false;
+    });
+    $('.review-custom-btn_custom').click(function () {
+        $('.clinic-card-full-desc__tabs li').removeClass('active');
+        $('#openBlockOtzivy').addClass('active');
+        $('.clinic-card-full-desc__content').removeClass('active');
+        $('.otzivy-block').addClass('active');
+        $('#comment-rating').trigger('click');
+    });
+    $('a[href*="#"]').click(function() {
+        $page.animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 400);
+        return false;
+    });
+
     $('.contact-phone').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
     $('.bx-register-phone').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
     $('.place-education-block_period').mask('9999-9999', {placeholder: "____-____"});

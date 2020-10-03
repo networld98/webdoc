@@ -1,4 +1,3 @@
-
 <?$APPLICATION->IncludeComponent(
     "api:reviews",
     "custom",

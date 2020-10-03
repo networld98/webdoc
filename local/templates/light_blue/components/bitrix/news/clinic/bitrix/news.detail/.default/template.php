@@ -49,7 +49,7 @@ function propsClinic($prop){
             <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'61%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
             <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'81%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
         </div>
-        <a class="clinic-card-img__link" href="#"><?=$arRaing['COUNT']?> отзывов</a>
+        <a class="clinic-card-img__link" id="goToOtzivy" href="#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
     </div>
     <div class="clinic-card-desc-detail">
         <h1 class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></h1>
@@ -360,13 +360,18 @@ function propsClinic($prop){
         false
     );?>
 </section>
-<div class="clinic-card-full-desc">
+    <section class="container">
+        <button class="review-custom-btn review-custom-btn_custom">
+            Оставить свой отзыв
+        </button>
+    </section>
+<div class="clinic-card-full-desc" id="otzivy-yakor">
     <div class="clinic-card-full-desc__tabs">
         <ul>
             <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]!=NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]!=NULL || $arResult['DETAIL_TEXT']!=NULL || $arResult["PROPERTIES"]["SERVICES"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["PARKING"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]!=NULL ){?>
                 <li class="active" data-tabs="1">Информация</li>
             <?}?>
-            <li data-tabs="2"
+            <li data-tabs="2" id="openBlockOtzivy"
                 <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]==NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]==NULL && $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]==NULL && $arResult['DETAIL_TEXT']==NULL && $arResult["PROPERTIES"]["SERVICES"]["VALUE"]==NULL && $arResult["PROPERTIES"]["PARKING"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]==NULL ){?>
                     class="active"
                 <?}?>>Отзывы<span><?=$arRaing['COUNT']?></span></li>
@@ -493,10 +498,10 @@ function propsClinic($prop){
                 </div>
             </div>
         </div>
-    <div class="clinic-card-full-desc__content
+    <div class="otzivy-block clinic-card-full-desc__content
     <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]==NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]==NULL && $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]==NULL && $arResult['DETAIL_TEXT']==NULL && $arResult["PROPERTIES"]["SERVICES"]["VALUE"]==NULL && $arResult["PROPERTIES"]["PARKING"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]==NULL ){?>
                 active
-    <?}?>" data-tabs="2">
+    <?}?>" data-tabs="2" >
         <?
         if(CModule::IncludeModule('api.uncachedarea'))
         {

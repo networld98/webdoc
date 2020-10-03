@@ -44,7 +44,7 @@ $this->setFrameMode(true);
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'61%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'81%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
                     </div>
-                    <a class="clinic-card-img__link" href="#"><?=$arRaing['COUNT']?> отзывов</a>
+                    <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
                 </div>
                 <div class="clone-adapt">
                     <a href="<?=$arItem['DETAIL_PAGE_URL']?>">

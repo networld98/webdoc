@@ -6,7 +6,6 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
     header('Location: http://lib.webdoc.clinic/');
     exit;
 }?>
-
     <section class="container library">
         <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 

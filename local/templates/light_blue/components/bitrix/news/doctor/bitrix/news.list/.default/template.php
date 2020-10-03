@@ -73,7 +73,7 @@ CModule::IncludeModule("form"); ?>
                                      alt="star">
                             </div>
                             <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов
-                                рекомендуют врача на основе <a href=""><?= $arRaing['COUNT'] ?> отзывов</a></p>
+                                рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?= $arRaing['COUNT'] ?> отзывов</a></p>
                         </div>
                     </div>
                     <div class="doctors-list-item__description">

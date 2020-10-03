@@ -209,6 +209,10 @@
 }
 #api-reviews-wait .api-bg{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #fff; opacity: .4; }
 
+.api_modal .api_modal_dialog {
+	margin-top: 10% !important;
+}
+
 /* @media
  ========================================================================== */
 @media (min-width: 768px){
@@ -217,6 +221,11 @@
 }
 @media (max-width: 768px){
 	.api-reviews .api-block-title > div{width: 100% !important; float: none !important; text-align: left !important;}
+}
+@media (max-width: 414px) {
+	.api_modal .api_modal_dialog {
+		margin-top: 30% !important;
+	}
 }
 
 .arform-color-blue .api-button {
@@ -229,9 +238,7 @@
 	margin: 0 auto;
 	cursor: pointer;
 }
-.api_modal .api_modal_dialog {
-	margin-top: 10% !important;
-}
+
 .review-custom-btn, .review-custom-btn:hover, .review-custom-btn:focus, .review-custom-btn:active {
 	padding: 15px 25px;
 	color: var(--primary);
