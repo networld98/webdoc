@@ -36,15 +36,13 @@
 				//Stars
 				review_form
 					 .find('.api-star-rating i')
-					 .mouseenter(function () {
+					 .click(function () {
 						 var rating = $(this).parents('.api-star-rating');
 						 var elems  = rating.find('i');
-						 var index  = elems.index(this);
 						 var label  = $(this).data('label');
-
+                         rating.find('i').removeClass('active');
 						 $(this).addClass('active');
-						 elems.filter(':lt(' + index + ')').addClass('active');
-						 elems.filter(':gt(' + index + ')').removeClass('active');
+
 
 						 if (label.length)
 							 rating_label.html(label);
@@ -57,26 +55,6 @@
 						 rating.find('input').val(index + 1);// rating [1-5]
 						 return false;
 					 });
-
-				review_form
-					 .find('.api-star-rating')
-					 .mouseleave(function () {
-						 var rating = $(this);
-						 if (rating.attr('data-star')) {
-							 rating.find('i').filter(':eq(' + rating.attr('data-star') + ')').addClass('active');
-							 rating.find('i').filter(':lt(' + rating.attr('data-star') + ')').addClass('active');
-							 rating.find('i').filter(':gt(' + rating.attr('data-star') + ')').removeClass('active');
-
-							 var label = rating.find('i').filter(':eq(' + rating.attr('data-star') + ')').data('label');
-
-							 if (label.length)
-								 rating_label.html(label);
-
-						 } else {
-							 rating.find('i').removeClass('active');
-						 }
-					 });
-
 				if (options.USE_EULA) {
 					review_form.find('input[name=EULA_ACCEPTED]').on('change',function(){
 						if($(this).is(':checked')){
@@ -284,16 +262,16 @@
 			return this;
 		},
 		alert: function (modalId, data) {
-			/*
+
 			 $.fn.apiModal('alert',{
 			 type: 'success',
 			 autoHide: true, //2000
 			 modalId: modalId,
 			 message: data.MESSAGE
 			 });
-			 */
 
-			/*var dialogStyle = $(modalId + ' .api_modal_dialog').attr('style') + ';display: block;';
+
+			 dialogStyle = $(modalId + ' .api_modal_dialog').attr('style') + ';display: block;';
 
 			var content = '' +
 				 '<div class="api_modal_dialog api_alert" style="'+dialogStyle+'">' +
@@ -305,12 +283,12 @@
 				 '</div>';
 
 			$(modalId).html(content);
-			$.fn.apiModal('resize',{id:modalId});*/
+			$.fn.apiModal('resize',{id:modalId});
 
-			/*window.setTimeout(function(){
+			window.setTimeout(function(){
 				$.fn.apiModal('hide', {id:modalId});
 				$.fn.apiReviewsList('refresh');
-			},2000);*/
+			},2000);
 		}
 
 	};

@@ -99,12 +99,12 @@ $modalId = $formId . '_modal';
 								<? if($FIELD == 'RATING'): ?>
 									<div class="api-form-rating">
 										<div class="api-star-rating">
-											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_1']?>"><span class="count red">1</span></i>
-											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_2']?>"><span class="count pink">2</span></i>
-											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_3']?>"><span class="count orange">3</span></i>
-											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_4']?>"><span class="count green">4</span></i>
-											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_5']?>"><span class="count chartreuse">5</span></i>
-											<input type="hidden" value="5" name="RATING" class="api-field">
+                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_1']?>"><span class="count red">1</span></i>
+                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_2']?>"><span class="count pink">2</span></i>
+                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_3']?>"><span class="count orange">3</span></i>
+                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_4']?>"><span class="count green">4</span></i>
+                                            <i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_5']?>"><span class="count chartreuse">5</span></i>
+                                            <input type="hidden" value="5" name="RATING" class="api-field">
 										</div>
 										<div class="api-star-rating-label"><?=$arParams['MESS_STAR_RATING_5']?></div>
 									</div>
