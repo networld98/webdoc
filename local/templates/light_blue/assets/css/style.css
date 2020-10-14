@@ -410,6 +410,7 @@ main > .container:last-child {
     max-width: 100%;
     height: 100%;
     overflow: scroll;
+    background: RGBA(255,255,255,0.9);
 }
 .popup-box .close {
     position: absolute;
@@ -429,6 +430,7 @@ main > .container:last-child {
     background-position: center;
     background-size: 42px 42px;
     z-index: 2;
+    background-color: RGBA(255,255,255,0);
 }
 .popup-box.popup-library .close {
     top: 82px;
@@ -5378,7 +5380,12 @@ main {
 }
 .library .sort-block-list-item {
     margin-right: 10px;
+    padding: 0;
     cursor: pointer;
+}
+.library .sort-block-list-item > a {
+    display: block;
+    padding: 10px 15px;
 }
 .library .sort-block-list-item.active {
     cursor: default;
@@ -5434,6 +5441,10 @@ main {
     color: var(--primary);
     text-transform: capitalize;
     margin-bottom: 5px;
+}
+.library .popup-box h1 {
+    font-family: 'Montserrat Alternates-Bold', sans-serif;
+    text-align: center;
 }
 .library .popup-box .col__heading {
     font-size: 70px;

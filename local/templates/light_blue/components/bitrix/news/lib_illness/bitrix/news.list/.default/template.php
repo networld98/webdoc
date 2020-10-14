@@ -82,6 +82,7 @@ console_log($arResult);
                 <div class="close"></div>
                 <div class="alp-detail container">
                     <div class="col-lg-12">
+                        <h1>Все болезни</h1>
                         <div class="col__heading"><?=$key?></div>
                         <div class="row col-lg-12">
                             <ul class="col__list col-lg-3 col-md-4 col-sm-6">
