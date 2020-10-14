@@ -429,7 +429,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 </section>
 <?endif;?>
 <section class="container checked-feedback" id="full-feedback">
-    <h2 class="title-h2">Проверенные отзывы о враче</h2>
+    <h2 class="title-h2" id="otzivy-yakor">Проверенные отзывы о враче</h2>
     <?
     if(CModule::IncludeModule('api.uncachedarea'))
     {

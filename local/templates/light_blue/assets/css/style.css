@@ -410,6 +410,7 @@ main > .container:last-child {
     max-width: 100%;
     height: 100%;
     overflow: scroll;
+    background: RGBA(255,255,255,0.9);
 }
 .popup-box .close {
     position: absolute;
@@ -429,6 +430,7 @@ main > .container:last-child {
     background-position: center;
     background-size: 42px 42px;
     z-index: 2;
+    background-color: RGBA(255,255,255,0);
 }
 .popup-box.popup-library .close {
     top: 82px;
@@ -1091,13 +1093,13 @@ main {
     padding-left: 9px;
 }
 .doctors-list-item__description .doctors-list-item__days-list {
-    padding-left: 9px;
+    /*padding-left: 9px;*/
     margin-bottom: 27px;
 }
 .doctors-list-item__days-list-item {
     background: #98D7DC;
     border-radius: 5px;
-    padding: 10px;
+    padding: 8px;
     font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
@@ -4357,7 +4359,7 @@ main {
 /*details-clinic-tabs*/
 
 .clinic-card-full-desc {
-    margin-top: 60px;
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 120px;
@@ -5378,7 +5380,12 @@ main {
 }
 .library .sort-block-list-item {
     margin-right: 10px;
+    padding: 0;
     cursor: pointer;
+}
+.library .sort-block-list-item > a {
+    display: block;
+    padding: 10px 15px;
 }
 .library .sort-block-list-item.active {
     cursor: default;
@@ -5434,6 +5441,10 @@ main {
     color: var(--primary);
     text-transform: capitalize;
     margin-bottom: 5px;
+}
+.library .popup-box h1 {
+    font-family: 'Montserrat Alternates-Bold', sans-serif;
+    text-align: center;
 }
 .library .popup-box .col__heading {
     font-size: 70px;
@@ -7711,9 +7722,9 @@ main {
         margin-right: 0;
         margin-bottom: 10px;
     }
-    .doctors-list-item__days-list-item:last-child {
-        margin-bottom: 0;
-    }
+    /*.doctors-list-item__days-list-item:last-child {*/
+        /*margin-bottom: 0;*/
+    /*}*/
     .doctors-list-item__description .doctors-list-item__days-list {
         justify-content: space-between;
         margin-bottom: 20px;
@@ -8759,6 +8770,7 @@ main {
         padding-left: 0;
     }
 } */
+
 @media (max-width: 400px) {
     .personal-cabinet-menu__list-item {
         flex-basis: 100%;

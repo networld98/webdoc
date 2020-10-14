@@ -1,4 +1,36 @@
 $(document).ready(function () {
+    let anc = window.location.hash.replace("#","");
+    if (anc === "otzivy-yakor") {
+        $('.clinic-card-full-desc__tabs li').removeClass('active');
+        $('#openBlockOtzivy').addClass('active');
+        $('.clinic-card-full-desc__content').removeClass('active');
+        $('.otzivy-block').addClass('active');
+    }
+    let $page = $('html, body');
+    $('#goToOtzivy').on('click',function () {
+        $('.clinic-card-full-desc__tabs li').removeClass('active');
+        $('#openBlockOtzivy').addClass('active');
+        $('.clinic-card-full-desc__content').removeClass('active');
+        $('.otzivy-block').addClass('active');
+        $page.animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 400);
+        return false;
+    });
+    $('.review-custom-btn_custom').click(function () {
+        $('.clinic-card-full-desc__tabs li').removeClass('active');
+        $('#openBlockOtzivy').addClass('active');
+        $('.clinic-card-full-desc__content').removeClass('active');
+        $('.otzivy-block').addClass('active');
+        $('#comment-rating').trigger('click');
+    });
+    // $('a[href*="#"]').click(function() {
+    //     $page.animate({
+    //         scrollTop: $($.attr(this, 'href')).offset().top
+    //     }, 400);
+    //     return false;
+    // });
+
     $('.contact-phone').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
     $('.bx-register-phone').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
     $('.place-education-block_period').mask('9999-9999', {placeholder: "____-____"});
@@ -136,57 +168,57 @@ $(document).ready(function () {
                 var item = $($(this).attr("href"));
                 if (item.length) { return item; }
             });
-});
-$('.flowing-scroll').on( 'click', function(){
-    event.preventDefault();
-    console.log('click');
-    var el = $(this);
-    var dest = el.attr('href'); // получаем направление
-    // var dest = el.data('href'); // получаем направление
-    if(dest !== undefined && dest !== '') { // проверяем существование
-        if($(window).width() <= 992) {
-            if($('.anchor-block').css('position') == 'fixed') {
-                console.log('fixed');
-                $('html').animate({
-                        scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').height()) // прокручиваем страницу к требуемому элементу
-                    }, 1000 // скорость прокрутки
-                );
+    $('.flowing-scroll').on( 'click', function(){
+        event.preventDefault();
+        console.log('click');
+        var el = $(this);
+        var dest = el.attr('href'); // получаем направление
+        // var dest = el.data('href'); // получаем направление
+        if(dest !== undefined && dest !== '') { // проверяем существование
+            if($(window).width() <= 992) {
+                if($('.anchor-block').css('position') == 'fixed') {
+                    console.log('fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').height()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                } else {
+                    console.log('no-fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                }
+            } else if ($(window).width() <= 500) {
+                if ($('.anchor-block').css('position') == 'fixed') {
+                    console.log('fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').height()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                } else {
+                    console.log('no-fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight() + $('.nav-bar-service').height()) // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                }
             } else {
-                console.log('no-fixed');
-                $('html').animate({
-                        scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight()) // прокручиваем страницу к требуемому элементу
-                    }, 1000 // скорость прокрутки
-                );
-            }
-        } else if ($(window).width() <= 500) {
-            if ($('.anchor-block').css('position') == 'fixed') {
-                console.log('fixed');
-                $('html').animate({
-                        scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').height()) // прокручиваем страницу к требуемому элементу
-                    }, 1000 // скорость прокрутки
-                );
-            } else {
-                console.log('no-fixed');
-                $('html').animate({
-                        scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight() + $('.nav-bar-service').height()) // прокручиваем страницу к требуемому элементу
-                    }, 1000 // скорость прокрутки
-                );
-            }
-        } else {
-            if($('.anchor-block').css('position') == 'fixed') {
-                console.log('fixed');
-                $('html').animate({
-                        scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
-                    }, 1000 // скорость прокрутки
-                );
-            } else {
-                console.log('no-fixed');
-                $('html').animate({
-                        scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
-                    }, 1000 // скорость прокрутки
-                );
+                if($('.anchor-block').css('position') == 'fixed') {
+                    console.log('fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                } else {
+                    console.log('no-fixed');
+                    $('html').animate({
+                            scrollTop: $(dest).offset().top - $('#header').innerHeight() // прокручиваем страницу к требуемому элементу
+                        }, 1000 // скорость прокрутки
+                    );
+                }
             }
         }
-    }
-    return false;
+        return false;
+    });
 });

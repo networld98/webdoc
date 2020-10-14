@@ -70,7 +70,6 @@
                     });
                 }
 
-
                 ///////////////////////////////////////////////////////////////////////
                 //  Video upload
                 ///////////////////////////////////////////////////////////////////////
@@ -262,33 +261,32 @@
             return this;
         },
         alert: function (modalId, data) {
-            /*
-             $.fn.apiModal('alert',{
-             type: 'success',
-             autoHide: true, //2000
-             modalId: modalId,
-             message: data.MESSAGE
-             });
-             */
 
-            /*var dialogStyle = $(modalId + ' .api_modal_dialog').attr('style') + ';display: block;';
+            $.fn.apiModal('alert',{
+                type: 'success',
+                autoHide: true, //2000
+                modalId: modalId,
+                message: data.MESSAGE
+            });
+
+            var dialogStyle = $(modalId + ' .api_modal_dialog').attr('style') + ';display: block;';
 
             var content = '' +
-                 '<div class="api_modal_dialog api_alert" style="'+dialogStyle+'">' +
-                 '<div class="api_modal_close"></div>' +
-                 '<div class="api_alert_success">' +
-                 '<span></span>' +
-                 '<div class="api_alert_title">'+data.MESSAGE+'</div>' +
-                 '</div>' +
-                 '</div>';
+                '<div class="api_modal_dialog api_alert" style="'+dialogStyle+'">' +
+                '<div class="api_modal_close"></div>' +
+                '<div class="api_alert_success">' +
+                '<span></span>' +
+                '<div class="api_alert_title">'+data.MESSAGE+'</div>' +
+                '</div>' +
+                '</div>';
 
             $(modalId).html(content);
-            $.fn.apiModal('resize',{id:modalId});*/
+            $.fn.apiModal('resize',{id:modalId});
 
-            /*window.setTimeout(function(){
+            window.setTimeout(function(){
                 $.fn.apiModal('hide', {id:modalId});
                 $.fn.apiReviewsList('refresh');
-            },2000);*/
+            },2000);
         }
 
     };
