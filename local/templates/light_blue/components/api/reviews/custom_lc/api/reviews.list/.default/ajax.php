@@ -194,9 +194,9 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
 
                     <? if($bCanEdit): ?>
                         <div class="api-admin-controls">
-                            <?/*<button class="api-reply api_button api_button_small"
+                            <button class="api-reply api_button api_button_small"
                                     onclick="jQuery.fn.apiReviewsList('showReply',<?=$arItem['ID']?>,<?=($arItem['GUEST_EMAIL'] ? 1 : 0)?>);"><?=Loc::getMessage('API_REVIEWS_LIST_BTN_REPLY')?></button>
-                            */?>
+
                             <button class="api-edit api_button api_button_small"
                                     onclick="jQuery.fn.apiReviewsList('edit',<?=$arItem['ID']?>);"><?=Loc::getMessage('API_REVIEWS_LIST_BTN_EDIT')?></button>
 
