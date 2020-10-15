@@ -6,6 +6,10 @@ $APPLICATION->SetTitle("Личный кабинет");
 CModule::IncludeModule('iblock');
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
+if($arUser['UF_TYPE_USER']!=6) {
+    header('Location: http://webdoc.clinic/lc/');
+    exit;
+}
 global $idClinic;
 
 $arFilter = Array("IBLOCK_ID"=>"9", "PROPERTY_PHONE"=> $arUser['LOGIN']);
@@ -16,6 +20,7 @@ while($ob = $res->GetNextElement()){
     $idClinic = $arFields['ID'];
 }
 ?>
+
 <? include '../menu.php';?>
 <?if($idClinic !=NULL){?>
     <div class="personal-cabinet-content__doctors-page">

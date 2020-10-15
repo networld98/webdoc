@@ -1,30 +1,5 @@
 <?require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");?>
 <?
-//Инфоблок со счетами
-$iblock = 24;
-CModule::IncludeModule('iblock');
-$date = date("d.m.Y");
-$year = date("Y");
-$str = explode('/',$_POST['NAME_PRICE']);
-$itemName = $str[0];
-$itemPrice = $str[1];
-$cnt = 0;
-$res = CIBlockElement::GetList(
-    array("SORT"=>"ID"),
-    array('IBLOCK_ID' => $iblock),
-    false,
-    false,
-    array('PROPERTY_NUMBER')
-);
-while($ob = $res->GetNextElement()){
-    $cnt++;
-    $arFields = $ob->GetFields();
-    $arProps = $ob->GetProperties();
-    if($arFields['PROPERTY_NUMBER_VALUE'] && $arFields['PROPERTY_NUMBER_VALUE'] > $number){
-        $number = $arFields['PROPERTY_NUMBER_VALUE'];
-    }
-
-}
 if($number > $cnt){
     $cnt = $number;
 }
@@ -88,7 +63,7 @@ $html = '
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style type="text/css">
-        * {
+       #invoice:not(.print-btn) {
             font-family: arial;
             font-size: 14px;
             line-height: 14px;
@@ -126,7 +101,7 @@ $html = '
             vertical-align: top;
         }
 
-        #invoice h2 {
+       #invoice h2 {
             margin: 0 0 10px 0;
             padding: 10px 0 10px 0;
             border-bottom: 2px solid #000;
@@ -148,7 +123,7 @@ $html = '
         }
 
         /* Наименование товара, работ, услуг */
-        .list thead, .list tbody  {
+        #invoice .list thead, .list tbody  {
             border: 2px solid #000;
         }
         #invoice .list thead th {
@@ -190,74 +165,27 @@ $html = '
             width: 200px;
             position: absolute;
             top: 10%;
-            left: 80%;
+            left: 15%;
         }
         #invoice .printing {
             position: absolute;
-            left: 150px;
+            left: 15%;
             top: -15px;
             width: 245px;
         }
     </style>
 </head>
 <body>
-<table class="header">
-        <tbody><tr>
-            <td>
-                <b>ООО "НОВОБИТ"</b>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <table class="border" width="100%">
-        <colgroup>
-            <col width="29%">
-            <col width="29%">
-            <col width="10%">
-            <col width="32%">
-        </colgroup>
-        <tbody><tr>
-            <td>ИНН 5040166146</td>
-            <td>КПП 504001001</td>
-            <td rowspan="2">
-                <br>
-                <br>
-                Сч. №
-            </td>
-            <td rowspan="2">
-                <br>
-                <br>
-                40702810010000659531
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                Получатель<br>
-                ООО "НОВОБИТ"
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                Банк получателя<br>
-                АО «Тинькофф Банк» Москва, 123060, 1-й Волоколамский проезд, д. 10, стр. 1			</td>
-            <td>
-                БИК<br>
-                Сч. №<br>
-            </td>
-            <td>
-                044525974<br>
-            </td>
-        </tr>
-        </tbody></table>
-    <br>
-    <br>
-        <h2> Счёт № '.$cnt.'/'.$year.' от '.$date.'	 </h2>
+<a href="javascript:(print());" class="print-btn">Распечатать Акт</a>
+        <h2> '.str_replace('Счёт', 'АКТ', $_POST['DOC']).'</h2>
     <br>
     <table width="100%">
         <tbody>
+          <tr>
+            <td style="width:100%;">Исполнитель: ООО "НОВОБИТ"</td>
+        </tr>
         <tr>
-            <td style="width:100%;">Плательщик:<br>'.$_POST["CLIENT"].'</td>
+            <td style="width:100%;">Заказчик: '.$_POST["NAME"].'</td>
         </tr>
         </tbody>
     </table>
@@ -273,7 +201,7 @@ $html = '
         <tr valign="top">
             <td align="center">1</td>
             <td align="left" style="word-break: break-word; word-wrap: break-word; ">
-                '.$itemName.'</td>
+                '.$_POST['OPISANIE'].'</td>
             <td align="right">
                 1
             </td>
@@ -281,10 +209,10 @@ $html = '
                 год
             </td>
             <td align="right">
-                <nobr>'.$itemPrice.'</nobr>
+                <nobr>'.$_POST['SUM'].'</nobr>
             </td>
             <td align="right">
-                <nobr>'.$itemPrice.'</nobr>
+                <nobr>'.$_POST['SUM'].'</nobr>
             </td>
         </tr>
         <tr valign="top">
@@ -301,12 +229,12 @@ $html = '
                 <nobr>Итого:</nobr>
             </td>
             <td align="right">
-                <nobr>'.$itemPrice.'</nobr>
+                <nobr>'.$_POST['SUM'].'</nobr>
             </td>
         </tr>
 
         </tbody></table>
-    <br>Всего наименований 1, на сумму '.$itemPrice.' руб.<br><br>
+    <br>Всего наименований 1, на сумму '.$_POST['SUM'].' руб.<br><br>
     <b>'.num2str($itemPrice).'</b>
     <br>
     <br>
@@ -315,71 +243,41 @@ $html = '
         <br>
         <br>
         <br>
-		<img class="printing" src="'.$_SERVER["DOCUMENT_ROOT"].'/local/seal.png">
+		<img class="printing" src="/local/seal.png">
         <table>
             <colgroup>
-                <col width="25%">
                 <col width="50%">
-                <col width="25%">
+                <col width="50%">
             </colgroup>
             <tbody>
             <tr>
-                <td>Генеральный директор</td>
-                 <td style=" border: 1pt solid #000000; border-width: 0pt 0pt 1pt 0pt; text-align: center; "><img class="signature" src="'.$_SERVER["DOCUMENT_ROOT"].'/local/signature.png"></td>
-                <td style="text-align:right">
-                    (Белов Дмитрий Олегович)
+                <td>
+                    <table>
+                      <tr>
+                            <td>Исполнитель</td>
+                             <td style=" border: 1pt solid #000000; border-width: 0pt 0pt 1pt 0pt; text-align: center; width: 100%;"><img class="signature" src="/local/signature.png"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                  <table>
+                     <tr>
+                        <td>Заказчик</td>
+                         <td style=" border: 1pt solid #000000; border-width: 0pt 0pt 1pt 0pt; text-align: center; width: 100%;"></td>
+                     </tr>
+                  </table>
                 </td>
             </tr>
             </tbody>
         </table>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 	</div>
 </body>
-</html>';
-use Dompdf\Dompdf;
-include_once $_SERVER["DOCUMENT_ROOT"].'/local/dompdf/autoload.inc.php';
-$dompdf = new Dompdf();
-$dompdf->loadHtml($html, 'UTF-8');
-$dompdf->setPaper('A4', 'portrait');
-$dompdf->render();
-
-$pdf = $dompdf->output();
-$arParams = array("replace_space"=>"-","replace_other"=>"-");
-$trans = Cutil::translit("Счёт № '".$cnt."/".$year." от ".$date,"ru",$arParams);
-
-$linkFile = '/upload/invoces/'.$trans.'.pdf';
-file_put_contents($_SERVER["DOCUMENT_ROOT"]. $linkFile, $pdf);
-$el = new CIBlockElement;
-$PROP = array();
-$PROP[165] = 'https://webdoc.clinic'.$linkFile;
-$PROP[166] = $_POST["NAME"];
-$PROP[167] = $cnt;
-$PROP[169] = $itemPrice;
-$PROP[170] = $itemName;
-$arLoadProductArray = Array(
-    "MODIFIED_BY" => $USER->GetID(),
-    "IBLOCK_SECTION_ID" => false,
-    "IBLOCK_ID" => $iblock,
-    "PROPERTY_VALUES" => $PROP,
-    "NAME" => "Счёт № ".$cnt."/".$year." от ".$date,
-    "CODE" => $trans,
-    "ACTIVE" => "Y",
-);
-$PRODUCT_ID = $el->Add($arLoadProductArray);
-
-?>
-<a target="_blank" href="<?=$linkFile?>" class="save invoice-link">Скачать счёт</a>
-<script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
-<form name="TinkoffPayForm" onsubmit="pay(this); return false;">
-    <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1593760029040DEMO">
-    <input class="tinkoffPayRow" type="hidden" name="frame" value="true">
-    <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Сумма заказа" name="amount" required value="<?=$itemPrice?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Номер заказа" name="order" value="Счёт № <?=$cnt?>/<?=$year?> от <?=$date?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Описание заказа" name="description" value="<?=$itemName?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="ФИО плательщика" name="name" value="<?=$_POST["NAME"]?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="E-mail" name="email" value="<?=$_POST["EMAIL"]?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Контактный телефон" name="phone" value="<?=$_POST["LOGIN"]?>">
-    <input class="tinkoff-btn" type="submit" value="Оплатить картой">
-</form>
+</html>'; ?>
 <?echo $html;
 ?>

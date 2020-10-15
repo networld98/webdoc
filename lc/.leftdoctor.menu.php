@@ -12,7 +12,7 @@ $aMenuLinks = Array(
     ),
     Array(
         "Документы, фото и видео",
-        "/lc/",
+        "/lc/invoices/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
