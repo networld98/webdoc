@@ -43,7 +43,7 @@ $MESS['API_REVIEWS_LIST_BROWSER_TITLE']   = 'Отзывы об интернет-
 //==============================================================================
 //                              TEMPLATE MESS
 //==============================================================================
-$MESS['API_REVIEWS_LIST_COMPANY']      = 'Лечащий врач';
+$MESS['API_REVIEWS_LIST_COMPANY']      = 'Компания';
 $MESS['API_REVIEWS_LIST_WEBSITE']      = 'Веб-сайт';
 $MESS['API_REVIEWS_LIST_ADVANTAGE']    = 'Достоинства';
 $MESS['API_REVIEWS_LIST_DISADVANTAGE'] = 'Недостатки';

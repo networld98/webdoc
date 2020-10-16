@@ -30,7 +30,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
  */
 
 Loc::loadMessages(__FILE__);
-global $clinicName;
+
 if(method_exists($this, 'setFrameMode'))
 	$this->setFrameMode(true);
 
@@ -41,20 +41,33 @@ if($arParams['INCLUDE_CSS'] == 'Y') {
 $formId  = trim($arParams['FORM_ID']);
 $modalId = $formId . '_modal';
 ?>
-<div class="api-reviews-form">
+<div class="api-reviews-form arform-color-<?=$arParams['COLOR']?>">
+	<? if($arParams['MESS_SHOP_TEXT'] || $arParams['MESS_SHOP_NAME'] || $arParams['SHOP_BTN_TEXT']): ?>
 		<div class="api-shop-stat">
-			<button class="review-custom-btn" id="comment-rating">
-				<?=$arParams['MESS_SHOP_BTN_TEXT']?>
+			<? if($arParams['MESS_SHOP_TEXT']): ?>
+				<div class="api-shop-desc">
+					<? if($arParams['MESS_SHOP_TEXT']): ?>
+						<span class="api-shop-name" itemprop="name"><?=$arParams['MESS_SHOP_TEXT']?></span>
+					<? endif ?>
+				</div>
+			<? endif ?>
+			<button class="api-button api-button-large" id="comment-rating">
+				<span class="api-icon"></span><?=$arParams['MESS_SHOP_BTN_TEXT']?>
 			</button>
 		</div>
+	<? endif ?>
+
 	<div id="<?=$modalId?>" class="api_modal">
 		<div class="api_modal_dialog">
 			<a class="api_modal_close"></a>
 			<? if($arParams['MESS_FORM_TITLE'] || $arParams['MESS_FORM_SUBTITLE']): ?>
 				<div class="api_modal_header">
-                    <div class="clinic-card-full-desc__content__feedback arbt-color-blue">
-                        <h4 class="title-h4">Отзыв о клинике</h4>
-                    </div>
+					<? if($arParams['MESS_FORM_TITLE']): ?>
+						<div class="api_modal_title"><?=$arParams['MESS_FORM_TITLE']?></div>
+					<? endif ?>
+					<? if($arParams['MESS_FORM_SUBTITLE']): ?>
+						<div class="api_modal_subtitle"><?=$arParams['MESS_FORM_SUBTITLE']?></div>
+					<? endif ?>
 				</div>
 			<? endif ?>
 			<div class="api_modal_content">
@@ -99,12 +112,12 @@ $modalId = $formId . '_modal';
 								<? if($FIELD == 'RATING'): ?>
 									<div class="api-form-rating">
 										<div class="api-star-rating">
-                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_1']?>"><span class="count red">1</span></i>
-                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_2']?>"><span class="count pink">2</span></i>
-                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_3']?>"><span class="count orange">3</span></i>
-                                            <i class="api-icon-star" data-label="<?=$arParams['MESS_STAR_RATING_4']?>"><span class="count green">4</span></i>
-                                            <i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_5']?>"><span class="count chartreuse">5</span></i>
-                                            <input type="hidden" value="5" name="RATING" class="api-field">
+											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_1']?>"></i>
+											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_2']?>"></i>
+											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_3']?>"></i>
+											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_4']?>"></i>
+											<i class="api-icon-star active" data-label="<?=$arParams['MESS_STAR_RATING_5']?>"></i>
+											<input type="hidden" value="5" name="RATING" class="api-field">
 										</div>
 										<div class="api-star-rating-label"><?=$arParams['MESS_STAR_RATING_5']?></div>
 									</div>
@@ -132,8 +145,8 @@ $modalId = $formId . '_modal';
 										 'api-location'
 									);
 									?>
-								<?/* elseif($FIELD == 'FILES'): */?>
-									<?/*<div class="api_upload" id="<?=$fieldId;?>">
+								<? elseif($FIELD == 'FILES'): ?>
+									<div class="api_upload" id="<?=$fieldId;?>">
 										<ul class="api_file_list">
 											<? if($arResult['FILES']): ?>
 												<? foreach($arResult['FILES'] as $file): ?>
@@ -167,8 +180,8 @@ $modalId = $formId . '_modal';
 												 '#FILE_TYPE#'         => $arParams['UPLOAD_FILE_TYPE'],
 											))?>
 										</div>
-									</div>*/?>
-									<?/*<script type="text/javascript">
+									</div>
+									<script type="text/javascript">
 										(function ($) {
 											$('#<?=$fieldId;?>').apiUpload({
 												fileName: '<?=$FIELD;?>',
@@ -236,7 +249,7 @@ $modalId = $formId . '_modal';
 												}
 											})
 										})(jQuery)
-									</script>*/?>
+									</script>
 								<? elseif($FIELD == 'VIDEOS'): ?>
 									<div id="<?=$fieldId;?>">
 										<div class="api_video_list">
@@ -366,9 +379,9 @@ $modalId = $formId . '_modal';
 						</div>
 					<? endif ?>
 
-					<div class="api_row api_buttons text-center">
-						<button class="api-form-submit review-custom-btn">
-							<?=Loc::getMessage('API_REVIEWS_FORM_SUBMIT_TEXT_DEFAULT')?>
+					<div class="api_row api_buttons">
+						<button class="api-button api-button-large api-form-submit api_button_block">
+							<span class="api-icon"></span><span class="api-button-text"><?=Loc::getMessage('API_REVIEWS_FORM_SUBMIT_TEXT_DEFAULT')?></span>
 						</button>
 					</div>
 
@@ -380,23 +393,23 @@ $modalId = $formId . '_modal';
 	<?
 	ob_start();
 	?>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			$.fn.apiReviewsForm({
-				id:                   '<?=$modalId?>',
-				USE_EULA:             '<?=CUtil::JSEscape($arParams['USE_EULA'])?>',
-				USE_PRIVACY:          '<?=CUtil::JSEscape($arParams['USE_PRIVACY'])?>',
-				message: {
-					submit_text_default: '<?=Loc::getMessage('API_REVIEWS_FORM_SUBMIT_TEXT_DEFAULT')?>',
-					submit_text_ajax:    '<?=Loc::getMessage('API_REVIEWS_FORM_SUBMIT_TEXT_AJAX')?>',
-				}
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $.fn.apiReviewsForm({
+                id:                   '<?=$modalId?>',
+                USE_EULA:             '<?=CUtil::JSEscape($arParams['USE_EULA'])?>',
+                USE_PRIVACY:          '<?=CUtil::JSEscape($arParams['USE_PRIVACY'])?>',
+                message: {
+                    submit_text_default: '<?=Loc::getMessage('API_REVIEWS_FORM_SUBMIT_TEXT_DEFAULT')?>',
+                    submit_text_ajax:    '<?=Loc::getMessage('API_REVIEWS_FORM_SUBMIT_TEXT_AJAX')?>',
+                }
             });
-             $('#comment-rating').click(function () {
-                 $('#<?=$modalId?>').show();
-                 $('#<?=$modalId?>').css('opacity','1');
-                 $('#<?=$modalId?> .api_modal_dialog').css('opacity','1');
+            $('#comment-rating').click(function () {
+                $('#<?=$modalId?>').show();
+                $('#<?=$modalId?>').css('opacity','1');
+                $('#<?=$modalId?> .api_modal_dialog').css('opacity','1');
 
-             });
+            });
             $('.api_modal_close').click(function () {
                 $('#<?=$modalId?>').hide();
                 $('#<?=$modalId?>').css('opacity','0');
@@ -405,12 +418,12 @@ $modalId = $formId . '_modal';
             });
 
 
-			//$.fn.apiModal({
-			//	id: '#<?//=$modalId?>//',
-			//	width: 600
-			//});
-		});
-	</script>
+            //$.fn.apiModal({
+            //	id: '#<?//=$modalId?>//',
+            //	width: 600
+            //});
+        });
+    </script>
 	<?
 	$htmlJs = ob_get_contents();
 	ob_end_clean();

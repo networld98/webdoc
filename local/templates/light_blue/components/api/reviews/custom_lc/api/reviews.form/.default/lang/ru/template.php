@@ -97,9 +97,9 @@ $MESS['API_REVIEWS_FORM_TITLE']        = array(
 	 'MESSAGE'     => 'Не указан заголовок',
 );
 $MESS['API_REVIEWS_FORM_COMPANY']      = array(
-	 'NAME'        => 'Лечащий врач',
-	 'PLACEHOLDER' => 'Лечащий врач',
-	 'MESSAGE'     => 'Не указан лечащий врач',
+	 'NAME'        => 'Компания',
+	 'PLACEHOLDER' => 'Название компании',
+	 'MESSAGE'     => 'Не указана компания',
 );
 $MESS['API_REVIEWS_FORM_WEBSITE']      = array(
 	 'NAME'        => 'Веб-сайт',

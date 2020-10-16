@@ -75,7 +75,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                 ?>
                                 <option  data-doctor="<?=$doctorId?>" data-period="<?=$period?>" data-email="<?= $arUser['EMAIL'] ?>" data-id="<?= $timeForIdNext ?>"
                                         data-phone="<?= $arUser['LOGIN'] ?>"
-                                        value="<?= $item['NAME'] ?>"><?= $item['NAME'] ?></option>
+                                        value="<?= $item['NAME'] ?>/<?= $timeForIdNext ?>"><?= $item['NAME'] ?></option>
                             <?
                             }
                         }?>
@@ -98,6 +98,8 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                             <?if (in_array(date($week[$date->format("N")]),$dayinClinic)){?>
                                 <?if ($dayOfTime == NULL) {
                                     $dayOfTime = date($week[$date->format("N")]);
+                                } if($key == 0){
+                                    $week[0] = date( $week[$date->format("N")]).', '. date($date->format("d.m.Y"));
                                 }?>
                                 <option data-id="<?= $timeForId ?>" data-day="<?= date($week[$date->format("N")]) ?>" value="<?= date($week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?>"><?= date( $week[$date->format("N")]);?>, <?= date($date->format("d.m.Y"));?></option>
                             <?}?>
@@ -121,7 +123,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
     <?}elseif($arQuestion["CAPTION"]=="E-mail врача/клиники"){?>
         <input type="hidden" id="option_mailHome"  name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$doctorEmail?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="ФИО/Телефон врача"){?>
-        <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?if($noneClinic==NULL){echo $doctorName.'/';}?><?=$doctorPhone?>" size="0">
+        <input type="hidden" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?= $doctorId ?>/<?if($noneClinic==NULL){echo $doctorName.'/';}?><?=$doctorPhone?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="Телефон клиники"){?>
         <input type="hidden" id="option_phoneHome" name="form_text_<?=$arQuestion['STRUCTURE'][0]['ID']?>" value="<?=$clinicPhone?>" size="0">
     <?}elseif($arQuestion["CAPTION"]=="ID врача"){?>

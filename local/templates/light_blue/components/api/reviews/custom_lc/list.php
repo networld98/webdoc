@@ -39,7 +39,6 @@ if($arParams['INCLUDE_CSS'] == 'Y') {
 }
 
 $stat_class = ($arParams['USE_STAT'] ? ' api-stat-on' : ' api-stat-off');
-global $clinicName;
 ?>
 	<div id="reviews" class="api-reviews <?=$stat_class?>" itemscope itemtype="http://schema.org/Product">
 		<?
@@ -49,35 +48,7 @@ global $clinicName;
 		$dynamicArea->setContainerID("reviews");
 		$dynamicArea->startDynamicArea();
 		?>
-        <div class="clinic-card-full-desc__content__feedback arbt-color-<?=$arParams['COLOR']?>">
-				<? if($arParams['USE_SUBSCRIBE'] == 'Y'): ?>
-					<div class="api-block-right">
-						<? $APPLICATION->IncludeComponent(
-							 'api:reviews.subscribe',
-							 "",
-							 array(
-									'THEME'                  => $arParams['~THEME'],
-									'COLOR'                  => $arParams['~COLOR'],
-									'INCLUDE_CSS'            => $arParams['~INCLUDE_CSS'],
-									'AJAX_URL'               => $arParams['~SUBSCRIBE_AJAX_URL'],
-									'MESS_LINK'              => $arParams['~MESS_SUBSCRIBE_LINK'],
-									'MESS_SUBSCRIBE'         => $arParams['~MESS_SUBSCRIBE_SUBSCRIBE'],
-									'MESS_UNSUBSCRIBE'       => $arParams['~MESS_SUBSCRIBE_UNSUBSCRIBE'],
-									'MESS_FIELD_PLACEHOLDER' => $arParams['~MESS_SUBSCRIBE_FIELD_PLACEHOLDER'],
-									'MESS_BUTTON_TEXT'       => $arParams['~MESS_SUBSCRIBE_BUTTON_TEXT'],
-									'MESS_ERROR'             => $arParams['~MESS_SUBSCRIBE_ERROR'],
-									'MESS_ERROR_EMAIL'       => $arParams['~MESS_SUBSCRIBE_ERROR_EMAIL'],
-									'MESS_ERROR_CHECK_EMAIL' => $arParams['~MESS_SUBSCRIBE_ERROR_CHECK_EMAIL'],
-									'IBLOCK_ID'              => $arParams['~IBLOCK_ID'],
-									'SECTION_ID'             => $arParams['~SECTION_ID'],
-									'ELEMENT_ID'             => $arParams['~ELEMENT_ID'],
-									'ORDER_ID'               => $arParams['~ORDER_ID'],
-									'URL'                    => $arParams['~URL'],
-							 ),
-							 $component
-						); ?>
-					</div>
-				<? endif ?>
+		<div class="clinic-card-full-desc__content__feedback arbt-color-blue">
 			<div class="api-block-header">
 				<? if($arParams['USE_STAT']): ?>
 					<? $APPLICATION->IncludeComponent(
@@ -102,6 +73,95 @@ global $clinicName;
 						 $component
 					); ?>
 				<? endif ?>
+				<?/* $APPLICATION->IncludeComponent(
+					 'api:reviews.form',
+					 "",
+					 array(
+							'THEME'                               => $arParams['~THEME'],
+							'COLOR'                               => $arParams['~COLOR'],
+							'EMAIL_TO'                            => $arParams['~EMAIL_TO'],
+							'SHOP_NAME'                           => $arParams['~SHOP_NAME'],
+							'INCLUDE_CSS'                         => $arParams['~INCLUDE_CSS'],
+							'INCLUDE_JQUERY'                      => $arParams['~INCLUDE_JQUERY'],
+							'CACHE_TYPE'                          => $arParams['~CACHE_TYPE'],
+							'CACHE_TIME'                          => $arParams['~CACHE_TIME'],
+							'DISPLAY_FIELDS'                      => $arParams['~FORM_DISPLAY_FIELDS'],
+							'REQUIRED_FIELDS'                     => $arParams['~FORM_REQUIRED_FIELDS'],
+							'PREMODERATION'                       => $arParams['~FORM_PREMODERATION'],
+							'DELIVERY'                            => $arParams['~FORM_DELIVERY'],
+							'CITY_VIEW'                           => $arParams['~FORM_CITY_VIEW'],
+							'USE_PLACEHOLDER'                     => $arParams['~FORM_USE_PLACEHOLDER'],
+							'RULES_TEXT'                          => $arParams['~FORM_RULES_TEXT'],
+							'RULES_LINK'                          => $arParams['~FORM_RULES_LINK'],
+							'SHOP_TEXT'                           => $arParams['~FORM_SHOP_TEXT'],
+							'SHOP_BTN_TEXT'                       => $arParams['~FORM_SHOP_BTN_TEXT'],
+							'FORM_TITLE'                          => $arParams['~FORM_FORM_TITLE'],
+							'FORM_SUBTITLE'                       => $arParams['~FORM_FORM_SUBTITLE'],
+							'IBLOCK_ID'                           => $arParams['~IBLOCK_ID'],
+							'SECTION_ID'                          => $arParams['~SECTION_ID'],
+							'ELEMENT_ID'                          => $arParams['~ELEMENT_ID'],
+							'ORDER_ID'                            => $arParams['~ORDER_ID'],
+							'URL'                                 => $arParams['~URL'],
+							'USE_SUBSCRIBE'                       => $arParams['~USE_SUBSCRIBE'],
+							'MESS_ADD_REVIEW_VIZIBLE'             => $arParams['~FORM_MESS_ADD_REVIEW_VIZIBLE'],
+							'MESS_ADD_REVIEW_MODERATION'          => $arParams['~FORM_MESS_ADD_REVIEW_MODERATION'],
+							'MESS_ADD_REVIEW_ERROR'               => $arParams['~FORM_MESS_ADD_REVIEW_ERROR'],
+							'MESS_ADD_REVIEW_EVENT_THEME'         => $arParams['~FORM_MESS_ADD_REVIEW_EVENT_THEME'],
+							'MESS_ADD_REVIEW_EVENT_TEXT'          => $arParams['~FORM_MESS_ADD_REVIEW_EVENT_TEXT'],
+							'MESS_STAR_RATING_1'                  => $arParams['~FORM_MESS_STAR_RATING_1'],
+							'MESS_STAR_RATING_2'                  => $arParams['~FORM_MESS_STAR_RATING_2'],
+							'MESS_STAR_RATING_3'                  => $arParams['~FORM_MESS_STAR_RATING_3'],
+							'MESS_STAR_RATING_4'                  => $arParams['~FORM_MESS_STAR_RATING_4'],
+							'MESS_STAR_RATING_5'                  => $arParams['~FORM_MESS_STAR_RATING_5'],
+							'MESS_FIELD_PLACEHOLDER_RATING'       => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_RATING'],
+							'MESS_FIELD_PLACEHOLDER_ORDER_ID'     => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_ORDER_ID'],
+							'MESS_FIELD_PLACEHOLDER_TITLE'        => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_TITLE'],
+							'MESS_FIELD_PLACEHOLDER_ADVANTAGE'    => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_ADVANTAGE'],
+							'MESS_FIELD_PLACEHOLDER_DISADVANTAGE' => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_DISADVANTAGE'],
+							'MESS_FIELD_PLACEHOLDER_ANNOTATION'   => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_ANNOTATION'],
+							'MESS_FIELD_PLACEHOLDER_DELIVERY'     => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_DELIVERY'],
+							'MESS_FIELD_PLACEHOLDER_GUEST_NAME'   => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_GUEST_NAME'],
+							'MESS_FIELD_PLACEHOLDER_GUEST_EMAIL'  => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_GUEST_EMAIL'],
+							'MESS_FIELD_PLACEHOLDER_GUEST_PHONE'  => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_GUEST_PHONE'],
+							'MESS_FIELD_PLACEHOLDER_CITY'         => $arParams['~FORM_MESS_FIELD_PLACEHOLDER_CITY'],
+							'MESS_FIELD_NAME_RATING'              => $arParams['~MESS_FIELD_NAME_RATING'],
+							'MESS_FIELD_NAME_ORDER_ID'            => $arParams['~MESS_FIELD_NAME_ORDER_ID'],
+							'MESS_FIELD_NAME_TITLE'               => $arParams['~MESS_FIELD_NAME_TITLE'],
+							'MESS_FIELD_NAME_ADVANTAGE'           => $arParams['~MESS_FIELD_NAME_ADVANTAGE'],
+							'MESS_FIELD_NAME_DISADVANTAGE'        => $arParams['~MESS_FIELD_NAME_DISADVANTAGE'],
+							'MESS_FIELD_NAME_ANNOTATION'          => $arParams['~MESS_FIELD_NAME_ANNOTATION'],
+							'MESS_FIELD_NAME_DELIVERY'            => $arParams['~MESS_FIELD_NAME_DELIVERY'],
+							'MESS_FIELD_NAME_GUEST_NAME'          => $arParams['~MESS_FIELD_NAME_GUEST_NAME'],
+							'MESS_FIELD_NAME_GUEST_EMAIL'         => $arParams['~MESS_FIELD_NAME_GUEST_EMAIL'],
+							'MESS_FIELD_NAME_GUEST_PHONE'         => $arParams['~MESS_FIELD_NAME_GUEST_PHONE'],
+							'MESS_FIELD_NAME_CITY'                => $arParams['~MESS_FIELD_NAME_CITY'],
+							'MESS_FIELD_NAME_COMPANY'             => $arParams['~MESS_FIELD_NAME_COMPANY'],
+							'MESS_FIELD_NAME_WEBSITE'             => $arParams['~MESS_FIELD_NAME_WEBSITE'],
+							'MESS_FIELD_NAME_FILES'               => $arParams['~MESS_FIELD_NAME_FILES'],
+							'MESS_FIELD_NAME_VIDEOS'              => $arParams['~MESS_FIELD_NAME_VIDEOS'],
+
+							'USE_EULA'             => $arParams['~FORM_USE_EULA'],
+							'MESS_EULA'            => $arParams['~FORM_MESS_EULA'],
+							'MESS_EULA_CONFIRM'    => $arParams['~FORM_MESS_EULA_CONFIRM'],
+							'USE_PRIVACY'          => $arParams['~FORM_USE_PRIVACY'],
+							'MESS_PRIVACY'         => $arParams['~FORM_MESS_PRIVACY'],
+							'MESS_PRIVACY_LINK'    => $arParams['~FORM_MESS_PRIVACY_LINK'],
+							'MESS_PRIVACY_CONFIRM' => $arParams['~FORM_MESS_PRIVACY_CONFIRM'],
+
+							'UPLOAD_FILE_TYPE'   => $arParams['~UPLOAD_FILE_TYPE'],
+							'UPLOAD_FILE_SIZE'   => $arParams['~UPLOAD_FILE_SIZE'],
+							'UPLOAD_FILE_LIMIT'  => $arParams['~UPLOAD_FILE_LIMIT'],
+							'UPLOAD_VIDEO_LIMIT' => $arParams['~UPLOAD_VIDEO_LIMIT'],
+
+							//'USE_LIST'    => $arParams['~USE_LIST'],
+							'DETAIL_HASH'        => $arParams['~DETAIL_HASH'],
+							'SEF_MODE'           => $arParams['~SEF_MODE'],
+							'SEF_FOLDER'         => $arParams['~SEF_FOLDER'],
+							'DETAIL_URL'         => $arResult['FOLDER'] . $arResult['URL_TEMPLATES']['detail'],
+							'LIST_URL'           => $arResult['FOLDER'] . $arResult['URL_TEMPLATES']['list'],
+					 ),
+					 $component
+				); */?>
 			</div>
 			<?/*<div class="api-block-sort">
 				<? $APPLICATION->IncludeComponent(

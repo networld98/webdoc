@@ -80,9 +80,11 @@ $idClient = $arFields['ID'];
                     <?$arSelect = Array("ID","NAME", "PROPERTY_SERVICE", "PROPERTY_SUM", "PROPERTY_PAY", "PROPERTY_FOR");
                     $arFilter = Array("IBLOCK_ID"=>24);
                     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+                    $i=0;
                     while($ob = $res->GetNextElement()) {
                         $arFields = $ob->GetFields();?>
-                         <?if ($arFields['PROPERTY_FOR_VALUE'] == $arProps['OFFICIAL_NAME']['VALUE']){?>
+                         <?if ($arFields['PROPERTY_FOR_VALUE'] == $arProps['OFFICIAL_NAME']['VALUE']){
+                            $i++;?>
                             <tr valign="middle" align="center">
                               <?if ($arFields['PROPERTY_PAY_VALUE'] ){?>
                                 <form id="form_completion_<?=$arFields['ID']?>" name="form_completion_<?=$arFields['ID']?>" action="" method="post" class="form-completiom">
@@ -138,6 +140,7 @@ $idClient = $arFields['ID'];
                             </tr>
                         <?}?>
                     <?}?>
+                    <?if($i==0){?><tr><td colspan="4" align="center">Вы еще не получали счета, получить счет можно <a href="/lc/finance/"><b>тут</b></a></td></tr><?}?>
                     </tbody>
                 </table>
             <div id="invoice"></div>

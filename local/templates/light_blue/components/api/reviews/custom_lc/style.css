@@ -212,6 +212,7 @@
 .api_modal .api_modal_dialog {
 	margin-top: 10% !important;
 }
+
 /* @media
  ========================================================================== */
 @media (min-width: 768px){
@@ -226,6 +227,7 @@
 		margin-top: 30% !important;
 	}
 }
+
 .arform-color-blue .api-button {
 	color: var(--primary);
 	font-size: 18px;
@@ -236,6 +238,7 @@
 	margin: 0 auto;
 	cursor: pointer;
 }
+
 .review-custom-btn, .review-custom-btn:hover, .review-custom-btn:focus, .review-custom-btn:active {
 	padding: 15px 25px;
 	color: var(--primary);
@@ -251,7 +254,7 @@
 	background-color:#98D7DC!important;
 }
 #api-reviews-stat .clinic-card-full-desc__content__feedback-item-left__mark {
-	 margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 #api-reviews-stat .clinic-card-full-desc__content__feedback-item-left__mark .count {
 	font-size: 12px;
@@ -259,4 +262,18 @@
 	padding: 3px 0;
 	text-align: center;
 	width: 20px;
+}
+.checked-feedback-list-item__from span {
+	display: inline-block!important;
+}
+.api-reply.api_button.api_button_small {
+	padding: 2px 11px;
+	color: var(--primary);
+	font-size: 18px;
+	line-height: 26px;
+	border: 1px solid #98D7DC;
+	border-radius: 5px;
+	background-color: #fff;
+	margin: 0 auto;
+	cursor: pointer;
 }

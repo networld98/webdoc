@@ -94,7 +94,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         <?usort($times, function($a, $b){
                             return ($a['TIME'] - $b['TIME']);
                         });?>
-                        <?if($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
+                        <? if ($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] && empty($arItem["PROPERTIES"]["NOT_ON"]["VALUE"])): ?>
                             <p class="doctors-list-item_timing">Выберите время приема для записи онлайн</p>
                             <ul class="doctors-list-item__days-list">
                                 <?foreach($daterange as $date){?>

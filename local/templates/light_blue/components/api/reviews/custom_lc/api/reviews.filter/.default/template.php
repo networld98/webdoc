@@ -22,16 +22,16 @@
  */
 
 use Bitrix\Main\Page\Asset,
-	 Bitrix\Main\Page\AssetLocation,
-	 Bitrix\Main\Localization\Loc;
+    Bitrix\Main\Page\AssetLocation,
+    Bitrix\Main\Localization\Loc;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
-	die();
+    die();
 
 Loc::loadMessages(__FILE__);
 global $rating;
 if(method_exists($this, 'setFrameMode'))
-	$this->setFrameMode(true);
+    $this->setFrameMode(true);
 ?>
     <style>
         .api-reviews-filter .clinic-card-full-desc__content__feedback-item-left__mark .text {
@@ -54,12 +54,12 @@ if(method_exists($this, 'setFrameMode'))
             border-radius: 5px;
         }
     </style>
-	<div id="<?=$arParams['FORM_ID']?>" class="api-reviews-filter clinic-card-full-desc__content__feedback__radio-group">
-		<ul class="api-filters">
-			<? for($i = 5; $i >= 1; $i--): ?>
-				<?
-				$active = (in_array($i, $arResult['SESSION_RATING']));
-				?>
+    <div id="<?=$arParams['FORM_ID']?>" class="api-reviews-filter clinic-card-full-desc__content__feedback__radio-group">
+        <ul class="api-filters">
+            <? for($i = 5; $i >= 1; $i--): ?>
+                <?
+                $active = (in_array($i, $arResult['SESSION_RATING']));
+                ?>
                 <li>
                     <a href="<?=$APPLICATION->GetCurPageParam('arfilter=1&arrating=' . join('|', array_merge(array($i),$arResult['SESSION_RATING'])), array('arfilter', 'arrating'))?>"
                        class="api-filters-item clinic-card-full-desc__content__feedback-item-left__mark <?if($i==1){?>red<?}elseif ($i==2){?>pink<?}elseif ($i==3){?>orange<?}elseif ($i==4){?>green<?}else{?>chartreuse<?}?> <?=$active ? 'api-active' : ''?>"
@@ -84,17 +84,17 @@ if(method_exists($this, 'setFrameMode'))
                         <? endif; ?>
                     </a>
                 </li>
-			<? endfor ?>
-		</ul>
-	</div>
+            <? endfor ?>
+        </ul>
+    </div>
 <?
 ob_start();
 ?>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			$.fn.apiReviewsFilter();
-		});
-	</script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $.fn.apiReviewsFilter();
+        });
+    </script>
 <?
 $html = ob_get_contents();
 ob_end_clean();

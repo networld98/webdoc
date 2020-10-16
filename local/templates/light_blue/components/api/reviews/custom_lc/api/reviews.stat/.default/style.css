@@ -10,8 +10,8 @@
 .api-reviews-stat .api-full-rating{ font-size: 18px }
 /* .api-info */
 .api-reviews-stat .api-info .api-info-row{ position: relative; padding: 5px 0 }
-.api-reviews-stat .api-info .api-info-title{ position: absolute; left: 5px; bottom: 0; top: 50%; margin-top: -9.5px;}
-.api-reviews-stat .api-info .api-info-progress{ background: #ececec; height: 18px; margin: 0 50px 0 36px; overflow: hidden; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
+.api-reviews-stat .api-info .api-info-title{ position: absolute; left: 5px; bottom: 0; top: 50%; margin-top: -12.5px }
+.api-reviews-stat .api-info .api-info-progress{ background: #ececec; height: 18px; margin: 0 50px 0 50px; overflow: hidden; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
 .api-reviews-stat .api-info .api-info-qty{ position: absolute; right: 0; top: 0; bottom: 0; font-weight: bold; font-size: 14px; line-height: 30px; min-width: 40px; }
 .api-reviews-stat .api-info .api-info-bar{ float: left; height: 100%; width: 0; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
 /* .api-icon-star */

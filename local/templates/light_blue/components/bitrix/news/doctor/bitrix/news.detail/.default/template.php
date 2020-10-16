@@ -205,7 +205,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             </div>
         </div>
        <?/*global $USER;
-        if ($USER->IsAdmin()){ */?>
+        if ($USER->IsAdmin()){ ?>
                 <div class="doctor-card__description__adapt">
                     <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
                         <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
@@ -241,10 +241,12 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                         </ul>
                     <?endif;?>
                     <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
-                </div>
+               <?/* </div>*/?>
         <div class="doctor-card-popUp-group">
-            <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
-			<a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
+            <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
+                <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
+                <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
+            <?} ?>
         <?/*}*/?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
@@ -367,7 +369,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
     </div>
 </section>
 <?include $_SERVER['DOCUMENT_ROOT'].'/include/result_record_in_form.php';?>
-<?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"]):?>
+<?if($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] && empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])):?>
 <section class="container choosing-time">
     <h3 class="title-h3">Выберите время приема для записи онлайн</h3>
     <?foreach ($arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item){

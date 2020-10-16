@@ -11,6 +11,16 @@ $aMenuLinks = Array(
         ),
     ),
     Array(
+        "Уведомления",
+        "/lc/message/",
+        Array(),
+        Array(
+            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon3.svg",
+            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon3-un.svg",
+            "SPAN"=> "Запросы на добавления в клиники"
+        ),
+    ),
+    Array(
         "Документы, фото и видео",
         "/lc/invoices/",
         Array(),
@@ -38,6 +48,15 @@ $aMenuLinks = Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon7.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon7-un.svg",
             "SPAN"=> "Как сделать так, чтобы про вас узнали пациенты"
+        ),
+    ),
+    Array(
+        "Пополнить счет",
+        "/lc/finance/",
+        Array(),
+        Array(
+            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
+            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
         ),
     ),
     /*Array(

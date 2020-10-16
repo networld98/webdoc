@@ -586,6 +586,25 @@ main >.main-seo-text {
 .api-reviews-list .api-footer {
     margin-bottom: 40px;
 }
+.personal-cabinet-content__schedule-page__block .message-lc {
+    display: flex;
+    align-items: baseline;
+    padding: 0 20px 20px
+}
+.count-message{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E74C77;
+    position: absolute;
+    top: 2px;
+    left: 30px;
+    font-size: 11px;
+}
 @media (max-width: 1430px) {
     .personal-cabinet-content__my-profile .contacts-group {
         width: 100%;

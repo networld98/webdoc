@@ -450,12 +450,6 @@ $week = array('Понедельник','Вторник','Среда','Четве
                     '                <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">\n' +
                     '                    <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">\n' +
                     '                        <ul class="checkbox-group">\n' +
-                    '                            <li>\n' +
-                    '                                <label for="">ФИО\n' +
-
-                    '                                </label>\n' +
-                    '                                    <input type="text" name="NAME_DOCTOR" value="">\n' +
-                    '                            </li>\n' +
                     '                           <li>\n' +
                     '                                <label for="">Номер телефона для привязки врача*\n' +
 
@@ -468,6 +462,12 @@ $week = array('Понедельник','Вторник','Среда','Четве
                     '                                </label>\n' +
                     '                                    <label class="photoFile-label">Добавить<input type="file" class="photoFile" name="DETAIL_PICTURE" value=""></label>\n' +
                                                         '<div class="photoFile-name"></div>\n' +
+                    '                            </li>\n' +
+                    '                            <li>\n' +
+                    '                                <label for="">ФИО\n' +
+
+                    '                                </label>\n' +
+                    '                                    <input type="text" name="NAME_DOCTOR" value="">\n' +
                     '                            </li>\n' +
                     '                            <li>\n' +
                     '                                <label for="">Пол\n' +

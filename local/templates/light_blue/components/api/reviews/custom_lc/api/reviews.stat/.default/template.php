@@ -22,30 +22,30 @@
  */
 
 use Bitrix\Main\Page\Asset,
-	 Bitrix\Main\Page\AssetLocation,
-	 Bitrix\Main\Localization\Loc;
+    Bitrix\Main\Page\AssetLocation,
+    Bitrix\Main\Localization\Loc;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
-	die();
+    die();
 
 Loc::loadMessages(__FILE__);
 
 if(method_exists($this, 'setFrameMode'))
-	$this->setFrameMode(true);
+    $this->setFrameMode(true);
 
 if($arParams['INCLUDE_CSS'] == 'Y') {
-	$this->addExternalCss($templateFolder . '/theme/' . $arParams['THEME'] . '/style.css');
+    $this->addExternalCss($templateFolder . '/theme/' . $arParams['THEME'] . '/style.css');
 }
 
 include 'ajax.php';
 
 ob_start();
 ?>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			$.fn.apiReviewsStat();
-		});
-	</script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $.fn.apiReviewsStat();
+        });
+    </script>
 <?
 $html = ob_get_contents();
 ob_end_clean();

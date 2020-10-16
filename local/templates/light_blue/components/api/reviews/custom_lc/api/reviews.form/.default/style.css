@@ -5,7 +5,7 @@
 .api-reviews-form .api-shop-desc span{ display: block }
 .api-reviews-form .api-shop-name{ font-weight: bold; }
 .api-reviews-form .api-form-controls{ overflow: hidden }
-.api-reviews-form .api-star-rating{ float: left; margin-right: 15px;padding-top: 4px; }
+.api-reviews-form .api-star-rating{ float: left; margin-right: 15px; }
 .api-reviews-form .api-star-rating-label{ line-height: 32px; }
 .api-reviews-form .api-star-rating i{ display: inline-block; height: 28px; width: 29px; cursor: pointer}
 .api-reviews-form .api-star-rating i.active{ background-position: -29px -57px; }

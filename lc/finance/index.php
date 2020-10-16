@@ -8,7 +8,7 @@ $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
 global $idClinic;
 
-$arFilter = Array("IBLOCK_ID"=>"9", "PROPERTY_PHONE"=> $arUser['LOGIN']);
+$arFilter = Array("IBLOCK_ID"=>array(9,10), "PROPERTY_PHONE"=> $arUser['LOGIN']);
 $arSelect = Array();
 $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
 while($ob = $res->GetNextElement()){
