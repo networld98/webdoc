@@ -145,10 +145,10 @@ CModule::IncludeModule("form"); ?>
                                         <?
                                         $i = 0;
                                         foreach ($times as $item) {
-                                            if ($item['DAY'] == $selectDay) {
+                                            if ($item['DAY'] == $selectDay && $item['CLINIC']!=NULL) {
                                                 $i++;
                                                 $fullDate = $selectDay . ', ' . $selectDate . '/' . $item['TIME']; ?>
-                                                <li class="doctors-list-item__worktimming-list-item <?if (in_array($fullDate, $record)) {?>closed"<?}?>" title="<?= $item['CLINIC'] ?>">
+                                                <li class="doctors-list-item__worktimming-list-item <?if (in_array($fullDate, $record)) {?>closed<?}?>" title="<?= $item['CLINIC'] ?>">
                                                     <a href="<?if (in_array($fullDate, $record)){?>javascript:void(0);<?}else {?><?= $arItem['DETAIL_PAGE_URL'] ?>?clinic=<?= $item['CLINIC'] ?>&time=<?= $selectDate ?> <?= $item['TIME'] ?><?}?>"><?= $item['TIME']?></a>
                                                 </li>
                                             <?

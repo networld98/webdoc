@@ -110,7 +110,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                                 <?
                                 $i=0;
                                 foreach ($times as $item){
-                                    if($item['DAY'] == $selectDay || in_array($days[$date->format("N")],$day)){
+                                    if($item['DAY'] == $selectDay || in_array($days[$date->format("N")],$day) && $item['CLINIC']!=NULL){
                                         $i++;
                                         $fullDate = $selectDay . ', ' . $selectDate . '/' . $item['TIME']; ?>
                                         <li class="doctors-list-item__worktimming-list-item <?if (in_array($fullDate, $record)) {?>closed"<?}?>"" title="<?=$item['CLINIC']?>">

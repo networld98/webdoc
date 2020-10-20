@@ -204,50 +204,11 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 </div>
             </div>
         </div>
-       <?/*global $USER;
-        if ($USER->IsAdmin()){ ?>
-                <div class="doctor-card__description__adapt">
-                    <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
-                        <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
-                            <?$res = CIBlockElement::GetByID($item);
-                            if($ar_res = $res->GetNext()){
-                                $db_props = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"PHONE"));
-                                if($ar_props = $db_props->Fetch()) {
-                                    $phone = IntVal($ar_props["VALUE"]);
-                                }
-                                $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
-                            }?>
-                        <?}?>
-                        <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
-                    <?}else{
-                        $noneClinic = "Y";
-                        ?>
-                        <p class="doctor-card__clinic-name">Адрес</p>
-                    <?}?>
-                    <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
-                        <p class="doctor-card__clinic-adress">
-                            г. <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
-                        </p>
-                    <?endif;?>
-                    <!-- <div class="doctor-card-location-map"></div> -->
-                    <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
-                        <ul class="doctor-card__metro-list">
-                            <?foreach ($arResult["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
-                                <?$res = CIBlockElement::GetByID($item);
-                                if($ar_res = $res->GetNext()){?>
-                                    <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
-                                <?}?>
-                            <?}?>
-                        </ul>
-                    <?endif;?>
-                    <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
-               <?/* </div>*/?>
         <div class="doctor-card-popUp-group">
             <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
                 <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
                 <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
             <?} ?>
-        <?/*}*/?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
@@ -417,7 +378,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <ul class="choosing-time__worktimming-list" id="doctor-day-block-ajax">
             <?$i=0;
             foreach ($times as $item){
-                if($item['DAY'] == $selectDay && in_array( date($days[$date->format("N")]),$day)){
+                if($item['DAY'] == $selectDay && in_array( date($days[$date->format("N")]),$day) && $item['CLINIC']!=NULL){
                     $i++;
                     $fullDate = $days[$date->format("N")].', '.$selectDate.'/'.$item['TIME'];
                     ?>

@@ -12,10 +12,14 @@ CForm::GetResultAnswerArray($FORM_ID,
     $arrAnswers,
     $arrAnswersVarname,
     array("RESULT_ID" => $arID));
-foreach ($arrAnswersVarname as $answer){
-    $strDoctor = explode('/',$answer['SIMPLE_RECORD_PHONE']['0']['USER_TEXT']);
-    if($strDoctor[0] == $arItem['ID']){
-        $record[] = $answer['SIMPLE_RECORD_2']['0']['USER_TEXT'];
+foreach ($arrAnswersVarname as $key => $answer){
+    $rsResult = CFormResult::GetByID($key);
+    $aResult = $rsResult->Fetch();
+    if($aResult['STATUS_TITLE'] != 'CANSELED') {
+        $strDoctor = explode('/', $answer['SIMPLE_RECORD_PHONE']['0']['USER_TEXT']);
+        if ($strDoctor[0] == $arItem['ID']) {
+            $record[] = $answer['SIMPLE_RECORD_2']['0']['USER_TEXT'];
+        }
     }
 }
 ?>
