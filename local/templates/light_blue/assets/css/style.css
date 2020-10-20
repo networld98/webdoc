@@ -2861,6 +2861,7 @@ main {
     color: #000000;
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
 }
 .clinic-card-info__title::before {
     display: block;

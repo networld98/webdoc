@@ -77,6 +77,18 @@
     justify-content: flex-end;
     align-items: center;
 }
+.booking-block .reverse_switch  {
+    padding: 10px;
+}
+.booking-block div[class^="col-"]  {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.booking-block .reverse_switch  {
+    display: flex;
+}
 #message-form {
     width: 100%;
     margin-right: 20px;
@@ -318,6 +330,10 @@ label.photoFile-label:hover {
 .no-padding {
     padding-left: 0!important;
     padding-right: 0!important;
+}
+.no-margin {
+    margin-left: 0!important;
+    margin-right: 0!important;
 }
 .personal-cabinet-content__doctors-page__filter .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
     max-width: 100%;
@@ -605,125 +621,176 @@ main >.main-seo-text {
     left: 30px;
     font-size: 11px;
 }
+.flex-right .doctors-list-item__description.reception-none {
+    margin-top: 90px;
+}
+.review-custom-btn, .review-custom-btn:hover, .review-custom-btn:focus, .review-custom-btn:active {
+    padding: 15px 25px;
+    color: var(--primary);
+    font-size: 18px;
+    line-height: 26px;
+    border: 1px solid #98D7DC;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 30px auto 0;
+    cursor: pointer;
+}
+.clinic-popup .clinic-popup_img {
+    width: 153px;
+    height: 153px;
+    display: flex;
+}
+.clinic-popup .clinic-popup_img > img{
+    width: 100%;
+    height: 100%;
+}
+.clinic-popup .clinic-card-desc__clinic-name {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 10px;
+    /* max-width: 80%; */
+}
+.clinic-popup .clinic-card-desc__clinic-name{
+    font-size: 25px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 30px;
+    max-width: 100%;
+}
+.clinic-popup .doctors-list-item_options-list {
+    padding-left: 0;
+}
+.clinic-popup .doctors-list-item_options-list li{
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.clinic-popup .col-margin {
+    margin: 17px 0;
+}
 @media (max-width: 1430px) {
-    .personal-cabinet-content__my-profile .contacts-group {
-        width: 100%;
-    }
+.personal-cabinet-content__my-profile .contacts-group {
+    width: 100%;
+}
 }
 @media (max-width: 992px) {
-    .services-detail ul.anchor-block-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding-bottom: 5px;
-    }
-    .services-detail ul li {
-        margin-right: 10px;
-    }
-    .services-detail > .row > div:last-child {
-        margin-top: 60px;
-    }
+.services-detail ul.anchor-block-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+}
+.services-detail ul li {
+    margin-right: 10px;
+}
+.services-detail > .row > div:last-child {
+    margin-top: 60px;
+}
 }
 @media (max-width: 768px) {
-    .doctor-lc .personal-cabinet-content__doctors-page-box-item__desc__name {
-        margin-top: 15px;
-        display: block;
-    }
-    .time-block-span {
-        max-width: 132px;
-    }
-    .personal-cabinet-content-item {
-        width: 100%;
-    }
+.doctor-lc .personal-cabinet-content__doctors-page-box-item__desc__name {
+    margin-top: 15px;
+    display: block;
+}
+.time-block-span {
+    max-width: 132px;
+}
+.personal-cabinet-content-item {
+    width: 100%;
+}
 }
 @media (max-width: 730px) {
-    .header .container.cabinet .contacts {
-        display: none;
-    }
-    .services-detail .row > div:last-child > img:nth-of-type(odd) ,.services-detail .row > div:last-child >  img:nth-of-type(even) {
-        max-width: 300px;
-        height: 300px;
-    }
-    .services-detail .row > div:last-child >  img:nth-of-type(odd) {
-        margin-left: 20px;
-    }
-    .services-detail .row > div:last-child >  img:nth-of-type(even) {
-        margin-right: 20px;
-    }
+.header .container.cabinet .contacts {
+    display: none;
+}
+.services-detail .row > div:last-child > img:nth-of-type(odd) ,.services-detail .row > div:last-child >  img:nth-of-type(even) {
+    max-width: 300px;
+    height: 300px;
+}
+.services-detail .row > div:last-child >  img:nth-of-type(odd) {
+    margin-left: 20px;
+}
+.services-detail .row > div:last-child >  img:nth-of-type(even) {
+    margin-right: 20px;
+}
 }
 @media (max-width: 650px) {
-    label.photoFile-label {
-        width: 100%;
-    }
-    .personal-cabinet .text-view {
-        flex-direction: column-reverse;
-        align-items: initial;
-        text-align: center;
-    }
-    .personal-cabinet .delete-doctor,.personal-cabinet .save {
-        margin-left: 0;
-    }
-    .personal-cabinet-content__doctors-page__filter__options .title-h4 {
-        margin-bottom: 0;
-    }
+label.photoFile-label {
+    width: 100%;
+}
+.personal-cabinet .text-view {
+    flex-direction: column-reverse;
+    align-items: initial;
+    text-align: center;
+}
+.personal-cabinet .delete-doctor,.personal-cabinet .save {
+    margin-left: 0;
+}
+.personal-cabinet-content__doctors-page__filter__options .title-h4 {
+    margin-bottom: 0;
+}
 }
 @media (max-width: 576px) {
-    .place-schedule-block select:first-child, .place-schedule-block input:first-child {
-        margin-bottom: 20px;
-    }
-    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
-        text-align: left;
-    }
-    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span {
-        text-align: left;
-        margin-right: 0;
-        margin-bottom: 10px;
-        display: block;
-    }
+.place-schedule-block select:first-child, .place-schedule-block input:first-child {
+    margin-bottom: 20px;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
+    text-align: left;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span {
+    text-align: left;
+    margin-right: 0;
+    margin-bottom: 10px;
+    display: block;
+}
 }
 @media (max-width: 450px) {
-    .delete-doctor-modal {
-        left: 0;
-    }
-    .services-detail .row > div:last-child >  img:nth-of-type(odd),.services-detail .row > div:last-child >  img:nth-of-type(even) {
-        float: initial;
-        margin-bottom: 20px;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
-        right: -32px;
-        bottom: -36px;
-    }
-    .time-block-span {
-        max-width: 100px;
-    }
-    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .row .col-lg-12 {
-        display: flex;
-        flex-direction: column;
-        padding-right: 0;
-    }
-    .services-detail h3,.services-detail h2 {
-        margin-bottom: 10px;
-    }
-    .services-detail p {
-        margin-bottom: 15px;
-    }
-    .services-detail ul {
-        margin-top: 15px;
-        margin-bottom: 20px
-    }
-    .personal-cabinet-content-item, .place-education-block,.personal-cabinet-content__my-profile .contacts-group {
-        width: 100%;
-    }
-    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group {
-        width: 100%;
-    }
-    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group > li {
-        width: 100%;
-        margin-right: 0;
-    }
-    .time-block-span {
-        text-align: left;
-        margin-bottom: 10px;
-    }
+.delete-doctor-modal {
+    left: 0;
+}
+.services-detail .row > div:last-child >  img:nth-of-type(odd),.services-detail .row > div:last-child >  img:nth-of-type(even) {
+    float: initial;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
+    right: -32px;
+    bottom: -36px;
+}
+.time-block-span {
+    max-width: 100px;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .row .col-lg-12 {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0;
+}
+.services-detail h3,.services-detail h2 {
+    margin-bottom: 10px;
+}
+.services-detail p {
+    margin-bottom: 15px;
+}
+.services-detail ul {
+    margin-top: 15px;
+    margin-bottom: 20px
+}
+.personal-cabinet-content-item, .place-education-block,.personal-cabinet-content__my-profile .contacts-group {
+    width: 100%;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group {
+    width: 100%;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group > li {
+    width: 100%;
+    margin-right: 0;
+}
+.time-block-span {
+    text-align: left;
+    margin-bottom: 10px;
+}
 }

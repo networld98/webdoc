@@ -236,17 +236,6 @@
 	margin: 0 auto;
 	cursor: pointer;
 }
-.review-custom-btn, .review-custom-btn:hover, .review-custom-btn:focus, .review-custom-btn:active {
-	padding: 15px 25px;
-	color: var(--primary);
-	font-size: 18px;
-	line-height: 26px;
-	border: 1px solid #98D7DC;
-	border-radius: 5px;
-	background-color: #fff;
-	margin: 0 auto;
-	cursor: pointer;
-}
 .arstat-color-blue .api-info .api-info-bar{
 	background-color:#98D7DC!important;
 }

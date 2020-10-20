@@ -1,6 +1,7 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 global $clinicName;
 CModule::IncludeModule('iblock');
+CModule::IncludeModule("form");
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
 
@@ -22,7 +23,20 @@ while($ob = $res->GetNextElement()) {
     $messages = $arProps['MESSAGE']['VALUE'];
     $clinicName = $arFields['NAME'];
 }
-
+function counts($status,$id){
+    $arFilter = Array(
+        "STATUS_ID" => $status // заголовок
+    );
+    $rsResults = CFormResult::GetList($id,
+    ($by="s_timestamp"),
+    ($order="desc"),
+    $arFilter,
+    $is_filtered,
+    "Y",
+    10);
+$countRow = $rsResults->result->num_rows;
+return $countRow;
+}
 if (!empty($arResult)): ?>
     <ul class="personal-cabinet-menu__list">
     <?
@@ -30,9 +44,9 @@ if (!empty($arResult)): ?>
 foreach ($arResult as $arItem): ?>
         <li class="personal-cabinet-menu__list-item <? if ($arItem["SELECTED"]):?>active<? else:?>unactive<? endif ?>">
             <a href="<?= $arItem["LINK"] ?>">
-                <?if($arItem["LINK"]=="/lc/message/" && $messages!=NULL){?>
+                <?if($arItem["LINK"]=="/lc/message/"){?>
                     <div class="count-message">
-                        <?=count($messages)?>
+                        <?=count($messages)+counts(4, 4)+counts(5, 5)+counts(9, 7);?>
                     </div>
                 <?}?>
                 <div class="personal-cabinet-menu__icon <? if ($arItem["SELECTED"]):?>active<? else:?>unactive<? endif ?>" style="background-image: url(<? if ($arItem["SELECTED"]):?><?=$arItem["PARAMS"]["ICON_FILE"]?><? else:?><?=$arItem["PARAMS"]["ICON_FILE_UN"]?><? endif ?>">

@@ -58,7 +58,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                             <p class="doctors-list-item__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a></p>
                         </div>
                     </div>
-                    <div class="doctors-list-item__description">
+                    <div class="doctors-list-item__description <?if(!empty($arItem["PROPERTIES"]["NOT_ON"]["VALUE"])){?>reception-none<?}?>">
                         <?$res = CIBlockSection::GetByID($arItem['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
                         if($ar_res = $res->GetNext()){?>
                             <p class="doctors-list-item__description-position"><?=$ar_res['NAME']?></p>

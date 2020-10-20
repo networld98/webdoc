@@ -11,10 +11,17 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-global $clinicName;
-global $clinickId;
+global $clinicName, $clinickId, $clinicMail, $clinicPhone;
 $clinicName = $arResult["NAME"];
 $clinickId = $arResult["ID"];
+
+$rsUser = CUser::GetByLogin($arResult["PROPERTIES"]["PHONE"]["VALUE"]);
+$arUser = $rsUser->Fetch();
+if($arUser!=NULL){
+    $clinicMail = $arUser['EMAIL'];
+    $clinicPhone = $arUser['LOGIN'];
+}
+
 function propsClinic($prop){
      if($prop["VALUE"]=='Y'):?>
         <li class="doctors-list-item_options-list-item"><?=$prop["NAME"]?></li>
@@ -575,12 +582,20 @@ function propsClinic($prop){
                          </tr>
                          </thead>
                          <tbody>
-                         <?foreach ($doctor as $item){?>
+                         <?foreach ($doctor as $i => $item){?>
                          <tr>
                              <td><?=$item['SERVICE']?></td>
                              <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
-                             <td><button>Запись на услугу</button></td>
+                             <td><button class="popup-service-click popup-service-click-one-<?=$i?>-<?=$key?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
                          </tr>
+                             <script>
+                                 $(document).ready(function () {
+                                     $(".popup-service-click-one-<?=$i?>-<?=$key?>").click(function () {
+                                         let service = $(this).data('service');
+                                         $('#option_service').val(service);
+                                     });
+                                 });
+                             </script>
                          <?}?>
                          </tbody>
                      </table>
@@ -596,12 +611,20 @@ function propsClinic($prop){
                         </tr>
                         </thead>
                         <tbody>
-                        <?foreach ($doctor as $item){?>
+                        <?foreach ($doctor as $i => $item){?>
                             <tr>
                                 <td><?=$item['SERVICE']?></td>
                                 <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
-                                <td><button>Запись на услугу</button></td>
+                                <td><button class="popup-service-click popup-service-click-two-<?=$i?>-<?=$key?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
                             </tr>
+                            <script>
+                                $(document).ready(function () {
+                                    $(".popup-service-click-two-<?=$i?>-<?=$key?>").click(function () {
+                                        let service = $(this).data('service');
+                                        $('#option_service').val(service);
+                                    });
+                                });
+                            </script>
                         <?}?>
                         </tbody>
                     </table>
@@ -611,4 +634,121 @@ function propsClinic($prop){
         </div>
     </div>
 </div>
+</div>
+<div class="call-popup">
+    <div class="popup-box popup-scroll">
+        <div class="close"></div>
+        <div class="doctors-list clinic-popup call" style="width: 100%;">
+            <div class="doctors-list-item">
+                <div class="flex-content">
+                    <a href="/" class="logo">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
+                    </a>
+                    <div class="flex-left">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></p>
+                            </div>
+                            <div class="col-4">
+                                <div class="clinic-popup_img">
+                                    <?if($arResult["PROPERTIES"]["LOGO"]["VALUE"]){
+                                        ?>
+                                        <img src="<?= CFile::GetPath($arResult["PROPERTIES"]["LOGO"]["VALUE"]); ?>" alt='<?=$arResult["NAME"]?>'>
+                                    <?}else{?>
+                                        <img src="<?= SITE_TEMPLATE_PATH ?>/icon/hospital_building.svg" alt="нет лого">
+                                    <?}?>
+                                    <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
+                                </div>
+                                <div class="clinic-card-img__ratings text-center">
+                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'1%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
+                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'21%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
+                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'41%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
+                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'61%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
+                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['PERCENT']>'81%'){?>ant-design_star-filled.svg<?}else{?>ant-design_star-none-filled.png<?}?>" alt="star">
+                                </div>
+                                <a class="clinic-card-img__link" id="goToOtzivy" href="#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
+                            </div>
+                            <div class="col-8 no-padding">
+                                <div class="row no-margin">
+                                    <?if($arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
+                                        <div class="col-12 no-padding">
+                                            <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
+                                        </div>
+                                    <?endif;?>
+                                    <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
+                                        <div class="col-12 col-margin no-padding">
+                                            <p class="clinic-card-info-detail__title map">Адрес</p>
+                                            <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                                        </div>
+                                    <?endif;?>
+                                    <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
+                                        <div class="col-6 col-margin no-padding">
+                                            <p class="clinic-card-info-detail__title contacts-phone">Контакты</p>
+                                            <?foreach ($arResult["PROPERTIES"]["CONTACTS"]["VALUE"] as $item){?>
+                                                <span><a href="tel:<?=$item?>"><?=$item?></a></span>
+                                            <?}?>
+                                        </div>
+                                    <?endif;?>
+                                    <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
+                                        <div class="col-6 col-margin no-padding">
+                                            <p class="clinic-card-info__title time">Время работы</p>
+                                            <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"] == "Круглосуточно"):?>
+                                                <span><?=$arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
+                                            <?else:?>
+                                                <? $work_time = explode(";", $arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]);
+                                                foreach ($work_time as $day){
+                                                    $time = explode("/", $day);?>
+                                                    <?if(count($time)==2){?>
+                                                        <span><?=$time[0]?> - <?=$time[1]?></span>
+                                                    <?}elseif(count($time)==5){?>
+                                                        <span><?=$time[0]?> -  c <?=$time[1]?>:<?=$time[2]?> до <?=$time[3]?>:<?=$time[4]?></span>
+                                                    <?}?>
+                                                <?}?>
+                                            <?endif;?>
+                                        </div>
+                                    <?endif;?>
+                                    <div class="col-12 col-margin no-padding">
+                                        <ul class="doctors-list-item_options-list">
+                                            <?propsClinic($arResult["PROPERTIES"]["DIAGNOSTICS"])?>
+                                            <?propsClinic($arResult["PROPERTIES"]["CHILDREN_DOCTOR"])?>
+                                            <?propsClinic($arResult["PROPERTIES"]["DMC"])?>
+                                            <?propsClinic($arResult["PROPERTIES"]["ONLINE"])?>
+                                            <?propsClinic($arResult["PROPERTIES"]["DEPARTURE_HOUSE"])?>
+                                            <?propsClinic($arResult["PROPERTIES"]["HOSPITAL"])?>
+                                            <?propsClinic($arResult["PROPERTIES"]["DAY_HOSPITAL"])?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-right">
+                    <h2 class="title-h2">Запись на услугу</h2>
+                    <?$APPLICATION->IncludeComponent("bitrix:form.result.new","clinic_service",Array(
+                            "SEF_MODE" => "N",
+                            "WEB_FORM_ID" => "7",
+                            "AJAX_MODE" => "Y",
+                            "AJAX_OPTION_SHADOW" => "N",
+                            "AJAX_OPTION_JUMP" => "Y",
+                            "AJAX_OPTION_STYLE" => "Y",
+                            "AJAX_OPTION_HISTORY" => "N",
+                            "LIST_URL" => "result_list.php",
+                            "EDIT_URL" => "result_edit.php",
+                            "SUCCESS_URL" => "",
+                            "CHAIN_ITEM_TEXT" => "",
+                            "CHAIN_ITEM_LINK" => "",
+                            "IGNORE_CUSTOM_TEMPLATE" => "Y",
+                            "USE_EXTENDED_ERRORS" => "Y",
+                            "CACHE_TYPE" => "A",
+                            "CACHE_TIME" => "3600",
+                            "SEF_FOLDER" => "/",
+                            "VARIABLE_ALIASES" => Array(
+                            )
+                        )
+                    );?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

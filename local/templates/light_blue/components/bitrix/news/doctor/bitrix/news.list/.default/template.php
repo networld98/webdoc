@@ -104,7 +104,7 @@ CModule::IncludeModule("form"); ?>
                     </div>
                 </div>
                 <div class="flex-right">
-                    <div class="doctors-list-item__description">
+                    <div class="doctors-list-item__description <?if(!empty($arItem["PROPERTIES"]["NOT_ON"]["VALUE"])){?>reception-none<?}?>">
                         <div class="adapt">
                             <div>
                                 <? foreach ($arItem["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"] as $item) {

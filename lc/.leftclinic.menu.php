@@ -41,6 +41,16 @@ $aMenuLinks = Array(
         ),
     ),
     Array(
+        "Уведомления",
+        "/lc/message/",
+        Array(),
+        Array(
+            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon3.svg",
+            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon3-un.svg",
+            "SPAN"=> "Заявки на прием и на услуги"
+        ),
+    ),
+    Array(
         "Документы, фото и видео",
         "/lc/invoices/",
         Array(),

@@ -17,7 +17,7 @@ $aMenuLinks = Array(
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon3.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon3-un.svg",
-            "SPAN"=> "Запросы на добавления в клиники"
+            "SPAN"=> "Запросы на добавления в клиники, аявки на прием "
         ),
     ),
     Array(

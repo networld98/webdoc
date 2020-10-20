@@ -446,7 +446,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
                     ' <input type="hidden" name="PHOTO" value="<?=$photoFile?>">\n' +
                     '    <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +
                     '        <div class="personal-cabinet-content__doctors-page-box-item__desc__head none-margin">\n' +
-                    '            <div class="personal-cabinet-content__doctors-page-box-item__desc-left">\n' +
+                    '            <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +
                     '                <div class="personal-cabinet-content__doctors-page-box-item__desc-left__info">\n' +
                     '                    <div class="personal-cabinet-content__doctors-page-box-item__desc__adress-box">\n' +
                     '                        <ul class="checkbox-group">\n' +
@@ -486,8 +486,6 @@ $week = array('Понедельник','Вторник','Среда','Четве
                             '                </div>\n' +
                     '                    </div>\n' +
                     '                </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">\n' +
                     '            </div>\n' +
                     '        </div>\n' +
                     '    </div>';

@@ -168,6 +168,28 @@ $(document).ready(function () {
                 var item = $($(this).attr("href"));
                 if (item.length) { return item; }
             });
+    $('.popup-service-click').click(function(e) {
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        $('.popup-box .clinic-popup').css('display', 'block');
+        console.log($(this).parents('.clinic-card'));
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $($(this).parents('main').find('.call-popup .popup-box')).show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
+
     $('.flowing-scroll').on( 'click', function(){
         event.preventDefault();
         console.log('click');
