@@ -147,7 +147,9 @@ $(document).ready(()=>{
                 elem2.children('.container').css({paddingLeft: '0',paddingRight: '0'});
                 $('.container h1').fadeIn();
                 $('.bx-breadcrumb').show();
+                $('.fixed-block-ghost').css({height: 0 +'px', display: 'none'});
             } else {
+                $('.fixed-block-ghost').css({height: $('.fixed-block-alp').innerHeight()+'px', display: 'block'});
                 if(top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight() < footer2.top) {
                     // console.log(top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight() + " pos --- offset " + `${footer2.top}`);
                     // console.log((top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight()));

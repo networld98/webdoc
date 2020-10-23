@@ -609,9 +609,9 @@ main {
 .specializations .nav-pills .nav-link.active, .specializations .nav-pills .show > .nav-link{
     color: #000;
     background: none;
-    -webkit-text-decoration-line: underline;
-            text-decoration-line: underline;
-    padding: 8px;
+    /*-webkit-text-decoration-line: underline;*/
+    /*        text-decoration-line: underline;*/
+    /*padding: 8px;*/
 }
 
 .load_more {
@@ -3070,6 +3070,9 @@ main {
     margin-right: 20px;
     transition: 0.3s;
 }
+.bx_filter .main-filter .bx_filter_select_text {
+    opacity: 0.65;
+}
 .icon-clinic.unactive {
     background-image: url(../images/menu-icon1-un.svg);
 }
@@ -5395,6 +5398,9 @@ main {
     z-index: 1;
     padding-bottom: 30px;
 }
+.fixed-block-ghost {
+    display: none;
+}
 .anchor-block.fixed-block,.anchor-block.fixed-block-alp {
     margin-bottom: 0;
 }
@@ -5978,7 +5984,7 @@ main {
         align-items: center;
     }
     .personal-cabinet-content__my-profile__info-form > ul > li > label,.personal-cabinet-content__my-profile__info-desc > ul > li > label {
-        margin-bottom: 0;
+        margin-bottom: 5px;
         margin-right: 0;
     }
     .personal-cabinet-content__my-profile__info-form > ul > li, .personal-cabinet-content__my-profile__info-desc > ul > li {
@@ -8250,7 +8256,7 @@ main {
     }
     .header .container .logo img {
         /* display: none; */
-        width: 175px;
+        width: 195px;
     }
     .header .container .logo .desktop {
         display: none;
@@ -8343,7 +8349,7 @@ main {
     }
     .head {
         padding-left: 0;
-        padding-top: 7px;
+        padding-top: 20px;
     }
     .head__text--top {
         line-height: 33px;

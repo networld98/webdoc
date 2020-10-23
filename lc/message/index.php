@@ -53,41 +53,47 @@ $idClient = $arFields['ID'];
         ?>
         <?if(explode('/',$arAnswer['SIMPLE_'.$form.'_3'][0]['USER_TEXT'])[1] == $idClient ){?>
         <div class="row text-center">
-            <div class="col-1 text-left"id="result-form<?=$RESULT_ID?>">
-                <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">
-                    <div class="toggle reverse_switch">
-                        <input type="checkbox" id="normal_<?=$RESULT_ID?>" <?if($arResult['STATUS_TITLE']!='ACCEPTED'){?>checked<?}?> name="STATUS_TITLE_<?=$RESULT_ID?>" class="swith" value="<?if($arResult['STATUS_TITLE']=='DEFAULT'){?>ACCEPTED<?}elseif($arResult['STATUS_TITLE']=='ACCEPTED'){?>CANSELED<?}elseif($arResult['STATUS_TITLE']=='CANSELED'){?>ACCEPTED<?}?>" type="checkbox"/>
-                        <label class="toggle-item" for="normal_<?=$RESULT_ID?>"></label>
-                        <input type="hidden" name="STATUS" value="STATUS_TITLE_<?=$RESULT_ID?>">
+            <div class="row col-12">
+                <div class="text-left"id="result-form<?=$RESULT_ID?>">
+                    <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">
+                        <div class="toggle reverse_switch">
+                            <input type="checkbox" id="normal_<?=$RESULT_ID?>" <?if($arResult['STATUS_TITLE']!='ACCEPTED'){?>checked<?}?> name="STATUS_TITLE_<?=$RESULT_ID?>" class="swith" value="<?if($arResult['STATUS_TITLE']=='DEFAULT'){?>ACCEPTED<?}elseif($arResult['STATUS_TITLE']=='ACCEPTED'){?>CANSELED<?}elseif($arResult['STATUS_TITLE']=='CANSELED'){?>ACCEPTED<?}?>" type="checkbox"/>
+                            <label class="toggle-item" for="normal_<?=$RESULT_ID?>"></label>
+                            <input type="hidden" name="STATUS" value="STATUS_TITLE_<?=$RESULT_ID?>">
+                        </div>
                     </div>
-                </div>
-                <script>
-                    $(document).ready(function () {
-                        $('#normal_<?=$RESULT_ID?>').on('click', function () {
-                            let formMs = $("#result-form<?=$RESULT_ID?>");
-                            let statusNow = $(this).val();
-                            $.ajax({
-                                type: "POST",
-                                url: '/lc/message/change_status.php',
-                                data: "RESULT=<?=$RESULT_ID?>&FORM=<?=$id?>&STATUS="+statusNow,
-                                success: function (data) {
-                                    // Вывод текста результата отправки
-                                    $(formMs).html(data);
-                                }
+                    <script>
+                        $(document).ready(function () {
+                            $('#normal_<?=$RESULT_ID?>').on('click', function () {
+                                let formMs = $("#result-form<?=$RESULT_ID?>");
+                                let statusNow = $(this).val();
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/lc/message/change_status.php',
+                                    data: "RESULT=<?=$RESULT_ID?>&FORM=<?=$id?>&STATUS="+statusNow,
+                                    success: function (data) {
+                                        // Вывод текста результата отправки
+                                        $(formMs).html(data);
+                                    }
+                                });
+                                return false;
                             });
-                            return false;
                         });
-                    });
-                </script>
+                    </script>
+                </div>
+                <div class="col-<?if($id!=7){?>2<?}else{?>4<?}?>"><?=$arAnswer['SIMPLE_'.$form.'_1'][0]['USER_TEXT']?></div>
+                <?if($id!=7){?>
+                    <div class="col-2"><?=explode('/',$arAnswer['SIMPLE_'.$form.'_PHONE'][0]['USER_TEXT'])[1]?></div>
+                <?}?>
             </div>
-            <div class="col-<?if($id!=7){?>2<?}else{?>4<?}?>"><?=$arAnswer['SIMPLE_'.$form.'_1'][0]['USER_TEXT']?></div>
-            <?if($id!=7){?>
-            <div class="col-2"><?=explode('/',$arAnswer['SIMPLE_'.$form.'_PHONE'][0]['USER_TEXT'])[1]?></div>
-            <?}?>
-            <div class="col-2"><?=$arAnswer['SIMPLE_'.$form.'_2'][0]['USER_TEXT']?></div>
-            <div class="col-2"><?=$arAnswer['SIMPLE_'.$form.'_5'][0]['USER_TEXT']?></div>
-            <div class="col-1"><?=$arAnswer['SIMPLE_'.$form.'_6'][0]['USER_TEXT']?></div>
-            <div class="col-2"><?=$arAnswer['SIMPLE_'.$form.'_4'][0]['USER_TEXT']?></div>
+            <div class="row col-12">
+                <div class="col-2"><?=$arAnswer['SIMPLE_'.$form.'_2'][0]['USER_TEXT']?></div>
+                <div class="col-2"><?=$arAnswer['SIMPLE_'.$form.'_5'][0]['USER_TEXT']?></div>
+                <div class="col-1"><?=$arAnswer['SIMPLE_'.$form.'_6'][0]['USER_TEXT']?></div>
+                <div class="col-2"><?=$arAnswer['SIMPLE_'.$form.'_4'][0]['USER_TEXT']?></div>
+            </div>
+
+
         </div>
     <?}?>
     <?}
