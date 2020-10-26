@@ -62,14 +62,17 @@ $(document).ready(()=>{
                         elem.css({'top': 'initial', position: 'relative',backgroundColor: 'transparent',bottom:'initial'});
                         // $('.container h1').fadeIn();
                         // $('.bx-breadcrumb').show();
+                        $('.fixed-block-ghost').css({height: 0 +'px', display: 'none'});
                     } else {
                         if($(window).width() <= 500) {
                             if(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + widthDevice/3 < footer.top) {
                                 // console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
                                 // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                                 // console.log("FIXED");
+                                $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                                 elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
                             } else {
+                                $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                                 // console.log('ABSOLUTED');
                                 elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
                             }
@@ -78,10 +81,12 @@ $(document).ready(()=>{
                                 // console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
                                 // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                                 // console.log("FIXED");
+                                $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                                 elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
                             } else {
                                 // console.log('ABSOLUTED');
                                 elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
+                                $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                             }
                         }
                         
@@ -94,15 +99,18 @@ $(document).ready(()=>{
                     elem.css({'top': 0, position: 'relative',backgroundColor: 'transparent',bottom:'initial'});
                     // $('.container h1').fadeIn();
                     // $('.bx-breadcrumb').show();
+                    $('.fixed-block-ghost').css({height: 0 +'px', display: 'none'});
                 } else {
                     if(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + widthDevice*2 < footer.top) {
                         // console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
                         // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                         // console.log("FIXED");
+                        $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                         elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
                     } else {
                         // console.log('ABSOLUTED');
                         elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
+                        $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                     }
                     // $('.container h1').fadeIn();
                     // $('.bx-breadcrumb').hide();

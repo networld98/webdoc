@@ -177,7 +177,7 @@ $html = '
 </head>
 <body>
 <a href="javascript:(print());" class="print-btn">Распечатать Акт</a>
-<div class="media-print">
+<div class="media-print-desktop">
         <h2> '.str_replace('Счёт', 'АКТ', $_POST['DOC']).'</h2>
     <br>
     <table width="100%">

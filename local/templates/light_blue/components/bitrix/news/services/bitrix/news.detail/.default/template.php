@@ -14,6 +14,7 @@ $this->setFrameMode(true);
 ?>
 <section class="container services-detail">
     <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
+    <div class="fixed-block-ghost"></div>
     <div class="row">
         <div class="col-lg-3">
             <div class="anchor-block fixed-block">

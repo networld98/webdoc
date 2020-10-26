@@ -27,6 +27,7 @@ function console_log( $data ){
   }
 ?>
 <h1 class="title-h2">Библиотека</h1>
+<div class="fixed-block-ghost"></div>
 <div class="row fixed-block-alp">
     <div class="container">
     <div class="col-lg-12">
