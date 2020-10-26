@@ -31,7 +31,7 @@ if($_POST['STATUS'] == "ACCEPTED"){
 ?>
 <div class="personal-cabinet-content__doctors-page-box-item__desc-switch">
     <div class="toggle reverse_switch">
-        <input type="checkbox" id="normal_<?=$_POST['RESULT']?>" <?if($_POST['STATUS']!='ACCEPTED'){?>checked<?}?> name="STATUS_TITLE_<?=$_POST['RESULT']?>" class="swith" value="<?=$statusOld?>" type="checkbox"/>
+        <input type="checkbox" id="normal_<?=$_POST['RESULT']?>" <?if($_POST['STATUS']!='ACCEPTED'){?>checked<?}?> name="STATUS_TITLE_<?=$_POST['RESULT']?>" class="swith " value="<?=$statusOld?>" type="checkbox"/>
         <label class="toggle-item" for="normal_<?=$_POST['RESULT']?>"></label>
         <input type="hidden" name="STATUS" value="STATUS_TITLE_<?=$_POST['RESULT']?>">
     </div>
@@ -47,7 +47,7 @@ if($_POST['STATUS'] == "ACCEPTED"){
                 data: "RESULT=<?=$_POST['RESULT']?>&FORM=<?=$_POST['FORM']?>&STATUS="+statusNow,
                 success: function (data) {
                     // Вывод текста результата отправки
-                    $(formMs).html(data).animate({transition: .3s ease;
+                    $(formMs).html(data).animate({transition: '.3s ease'
                     }, 1500 );
                 }
             });

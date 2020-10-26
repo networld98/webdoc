@@ -274,7 +274,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                             <?foreach ($arItem['PROPERTIES']['RECEPTION_SCHEDULE']['VALUE'] as $key => $contacts){
                                                 $contacts_array = explode('/',$contacts);
                                                 if($contacts_array[2] == $idClinic){?>
-                                                    <div class="col-lg-12 no-padding">
+                                                    <div class="col-lg-12">
                                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                             <select class="place-education-block_place"  name="RECEPTION_SCHEDULE_<?=$key?>[]">
                                                                 <?foreach($week as $item){?>

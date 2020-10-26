@@ -3826,7 +3826,75 @@ main {
     content: 'нет записи';
     left: 40px;
   }
+
 /*ЗАКОНЧИЛИСЬ ПЕРЕВЕРНУТЫЕ СТИЛИ*/
+
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .reverse_switch label:after {
+    content: '';
+    position: absolute;
+    background: transparent;
+    height: calc(100% + 8px);
+    border-radius: 30px;
+    top: 10px;
+    width: calc(100% + 8px);
+    left: 15px;
+    z-index: 0;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000;
+    transition: .3s ease;
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .reverse_switch label:before {
+    left: 36px;
+    background: #9DD4B3;
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .reverse_switch label {
+    background: #9DD4B3;
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label {
+    background: #E74C77;
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label:before {
+    left: 0;
+    background: #E74C77;
+
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .switch-default:checked + label {
+    background: #EBEBEB;
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .switch-default:checked + label:before {
+    left: 0;
+    background: #EBEBEB;
+
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch .swith:checked + label:after {
+    content: '';
+    left: 40px;
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch label.toggle-item {
+    width: 70px;
+}
+.booking-block .row {
+    margin-right: initial;
+    margin-left: initial;
+}
+.booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch {
+    float: left;
+}
+.booking-block > .row {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+.booking-block > .row:last-child {
+    border-bottom: 0;
+    padding: 5px 0;
+}
+button:focus {
+    outline: none;
+}
+.media-print {
+    display: none;
+}
 
 .personal-cabinet-content__doctors-page-box-item__desc__name {
     font-family: "Ubuntu";
@@ -6799,6 +6867,53 @@ main {
     }
 }
 @media (max-width: 768px) {
+    .print-table, .print-table thead, .print-table tbody, .print-table th, .print-table td, .print-table tr {
+        display: block; }
+    .print-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; }
+    .print-table thead tr th:last-child {
+        padding-left: 15px; }
+    .print-table tbody tr td {
+        word-break: break-all;
+        padding-left: 50% !important;
+        border: none;
+        position: relative;
+        padding-bottom: 6px;
+        text-align: initial;
+    }
+    .print-table tbody tr td::before {
+        /* Now like a table header */
+        position: absolute;
+        font-weight: bold;
+        /* Top/left values mimic padding */
+        /*top: 6px;*/
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap; }
+    .print-table tbody tr td:first-child {
+        padding-right: 10px; }
+    .print-table tbody tr td:last-child div {
+        display: flex;
+        align-items: center; }
+    .print-table tbody tr td:last-child a {
+        margin-left: 15px;
+        padding: 4px 6px; }
+    .print-table tbody tr:first-child {
+        display: none;
+    }
+    .print-table tbody tr td:nth-of-type(1):before {
+        content: "Статус"; }
+    .print-table tbody tr td:nth-of-type(2):before {
+        content: "Номер и дата счёта"; }
+    .print-table tbody tr td:nth-of-type(3):before {
+        content: "Сумма счёта, руб."; }
+    .print-table tbody tr td:nth-of-type(4):before {
+        content: "Акт"; }
+
+
     .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content {
         max-width: 100%;
     }
@@ -7242,6 +7357,9 @@ main {
         right: 30px;
         position: absolute;
     }
+    .booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch {
+        position: initial;
+    }
     
     .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li {
        flex-basis: 50%;
@@ -7454,6 +7572,30 @@ main {
     }
 }
 @media (max-width: 576px) {
+    .no-border-padding2 .api-reviews .api-block-header {
+        padding: 0;
+    }
+    .no-border-padding2 {
+        padding: 20px 15px;
+    }
+    .no-border-padding2 .api-reply-button {
+        display: flex;
+        flex-direction: column;
+    }
+    .api-reviews-list #api-reply button {
+        margin-bottom: 5px;
+    }
+    .no-border-padding {
+        padding: 20px 10px;
+        margin-top: 15px;
+    }
+    .print-table tbody tr td {
+        padding-left: 45% !important;
+        word-break: initial;
+    }
+    .print-table tbody tr td::before {
+        white-space: initial;
+    }
     .place-work {
         margin-left: 0;
     }
@@ -8307,6 +8449,9 @@ main {
     }
 }
 @media (max-width: 450px) {
+    .place-education-block {
+        margin-left: 0;
+    }
     /* main {
         margin-top: 130px;
     } */

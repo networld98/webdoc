@@ -36,7 +36,7 @@ $idClient = $arFields['ID'];
         border-radius: 5px;
         background: #9DD4B3;
         cursor: pointer;
-        margin: 20px 0 20px 20px;
+        margin: 20px 0 0 0;
         display: inline-block;
         padding: 12px 20px;
         border: 2px solid #9DD4B3;
@@ -61,15 +61,18 @@ $idClient = $arFields['ID'];
         .no-print, #invoice .print-btn, .title-h2, .header, .footer, .personal-cabinet-menu, #panel, .personal-cabinet-content__schedule-page__block > .border, personal-cabinet-content__schedule-page__block > h5 {
             display:none;
         }
+        .media-print {
+            display: block;
+        }
     }
 </style>
 <? include '../menu.php';?>
 <?if($idClient !=NULL){?>
     <div class="personal-cabinet-content__price-page">
         <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
-        <div class="personal-cabinet-content__schedule-page__block">
+        <div class="personal-cabinet-content__schedule-page__block no-border-padding">
             <h5 class="no-print">Счета</h5>
-                <table class="border" width="100%">
+                <table class="border print-table" width="100%">
                     <tbody>
                     <tr valign="middle" align="center">
                         <td><b>Статус</b></td>

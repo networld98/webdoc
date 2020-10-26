@@ -78,7 +78,7 @@
     align-items: center;
 }
 .booking-block .reverse_switch  {
-    padding: 10px;
+    padding: 10px 0;
 }
 .booking-block div[class^="col-"]  {
     display: flex;
@@ -677,6 +677,12 @@ main >.main-seo-text {
     width: 100%;
 }
 }
+@media (max-width: 1200px) {
+    .booking-block div[class^="col-"] {
+        justify-content: initial;
+    }
+}
+
 @media (max-width: 992px) {
 .services-detail ul.anchor-block-list {
     flex-direction: row;
@@ -761,6 +767,15 @@ label.photoFile-label {
     right: -32px;
     bottom: -36px;
 }
+    .place-education-block .add-education {
+        right: 0;
+    }
+    .place-education-block .add-place {
+        right: 0;
+    }
+    .place-schedule-block select:first-child, .place-schedule-block input:first-child {
+        margin-right: 0;
+    }
 .time-block-span {
     max-width: 100px;
 }

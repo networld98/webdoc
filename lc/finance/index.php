@@ -61,7 +61,7 @@ $idClinic = $arFields['ID'];
 <?if($idClinic !=NULL){?>
     <div class="personal-cabinet-content__price-page">
         <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
-        <div class="personal-cabinet-content__schedule-page__block">
+        <div class="personal-cabinet-content__schedule-page__block no-border-padding">
             <h5>Выберите вариант платного размещения на сайте</h5>
             <form id="form_requisites" name="form_requisites" action="" method="post" class="form-requistment">
                 <input type="hidden" name="CLIENT" value="<?=$arProps['OFFICIAL_NAME']['VALUE']?>, ИНН: <?=$arProps['INN']['VALUE']?>, <?=$arProps['URADRESS']['VALUE']?>">

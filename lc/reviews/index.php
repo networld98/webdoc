@@ -18,7 +18,7 @@ while($ob = $res->GetNextElement()){
 <? include '../menu.php';?>
 <div class="personal-cabinet-content__price-page">
     <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
-    <div class="personal-cabinet-content__schedule-page__block">
+    <div class="personal-cabinet-content__schedule-page__block no-border-padding2">
         <?$APPLICATION->IncludeComponent(
 	"api:reviews", 
 	"custom_lc", 

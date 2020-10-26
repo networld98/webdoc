@@ -93,24 +93,24 @@ $html = '
             font-size: 14px;
             line-height: 14px;
         }
-        #invoice table.border, #invoice table.border tr, #invoice table.border td {
+        table.border, table.border tr, table.border td {
             border: 1px solid #000;
         }
-        #invoice table {
+        table {
             margin: 0 0 15px 0;
             width: 100%;
             border-collapse: collapse;
             border-spacing: 0;
         }
-        #invoice table td {
+        table td {
             padding: 5px;
         }
-        #invoice table th {
+        table th {
             padding: 5px;
             font-weight: bold;
         }
 
-        #invoice .header {
+        .header {
             margin: 0 0 0 0;
             padding: 0 0 15px 0;
             font-size: 12px;
@@ -118,7 +118,7 @@ $html = '
         }
 
         /* Реквизиты банка */
-        #invoice .details td {
+        .details td {
             padding: 3px 2px;
             border: 1px solid #000000;
             font-size: 12px;
@@ -126,7 +126,7 @@ $html = '
             vertical-align: top;
         }
 
-        #invoice h2 {
+         h2 {
             margin: 0 0 10px 0;
             padding: 10px 0 10px 0;
             border-bottom: 2px solid #000;
@@ -136,14 +136,14 @@ $html = '
         }
 
         /* Поставщик/Покупатель */
-        #invoice .contract th {
+        .contract th {
             padding: 3px 0;
             vertical-align: top;
             text-align: left;
             font-size: 13px;
             line-height: 15px;
         }
-        #invoice .contract td {
+        .contract td {
             padding: 3px 0;
         }
 
@@ -151,57 +151,72 @@ $html = '
         .list thead, .list tbody  {
             border: 2px solid #000;
         }
-        #invoice .list thead th {
+        .list thead th {
             padding: 4px 0;
             border: 1px solid #000;
             vertical-align: middle;
             text-align: center;
         }
-        #invoice .list tbody td {
+        .list tbody td {
             padding: 0 2px;
             border: 1px solid #000;
             vertical-align: middle;
             font-size: 11px;
             line-height: 13px;
         }
-        #invoice .list tfoot th {
+        .list tfoot th {
             padding: 3px 2px;
             border: none;
             text-align: right;
         }
 
         /* Сумма */
-        #invoice .total {
+        .total {
             margin: 0 0 20px 0;
             padding: 0 0 10px 0;
             border-bottom: 2px solid #000;
         }
-        #invoice .total p {
+        .total p {
             margin: 0;
             padding: 0;
         }
 
         /* Руководитель, бухгалтер */
-        #invoice .sign {
+        .sign {
             position: relative;
         }
 
-        #invoice .signature {
+        .signature {
             width: 200px;
             position: absolute;
             top: 10%;
             left: 80%;
         }
-        #invoice .printing {
+        .printing {
             position: absolute;
             left: 150px;
             top: -15px;
             width: 245px;
         }
+        @media (max-width: 576px) {
+            #invoice .tinkoff-btn {
+                margin: 0;
+            }
+            #invoice form {
+            width: 100%;
+            }
+            #invoice .invoice-link {
+            width: 100%;
+            text-align: center;
+            }
+            #invoice {
+            padding-bottom: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-<table class="header">
+<table class="header media-print">
         <tbody><tr>
             <td>
                 <b>ООО "НОВОБИТ"</b>
@@ -210,7 +225,7 @@ $html = '
         </tbody>
     </table>
 
-    <table class="border" width="100%">
+    <table class="border media-print" width="100%">
         <colgroup>
             <col width="29%">
             <col width="29%">
@@ -252,16 +267,16 @@ $html = '
         </tbody></table>
     <br>
     <br>
-        <h2> Счёт № '.$cnt.'/'.$year.' от '.$date.'	 </h2>
+        <h2 class="media-print"> Счёт № '.$cnt.'/'.$year.' от '.$date.'	 </h2>
     <br>
-    <table width="100%">
+    <table width="100%" class="media-print">
         <tbody>
         <tr>
             <td style="width:100%;">Плательщик:<br>'.$_POST["CLIENT"].'</td>
         </tr>
         </tbody>
     </table>
-    <table class="border" width="100%">
+    <table class="border media-print" width="100%">
         <tbody><tr>
             <td>№</td>
             <td>Наименование товара</td>
@@ -306,17 +321,17 @@ $html = '
         </tr>
 
         </tbody></table>
-    <br>Всего наименований 1, на сумму '.$itemPrice.' руб.<br><br>
-    <b>'.num2str($itemPrice).'</b>
+    <br><span class="media-print">Всего наименований 1, на сумму '.$itemPrice.' руб.</span><br><br>
+    <b class="media-print">'.num2str($itemPrice).'</b>
     <br>
     <br>
-    <div class="sign">
+    <div class="sign media-print">
         <br>
         <br>
         <br>
         <br>
 		<img class="printing" src="'.$_SERVER["DOCUMENT_ROOT"].'/local/seal.png">
-        <table>
+        <table class="media-print">
             <colgroup>
                 <col width="25%">
                 <col width="50%">
