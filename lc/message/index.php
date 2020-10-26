@@ -73,7 +73,8 @@ $idClient = $arFields['ID'];
                                     data: "RESULT=<?=$RESULT_ID?>&FORM=<?=$id?>&STATUS="+statusNow,
                                     success: function (data) {
                                         // Вывод текста результата отправки
-                                        $(formMs).html(data);
+                                        $(formMs).html(data).animate({transition: .3s ease;
+                                    }, 1500 );
                                     }
                                 });
                                 return false;
