@@ -6752,6 +6752,9 @@ button:focus {
     }
 }
 @media (max-width: 992px) {
+    .anchor-block-list > li > a:hover {
+        font-size: initial;
+    }
     .footer__col-2 .nav {
         flex-direction: row;
         width: 100%;
