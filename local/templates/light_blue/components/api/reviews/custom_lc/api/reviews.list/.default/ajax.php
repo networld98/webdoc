@@ -141,7 +141,6 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                     <div class="api-footer">
                         <div class="api-user-info">
                             <div class="api-left">
-                                <? if($bCanEdit && ($arItem['GUEST_EMAIL'] || $arItem['GUEST_PHONE'] || $arItem['ORDER_ID'] || $arItem['IP'])): ?>
                                     <div class="api-guest-contacts">
                                         (
                                         <? if($arItem['GUEST_EMAIL']): ?>
@@ -152,8 +151,6 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                         <? if($arItem['IP']): ?> | <?=$arItem['IP']?><? endif ?>
                                         )
                                     </div>
-                                <? endif ?>
-
                                 <? if($arItem['LOCATION'] || ($arItem['DELIVERY'] && $arItem['DELIVERY']['NAME']) || $arParams['SHOW_THUMBS']): ?>
                                     <? if($arItem['LOCATION']): ?>
                                         <span class="api-guest-loc"><?=$arItem['LOCATION']?></span>
@@ -188,8 +185,6 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                 <div class="api-shop-text" id="api-answer-text-<?=$arItem['ID']?>"><?=$arItem['REPLY']?></div>
                             </div>
                         <? endif ?>
-
-                        <? if($bCanEdit): ?>
                             <div class="api-admin-controls">
                                 <button class="api-reply api_button api_button_small"
                                         onclick="jQuery.fn.apiReviewsList('showReply',<?=$arItem['ID']?>,<?=($arItem['GUEST_EMAIL'] ? 1 : 0)?>);"><?=Loc::getMessage('API_REVIEWS_LIST_BTN_REPLY')?></button>
@@ -215,7 +210,6 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                 <?/*<button class="api-send api_button api_button_success api_button_small <? if($arItem['ACTIVE'] == 'N' || $arParams['USE_SUBSCRIBE'] != 'Y' || $arItem['SUBSCRIBE_SEND'] == 'Y'): ?>api-hidden<? endif ?>"
                                         onclick="jQuery.fn.apiReviewsList('send',this,<?=$arItem['ID']?>);"><?=Loc::getMessage('API_REVIEWS_LIST_BTN_SEND')?></button>*/?>
                             </div>
-                        <? endif ?>
                     </div>
                 </div>
 			<? endforeach ?>

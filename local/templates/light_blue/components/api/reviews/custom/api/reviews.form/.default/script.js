@@ -3,304 +3,302 @@
  */
 (function ($) {
 
-	"use strict"; // Hide scope, no $ conflict
+    "use strict"; // Hide scope, no $ conflict
 
-	var defaults = {};
+    var defaults = {};
 
-	var methods = {
+    var methods = {
 
-		init: function (params) {
+        init: function (params) {
 
-			var options = $.extend(true, {}, defaults, params);
+            var options = $.extend(true, {}, defaults, params);
 
-			if (!this.data('apiReviewsForm')) {
+            if (!this.data('apiReviewsForm')) {
 
-				this.data('apiReviewsForm', options);
+                this.data('apiReviewsForm', options);
 
-				var modalId       = '#' + options.id;
-				var review_form   = $('.api-reviews-form .api_form');
-				var review_submit = $('.api-reviews-form .api-form-submit');
-				var rating_label  = $('.api-reviews-form .api-star-rating-label');
-
-
-				//Autoresize textarea
-				review_form.find('[data-autoresize]').each(function () {
-					var offset         = this.offsetHeight - this.clientHeight;
-					var resizeTextarea = function (el) {
-						$(el).css('height', 'auto').css('height', el.scrollHeight + offset);
-					};
-					$(this).on('keyup input', function () { resizeTextarea(this); }).removeAttr('data-autoresize');
-					resizeTextarea(this);
-				});
-
-				//Stars
-				review_form
-					 .find('.api-star-rating i')
-					 .click(function () {
-						 var rating = $(this).parents('.api-star-rating');
-						 var elems  = rating.find('i');
-						 var label  = $(this).data('label');
-                         rating.find('i').removeClass('active');
-						 $(this).addClass('active');
+                var modalId       = '#' + options.id;
+                var review_form   = $('.api-reviews-form .api_form');
+                var review_submit = $('.api-reviews-form .api-form-submit');
+                var rating_label  = $('.api-reviews-form .api-star-rating-label');
 
 
-						 if (label.length)
-							 rating_label.html(label);
+                //Autoresize textarea
+                review_form.find('[data-autoresize]').each(function () {
+                    var offset         = this.offsetHeight - this.clientHeight;
+                    var resizeTextarea = function (el) {
+                        $(el).css('height', 'auto').css('height', el.scrollHeight + offset);
+                    };
+                    $(this).on('keyup input', function () { resizeTextarea(this); }).removeAttr('data-autoresize');
+                    resizeTextarea(this);
+                });
 
-					 })
-					 .click(function () {
-						 var rating = $(this).parents('.api-star-rating');
-						 var index  = rating.find('i').index(this); // index [0-4]
-						 rating.attr('data-star', index);
-						 rating.find('input').val(index + 1);// rating [1-5]
-						 return false;
-					 });
-				if (options.USE_EULA) {
-					review_form.find('input[name=EULA_ACCEPTED]').on('change',function(){
-						if($(this).is(':checked')){
-							review_form.find('.api-eula-error').slideUp(200);
-						}
-					});
-				}
-				if (options.USE_PRIVACY) {
-					review_form.find('input[name=PRIVACY_ACCEPTED]').on('change',function(){
-						if($(this).is(':checked')){
-							review_form.find('.api-privacy-error').slideUp(200);
-						}
-					});
-				}
+                //Stars
+                review_form
+                    .find('.api-star-rating i')
+                    .click(function () {
+                        var rating = $(this).parents('.api-star-rating');
+                        var elems  = rating.find('i');
+                        var label  = $(this).data('label');
+                        rating.find('i').removeClass('active');
+                        $(this).addClass('active');
 
 
-				///////////////////////////////////////////////////////////////////////
-				//  Video upload
-				///////////////////////////////////////////////////////////////////////
-				review_form.on('change paste', '.api_video_upload input',function(e){
-					var self = this;
-					var url = '';
+                        if (label.length)
+                            rating_label.html(label);
 
-					var clipboardData = e.originalEvent.clipboardData || e.clipboardData || w.clipboardData || null;
-					if (clipboardData){
-						url = clipboardData.getData("text");
-					}
-					else {
-						url = $(this).val();
-					}
-					if(url.length){
-						$(self).parent().addClass('api_button_busy');
-						$.ajax({
-							type: 'POST',
-							cache: false,
-							data: {
-								'sessid': BX.bitrix_sessid(),
-								'API_REVIEWS_FORM_ACTION': 'VIDEO_UPLOAD',
-								'VIDEO_URL': url
-							},
-							success: function (response) {
-								$(self).val('');
+                    })
+                    .click(function () {
+                        var rating = $(this).parents('.api-star-rating');
+                        var index  = rating.find('i').index(this); // index [0-4]
+                        rating.attr('data-star', index);
+                        rating.find('input').val(index + 1);// rating [1-5]
+                        return false;
+                    });
+                if (options.USE_EULA) {
+                    review_form.find('input[name=EULA_ACCEPTED]').on('change',function(){
+                        if($(this).is(':checked')){
+                            review_form.find('.api-eula-error').slideUp(200);
+                        }
+                    });
+                }
+                if (options.USE_PRIVACY) {
+                    review_form.find('input[name=PRIVACY_ACCEPTED]').on('change',function(){
+                        if($(this).is(':checked')){
+                            review_form.find('.api-privacy-error').slideUp(200);
+                        }
+                    });
+                }
 
-								if(response.result === 'ok'){
-									var video = response.video || {};
-									var image = response.image || {};
+                ///////////////////////////////////////////////////////////////////////
+                //  Video upload
+                ///////////////////////////////////////////////////////////////////////
+                review_form.on('change paste', '.api_video_upload input',function(e){
+                    var self = this;
+                    var url = '';
 
-									var html = '';
-									html += '<div class="api_video_item">';
-									html += '<div class="api_video_remove" data-id="'+ video.id +'"></div>';
-									html += '<a href="'+ video.url +'" target="_blank">'+ video.title +'</a>';
-									html += '</div>';
-									review_form.find('.api_video_list').append(html);
-								}
-								else {
-									$.fn.apiAlert(response.alert);
-								}
+                    var clipboardData = e.originalEvent.clipboardData || e.clipboardData || w.clipboardData || null;
+                    if (clipboardData){
+                        url = clipboardData.getData("text");
+                    }
+                    else {
+                        url = $(this).val();
+                    }
+                    if(url.length){
+                        $(self).parent().addClass('api_button_busy');
+                        $.ajax({
+                            type: 'POST',
+                            cache: false,
+                            data: {
+                                'sessid': BX.bitrix_sessid(),
+                                'API_REVIEWS_FORM_ACTION': 'VIDEO_UPLOAD',
+                                'VIDEO_URL': url
+                            },
+                            success: function (response) {
+                                $(self).val('');
 
-								$(self).parent().removeClass('api_button_busy');
-							}
-						});
-					}
-				});
+                                if(response.result === 'ok'){
+                                    var video = response.video || {};
+                                    var image = response.image || {};
 
-				review_form.on('click','.api_video_remove',function(){
-					var videBtn = $(this);
-					var videId = $(this).data('id') || '';
-					if(videId.length){
-						$.ajax({
-							type: 'POST',
-							cache: false,
-							data: {
-								'sessid': BX.bitrix_sessid(),
-								'API_REVIEWS_FORM_ACTION': 'VIDEO_DELETE',
-								'VIDEO_ID': videId
-							},
-							success: function () {
-								$(videBtn).closest('.api_video_item').remove();
-							}
-						});
-					}
-					else{
-						$(videBtn).closest('.api_video_item').remove();
-					}
-				});
+                                    var html = '';
+                                    html += '<div class="api_video_item">';
+                                    html += '<div class="api_video_remove" data-id="'+ video.id +'"></div>';
+                                    html += '<a href="'+ video.url +'" target="_blank">'+ video.title +'</a>';
+                                    html += '</div>';
+                                    review_form.find('.api_video_list').append(html);
+                                }
+                                else {
+                                    $.fn.apiAlert(response.alert);
+                                }
 
-				//Form submit
-				review_submit.on('click', function (e) {
+                                $(self).parent().removeClass('api_button_busy');
+                            }
+                        });
+                    }
+                });
 
-					var bError = false;
+                review_form.on('click','.api_video_remove',function(){
+                    var videBtn = $(this);
+                    var videId = $(this).data('id') || '';
+                    if(videId.length){
+                        $.ajax({
+                            type: 'POST',
+                            cache: false,
+                            data: {
+                                'sessid': BX.bitrix_sessid(),
+                                'API_REVIEWS_FORM_ACTION': 'VIDEO_DELETE',
+                                'VIDEO_ID': videId
+                            },
+                            success: function () {
+                                $(videBtn).closest('.api_video_item').remove();
+                            }
+                        });
+                    }
+                    else{
+                        $(videBtn).closest('.api_video_item').remove();
+                    }
+                });
 
-					if (options.USE_EULA) {
-						if (!review_form.find('input[name=EULA_ACCEPTED]').prop('checked')) {
-							review_form.find('.api-eula-error').slideDown(200);
-							bError = true;
-						}
-						else {
-							review_form.find('.api-eula-error').slideUp(200);
-						}
-					}
-					if (options.USE_PRIVACY) {
-						if (!review_form.find('input[name=PRIVACY_ACCEPTED]').prop('checked')) {
-							review_form.find('.api-privacy-error').slideDown(200);
-							bError = true;
-						}
-						else {
-							review_form.find('.api-privacy-error').slideUp(200);
-						}
-					}
+                //Form submit
+                review_submit.on('click', function (e) {
 
-					if(bError)
-						return false;
+                    var bError = false;
 
+                    if (options.USE_EULA) {
+                        if (!review_form.find('input[name=EULA_ACCEPTED]').prop('checked')) {
+                            review_form.find('.api-eula-error').slideDown(200);
+                            bError = true;
+                        }
+                        else {
+                            review_form.find('.api-eula-error').slideUp(200);
+                        }
+                    }
+                    if (options.USE_PRIVACY) {
+                        if (!review_form.find('input[name=PRIVACY_ACCEPTED]').prop('checked')) {
+                            review_form.find('.api-privacy-error').slideDown(200);
+                            bError = true;
+                        }
+                        else {
+                            review_form.find('.api-privacy-error').slideUp(200);
+                        }
+                    }
 
-					//block fields before ajax
-					review_submit.prop('disabled', true).find('.api-button-text').html(options.message.submit_text_ajax);
-					//review_form.find('.api-field, .dropdown-field').attr('readonly', true);
-					$(modalId).find('.api_modal_loader').fadeIn(200);
-
-					var postData = {
-						sessid: BX.bitrix_sessid(),
-						API_REVIEWS_FORM_AJAX: 'Y'
-					};
-					review_form.find('.api-field, .dropdown-field').each(function () {
-						var name       = $(this).attr('name');
-						postData[name] = $(this).val();
-					});
-
-					$.ajax({
-						type: 'POST',
-						data: postData,
-						dataType: 'json',
-						error: function (jqXHR, textStatus, errorThrown) {
-							console.error('textStatus: ' + textStatus);
-							console.error('errorThrown: ' + errorThrown);
-							alert(textStatus);
-						},
-						success: function (response) {
-
-							$(modalId).find('.api_modal_loader').fadeOut(200);
-
-							//console.log(response);
-
-							//unblock fields after ajax
-							review_submit.prop('disabled', false).find('.api-button-text').html(options.message.submit_text_default);
-							review_form.find('.api-field, .dropdown-field').attr('readonly', false);
-
-							if (response.STATUS === 'ERROR') {
-
-								for (var key in postData) {
-									if(key === 'FILES[]'){
-										key = 'FILES';
-									}
-									else if(key === 'VIDEOS[]'){
-										key = 'VIDEOS';
-									}
-
-									if (response.FIELDS[key]) {
-										review_form
-											 .find('[name*=' + key + ']')
-											 .addClass('api_field_error')
-											 .closest('.api_row')
-											 .addClass('api_row_error');
-									}
-									else{
-										review_form
-											 .find('[name*=' + key + ']')
-											 .removeClass('api_field_error')
-											 .closest('.api_row')
-											 .removeClass('api_row_error');
-									}
-								}
-
-								review_form.find('.api_field_error').each(function () {
-									$(this).on('keyup change', function () {
-										if ($(this).val().length)
-											$(this)
-												 .removeClass('api_field_error')
-												 .closest('.api_row')
-												 .removeClass('api_row_error');
-									});
-								});
-							}
-							else if (response.STATUS === 'OK') {
-								//$.fn.apiReviewsForm('alert', modalId, response)
-
-								review_form.find('.api-field:not([name=RATING])').val('');
-
-								$.fn.apiModal('hide', {id:modalId});
-								$.fn.apiReviewsList('refresh');
-
-								$.fn.apiAlert({
-									class: 'success',
-									showIcon: true,
-									title: response.MESSAGE,
-								});
-							}
-						}
-					});
-
-					e.preventDefault();
-				});
-			}
-
-			return this;
-		},
-		alert: function (modalId, data) {
-
-			 $.fn.apiModal('alert',{
-			 type: 'success',
-			 autoHide: true, //2000
-			 modalId: modalId,
-			 message: data.MESSAGE
-			 });
+                    if(bError)
+                        return false;
 
 
-			 dialogStyle = $(modalId + ' .api_modal_dialog').attr('style') + ';display: block;';
+                    //block fields before ajax
+                    review_submit.prop('disabled', true).find('.api-button-text').html(options.message.submit_text_ajax);
+                    //review_form.find('.api-field, .dropdown-field').attr('readonly', true);
+                    $(modalId).find('.api_modal_loader').fadeIn(200);
 
-			var content = '' +
-				 '<div class="api_modal_dialog api_alert" style="'+dialogStyle+'">' +
-				 '<div class="api_modal_close"></div>' +
-				 '<div class="api_alert_success">' +
-				 '<span></span>' +
-				 '<div class="api_alert_title">'+data.MESSAGE+'</div>' +
-				 '</div>' +
-				 '</div>';
+                    var postData = {
+                        sessid: BX.bitrix_sessid(),
+                        API_REVIEWS_FORM_AJAX: 'Y'
+                    };
+                    review_form.find('.api-field, .dropdown-field').each(function () {
+                        var name       = $(this).attr('name');
+                        postData[name] = $(this).val();
+                    });
 
-			$(modalId).html(content);
-			$.fn.apiModal('resize',{id:modalId});
+                    $.ajax({
+                        type: 'POST',
+                        data: postData,
+                        dataType: 'json',
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.error('textStatus: ' + textStatus);
+                            console.error('errorThrown: ' + errorThrown);
+                            alert(textStatus);
+                        },
+                        success: function (response) {
 
-			window.setTimeout(function(){
-				$.fn.apiModal('hide', {id:modalId});
-				$.fn.apiReviewsList('refresh');
-			},2000);
-		}
+                            $(modalId).find('.api_modal_loader').fadeOut(200);
 
-	};
+                            //console.log(response);
 
-	$.fn.apiReviewsForm = function (method) {
-		if (methods[method]) {
-			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-		} else if (typeof method === 'object' || !method) {
-			return methods.init.apply(this, arguments);
-		} else {
-			$.error('Error! Method "' + method + '" not found in plugin $.fn.apiReviewsForm');
-		}
-	};
+                            //unblock fields after ajax
+                            review_submit.prop('disabled', false).find('.api-button-text').html(options.message.submit_text_default);
+                            review_form.find('.api-field, .dropdown-field').attr('readonly', false);
+
+                            if (response.STATUS === 'ERROR') {
+
+                                for (var key in postData) {
+                                    if(key === 'FILES[]'){
+                                        key = 'FILES';
+                                    }
+                                    else if(key === 'VIDEOS[]'){
+                                        key = 'VIDEOS';
+                                    }
+
+                                    if (response.FIELDS[key]) {
+                                        review_form
+                                            .find('[name*=' + key + ']')
+                                            .addClass('api_field_error')
+                                            .closest('.api_row')
+                                            .addClass('api_row_error');
+                                    }
+                                    else{
+                                        review_form
+                                            .find('[name*=' + key + ']')
+                                            .removeClass('api_field_error')
+                                            .closest('.api_row')
+                                            .removeClass('api_row_error');
+                                    }
+                                }
+
+                                review_form.find('.api_field_error').each(function () {
+                                    $(this).on('keyup change', function () {
+                                        if ($(this).val().length)
+                                            $(this)
+                                                .removeClass('api_field_error')
+                                                .closest('.api_row')
+                                                .removeClass('api_row_error');
+                                    });
+                                });
+                            }
+                            else if (response.STATUS === 'OK') {
+                                //$.fn.apiReviewsForm('alert', modalId, response)
+
+                                review_form.find('.api-field:not([name=RATING])').val('');
+
+                                $.fn.apiModal('hide', {id:modalId});
+                                $.fn.apiReviewsList('refresh');
+
+                                $.fn.apiAlert({
+                                    class: 'success',
+                                    showIcon: true,
+                                    title: response.MESSAGE,
+                                });
+                            }
+                        }
+                    });
+
+                    e.preventDefault();
+                });
+            }
+
+            return this;
+        },
+        alert: function (modalId, data) {
+
+             $.fn.apiModal('alert',{
+             type: 'success',
+             autoHide: true, //2000
+             modalId: modalId,
+             message: data.MESSAGE
+             });
+
+            var dialogStyle = $(modalId + ' .api_modal_dialog').attr('style') + ';display: block;';
+
+            var content = '' +
+                 '<div class="api_modal_dialog api_alert" style="'+dialogStyle+'">' +
+                 '<div class="api_modal_close"></div>' +
+                 '<div class="api_alert_success">' +
+                 '<span></span>' +
+                 '<div class="api_alert_title">'+data.MESSAGE+'</div>' +
+                 '</div>' +
+                 '</div>';
+
+            $(modalId).html(content);
+            $.fn.apiModal('resize',{id:modalId});
+
+            window.setTimeout(function(){
+                $.fn.apiModal('hide', {id:modalId});
+                $.fn.apiReviewsList('refresh');
+            },2000);
+        }
+
+    };
+
+    $.fn.apiReviewsForm = function (method) {
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        } else if (typeof method === 'object' || !method) {
+            return methods.init.apply(this, arguments);
+        } else {
+            $.error('Error! Method "' + method + '" not found in plugin $.fn.apiReviewsForm');
+        }
+    };
 
 })(jQuery);

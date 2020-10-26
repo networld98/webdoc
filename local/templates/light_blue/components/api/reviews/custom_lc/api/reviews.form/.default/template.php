@@ -280,7 +280,6 @@ $modalId = $formId . '_modal';
 
 					<div class="api-guest-row api_row">
 						<div class="api_label"><?=Loc::getMessage('API_REVIEWS_FORM_LABEL_INTRODUCE')?></div>
-
 						<div class="api_controls">
 							<div class="api-guest-form">
 								<? if(in_array('GUEST_NAME', $arParams['DISPLAY_FIELDS'])): ?>
@@ -340,7 +339,6 @@ $modalId = $formId . '_modal';
 							</div>
 						</div>
 					</div>
-
 					<? if($arParams['MESS_RULES_TEXT'] && $arParams['MESS_RULES_LINK']): ?>
 						<div class="api_row api-rules">
 							<div class="api_controls">
@@ -348,7 +346,6 @@ $modalId = $formId . '_modal';
 							</div>
 						</div>
 					<? endif ?>
-
 					<? if($arParams['USE_EULA'] && $arParams['MESS_EULA']): ?>
 						<div class="api_row api-rules">
 							<div class="api_controls">
@@ -360,7 +357,6 @@ $modalId = $formId . '_modal';
 							</div>
 						</div>
 					<? endif ?>
-
 					<? if($arParams['USE_PRIVACY'] && $arParams['MESS_PRIVACY']): ?>
 						<div class="api_row api-rules">
 							<div class="api_controls">
@@ -378,13 +374,11 @@ $modalId = $formId . '_modal';
 							</div>
 						</div>
 					<? endif ?>
-
 					<div class="api_row api_buttons">
 						<button class="api-button api-button-large api-form-submit api_button_block">
 							<span class="api-icon"></span><span class="api-button-text"><?=Loc::getMessage('API_REVIEWS_FORM_SUBMIT_TEXT_DEFAULT')?></span>
 						</button>
 					</div>
-
 				</div>
 			</div>
 		</div>

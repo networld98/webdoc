@@ -73,6 +73,9 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                 <? else: ?>
                                     <?=$arItem['GUEST_NAME']?>
                                 <? endif ?>
+                                <? if($arItem['GUEST_PHONE']): ?>
+                                    (<?= mb_strimwidth($arItem['GUEST_PHONE'], 0, 12, "*****");?>*)
+                                <? endif ?>
                             </span>
                             </p>
                         <? endif; ?>
