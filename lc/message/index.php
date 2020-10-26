@@ -153,7 +153,7 @@ $idClient = $arFields['ID'];
                     </script>
 
                 <?}?>
-                <?if($messages[0]==NULL){?><h4>У вас нет заявок</h4><?}?>
+                <?if($messages[0]==NULL){?><h4>У вас нет заявок на добавление в клинику</h4><?}?>
             </div>
         <?}?>
         <div class="personal-cabinet-content__schedule-page__block">

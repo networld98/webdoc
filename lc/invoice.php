@@ -385,7 +385,7 @@ $PRODUCT_ID = $el->Add($arLoadProductArray);
 <a target="_blank" href="<?=$linkFile?>" class="save invoice-link">Скачать счёт</a>
 <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
 <form name="TinkoffPayForm" onsubmit="pay(this); return false;">
-    <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1593760029040DEMO">
+    <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1593760029040">
     <input class="tinkoffPayRow" type="hidden" name="frame" value="true">
     <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
     <input class="tinkoffPayRow" type="hidden" placeholder="Сумма заказа" name="amount" required value="<?=$itemPrice?>">

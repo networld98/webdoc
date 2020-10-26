@@ -61,7 +61,7 @@ $idClient = $arFields['ID'];
         .no-print, #invoice .print-btn, .title-h2, .header, .footer, .personal-cabinet-menu, #panel, .personal-cabinet-content__schedule-page__block > .border, personal-cabinet-content__schedule-page__block > h5 {
             display:none;
         }
-        .media-print {
+        .media-print-desktop {
             display: block;
         }
     }

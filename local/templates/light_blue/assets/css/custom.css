@@ -80,6 +80,9 @@
 .booking-block .reverse_switch  {
     padding: 10px 0;
 }
+.booking-block h5 {
+    margin: 15px;
+}
 .booking-block div[class^="col-"]  {
     display: flex;
     justify-content: center;

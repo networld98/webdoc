@@ -236,7 +236,7 @@ $html = '
 
         </tbody></table>
     <br>Всего наименований 1, на сумму '.$_POST['SUM'].' руб.<br><br>
-    <b>'.num2str($itemPrice).'</b>
+    <b>'.num2str($_POST['SUM']).'</b>
     <br>
     <br>
     <div class="sign">

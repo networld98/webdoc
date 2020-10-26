@@ -21,13 +21,13 @@ $aMenuLinks = Array(
         ),
     ),
     Array(
-        "Документы, фото и видео",
+        "Документы",
         "/lc/invoices/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
-            "SPAN"=> "Логотип, грамоты, дипломы клиники"
+            "SPAN"=> "Cчета, акты"
         ),
     ),
     Array(

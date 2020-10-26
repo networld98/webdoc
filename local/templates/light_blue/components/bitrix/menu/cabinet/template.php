@@ -41,12 +41,16 @@ if (!empty($arResult)): ?>
     <ul class="personal-cabinet-menu__list">
     <?
     $previousLevel = 0;
+    $allCount = count($messages)+counts(4, 4)+counts(5, 5)+counts(9, 7);
+    if ($messages==NULL){
+        $allCount = counts(4, 4)+counts(5, 5)+counts(9, 7);
+    }
 foreach ($arResult as $arItem): ?>
         <li class="personal-cabinet-menu__list-item <? if ($arItem["SELECTED"]):?>active<? else:?>unactive<? endif ?>">
             <a href="<?= $arItem["LINK"] ?>">
-                <?if($arItem["LINK"]=="/lc/message/"){?>
+                <?if($arItem["LINK"]=="/lc/message/" && $allCount!=0){?>
                     <div class="count-message">
-                        <?=count($messages)+counts(4, 4)+counts(5, 5)+counts(9, 7);?>
+                        <?=$allCount?>
                     </div>
                 <?}?>
                 <div class="personal-cabinet-menu__icon <? if ($arItem["SELECTED"]):?>active<? else:?>unactive<? endif ?>" style="background-image: url(<? if ($arItem["SELECTED"]):?><?=$arItem["PARAMS"]["ICON_FILE"]?><? else:?><?=$arItem["PARAMS"]["ICON_FILE_UN"]?><? endif ?>">
