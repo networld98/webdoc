@@ -6550,7 +6550,9 @@ button:focus {
     }
 }
 @media (max-width: 1023px) {
-    
+    .media-print-desktop {
+        display: none;
+    }
 }
 @media (max-width: 1000px) {
     .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul {

@@ -216,7 +216,7 @@ $html = '
     </style>
 </head>
 <body>
-<table class="header media-print">
+<table class="header media-print-desktop">
         <tbody><tr>
             <td>
                 <b>ООО "НОВОБИТ"</b>
@@ -225,7 +225,7 @@ $html = '
         </tbody>
     </table>
 
-    <table class="border media-print" width="100%">
+    <table class="border media-print-desktop" width="100%">
         <colgroup>
             <col width="29%">
             <col width="29%">
@@ -267,16 +267,16 @@ $html = '
         </tbody></table>
     <br>
     <br>
-        <h2 class="media-print"> Счёт № '.$cnt.'/'.$year.' от '.$date.'	 </h2>
+        <h2 class="media-print-desktop"> Счёт № '.$cnt.'/'.$year.' от '.$date.'	 </h2>
     <br>
-    <table width="100%" class="media-print">
+    <table width="100%" class="media-print-desktop">
         <tbody>
         <tr>
             <td style="width:100%;">Плательщик:<br>'.$_POST["CLIENT"].'</td>
         </tr>
         </tbody>
     </table>
-    <table class="border media-print" width="100%">
+    <table class="border media-print-desktop" width="100%">
         <tbody><tr>
             <td>№</td>
             <td>Наименование товара</td>
@@ -321,17 +321,17 @@ $html = '
         </tr>
 
         </tbody></table>
-    <br><span class="media-print">Всего наименований 1, на сумму '.$itemPrice.' руб.</span><br><br>
-    <b class="media-print">'.num2str($itemPrice).'</b>
+    <br><span class="media-print-desktop">Всего наименований 1, на сумму '.$itemPrice.' руб.</span><br><br>
+    <b class="media-print-desktop">'.num2str($itemPrice).'</b>
     <br>
     <br>
-    <div class="sign media-print">
+    <div class="sign media-print-desktop">
         <br>
         <br>
         <br>
         <br>
 		<img class="printing" src="'.$_SERVER["DOCUMENT_ROOT"].'/local/seal.png">
-        <table class="media-print">
+        <table class="media-print-desktop">
             <colgroup>
                 <col width="25%">
                 <col width="50%">

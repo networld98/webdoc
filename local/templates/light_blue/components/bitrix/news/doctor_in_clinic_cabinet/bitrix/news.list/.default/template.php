@@ -291,7 +291,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                                 $contact_key = $key+1;
                                             }
                                             $contact_key_last = 0 + $contact_key;?>
-                                            <div class="col-lg-12 no-padding" id="input<?=$arItem['ID']?><?=$contact_key_last?>"></div>
+                                            <div class="col-lg-12" id="input<?=$arItem['ID']?><?=$contact_key_last?>"></div>
                                         </div>
                                         <div class="add-time" value="<?=$arItem['ID']?><?=$contact_key_last?>" title="Добавить время">+</div>
                                     </div>
