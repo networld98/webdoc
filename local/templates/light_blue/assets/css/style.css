@@ -8676,7 +8676,7 @@ button:focus {
     }
     .header .container,.header .container.cabinet {
         padding-left: 80px;
-        padding-right: 20px;
+        padding-right: 3px;
     }
     .head > img {
         bottom: -555px;
