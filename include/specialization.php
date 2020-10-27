@@ -123,13 +123,11 @@ if ($detect->isMobile() && !$detect->isTablet()) {
         <div class="row">
             <?
             $сosmetics = [];
-            $arSelect = array("NAME");
+            $arSelect = array("NAME","ID");
             $arFilter = array("IBLOCK_ID"=>25);
-            $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
-            while($ob = $res->GetNextElement())
-            {
-                $arFields = $ob->GetFields();
-                $сosmetics[mb_strtoupper(substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+            $obSections = CIBlockSection::GetList(array("NAME" => "ASC"), $arFilter, false, $arSelect);
+            while($ar_result = $obSections->GetNext()) {
+                $сosmetics[mb_strtoupper(substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
             }?>
             <?
             foreach (array_slice($сosmetics, 0, $specializationCount) as $key=> $сosmetic){?>

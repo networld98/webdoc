@@ -218,7 +218,7 @@ while($ob = $res->GetNextElement()){
                 <ul>
                     <?$arFilter = Array("IBLOCK_ID"=>"13","ACTIVE"=>"Y");
                     $arSelect = Array("NAME","CODE","ID");
-                    $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
+                    $res = CIBlockElement::GetList(Array("NAME"=>"ASC"), $arFilter,false, false, $arSelect);
                     while($ob = $res->GetNextElement()){
                         $arFields = $ob->GetFields(); ?>
                         <li>

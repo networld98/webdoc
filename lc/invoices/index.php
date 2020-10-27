@@ -57,6 +57,11 @@ $idClient = $arFields['ID'];
         transition: 0.3s;
         border: 2px solid #cbc9cb;
     }
+    tr.active {
+        background-color: #f1f1f1;
+        border-top: 1px solid #bfbebe;
+        border-bottom: 1px solid #bfbebe;
+    }
     @media print {
         .no-print, #invoice .print-btn, .title-h2, .header, .footer, .personal-cabinet-menu, #panel, .personal-cabinet-content__schedule-page__block > .border, personal-cabinet-content__schedule-page__block > h5 {
             display:none;
@@ -126,6 +131,9 @@ $idClient = $arFields['ID'];
                                             let formID = $(this).attr('id');
                                             let formNm = $('#' + formID);
                                             let formMs = $('#invoice');
+
+                                            $('.border.print-table').find('tr').removeClass('active');
+                                            $(this).parents('tr').addClass('active');
                                             $.ajax({
                                                 type: "POST",
                                                 url: '/lc/completion.php',
