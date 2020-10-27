@@ -45,6 +45,8 @@
 		"FORM_REQUIRED_FIELDS" => array(
 			0 => "RATING",
 			1 => "ANNOTATION",
+			2 => "GUEST_NAME",
+			3 => "GUEST_EMAIL",
 		),
 		"FORM_RULES_LINK" => "http://doc.btx.bz/rules/",
 		"FORM_RULES_TEXT" => "Правила публикации отзывов",
