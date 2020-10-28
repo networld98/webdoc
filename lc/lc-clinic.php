@@ -42,7 +42,13 @@ while($ob = $res->GetNextElement()){
                 <ul>
                     <li>
                         <?$file = CFile::ResizeImageGet($arProps['LOGO']['VALUE'], array('width'=>84, 'height'=>84), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
-                        <label><img class="logo-clinic-in-cabinet" src="<?=$file['src']?>" alt="logo_clinic"></label>
+                        <label>
+                            <?if($arProps['LOGO']['VALUE']){?>
+                            <img class="logo-clinic-in-cabinet" src="<?=$file['src']?>" alt="logo_clinic">
+                            <?}else{?>
+                                Размер лого<br>153*153px
+                            <?}?>
+                        </label>
                         <label class="photoFile-label">Загрузить новое лого<input type="file" class="photoFile" name="DETAIL_PICTURE" value=""></label>
                     </li>
                     <li>
