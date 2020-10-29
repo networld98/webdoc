@@ -42,8 +42,9 @@ function propsClinic($prop){
     <div class="clinic-card-img">
         <div class="clinic-card-img__img">
             <?if($arResult["PROPERTIES"]["LOGO"]["VALUE"]){
+                $file = CFile::ResizeImageGet($arResult["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                 ?>
-                <img src="<?= CFile::GetPath($arResult["PROPERTIES"]["LOGO"]["VALUE"]); ?>" alt='<?=$arResult["NAME"]?>'>
+                <img src="<?= $file['src'] ?>" alt='<?=$arItem["NAME"]?>'>
             <?}else{?>
                 <img src="<?= SITE_TEMPLATE_PATH ?>/icon/hospital_building.svg" alt="нет лого">
             <?}?>

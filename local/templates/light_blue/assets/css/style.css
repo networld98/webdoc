@@ -2721,7 +2721,10 @@ main {
     text-align: center;
     margin-right: 40px;
 }
-.clinic-card-img__img img , .clinic-card-img-detail__img img {
+.clinic-card-img__img img {
+    width: 100%;
+}
+.clinic-card-img-detail__img img {
     width: 100%;
     height: 100%;
 }

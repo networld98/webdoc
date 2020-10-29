@@ -29,8 +29,9 @@ $this->setFrameMode(true);
                     <div class="clinic-card-img__img">
                         <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
                             <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){
+                                $file = CFile::ResizeImageGet($arItem["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                 ?>
-                                <img src="<?= CFile::GetPath($arItem["PROPERTIES"]["LOGO"]["VALUE"]); ?>" alt='"<?=$arItem["NAME"]?>'>
+                                <img src="<?= $file['src'] ?>" alt='<?=$arItem["NAME"]?>'>
                             <?}else{?>
                                 <img src="<?= SITE_TEMPLATE_PATH ?>/icon/hospital_building.svg" alt="нет лого">
                             <?}?>
