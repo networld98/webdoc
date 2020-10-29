@@ -1,4 +1,4 @@
-<div class="personal-cabinet-menu__manager mobile-display">
+<?/*<div class="personal-cabinet-menu__manager mobile-display">
     <div class="personal-cabinet-menu__manager__photo">
         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/manager-photo.png" alt="photo">
     </div>
@@ -11,4 +11,4 @@
         <a href=""><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/telegram-icon.svg" alt="icon"></a>
     </div>
     <a href="mailto:marina@prodoctorov.ru" class="personal-cabinet-menu__manager__email">marina@prodoctorov.ru</a>
-</div>
+</div>*/?>
