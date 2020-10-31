@@ -41,7 +41,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
         <div id="bx_register_resend"></div>
 
 
-        <form method="post" action="<?=$arResult["AUTH_URL"]?>" name="bform" enctype="multipart/form-data">
+        <form method="post" action="/lc/finance/" name="bform" enctype="multipart/form-data">
             <input type="hidden" name="AUTH_FORM" value="Y" />
             <input type="hidden" name="TYPE" value="REGISTRATION" />
 

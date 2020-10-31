@@ -30,3 +30,9 @@ div.bx-auth div.bx-auth-secure-unlock {background-image:url(images/sec-unlocked.
     color: rgb(255, 255, 255);
     background: rgb(50, 180, 195);
 }
+.personal-cabinet .field-item > label {
+    margin-top: 15px;
+}
+.field-item > label > input {
+    display: none;
+}
