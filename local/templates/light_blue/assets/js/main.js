@@ -762,9 +762,7 @@ $(document).ready(()=>{
             $($(this).parents('.library').find(`.col__heading:contains('${search}')`).parents('.alp-item').children('.popup-box')).show();
             $('.popup-box .alp-detail').css('display', 'block');   
         }
-        
-        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
-        // $($(this).parents('.library').find('.popup-box')).show();
+
         $('#blackout').show();
         $('html,body').css('overflow', 'hidden');
          
@@ -772,7 +770,7 @@ $(document).ready(()=>{
         $('html').scrollTop(scrollPos);
     });
 
-    $('[class*=popup-box]').click(function(e) { 
+    $('[class*=popup-box]').click(function(e) {
         /* Предотвращаем работу ссылки, если она являеться нашим popup окном */
         e.stopPropagation(); 
     });
@@ -791,7 +789,6 @@ $(document).ready(()=>{
     });
     $('.close').click(function() { 
         var scrollPos = $(window).scrollTop();
-        /* Скрываем тень и окно, когда пользователь кликнул по X */
         $('.popup-box').hide();
         $('.popup-box .map-popup').css('display', 'none');
         $('.popup-box .map-popup-marker').css('display', 'none');
@@ -808,149 +805,20 @@ $(document).ready(()=>{
         if($(this).text() === 'Редактировать данные') {
             $(this).text('Закрыть');
             $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc').find('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop').slideDown();
-            // $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc')
-            // .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
-            // .slideDown();
         } else {
             $(this).text('Редактировать данные');
-            // $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc')
-            // .children('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop')
-            // .slideUp();
             $(this).parents('.personal-cabinet-content__doctors-page-box-item__desc').find('.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop').slideUp();
         }
     });
 
-//     var slice = [].slice;
+    $('.bx_filter_select_block').click( function () {
+        $('.popup-window').css({width: this.offsetWidth + 'px'});
+    });
+    $('#title-search-input').keyup(function () {
+        $('.title-search-result').css({minWidth: this.offsetWidth + 'px'});
+    });
 
-// (function($, window) {
-//   var Starrr;
-//   window.Starrr = Starrr = (function() {
-//     Starrr.prototype.defaults = {
-//       rating: void 0,
-//       max: 5,
-//       readOnly: false,
-//       emptyClass: 'fa fa-star-o',
-//       fullClass: 'fa fa-star',
-//       change: function(e, value) {}
-//     };
 
-//     function Starrr($el, options) {
-//       this.options = $.extend({}, this.defaults, options);
-//       this.$el = $el;
-//       this.createStars();
-//       this.syncRating();
-//       if (this.options.readOnly) {
-//         return;
-//       }
-//       this.$el.on('mouseover.starrr', 'a', (function(_this) {
-//         return function(e) {
-//           return _this.syncRating(_this.getStars().index(e.currentTarget) + 1);
-//         };
-//       })(this));
-//       this.$el.on('mouseout.starrr', (function(_this) {
-//         return function() {
-//           return _this.syncRating();
-//         };
-//       })(this));
-//       this.$el.on('click.starrr', 'a', (function(_this) {
-//         return function(e) {
-//           e.preventDefault();
-//           return _this.setRating(_this.getStars().index(e.currentTarget) + 1);
-//         };
-//       })(this));
-//       this.$el.on('starrr:change', this.options.change);
-//     }
-
-//     Starrr.prototype.getStars = function() {
-//       return this.$el.find('a');
-//     };
-
-//     Starrr.prototype.createStars = function() {
-//       var j, ref, results;
-//       results = [];
-//       for (j = 1, ref = this.options.max; 1 <= ref ? j <= ref : j >= ref; 1 <= ref ? j++ : j--) {
-//         results.push(this.$el.append("<a href='#' />"));
-//       }
-//       return results;
-//     };
-
-//     Starrr.prototype.setRating = function(rating) {
-//       if (this.options.rating === rating) {
-//         rating = void 0;
-//       }
-//       this.options.rating = rating;
-//       this.syncRating();
-//       return this.$el.trigger('starrr:change', rating);
-//     };
-
-//     Starrr.prototype.getRating = function() {
-//       return this.options.rating;
-//     };
-
-//     Starrr.prototype.syncRating = function(rating) {
-//       var $stars, i, j, ref, results;
-//       rating || (rating = this.options.rating);
-//       $stars = this.getStars();
-//       results = [];
-//       for (i = j = 1, ref = this.options.max; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
-//         results.push($stars.eq(i - 1).removeClass(rating >= i ? this.options.emptyClass : this.options.fullClass).addClass(rating >= i ? this.options.fullClass : this.options.emptyClass));
-//       }
-//       return results;
-//     };
-
-//     return Starrr;
-
-//   })();
-//   return $.fn.extend({
-//     starrr: function() {
-//       var args, option;
-//       option = arguments[0], args = 2 <= arguments.length ? slice.call(arguments, 1) : [];
-//       return this.each(function() {
-//         var data;
-//         data = $(this).data('starrr');
-//         if (!data) {
-//           $(this).data('starrr', (data = new Starrr($(this), option)));
-//         }
-//         if (typeof option === 'string') {
-//           return data[option].apply(data, args);
-//         }
-//       });
-//     }
-//   });
-// })(window.jQuery, window);
-
-// $('.starrr').starrr({
-//     rating: 5,
-//     change: function(e, value) {
-//         console.log(e);
-//         console.dir($(this).context.firstElementChild);
-//         switch (value) {
-//             case 1:
-//                 alert('new rating is ' + "Очень плохо")
-//                 value = "Очень плохо";
-//                 break;
-//             case 2:
-//                 alert('new rating is ' + "Плохо")
-//                 value = "Плохо";
-//                 break;
-//             case 3:
-//                 alert('new rating is ' + "Нормально")
-//                 value = "Нормально";
-//                 break;
-//             case 4:
-//                 alert('new rating is ' + "Хорошо")
-//                 value = "Хорошо";
-//                 break;
-//             case 5:
-//                 alert('new rating is ' + "Отлично")
-//                 value = "Отлично";
-//                 break;
-//             default:
-//                 break;
-//         }
-//         $(this).context.firstElementChild.innerText = value;
-//       }
-//   })
 
 });
 

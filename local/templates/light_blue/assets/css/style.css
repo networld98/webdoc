@@ -338,6 +338,21 @@ main > .container:last-child {
     overflow: auto;
 }
 
+.popup-window::-webkit-scrollbar-track, textarea::-webkit-scrollbar-track  {
+    border-radius: 10px;
+}
+.popup-window::-webkit-scrollbar, textarea::-webkit-scrollbar  {
+    background: transparent;
+    width: 5px;
+
+}
+.popup-window::-webkit-scrollbar-thumb, textarea::-webkit-scrollbar-thumb  {
+    background: #9DD4B3;
+    border-radius: 10px;
+    height: 20px;
+    cursor: pointer;
+}
+
 #modal_auth, #modal_auth2 {
     width: 600px;
     height: 800px;
@@ -3281,6 +3296,15 @@ main {
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 100%;
+}
+.bx_filter_input_radio .bx_filter_param_text {
+    display: block;
+    padding: 10px 15px;
+    border: 1px dashed #B4B4B4;
+    border-radius: 5px;
+    margin-left: 0;
+    width: 100%;
 }
 .personal-cabinet-content__schedule-page__block .radio-group > li {
     margin-bottom: 15px;
@@ -3289,8 +3313,17 @@ main {
 .personal-cabinet-content__schedule-page__block .radio-group.radio-group-column {
     margin-top: 15px;
 }
+.radio-group.radio-group-column > li > label {
+    width: 100%;
+}
 .radio-group .bx_filter_input_radio .checkbox {
     border-radius: 50%;
+    display: none;
+}
+.radio-group input:checked ~ .bx_filter_param_text {
+    background: #E3EAEA;
+    border: 1px solid #E3EAEA;
+    cursor: default;
 }
 .personal-cabinet .form-requistment .save {
     margin-left: 0;
@@ -3306,7 +3339,8 @@ main {
 .personal-cabinet-content__my-profile__info-form > ul > li > ul > li {
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
+    flex-basis: 50%;
 }
 .personal-cabinet-content__my-profile__info-form > ul > li > ul > li:last-child {
     margin-right: 0;
@@ -5598,7 +5632,7 @@ button:focus {
     line-height: 17px;
     padding-bottom: 2px;
     border-bottom: 1px dashed #000000;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 .general-block-item-list > li > a:hover {
     border-bottom: 1px dashed transparent;
@@ -7198,6 +7232,7 @@ button:focus {
     .popup-window {left: 15px!important;
         max-width: calc(100% - 30px)!important;
     }
+
     /*.bx_filter_section .smartfilter.main-filter .row > div:first-child > div:first-child {*/
         /*margin-bottom: 20px;*/
     /*}*/
@@ -7582,6 +7617,9 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .popup-window {
+        width: 100%;
+    }
     .no-border-padding2 .api-reviews .api-block-header {
         padding: 0;
     }

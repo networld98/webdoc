@@ -345,7 +345,7 @@ JCSmartFilter.prototype.showDropDownPopup = function(element, popupId)
 		draggable: {restrict:true},
 		closeByEsc: true,
 		content: contentNode
-	}).show();
+	}).show();+
 };
 
 JCSmartFilter.prototype.selectDropDownItem = function(element, controlId)
