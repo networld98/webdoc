@@ -32,37 +32,6 @@ $this->setFrameMode(true);
 );?>
 <br />
 <?endif?>
-
-    <?/* $APPLICATION->IncludeComponent(
-	"bitrix:catalog.smart.filter",
-	"custom",
-	array(
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "N",
-		"COMPONENT_TEMPLATE" => "custom",
-		"CONVERT_CURRENCY" => "N",
-		"DISPLAY_ELEMENT_COUNT" => "N",
-		"FILTER_NAME" => $arParams["FILTER_NAME"],
-		"FILTER_VIEW_MODE" => "vertical",
-		"HIDE_NOT_AVAILABLE" => "N",
-		"IBLOCK_TYPE" => "content",
-        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-		"PAGER_PARAMS_NAME" => "arrPager",
-		"PREFILTER_NAME" => "",
-		"SAVE_IN_SESSION" => "N",
-		"SECTION_CODE" => "",
-		"SECTION_DESCRIPTION" => "-",
-		"SECTION_ID" => "",
-		"SECTION_TITLE" => "-",
-		"SEF_MODE" => "N",
-		"TEMPLATE_THEME" => "blue",
-		"XML_EXPORT" => "N",
-		"POPUP_POSITION" => "left"
-	),
-	false
-);
-    */?>
 <? global $arrFilter;
 global $clinickId;
 $arrFilter = array("PROPERTY_CLINIK" => $clinickId, "PROPERTY_NOT_ON" => !98); ?>

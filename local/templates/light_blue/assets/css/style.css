@@ -6757,7 +6757,8 @@ button:focus {
 }
 @media (max-width: 992px) {
     .anchor-block-list > li > a:hover {
-        font-size: initial;
+        font-size: 15px;
+        font-family: inherit;
     }
     .footer__col-2 .nav {
         flex-direction: row;
@@ -8977,8 +8978,10 @@ button:focus {
     border: none;
     position: absolute;
     height: calc(100% - 4px);
-    width: calc(100% - 15px);
-    margin-top: 2px;
+    width: calc(100% - 45px);
+    margin-top: 3px;
+    z-index: 10;
+    margin-left: -2px;
 }
 .city_input::selection, .city_input:active, .city_input:focus   {
     outline-color:transparent;

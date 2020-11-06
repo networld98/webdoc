@@ -1055,8 +1055,6 @@
 	background: url(images/arr_left.png) no-repeat center;
 }
 .bx_filter .bx_filter_popup_result.left {
-	position: absolute;
-	top: 100%;
 	right: 50%;
 }
 

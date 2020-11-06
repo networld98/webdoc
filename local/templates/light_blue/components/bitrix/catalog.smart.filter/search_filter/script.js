@@ -1,6 +1,14 @@
 function JCSmartFilter(ajaxURL, viewMode)
 {
 	this.ajaxURL = ajaxURL;
+    let SearchParam = $('#title-search-input').val();
+    let searchData = $('#modef').find('a').attr('href');
+    urlPath = searchData.split('?');
+    urlPath2 = urlPath[1].split('&');
+    urlPath2[0] = "q="+SearchParam;
+    urlPathNew = urlPath2.join('&');
+    finalUrl = "/search/?"+ urlPathNew;
+    $('#modef').find('a').attr('href',finalUrl);
 	this.form = null;
 	this.timer = null;
 	this.cacheKey = '';
@@ -137,7 +145,13 @@ JCSmartFilter.prototype.updateItem = function (PID, arItem)
 
 JCSmartFilter.prototype.postHandler = function (result, fromCache)
 {
-	var hrefFILTER, url, curProp;
+    if (/\/\/[^\/]+\/search\//.test(window.location.href)) {
+        UrlPath = '';
+    }else{
+        UrlPath = '/search';
+    }
+
+    var hrefFILTER, url, curProp;
 	var modef = BX('modef');
     var modez = BX('modez');
 	var modef_num = BX('modef_num');
@@ -155,27 +169,27 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 		if (!!modef && !!modef_num)
 		{
 			modef_num.innerHTML = result.ELEMENT_COUNT;
-			hrefFILTER = BX.findChildren(modef, {tag: 'A'}, true);
+			hrefFILTER = UrlPath+BX.findChildren(modef, {tag: 'A'}, true);
 
 			if (result.FILTER_URL && hrefFILTER)
 			{
-				hrefFILTER[0].href = BX.util.htmlspecialcharsback(result.FILTER_URL);
-				console.log(BX.util.htmlspecialcharsback(result.FILTER_URL));
+				hrefFILTER[0].href = UrlPath+BX.util.htmlspecialcharsback(result.FILTER_URL);
 			}
 
 			if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)
 			{
 				BX.bind(hrefFILTER[0], 'click', function(e)
 				{
-					url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
-					BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
-					return BX.PreventDefault(e);
+                    сonsole.log(BX.util.htmlspecialcharsback(result.FILTER_URL));
+					// url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
+					// BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
+					// return BX.PreventDefault(e);
 				});
 			}
 
 			if (result.INSTANT_RELOAD && result.COMPONENT_CONTAINER_ID)
 			{
-				url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
+				url = UrlPath+BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
 				BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
 			}
 			else
@@ -197,7 +211,16 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 
             if (result.FILTER_URL && hrefFILTER)
             {
-                hrefFILTER[0].href = '/clinics'+BX.util.htmlspecialcharsback(result.FILTER_URL);
+                hrefFILTER[0].href = UrlPath+BX.util.htmlspecialcharsback(result.FILTER_URL);
+                let SearchParam = $('#title-search-input').val();
+                let searchData = $('#modef').find('a').attr('href');
+                urlPath = searchData.split('?');
+                urlPath2 = urlPath[1].split('&');
+                urlPath2[0] = "q="+SearchParam;
+                urlPathNew = urlPath2.join('&');
+                finalUrl = "/search/?"+ urlPathNew;
+                $('#modef').find('a').attr('href',finalUrl);
+
             }
 
             if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)

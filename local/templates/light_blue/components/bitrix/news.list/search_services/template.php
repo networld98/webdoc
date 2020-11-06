@@ -28,8 +28,8 @@ $noneSearch++;
         ?>
         <div class="col-lg-12">
             <div class="variable-block-item">
-                    <h3 class="title-article"><a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem['NAME']?></a></h3>
-                    <p class="article-preview"><?=$arItem["PREVIEW_TEXT"]?></p>
+                <h3 class="title-article"><a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem['NAME']?></a></h3>
+                <p class="article-preview"><?=$arItem["PREVIEW_TEXT"]?></p>
             </div>
         </div>
     <?endforeach;?>

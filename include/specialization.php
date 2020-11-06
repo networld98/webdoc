@@ -149,13 +149,13 @@ if ($detect->isMobile() && !$detect->isTablet()) {
         <div class="specializations__list expand">
             <div class="row">
                 <?
-                foreach (array_slice($clinicks, $specializationCount) as $key=> $clinick){?>
+                foreach (array_slice($сosmetics, $specializationCount) as $key=> $сosmetics){?>
                     <div class="col-xl-2 col-md-3 col-6">
                         <div class="col__heading">
                             <?=$key?>
                         </div>
                         <ul class="col__list">
-                            <?foreach ($clinick as $specialization){?>
+                            <?foreach ($сosmetics as $specialization){?>
                                 <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
                             <?}?>
                         </ul>

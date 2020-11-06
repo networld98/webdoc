@@ -21,7 +21,6 @@ $templateData = array(
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
 	<div class="bx_filter_section container">
 	<?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
-
 		<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter main-filter">
             <div class="row">
                 <div class="col-12 col-sm-11">
@@ -504,12 +503,10 @@ $templateData = array(
                     <div class="bx_filter_button_box active">
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container" id="modez">
-                                    <input class="bx_filter_search_button" type="submit" id="set_filter" name="set_filter" value="<?=GetMessage("CT_BCSF_SET_FILTER")?>" />
+                                <?/*  <input class="bx_filter_search_button" type="submit" id="set_filter" name="set_filter" value="<?=GetMessage("CT_BCSF_SET_FILTER")?>" />*/?>
                                 <?/*<input class="bx_filter_search_reset" type="submit" id="del_filter" name="del_filter" value="<?=GetMessage("CT_BCSF_DEL_FILTER")?>" />*/?>
-                               <div class="bx_filter_popup_result left" id="modef" style="display: none;">
-                                    <?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
-                                    <span class="arrow"></span>
-                                    <a href="<?echo $arResult["FILTER_URL"]?>" style="display: none"><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
+                               <div id="modef">
+                                    <a class="bx_filter_search_button"  href="<?if($APPLICATION->GetCurDir() != "/search/"){?>/search<?}?><?echo $arResult["FILTER_URL"]?>" ><?=GetMessage("CT_BCSF_SET_FILTER")?></a>
                                 </div>
                             </div>
                         </div>

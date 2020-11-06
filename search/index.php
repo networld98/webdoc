@@ -3,33 +3,39 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Поиск");
 ?>
 <section class="clinic-card">
-    <? $APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "search_filter", Array(
-        "CACHE_GROUPS" => "Y",	// Учитывать права доступа
-        "CACHE_TIME" => "36000000",	// Время кеширования (сек.)
-        "CACHE_TYPE" => "N",	// Тип кеширования
-        "COMPONENT_TEMPLATE" => "custom",
-        "CONVERT_CURRENCY" => "N",	// Показывать цены в одной валюте
-        "DISPLAY_ELEMENT_COUNT" => "N",	// Показывать количество
-        "FILTER_NAME" => 'arrFilter',	// Имя выходящего массива для фильтрации
-        "FILTER_VIEW_MODE" => "vertical",
-        "HIDE_NOT_AVAILABLE" => "N",	// Не отображать недоступные товары
-        "IBLOCK_TYPE" => "content",	// Тип инфоблока
-        "IBLOCK_ID" => "9",	// Инфоблок
-        "PAGER_PARAMS_NAME" => "arrPager",	// Имя массива с переменными для построения ссылок в постраничной навигации
-        "PREFILTER_NAME" => "",	// Имя входящего массива для дополнительной фильтрации элементов
-        "SAVE_IN_SESSION" => "N",	// Сохранять установки фильтра в сессии пользователя
-        "SECTION_CODE" => "",	// Код раздела
-        "SECTION_DESCRIPTION" => "-",	// Описание
-        "SECTION_ID" => "",	// ID раздела инфоблока
-        "SECTION_TITLE" => "-",	// Заголовок
-        "SEF_MODE" => "N",	// Включить поддержку ЧПУ
-        "TEMPLATE_THEME" => "blue",	// Цветовая тема
-        "XML_EXPORT" => "N",	// Включить поддержку Яндекс Островов
-        "POPUP_POSITION" => "left",
-        "NOT_FILTER" => "N"
-    ),
-        false
-    );
+    <? $APPLICATION->IncludeComponent(
+	"bitrix:catalog.smart.filter", 
+	"search_filter", 
+	array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => "search_filter",
+		"CONVERT_CURRENCY" => "N",
+		"DISPLAY_ELEMENT_COUNT" => "N",
+		"FILTER_NAME" => "arrFilter",
+		"FILTER_VIEW_MODE" => "vertical",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"IBLOCK_TYPE" => "content",
+		"IBLOCK_ID" => "9",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"PREFILTER_NAME" => "",
+		"SAVE_IN_SESSION" => "N",
+		"SECTION_CODE" => "",
+		"SECTION_DESCRIPTION" => "-",
+		"SECTION_ID" => "",
+		"SECTION_TITLE" => "-",
+		"SEF_MODE" => "N",
+		"TEMPLATE_THEME" => "blue",
+		"XML_EXPORT" => "N",
+		"POPUP_POSITION" => "left",
+		"NOT_FILTER" => "N",
+		"SEF_RULE" => "#SMART_FILTER_PATH#",
+		"SECTION_CODE_PATH" => "",
+		"SMART_FILTER_PATH" => $_REQUEST["SMART_FILTER_PATH"]
+	),
+	false
+);
     ?>
 </section>
 <section class="container about-page">
