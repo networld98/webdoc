@@ -14,10 +14,14 @@ $this->setFrameMode(true);
 ?>
 <?
 global $noneSearch;
-if($arResult['ITEMS']!=NULL){
+$countSearchService = count($arResult['ITEMS']);
+$this->SetViewTarget('searchCountService'); ?>
+<?if ($countSearchService!=NULL){?><a href="#blockService"><strong><?= $countSearchService?></strong> услуг(а); <?}?></a>
+<?$this->EndViewTarget();?>
+<?if($arResult['ITEMS']!=NULL){
 $noneSearch++;
 ?>
-<div class="container">
+<div class="container" id="blockService">
     <h2>Услуги</h2>
 </div>
 <div class="row">

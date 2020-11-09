@@ -4,7 +4,8 @@ CModule::IncludeModule('iblock');
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
 ?>
-<?$arFilter = Array("IBLOCK_ID"=>"10", "PROPERTY_PHONE"=> $arUser['LOGIN']);
+
+<?$arFilter = Array("IBLOCK_ID"=>"10", "PROPERTY_TECH_PHONE"=> $arUser['LOGIN']);
 $arSelect = Array();
 $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
 while($ob = $res->GetNextElement()){

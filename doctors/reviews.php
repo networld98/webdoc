@@ -56,7 +56,7 @@
 		"FORM_USE_PRIVACY" => "Y",
 		"IBLOCK_ID" => "10",
 		"INCLUDE_CSS" => "Y",
-		"INCLUDE_JQUERY" => "jquery",
+		"INCLUDE_JQUERY" => "jquery2",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"LIST_ITEMS_LIMIT" => "10",
 		"LIST_MESS_ADD_UNSWER_EVENT_TEXT" => "#USER_NAME#, здравствуйте! 
