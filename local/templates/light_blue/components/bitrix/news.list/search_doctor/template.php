@@ -15,7 +15,11 @@ CModule::IncludeModule("iblock");
 CModule::IncludeModule("form"); ?>
 <?
 global $noneSearch;
-if($arResult['ITEMS']!=NULL){
+$countSearchDoctor = count($arResult['ITEMS']);
+$this->SetViewTarget('searchCountDoctor'); ?>
+<?if ($countSearchDoctor!=NULL){?><a href="#blockDoctor"><strong><?= $countSearchDoctor?></strong> врач(а); <?}?></a>
+<?$this->EndViewTarget();?>
+<?if($arResult['ITEMS']!=NULL){
     $noneSearch++; ?>
 <style>
     .card-item:last-child {
@@ -23,7 +27,7 @@ if($arResult['ITEMS']!=NULL){
         margin-bottom: 30px;
     }
 </style>
-<div class="container">
+<div class="container" id="blockDoctor">
     <h2>Врачи</h2>
 </div>
 <section class="container result-filter">

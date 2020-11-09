@@ -17,7 +17,7 @@ if(!empty($arResult["CATEGORIES"]) && $arResult['CATEGORIES_ITEMS_EXISTS']):?>
                     <?if($category_id === "all"):?>
                         <td class="title-search-all"><a href="<?echo $arItem["URL"]?>"><?echo $arItem["NAME"]?></a></td>
                     <?elseif(isset($arItem["ICON"])):?>
-                        <td class="title-search-item"><a href="<?echo $arItem["URL"]?>"><img src="<?echo $arItem["ICON"]?>"><?echo $arItem["NAME"]?></a></td>
+                        <td class="title-search-item"><a href="<?echo $arItem["URL"]?>"><img src="<?echo $arItem["ICON"]?>"><?echo $arItem["NAME"]?> <?if($arItem['SPEC'] != NULL){?>(<?=$arItem['SPEC']?>)<?}?></a></td>
                     <?else:?>
                         <td class="title-search-more"><a href="<?echo $arItem["URL"]?>"><?echo $arItem["NAME"]?></a></td>
                     <?endif;?>

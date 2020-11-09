@@ -68,6 +68,13 @@ foreach($arResult["CATEGORIES"] as $category_id => $arCategory)
 {
 	foreach($arCategory["ITEMS"] as $i => $arItem)
 	{
+        $db_props = CIBlockElement::GetProperty($arItem['PARAM2'], $arItem['ITEM_ID'], array("sort" => "asc"), Array("CODE"=>"SPECIALIZATION_MAIN"));
+        if($ar_props = $db_props->Fetch())
+            $ID = IntVal($ar_props["VALUE"]);
+        $res = CIBlockSection::GetByID($ID);
+        if($ar_res = $res->GetNext())
+            $SPEC = $ar_res['NAME'];
+        $arResult["CATEGORIES"][$category_id]["ITEMS"][$i] += array('SPEC'=>$SPEC);
 		if(isset($arItem["ITEM_ID"]))
 			$arResult["SEARCH"][] = &$arResult["CATEGORIES"][$category_id]["ITEMS"][$i];
 	}

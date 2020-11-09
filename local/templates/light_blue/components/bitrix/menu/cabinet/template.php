@@ -5,7 +5,12 @@ CModule::IncludeModule("form");
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
 
-$arFilter = Array("IBLOCK_ID"=>array(9,10), "PROPERTY_PHONE"=> $arUser['LOGIN']);
+if($arUser['UF_TYPE_USER']==6){
+    $arFilter = Array("IBLOCK_ID"=>array(9), "PROPERTY_PHONE"=> $arUser['LOGIN']);
+}elseif($arUser['UF_TYPE_USER']==7){
+    $arFilter = Array("IBLOCK_ID"=>array(10), "PROPERTY_TECH_PHONE"=> $arUser['LOGIN']);
+}
+
 $arSelect = Array();
 $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
 while($ob = $res->GetNextElement()){

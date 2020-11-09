@@ -14,9 +14,14 @@ $this->setFrameMode(true);
 ?>
 <?
 global $noneSearch;
+$countSearchClinic = count($arResult['ITEMS']);
+$this->SetViewTarget('searchCountClinic'); ?>
+<?if ($countSearchClinic!=NULL){?><a href="#blockClinic"><strong><?= $countSearchClinic?></strong> клиник(а); <?}?></a>
+<?$this->EndViewTarget();?>
+<?
 if($arResult['ITEMS']!=NULL){
     $noneSearch++;?>
-<div class="container">
+<div class="container" id="blockClinic">
     <h2>Клиники</h2>
 </div>
  <?function propsClinic($prop){
