@@ -35,35 +35,35 @@ function services_list($iblock){
 <div class="full-screen__filter-bg services-filter">
     <section class="container">
         <? $APPLICATION->IncludeComponent(
-            "bitrix:catalog.smart.filter",
-            "custom",
-            array(
-                "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "N",
-                "COMPONENT_TEMPLATE" => "custom",
-                "CONVERT_CURRENCY" => "N",
-                "DISPLAY_ELEMENT_COUNT" => "N",
-                "FILTER_NAME" => $arParams["FILTER_NAME"],
-                "FILTER_VIEW_MODE" => "vertical",
-                "HIDE_NOT_AVAILABLE" => "N",
-                "IBLOCK_TYPE" => "content",
-                "IBLOCK_ID" => 9,
-                "PAGER_PARAMS_NAME" => "arrPager",
-                "PREFILTER_NAME" => "",
-                "SAVE_IN_SESSION" => "N",
-                "SECTION_CODE" => "",
-                "SECTION_DESCRIPTION" => "-",
-                "SECTION_ID" => "",
-                "SECTION_TITLE" => "-",
-                "SEF_MODE" => "N",
-                "TEMPLATE_THEME" => "blue",
-                "XML_EXPORT" => "N",
-                "POPUP_POSITION" => "left",
-                "NOT_FILTER" => "N"
-            ),
-            false
-        );
+	"bitrix:catalog.smart.filter", 
+	"search_filter", 
+	array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => "search_filter",
+		"CONVERT_CURRENCY" => "N",
+		"DISPLAY_ELEMENT_COUNT" => "N",
+		"FILTER_NAME" => $arParams["FILTER_NAME"],
+		"FILTER_VIEW_MODE" => "vertical",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"IBLOCK_TYPE" => "content",
+		"IBLOCK_ID" => "9",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"PREFILTER_NAME" => "",
+		"SAVE_IN_SESSION" => "N",
+		"SECTION_CODE" => "",
+		"SECTION_DESCRIPTION" => "-",
+		"SECTION_ID" => "",
+		"SECTION_TITLE" => "-",
+		"SEF_MODE" => "N",
+		"TEMPLATE_THEME" => "blue",
+		"XML_EXPORT" => "N",
+		"POPUP_POSITION" => "left",
+		"NOT_FILTER" => "N"
+	),
+	false
+);
         ?></section>
 </div>
 <section class="container">
@@ -218,6 +218,9 @@ function services_list($iblock){
 		"FILTER_PROPERTY_CODE" => "",
 		"IBLOCK_ID" => "19",
 		"FILE_404" => "",
+		"TEMPLATE_THEME" => "blue",
+		"MEDIA_PROPERTY" => "",
+		"SLIDER_PROPERTY" => "",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "#SECTION_CODE_PATH#/",
