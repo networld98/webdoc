@@ -78,15 +78,15 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                                 $arRaing = CApiReviews::getElementRating($arItem['ID']);
                             } ?>
                             <div class="doctors-list-item__img-info-ratings">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='1') { ?>ant-design_star-filled.svg<? } else { ?>ant-design_star-none-filled.png<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='1') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='2') { ?>ant-design_star-filled.svg<? } else { ?>ant-design_star-none-filled.png<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='2') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='3') { ?>ant-design_star-filled.svg<? } else { ?>ant-design_star-none-filled.png<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='3') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='4') { ?>ant-design_star-filled.svg<? } else { ?>ant-design_star-none-filled.png<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='4') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='5') { ?>ant-design_star-filled.svg<? } else { ?>ant-design_star-none-filled.png<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='5') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
                             </div>
                             <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов

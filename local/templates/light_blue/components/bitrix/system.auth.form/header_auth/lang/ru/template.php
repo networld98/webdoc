@@ -2,7 +2,7 @@
 $MESS["AUTH_LOGIN_BUTTON"] = "Войти";
 $MESS["AUTH_LOGIN"] = "Телефон";
 $MESS["AUTH_PASSWORD"] = "Пароль";
-$MESS["AUTH_REMEMBER_ME"] = "Запомнить меня на этом компьютере";
+$MESS["AUTH_REMEMBER_ME"] = "Запомнить меня";
 $MESS["AUTH_FORGOT_PASSWORD_2"] = "Забыли пароль?";
 $MESS["AUTH_REGISTER"] = "Регистрация";
 $MESS["AUTH_LOGOUT_BUTTON"] = "Выйти";

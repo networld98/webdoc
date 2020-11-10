@@ -5094,39 +5094,39 @@ button:focus {
     text-align: center;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.green .count {
-    background: #03C03C;
+    background: #32b6c5;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.green .text {
-    color: #03C03C;
-    border-color: #03C03C;
+    color: #32b6c5;
+    border-color: #32b6c5;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.chartreuse .count {
-    background: #66FF00;
+    background: #9acc9b;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.chartreuse .text {
-    color: #7FFF00;
-    border-color: #7FFF00;
+    color: #9acc9b;
+    border-color: #9acc9b;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.orange .count {
-    background: #FFA500;
+    background: #fcdebc;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.orange .text {
-    color: #FFA500;
-    border-color: #FFA500;
+    color: #fcdebc;
+    border-color: #fcdebc;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.pink .count {
-    background: #FF2400;
+    background: #e896ad;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.pink .text {
-    color: #FF2400;
-    border-color: #FF2400;
+    color: #e896ad;
+    border-color: #e896ad;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.red .count {
-    background: #C41E3A;
+    background: #a54d6b;
 }
 .clinic-card-full-desc__content__feedback-item-left__mark.red .text {
-    color: #C41E3A;
-    border-color: #C41E3A;
+    color: #a54d6b;
+    border-color: #a54d6b;
 }
 
 
@@ -7617,6 +7617,32 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .clinic-card-full-desc__content__feedback-item-left__mark .count {
+        margin-right: 0;
+    }
+    .clinic-card-full-desc__content__feedback__radio-group {
+        padding: 15px 8px;
+    }
+    .clinic-card-full-desc__content {
+        padding: 30px 15px 40px 15px;
+    }
+    .api-reviews-filter .api-filters .api-filters-item {
+        display: flex;
+        width: 100%;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin-right: 0;
+    }
+    .api-filters > li {
+        margin-bottom: 20px;
+
+    }
+    .api-filters > li:last-child {
+        margin-bottom: 0;
+    }
+    .api-reviews-filter .clinic-card-full-desc__content__feedback-item-left__mark .text {
+        text-align: right;
+    }
     .popup-window {
         width: 100%;
     }
