@@ -15,8 +15,8 @@ if($arResult["REQUEST"]["~TAGS"])
 			$url[$tags] = $tags;
 			$result = array(
 				"TAG_NAME" => htmlspecialcharsex($tags),
-				"TAG_PATH" => $APPLICATION->GetCurPageParam("tags=".urlencode(implode(",", $url)), array("tags")),
-				"TAG_WITHOUT" => $APPLICATION->GetCurPageParam((count($url_without) > 0 ? "tags=".urlencode(implode(",", $url_without)) : ""), array("tags")),
+				//"TAG_PATH" => $APPLICATION->GetCurPageParam("tags=".urlencode(implode(",", $url)), array("tags")),
+				//"TAG_WITHOUT" => $APPLICATION->GetCurPageParam((count($url_without) > 0 ? "tags=".urlencode(implode(",", $url_without)) : ""), array("tags")),
 			);
 			$arResult["TAGS_CHAIN"][] = $result;
 		}

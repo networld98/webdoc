@@ -5,7 +5,8 @@ foreach ($_POST as $key => $data){
     if (strpos($key, 'METRO') !== false) {
         $PROPS['METRO'][] = $data;
     } elseif (strpos($key, 'SPECIALIZATION') !== false) {
-        $PROPS['SPECIALIZATION'][] = $data;
+        $PROPS['SPECIALIZATION'][] = explode('/', $data)[0];
+        $specialization_technical_text[] = explode('/', $data)[1];
     } elseif (strpos($key, 'DAY_RECEPTION') !== false) {
     $PROPS['DAY_RECEPTION'][] = $data;
     } elseif (strpos($key, 'CONTACTS') !== false) {
@@ -23,7 +24,7 @@ foreach ($_POST as $key => $data){
         $PROPS['LOGO'] = CFile::MakeFileArray(str_replace($_SERVER["DOCUMENT_ROOT"], $_SERVER['HTTP_ORIGIN'], $_POST['LOGO']));
     }
 }
-
+$PROPS['SPECIALIZATION_TECHNICAL_FIELD'] = implode(" ", $specialization_technical_text);
 foreach ($_POST['FULL_PROPERTY'] as $data){
     if (!array_key_exists($data,$_POST)){
         $PROPS[$data] = NULL;

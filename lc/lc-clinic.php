@@ -228,7 +228,7 @@ while($ob = $res->GetNextElement()){
                     while($ob = $res->GetNextElement()){
                         $arFields = $ob->GetFields(); ?>
                         <li>
-                            <input type="checkbox" <?if(in_array($arFields['ID'],$arProps['SPECIALIZATION']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>" name="<?=$arProps['SPECIALIZATION']['CODE']?>_<?=$arFields['ID']?>" id="<?=$arFields['ID']?>">
+                            <input type="checkbox" <?if(in_array($arFields['ID'],$arProps['SPECIALIZATION']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>/<?=$arFields["NAME"]?>" name="<?=$arProps['SPECIALIZATION']['CODE']?>_<?=$arFields['ID']?>" id="<?=$arFields['ID']?>">
                             <label data-role="label_<?=$arFields['ID']?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>">
                                 <span class="bx_filter_input_checkbox">
                                     <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>

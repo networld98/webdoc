@@ -812,3 +812,6 @@ label.photoFile-label {
     margin-bottom: 10px;
 }
 }
+.search-block-hidden {
+    display: none;
+}

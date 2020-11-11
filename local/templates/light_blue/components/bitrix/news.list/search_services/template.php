@@ -21,9 +21,6 @@ $this->SetViewTarget('searchCountService'); ?>
 <?if($arResult['ITEMS']!=NULL){
 $noneSearch++;
 ?>
-<div class="container" id="blockService">
-    <h2>Услуги</h2>
-</div>
 <div class="row">
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?
