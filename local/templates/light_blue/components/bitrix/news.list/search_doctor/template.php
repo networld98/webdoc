@@ -27,10 +27,10 @@ $this->SetViewTarget('searchCountDoctor'); ?>
         margin-bottom: 30px;
     }
 </style>
-<div class="container" id="blockDoctor">
+<div id="blockDoctor">
     <h2>Врачи</h2>
 </div>
-<section class="container result-filter">
+<section class="result-filter">
     <? /* <div class="options-block">
 		<div class="sort-block">
 			<ul class="sort-block-list">

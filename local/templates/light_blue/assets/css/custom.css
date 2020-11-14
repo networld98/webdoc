@@ -757,19 +757,22 @@ label.photoFile-label {
 }
 }
 @media (max-width: 450px) {
-.delete-doctor-modal {
-    left: 0;
-}
-.services-detail .row > div:last-child >  img:nth-of-type(odd),.services-detail .row > div:last-child >  img:nth-of-type(even) {
-    float: initial;
-    margin-bottom: 20px;
-    margin-left: 0;
-    margin-right: 0;
-}
-.place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
-    right: -32px;
-    bottom: -36px;
-}
+    .header .container.cabinet .header-exit {
+        margin-right: 8px;
+    }
+    .delete-doctor-modal {
+        left: 0;
+    }
+    .services-detail .row > div:last-child >  img:nth-of-type(odd),.services-detail .row > div:last-child >  img:nth-of-type(even) {
+        float: initial;
+        margin-bottom: 20px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
+        right: -32px;
+        bottom: -36px;
+    }
     .place-education-block .add-education {
         right: 0;
     }
@@ -779,38 +782,38 @@ label.photoFile-label {
     .place-schedule-block select:first-child, .place-schedule-block input:first-child {
         margin-right: 0;
     }
-.time-block-span {
-    max-width: 100px;
-}
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .row .col-lg-12 {
-    display: flex;
-    flex-direction: column;
-    padding-right: 0;
-}
-.services-detail h3,.services-detail h2 {
-    margin-bottom: 10px;
-}
-.services-detail p {
-    margin-bottom: 15px;
-}
-.services-detail ul {
-    margin-top: 15px;
-    margin-bottom: 20px
-}
-.personal-cabinet-content-item, .place-education-block,.personal-cabinet-content__my-profile .contacts-group {
-    width: 100%;
-}
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group {
-    width: 100%;
-}
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group > li {
-    width: 100%;
-    margin-right: 0;
-}
-.time-block-span {
-    text-align: left;
-    margin-bottom: 10px;
-}
+    .time-block-span {
+        max-width: 100px;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .row .col-lg-12 {
+        display: flex;
+        flex-direction: column;
+        padding-right: 0;
+    }
+    .services-detail h3,.services-detail h2 {
+        margin-bottom: 10px;
+    }
+    .services-detail p {
+        margin-bottom: 15px;
+    }
+    .services-detail ul {
+        margin-top: 15px;
+        margin-bottom: 20px
+    }
+    .personal-cabinet-content-item, .place-education-block,.personal-cabinet-content__my-profile .contacts-group {
+        width: 100%;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group {
+        width: 100%;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group > li {
+        width: 100%;
+        margin-right: 0;
+    }
+    .time-block-span {
+        text-align: left;
+        margin-bottom: 10px;
+    }
 }
 .search-block-hidden {
     display: none;

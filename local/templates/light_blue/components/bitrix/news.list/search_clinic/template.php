@@ -21,14 +21,14 @@ $this->SetViewTarget('searchCountClinic'); ?>
 <?
 if($arResult['ITEMS']!=NULL){
     $noneSearch++;?>
-<div class="container" id="blockClinic">
+<div id="blockClinic">
     <h2>Клиники</h2>
 </div>
  <?function propsClinic($prop){
     if($prop["VALUE"]=='Y'):?>
     <li class="doctors-list-item_options-list-item"><?=$prop["NAME"]?></li>
 <?endif;}?>
-<div class="list-item clinic-list container">
+<div class="list-item clinic-list">
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?
         $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));

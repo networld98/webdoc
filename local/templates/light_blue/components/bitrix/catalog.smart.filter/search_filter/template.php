@@ -255,7 +255,7 @@ $templateData = array(
                                                      onclick="smartFilter.showDropDownPopup(this, '<?= CUtil::JSEscape($key) ?>')">
                                                     <?
                                                     if ($arItem['CODE'] != "SPECIALIZATION") { ?>
-                                                        <input type="text" class="city_input"
+                                                        <input type="text" class="city_input" value=""
                                                                onkeyup="smartFilter.showDropDownPopup(this, '<?= CUtil::JSEscape($key) ?>')"
                                                                id="city_input_search_<?= CUtil::JSEscape($key) ?>">
                                                     <?
@@ -810,6 +810,7 @@ echo"</pre>";
 <script>
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
     $(document).ready(function () {
+        let city_input = $('.city_input').val();
         $('.city_input').on('focus',function() {
             $(this).css('color','black');
         });
@@ -848,5 +849,9 @@ echo"</pre>";
             $('.bx_filter_select_text').show();
             $('.city_input').css('color','transparent');
         });
+        if (city_input !== '' || city_input !== null) {
+            $('.bx_filter_select_text').show();
+            $('.city_input').css('color','transparent');
+        }
     });
 </script>
