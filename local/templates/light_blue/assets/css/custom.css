@@ -757,6 +757,17 @@ label.photoFile-label {
 }
 }
 @media (max-width: 450px) {
+    #title-search-input {
+        font-size: 13px;
+        padding-left: 3px;
+        font-weight: 300;
+        font-family: "Ubuntu-Light";
+        font-style: normal;
+        padding-left: 8px;
+    }
+    .search-order {
+        order: 2;
+    }
     .header .container.cabinet .header-exit {
         margin-right: 8px;
     }
