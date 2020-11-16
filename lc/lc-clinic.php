@@ -40,7 +40,7 @@ while($ob = $res->GetNextElement()){
                 <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
                 <input type="hidden" name="LOGO" value="<?=$photoFile?>">
                 <ul>
-                    <li>
+                    <li class="uploadPhoto">
                         <?$file = CFile::ResizeImageGet($arProps['LOGO']['VALUE'], array('width'=>84, 'height'=>84), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
                         <label>
                             <?if($arProps['LOGO']['VALUE']){?>
@@ -50,6 +50,7 @@ while($ob = $res->GetNextElement()){
                             <?}?>
                         </label>
                         <label class="photoFile-label">Загрузить новое лого<input type="file" class="photoFile" name="DETAIL_PICTURE" value=""></label>
+                        <span id="uploadPhoto" style="color:green"></span>
                     </li>
                     <li>
                         <label for="">Логин</label>
@@ -359,6 +360,13 @@ while($ob = $res->GetNextElement()){
                 success: function(form_data){
                     $(formPhoto).html(form_data);
                     let file = $("#photo-form").text();
+                    let str = file.substring(0,file.indexOf('/u'));
+                    let imgUrl = file.replace(str, '');
+                    console.log(imgUrl);
+                    $('.logo-clinic-in-cabinet').attr('src',imgUrl);
+                    $('.logo-clinic-in-cabinet').css('max-width','85px');
+                    $('.logo-clinic-in-cabinet').css('max-height','85px');
+                    $("#uploadPhoto").text('Не забудьте сохранить изменения');
                     $('input[name="LOGO"]').val(file);
                 }
             });

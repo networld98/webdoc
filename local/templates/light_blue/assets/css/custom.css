@@ -700,16 +700,22 @@ main >.main-seo-text {
 }
 }
 @media (max-width: 768px) {
-.doctor-lc .personal-cabinet-content__doctors-page-box-item__desc__name {
-    margin-top: 15px;
-    display: block;
-}
-.time-block-span {
-    max-width: 132px;
-}
-.personal-cabinet-content-item {
-    width: 100%;
-}
+    .uploadPhoto {
+        flex-wrap: wrap;
+    }
+    .uploadPhoto span {
+        margin: 0 auto;
+    }
+    .doctor-lc .personal-cabinet-content__doctors-page-box-item__desc__name {
+        margin-top: 15px;
+        display: block;
+    }
+    .time-block-span {
+        max-width: 132px;
+    }
+    .personal-cabinet-content-item {
+        width: 100%;
+    }
 }
 @media (max-width: 730px) {
 .header .container.cabinet .contacts {
