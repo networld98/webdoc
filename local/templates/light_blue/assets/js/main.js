@@ -818,7 +818,12 @@ $(document).ready(()=>{
         $('.title-search-result').css({minWidth: this.offsetWidth + 'px'});
     });
 
-
+    $(document).mouseup(function (e) {
+        var div = $(".side-menu");
+        if (!div.is(e.target) && div.has(e.target).length === 0 && !$('.burger__btn').is(e.target)) {
+            $(".burger__toggle").prop('checked',false);
+    }
+    });
 
 });
 
