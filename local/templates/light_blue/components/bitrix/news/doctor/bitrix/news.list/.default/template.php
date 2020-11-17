@@ -61,15 +61,15 @@ CModule::IncludeModule("form"); ?>
                                 $arRaing = CApiReviews::getElementRating($arItem['ID']);
                             } ?>
                             <div class="doctors-list-item__img-info-ratings">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='1') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='1') { ?>filled-star.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='2') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='2') { ?>filled-star.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='3') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='3') { ?>filled-star.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='4') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='4') { ?>filled-star.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
-                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='5') { ?>ant-design_star-filled.svg<? } else { ?>unfilled-star.svg<? } ?>"
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='5') { ?>filled-star.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
                             </div>
                             <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов
@@ -99,7 +99,38 @@ CModule::IncludeModule("form"); ?>
                         <a href="tel:<?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>"
                            class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>
                         </a>
-                        <span class="doctors-list-item__description-counts">Всего записалось 582 человека</span>
+                       <?
+                        $FORM_ID = 4;
+                            $arFilter = array(
+                            );
+                            $arFilter["FIELDS"] = array();
+
+                            $rsResults = CFormResult::GetList($FORM_ID,
+                                ($by="s_timestamp"),
+                                ($order="desc"),
+                                $arFilter,
+                                $is_filtered,
+                                "Y",
+                                10);
+                            $countRow = $rsResults->result->num_rows;
+                            $countRecords = 0;
+                            if($countRow!=0) {
+                                while ($arResult = $rsResults->Fetch()) {
+                                    $RESULT_ID = $arResult['ID']; // ID результата
+                                    $STATUS_ID = $arResult['STATUS_ID']; // ID статуса
+
+                                    // получим данные по всем вопросам
+                                    $arAnswer = CFormResult::GetDataByID(
+                                        $RESULT_ID,
+                                        array(),
+                                        $arResult,
+                                        $arAnswer2);
+                                    if(explode('/',$arAnswer['SIMPLE_RECORD_PHONE'][0]['USER_TEXT'])[0] == $arItem['ID']){
+                                        $countRecords++;
+                                    }
+                                }
+                            }?>
+                        <span class="doctors-list-item__description-counts">Всего записалось <?= $countRecords?> человек(а)</span>
                         <? /*<div class="doctors-list-item-favorites"></div>*/ ?>
                     </div>
                 </div>
@@ -178,7 +209,8 @@ CModule::IncludeModule("form"); ?>
                                 <? } ?>
                                 <? if ($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]): ?>
                                     <p class="doctor-card__clinic-adress">
-                                        г. <?= str_replace('/', ', ', $arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]) ?>
+                                        <?if(count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
+                                         <?= str_replace('/', ', ', $arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]) ?>
                                     </p>
                                 <? endif; ?>
                                 <? if ($arItem["PROPERTIES"]["METRO"]["VALUE"]): ?>

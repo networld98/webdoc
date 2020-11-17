@@ -39,7 +39,7 @@ $idClient = $arFields['ID'];
         $arFilter,
         $is_filtered,
         "Y",
-        10);
+        1000);
     $countRow = $rsResults->result->num_rows;
     if($countRow!=0){
     while ($arResult = $rsResults->Fetch())

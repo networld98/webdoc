@@ -394,6 +394,15 @@ label.photoFile-label:hover {
 }
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > div {
     width: 100%;
+    display: flex;
+    align-items: center;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > div > span {
+    margin-right: 20px;
+    text-align: right;
+}
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row > div > .doctor-adress {
+    margin-top: 0;
 }
 
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child{

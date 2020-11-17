@@ -38,11 +38,11 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <div class="doctors-list-item__img-info">
             <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
             <div class="doctors-list-item__img-info-ratings">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='1'){?>ant-design_star-filled.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='2'){?>ant-design_star-filled.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='3'){?>ant-design_star-filled.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>ant-design_star-filled.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>ant-design_star-filled.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='1'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='2'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='3'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
             </div>
             <p class="doctors-list-item__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <a href=""><?=$arRaing['COUNT']?> отзывов</a></p>
         </div>
@@ -85,7 +85,8 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <?}?>
         <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
             <p class="doctor-card__clinic-adress">
-                г. <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
+                <?if(count(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
+                <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
             </p>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
@@ -221,15 +222,15 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <div class="doctor-card__img-info-ratings">
                     <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
                     <?if($arRaing['RATING']>=1){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-1">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-1">
                     <?}if ($arRaing['RATING']>=2){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-2">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-2">
                     <?}if ($arRaing['RATING']>=3){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-3">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-3">
                     <?}if ($arRaing['RATING']>=4){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-4">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-4">
                     <?}if ($arRaing['RATING']>=5){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/ant-design_star-filled.svg" alt="star-5">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-5">
                     <?}?>
                 </div>
             </div>

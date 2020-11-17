@@ -16,9 +16,8 @@ function doctorInClinic($id, $param)
     return false;
 }
 $clinics = doctorInClinic(10, array("ID"=> $_POST['ID_DOCTOR']));
-
 if($clinics['CLINIK']['VALUE']==NULL){
-    $clinics['CLINIK']['VALUE'] = 0;
+    $clinics['CLINIK']['VALUE'] = [];
 }
     if($_POST['DELETE']){
         $delMessage = array_diff($clinics['MESSAGE']['VALUE'],[$_POST['ID_CLINIC']]);

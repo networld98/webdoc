@@ -158,7 +158,7 @@ input[type="reset"] {
     width: 400px;
     height: 104vh;
     top: -35px;
-    z-index: 2;
+    z-index: 999;
     text-align: initial;
 }
 .burger .side-menu > ul {
@@ -7625,6 +7625,9 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .bx-breadcrumb .bx-breadcrumb-item {
+        display: flex;
+    }
     .clinic-card-full-desc__content__feedback-item-left__mark .count {
         margin-right: 0;
     }
