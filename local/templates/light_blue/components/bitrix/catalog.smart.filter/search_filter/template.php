@@ -810,11 +810,20 @@ echo"</pre>";
 <script>
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
     $(document).ready(function () {
-        let city_input = $('.city_input').val();
-        $('.city_input').on('focus',function() {
+        let city = $('.city_input');
+        city.css('color','transparent');
+        let city_input = city.val();
+        city.on('focus',function() {
             $(this).css('color','black');
         });
-        $('.city_input').on('keyup',function() {
+        city.focus(function() {
+            $(this).parent('.bx_filter_select_block').trigger('click');
+        });
+        city.mouseout(function() {
+            $('.bx_filter_select_text').show();
+            city.css('color','transparent');
+        });
+        city.on('keyup',function() {
             var select = $(this).val();
             if (select.length >= 1) {
                 $(this).parent('.bx_filter_select_block').find('.bx_filter_select_text').hide();
@@ -843,15 +852,15 @@ echo"</pre>";
         });
         $('.bx_filter_param_label_94').on('click',function () {
             $('.bx_filter_select_text').show();
-            $('.city_input').css('color','transparent');
+            city.css('color','transparent');
         });
         $('.bx_filter_param_label_115').on('click',function () {
             $('.bx_filter_select_text').show();
-            $('.city_input').css('color','transparent');
+            city.css('color','transparent');
         });
         if (city_input !== '' || city_input !== null) {
             $('.bx_filter_select_text').show();
-            $('.city_input').css('color','transparent');
+            city.css('color','transparent');
         }
     });
 </script>

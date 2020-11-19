@@ -130,7 +130,11 @@ CModule::IncludeModule("form"); ?>
                                     }
                                 }
                             }?>
-                        <span class="doctors-list-item__description-counts">Всего записалось <?= $countRecords?> человек(а)</span>
+                        <?if($countRecords>0){?>
+                            <span class="doctors-list-item__description-counts">Всего записалось <?= $countRecords?> человек(а)</span>
+                        <?}else{?>
+                            <span class="doctors-list-item__description-counts">К этому врачу еще никто не записался</span>
+                        <?}?>
                         <? /*<div class="doctors-list-item-favorites"></div>*/ ?>
                     </div>
                 </div>
