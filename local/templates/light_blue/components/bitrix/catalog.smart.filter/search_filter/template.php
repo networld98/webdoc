@@ -801,12 +801,6 @@ $templateData = array(
 		<div style="clear: both;"></div>
 	</div>
 </div>
-<?
-global $filterSearch;
-echo"<pre>";
-print_r($filterSearch);
-echo"</pre>";
-?>
 <script>
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
     $(document).ready(function () {

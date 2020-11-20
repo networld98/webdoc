@@ -9064,6 +9064,7 @@ button:focus {
     margin-top: 3px;
     z-index: 10;
     margin-left: -2px;
+    outline: none;
 }
 .city_input::selection, .city_input:active, .city_input:focus   {
     outline-color:transparent;
