@@ -6600,6 +6600,9 @@ button:focus {
     }
 }
 @media (max-width: 1000px) {
+    .personal-cabinet-content__my-profile__info-desc {
+        width: 100%;
+    }
     .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop > ul {
         flex-wrap: wrap;
     }
@@ -9064,7 +9067,6 @@ button:focus {
     margin-top: 3px;
     z-index: 10;
     margin-left: -2px;
-    outline: none;
 }
 .city_input::selection, .city_input:active, .city_input:focus   {
     outline-color:transparent;

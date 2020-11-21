@@ -118,9 +118,9 @@ $idClient = $arFields['ID'];
                                     </td>
                                     <td>
                                         <?if ($arFields['PROPERTY_PAY_VALUE']){?>
-                                            <button type="submit" class="completion-btn" id="completion-btn-<?=$arFields['ID']?>">Сгенерировать акт</button>
+                                            <button type="submit" class="completion-btn" id="completion-btn-<?=$arFields['ID']?>">Сформировать акт</button>
                                         <?}else{?>
-                                            <button disabled class="completion-btn">Сгенерировать акт</button>
+                                            <button disabled class="completion-btn">Сформировать акт</button>
                                         <?}?>
                                     </td>
                               <?if ($arFields['PROPERTY_PAY_VALUE']){?>

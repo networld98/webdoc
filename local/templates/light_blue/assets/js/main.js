@@ -821,6 +821,8 @@ $(document).ready(()=>{
     $(document).mouseup(function (e) {
         var div = $(".side-menu");
         if (!div.is(e.target) && div.has(e.target).length === 0 && !$('.burger__btn').is(e.target)) {
+            console.log('click za bredelami sidemenu');
+            console.log($(".burger__toggle").prop('checked'));
             $(".burger__toggle").prop('checked',false);
     }
     });

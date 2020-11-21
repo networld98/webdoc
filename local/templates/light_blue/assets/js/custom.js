@@ -32,7 +32,6 @@ $(document).ready(function () {
     // });
 
     $('input[name=USER_LOGIN]').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
-    $('input[name=PHONE]').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
     $('.contact-phone').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
     $('.bx-register-phone').mask('+7 (999) 999-99-99', {placeholder: "+7 (___) ___ __ __"});
     $('.place-education-block_period').mask('9999-9999', {placeholder: "____-____"});
