@@ -265,15 +265,12 @@ endif;?>
 			</div>
 		<?endif;*/?>
 	<?else:?>
-		<?ShowNote(GetMessage("CT_BSP_NOTHING_TO_FOUND"));?>
+        <?
+        global $noneSearch;
+        if($noneSearch === 0){?>
+            <?ShowNote(GetMessage("CT_BSP_NOTHING_TO_FOUND"));?>
+        <?}?>
 	<?endif;?>
-    <?
-    global $noneSearch;
-    if($noneSearch === 0){?>
-        <div class="search-result list-item">
-            <p><font class="notetext">К сожалению, на ваш поисковый запрос ничего не найдено.</font></p>
-        </div>
-    <?}?>
         <script type="text/javascript">
             $(document).ready(function(){
                 $('a[href^="#"]').on('click', function(event) {
