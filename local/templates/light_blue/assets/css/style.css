@@ -643,6 +643,41 @@ main {
     cursor: pointer;
     margin-top: 75px;
 }
+.flex-block-js-bw {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 75px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+.container.flex-block-js-bw {
+    padding: 0;
+    margin-top: 55px;
+    margin-bottom: 60px;
+}
+.sharding-block {
+    justify-content: flex-end;
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+.sharding-item {
+    margin-right: 15px;
+}
+.sharding-item:last-child {
+    margin-right: 0;
+}
+.sharding-item-link {
+    display: block;
+}
+.review-custom-btn.review-custom-btn_custom {
+    margin: 0;
+    margin-top: 20px;
+}
+
 
 .specializations .load_more {
     padding: 14px 23px;
@@ -657,6 +692,9 @@ main {
     margin: 0 auto;
     cursor: pointer;
     margin-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .specializations .expand {
@@ -1943,6 +1981,9 @@ main {
 .doctor-card-popUp-group__route:hover {
     color: #32B4C3 !important;
 }
+.clinic-card-img-ghost {
+    display: none;
+}
 .doctor-card-popUp-group__route::before {
     content: '';
     display: block;
@@ -2935,6 +2976,9 @@ main {
     width: 947px;
 }
 .clinic-card-info-detail {
+
+}
+.clinic-card-info-detail .grey-block {
     display: flex;
     justify-content: space-between;
 }
@@ -3997,7 +4041,9 @@ button:focus {
     margin-top: 15px;
 }
 
-
+.div-hide {
+    display: block;
+}
 .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content.main-block {
     max-width: 455px;
     flex-direction: column;
@@ -5020,19 +5066,19 @@ button:focus {
     background: #FFFFFF;
 }
 .count.green {
-    background: #03C03C;
+    background: #32b6c5;
 }
 .count.chartreuse{
-    background: #66FF00;
+    background: #9acc9b;
 }
 .count.orange {
-    background: #FFA500;
+    background: #fcdebc;
 }
 .count.pink {
-    background: #FF2400;
+    background: #e896ad;
 }
 .count.red {
-    background: #C41E3A;
+    background: #a54d6b;
 }
 .clinic-card-full-desc__content__feedback-item {
     display: flex;
@@ -5986,6 +6032,9 @@ button:focus {
     padding-left: 0;
     padding-right: 0;
 }
+.bx_filter .main-filter .bx_filter_select_arrow {
+    display: none;
+}
 /*.bx_filter.bx_blue.bx_horizontal {*/
     /*background: #F3F4EF;*/
     /*}*/
@@ -6621,6 +6670,9 @@ button:focus {
         align-items: initial;
     }
     .clinic-card-info-detail {
+
+    }
+    .clinic-card-info-detail .grey-block {
         flex-direction: column;
     }
     .clinic-card-info-detail__block {
@@ -7628,6 +7680,37 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .sharding-item-img {
+        width: 32px;
+        height: 32px;
+    }
+    .container.flex-block-js-bw {
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+    .sharding-item {
+        margin-right: 8px;
+    }
+    .div-hide {
+        display: none;
+    }
+    .clinic-card-desc-detail .doctor-card-location-map {
+        top: -94px;
+        left: 113px;
+    }
+    .adapt-clone-2 {
+        display: flex;
+        margin-bottom: 25px;
+    }
+    .adapt-clone-2 > div:first-child {
+        margin-right: 12px;
+    }
+    div.clinic-card-img {
+        display: none;
+    }
+    .clinic-card-img-ghost {
+        display: block;
+    }
     .bx-breadcrumb .bx-breadcrumb-item {
         display: flex;
     }
@@ -8277,8 +8360,8 @@ button:focus {
         position: relative;
     }
     .clone-adapt .doctor-card-location-map {
-        top: -30px;
-        right: 0;
+        top: -94px;
+        left: 113px;
     }
     .clinic-card-desc > a ,.clinic-card-desc .clinic-card-desc__price ,.clinic-card-desc .clinic-card-desc__spec-list.list-2 {
         display: none;
@@ -8350,6 +8433,11 @@ button:focus {
         margin-top: 10px;
     }
     .clinic-card-info .grey-block {
+        background: #ECF2F2;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .clinic-card-info-detail .grey-block {
         background: #ECF2F2;
         border-radius: 10px;
         padding: 20px;
@@ -8805,7 +8893,7 @@ button:focus {
         padding-bottom: 0;
     }
     .specializations .nav-pills > li {
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
     .specializations .nav-pills {
         padding-bottom: 32px;

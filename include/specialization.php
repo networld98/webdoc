@@ -52,9 +52,6 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                 </div>
             <?}?>
         </div>
-        <div class="load_more">
-            Показать ещё
-        </div>
         <div class="specializations__list expand">
             <div class="row">
                 <?foreach (array_slice($doctors, $specializationCount) as $key=> $doctor){?>
@@ -71,6 +68,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                 <?}?>
             </div>
         </div>
+        <div class="load_more">Показать ещё</div>
     </div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="row">

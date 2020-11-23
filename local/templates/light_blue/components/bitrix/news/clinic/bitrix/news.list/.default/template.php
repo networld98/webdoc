@@ -48,12 +48,55 @@ $this->setFrameMode(true);
                     <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
                 </div>
                 <div class="clone-adapt">
-                    <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
-                    <p class="clinic-card-desc__clinic-name"><?=$arItem["NAME"]?></p>
-                    </a>
-                    <?if($arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
-                        <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
+                    <?if($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
+                        <ul class="clinic-card-desc__spec-list">
+                            <?foreach ($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
+                                $res = CIBlockElement::GetByID($item);
+                                if($ar_res = $res->GetNext()){?>
+                                    <li><a href="#"><?=$ar_res['NAME']?></a></li>
+                                <?}
+                            }?>
+                        </ul>
+                        <div class="doctor-card-location-map popup-link-marker"></div>
                     <?endif;?>
+                </div>
+            </div>
+            <div class="clinic-card-img-ghost">
+                <div class="clinic-card-im-flex-right">
+                    <div class="adapt-clone-2">
+                        <div>
+                            <div class="clinic-card-img__img">
+                                <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
+                                    <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){
+                                        $file = CFile::ResizeImageGet($arItem["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                        ?>
+                                        <img src="<?= $file['src'] ?>" alt='<?=$arItem["NAME"]?>'>
+                                    <?}else{?>
+                                        <img src="<?= SITE_TEMPLATE_PATH ?>/icon/hospital_building.svg" alt="нет лого">
+                                    <?}?>
+                                </a>
+                            </div>
+                            <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arItem['ID']);} ?>
+                            <div class="clinic-card-img__ratings">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='1'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='2'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='3'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                            </div>
+                            <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
+                        </div>
+                        <div>
+                            <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
+                                <p class="clinic-card-desc__clinic-name"><?=$arItem["NAME"]?></p>
+                            </a>
+                            <?if($arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
+                                <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
+                            <?endif;?>
+                        </div>
+                    </div>
+                </div>
+                <div class="clone-adapt">
                     <?if($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
                         <ul class="clinic-card-desc__spec-list">
                             <?foreach ($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
@@ -69,7 +112,7 @@ $this->setFrameMode(true);
             </div>
             <div class="clinic-card-desc">
                 <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
-                  <p class="clinic-card-desc__clinic-name"><?=$arItem["NAME"]?></p>
+                    <p class="clinic-card-desc__clinic-name"><?=$arItem["NAME"]?></p>
                 </a>
                 <?if($arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
                     <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>

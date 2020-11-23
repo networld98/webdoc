@@ -59,11 +59,47 @@ function propsClinic($prop){
         </div>
         <a class="clinic-card-img__link" id="goToOtzivy" href="#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
     </div>
+    <div class="clinic-card-img-ghost">
+        <div class="clinic-card-im-flex-right">
+            <div class="adapt-clone-2">
+                <div>
+                    <div class="clinic-card-img__img">
+                        <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
+                            <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){
+                                $file = CFile::ResizeImageGet($arItem["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                ?>
+                                <img src="<?= $file['src'] ?>" alt='<?=$arItem["NAME"]?>'>
+                            <?}else{?>
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/icon/hospital_building.svg" alt="нет лого">
+                            <?}?>
+                        </a>
+                    </div>
+                    <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arItem['ID']);} ?>
+                    <div class="clinic-card-img__ratings">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='1'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='2'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='3'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
+                    </div>
+                    <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
+                </div>
+                <div>
+                    <h1 class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></h1>
+                    <?if($arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
+                        <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
+                    <?endif;?>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="clinic-card-desc-detail">
-        <h1 class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></h1>
-        <?if($arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
-            <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
-        <?endif;?>
+        <div class="div-hide">
+            <h1 class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></h1>
+            <?if($arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
+                <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
+            <?endif;?>
+        </div>
         <?if($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
             <ul class="clinic-card-desc__spec-list">
                 <?foreach ($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
@@ -162,50 +198,53 @@ function propsClinic($prop){
             </div>
         <?endif;?>
         <div class="clinic-card-info-detail">
-            <div class="clinic-card-info-detail__block">
-                <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
-                    <p class="clinic-card-info-detail__title map">Адрес</p>
-                    <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
-                    <?$this->SetViewTarget('address_clinic');?>
-                        <p class="doctors-list-item__clinic-adress"><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></p>
-                    <?$this->EndViewTarget();?>
-                <?endif;?>
-            </div>
-            <div class="clinic-card-info-detail__block">
-                <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
-                    <p class="clinic-card-info-detail__title contacts-phone">Контакты</p>
-                    <?foreach ($arResult["PROPERTIES"]["CONTACTS"]["VALUE"] as $item){?>
-                        <span><a href="tel:<?=$item?>"><?=$item?></a></span>
-                    <?}?>
-                <?endif;?>
-            </div>
-            <div class="clinic-card-info-detail__block">
-                <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
-                    <p class="clinic-card-info__title time">Время работы</p>
-                    <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"] == "Круглосуточно"):?>
-                        <span><?=$arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
-                    <?else:?>
-                        <? $work_time = explode(";", $arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]);
-                        foreach ($work_time as $day){
-                            $time = explode("/", $day);?>
-                            <?if(count($time)==2){?>
-                                <span><?=$time[0]?> - <?=$time[1]?></span>
-                            <?}elseif(count($time)==5){?>
-                                <span><?=$time[0]?> -  c <?=$time[1]?>:<?=$time[2]?> до <?=$time[3]?>:<?=$time[4]?></span>
-                            <?}?>
+            <div class="grey-block">
+                <div class="clinic-card-info-detail__block">
+                    <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
+                        <p class="clinic-card-info-detail__title map">Адрес</p>
+                        <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                        <?$this->SetViewTarget('address_clinic');?>
+                        <p class="doctors-list-item__clinic-adress"><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></p>
+                        <?$this->EndViewTarget();?>
+                    <?endif;?>
+                </div>
+                <div class="clinic-card-info-detail__block">
+                    <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
+                        <p class="clinic-card-info-detail__title contacts-phone">Контакты</p>
+                        <?foreach ($arResult["PROPERTIES"]["CONTACTS"]["VALUE"] as $item){?>
+                            <span><a href="tel:<?=$item?>"><?=$item?></a></span>
                         <?}?>
                     <?endif;?>
-                <?endif;?>
+                </div>
+                <div class="clinic-card-info-detail__block">
+                    <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
+                        <p class="clinic-card-info__title time">Время работы</p>
+                        <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"] == "Круглосуточно"):?>
+                            <span><?=$arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
+                        <?else:?>
+                            <? $work_time = explode(";", $arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]);
+                            foreach ($work_time as $day){
+                                $time = explode("/", $day);?>
+                                <?if(count($time)==2){?>
+                                    <span><?=$time[0]?> - <?=$time[1]?></span>
+                                <?}elseif(count($time)==5){?>
+                                    <span><?=$time[0]?> -  c <?=$time[1]?>:<?=$time[2]?> до <?=$time[3]?>:<?=$time[4]?></span>
+                                <?}?>
+                            <?}?>
+                        <?endif;?>
+                    <?endif;?>
+                </div>
+                <ul class="doctors-list-item_options-list">
+                    <?propsClinic($arResult["PROPERTIES"]["DIAGNOSTICS"])?>
+                    <?propsClinic($arResult["PROPERTIES"]["CHILDREN_DOCTOR"])?>
+                    <?propsClinic($arResult["PROPERTIES"]["DMC"])?>
+                    <?propsClinic($arResult["PROPERTIES"]["ONLINE"])?>
+                    <?propsClinic($arResult["PROPERTIES"]["DEPARTURE_HOUSE"])?>
+                    <?propsClinic($arResult["PROPERTIES"]["HOSPITAL"])?>
+                    <?propsClinic($arResult["PROPERTIES"]["DAY_HOSPITAL"])?>
+                </ul>
             </div>
-            <ul class="doctors-list-item_options-list">
-                <?propsClinic($arResult["PROPERTIES"]["DIAGNOSTICS"])?>
-                <?propsClinic($arResult["PROPERTIES"]["CHILDREN_DOCTOR"])?>
-                <?propsClinic($arResult["PROPERTIES"]["DMC"])?>
-                <?propsClinic($arResult["PROPERTIES"]["ONLINE"])?>
-                <?propsClinic($arResult["PROPERTIES"]["DEPARTURE_HOUSE"])?>
-                <?propsClinic($arResult["PROPERTIES"]["HOSPITAL"])?>
-                <?propsClinic($arResult["PROPERTIES"]["DAY_HOSPITAL"])?>
-            </ul>
+
         </div>
         <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
                 <div class="doctor-card-popUp-group">
@@ -368,13 +407,50 @@ function propsClinic($prop){
         false
     );?>
 </section>
-    <section class="container">
+    <section class="container flex-block-js-bw">
         <button class="review-custom-btn review-custom-btn_custom">
             Написать отзыв
         </button>
 
-        <script src="https://yastatic.net/share2/share.js"></script>
-        <div class="ya-share2" data-curtain data-size="l" data-services="vkontakte,facebook,telegram,twitter,whatsapp"></div>
+<!--        <script src="https://yastatic.net/share2/share.js"></script>-->
+<!--        <div class="ya-share2" data-curtain data-size="l" data-services="vkontakte,facebook,telegram,twitter,whatsapp"></div>-->
+        <ul class="sharding-block">
+            <li class="sharding-item">
+                <a class="sharding-item-link" href="#">
+                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-mail.svg" alt="mail">
+                </a>
+            </li>
+            <li class="sharding-item">
+                <a class="sharding-item-link" href="#">
+                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wtf.svg" alt="wtf">
+                </a>
+            </li>
+            <li class="sharding-item">
+                <a class="sharding-item-link" href="#">
+                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
+                </a>
+            </li>
+            <li class="sharding-item">
+                <a class="sharding-item-link" href="#">
+                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
+                </a>
+            </li>
+            <li class="sharding-item">
+                <a class="sharding-item-link" href="#">
+                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
+                </a>
+            </li>
+            <li class="sharding-item">
+                <a class="sharding-item-link" href="#">
+                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
+                </a>
+            </li>
+            <li class="sharding-item">
+                <a class="sharding-item-link" href="#">
+                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
+                </a>
+            </li>
+        </ul>
     </section>
 <div class="clinic-card-full-desc" id="otzivy-yakor">
     <div class="clinic-card-full-desc__tabs">

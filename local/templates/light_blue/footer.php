@@ -137,11 +137,27 @@ IncludeTemplateLangFile(__FILE__);
     });
     $('body').on('click', '.load_more', function () {
         let content = this.parentNode.lastElementChild;
-        this.remove();
+        if(content == this) {
+            content = this.previousElementSibling;
+        }
+
         if (!content) {
             return false;
         } else if (content.classList.contains('expand')) {
-            content.classList.remove('expand');
+            if($(this).text() == "Показать ещё") {
+                $(content).slideToggle();
+                $(this).text('Свернуть');
+            } else {
+                $(this).text("Показать ещё");
+                console.log(this.parentNode.parentNode.parentNode);
+                $('html,body').animate({ scrollTop: $(this.parentNode).offset().top - $('#header').innerHeight()}, 1000);
+                setTimeout(() => {
+                    $(content).slideToggle();
+                },1100)
+            }
+
+
+
         }
     })
 </script>
