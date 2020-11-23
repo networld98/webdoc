@@ -165,9 +165,9 @@ function propsClinic($prop){
             <div class="clinic-card-info-detail__block">
                 <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
                     <p class="clinic-card-info-detail__title map">Адрес</p>
-                    <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                    <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                     <?$this->SetViewTarget('address_clinic');?>
-                        <p class="doctors-list-item__clinic-adress"><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></p>
+                        <p class="doctors-list-item__clinic-adress"><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></p>
                     <?$this->EndViewTarget();?>
                 <?endif;?>
             </div>
@@ -373,28 +373,8 @@ function propsClinic($prop){
             Написать отзыв
         </button>
 
-        <?if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-        {
-        ?>
-        <div class="news-detail-share">
-            <noindex>
-                <?
-                $APPLICATION->IncludeComponent("bitrix:main.share", "", array(
-                    "HANDLERS" => $arParams["SHARE_HANDLERS"],
-                    "PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
-                    "PAGE_TITLE" => $arResult["~NAME"],
-                    "SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
-                    "SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
-                    "HIDE" => $arParams["SHARE_HIDE"],
-                ),
-                    $component,
-                    array("HIDE_ICONS" => "Y")
-                );
-                ?>
-            </noindex>
-        </div>
-        <?
-	}?>
+        <script src="https://yastatic.net/share2/share.js"></script>
+        <div class="ya-share2" data-curtain data-size="l" data-services="vkontakte,facebook,telegram,twitter,whatsapp"></div>
     </section>
 <div class="clinic-card-full-desc" id="otzivy-yakor">
     <div class="clinic-card-full-desc__tabs">
@@ -435,7 +415,7 @@ function propsClinic($prop){
                         <?endif;?>
                     </div>
                     <div class="clinic-card-full-desc__content__info-left__adress">
-                        <span class="clinic-card-full-desc__content__info-left__adress__text"><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                        <span class="clinic-card-full-desc__content__info-left__adress__text"><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                         <ul class="clinic-card__metro-list">
                             <?foreach ($arResult["DISPLAY_PROPERTIES"]["METRO"]["DISPLAY_VALUE"] as $key => $item){?>
                                 <li class="clinic-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$item?></li>
@@ -702,7 +682,7 @@ function propsClinic($prop){
                                     <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
                                         <div class="col-12 col-margin no-padding">
                                             <p class="clinic-card-info-detail__title map">Адрес</p>
-                                            <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                                            <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                                         </div>
                                     <?endif;?>
                                     <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>

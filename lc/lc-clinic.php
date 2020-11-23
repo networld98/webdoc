@@ -132,6 +132,16 @@ while($ob = $res->GetNextElement()){
                         <div class="add" value="<?=$contact_key_last?>" title="Добавить телефон">+</div>
                     </li>
                     <li>
+                        <label for=""><?=$arProps['COST_PRICE']['NAME']?></label>
+                        <select name="COST_PRICE" value="">
+                        <?$property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>9, "CODE"=>$arProps['COST_PRICE']['CODE']));
+                            while($enum_fields = $property_enums->GetNext())
+                            {?>
+                                <option value="<?=$enum_fields['ID']?>" <?if ($enum_fields['ID']==$arProps['COST_PRICE']['VALUE']){?>selected<?}?>><?=$enum_fields['VALUE']?></option>
+                            <?}?>
+                        </select>
+                    </li>
+                    <li>
                         <label for="">Оплата</label>
                         <ul class="checkbox-group">
                             <? propview($arProps["PAY_CARD"])?>

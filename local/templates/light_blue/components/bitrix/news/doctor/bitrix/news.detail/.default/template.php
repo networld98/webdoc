@@ -176,8 +176,19 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                                 if($ar_props = $db_props->Fetch()) {
                                     $phone = IntVal($ar_props["VALUE"]);
                                 }
+                                $db_cords = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"MAP"));
+                                if($ar_props = $db_cords->Fetch()) {
+                                    $cord = $ar_props["VALUE"];
+                                }
+                                $db_address = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"ADDRESS"));
+                                if($ar_props = $db_address->Fetch()) {
+                                    $address = $ar_props["VALUE"];
+                                }
                                 $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
                             }?>
+                        <?}?>
+                        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]==NULL && $cord[0]!=NULL){?>
+                            <? $arResult["PROPERTIES"]["MAP"]["VALUE"] = $cord[0]?>
                         <?}?>
                         <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
                     <?}else{
@@ -187,7 +198,8 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     <?}?>
                 <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
                     <p class="doctor-card__clinic-adress">
-                        г. <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
+                        <?if(count(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
+                        <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
                     </p>
                 <?endif;?>
                 <!-- <div class="doctor-card-location-map"></div> -->
@@ -210,7 +222,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
                 <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
             <?} ?>
-            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
+            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
         </div>
@@ -258,12 +270,12 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             <p class="doctor-card__position-desc"><?=$arResult['PREVIEW_TEXT']?></p>
             <a href="#anchor-spec-info" class="doctor-card__metro-list-show_more go-to">Подробная информация о специалисте</a>
         </div>
-        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
+        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
             <div class="doctor-card-popUp-group">
                 <a class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
             </div>
         <?endif;?>
-        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
+        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord!=NULL):?>
         <div class="map-wrapper">
                 <div class="doctor-card-location-map popup-link-marker"></div>
                 <div class="popup-box">
