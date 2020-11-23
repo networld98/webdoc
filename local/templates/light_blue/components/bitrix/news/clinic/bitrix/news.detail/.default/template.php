@@ -370,8 +370,31 @@ function propsClinic($prop){
 </section>
     <section class="container">
         <button class="review-custom-btn review-custom-btn_custom">
-            Оставить свой отзыв
+            Написать отзыв
         </button>
+
+        <?if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
+        {
+        ?>
+        <div class="news-detail-share">
+            <noindex>
+                <?
+                $APPLICATION->IncludeComponent("bitrix:main.share", "", array(
+                    "HANDLERS" => $arParams["SHARE_HANDLERS"],
+                    "PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
+                    "PAGE_TITLE" => $arResult["~NAME"],
+                    "SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
+                    "SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
+                    "HIDE" => $arParams["SHARE_HIDE"],
+                ),
+                    $component,
+                    array("HIDE_ICONS" => "Y")
+                );
+                ?>
+            </noindex>
+        </div>
+        <?
+	}?>
     </section>
 <div class="clinic-card-full-desc" id="otzivy-yakor">
     <div class="clinic-card-full-desc__tabs">

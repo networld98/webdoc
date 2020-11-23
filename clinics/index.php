@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("Клиники, отзывы, время работы, �
 <section class="clinic-card">
        <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
-	"clinic", 
+	"clinic",
 	array(
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -116,7 +116,7 @@ $APPLICATION->SetTitle("Клиники, отзывы, время работы, �
 		"USE_REVIEW" => "N",
 		"USE_RSS" => "N",
 		"USE_SEARCH" => "N",
-		"USE_SHARE" => "N",
+		"USE_SHARE" => "Y",
 		"FILTER_NAME" => "",
 		"FILTER_FIELD_CODE" => array(
 			0 => "",
@@ -145,6 +145,18 @@ $APPLICATION->SetTitle("Клиники, отзывы, время работы, �
 		),
 		"IBLOCK_ID" => "9",
 		"FILE_404" => "",
+		"SHARE_HIDE" => "N",
+		"SHARE_TEMPLATE" => "",
+		"SHARE_HANDLERS" => array(
+			0 => "vk",
+			1 => "delicious",
+			2 => "facebook",
+			3 => "twitter",
+			4 => "mailru",
+			5 => "lj",
+		),
+		"SHARE_SHORTEN_URL_LOGIN" => "",
+		"SHARE_SHORTEN_URL_KEY" => "",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "",

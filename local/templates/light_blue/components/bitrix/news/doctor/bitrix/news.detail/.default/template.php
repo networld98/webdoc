@@ -124,13 +124,13 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 </div>
                 <div class="doctor-card__img-info">
                     <?
-                    $rsUser = CUser::GetByLogin($arResult["PROPERTIES"]["PHONE"]["VALUE"]);
+                    $rsUser = CUser::GetByLogin($arResult["PROPERTIES"]["TECH_PHONE"]["VALUE"]);
                     $arUser = $rsUser->Fetch();
                     ?>
                     <?if($arUser!=NULL){
                         $doctorEmail = $arUser['EMAIL'];
                         $doctorPhone = $arUser['LOGIN'];?>
-                        <a class="popup-mess-click" style="cursor:pointer;">Написать доктору</a>
+                        <a class="popup-mess-click" href="mailto:<?=$doctorEmail?>" style="cursor:pointer;">Написать доктору</a>
                     <?}?>
                     <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>">Позвонить</a>
                 </div>
