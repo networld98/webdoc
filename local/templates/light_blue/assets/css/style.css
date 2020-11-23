@@ -677,7 +677,10 @@ main {
     margin: 0;
     margin-top: 20px;
 }
-
+.review-custom-btn.review-custom-btn_custom:hover,.review-custom-btn.review-custom-btn_custom:focus,.review-custom-btn.review-custom-btn_custom:active {
+    margin: 0;
+    margin-top: 20px;
+}
 
 .specializations .load_more {
     padding: 14px 23px;
