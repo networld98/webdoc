@@ -131,9 +131,13 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     <?if($arUser!=NULL){
                         $doctorEmail = $arUser['EMAIL'];
                         $doctorPhone = $arUser['LOGIN'];?>
-                        <a class="popup-mess-click" href="mailto:<?=$doctorEmail?>" style="cursor:pointer;">Написать доктору</a>
+                        <a class="popup-mess-click" href="mailto:<?=$doctorEmail?>" style="cursor:pointer;">
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/write-to-doctor.svg" alt="mail-ico">
+                        </a>
                     <?}?>
-                    <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>">Позвонить</a>
+                    <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/phone-to-doctor.svg" alt="phone-ico">
+                    </a>
                 </div>
                 <div class="doctor-card-favorites"></div>
             </div>
@@ -215,6 +219,43 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     </ul>
                 <?endif;?>
                 <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
+                    <ul class="sharding-block sharding-block-doctor-detail">
+                        <!--            <li class="sharding-item">-->
+                        <!--                <a class="sharding-item-link" href="#">-->
+                        <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-mail.svg" alt="mail">-->
+                        <!--                </a>-->
+                        <!--            </li>-->
+                        <!--            <li class="sharding-item">-->
+                        <!--                <a class="sharding-item-link" href="#">-->
+                        <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-wtf.svg" alt="wtf">-->
+                        <!--                </a>-->
+                        <!--            </li>-->
+                        <li class="sharding-item">
+                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://www.facebook.com/sharer.php?src=sp&u=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" target="_blank" title="Facebook">
+                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
+                            </a>
+                        </li>
+                        <li class="sharding-item">
+                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://vk.com/share.php?url=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="ВКонтакте">
+                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
+                            </a>
+                        </li>
+                        <li class="sharding-item">
+                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://t.me/share/url?url=<?=$_SERVER["SCRIPT_URI"]?>&text=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"  href="" rel="nofollow noopener"title="Telegram">
+                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
+                            </a>
+                        </li>
+                        <li class="sharding-item">
+                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://api.whatsapp.com/send?text=<?=$arResult["NAME"]?> <?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'top=25%,left=25,location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="WhatsApp">
+                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
+                            </a>
+                        </li>
+                        <li class="sharding-item">
+                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://twitter.com/intent/tweet?text=<?=$arResult["NAME"]?>&url=<?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="Twitter">
+                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -227,6 +268,43 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
             <?endif;?>
         </div>
+                <ul class="sharding-block sharding-block-doctor-detail sharding-block-doctor-detail-ghost">
+                <!--            <li class="sharding-item">-->
+                <!--                <a class="sharding-item-link" href="#">-->
+                <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-mail.svg" alt="mail">-->
+                <!--                </a>-->
+                <!--            </li>-->
+                <!--            <li class="sharding-item">-->
+                <!--                <a class="sharding-item-link" href="#">-->
+                <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-wtf.svg" alt="wtf">-->
+                <!--                </a>-->
+                <!--            </li>-->
+                <li class="sharding-item">
+                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://www.facebook.com/sharer.php?src=sp&u=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" target="_blank" title="Facebook">
+                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
+                    </a>
+                </li>
+                <li class="sharding-item">
+                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://vk.com/share.php?url=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="ВКонтакте">
+                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
+                    </a>
+                </li>
+                <li class="sharding-item">
+                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://t.me/share/url?url=<?=$_SERVER["SCRIPT_URI"]?>&text=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"  href="" rel="nofollow noopener"title="Telegram">
+                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
+                    </a>
+                </li>
+                <li class="sharding-item">
+                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://api.whatsapp.com/send?text=<?=$arResult["NAME"]?> <?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'top=25%,left=25,location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="WhatsApp">
+                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
+                    </a>
+                </li>
+                <li class="sharding-item">
+                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://twitter.com/intent/tweet?text=<?=$arResult["NAME"]?>&url=<?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="Twitter">
+                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
+                    </a>
+                </li>
+                </ul>
     </div>
     <div class="flex-right">
         <div class="doctor-card-top-content">

@@ -63,7 +63,7 @@ input:not([type="file"]):not(.city_input){
     padding-top: 6px;
     padding-bottom: 6px;
 }
-.map-popup-marker ymaps input:not([type="file"]) {
+.map-popup-marker ymaps input:not([type="file"]),.clinic-card-full-desc__content__info-left__map ymaps input:not([type="file"]) {
     border: initial;
     box-sizing: initial;
     border-radius: initial;
@@ -670,6 +670,18 @@ main {
     margin: 0;
     padding: 0;
     margin-top: 20px;
+}
+.sharding-block-doctor-detail {
+    justify-content: flex-start;
+    margin-bottom: 43px !important;
+}
+.sharding-block-doctor-detail-ghost {
+    display: none;
+    margin-bottom: 0!important;
+}
+.sharding-block-doctor-detail .sharding-item-img {
+    width: 32px;
+    height: 32px;
 }
 .sharding-item {
     margin-right: 15px;
@@ -1570,12 +1582,13 @@ main {
 .doctor-card__img-info {
     position: absolute;
     background-color: #fff;
-    width: 200px;
-    height: 73px;
     bottom: 54px;
-    left: 38px;
-    padding: 16px;
-    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .doctor-card__img-info > a {
     font-family: "Ubuntu-Light";
@@ -1584,9 +1597,26 @@ main {
     font-size: 15px;
     line-height: 24px;
     color: #000000;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.doctor-card__img-info > a:last-child {
+    margin-right: 0;
 }
 .doctor-card__img-info > a:hover {
-    text-decoration: underline;
+    box-shadow: none;
+}
+.doctor-card__img-info > a > img {
+    width: 32px;
+    height: 32px;
 }
 .doctor-card__img-link {
     /* display: block; */
@@ -1717,7 +1747,7 @@ main {
     margin-bottom: 10px;
 }
 .doctor-card__metro-list {
-    margin-bottom: 43px !important;
+    margin-bottom: 20px !important;
     position: relative;
     flex-direction: column;
     font-family: 'Ubuntu-Light';
@@ -1828,7 +1858,7 @@ main {
 .doctor-card-popUp-group {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: auto;
 }
 .doctor-card-popUp-group__reception {
     font-family: "Ubuntu";
@@ -1893,7 +1923,8 @@ main {
 .flex-right .doctor-card-top-content {
     display: flex;
     flex-direction: column;
-    min-height: 516px
+    min-height: 516px;
+    margin-bottom: 40px;
 }
 .flex-left .doctor-card-top-content{
     min-height: 516px;
@@ -6485,6 +6516,9 @@ button:focus {
         margin-bottom: 0;
     }
     .doctor-card__metro-list {
+        margin-bottom: 20px !important;
+    }
+    .sharding-block-doctor-detail {
         margin-bottom: 0 !important;
     }
     .doctor-card-popUp-group {
@@ -6500,6 +6534,7 @@ button:focus {
     }
     .doctor-card-popUp-group__call {
         max-width: 193px;
+        margin-right: 30px;
     }
     .doctor-card-popUp-group__reception {
         max-width: 275px;
@@ -7695,6 +7730,14 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .sharding-block-doctor-detail-ghost {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    .sharding-block-doctor-detail-ghost .sharding-item {
+        margin-right: 15px;
+    }
     .adapt-clone-2 .clinic-card-desc__price {
         margin-bottom: 15px;
     }
@@ -8118,13 +8161,29 @@ button:focus {
         width: 100%;
         padding: 0px;
         text-align: initial;
-        margin-top: 13px;  
+        margin-top: 13px;
+        transform: initial;
+        flex-direction: column-reverse;
     }
     .doctor-card__img-info > a {
         font-size: 13px;
         line-height: 17px;
-        display: inline-block;
         text-decoration: underline;
+        width: initial;
+        height: initial ;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+    .doctor-card__img-info > a > img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .doctor-card__img-info > a.popup-mess-click {
+        margin-top: 10px;
     }
     .doctor-card__img-info > a:hover {
         text-decoration: none;
