@@ -11,6 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
 global $clinicName, $clinickId, $clinicMail, $clinicPhone;
 $clinicName = $arResult["NAME"];
 $clinickId = $arResult["ID"];
@@ -57,7 +58,7 @@ function propsClinic($prop){
             <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
             <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
         </div>
-        <a class="clinic-card-img__link" id="goToOtzivy" href="#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
+        <a class="clinic-card-img__link" id="goToOtzivy" href="#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
     </div>
     <div class="clinic-card-img-ghost">
         <div class="clinic-card-im-flex-right">
@@ -82,7 +83,7 @@ function propsClinic($prop){
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                     </div>
-                    <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
+                    <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
                 </div>
                 <div>
                     <h1 class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></h1>
@@ -415,38 +416,38 @@ function propsClinic($prop){
 <!--        <script src="https://yastatic.net/share2/share.js"></script>-->
 <!--        <div class="ya-share2" data-curtain data-size="l" data-services="vkontakte,facebook,telegram,twitter,whatsapp"></div>-->
         <ul class="sharding-block">
+<!--            <li class="sharding-item">-->
+<!--                <a class="sharding-item-link" href="#">-->
+<!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-mail.svg" alt="mail">-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="sharding-item">-->
+<!--                <a class="sharding-item-link" href="#">-->
+<!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-wtf.svg" alt="wtf">-->
+<!--                </a>-->
+<!--            </li>-->
             <li class="sharding-item">
-                <a class="sharding-item-link" href="#">
-                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-mail.svg" alt="mail">
-                </a>
-            </li>
-            <li class="sharding-item">
-                <a class="sharding-item-link" href="#">
-                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wtf.svg" alt="wtf">
-                </a>
-            </li>
-            <li class="sharding-item">
-                <a class="sharding-item-link" href="#">
+                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://www.facebook.com/sharer.php?src=sp&u=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" target="_blank" title="Facebook">
                     <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
                 </a>
             </li>
             <li class="sharding-item">
-                <a class="sharding-item-link" href="#">
+                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://vk.com/share.php?url=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="ВКонтакте">
                     <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
                 </a>
             </li>
             <li class="sharding-item">
-                <a class="sharding-item-link" href="#">
+                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://t.me/share/url?url=<?=$_SERVER["SCRIPT_URI"]?>&text=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"  href="" rel="nofollow noopener"title="Telegram">
                     <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
                 </a>
             </li>
             <li class="sharding-item">
-                <a class="sharding-item-link" href="#">
+                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://api.whatsapp.com/send?text=<?=$arResult["NAME"]?> <?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'top=25%,left=25,location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="WhatsApp">
                     <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
                 </a>
             </li>
             <li class="sharding-item">
-                <a class="sharding-item-link" href="#">
+                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://twitter.com/intent/tweet?text=<?=$arResult["NAME"]?>&url=<?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="Twitter">
                     <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
                 </a>
             </li>

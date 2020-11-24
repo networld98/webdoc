@@ -672,6 +672,7 @@ main {
 }
 .sharding-item-link {
     display: block;
+    cursor: pointer;
 }
 .review-custom-btn.review-custom-btn_custom {
     margin: 0;
