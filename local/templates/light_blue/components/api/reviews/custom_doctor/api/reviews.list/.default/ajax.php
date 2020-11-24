@@ -74,7 +74,7 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                     <?=$arItem['GUEST_NAME']?>
                                 <? endif ?>
                                 <? if($arItem['GUEST_EMAIL']): ?>
-                                    (<?= mb_strimwidth($arItem['GUEST_EMAIL'], 0, 12, "*****");?>*)
+                                    (<?=explode("@", $arItem['GUEST_EMAIL'])[0]?>@******)
                                 <? endif ?>
                             </span>
                             </p>
