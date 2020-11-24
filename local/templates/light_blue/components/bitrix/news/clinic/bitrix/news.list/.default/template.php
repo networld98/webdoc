@@ -11,6 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
 ?>
 <?$APPLICATION->ShowViewContent('filterTitle');?>
  <?function propsClinic($prop){
@@ -45,7 +46,7 @@ $this->setFrameMode(true);
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                     <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                     </div>
-                    <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
+                    <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
                 </div>
                 <div class="clone-adapt">
                     <?if($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
@@ -84,7 +85,7 @@ $this->setFrameMode(true);
                                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                             </div>
-                            <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
+                            <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
                         </div>
                         <div>
                             <a href="<?=$arItem['DETAIL_PAGE_URL']?>">

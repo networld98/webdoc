@@ -11,6 +11,7 @@ $MESS['API_REVIEWS_FORM_SESSION_EXPIRED']      = 'Ваша сессия исте
 $MESS['API_REVIEWS_FORM_ERROR_RATING']         = 'Поставьте оценку от 1 до 5';
 $MESS['API_REVIEWS_FORM_FIELD_ERROR']          = 'Укажите #NAME#';
 $MESS['API_REVIEWS_FORM_FIELD_ORDER_ID_ERROR'] = 'Заказ не найден';
+$MESS['SHOP_BTN_TEXT_DEFAULT'] = 'Оставить свой отзыв';
 
 //Alert video
 $MESS['API_REVIEWS_FORM_ALERT_WRONG_VIDEO_URL'] = array(

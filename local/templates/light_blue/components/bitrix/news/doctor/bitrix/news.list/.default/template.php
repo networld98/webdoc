@@ -11,6 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
 CModule::IncludeModule("iblock");
 CModule::IncludeModule("form"); ?>
 <section class="container result-filter">
@@ -73,7 +74,7 @@ CModule::IncludeModule("form"); ?>
                                      alt="star">
                             </div>
                             <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов
-                                рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?= $arRaing['COUNT'] ?> отзывов</a></p>
+                                рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?getTerminationEx($arRaing['COUNT'])?></a></p>
                         </div>
                     </div>
                     <div class="doctors-list-item__description">
