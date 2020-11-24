@@ -50,7 +50,7 @@
 		),
 		"FORM_RULES_LINK" => "http://doc.btx.bz/rules/",
 		"FORM_RULES_TEXT" => "Правила публикации отзывов",
-		"FORM_SHOP_BTN_TEXT" => "Оставить свой отзыв",
+		"FORM_SHOP_BTN_TEXT" => "Написать отзыв",
 		"FORM_SHOP_TEXT" => "Отзывы о враче",
 		"FORM_USE_EULA" => "Y",
 		"FORM_USE_PRIVACY" => "Y",
