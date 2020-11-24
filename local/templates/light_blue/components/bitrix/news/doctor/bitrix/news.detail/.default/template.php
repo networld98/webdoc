@@ -114,6 +114,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 <section class="container doctor-card">
     <div class="flex-left">
         <div class="doctor-card-top-content">
+            <div class="doctor-card-location-map popup-link-marker"></div>
             <div class="doctor-card__img <?if($arResult['DETAIL_PICTURE']!=NULL){?>doctor-card-img<?}?>">
                 <?if($arResult['DETAIL_PICTURE']!=NULL){?>
                 <div style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link photo-back-image photo-back-image">
@@ -356,7 +357,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <?endif;?>
         <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord!=NULL):?>
         <div class="map-wrapper">
-                <div class="doctor-card-location-map popup-link-marker"></div>
+
                 <div class="popup-box">
 					<div class="close"></div>
                     <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%; height: 500px;"></div>

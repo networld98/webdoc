@@ -1532,8 +1532,7 @@ main {
 /* doctor-card */
 
 .doctor-card .doctor-card-location-map {
-    bottom: 189px;
-    left: -73px;
+    bottom: 43px;
 }
 
 .doctor-card {
@@ -1558,6 +1557,7 @@ main {
 }
 .doctor-card-top-content {
     display: flex;
+    position: relative;
 }
 .doctor-card__img {
     position: relative;
@@ -6276,7 +6276,6 @@ button:focus {
         max-width: 275px;
     }
     .doctor-card .doctor-card-location-map {
-        left: -83px;
     }
 }
 @media (max-width: 1200px) {
@@ -6664,10 +6663,8 @@ button:focus {
         margin-left: 12px;
     }
     .doctor-card .doctor-card-location-map {
-        left: initial;
-        bottom: initial;
-        top: -198px;
         right: 5px;
+        bottom: 23px;
     }
     .choosing-time__worktimming-list {
         padding-left: 18px;
@@ -7458,7 +7455,6 @@ button:focus {
         max-width: initial;
     }
     .doctor-card .doctor-card-location-map {
-        top: -360px;
     }
     .doctors-lastfeedback-list-item {
         margin-right: 20px;
@@ -7504,6 +7500,11 @@ button:focus {
     }
     .flex-right .doctors-list-item__description .adapt > div:last-child {
         margin-top: 33px;
+    }
+}
+@media (max-width: 675px) {
+    .doctor-card .doctor-card-location-map {
+        bottom: 0;
     }
 }
 @media (max-width: 650px) {
@@ -8253,8 +8254,7 @@ button:focus {
         margin-right: 0;
     }
     .doctor-card .doctor-card-location-map {
-        top: -278px;
-        right: 0px;
+
     }
     .doctor-card-top-content .title-h3,.choosing-time .title-h3 {
         font-size: 20px;
@@ -8785,6 +8785,12 @@ button:focus {
         font-weight: 300;
         font-family: "Ubuntu-Light";
         font-style: normal;
+    }
+    #title-search-input {
+        font-size: 13px;
+        color: rgba(33,37,41,0.65);
+        font-weight: 300;
+        font-family: "Ubuntu-Light";
     }
     .bx_filter .bx_filter_select_block {
         padding: 0px 33px 0 8px;
