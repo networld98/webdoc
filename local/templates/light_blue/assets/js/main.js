@@ -651,10 +651,9 @@ $(document).ready(()=>{
         var name = $(this).attr('class');
         var id = name[name.length - 1];
         var scrollPos = $(window).scrollTop();
-         
         /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
         $('.popup-box .map-popup-marker').css('display', 'block');
-        $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $(this).parents('.clinic-card').find('.map-wrapper .popup-box').show();
         $('#blackout').show();
         $('html,body').css('overflow', 'hidden');
          

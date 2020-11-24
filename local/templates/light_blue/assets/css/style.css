@@ -63,7 +63,14 @@ input:not([type="file"]):not(.city_input){
     padding-top: 6px;
     padding-bottom: 6px;
 }
-
+.map-popup-marker ymaps input:not([type="file"]) {
+    border: initial;
+    box-sizing: initial;
+    border-radius: initial;
+    box-shadow: initial;
+    height: initial;
+    padding: 0 6px;
+}
 input:not([type="file"]).changedInput  {
     border: none;
     border-bottom: 2px solid #9DD4B3;
@@ -5976,6 +5983,10 @@ button:focus {
 .pictures-box {
 
 }
+.popup-link-marker-ghost {
+    display: none;
+    position: static;
+}
 .pictures-box-item {
     display: flex;
     margin-bottom: 60px;
@@ -7683,6 +7694,12 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .adapt-clone-2 .clinic-card-desc__price {
+        margin-bottom: 15px;
+    }
+    .popup-link-marker-ghost {
+        display: block;
+    }
     .sharding-item-img {
         width: 32px;
         height: 32px;
@@ -7700,6 +7717,7 @@ button:focus {
     .clinic-card-desc-detail .doctor-card-location-map {
         top: -94px;
         left: 113px;
+        display: none;
     }
     .adapt-clone-2 {
         display: flex;
@@ -8365,6 +8383,7 @@ button:focus {
     .clone-adapt .doctor-card-location-map {
         top: -94px;
         left: 113px;
+        display: none;
     }
     .clinic-card-desc > a ,.clinic-card-desc .clinic-card-desc__price ,.clinic-card-desc .clinic-card-desc__spec-list.list-2 {
         display: none;

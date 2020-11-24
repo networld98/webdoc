@@ -89,6 +89,7 @@ function propsClinic($prop){
                     <?if($arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
                         <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
                     <?endif;?>
+                    <div class="doctor-card-location-map popup-link-marker popup-link-marker-ghost"></div>
                 </div>
             </div>
         </div>
