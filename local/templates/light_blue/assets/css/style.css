@@ -8209,7 +8209,6 @@ button:focus {
         line-height: 18px;
     }
     .flex-left .doctor-card__description {
-        min-height: 240px;
         position: relative;
     }
     .doctor-card__description-exp {

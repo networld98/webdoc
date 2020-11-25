@@ -136,6 +136,9 @@
     margin:0;
     margin-bottom: 10px;
 }
+#form_clinic .personal-cabinet-content__my-profile .contacts-group li {
+    flex-basis: 100%;
+}
 .personal-cabinet-content__my-profile .contacts-group li:last-child {
     margin-bottom: 0;
 }

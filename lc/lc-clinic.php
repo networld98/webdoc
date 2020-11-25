@@ -194,6 +194,10 @@ while($ob = $res->GetNextElement()){
                         <input type="text" name="NAME_CLINIC" value="<?=$arFields['NAME']?>">
                     </li>
                     <li>
+                        <label for="">Краткая информация:</label>
+                        <textarea rows="5" name="PREVIEW_TEXT" ><?=$arFields['PREVIEW_TEXT']?></textarea>
+                    </li>
+                    <li>
                         <label for="">Информация:</label>
                         <textarea rows="5" name="DETAIL_TEXT" ><?=$arFields['DETAIL_TEXT']?></textarea>
                     </li>
