@@ -317,7 +317,7 @@ main > .container:last-child {
     display: flex;
     flex-direction: column;
     margin-left: 40px;
-    
+
 }
 .contacts-phone {
     font-family: "Ubuntu";
@@ -438,7 +438,7 @@ main > .container:last-child {
     position: absolute;
     top: -60px;
     right: -60px;
-    font-family: Arial, Helvetica, sans-serif;  
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
     color: #000;
@@ -967,7 +967,7 @@ main {
     background-image: url(../images/dashicons_arrow-down-alt2.svg);
 }
 .doctors-list {
-    
+
 }
 
 .doctors-list-item {
@@ -1078,7 +1078,7 @@ main {
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
-    line-height: 29px;    
+    line-height: 29px;
     color: #000000;
     margin-bottom: 10px;
     max-width: 80%;
@@ -1106,7 +1106,7 @@ main {
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
-    line-height: 29px;    
+    line-height: 29px;
     color: #000000;
     margin-bottom: 2px;
 }
@@ -1125,7 +1125,7 @@ main {
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
-    line-height: 29px;    
+    line-height: 29px;
     color: #000000;
 }
 .doctors-list-item__description-phone span {
@@ -1667,7 +1667,7 @@ main {
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
-    line-height: 29px;    
+    line-height: 29px;
     color: #000000;
     margin-bottom: 10px;
     max-width: 99%;
@@ -1695,7 +1695,7 @@ main {
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
-    line-height: 29px;    
+    line-height: 29px;
     color: #000000;
     margin-bottom: 2px;
 }
@@ -1714,7 +1714,7 @@ main {
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
-    line-height: 29px;    
+    line-height: 29px;
     color: #000000;
 }
 .doctor-card__description-phone span {
@@ -2302,7 +2302,7 @@ main {
     color: #000000;
     max-width: 275px;
 }
- 
+
 /* spec-info */
 .spec-info .title-h2 {
     margin-bottom: 40px;
@@ -2517,7 +2517,7 @@ main {
 .services-list-item__list li {
     margin-right: 10px;
     margin-bottom: 10px;
-    
+
 }
 .services-list-item__list li a {
     color: #32B4C3;
@@ -2973,7 +2973,7 @@ main {
 }
 .clinic-card-info__title.map::before {
     background-image: url(../images/map-ico.svg);
-    
+
 }
 .clinic-card-info__title.contacts-phone::before {
     background-image: url(../images/phone-ico.svg);
@@ -3048,7 +3048,7 @@ main {
 }
 .clinic-card-info-detail__title.map::before {
     background-image: url(../images/map-ico.svg);
-    
+
 }
 .clinic-card-info-detail__title.contacts-phone::before {
     background-image: url(../images/phone-ico.svg);
@@ -3159,8 +3159,8 @@ main {
     content: '';
     transition: 0.3s;
 }
-.personal-cabinet-menu__list-item:last-child {  
-    
+.personal-cabinet-menu__list-item:last-child {
+
 }
 .personal-cabinet-menu__icon {
     width: 42px;
@@ -3226,7 +3226,7 @@ main {
     background-image: url(../images/menu-icon8.svg);
 }
 .personal-cabinet-menu__desc {
-    
+
 }
 .personal-cabinet-menu__desc h5 {
     font-family: "Montserrat Alternates";
@@ -4325,7 +4325,7 @@ button:focus {
     flex-wrap: wrap;
     /* margin-left: 20px;
     margin-right: 20px; */
-}                                       
+}
 .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li {
     display: flex;
     align-items: center;
@@ -4488,7 +4488,7 @@ button:focus {
     font-size: 15px;
     line-height: 24px;
     color: #000000;
-    
+
 }
 .personal-cabinet-content__price-page__content__list-content__equipment-add__btn {
     color: #32B4C3;
@@ -5367,7 +5367,7 @@ button:focus {
 .clinic-card-full-desc__content__feedback-item-right__reply {
     padding-left: 21px;
     border-left: 5px solid #E3EAEA;
-    
+
 }
 .clinic-card-full-desc__content__feedback-item-right__reply__clinic {
     display: block;
@@ -5429,10 +5429,10 @@ button:focus {
     border-radius: 50%;
 }
 .container-check:hover input ~ .checkmark {
-    
+
 }
 .container-check input:checked ~ .checkmark {
-    
+
 }
 .checkmark:after {
     content: "";
@@ -5839,7 +5839,7 @@ button:focus {
 }
 .img-left {
     float: left;
-} 
+}
 .anchor-block {
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -6223,7 +6223,7 @@ button:focus {
         width: 100%;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         max-width: 100%;
-        
+
     }
     .top-menu-mobile {
         display: block;
@@ -6240,7 +6240,7 @@ button:focus {
         padding-bottom: 0 !important;
         margin-top: 0 !important;
     }
-    
+
     .top-menu {
         display: none;
     }
@@ -6253,7 +6253,7 @@ button:focus {
     .nav__item, .nav__item:nth-child(1), .nav__item:nth-child(2), .nav__item:nth-child(3), .nav__item:nth-child(4) {
         padding-left: 0;
     }
-    .container { 
+    .container {
         padding-left: 41px;
     }
     .contacts {
@@ -6311,7 +6311,7 @@ button:focus {
         display: flex;
         flex-wrap: wrap;
     }
-    
+
     .mobile-display-none,.personal-cabinet-menu__manager.mobile-display-none {
         display: none;
     }
@@ -6783,7 +6783,7 @@ button:focus {
         left: 20px;
     }
     .header {
-        
+
     }
     .nav__item {
         padding-left: 0;
@@ -6852,7 +6852,7 @@ button:focus {
     .head {
         padding-left: 0;
     }
-    .container { 
+    .container {
         padding-left: 19px;
     }
     /* .tab-content > .tab-pane .row > div {
@@ -7270,7 +7270,7 @@ button:focus {
 
     /*doctor-detail*/
 
-    
+
 }
 
 @media (max-width: 750px) {
@@ -7335,7 +7335,7 @@ button:focus {
     }
     .container.main__header {
         padding-top: 20px;
-    } 
+    }
     .alphabet-block-list {
         flex-wrap: wrap;
     }
@@ -7414,7 +7414,7 @@ button:focus {
     .tab-content > .tab-pane .row > div:nth-child(even) {
         padding-left: 16px;
     }
-    .container { 
+    .container {
         padding-left: 15px;
     }
     .main-filter .row > div:last-child .bx_filter_parameters_box.active {
@@ -7422,7 +7422,7 @@ button:focus {
         width: initial !important;
     }
 
-    
+
     .sort-block-list__select {
         display: block;
     }
@@ -7519,7 +7519,7 @@ button:focus {
     .booking-block .personal-cabinet-content__doctors-page-box-item__desc-switch {
         position: initial;
     }
-    
+
     .personal-cabinet-content__doctors-page-box-item__desc__adress-box .checkbox-group > li {
        flex-basis: 50%;
        margin-right: 0px;
@@ -7554,7 +7554,7 @@ button:focus {
     }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7), .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
         width: 36% !important;
-    } 
+    }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box:nth-child(2n+2) {
 		clear: none;
     }
@@ -8063,7 +8063,7 @@ button:focus {
         top: 11px;
         right: 8px;
     }
-    
+
     .doctors-list-item__img .doctors-list-item__img-photo,.doctors-list-item__img .doctors-list-item__img-none-photo {
         height: 160px;
         width: 105px;
@@ -8136,7 +8136,7 @@ button:focus {
     }
 
 
-    
+
     /*doctor-detail*/
     .doctor-card {
         margin-bottom: 0;
@@ -8156,7 +8156,7 @@ button:focus {
         padding-left: 10px;
         padding-right: 10px;
     }
-    
+
     .doctor-card__img-info {
         position: initial;
         width: 100%;
@@ -8267,7 +8267,7 @@ button:focus {
     .doctor-card__img-info-commend,.doctor-card_options-list-item {
         font-size: 13px;
         line-height: 20px;
-        
+
     }
     .doctor-card__img-info-ratings {
         margin-bottom: 11px;
@@ -8323,7 +8323,7 @@ button:focus {
         margin-bottom: 0;
         margin-right: 0;
     }
-    
+
     .choosing-time__worktimming-list-item:last-child {
         display: none;
     }
@@ -8877,7 +8877,7 @@ button:focus {
         line-height: 24px;
         font-family: "Ubuntu-Light";
     }
-    
+
 }
     /*.bx_filter_parameters_box.active {*/
         /*width: 33.3% !important;*/
@@ -8932,7 +8932,7 @@ button:focus {
         transform: scale(1.05);
     }
     #header-records {
-        
+
         margin-left: 15px;
         transform: scale(1.05);
     }
@@ -9007,7 +9007,7 @@ button:focus {
     .top-menu-mobile .nav .nav__item:nth-child(2) {
         padding-left: 20px;
         order: 3;
-    } 
+    }
     .top-menu-mobile .nav .nav__item:nth-child(3) {
         padding-left: 30px;
         order: 2;
@@ -9112,7 +9112,7 @@ button:focus {
         padding-bottom: 0;
     }
 }
-    
+
     /* .tab-content > .tab-pane .row > div {
         padding-left: 44px;
     }

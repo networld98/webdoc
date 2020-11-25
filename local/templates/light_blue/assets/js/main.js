@@ -14,11 +14,11 @@ $(document).ready(()=>{
                 if (top < 1) {
                     // elem.css({'top': 0, position: 'relative',backgroundColor: 'transparent'});
                     menu.css({top: h_mrg});
-                    menu.slideDown();
+                    menu.slideDown('100');
                 } else {
 
                     menu.css({top: h_mrg});
-                    menu.slideUp();
+                    menu.hide();
                 }
             }
         });
