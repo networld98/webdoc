@@ -128,7 +128,7 @@
     border-radius: 10px;
     cursor: pointer;
 }
-.personal-cabinet-content__my-profile .contacts-group, .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group{
+.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content .time-group{
     width: calc(100% - 215px);
 }
 .personal-cabinet-content__my-profile .contacts-group li {
