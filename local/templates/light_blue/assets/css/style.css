@@ -6108,9 +6108,21 @@ button:focus {
         width: 352px;
         top: 115px;
     }
+    .personal-cabinet-content__my-profile__info-form > ul > li > label {
+        min-width: 120px;
+    }
+    .personal-cabinet .bx_filter_input_checkbox {
+        margin-bottom: 5px;
+    }
+    .personal-cabinet .bx_filter_param_text {
+        line-height: 1;
+    }
 }
-@media (max-width: 1440px) {
-
+@media (max-width: 1450px) {
+    .personal-cabinet-content__my-profile__info-form > ul > li, .personal-cabinet-content__my-profile__info-desc > ul > li {
+        flex-direction: column;
+        align-items: initial;
+    }
 
 }
 @media (max-width: 1400px) {
@@ -6176,10 +6188,6 @@ button:focus {
     .head {
         padding-top: 0;
         padding-left: 5px;
-    }
-    .personal-cabinet-content__my-profile__info-form > ul > li, .personal-cabinet-content__my-profile__info-desc > ul > li {
-        flex-direction: column;
-        align-items: initial;
     }
     .personal-cabinet-content__my-profile__info-form > ul > li:first-child {
         flex-direction: initial;
