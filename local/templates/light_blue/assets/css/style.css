@@ -8142,8 +8142,13 @@ button:focus {
         margin-bottom: 0;
     }
     .doctor-card__img {
-        height: 112px;
+        /*height: 112px;*/
+        height: auto;
         max-width: 68px;
+        background: 0;
+    }
+    .photo-back-image {
+        height: 112px;
     }
     .doctor-card__img .doctor-card__img-photo, .doctor-card__img .doctors-list-item__img-none-photo {
         max-height: 98px;
