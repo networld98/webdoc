@@ -94,7 +94,6 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                             <?if($arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
                                 <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
                             <?endif;?>
-                            <div class="doctor-card-location-map popup-link-marker popup-link-marker-ghost"></div>
                         </div>
                     </div>
                 </div>
