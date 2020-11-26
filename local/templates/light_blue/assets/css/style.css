@@ -6118,7 +6118,7 @@ button:focus {
         min-width: 120px;
     }
     .personal-cabinet .bx_filter_input_checkbox {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
     .personal-cabinet .bx_filter_param_text {
         line-height: 1;
@@ -6133,7 +6133,7 @@ button:focus {
 }
 @media (max-width: 1400px) {
     .main__img2 {
-        right: 0px;
+        right: -45px;
          top: 26px;
         width: 270px;
         /* background-position-x: 73px; */
