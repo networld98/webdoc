@@ -8207,9 +8207,9 @@ button:focus {
         margin-left: 16px;
         margin-top: 13px;
     }
-    .doctor-card__description > .doctor-card__description__adapt{
+   /* .doctor-card__description > .doctor-card__description__adapt{
         display: none;
-    }
+    }*/
     .doctor-card .flex-left > .doctor-card__description__adapt {
         display: block;
     }
