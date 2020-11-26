@@ -5978,6 +5978,12 @@ button:focus {
 .doctors-slider-item .doctors-list-item__img-info-ratings {
     margin-bottom: 3px;
 }
+.api-reviews-form .api-star-rating i {
+    margin-right: 5px;
+}
+.api-reviews-form .api-star-rating i:last-child {
+    margin-right: 0;
+}
 .doctors-slider-item .doctors-list-item__img-info-commend {
     font-size: 12px;
     line-height: 14px;
