@@ -24,6 +24,8 @@ foreach ($_POST as $key => $data){
         $PROPS['LOGO'] = CFile::MakeFileArray(str_replace($_SERVER["DOCUMENT_ROOT"], $_SERVER['HTTP_ORIGIN'], $_POST['LOGO']));
     }
 }
+$PROPS['COST_PRICE'] = $_POST['COST_PRICE'];
+$PROPS['MAIN_SPECIALIZATION'] = $_POST['MAIN_SPECIALIZATION'];
 $PROPS['SPECIALIZATION_TECHNICAL_FIELD'] = implode(" ", $specialization_technical_text);
 foreach ($_POST['FULL_PROPERTY'] as $data){
     if (!array_key_exists($data,$_POST)){

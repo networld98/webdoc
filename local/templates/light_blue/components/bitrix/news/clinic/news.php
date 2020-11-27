@@ -74,6 +74,14 @@ $this->setFrameMode(true);
     ),
         false
     );?>
+    <?if (
+        isset($_GET["sort"]) && isset($_GET["order"]) && (
+            $_GET["sort"] == "property_COST_PRICE" ||
+            $_GET["sort"] == "property_MAIN_SPECIALIZATION")){
+        global $sort, $order;
+        $sort = $_GET["sort"];
+        $order = $_GET["order"];
+    }?>
 </section>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
@@ -82,8 +90,8 @@ $this->setFrameMode(true);
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"NEWS_COUNT" => $arParams["NEWS_COUNT"],
-		"SORT_BY1" => $arParams["SORT_BY1"],
-		"SORT_ORDER1" => $arParams["SORT_ORDER1"],
+		"SORT_BY1" => $sort,
+		"SORT_ORDER1" => $order,
 		"SORT_BY2" => $arParams["SORT_BY2"],
 		"SORT_ORDER2" => $arParams["SORT_ORDER2"],
 		"FIELD_CODE" => $arParams["LIST_FIELD_CODE"],

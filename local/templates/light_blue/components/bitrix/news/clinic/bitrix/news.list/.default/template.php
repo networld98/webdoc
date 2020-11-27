@@ -13,11 +13,21 @@
 $this->setFrameMode(true);
 require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
 ?>
+
 <?$APPLICATION->ShowViewContent('filterTitle');?>
+    <div class="sort">Сортировка:
+        <select name="" onchange="location=this.value" id="">
+            <option value="?sort=property_MAIN_SPECIALIZATION&order=asc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (от А до Я)</option>
+            <option value="?sort=property_MAIN_SPECIALIZATION&order=desc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (от Я до А)</option>
+            <option value="?sort=property_COST_PRICE&order=asc" <?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Первичная стоимость (по возрастанию)</option>
+            <option value="?sort=property_COST_PRICE&order=desc"<?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="desc"):?> selected <?endif;?>>Первичная стоимость (по убыванию)</option>
+        </select>
+    </div>
  <?function propsClinic($prop){
     if($prop["VALUE"]=='Y'):?>
     <li class="doctors-list-item_options-list-item"><?=$prop["NAME"]?></li>
 <?endif;}?>
+
 <div class="list-item clinic-list container">
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?

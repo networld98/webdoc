@@ -75,8 +75,20 @@ while($ob = $res->GetNextElement()){
                     <? propofficial($arProps['SITE']);?>
                     <? propofficial($arProps['OFFICIAL_NAME']);?>
                     <li>
+                        <label for="">Основная специализация клиники</label>
+                        <select name="MAIN_SPECIALIZATION">
+                            <?
+                            $arSelect = array("ID", "NAME");
+                            $arFilter = array("IBLOCK_ID"=>13);
+                            $obSections = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
+                            while($ar_result = $obSections->GetNext()){?>
+                                <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$arProps['MAIN_SPECIALIZATION']['VALUE']){?>selected<?}?>><?=mb_substr(mb_strtoupper($ar_result['NAME'], 'utf-8'), 0, 1, 'utf-8') . mb_substr(mb_strtolower($ar_result['NAME'], 'utf-8'), 1, mb_strlen($ar_result['NAME'])-1, 'utf-8');?></option>
+                            <?}?>
+                        </select>
+                    </li>
+                    <li>
                         <label for=""><?=$arProps['CITY']['NAME']?></label>
-                        <select name="CITY" id="city" value="">
+                        <select name="CITY" id="city">
                             <?
                             $arSelect = array("ID", "NAME");
                             $arFilter = array("IBLOCK_ID"=>14);
@@ -133,11 +145,11 @@ while($ob = $res->GetNextElement()){
                     </li>
                     <li>
                         <label for=""><?=$arProps['COST_PRICE']['NAME']?></label>
-                        <select name="COST_PRICE" value="">
-                        <?$property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>9, "CODE"=>$arProps['COST_PRICE']['CODE']));
+                        <select name="COST_PRICE">
+                        <?$property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "ID"=>"ASC"), Array("IBLOCK_ID"=>9, "CODE"=>$arProps['COST_PRICE']['CODE']));
                             while($enum_fields = $property_enums->GetNext())
                             {?>
-                                <option value="<?=$enum_fields['ID']?>" <?if ($enum_fields['ID']==$arProps['COST_PRICE']['VALUE']){?>selected<?}?>><?=$enum_fields['VALUE']?></option>
+                                <option value="<?=$enum_fields['ID']?>" <?if ($enum_fields['VALUE']==$arProps['COST_PRICE']['VALUE']){?>selected<?}?>><?=$enum_fields['VALUE']?></option>
                             <?}?>
                         </select>
                     </li>
