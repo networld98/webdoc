@@ -15,14 +15,21 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
 ?>
 
 <?$APPLICATION->ShowViewContent('filterTitle');?>
-    <div class="sort">Сортировка:
+<div class="container">
+    <div class="sort">
+        <span>
+            Сортировать по:
+        </span>
         <select name="" onchange="location=this.value" id="">
-            <option value="?sort=property_MAIN_SPECIALIZATION&order=asc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (от А до Я)</option>
-            <option value="?sort=property_MAIN_SPECIALIZATION&order=desc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (от Я до А)</option>
-            <option value="?sort=property_COST_PRICE&order=asc" <?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Первичная стоимость (по возрастанию)</option>
-            <option value="?sort=property_COST_PRICE&order=desc"<?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="desc"):?> selected <?endif;?>>Первичная стоимость (по убыванию)</option>
+            <option value="?sort=property_MAIN_SPECIALIZATION&order=asc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (&#x1F595;)</option>
+            <option value="?sort=property_MAIN_SPECIALIZATION&order=desc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (&#128071;)</option>
+            <option value="?sort=property_COST_PRICE&order=asc" <?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Первичная стоимость (&#x1F595;)</option>
+            <option value="?sort=property_COST_PRICE&order=desc"<?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="desc"):?> selected <?endif;?>>Первичная стоимость (&#128071;)</option>
         </select>
+        <div class="sort-arrow"></div>
     </div>
+</div>
+
  <?function propsClinic($prop){
     if($prop["VALUE"]=='Y'):?>
     <li class="doctors-list-item_options-list-item"><?=$prop["NAME"]?></li>

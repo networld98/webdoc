@@ -534,7 +534,46 @@ main {
     margin-bottom: 0;
     z-index: 0;
 }
-
+.sort {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 27px;
+    position: relative;
+}
+.sort > span {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 17px;
+    font-family: "Ubuntu-Light";
+    font-style: normal;
+    margin-right: 16px;
+    color: #000000;
+}
+.sort > select {
+    padding: 10px 25px 10px 10px;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 23px;
+    font-family: "Ubuntu-Light";
+    font-style: normal;
+    color: #000000;
+    border: 1px solid #8A8A8A;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.sort-arrow {
+    background: url(/local/templates/light_blue/assets/images/select-arrow-grey.svg) no-repeat center;
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    width: 15px;
+    height: 33px;
+    cursor: pointer;
+}
 .head__text--top {
     font-family: "Montserrat Alternates-Bold", sans-serif;
     font-size: 65px;
@@ -7745,6 +7784,19 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .sort {
+        justify-content: flex-start;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .sort > span {
+        font-size: 13px;
+        margin-right: 8px;
+    }
+    .sort-arrow {
+        right: initial;
+        left: 272px;
+    }
     .sharding-block-doctor-detail-ghost {
         display: flex;
         justify-content: center;
