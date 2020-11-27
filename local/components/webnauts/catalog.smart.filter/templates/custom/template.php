@@ -173,7 +173,7 @@ $templateData = array(
                                                         if ($ar["CHECKED"])
                                                         {
                                                             echo trim($ar["VALUE"], ".");
-                                                            if ($arItem['CODE'] == "SPECIALIZATION") {
+                                                            if ($arItem['CODE'] == "MAIN_SPECIALIZATION") {
                                                                 $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
                                                             }
                                                             if ($arItem['CODE'] == "SPECIALIZATION_MAIN") {

@@ -34,7 +34,7 @@ $this->setFrameMode(true);
 <?endif?>
 
 <? $APPLICATION->IncludeComponent(
-    "bitrix:catalog.smart.filter",
+    "webnauts:catalog.smart.filter",
     "search_filter",
     array(
         "CACHE_GROUPS" => "Y",

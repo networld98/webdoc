@@ -1,4 +1,5 @@
 <?require_once $_SERVER['DOCUMENT_ROOT'] . '/include/Mobile_Detect.php';
+$arParams = array("replace_space"=>"-","replace_other"=>"-");
 $detect = new Mobile_Detect;
 if ($detect->isMobile() && !$detect->isTablet()) {
     $specializationCount = 2;
@@ -46,7 +47,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                     </div>
                     <ul class="col__list">
                         <?foreach ($doctor as $specialization){?>
-                            <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                            <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                         <?}?>
                     </ul>
                 </div>
@@ -61,7 +62,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                         </div>
                         <ul class="col__list">
                             <?foreach ($doctor as $specialization){?>
-                                <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                                <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                             <?}?>
                         </ul>
                     </div>
@@ -80,6 +81,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
             while($ob = $res->GetNextElement())
             {
                 $arFields = $ob->GetFields();
+                $arProps = $ob->GetProperties();
                 $clinicks[mb_strtoupper(substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
             }?>
             <?
@@ -90,7 +92,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                     </div>
                     <ul class="col__list">
                         <?foreach ($clinick as $specialization){?>
-                            <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                            <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                         <?}?>
                     </ul>
                 </div>
@@ -109,7 +111,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
                         </div>
                         <ul class="col__list">
                             <?foreach ($clinick as $specialization){?>
-                                <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                                <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                             <?}?>
                         </ul>
                     </div>

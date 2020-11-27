@@ -1,3 +1,8 @@
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .personal-cabinet  ul > li > ul > li > label {
     margin-left: 0;
 }
@@ -712,6 +717,9 @@ main >.main-seo-text {
 }
 }
 @media (max-width: 768px) {
+    .container-flex .title-h2{
+        margin-bottom: 0;
+    }
     .uploadPhoto {
         flex-wrap: wrap;
     }
@@ -775,6 +783,9 @@ label.photoFile-label {
 }
 }
 @media (max-width: 450px) {
+    .container-flex .title-h2{
+        margin: 0;
+    }
     #title-search-input {
         font-size: 13px;
         padding-left: 3px;

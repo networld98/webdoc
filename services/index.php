@@ -35,7 +35,7 @@ function services_list($iblock){
 <div class="full-screen__filter-bg services-filter">
     <section class="container">
         <? $APPLICATION->IncludeComponent(
-	"bitrix:catalog.smart.filter", 
+	"webnauts:catalog.smart.filter",
 	"search_filter", 
 	array(
 		"CACHE_GROUPS" => "Y",

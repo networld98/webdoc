@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("Поиск");
 ?>
 <section class="clinic-card">
     <? $APPLICATION->IncludeComponent(
-	"bitrix:catalog.smart.filter", 
+	"webnauts:catalog.smart.filter",
 	"search_filter", 
 	array(
 		"CACHE_GROUPS" => "Y",

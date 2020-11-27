@@ -495,6 +495,19 @@ $templateData = array(
                                 </div>
                             </div>
                             <?
+                        }else{
+                            foreach ($arItem["VALUES"] as $val => $ar) {
+                                if ($ar["CHECKED"]) {
+                                    $checkedItemExist = true;
+                                    if ($arItem['CODE'] == "SPECIALIZATION") {
+                                        $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
+                                    }
+                                    if ($arItem['CODE'] == "SPECIALIZATION_MAIN") {
+                                        $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
+                                    }
+                                    $checkedItemExist = true;
+                                }
+                            }
                         }
                     }
                     ?>

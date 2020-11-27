@@ -13,9 +13,8 @@
 $this->setFrameMode(true);
 require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
 ?>
-
-<?$APPLICATION->ShowViewContent('filterTitle');?>
-<div class="container">
+<div class="container <?if($GLOBALS['titleFilterClinic']!=NULL){?>container-flex<?}?>">
+    <?$APPLICATION->ShowViewContent('filterTitle');?>
     <div class="sort">
         <span>
             Сортировать по:
@@ -285,9 +284,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
 </div>
 <?if($GLOBALS['titleFilterClinic']!=NULL){?>
 <?$this->SetViewTarget('filterTitle');?>
-    <div class="container">
-        <h1 class="title-h2"><?=$GLOBALS['titleFilterClinic']?> - (<?=$arResult['NAV_RESULT']->NavRecordCount ?>)</h1>
-    </div>
+    <h1 class="title-h2"><?=$GLOBALS['titleFilterClinic']?> - (<?=$arResult['NAV_RESULT']->NavRecordCount ?>)</h1>
 <?$this->EndViewTarget();?>
     <?
     $APPLICATION->SetPageProperty("description", "Клиники " .$GLOBALS['titleFilterClinic']." информация о врачах, отзывы, услуги, актуальная информация, контактные данные.");
