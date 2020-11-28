@@ -116,8 +116,42 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                         <a href="tel:<?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>"
                            class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>
                         </a>
-                        <span class="doctors-list-item__description-counts">Всего записалось 582 человека</span>
-                        <? /*<div class="doctors-list-item-favorites"></div>*/ ?>
+                        <?
+                        $FORM_ID = 4;
+                        $arFilter = array(
+                        );
+                        $arFilter["FIELDS"] = array();
+
+                        $rsResults = CFormResult::GetList($FORM_ID,
+                            ($by="s_timestamp"),
+                            ($order="desc"),
+                            $arFilter,
+                            $is_filtered,
+                            "Y",
+                            10);
+                        $countRow = $rsResults->result->num_rows;
+                        $countRecords = 0;
+                        if($countRow!=0) {
+                            while ($arResult_ = $rsResults->Fetch()) {
+                                $RESULT_ID = $arResult_['ID']; // ID результата
+                                $STATUS_ID = $arResult_['STATUS_ID']; // ID статуса
+
+                                // получим данные по всем вопросам
+                                $arAnswer = CFormResult::GetDataByID(
+                                    $RESULT_ID,
+                                    array(),
+                                    $arResult_,
+                                    $arAnswer2);
+                                if(explode('/',$arAnswer['SIMPLE_RECORD_PHONE'][0]['USER_TEXT'])[0] == $arItem['ID']){
+                                    $countRecords++;
+                                }
+                            }
+                        }?>
+                        <?if($countRecords>0){?>
+                            <span class="doctors-list-item__description-counts">Всего записалось <?= $countRecords?> человек(а)</span>
+                        <?}else{?>
+                            <span class="doctors-list-item__description-counts">К этому врачу еще никто не записался</span>
+                        <?}?>                        <? /*<div class="doctors-list-item-favorites"></div>*/ ?>
                     </div>
                 </div>
                 <div class="flex-right">

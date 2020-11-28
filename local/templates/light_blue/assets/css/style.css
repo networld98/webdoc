@@ -2854,6 +2854,9 @@ main {
     margin-top: 20px;
     margin-bottom: 27px;
 }
+.clinic-card .title-h2:first-letter {
+    text-transform: capitalize;
+}
 .clinic-card-img, .clinic-card-img-detail {
     text-align: center;
     margin-right: 40px;

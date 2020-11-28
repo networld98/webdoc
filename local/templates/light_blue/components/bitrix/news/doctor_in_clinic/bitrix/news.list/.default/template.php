@@ -94,15 +94,15 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         $countRow = $rsResults->result->num_rows;
                         $countRecords = 0;
                         if($countRow!=0) {
-                            while ($arResult = $rsResults->Fetch()) {
-                                $RESULT_ID = $arResult['ID']; // ID результата
-                                $STATUS_ID = $arResult['STATUS_ID']; // ID статуса
+                            while ($arResult_ = $rsResults->Fetch()) {
+                                $RESULT_ID = $arResult_['ID']; // ID результата
+                                $STATUS_ID = $arResult_['STATUS_ID']; // ID статуса
 
                                 // получим данные по всем вопросам
                                 $arAnswer = CFormResult::GetDataByID(
                                     $RESULT_ID,
                                     array(),
-                                    $arResult,
+                                    $arResult_,
                                     $arAnswer2);
                                 if(explode('/',$arAnswer['SIMPLE_RECORD_PHONE'][0]['USER_TEXT'])[0] == $arItem['ID']){
                                     $countRecords++;

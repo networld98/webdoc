@@ -46,8 +46,8 @@ $this->setFrameMode(true);
         "FILTER_NAME" => "arrFilter",
         "FILTER_VIEW_MODE" => "vertical",
         "HIDE_NOT_AVAILABLE" => "N",
-        "IBLOCK_TYPE" => "content",
-        "IBLOCK_ID" => "9",
+        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
         "PAGER_PARAMS_NAME" => "arrPager",
         "PREFILTER_NAME" => "",
         "SAVE_IN_SESSION" => "N",
@@ -75,8 +75,19 @@ $this->setFrameMode(true);
     ),
         false
     );?>
+    <?if (
+        isset($_GET["sort"]) && isset($_GET["order"]) && (
+            $_GET["sort"] == "show_counter" ||
+            $_GET["sort"] == "property_RATING" ||
+            $_GET["sort"] == "property_STANDING" ||
+            $_GET["sort"] == "property_PRICE" ||
+            $_GET["sort"] == "property_REVIEWS" ||
+            $_GET["sort"] == "property_SPECIALIZATION_MAIN")){
+        global $sort, $order;
+        $sort = $_GET["sort"];
+        $order = $_GET["order"];
+    }?>
 </section>
-<?$APPLICATION->ShowViewContent('filterTitle');?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
@@ -84,8 +95,8 @@ $this->setFrameMode(true);
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"NEWS_COUNT" => $arParams["NEWS_COUNT"],
-		"SORT_BY1" => $arParams["SORT_BY1"],
-		"SORT_ORDER1" => $arParams["SORT_ORDER1"],
+        "SORT_BY1" => $sort,
+        "SORT_ORDER1" => $order,
 		"SORT_BY2" => $arParams["SORT_BY2"],
 		"SORT_ORDER2" => $arParams["SORT_ORDER2"],
 		"FIELD_CODE" => $arParams["LIST_FIELD_CODE"],

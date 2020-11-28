@@ -1,4 +1,4 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -11,33 +11,33 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
+require($_SERVER["DOCUMENT_ROOT"] .'/include/terminationEx.php');
 CModule::IncludeModule("iblock");
 CModule::IncludeModule("form"); ?>
+<?$APPLICATION->ShowViewContent('filterTitle');?>
 <section class="container result-filter">
-    <? /* <div class="options-block">
-		<div class="sort-block">
-			<ul class="sort-block-list">
-				<li class="sort-block-list-item active">Популярные</li>
-				<li class="sort-block-list-item">Рейтинг</li>
-				<li class="sort-block-list-item">Стаж</li>
-				<li class="sort-block-list-item">Стоимость</li>
-				<li class="sort-block-list-item">Отзывы</li>
-			</ul>
-			<select name="" id="" class="sort-block-list__select">
-				<option value="">Популярные</option>
-				<option value="">Рейтинг</option>
-				<option value="">Стаж</option>
-				<option value="">Стоимость</option>
-				<option value="">Отзывы</option>
-			</select>
-		</div>
-		<div class="calendar-block">
-			<select class="calendar">
-				<option value="">Расписание на <a href="">все дни</a></option>
-			</select>
-		</div>
-	</div>*/ ?>
+    <div class="options-block">
+        <div class="sort-block">
+            <ul class="sort-block-list">
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "show_counter"):?>active<?endif;?>"><a href="?sort=show_counter&order=asc">Популярные</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_RATING"):?>active<?endif;?>"><a href="?sort=property_RATING&order=asc">Рейтинг</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_STANDING"):?>active<?endif;?>"><a href="?sort=property_STANDING&order=asc">Стаж</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_PRICE"):?>active<?endif;?>"><a href="?sort=property_PRICE&order=asc">Стоимость</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_REVIEWS"):?>active<?endif;?>"><a href="?sort=property_REVIEWS&order=asc">Отзывы</a></li>
+            </ul>
+        </div>
+        <div class="calendar-block">
+            <select class="calendar" name="" onchange="location=this.value" id="" >
+                <option value="?sort=property_SPECIALIZATION_MAIN&order=asc" <?if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (&#x1F595;)</option>
+                <option value="?sort=property_SPECIALIZATION_MAIN&order=desc" <?if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (&#128071;)</option>
+            </select>
+        </div>
+    </div>
+<?function propsClinic($prop){
+    if($prop["VALUE"]=='Y'):?>
+        <li class="doctors-list-item_options-list-item"><?=$prop["NAME"]?></li>
+    <?endif;}?>
+
     <div class="list-item doctors-list">
         <? foreach ($arResult["ITEMS"] as $arItem): ?>
             <?
@@ -100,37 +100,37 @@ CModule::IncludeModule("form"); ?>
                         <a href="tel:<?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>"
                            class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>
                         </a>
-                       <?
+                        <?
                         $FORM_ID = 4;
-                            $arFilter = array(
-                            );
-                            $arFilter["FIELDS"] = array();
+                        $arFilter = array(
+                        );
+                        $arFilter["FIELDS"] = array();
 
-                            $rsResults = CFormResult::GetList($FORM_ID,
-                                ($by="s_timestamp"),
-                                ($order="desc"),
-                                $arFilter,
-                                $is_filtered,
-                                "Y",
-                                10);
-                            $countRow = $rsResults->result->num_rows;
-                            $countRecords = 0;
-                            if($countRow!=0) {
-                                while ($arResult = $rsResults->Fetch()) {
-                                    $RESULT_ID = $arResult['ID']; // ID результата
-                                    $STATUS_ID = $arResult['STATUS_ID']; // ID статуса
+                        $rsResults = CFormResult::GetList($FORM_ID,
+                            ($by="s_timestamp"),
+                            ($order="desc"),
+                            $arFilter,
+                            $is_filtered,
+                            "Y",
+                            10);
+                        $countRow = $rsResults->result->num_rows;
+                        $countRecords = 0;
+                        if($countRow!=0) {
+                            while ($arResult_ = $rsResults->Fetch()) {
+                                $RESULT_ID = $arResult_['ID']; // ID результата
+                                $STATUS_ID = $arResult_['STATUS_ID']; // ID статуса
 
-                                    // получим данные по всем вопросам
-                                    $arAnswer = CFormResult::GetDataByID(
-                                        $RESULT_ID,
-                                        array(),
-                                        $arResult,
-                                        $arAnswer2);
-                                    if(explode('/',$arAnswer['SIMPLE_RECORD_PHONE'][0]['USER_TEXT'])[0] == $arItem['ID']){
-                                        $countRecords++;
-                                    }
+                                // получим данные по всем вопросам
+                                $arAnswer = CFormResult::GetDataByID(
+                                    $RESULT_ID,
+                                    array(),
+                                    $arResult_,
+                                    $arAnswer2);
+                                if(explode('/',$arAnswer['SIMPLE_RECORD_PHONE'][0]['USER_TEXT'])[0] == $arItem['ID']){
+                                    $countRecords++;
                                 }
-                            }?>
+                            }
+                        }?>
                         <?if($countRecords>0){?>
                             <span class="doctors-list-item__description-counts">Всего записалось <?= $countRecords?> человек(а)</span>
                         <?}else{?>
@@ -187,7 +187,7 @@ CModule::IncludeModule("form"); ?>
                                                 <li class="doctors-list-item__worktimming-list-item <?if (in_array($fullDate, $record)) {?>closed<?}?>" title="<?= $item['CLINIC'] ?>">
                                                     <a href="<?if (in_array($fullDate, $record)){?>javascript:void(0);<?}else {?><?= $arItem['DETAIL_PAGE_URL'] ?>?clinic=<?= $item['CLINIC'] ?>&time=<?= $selectDate ?> <?= $item['TIME'] ?><?}?>"><?= $item['TIME']?></a>
                                                 </li>
-                                            <?
+                                                <?
                                             }
                                         } ?>
                                         <? if ($i == 0) { ?>
@@ -215,7 +215,7 @@ CModule::IncludeModule("form"); ?>
                                 <? if ($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]): ?>
                                     <p class="doctor-card__clinic-adress">
                                         <?if(count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
-                                         <?= str_replace('/', ', ', $arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]) ?>
+                                        <?= str_replace('/', ', ', $arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]) ?>
                                     </p>
                                 <? endif; ?>
                                 <? if ($arItem["PROPERTIES"]["METRO"]["VALUE"]): ?>
@@ -278,39 +278,17 @@ CModule::IncludeModule("form"); ?>
                     });
                 });
             </script>
-        <? endforeach; ?>
+        <?endforeach;?>
     </div>
-    <!--
-        
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   
-    Кусок кода по макету , но я не разобрался где отрисовывается .show-more , чтобы подставить все
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
-    <div class="doctor-pagination">
-		<div class="doctor-pagination_show-more">
-			<button>Показать ещё</button>
-		</div>
-		<div class="doctor-pagination_block">
-			<span class="doctor-pagination_block__arrows arrow-left"></span>
-			<ul class="doctor-pagination_block-list">
-				<li class="doctor-pagination_block-list-item">1</li>
-				<li class="doctor-pagination_block-list-item active">2</li>
-				<li class="doctor-pagination_block-list-item">3</li>
-				<li class="doctor-pagination_block-list-item">4</li>
-				<li class="doctor-pagination_block-list-item">5</li>
-				<li class="doctor-pagination_block-list-item">6</li>
-				<li class="doctor-pagination_block-list-item">7</li>
-				<li class="doctor-pagination_block-list-item">...</li>
-				<li class="doctor-pagination_block-list-item">25</li>
-			</ul>
-			<span class="doctor-pagination_block__arrows arrow-right"></span>
-		</div>
-	</div> -->
 </section>
 <? if ($GLOBALS['titleFilterClinic'] != NULL) { ?>
     <? $this->SetViewTarget('filterTitle'); ?>
     <div class="container">
-        <h2 class="title-h2">Врачи-<?= mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1)); ?>и -
+        <?if (strpos($GLOBALS['titleFilterClinic'], 'Врач') !== false) {?>
+            <h2 class="title-h2"><?= substr($GLOBALS['titleFilterClinic'], 1); ?> -
+            <?}else{?>
+            <h2 class="title-h2">Врачи-<?= mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1)); ?>и -
+        <?}?>
             (<?= $arResult['NAV_RESULT']->NavRecordCount ?>)</h2>
     </div>
     <? $this->EndViewTarget(); ?>
