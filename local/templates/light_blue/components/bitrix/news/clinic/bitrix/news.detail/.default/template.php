@@ -65,17 +65,17 @@ function propsClinic($prop){
             <div class="adapt-clone-2">
                 <div>
                     <div class="clinic-card-img__img">
-                        <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
-                            <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){
-                                $file = CFile::ResizeImageGet($arItem["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                        <a href="<?=$arResult['DETAIL_PAGE_URL']?>">
+                            <?if($arResult["PROPERTIES"]["LOGO"]["VALUE"]){
+                                $file = CFile::ResizeImageGet($arResult["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                 ?>
-                                <img src="<?= $file['src'] ?>" alt='<?=$arItem["NAME"]?>'>
+                                <img src="<?= $file['src'] ?>" alt='<?=$arResult["NAME"]?>'>
                             <?}else{?>
                                 <img src="<?= SITE_TEMPLATE_PATH ?>/icon/hospital_building.svg" alt="нет лого">
                             <?}?>
                         </a>
                     </div>
-                    <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arItem['ID']);} ?>
+                    <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult["ID"]);} ?>
                     <div class="clinic-card-img__ratings">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='1'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='2'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
@@ -461,7 +461,9 @@ function propsClinic($prop){
                 <li class="active" data-tabs="1">Информация</li>
             <?}?>
             <li data-tabs="2" id="openBlockOtzivy"
-                <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]==NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]==NULL && $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]==NULL && $arResult['DETAIL_TEXT']==NULL && $arResult["PROPERTIES"]["SERVICES"]["VALUE"]==NULL && $arResult["PROPERTIES"]["PARKING"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]==NULL ){?>
+                <?
+
+                if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]==NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]==NULL && $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]==NULL && $arResult['DETAIL_TEXT']==NULL && $arResult["PROPERTIES"]["SERVICES"]["VALUE"]==NULL && $arResult["PROPERTIES"]["PARKING"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]==NULL ){?>
                     class="active"
                 <?}?>>Отзывы<span><?=$arRaing['COUNT']?></span></li>
             <?if($arResult["PROPERTIES"]["STOCKS"]["VALUE"]):?>

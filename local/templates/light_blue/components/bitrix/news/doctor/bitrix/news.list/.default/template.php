@@ -26,13 +26,13 @@ CModule::IncludeModule("form"); ?>
                 <li class="sort-block-list-item <?if ($_GET["sort"] == "property_REVIEWS"):?>active<?endif;?>"><a href="?sort=property_REVIEWS&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Отзывы</a></li>
             </ul>
         </div>
-<!--        <div class="calendar-block">-->
-<!--            <select class="calendar" name="" onchange="location=this.value" id="" >-->
-<!--                <option value="?sort=property_SPECIALIZATION_MAIN&order=asc" --><?//if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="asc"):?><!-- selected --><?//endif;?><!-->Специализация (-->
-<!--                    &#9660;)</option>-->
-<!--                <option value="?sort=property_SPECIALIZATION_MAIN&order=desc" --><?//if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="desc"):?><!-- selected --><?//endif;?><!-->Специализация ()</option>-->
-<!--            </select>-->
-<!--        </div>-->
+       <?/* <div class="calendar-block">
+            <select class="calendar" name="" onchange="location=this.value" id="" >
+                <option value="?sort=property_SPECIALIZATION_MAIN&order=asc" <?if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (
+                    &#9660;)</option>
+                <option value="?sort=property_SPECIALIZATION_MAIN&order=desc" <?if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация ()</option>
+            </select>
+        </div>*/?>
     </div>
 <?function propsClinic($prop){
     if($prop["VALUE"]=='Y'):?>
