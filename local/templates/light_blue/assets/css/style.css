@@ -46,7 +46,7 @@ a:hover {
     text-decoration: none;
 }
 
-input, textarea, select {
+input, textarea, select:not('city') {
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
