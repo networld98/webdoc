@@ -972,10 +972,10 @@ main {
 .sort-block-list-item.active,.sort-block-list-item:hover {
     background: #E3EAEA;
     border: 1px solid #E3EAEA;
-    cursor: default;
+    cursor: pointer;
 }
 .sort-block-list-item.active a {
-    cursor: default;
+    cursor: pointer;
 }
 .sort-block-list__select {
     display: none;
@@ -5226,17 +5226,17 @@ button:focus {
     width: 232px;
     text-align: center;
 }
-.clinic-card-full-desc__content__feedback-item-left__mark.green .count {
+.clinic-card-full-desc__content__feedback-item-left__mark.chartreuse .count {
     background: #32b6c5;
 }
-.clinic-card-full-desc__content__feedback-item-left__mark.green .text {
+.clinic-card-full-desc__content__feedback-item-left__mark.chartreuse  .text {
     color: #32b6c5;
     border-color: #32b6c5;
 }
-.clinic-card-full-desc__content__feedback-item-left__mark.chartreuse .count {
+.clinic-card-full-desc__content__feedback-item-left__mark.green .count {
     background: #9acc9b;
 }
-.clinic-card-full-desc__content__feedback-item-left__mark.chartreuse .text {
+.clinic-card-full-desc__content__feedback-item-left__mark.green .text {
     color: #9acc9b;
     border-color: #9acc9b;
 }

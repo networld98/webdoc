@@ -51,7 +51,7 @@ $rating = $arResult['COUNT_REVIEWS'];
 			<? for($i = 5; $i >= 1; $i--): ?>
 				<div class="api-info-row js-getFilter" data-rating="<?=$i?>">
 					<div class="api-info-title">
-                        <div class="clinic-card-full-desc__content__feedback-item-left__mark <?if($i==1){?>red<?}elseif ($i==2){?>pink<?}elseif ($i==3){?>orange<?}elseif ($i==4){?>green<?}else{?>chartreuse<?}?>">
+                        <div class="clinic-card-full-desc__content__feedback-item-left__mark <?if($i==1){?>red<?}elseif ($i==2){?>pink<?}elseif ($i==3){?>orange<?}elseif ($i==4){?>chartreuse<?}else{?>green<?}?>">
                             <span class="count" itemprop="ratingValue"><?=$i?></span>
                         </div>
 					</div>

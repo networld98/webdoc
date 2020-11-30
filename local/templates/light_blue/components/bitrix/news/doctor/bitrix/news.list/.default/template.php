@@ -19,19 +19,20 @@ CModule::IncludeModule("form"); ?>
     <div class="options-block">
         <div class="sort-block">
             <ul class="sort-block-list">
-                <li class="sort-block-list-item <?if ($_GET["sort"] == "show_counter"):?>active<?endif;?>"><a href="?sort=show_counter&order=asc">Популярные</a></li>
-                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_RATING"):?>active<?endif;?>"><a href="?sort=property_RATING&order=asc">Рейтинг</a></li>
-                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_STANDING"):?>active<?endif;?>"><a href="?sort=property_STANDING&order=asc">Стаж</a></li>
-                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_PRICE"):?>active<?endif;?>"><a href="?sort=property_PRICE&order=asc">Стоимость</a></li>
-                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_REVIEWS"):?>active<?endif;?>"><a href="?sort=property_REVIEWS&order=asc">Отзывы</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "show_counter"):?>active<?endif;?>"><a href="?sort=show_counter&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Популярные</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_RATING"):?>active<?endif;?>"><a href="?sort=property_RATING&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Рейтинг</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_STANDING"):?>active<?endif;?>"><a href="?sort=property_STANDING&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Стаж</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_PRICE"):?>active<?endif;?>"><a href="?sort=property_PRICE&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Стоимость</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_REVIEWS"):?>active<?endif;?>"><a href="?sort=property_REVIEWS&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Отзывы</a></li>
             </ul>
         </div>
-        <div class="calendar-block">
-            <select class="calendar" name="" onchange="location=this.value" id="" >
-                <option value="?sort=property_SPECIALIZATION_MAIN&order=asc" <?if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (&#x1F595;)</option>
-                <option value="?sort=property_SPECIALIZATION_MAIN&order=desc" <?if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (&#128071;)</option>
-            </select>
-        </div>
+<!--        <div class="calendar-block">-->
+<!--            <select class="calendar" name="" onchange="location=this.value" id="" >-->
+<!--                <option value="?sort=property_SPECIALIZATION_MAIN&order=asc" --><?//if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="asc"):?><!-- selected --><?//endif;?><!-->Специализация (-->
+<!--                    &#9660;)</option>-->
+<!--                <option value="?sort=property_SPECIALIZATION_MAIN&order=desc" --><?//if ($_GET["sort"] == "property_SPECIALIZATION_MAIN" && $_GET["order"]=="desc"):?><!-- selected --><?//endif;?><!-->Специализация ()</option>-->
+<!--            </select>-->
+<!--        </div>-->
     </div>
 <?function propsClinic($prop){
     if($prop["VALUE"]=='Y'):?>

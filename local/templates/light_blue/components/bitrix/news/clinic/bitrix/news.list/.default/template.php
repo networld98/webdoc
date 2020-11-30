@@ -20,10 +20,10 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
             Сортировать по:
         </span>
         <select name="" onchange="location=this.value" id="">
-            <option value="?sort=property_MAIN_SPECIALIZATION&order=asc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (&#x1F595;)</option>
-            <option value="?sort=property_MAIN_SPECIALIZATION&order=desc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (&#128071;)</option>
-            <option value="?sort=property_COST_PRICE&order=asc" <?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Первичная стоимость (&#x1F595;)</option>
-            <option value="?sort=property_COST_PRICE&order=desc"<?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="desc"):?> selected <?endif;?>>Первичная стоимость (&#128071;)</option>
+            <option value="?sort=property_MAIN_SPECIALIZATION&order=asc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (&#8593;)</option>
+            <option value="?sort=property_MAIN_SPECIALIZATION&order=desc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (&#8595;)</option>
+            <option value="?sort=property_COST_PRICE&order=asc" <?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Первичная стоимость (&#8593;)</option>
+            <option value="?sort=property_COST_PRICE&order=desc"<?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="desc"):?> selected <?endif;?>>Первичная стоимость (&#8595;)</option>
         </select>
         <div class="sort-arrow"></div>
     </div>

@@ -79,7 +79,7 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                             </span>
                             </p>
                         <? endif; ?>
-                        <div class="clinic-card-full-desc__content__feedback-item-left__mark <?if($arItem['RATING']==1||$arItem['RATING']==2){?>pink<?}elseif ($arItem['RATING']==3||$arItem['RATING']==4){?>orange<?}else{?>green<?}?>" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                        <div class="clinic-card-full-desc__content__feedback-item-left__mark <?if($arItem['RATING']==1||$arItem['RATING']==2){?>pink<?}elseif ($arItem['RATING']==3){?>orange<?} else if($arItem['RATING']==4){?>chartreuse<?}else{?>green<?}?>" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
                             <span class="count" itemprop="ratingValue"><?=($arItem['RATING'] ? $arItem['RATING'] : 5)?></span>
                             <span class="text">
                                 <?if($arItem['RATING']==1){?>
