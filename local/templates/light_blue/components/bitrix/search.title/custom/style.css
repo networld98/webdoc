@@ -115,11 +115,6 @@ div.title-search-fader {
 #title-search-input {
 	width: 100%;
 	padding: 11px 10px;
-	box-shadow: none;
-	background: none;
-	text-shadow: none;
-	border-color: #9DD4B3;
-	outline: none;
 }
 @media screen and (max-width: 576px){
 	.title-search-result th {
