@@ -16,7 +16,7 @@ $aMenuLinks = Array(
 	),
     Array(
         "Диагностика",
-        "#",
+        "/services/",
         Array(),
         Array(),
         ""

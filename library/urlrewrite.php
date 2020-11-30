@@ -16,7 +16,7 @@ $arUrlRewrite=array (
     'PATH' => '/articles/index.php',
     'SORT' => 100,
   ),
-  0 => 
+  24 => 
   array (
     'CONDITION' => '#^/illness/#',
     'RULE' => '',

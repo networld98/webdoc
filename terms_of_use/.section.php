@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Пользовательское соглашение";
+$sSectionName = "Конфиденциальность";
 $arDirProperties = array(
 );
 ?>

@@ -16,7 +16,7 @@ $aMenuLinks = Array(
 	),
     Array(
         "Диагностика",
-        "#",
+        "https://webdoc.clinic/services/",
         Array(),
         Array(),
         ""
