@@ -574,6 +574,9 @@ main {
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    cursor: pointer;
+    z-index: 0;
+    background: transparent;
 }
 .sort-arrow {
     background: url(/local/templates/light_blue/assets/images/select-arrow-grey.svg) no-repeat center;
@@ -582,7 +585,7 @@ main {
     right: 12px;
     width: 15px;
     height: 33px;
-    cursor: pointer;
+    z-index: -1;
 }
 .head__text--top {
     font-family: "Montserrat Alternates-Bold", sans-serif;
@@ -7797,6 +7800,9 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .side-menu-nav {
+        display: none;
+    }
     .sort {
         justify-content: flex-start;
         margin-top: 10px;
@@ -8063,8 +8069,14 @@ button:focus {
     .side-menu {
         padding-top: 75px;
     }
+    .burger__btn {
+        z-index: 1000;
+    }
     .burger .side-menu {
         width: 315px;
+        height: 106vh;
+        padding-top: 55px;
+        top: -20px;
     }
     .side-menu li {
         font-size: 25px;
@@ -8784,7 +8796,7 @@ button:focus {
         box-shadow: 0px 0px 20px rgba(152, 215, 220, 0.5);
     }
     .burger__btn div {
-        height: 3px;
+        height: 2px;
         background-color: #98D7DC;
         width: 20px;
     }
@@ -8793,6 +8805,7 @@ button:focus {
     }
 }
 @media (max-width: 450px) {
+
     .place-education-block {
         margin-left: 0;
     }
@@ -8938,6 +8951,13 @@ button:focus {
         padding-bottom: 6px;
         line-height: 1;
         padding-top: 15px;
+        border-radius: 0;
+    }
+    .specializations .nav-pills .nav-link {
+        border: 1px dashed #979797;
+    }
+    .specializations .nav-pills .nav-link.active {
+        border: 1px dashed #000000;
     }
     .specializations .nav-pills {
         padding-bottom: 25px;
@@ -9065,7 +9085,7 @@ button:focus {
         padding-bottom: 0;
     }
     .specializations .nav-pills > li {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     .specializations .nav-pills {
         padding-bottom: 32px;
@@ -9105,7 +9125,7 @@ button:focus {
         order: 4;
     }
     .specializations .nav-pills .nav-item:last-child .nav-link {
-        padding-top: 20px;
+        padding-top: 10px;
     }
     .tab-content > .tab-pane .row > div:nth-child(even) {
         padding-left: 12px;
