@@ -15,7 +15,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
     }
     @media (max-width: 450px){
         .specializations .nav-pills .nav-link.active, .specializations .nav-pills .nav-link {
-            padding: 15px 0 6px;
+            padding: 10px 0 10px;
             line-height: 1;
             text-align: center;
             display: block;
