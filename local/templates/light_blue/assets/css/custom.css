@@ -863,3 +863,15 @@ label.photoFile-label {
 .search-block-hidden {
     display: none;
 }
+.specializations .nav {
+    max-width: 100%;
+    width: 100%;
+}
+@media (max-width: 450px){
+    .specializations .nav-pills .nav-link.active, .specializations .nav-pills .nav-link {
+        padding: 10px 0 10px;
+        line-height: 1;
+        text-align: center;
+        display: block;
+    }
+}

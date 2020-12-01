@@ -9323,7 +9323,7 @@ button:focus {
 
 @media (max-width: 360px) {
     .footer .col__block:nth-child(2) {
-        padding-left: 50px;
+        padding-left: 40px;
     }
     .bx_filter_parameters_box.active {
         width: 50% !important;

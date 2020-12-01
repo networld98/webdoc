@@ -8,21 +8,6 @@ if ($detect->isMobile() && !$detect->isTablet()) {
 }elseif(!$detect->isMobile()){
     $specializationCount = 6;
 }?>
-<style>
-    .specializations .nav {
-        max-width: 100%;
-        width: 100%;
-    }
-    @media (max-width: 450px){
-        .specializations .nav-pills .nav-link.active, .specializations .nav-pills .nav-link {
-            padding: 10px 0 10px;
-            line-height: 1;
-            text-align: center;
-            display: block;
-        }
-    }
-
-</style>
 <ul class="nav nav-pills" id="pills-tab" role="tablist">
     <li class="nav-item"><a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Специализации врачей</a></li>
     <li class="nav-item"><a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Специализации клиник</a></li>
