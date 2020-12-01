@@ -8069,8 +8069,14 @@ button:focus {
     .side-menu {
         padding-top: 75px;
     }
+    .burger__btn {
+        z-index: 1000;
+    }
     .burger .side-menu {
         width: 315px;
+        height: 106vh;
+        padding-top: 55px;
+        top: -20px;
     }
     .side-menu li {
         font-size: 25px;
@@ -8790,7 +8796,7 @@ button:focus {
         box-shadow: 0px 0px 20px rgba(152, 215, 220, 0.5);
     }
     .burger__btn div {
-        height: 3px;
+        height: 2px;
         background-color: #98D7DC;
         width: 20px;
     }
