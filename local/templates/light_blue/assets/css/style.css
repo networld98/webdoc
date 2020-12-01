@@ -73,13 +73,16 @@ input:not([type="file"]):not(.city_input){
     padding-top: 6px;
     padding-bottom: 6px;
 }
-.map-popup-marker ymaps input:not([type="file"]),.clinic-card-full-desc__content__info-left__map ymaps input:not([type="file"]) {
+.map-popup-marker ymaps input:not([type="file"]),.clinic-card-full-desc__content__info-left__map ymaps input:not([type="file"]), .map-popup ymaps input:not([type="file"])  {
     border: initial;
     box-sizing: initial;
     border-radius: initial;
     box-shadow: initial;
     height: initial;
     padding: 0 6px;
+}
+.map-popup ymaps input:not([type="file"])  {
+    padding: 0 0 0 35px;
 }
 input:not([type="file"]).changedInput  {
     border: none;
@@ -409,9 +412,6 @@ main > .container:last-child {
     display: none;
 }
 
-
-
-
 .map-popup,.map-popup-marker {
     display: none;
     max-height: 700px;
@@ -429,6 +429,9 @@ main > .container:last-child {
     width: 100%;
     max-width: 1200px;
     height: 70%;
+}
+.map-wrapper .popup-box {
+    max-height: 500px;
 }
 .popup-box.popup-scroll {
     overflow: scroll;
