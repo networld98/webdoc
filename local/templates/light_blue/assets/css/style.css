@@ -8921,7 +8921,7 @@ button:focus {
         padding-left: 0;
     }
     .statistics__item:nth-child(4) .statistics__icon {
-        padding-left: 14px;
+        padding-left: 0;
     }
     .statistics__item {
         margin-bottom: 8px;
@@ -8998,7 +8998,7 @@ button:focus {
         padding-right: 11px;
     }
     .statistics__item:nth-child(4) {
-        padding-right: 4px;
+        padding-right: 27px;
     }
     .footer .col__block {
         font-size: 14px;

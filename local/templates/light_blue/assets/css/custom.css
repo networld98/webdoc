@@ -692,6 +692,11 @@ main >.main-seo-text {
 .clinic-popup .col-margin {
     margin: 17px 0;
 }
+.clinic-card-info__block .work-day {
+    float: left;
+    padding: 0;
+    width: 22px;
+}
 @media (max-width: 1430px) {
 .personal-cabinet-content__my-profile .contacts-group {
     width: 100%;

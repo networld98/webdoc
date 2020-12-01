@@ -256,7 +256,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                                     <?if(count($time)==2){?>
                                         <span><?=$time[0]?> - <?=$time[1]?></span>
                                     <?}elseif(count($time)==5){?>
-                                        <span><?=$time[0]?> -  c <?=$time[1]?>:<?=$time[2]?> до <?=$time[3]?>:<?=$time[4]?></span>
+                                        <span><span class="work-day"><?=$time[0]?></span> -  c <?=$time[1]?>:<?=$time[2]?> до <?=$time[3]?>:<?=$time[4]?></span>
                                     <?}?>
                                 <?}?>
                             <?endif;?>
