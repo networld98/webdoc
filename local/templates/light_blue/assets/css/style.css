@@ -7803,6 +7803,12 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .doctor-card__description ul.sharding-block-doctor-detail {
+        display: none;
+    }
+    .review-custom-btn.review-custom-btn_custom {
+        display: none;
+    }
     .side-menu-nav {
         display: none;
     }
@@ -7825,7 +7831,7 @@ button:focus {
         margin-top: 30px;
     }
     .sharding-block-doctor-detail-ghost .sharding-item {
-        margin-right: 15px;
+        margin-right: 25px;
     }
     .adapt-clone-2 .clinic-card-desc__price {
         margin-bottom: 15px;
@@ -7841,8 +7847,15 @@ button:focus {
         margin-top: 0px;
         margin-bottom: 40px;
     }
+    .sharding-block {
+        width: 100%;
+        justify-content: center;
+    }
     .sharding-item {
-        margin-right: 8px;
+        margin-right: 25px;
+    }
+    .sharding-item:last-child {
+        margin-right: 0;
     }
     .div-hide {
         display: none;

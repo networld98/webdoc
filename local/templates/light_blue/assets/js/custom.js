@@ -208,7 +208,8 @@ $(document).ready(function () {
                 } else {
                     console.log('no-fixed');
                     $('html').animate({
-                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight()) // прокручиваем страницу к требуемому элементу
+                            // scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight()) // прокручиваем страницу к требуемому элементу
+                        scrollTop: $(dest).offset().top - ($('#header').innerHeight()) // прокручиваем страницу к требуемому элементу
                         }, 1000 // скорость прокрутки
                     );
                 }
@@ -222,7 +223,8 @@ $(document).ready(function () {
                 } else {
                     console.log('no-fixed');
                     $('html').animate({
-                            scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight() + $('.nav-bar-service').height()) // прокручиваем страницу к требуемому элементу
+                            // scrollTop: $(dest).offset().top - ($('#header').innerHeight() + $('.fixed-block').outerHeight()) // прокручиваем страницу к требуемому элементу
+                        scrollTop: $(dest).offset().top - ($('#header').innerHeight()) // прокручиваем страницу к требуемому элементу
                         }, 1000 // скорость прокрутки
                     );
                 }

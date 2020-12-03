@@ -239,6 +239,22 @@
 .arstat-color-blue .api-info .api-info-bar{
 	background-color:#98D7DC!important;
 }
+.arstat-color-blue .api-info .api-info-bar.api-info-bar1{
+	background-color:#a54d6b!important;
+}
+.arstat-color-blue .api-info .api-info-bar.api-info-bar2{
+	background-color:#e896ad!important;
+}
+.arstat-color-blue .api-info .api-info-bar.api-info-bar3{
+	background-color:#fcdebc!important;
+}
+.arstat-color-blue .api-info .api-info-bar.api-info-bar4{
+	background-color:#32b6c5!important;
+}
+.arstat-color-blue .api-info .api-info-bar.api-info-bar5{
+	background-color:#9acc9b!important;
+}
+
 #api-reviews-stat .clinic-card-full-desc__content__feedback-item-left__mark {
 	 margin-bottom: 0px;
 }

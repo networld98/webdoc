@@ -56,9 +56,9 @@ $(document).ready(()=>{
                 top = $(this).scrollTop();
                 if($(window).width() <= 992) {
                     if ((top + $('#header').innerHeight()) + widthDevice < elemFixedPos) {
-                        console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
-                        console.log((top + $('#header').innerHeight()));
-                        console.log("relatived");
+                        // console.log(top + $('#header').innerHeight() + " pos --- offset " + `${elem.offset().top}`);
+                        // console.log((top + $('#header').innerHeight()));
+                        // console.log("relatived");
                         elem.css({'top': 'initial', position: 'relative',backgroundColor: 'transparent',bottom:'initial'});
                         // $('.container h1').fadeIn();
                         // $('.bx-breadcrumb').show();
@@ -176,9 +176,9 @@ $(document).ready(()=>{
 
             if($(window).width() <= 992) {
                 if ((top2 + $('#header').innerHeight()) + widthDevice2 < elemFixedPos2) {
-                    console.log(top2 + $('#header').innerHeight() + " pos --- offset " + `${elem2.offset().top}`);
-                    console.log((top2 + $('#header').innerHeight()));
-                    console.log("relatived");
+                    // console.log(top2 + $('#header').innerHeight() + " pos --- offset " + `${elem2.offset().top}`);
+                    // console.log((top2 + $('#header').innerHeight()));
+                    // console.log("relatived");
                     elem2.css({'top': 'initial', position: 'relative',backgroundColor: 'transparent',bottom:'initial'});
                     // $('.container h1').fadeIn();
                     // $('.bx-breadcrumb').show();
@@ -820,8 +820,8 @@ $(document).ready(()=>{
     $(document).mouseup(function (e) {
         var div = $(".side-menu");
         if (!div.is(e.target) && div.has(e.target).length === 0 && !$('.burger__btn').is(e.target)) {
-            console.log('click za bredelami sidemenu');
-            console.log($(".burger__toggle").prop('checked'));
+            // console.log('click za bredelami sidemenu');
+            // console.log($(".burger__toggle").prop('checked'));
             $(".burger__toggle").prop('checked',false);
     }
     });
