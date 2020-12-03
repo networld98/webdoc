@@ -42,5 +42,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     unlink($_POST['LOGO']);
     ?>
     <span style="color:green">Данные сохранены</span>
-
 <?}?>
