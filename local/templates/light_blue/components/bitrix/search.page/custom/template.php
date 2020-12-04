@@ -129,12 +129,13 @@ endif;?>
          $serviceKey = 0;
           global $arrFilter;
           foreach(array_keys($searchArray) as $iblockId){
-              if ( ($iblockId == 18 || $iblockId ==19) && $serviceKey == 0 ){
+              if ( ($iblockId == 18 || $iblockId == 19) && $serviceKey == 0 ){
                   $serviceKey++;?>
                   <div class="container" id="blockService">
                       <h2>Услуги</h2>
                   </div>
               <?}
+            $template = "search_doctor";
             if ($iblockId == 9){$template = "search_clinic";}
             if ($iblockId == 10){
                 if($arrFilter["=PROPERTY_94"] !=NULL){

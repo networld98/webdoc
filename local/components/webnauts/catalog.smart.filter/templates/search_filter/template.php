@@ -28,64 +28,69 @@ $templateData = array(
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container checkboxes">
                                 <?$APPLICATION->IncludeComponent(
-                                    "bitrix:search.title",
-                                    "custom",
-                                    array(
-                                        "SHOW_INPUT" => "Y",
-                                        "INPUT_ID" => "title-search-input",
-                                        "CONTAINER_ID" => "title-search",
-                                        "PRICE_CODE" => array(
-                                            0 => "BASE",
-                                            1 => "RETAIL",
-                                        ),
-                                        "PRICE_VAT_INCLUDE" => "Y",
-                                        "PREVIEW_TRUNCATE_LEN" => "150",
-                                        "SHOW_PREVIEW" => "Y",
-                                        "PREVIEW_WIDTH" => "75",
-                                        "PREVIEW_HEIGHT" => "75",
-                                        "CONVERT_CURRENCY" => "Y",
-                                        "CURRENCY_ID" => "RUB",
-                                        "PAGE" => "#SITE_DIR#search/index.php",
-                                        "NUM_CATEGORIES" => "3",
-                                        "TOP_COUNT" => "10",
-                                        "ORDER" => "date",
-                                        "USE_LANGUAGE_GUESS" => "Y",
-                                        "CHECK_DATES" => "Y",
-                                        "SHOW_OTHERS" => "N",
-                                        "CATEGORY_0_TITLE" => "Клиники",
-                                        "CATEGORY_0" => array(
-                                            0 => "iblock_content",
-                                        ),
-                                        "CATEGORY_0_iblock_news" => array(
-                                            0 => "all",
-                                        ),
-                                        "CATEGORY_1_TITLE" => "Врачи",
-                                        "CATEGORY_1" => array(
-                                            0 => "iblock_content",
-                                        ),
-                                        "CATEGORY_1_forum" => array(
-                                            0 => "all",
-                                        ),
-                                        "CATEGORY_2_TITLE" => "Услуги",
-                                        "CATEGORY_2" => array(
-                                            0 => "iblock_content",
-                                        ),
-                                        "CATEGORY_2_iblock_books" => "all",
-                                        "COMPONENT_TEMPLATE" => "custom",
-                                        "CATEGORY_OTHERS_TITLE" => "111",
-                                        "CATEGORY_0_iblock_content" => array(
-                                            0 => "9",
-                                        ),
-                                        "CATEGORY_1_iblock_content" => array(
-                                            0 => "10",
-                                        ),
-                                        "CATEGORY_2_iblock_content" => array(
-                                            0 => "18",
-                                            1 => "19",
-                                        )
-                                    ),
-                                    false
-                                );?>
+	"webnauts:search.title",
+	"custom", 
+	array(
+		"SHOW_INPUT" => "Y",
+		"INPUT_ID" => "title-search-input",
+		"CONTAINER_ID" => "title-search",
+		"PRICE_CODE" => array(
+			0 => "BASE",
+			1 => "RETAIL",
+		),
+		"PRICE_VAT_INCLUDE" => "Y",
+		"PREVIEW_TRUNCATE_LEN" => "150",
+		"SHOW_PREVIEW" => "Y",
+		"PREVIEW_WIDTH" => "75",
+		"PREVIEW_HEIGHT" => "75",
+		"CONVERT_CURRENCY" => "Y",
+		"CURRENCY_ID" => "RUB",
+		"PAGE" => "#SITE_DIR#search/index.php",
+		"NUM_CATEGORIES" => "3",
+		"TOP_COUNT" => "10",
+		"ORDER" => "date",
+		"USE_LANGUAGE_GUESS" => "Y",
+		"CHECK_DATES" => "Y",
+		"SHOW_OTHERS" => "N",
+		"CATEGORY_0_TITLE" => "Клиники",
+		"CATEGORY_0" => array(
+			0 => "iblock_content",
+		),
+		"CATEGORY_0_iblock_news" => array(
+			0 => "all",
+		),
+		"CATEGORY_1_TITLE" => "Врачи",
+		"CATEGORY_1" => array(
+			0 => "iblock_content",
+		),
+		"CATEGORY_1_forum" => array(
+			0 => "all",
+		),
+		"CATEGORY_2_TITLE" => "Услуги",
+		"CATEGORY_2" => array(
+			0 => "iblock_content",
+		),
+		"CATEGORY_2_iblock_books" => "all",
+		"COMPONENT_TEMPLATE" => "custom",
+		"CATEGORY_OTHERS_TITLE" => "Библиотека",
+		"CATEGORY_OTHERS_iblock_content" => array(
+			0 => "20",
+			1 => "21",
+			2 => "22",
+		),
+		"CATEGORY_0_iblock_content" => array(
+			0 => "9",
+		),
+		"CATEGORY_1_iblock_content" => array(
+			0 => "10",
+		),
+		"CATEGORY_2_iblock_content" => array(
+			0 => "18",
+			1 => "19",
+		)
+	),
+	false
+);?>
                             </div>
                         </div>
                     </div>
