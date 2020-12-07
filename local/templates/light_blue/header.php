@@ -39,6 +39,7 @@ CJSCore::Init("popup", "jquery");
         </label>
         <div class="side-menu">
             <div class="contacts">
+
                 <select name="city" class="city">
                     <option selected="selected">Москва</option>
                     <option>Санкт-Петербург</option>
@@ -106,10 +107,33 @@ CJSCore::Init("popup", "jquery");
         </nav>
         <?}?>
         <div class="contacts">
-            <select name="city" class="city">
-                <option selected="selected">Москва</option>
-                <option>Санкт-Петербург</option>
-            </select>
+            <?$APPLICATION->IncludeComponent(
+            "bxmaker:geoip.city",
+            "custom",
+            array(
+                "BTN_EDIT" => "Изменить город",
+                "CACHE_TIME" => "36000",
+                "CACHE_TYPE" => "A",
+                "CITY_COUNT" => "30",
+                "CITY_LABEL" => "",
+                "CITY_SHOW" => "Y",
+                "FAVORITE_SHOW" => "Y",
+                "FID" => "1",
+                "INFO_SHOW" => "Y",
+                "INFO_TEXT" => "Мы ищем по всей России",
+                "INPUT_LABEL" => "Начните вводить название города...",
+                "MSG_EMPTY_RESULT" => "Ничего не найдено",
+                "POPUP_LABEL" => "Мы ищем по всей России",
+                "QUESTION_SHOW" => "Y",
+                "QUESTION_TEXT" => "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>Ваш город<br/>#CITY#?",
+                "RELOAD_PAGE" => "N",
+                "SEARCH_SHOW" => "Y",
+                "COMPONENT_TEMPLATE" => "custom",
+                "COMPOSITE_FRAME_MODE" => "Y",
+                "COMPOSITE_FRAME_TYPE" => "DYNAMIC_WITH_STUB"
+            ),
+            false
+        );?>
             <a href="tel:+74950952020" class="contacts-phone">+7 (495) 095-20-20</a>
         </div>
             <?if(!CSite::InDir('/lc/')){

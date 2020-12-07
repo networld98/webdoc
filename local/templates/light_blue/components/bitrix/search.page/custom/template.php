@@ -129,13 +129,24 @@ endif;?>
          $serviceKey = 0;
           global $arrFilter;
           foreach(array_keys($searchArray) as $iblockId){
-              if ( ($iblockId == 18 || $iblockId == 19) && $serviceKey == 0 ){
+              if (($iblockId == 18 || $iblockId == 19) && $serviceKey == 0 ){
                   $serviceKey++;?>
                   <div class="container" id="blockService">
                       <h2>Услуги</h2>
                   </div>
+              <?}elseif($iblockId == 20){?>
+                  <div class="container" id="blockArticles">
+                      <h2>Статьи</h2>
+                  </div>
+              <?}elseif($iblockId == 21){?>
+                  <div class="container" id="blockIllness">
+                      <h2>Болезни</h2>
+                  </div>
+              <?}elseif($iblockId == 22){?>
+                  <div class="container" id="blockSymptoms">
+                      <h2>Симптомы</h2>
+                  </div>
               <?}
-            $template = "search_doctor";
             if ($iblockId == 9){$template = "search_clinic";}
             if ($iblockId == 10){
                 if($arrFilter["=PROPERTY_94"] !=NULL){
@@ -172,7 +183,7 @@ endif;?>
                 }
                 $template = "search_doctor";
             }
-            if ($iblockId == 18 || $iblockId == 19){$template = "search_services";}
+            if ($iblockId == 18 || $iblockId == 19 || $iblockId == 20 || $iblockId == 21 || $iblockId == 22){$template = "search_services";}
              $arrFilter['=ID'] = $searchArray[$iblockId];
 
            $APPLICATION->IncludeComponent("bitrix:news.list","$template",Array(
