@@ -158,8 +158,8 @@ while($ob = $res->GetNextElement()){
                         <ul class="checkbox-group">
                             <? propview($arProps["PAY_CARD"])?>
                             <? propview($arProps["DMC"])?>
-                            <? propview($arProps["UMC"])?>
                             <? propview($arProps["PAY_MONEY"])?>
+                            <? propview($arProps["UMC"])?>
                         </ul>
                     </li>
                     <li>

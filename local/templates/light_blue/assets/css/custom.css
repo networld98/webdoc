@@ -692,7 +692,7 @@ main >.main-seo-text {
 .clinic-popup .col-margin {
     margin: 17px 0;
 }
-.clinic-card-info__block .work-day {
+.clinic-card-info__block .work-day,.clinic-card-info-detail__block .work-day {
     float: left;
     padding: 0;
     width: 22px;

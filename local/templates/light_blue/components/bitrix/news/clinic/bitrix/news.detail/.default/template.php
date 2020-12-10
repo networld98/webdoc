@@ -11,6 +11,11 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+//function console_log( $data ){
+//    echo '<script>';
+//    echo 'console.log('. json_encode( $data ) .')';
+//    echo '</script>';
+//}
 require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
 global $clinicName, $clinickId, $clinicMail, $clinicPhone;
 $clinicName = $arResult["NAME"];
@@ -91,6 +96,12 @@ function propsClinic($prop){
                         <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
                     <?endif;?>
                     <div class="doctor-card-location-map popup-link-marker popup-link-marker-ghost"></div>
+                    <?
+                        $res = CIBlockElement::GetByID($arResult["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]);
+                        if($ar_res = $res->GetNext()){?>
+                            <span class="main-spec"><?=$ar_res['NAME']?></span>
+                        <?}
+                    ?>
                 </div>
             </div>
         </div>
@@ -101,7 +112,15 @@ function propsClinic($prop){
             <?if($arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
                 <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
             <?endif;?>
+            <?
+            $res = CIBlockElement::GetByID($arResult["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]);
+            if($ar_res = $res->GetNext()){?>
+                <span class="main-spec"><?=$ar_res['NAME']?></span>
+            <?}
+            ?>
         </div>
+        <p class="clinic-card-desc__about"><?=$arResult["PREVIEW_TEXT"]?></p>
+        <p class="doctors-title-spec">Врачи-специалисты</p>
         <?if($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
             <ul class="clinic-card-desc__spec-list">
                 <?foreach ($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
@@ -112,7 +131,6 @@ function propsClinic($prop){
                 }?>
             </ul>
         <?endif;?>
-        <p class="clinic-card-desc__about"><?=$arResult["PREVIEW_TEXT"]?></p>
         <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
             <div class="map-wrapper">
                 <div class="doctor-card-location-map popup-link-marker"></div>

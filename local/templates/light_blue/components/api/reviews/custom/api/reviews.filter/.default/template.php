@@ -54,6 +54,7 @@ if(method_exists($this, 'setFrameMode'))
             border-radius: 5px;
         }
     </style>
+    <h4 class="title-h4 title-center">Смотреть отзывы</h4>
 	<div id="<?=$arParams['FORM_ID']?>" class="api-reviews-filter clinic-card-full-desc__content__feedback__radio-group">
 		<ul class="api-filters">
 			<? for($i = 5; $i >= 1; $i--): ?>

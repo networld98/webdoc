@@ -45,7 +45,7 @@ function count_element($iblock){
                 5162+
             </div>
             <div class="statistics__text">
-                пациента записались
+                подтвержденных<br> звонков
             </div>
         </div>
     </div>

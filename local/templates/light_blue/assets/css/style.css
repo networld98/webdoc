@@ -100,6 +100,32 @@ input[type="reset"] {
     background: transparent;
 
 }
+
+.main-spec {
+    color: #32B4C3;
+    font-family: "Ubuntu-Light";
+    font-style: normal;
+    font-weight: 300;
+     font-size: 15px;
+     line-height: 17px;
+    padding: 5px 10px;
+    border: 1px solid #32B4C3;
+    border-radius: 5px;
+    display: inline-block;
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.doctors-title-spec {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    color: #000000;
+}
 .title-h2 {
     font-family: "Montserrat Alternates-Bold";
     font-style: normal;
@@ -324,7 +350,12 @@ main > .container:last-child {
     line-height: 17px;color: #000000;
     margin-bottom: 8px;
 }
-
+.link-checkbox .bx_filter_param_label .bx_filter_input_checkbox {
+    margin-bottom: 0;
+}
+.link-checkbox .bx_filter_input_checkbox .bx_filter_param_text {
+    margin-left: 0;
+}
 .contacts {
     min-width: 170px;
     display: flex;
@@ -3076,7 +3107,7 @@ main {
     width: 947px;
 }
 .clinic-card-info-detail {
-
+    margin-top: 15px;
 }
 .clinic-card-info-detail .grey-block {
     display: flex;
@@ -7196,6 +7227,7 @@ button:focus {
         width: 16px;
         height: 16px;
     }
+
     .bx_filter .main-filter .bx_filter_input_checkbox .bx_filter_param_text {
         margin-left: 2px;
         /*
@@ -7803,6 +7835,17 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .title-center {
+        text-align: center;
+    }
+    .clinic-card-info-detail {
+        margin-top: 10px;
+    }
+    .main-spec {
+        font-size: 13px;
+        line-height: 15px;
+        margin-bottom: 0;
+    }
     .doctor-card__description ul.sharding-block-doctor-detail {
         display: none;
     }
@@ -7834,7 +7877,7 @@ button:focus {
         margin-right: 25px;
     }
     .adapt-clone-2 .clinic-card-desc__price {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
     .popup-link-marker-ghost {
         display: block;
@@ -7867,7 +7910,7 @@ button:focus {
     }
     .adapt-clone-2 {
         display: flex;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
     }
     .adapt-clone-2 > div:first-child {
         margin-right: 12px;
@@ -8598,7 +8641,7 @@ button:focus {
         line-height: 15px;
     }
     .clinic-card-desc__about {
-        margin-top: 20px;
+        margin-top: 0;
         font-size: 14px;
         line-height: 21px;
         margin-bottom: 15px;
@@ -8608,6 +8651,7 @@ button:focus {
         margin-bottom: 10px;
     }
     .clinic-card-desc {
+        display: none;
         margin-right: 0;
     }
     .clinic-card-desc .doctor-card-location-map {
@@ -8804,8 +8848,8 @@ button:focus {
         background-color: #fff;
         top: 40px;
         left: 15px;
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         box-shadow: 0px 0px 20px rgba(152, 215, 220, 0.5);
     }
     .burger__btn div {
@@ -9066,9 +9110,9 @@ button:focus {
         line-height: 31px;
     }
     .main__img2 {
-        width: 182px;
-        background-position-x: 20px;
-        top: -50px;
+        width: 191px;
+        background-position-x: 25px;
+        top: -48px;
         opacity: 0.5;
     }
     .top-menu-mobile .nav .nav__item:nth-child(odd) {
@@ -9360,6 +9404,7 @@ button:focus {
     margin-top: 3px;
     z-index: 1;
     margin-left: -2px;
+    color: transparent;
 }
 .city_input::selection, .city_input:active, .city_input:focus   {
     outline-color:transparent;

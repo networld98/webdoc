@@ -110,11 +110,20 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                             <?if($arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
                                 <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
                             <?endif;?>
+                            <div class="doctor-card-location-map popup-link-marker popup-link-marker-ghost"></div>
+                            <?
+                            $res = CIBlockElement::GetByID($arItem["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]);
+                            if($ar_res = $res->GetNext()){?>
+                                <span class="main-spec"><?=$ar_res['NAME']?></span>
+                            <?}
+                            ?>
                         </div>
                     </div>
                 </div>
                 <div class="clone-adapt">
+                    <p class="clinic-card-desc__about"><?=$arItem["PREVIEW_TEXT"]?></p>
                     <?if($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
+                        <p class="doctors-title-spec">Врачи-специалисты</p>
                         <ul class="clinic-card-desc__spec-list">
                             <?foreach ($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
                                 $res = CIBlockElement::GetByID($item);
@@ -134,7 +143,15 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                 <?if($arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
                     <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arItem["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
                 <?endif;?>
+                <?
+                $res = CIBlockElement::GetByID($arItem["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]);
+                if($ar_res = $res->GetNext()){?>
+                    <span class="main-spec"><?=$ar_res['NAME']?></span>
+                <?}
+                ?>
+                <p class="clinic-card-desc__about"><?=$arItem["PREVIEW_TEXT"]?></p>
                 <?if($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
+                    <p class="doctors-title-spec">Врачи-специалисты</p>
                     <ul class="clinic-card-desc__spec-list list-2">
                         <?foreach ($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
                             $res = CIBlockElement::GetByID($item);
@@ -144,7 +161,6 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                         }?>
                     </ul>
                 <?endif;?>
-                <p class="clinic-card-desc__about"><?=$arItem["PREVIEW_TEXT"]?></p>
                 <?
                 $arFilter = Array("IBLOCK_ID"=>"10","ACTIVE"=>"Y", "PROPERTY_CLINIK" =>$arItem['ID']);
                 $arSelect = Array("PROPERTY_SPECIALIZATION_MAIN");
