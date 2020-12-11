@@ -360,8 +360,7 @@ main > .container:last-child {
     min-width: 170px;
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
-
+    margin-left: auto;
 }
 .contacts-phone {
     font-family: "Ubuntu";

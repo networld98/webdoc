@@ -2,13 +2,6 @@
 <?
 if(!empty($arResult["CATEGORIES"]) && $arResult['CATEGORIES_ITEMS_EXISTS']):?>
     <table class="title-search-result">
-        <? global $USER;
-        if ($USER->IsAdmin()) {
-            echo"<pre>";
-            print_r($arResult["CATEGORIES"]);
-            echo"</pre>";
-        }
-        ?>
         <?foreach($arResult["CATEGORIES"] as $category_id => $arCategory):?>
             <tr>
                 <th class="title-search-separator">&nbsp;</th>
