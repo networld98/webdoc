@@ -562,19 +562,22 @@ function propsClinic($prop){
                                 </li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["SITE"]["VALUE"]!=NULL):?>
-                                <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></a></li>
+                                <li class="icon1"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SITE"]["NAME"]?></a></li>
+                            <?endif;?>
+                            <?if($arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]!=NULL):?>
+                                <li class="icon4"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["WIFI"]["VALUE"]!=NULL):?>
-                                <li class="icon7"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></a></li>
+                                <li class="icon7"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["SMS_MESSAGE"]["VALUE"]!=NULL):?>
-                                <li class="icon6"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SMS_MESSAGE"]["NAME"]?></a></li>
+                                <li class="icon6"><?=$arResult["PROPERTIES"]["SMS_MESSAGE"]["NAME"]?></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["EMAIL_MESSAGE"]["VALUE"]!=NULL):?>
-                                <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["EMAIL_MESSAGE"]["NAME"]?></a></li>
+                                <li class="icon4"><?=$arResult["PROPERTIES"]["EMAIL_MESSAGE"]["NAME"]?></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["LICENSE"]["VALUE"]):?>
-                                <li class="icon5"><a href="<?=CFile::GetPath($arResult["PROPERTIES"]["LICENSE"]["VALUE"])?>"><?=$arResult["PROPERTIES"]["LICENSE"]["NAME"]?></a></li>
+                                <li class="icon5"><?=$arResult["PROPERTIES"]["LICENSE"]["NAME"]?></li>
                             <?endif;?>
                         </ul>
                     </div>
