@@ -562,10 +562,7 @@ function propsClinic($prop){
                                 </li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["SITE"]["VALUE"]!=NULL):?>
-                                <li class="icon1"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SITE"]["NAME"]?></a></li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]!=NULL):?>
-                                <li class="icon4"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></li>
+                                <li class="icon4"><a href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SITE"]["NAME"]?></a></li>
                             <?endif;?>
                             <?if($arResult["PROPERTIES"]["WIFI"]["VALUE"]!=NULL):?>
                                 <li class="icon7"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></li>
