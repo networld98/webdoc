@@ -72,7 +72,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                             <p class="doctors-list-item__description-exp">Стаж <?=$arItem['PROPERTIES']['STANDING']['VALUE']?></p>
                         <?endif;?>
                         <?if($arItem["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]):?>
-                            <p class="doctors-list-item__description-degree"><?=$arItem['PROPERTIES']['SCIENCE_DEGREE']['VALUE']?></p>
+                            <p class="doctors-list-item__description-degree"><?=($arItem['PROPERTIES']['SCIENCE_DEGREE']['VALUE']!='-' ? $arItem['PROPERTIES']['SCIENCE_DEGREE']['VALUE']: ' ')?></p>
                         <?endif;?>
                         <?if($arItem["PROPERTIES"]["PRICE"]["VALUE"]):?>
                             <p class="doctors-list-item__description-price"><?=$arItem['PROPERTIES']['PRICE']['VALUE']?> Р<span>Цена приема в клинике</span></p>

@@ -26,7 +26,7 @@ $doctorName = $arResult['NAME'];
 $doctorId = $arResult['ID'];
 $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 ?>
-<?function formRecord($arResult){?>
+<?function formRecord($arResult, $mobileTitle){?>
     <div class="doctors-list-item__img">
         <?if($arResult['DETAIL_PICTURE']!=NULL){?>
         <div style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?>')" class="doctors-list-item__img-photo doctor-card__img-link photo-back-image photo-back-image">
@@ -49,7 +49,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         </div>
     </div>
     <div class="doctors-list-item__description">
-        <h2 class="title-h2 mobile-title">Запись на приём</h2>
+        <h2 class="title-h2 mobile-title"><?=$mobileTitle?></h2>
         <p class="doctors-list-item__description-position">
             <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
             if($ar_res = $res->GetNext()){?>
@@ -563,7 +563,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                         <h2 class="title-h2 tablet-title">Запись на приём</h2>
                     </a>
                     <div class="flex-left">
-                        <?formRecord($arResult)?>
+                        <?formRecord($arResult, 'Запись на приём')?>
                     </div>
                 </div>
                 <div class="flex-right">
@@ -606,7 +606,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                         <h2 class="title-h2 tablet-title">Вызов врача на дом</h2>
                     </a>
                     <div class="flex-left">
-                        <?formRecord($arResult)?>
+                        <?formRecord($arResult,'Вызов врача на дом')?>
                     </div>
                 </div>
                 <div class="flex-right">
