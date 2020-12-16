@@ -145,6 +145,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                 </div>
             </div>
             <div class="clinic-card-desc">
+                <div class="clinic-card-desc-hide">
                 <a href="<?=$arItem['DETAIL_PAGE_URL']?>">
                     <p class="clinic-card-desc__clinic-name"><?=$arItem["NAME"]?></p>
                 </a>
@@ -193,6 +194,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                         }?>
                     </ul>
                 <?}?>
+                </div>
                 <?if($arItem["PROPERTIES"]["MAP"]["VALUE"]):?>
                     <div class="map-wrapper">
                         <div class="doctor-card-location-map popup-link-marker"></div>

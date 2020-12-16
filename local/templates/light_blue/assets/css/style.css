@@ -585,6 +585,15 @@ main {
     margin-bottom: 27px;
     position: relative;
 }
+.sort-doctors {
+    display: none;
+    justify-content: initial;
+    width: max-content;
+}
+.sort-doctors .sort-arrow {
+    right: 7px;
+    left: initial;
+}
 .sort > span {
     font-weight: 300;
     font-size: 15px;
@@ -7412,6 +7421,11 @@ button:focus {
     /* main.main__header {
         margin-top: 160px;
     } */
+    .sort-doctors {
+        display: flex;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
     .fixed-block-alp .sort-block-list .sort-block-list-item {
         padding: 7px;
     }
@@ -7834,6 +7848,12 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .options-block {
+        margin-bottom: 15px;
+    }
+    .doctor-card__description .doctor-card__metro-list {
+        margin-bottom: 0 !important;
+    }
     .title-center {
         text-align: center;
     }
@@ -7858,6 +7878,10 @@ button:focus {
         justify-content: flex-start;
         margin-top: 10px;
         margin-bottom: 20px;
+    }
+    .sort-doctors {
+        margin-bottom: 0;
+        margin-top: 0;
     }
     .sort > span {
         font-size: 13px;
@@ -8203,7 +8227,7 @@ button:focus {
     .doctors-list-item__worktimming-list-item {
         font-size: 14px;
         line-height: 16px;
-        margin-right: 0;
+        margin-right: 5px;
     }
     .doctors-list-item-favorites {
         top: 11px;
@@ -8251,24 +8275,24 @@ button:focus {
         margin-bottom: 8px;
     }
     .doctors-list-item__days-list-item {
-        margin-right: 0;
+        margin-right: 5px;
         margin-bottom: 10px;
     }
     /*.doctors-list-item__days-list-item:last-child {*/
         /*margin-bottom: 0;*/
     /*}*/
     .doctors-list-item__description .doctors-list-item__days-list {
-        justify-content: space-between;
+        /*justify-content: space-between;*/
         margin-bottom: 20px;
     }
     .doctors-list-item__days-list-item.active::before {
-        left: 10;
+        left: 10px;
     }
     .doctors-list-item__worktimming-list-item {
         padding: 4px 6px;
     }
     .doctors-list-item__description .doctors-list-item__worktimming-list {
-        justify-content: space-between;
+        /*justify-content: space-between;*/
         margin-bottom: 0;
     }
     .flex-right .doctors-list-item__description .adapt > div:last-child {
@@ -8404,7 +8428,7 @@ button:focus {
         margin-right: 0;
     }
     .doctor-card .doctor-card-location-map {
-
+    z-index: 2;
     }
     .doctor-card-top-content .title-h3,.choosing-time .title-h3 {
         font-size: 20px;
@@ -8650,8 +8674,11 @@ button:focus {
         margin-bottom: 10px;
     }
     .clinic-card-desc {
-        display: none;
+
         margin-right: 0;
+    }
+    .clinic-card-desc .clinic-card-desc-hide {
+        display: none;
     }
     .clinic-card-desc .doctor-card-location-map {
         right: initial;
@@ -9050,7 +9077,7 @@ button:focus {
         /*margin-top: 10px;*/
     /*}*/
 /*}*/
-@media (max-width: 414px) {
+@media (max-width: 428px) {
     .radio-group .bx_filter_input_radio .checkbox{
         min-width: 18px;
         margin-right: 10px;
