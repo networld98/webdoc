@@ -30,7 +30,7 @@ CModule::IncludeModule("form"); ?>
                     <option value="?sort=show_counter&order=asc" <?if ($_GET["sort"] == "show_counter" && $_GET["order"]=="asc"):?> selected <?endif;?>>Популярные(&#8593;)</option>
                     <option value="?sort=show_counter&order=desc" <?if ($_GET["sort"] == "show_counter" && $_GET["order"]=="desc"):?> selected <?endif;?>>Популярные(&#8595;)</option>
                     <option value="?sort=property_RATING&order=asc" <?if ($_GET["sort"] == "property_RATING" && $_GET["order"]=="asc"):?> selected <?endif;?>>Рейтинг(&#8593;)</option>
-                    <option value="?sort=property_RATING&order=desc" <?if ($_GET["sort"] == "property_RATING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Рейтинг</option>
+                    <option value="?sort=property_RATING&order=desc" <?if ($_GET["sort"] == "property_RATING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Рейтинг(&#8595;)</option>
                     <option value="?sort=property_STANDING&order=asc" <?if ($_GET["sort"] == "property_STANDING" && $_GET["order"]=="asc"):?> selected <?endif;?>>Стаж(&#8593;)</option>
                     <option value="?sort=property_STANDING&order=desc" <?if ($_GET["sort"] == "property_STANDING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Стаж(&#8595;)</option>
                     <option value="?sort=property_PRICE&order=asc>" <?if ($_GET["sort"] == "property_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Стоимость(&#8593;)</option>
