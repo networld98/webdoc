@@ -5695,9 +5695,9 @@ button:focus {
 .anchor-block.fixed-block,.anchor-block.fixed-block-alp {
     margin-bottom: 0;
 }
-.fixed-block-alp {
-    left: 15px;
-}
+/*.fixed-block-alp {*/
+/*    left: 15px;*/
+/*}*/
 
 .illness-box {
     /* margin-top: 40px; */
@@ -7428,7 +7428,7 @@ button:focus {
         margin-left: auto;
     }
     .fixed-block-alp .sort-block-list .sort-block-list-item {
-        padding: 7px;
+        /*padding: 7px;*/
     }
     .library .sort-block {
         margin-bottom: 8px;
