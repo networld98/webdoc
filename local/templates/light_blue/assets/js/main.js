@@ -131,6 +131,12 @@ $(document).ready(()=>{
             elemAbsolutePos2 = '-21px'; 
         }
         $(window).scroll(function () {
+            if($(window).width() <= 992 && $(window).width() > 500) {
+                widthDevice2 = -20;
+            }
+            if($(window).width() <= 500) {
+                widthDevice2 = -20;
+            }
             if($(window).width() <= 1279 && $(window).width() > 1024) {
                 topfixed2 = 134 + 'px';
             } else if($(window).width() <= 1024 && $(window).width() > 1000) {
@@ -185,7 +191,7 @@ $(document).ready(()=>{
                     $('.fixed-block-ghost').css({height: 0 +'px', display: 'none'});
                 } else {
                     if($(window).width() <= 500) {
-                        if(top + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight() + widthDevice2/3 < footer2.top) {
+                        if(top2 + $('#header').innerHeight() + $('.fixed-block-alp').innerHeight() + widthDevice2/3 < footer2.top) {
                             // console.log(top + $('#header').innerHeight() + $('.fixed-block').innerHeight() + " pos --- offset " + `${footer.top}`);
                             // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                             // console.log("FIXED");
