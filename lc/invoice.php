@@ -384,17 +384,13 @@ $PRODUCT_ID = $el->Add($arLoadProductArray);
 ?>
 <a target="_blank" href="<?=$linkFile?>" class="save invoice-link">Скачать счёт</a>
 <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
-<form name="TinkoffPayForm" onsubmit="pay(this); return false;">
-    <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1593760029040">
-    <input class="tinkoffPayRow" type="hidden" name="frame" value="true">
-    <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Сумма заказа" name="amount" required value="<?=$itemPrice?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Номер заказа" name="order" value="Счёт № <?=$cnt?>/<?=$year?> от <?=$date?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Описание заказа" name="description" value="<?=$itemName?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="ФИО плательщика" name="name" value="<?=$_POST["NAME"]?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="E-mail" name="email" value="<?=$_POST["EMAIL"]?>">
-    <input class="tinkoffPayRow" type="hidden" placeholder="Контактный телефон" name="phone" value="<?=$_POST["LOGIN"]?>">
-    <input class="tinkoff-btn" type="submit" value="Оплатить картой">
-</form>
+<button class="tinkoff-btn" id="tinkoff-btn">Оплатить картой</button>
+<script>
+    $(document).ready(function () {
+        $("#tinkoff-btn").click(function () {
+            location.href = '/lc/pay/?OrderId=<?=$cnt?>&Description=<?=$itemName?>&Price=<?=$itemPrice?>&Email=<?=$_POST["EMAIL"]?>&Phone=<?=$_POST["LOGIN"]?>';
+        });
+    });
+</script>
 <?echo $html;
 ?>

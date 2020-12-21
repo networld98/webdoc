@@ -45,6 +45,12 @@ $idClinic = $arFields['ID'];
         font-weight: normal;
         font-size: 18px;
         line-height: 21px;
+        outline: none;
+        background: #9DD4B3;
+        border: 2px solid #9DD4B3;
+        box-sizing: border-box;
+        border-radius: 5px;
+        box-shadow: unset;
     }
     #invoice .tinkoff-btn:hover{
         color: #E74C77;
