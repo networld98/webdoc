@@ -7,7 +7,13 @@ if ($detect->isMobile() && !$detect->isTablet()) {
     $specializationCount = 4;
 }elseif(!$detect->isMobile()){
     $specializationCount = 6;
-}?>
+}
+function console_log( $data ){
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+}
+?>
 <ul class="nav nav-pills" id="pills-tab" role="tablist">
     <li class="nav-item"><a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Специализации врачей</a></li>
     <li class="nav-item"><a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Специализации клиник</a></li>
@@ -23,7 +29,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext())
             {
-                $doctors[mb_strtoupper(substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
+                $doctors[mb_strtoupper(mb_substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
             }?>
             <?foreach (array_slice($doctors, 0, $specializationCount) as $key=> $doctor){?>
                 <div class="col-xl-2 col-md-3 col-6">
@@ -67,7 +73,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
             {
                 $arFields = $ob->GetFields();
                 $arProps = $ob->GetProperties();
-                $clinicks[mb_strtoupper(substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+                $clinicks[mb_strtoupper(mb_substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
             }?>
             <?
             foreach (array_slice($clinicks, 0, $specializationCount) as $key=> $clinick){?>
@@ -110,7 +116,7 @@ if ($detect->isMobile() && !$detect->isTablet()) {
             $arFilter = array("IBLOCK_ID"=>25);
             $obSections = CIBlockSection::GetList(array("NAME" => "ASC"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext()) {
-                $сosmetics[mb_strtoupper(substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
+                $сosmetics[mb_strtoupper(mb_substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
             }?>
             <?
             foreach (array_slice($сosmetics, 0, $specializationCount) as $key=> $сosmetic){?>

@@ -33,7 +33,7 @@ $items = [];
 foreach($arResult['ITEMS'] as $item)
 {
 
-    $items[mb_strtoupper(substr($item['NAME'], 0,1))][] = array("NAME" => $item['NAME'],"URL"=> $item['DETAIL_PAGE_URL']);
+    $items[mb_strtoupper(mb_substr($item['NAME'], 0,1))][] = array("NAME" => $item['NAME'],"URL"=> $item['DETAIL_PAGE_URL']);
 }
 console_log($arResult);
 ?>
