@@ -33,6 +33,9 @@ if($arResult['ITEMS']!=NULL){
         <?
         $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+        $start = strtotime(date('d.m.Y'));
+        $end = strtotime($arItem["PROPERTIES"]["DATE_END_ACTIVE"]["VALUE"]);
+        $days_between = ceil(($end - $start) / 86400);
         ?>
         <div class="clinic-card-item card-item">
             <div class="clinic-card-img">
@@ -187,14 +190,16 @@ if($arResult['ITEMS']!=NULL){
                             <span><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                         <?endif;?>
                     </div>
-                    <div class="clinic-card-info__block">
-                        <?if($arItem["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
-                            <p class="clinic-card-info__title contacts-phone">Контакты</p>
-                            <?foreach ($arItem["PROPERTIES"]["CONTACTS"]["VALUE"] as $item){?>
-                                <span><a href="tel:<?=$item?>"><?=$item?></a></span>
-                            <?}?>
-                        <?endif;?>
-                    </div>
+                    <?if($days_between>0){?>
+                        <div class="clinic-card-info__block">
+                            <?if($arItem["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
+                                <p class="clinic-card-info__title contacts-phone">Контакты</p>
+                                <?foreach ($arItem["PROPERTIES"]["CONTACTS"]["VALUE"] as $item){?>
+                                    <span><a href="tel:<?=$item?>"><?=$item?></a></span>
+                                <?}?>
+                            <?endif;?>
+                        </div>
+                    <?}?>
                     <div class="clinic-card-info__block">
                         <?if($arItem["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
                             <p class="clinic-card-info__title time">Время работы</p>

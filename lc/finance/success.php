@@ -1,18 +1,40 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Спасибо за оплату");
-$rsUser = CUser::GetByID($USER->GetID());
-$arUser = $rsUser->Fetch();
 if($_GET['Id']!=NULL){
     setcookie ("idOrder", $_GET['Id'],time()+3600,'/');
     header("Location: ".$_SERVER['SCRIPT_URI']);
-
 }
 if($_COOKIE['idOrder']!=NULL) {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();
     $PROPS['PAY'] = 127;
     CIBlockElement::SetPropertyValuesEx($_COOKIE['idOrder'], false, $PROPS);
+
+    $rsUser = CUser::GetByID($USER->GetID());
+    $arUser = $rsUser->Fetch();
+    $arFilter = Array("IBLOCK_ID"=>array(9,10), "PROPERTY_PHONE"=> $arUser['LOGIN']);
+    $arSelect = Array();
+    $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
+    while($ob = $res->GetNextElement()){
+        $arFields = $ob->GetFields();
+        $arProps = $ob->GetProperties();
+        $idClinic = $arFields['ID'];
+        $date = $arProps["DATE_END_ACTIVE"]["VALUE"];
+    }
+
+    $start = strtotime(date('d.m.Y'));
+    $end = strtotime($date);
+    $days_between = ceil(($end - $start) / 86400);
+    if($days_between<=0){
+        $NewDate=Date('d.m.Y', strtotime("+1 year"));
+    }elseif($days_between>0){
+        $datetime = new DateTime($date);
+        $datetime->modify('+1 year');
+        $NewDate = $datetime->format('d.m.Y');
+    }
+    $PROP['DATE_END_ACTIVE'] = $NewDate;
+    CIBlockElement::SetPropertyValuesEx($idClinic, false, $PROP);
 }
 if($_GET['Id']==NULL) {
     setcookie('idOrder', null, -1, '/');

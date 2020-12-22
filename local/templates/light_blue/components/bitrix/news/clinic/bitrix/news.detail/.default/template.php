@@ -21,6 +21,11 @@ global $clinicName, $clinickId, $clinicMail, $clinicPhone;
 $clinicName = $arResult["NAME"];
 $clinickId = $arResult["ID"];
 
+/*Оставшееся вреся подписки*/
+$start = strtotime(date('d.m.Y'));
+$end = strtotime($arResult["PROPERTIES"]["DATE_END_ACTIVE"]["VALUE"]);
+$days_between = ceil(($end - $start) / 86400);
+
 $rsUser = CUser::GetByLogin($arResult["PROPERTIES"]["PHONE"]["VALUE"]);
 $arUser = $rsUser->Fetch();
 if($arUser!=NULL){
@@ -43,6 +48,7 @@ function propsClinic($prop){
         false
     );?>
 </section>
+
 <div class="container">
 <div class="clinic-card-item">
     <div class="clinic-card-img">
@@ -228,6 +234,7 @@ function propsClinic($prop){
                         <?$this->EndViewTarget();?>
                     <?endif;?>
                 </div>
+                <?if($days_between>0){?>
                 <div class="clinic-card-info-detail__block">
                     <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
                         <p class="clinic-card-info-detail__title contacts-phone">Контакты</p>
@@ -236,6 +243,7 @@ function propsClinic($prop){
                         <?}?>
                     <?endif;?>
                 </div>
+                <?}?>
                 <div class="clinic-card-info-detail__block">
                     <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
                         <p class="clinic-card-info__title time">Время работы</p>
@@ -480,22 +488,23 @@ function propsClinic($prop){
             <?}?>
             <li data-tabs="2" id="openBlockOtzivy"
                 <?
-
                 if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]==NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]==NULL && $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]==NULL && $arResult['DETAIL_TEXT']==NULL && $arResult["PROPERTIES"]["SERVICES"]["VALUE"]==NULL && $arResult["PROPERTIES"]["PARKING"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]==NULL ){?>
                     class="active"
                 <?}?>>Отзывы<span><?=$arRaing['COUNT']?></span></li>
-            <?if($arResult["PROPERTIES"]["STOCKS"]["VALUE"]):?>
-                <li data-tabs="3">Акции<span><?=count($arResult["PROPERTIES"]["STOCKS"]["VALUE"])?></span></li>
-            <?endif;?>
-            <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"]!=NULL):?>
-                <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"][0]!=NULL){
-                    $countUslug = count($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]);
-                }
-                if($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"][0]!=NULL){
-                    $countDiagnost = count($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"]);
-                }?>
-                <li data-tabs="4">Цены<span><?=$countUslug + $countDiagnost?></span></li>
-            <?endif;?>
+            <?if($days_between>0){?>
+                <?if($arResult["PROPERTIES"]["STOCKS"]["VALUE"]):?>
+                    <li data-tabs="3">Акции<span><?=count($arResult["PROPERTIES"]["STOCKS"]["VALUE"])?></span></li>
+                <?endif;?>
+                <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"]!=NULL):?>
+                    <?if($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"][0]!=NULL){
+                        $countUslug = count($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"]);
+                    }
+                    if($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"][0]!=NULL){
+                        $countDiagnost = count($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"]);
+                    }?>
+                    <li data-tabs="4">Цены<span><?=$countUslug + $countDiagnost?></span></li>
+                <?endif;?>
+            <?}?>
         </ul>
     </div>
         <div class="clinic-card-full-desc__content
@@ -506,12 +515,14 @@ function propsClinic($prop){
                 <div class="clinic-card-full-desc__content__info-left">
                     <div class="clinic-card-full-desc__content__info-left__map" id="map_view_<?=$arResult['ID']?>">
                     </div>
-                    <div class="clinic-card-full-desc__content__info-left__phone">
-                        <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
-                            <span class="clinic-card-full-desc__content__info-left__phone__text">Телефон для записи</span>
-                            <a href="tel:<?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?>"><?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?></a>
-                        <?endif;?>
-                    </div>
+                    <?if($days_between>0){?>
+                        <div class="clinic-card-full-desc__content__info-left__phone">
+                            <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
+                                <span class="clinic-card-full-desc__content__info-left__phone__text">Телефон для записи</span>
+                                <a href="tel:<?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?>"><?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?></a>
+                            <?endif;?>
+                        </div>
+                    <?}?>
                     <div class="clinic-card-full-desc__content__info-left__adress">
                         <span class="clinic-card-full-desc__content__info-left__adress__text"><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                         <ul class="clinic-card__metro-list">
@@ -624,117 +635,119 @@ function propsClinic($prop){
         }
         ?>
     </div>
-    <div class="clinic-card-full-desc__content" data-tabs="3">
-        <div class="clinic-card-full-desc__content__actions">
-            <h4 class="title-h4">Акции</h4>
-            <?foreach ($arResult["PROPERTIES"]["STOCKS"]["VALUE"] as $item){
-                $arSelect = Array();
-                $arFilter = Array("IBLOCK_ID"=>16, "ID"=>$item, "ACTIVE" => "Y");
-                $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+    <?if($days_between>0){?>
+        <div class="clinic-card-full-desc__content" data-tabs="3">
+            <div class="clinic-card-full-desc__content__actions">
+                <h4 class="title-h4">Акции</h4>
+                <?foreach ($arResult["PROPERTIES"]["STOCKS"]["VALUE"] as $item){
+                    $arSelect = Array();
+                    $arFilter = Array("IBLOCK_ID"=>16, "ID"=>$item, "ACTIVE" => "Y");
+                    $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
 
-                while($ob = $res->GetNextElement()) {
-                    $arFields = $ob->GetFields();
-                    $arProps = $ob->GetProperties();
-                    ?>
-                    <div class="clinic-card-full-desc__content__actions-item">
-                        <p class="clinic-card-full-desc__content__actions-item__title"><?=$arFields['NAME']?></p>
-                        <div class="clinic-card-full-desc__content__actions-item-range-block">
-                            <span class="clinic-card-full-desc__content__actions-item-range-block__range"><?=$arFields['ACTIVE_FROM']?> — <?=$arFields['ACTIVE_TO']?></span>
-                            <?if($arFields['ACTIVE_TO'] == date('d.m.Y')){?>
-                                <p class="clinic-card-full-desc__content__actions-item-range-block__time">Заканчивается сегодня</p>
-                            <?}?>
+                    while($ob = $res->GetNextElement()) {
+                        $arFields = $ob->GetFields();
+                        $arProps = $ob->GetProperties();
+                        ?>
+                        <div class="clinic-card-full-desc__content__actions-item">
+                            <p class="clinic-card-full-desc__content__actions-item__title"><?=$arFields['NAME']?></p>
+                            <div class="clinic-card-full-desc__content__actions-item-range-block">
+                                <span class="clinic-card-full-desc__content__actions-item-range-block__range"><?=$arFields['ACTIVE_FROM']?> — <?=$arFields['ACTIVE_TO']?></span>
+                                <?if($arFields['ACTIVE_TO'] == date('d.m.Y')){?>
+                                    <p class="clinic-card-full-desc__content__actions-item-range-block__time">Заканчивается сегодня</p>
+                                <?}?>
+                            </div>
+                            <div class="clinic-card-full-desc__content__actions-item__desc">
+                                <p class="clinic-card-full-desc__content__actions-item__desc__title">
+                                    <?=$arFields['PREVIEW_TEXT']?>
+                                </p>
+                                <p class="clinic-card-full-desc__content__actions-item__desc__price">Цена без скидки: <span><?=$arProps['FULL_PRICE']['VALUE']?></span></p>
+                                <p class="clinic-card-full-desc__content__actions-item__desc__price">Цена со скидкой: <span><?=$arProps['DISCONT_PRICE']['VALUE']?></span></p>
+                            </div>
+                            <div class="clinic-card-full-desc__content__actions-item__phone">
+                                <span class="clinic-card-full-desc__content__actions-item__phone__text">Телефон для записи</span>
+                                <a href="tel:+812245-61-20"><?=$arProps['PHONE']['VALUE']?></a>
+                            </div>
+                            <hr>
                         </div>
-                        <div class="clinic-card-full-desc__content__actions-item__desc">
-                            <p class="clinic-card-full-desc__content__actions-item__desc__title">
-                                <?=$arFields['PREVIEW_TEXT']?>
-                            </p>
-                            <p class="clinic-card-full-desc__content__actions-item__desc__price">Цена без скидки: <span><?=$arProps['FULL_PRICE']['VALUE']?></span></p>
-                            <p class="clinic-card-full-desc__content__actions-item__desc__price">Цена со скидкой: <span><?=$arProps['DISCONT_PRICE']['VALUE']?></span></p>
-                        </div>
-                        <div class="clinic-card-full-desc__content__actions-item__phone">
-                            <span class="clinic-card-full-desc__content__actions-item__phone__text">Телефон для записи</span>
-                            <a href="tel:+812245-61-20"><?=$arProps['PHONE']['VALUE']?></a>
-                        </div>
-                        <hr>
-                    </div>
-                <?}
-            }?>
-            <div class="load_more">
-                Показать ещё
+                    <?}
+                }?>
+                <div class="load_more">
+                    Показать ещё
+                </div>
             </div>
         </div>
-    </div>
-    <div class="clinic-card-full-desc__content" data-tabs="4">
-        <div class="clinic-card-full-desc__content__price">
-            <h4 class="title-h4">Цены на приём специалистов</h4>
-            <?foreach ($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"] as $item){
-                $price = explode('/',$item);
-                $doctorPrice[$price[0]][] = array('SERVICE'=>$price[1],'PRICE'=>$price[2]);
-            } ?>
-            <?foreach ($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"] as $item){
-                $price = explode('/',$item);
-                $diagnistPrice[$price[0]][] = array('SERVICE'=>$price[1],'PRICE'=>$price[2]);
-            } ?>
-             <?foreach ($doctorPrice as $key => $doctor){?>
-                 <div class="clinic-card-full-desc__content__price-item">
-                     <table>
-                         <thead>
-                         <tr>
-                             <td><?=$key?></td>
-                         </tr>
-                         </thead>
-                         <tbody>
-                         <?foreach ($doctor as $i => $item){?>
-                         <tr>
-                             <td><?=$item['SERVICE']?></td>
-                             <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
-                             <td><button class="popup-service-click popup-service-click-one-<?=$i?>-<?=$key?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
-                         </tr>
-                             <script>
-                                 $(document).ready(function () {
-                                     $(".popup-service-click-one-<?=$i?>-<?=$key?>").click(function () {
-                                         let service = $(this).data('service');
-                                         $('#option_service').val(service);
+        <div class="clinic-card-full-desc__content" data-tabs="4">
+            <div class="clinic-card-full-desc__content__price">
+                <h4 class="title-h4">Цены на приём специалистов</h4>
+                <?foreach ($arResult["PROPERTIES"]["PRICE_DOCTOR"]["VALUE"] as $item){
+                    $price = explode('/',$item);
+                    $doctorPrice[$price[0]][] = array('SERVICE'=>$price[1],'PRICE'=>$price[2]);
+                } ?>
+                <?foreach ($arResult["PROPERTIES"]["PRICE_DIAGNOST"]["VALUE"] as $item){
+                    $price = explode('/',$item);
+                    $diagnistPrice[$price[0]][] = array('SERVICE'=>$price[1],'PRICE'=>$price[2]);
+                } ?>
+                 <?foreach ($doctorPrice as $key => $doctor){?>
+                     <div class="clinic-card-full-desc__content__price-item">
+                         <table>
+                             <thead>
+                             <tr>
+                                 <td><?=$key?></td>
+                             </tr>
+                             </thead>
+                             <tbody>
+                             <?foreach ($doctor as $i => $item){?>
+                             <tr>
+                                 <td><?=$item['SERVICE']?></td>
+                                 <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
+                                 <td><button class="popup-service-click popup-service-click-one-<?=$i?>-<?=$key?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
+                             </tr>
+                                 <script>
+                                     $(document).ready(function () {
+                                         $(".popup-service-click-one-<?=$i?>-<?=$key?>").click(function () {
+                                             let service = $(this).data('service');
+                                             $('#option_service').val(service);
+                                         });
                                      });
-                                 });
-                             </script>
-                         <?}?>
-                         </tbody>
-                     </table>
-                     <hr/>
-                 </div>
-            <?}?>
-            <?foreach ($diagnistPrice as $key => $doctor){?>
-                <div class="clinic-card-full-desc__content__price-item">
-                    <table>
-                        <thead>
-                        <tr>
-                            <td><?=$key?></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?foreach ($doctor as $i => $item){?>
+                                 </script>
+                             <?}?>
+                             </tbody>
+                         </table>
+                         <hr/>
+                     </div>
+                <?}?>
+                <?foreach ($diagnistPrice as $key => $doctor){?>
+                    <div class="clinic-card-full-desc__content__price-item">
+                        <table>
+                            <thead>
                             <tr>
-                                <td><?=$item['SERVICE']?></td>
-                                <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
-                                <td><button class="popup-service-click popup-service-click-two-<?=$i?>-<?=$key?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
+                                <td><?=$key?></td>
                             </tr>
-                            <script>
-                                $(document).ready(function () {
-                                    $(".popup-service-click-two-<?=$i?>-<?=$key?>").click(function () {
-                                        let service = $(this).data('service');
-                                        $('#option_service').val(service);
+                            </thead>
+                            <tbody>
+                            <?foreach ($doctor as $i => $item){?>
+                                <tr>
+                                    <td><?=$item['SERVICE']?></td>
+                                    <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
+                                    <td><button class="popup-service-click popup-service-click-two-<?=$i?>-<?=$key?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
+                                </tr>
+                                <script>
+                                    $(document).ready(function () {
+                                        $(".popup-service-click-two-<?=$i?>-<?=$key?>").click(function () {
+                                            let service = $(this).data('service');
+                                            $('#option_service').val(service);
+                                        });
                                     });
-                                });
-                            </script>
-                        <?}?>
-                        </tbody>
-                    </table>
-                    <hr/>
-                </div>
-            <?}?>
+                                </script>
+                            <?}?>
+                            </tbody>
+                        </table>
+                        <hr/>
+                    </div>
+                <?}?>
+            </div>
         </div>
-    </div>
+    <?}?>
 </div>
 </div>
 <div class="call-popup">
