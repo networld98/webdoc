@@ -87,7 +87,7 @@ $idClient = $arFields['ID'];
                     </tr>
                     <?$arSelect = Array("ID","NAME", "PROPERTY_SERVICE", "PROPERTY_SUM", "PROPERTY_PAY", "PROPERTY_FOR");
                     $arFilter = Array("IBLOCK_ID"=>24);
-                    $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+                    $res = CIBlockElement::GetList(Array("ID"=>"DESC"), $arFilter, false, Array(), $arSelect);
                     $i=0;
                     while($ob = $res->GetNextElement()) {
                         $arFields = $ob->GetFields();?>

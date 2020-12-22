@@ -5,7 +5,7 @@ $tinkoff->AddMainInfo(
         'OrderId'     => $_GET['OrderId'],
         'Description' => $_GET['Description'],
         'Language'    => 'ru',
-        'SuccessURL' => $_SERVER['HOST'].'/lc/finance/success.php'
+        'SuccessURL' => 'http://'.$_SERVER['SERVER_NAME'].'/lc/finance/success.php?Id='.$_GET['Id'],
     )
 );
 

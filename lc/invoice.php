@@ -380,7 +380,6 @@ $arLoadProductArray = Array(
     "ACTIVE" => "Y",
 );
 $PRODUCT_ID = $el->Add($arLoadProductArray);
-
 ?>
 <a target="_blank" href="<?=$linkFile?>" class="save invoice-link">Скачать счёт</a>
 <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
@@ -388,7 +387,7 @@ $PRODUCT_ID = $el->Add($arLoadProductArray);
 <script>
     $(document).ready(function () {
         $("#tinkoff-btn").click(function () {
-            location.href = '/lc/pay/?OrderId=<?=$cnt?>&Description=<?=$itemName?>&Price=<?=$itemPrice?>&Email=<?=$_POST["EMAIL"]?>&Phone=<?=$_POST["LOGIN"]?>';
+            location.href = '/lc/pay/?Id=<?=$PRODUCT_ID?>&OrderId=<?=$cnt?>&Description=<?=$itemName?>&Price=<?=$itemPrice?>&Email=<?=$_POST["EMAIL"]?>&Phone=<?=$_POST["LOGIN"]?>';
         });
     });
 </script>

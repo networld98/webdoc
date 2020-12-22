@@ -28,38 +28,38 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
 </div>
 <section class="container">
     <? $APPLICATION->IncludeComponent(
-        "webnauts:catalog.smart.filter",
-        "search_filter",
-        array(
-            "CACHE_GROUPS" => "Y",
-            "CACHE_TIME" => "36000000",
-            "CACHE_TYPE" => "A",
-            "COMPONENT_TEMPLATE" => "search_filter",
-            "CONVERT_CURRENCY" => "N",
-            "DISPLAY_ELEMENT_COUNT" => "N",
-            "FILTER_NAME" => "arrFilter",
-            "FILTER_VIEW_MODE" => "vertical",
-            "HIDE_NOT_AVAILABLE" => "N",
-            "IBLOCK_TYPE" => "content",
-            "IBLOCK_ID" => "9",
-            "PAGER_PARAMS_NAME" => "arrPager",
-            "PREFILTER_NAME" => "",
-            "SAVE_IN_SESSION" => "N",
-            "SECTION_CODE" => "search",
-            "SECTION_DESCRIPTION" => "-",
-            "SECTION_ID" => "",
-            "SECTION_TITLE" => "-",
-            "SEF_MODE" => "N",
-            "TEMPLATE_THEME" => "blue",
-            "XML_EXPORT" => "N",
-            "POPUP_POSITION" => "left",
-            "NOT_FILTER" => "N",
-            "SEF_RULE" => "#SMART_FILTER_PATH#",
-            "SECTION_CODE_PATH" => "",
-            "SMART_FILTER_PATH" => $_REQUEST["SMART_FILTER_PATH"]
-        ),
-        false
-    );
+	"webnauts:catalog.smart.filter", 
+	"search_filter", 
+	array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => "search_filter",
+		"CONVERT_CURRENCY" => "N",
+		"DISPLAY_ELEMENT_COUNT" => "N",
+		"FILTER_NAME" => "arrFilter",
+		"FILTER_VIEW_MODE" => "vertical",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"IBLOCK_TYPE" => "content",
+		"IBLOCK_ID" => "9",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"PREFILTER_NAME" => "",
+		"SAVE_IN_SESSION" => "N",
+		"SECTION_CODE" => "search",
+		"SECTION_DESCRIPTION" => "-",
+		"SECTION_ID" => "",
+		"SECTION_TITLE" => "-",
+		"SEF_MODE" => "N",
+		"TEMPLATE_THEME" => "blue",
+		"XML_EXPORT" => "N",
+		"POPUP_POSITION" => "left",
+		"NOT_FILTER" => "N",
+		"SEF_RULE" => "#SMART_FILTER_PATH#",
+		"SECTION_CODE_PATH" => "",
+		"SMART_FILTER_PATH" => $_REQUEST["SMART_FILTER_PATH"]
+	),
+	false
+);
     ?>
 </section>
 <section class="statistics container">
