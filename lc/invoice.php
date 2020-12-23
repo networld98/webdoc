@@ -387,7 +387,7 @@ $PRODUCT_ID = $el->Add($arLoadProductArray);
 <script>
     $(document).ready(function () {
         $("#tinkoff-btn").click(function () {
-            location.href = '/lc/pay/?Id=<?=$PRODUCT_ID?>&OrderId=<?=$cnt?>&Description=<?=$itemName?>&Price=<?=$itemPrice?>&Email=<?=$_POST["EMAIL"]?>&Phone=<?=$_POST["LOGIN"]?>';
+            location.href = '/lc/pay/?Id=<?=$PRODUCT_ID?>&OrderId=<?=$cnt?>&Description=<?=$itemName?>&Price=<?=$itemPrice?>&Email=<?=$_POST["EMAIL"]?>&Phone=<?=$_POST["LOGIN"]?>&ServiceId=<?=$_POST["ID"]?>';
         });
     });
 </script>

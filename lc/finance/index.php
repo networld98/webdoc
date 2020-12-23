@@ -15,6 +15,16 @@ while($ob = $res->GetNextElement()){
 $arFields = $ob->GetFields();
 $arProps = $ob->GetProperties();
 $idClinic = $arFields['ID'];
+$subscrubeDate = $arProps['DATE_END_ACTIVE']['VALUE'];
+$subscrube = $arProps['SUBSCRIBE']['VALUE'];
+}
+$start = strtotime(date('d.m.Y'));
+$end = strtotime($subscrubeDate);
+$days_between = ceil(($end - $start) / 86400);
+if($days_between<=0){
+    $subscrubeDate = '<span style="color:red">Просрочена</span>';
+}else{
+    $subscrubeDate = 'до '.$subscrubeDate;
 }
 ?>
 <style>
@@ -68,7 +78,13 @@ $idClinic = $arFields['ID'];
     <div class="personal-cabinet-content__price-page">
         <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
         <div class="personal-cabinet-content__schedule-page__block no-border-padding">
-            <h5>Выберите вариант платного размещения на Webdoc.clinic</h5>
+            <?if($subscrube==NULL){?><h5>Выберите вариант платного размещения на Webdoc.clinic</h5><?}?>
+            <?
+            $res = CIBlockElement::GetByID($subscrube);
+            if($ar_res = $res->GetNext())
+              echo '<h5>Вы подписаны на тарифный план "'.$ar_res['NAME'].'" '.$subscrubeDate.'</h5>';
+            ?>
+            <?if($subscrube!=NULL){?><p><span style="color:red">Вы можете выписать счёт только для продление тарифа на который уже подписаны, сменить тарифный план вы можете связавшись с администрацией</span> <a href="mailto:info@webdoc.clinic">info@webdoc.clinic</a>.</p><?}?>
             <form id="form_requisites" name="form_requisites" action="" method="post" class="form-requistment">
                 <input type="hidden" name="CLIENT" value="<?=$arProps['OFFICIAL_NAME']['VALUE']?>, ИНН: <?=$arProps['INN']['VALUE']?>, <?=$arProps['URADRESS']['VALUE']?>">
                 <input type="hidden" name="NAME" value="<?=$arProps['OFFICIAL_NAME']['VALUE']?>">
@@ -80,10 +96,11 @@ $idClinic = $arFields['ID'];
                     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
                     while($ob = $res->GetNextElement()) {
                         $arFields = $ob->GetFields();?>
+                        <input type="hidden" name="ID" value="<?=$arFields['ID']?>">
                         <li>
                             <label data-role="label_<?=$arFields['ID']?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>">
                         <span class="bx_filter_input_radio">
-                            <input type="radio" value="<?=$arFields["NAME"]?>/<?=$arFields['PROPERTY_PRICE_VALUE']?>" name="NAME_PRICE" id="<?=$arFields['ID']?>">
+                            <input type="radio" value="<?=$arFields["NAME"]?>/<?=$arFields['PROPERTY_PRICE_VALUE']?>" <?if($subscrube!=NULL && $subscrube!=$arFields['ID'] ){?>disabled<?}?> <?if($subscrube!=NULL && $subscrube==$arFields['ID'] ){?>checked<?}?> name="NAME_PRICE" id="<?=$arFields['ID']?>">
                                 <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
                             <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>
                         </span>
@@ -91,7 +108,7 @@ $idClinic = $arFields['ID'];
                         </li>
                     <?}?>
                 </ul>
-                <button type="submit" disabled class="save invoice-btn">Выписать счёт</button>
+                <button type="submit" <?if($subscrube==NULL){?>disabled<?}?> class="save invoice-btn">Выписать счёт</button>
             </form>
             <div id="invoice"></div>
         </div>

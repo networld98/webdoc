@@ -1,11 +1,12 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Спасибо за оплату");
-if($_GET['Id']!=NULL){
+if($_GET['Id']!=NULL && $_GET['ServiceId']!=NULL){
     setcookie ("idOrder", $_GET['Id'],time()+3600,'/');
+    setcookie ("serviceId", $_GET['ServiceId'],time()+3600,'/');
     header("Location: ".$_SERVER['SCRIPT_URI']);
 }
-if($_COOKIE['idOrder']!=NULL) {
+if($_COOKIE['idOrder']!=NULL && $_COOKIE['serviceId']) {
     CModule::IncludeModule("iblock");
     $obEl = new CIBlockElement();
     $PROPS['PAY'] = 127;
@@ -33,11 +34,13 @@ if($_COOKIE['idOrder']!=NULL) {
         $datetime->modify('+1 year');
         $NewDate = $datetime->format('d.m.Y');
     }
-    $PROP['DATE_END_ACTIVE'] = $NewDate;
+    $PROP[174] = $NewDate;
+    $PROP[176] = $_COOKIE['serviceId'];
     CIBlockElement::SetPropertyValuesEx($idClinic, false, $PROP);
 }
 if($_GET['Id']==NULL) {
     setcookie('idOrder', null, -1, '/');
+    setcookie('serviceId', null, -1, '/');
 }
 ?>
 <?if (isset($_REQUEST["backurl"]) && strlen($_REQUEST["backurl"])>0){?>

@@ -3508,6 +3508,9 @@ main {
     border: 1px solid #E3EAEA;
     cursor: default;
 }
+.radio-group input:disabled ~ .bx_filter_param_text {
+    cursor: default;
+}
 .personal-cabinet .form-requistment .save {
     margin-left: 0;
     margin-top: 0;

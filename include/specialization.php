@@ -29,7 +29,7 @@ function console_log( $data ){
             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext())
             {
-                $doctors[mb_strtoupper(mb_substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
+                $doctors[mb_strtoupper(substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
             }?>
             <?foreach (array_slice($doctors, 0, $specializationCount) as $key=> $doctor){?>
                 <div class="col-xl-2 col-md-3 col-6">
@@ -73,7 +73,7 @@ function console_log( $data ){
             {
                 $arFields = $ob->GetFields();
                 $arProps = $ob->GetProperties();
-                $clinicks[mb_strtoupper(mb_substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+                $clinicks[mb_strtoupper(substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
             }?>
             <?
             foreach (array_slice($clinicks, 0, $specializationCount) as $key=> $clinick){?>
@@ -116,7 +116,7 @@ function console_log( $data ){
             $arFilter = array("IBLOCK_ID"=>25);
             $obSections = CIBlockSection::GetList(array("NAME" => "ASC"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext()) {
-                $сosmetics[mb_strtoupper(mb_substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
+                $сosmetics[mb_strtoupper(substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
             }?>
             <?
             foreach (array_slice($сosmetics, 0, $specializationCount) as $key=> $сosmetic){?>

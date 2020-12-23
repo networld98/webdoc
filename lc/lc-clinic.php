@@ -10,7 +10,13 @@ while($ob = $res->GetNextElement()){
     $arFields = $ob->GetFields();
     $arProps = $ob->GetProperties();
     $idClinic = $arFields['ID'];
+    $dateEnd = $arProps["DATE_END_ACTIVE"]["VALUE"];
 }?>
+<?
+$start = strtotime(date('d.m.Y'));
+$end = strtotime($dateEnd);
+$days_between = ceil(($end - $start) / 86400);
+?>
 <?if($idClinic !=NULL){?>
 <?function propview($prop){
     $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>9, "VALUE"=>"Y"));
@@ -192,7 +198,7 @@ while($ob = $res->GetNextElement()){
                 <div class="text-view">
                     <div id="message-form"></div>
                     <div id="photo-form" style="display:none;"></div>
-                    <button type="submit" name="saveProfile" class="save" id="saveProfile">Сохранить</button>
+                    <button type="submit" name="saveProfile" class="save" <? if($days_between<=0 &&$_COOKIE['pauseSubscription']!='Y'){?>onclick="$('.finance-modal').show()"<?}?> id="saveProfile">Сохранить</button>
                 </div>
             </div>
             <div class="personal-cabinet-content__my-profile__info-desc">
@@ -268,9 +274,31 @@ while($ob = $res->GetNextElement()){
         </div>
     </div>
 </form>
+    <div class="finance-modal">
+        <div class="close close-modal"></div>
+        <h6>Оплатите платную подписку, чтобы ваши контакты видели все</h6>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+                <button class="save pay-modal">Оплатить</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <span class="save delete-doctor close-modal">Напомнить позже</span>
+            </div>
+        </div>
+    </div>
 <?if($arProps["MAP"]['VALUE']==NULL){$arProps["MAP"]['VALUE']='55.753215, 37.622504';}?>
 <script>
     $(document).ready(function () {
+        let container = $(".finance-modal");
+        $('.pay-modal').click(function () {
+            location.href='/lc/finance/';
+            $.cookie('pauseSubscription', 'Y', { expires: 30, path: '/', });
+        });
+        $('.close-modal').click(function () {
+            container.hide();
+            $.cookie('pauseSubscription', 'Y', { expires: 30, path: '/', });
+        });
+
         ymaps.ready(init);
 
         function init() {

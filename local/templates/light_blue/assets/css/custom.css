@@ -594,7 +594,7 @@ main >.main-seo-text {
     background-size: contain;
     background-repeat: no-repeat;
 }
-.delete-doctor-modal {
+.delete-doctor-modal, .finance-modal{
     position: fixed;
     display: none;
     border-radius: 5px;
@@ -611,6 +611,10 @@ main >.main-seo-text {
 }
 .delete-doctor-modal .save.close-modal {
     cursor: pointer;
+}
+.finance-modal .save{
+    margin-left: 0;
+    width: 100%;
 }
 .requisites-block{
     margin-top: 20px;
