@@ -516,7 +516,6 @@
 .bx_filter .main-filter .bx_filter_select_text {
 	height: 50px;
 	line-height: 50px;
-	color: rgba(33,37,41,0.65);
 }
 
 .bx_filter .bx_filter_select_text.fix {

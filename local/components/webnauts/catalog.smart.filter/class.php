@@ -780,7 +780,7 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 			"CONTROL_ID" => $filterPropertyIDKey,
 			"CONTROL_NAME" => $filterPropertyIDKey,
 			"CONTROL_NAME_ALT" => $filterPropertyID,
-			"HTML_VALUE_ALT" => Cutil::translit($safeValue,"ru",$arParams),
+			"HTML_VALUE_ALT" =>  $trans = Cutil::translit($safeValue,"ru",$arParams),
 			"HTML_VALUE" => "Y",
 			"VALUE" => $safeValue,
 			"SORT" => $sort,

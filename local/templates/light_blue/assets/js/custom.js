@@ -40,6 +40,14 @@ jQuery.cookie = function(name, value, options) {
         return cookieValue;
     }
 };
+// возвращает cookie если есть или undefined
+function getCookie(name) {
+
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ))
+    return matches ? decodeURIComponent(matches[1]) : undefined
+}
 
 $(document).ready(function () {
     let anc = window.location.hash.replace("#","");

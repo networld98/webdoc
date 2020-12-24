@@ -17,7 +17,7 @@ CJSCore::Init("popup", "jquery");
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/style.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/custom.css", false); ?>
 
-    <? $APPLICATION->AddHeadScript('https://code.jquery.com/jquery-3.5.1.min.js', false); ?>
+    <? $APPLICATION->AddHeadScript('https://code.jquery.com/jquery-1.9.1.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/slick/slick.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/main.js', false); ?>
@@ -41,7 +41,7 @@ CJSCore::Init("popup", "jquery");
             <div class="contacts">
                 <?$APPLICATION->IncludeComponent(
                     "bxmaker:geoip.city",
-                    "",
+                    "custom",
                     array(
                         "BTN_EDIT" => "Изменить город",
                         "CACHE_TIME" => "36000",
@@ -49,7 +49,6 @@ CJSCore::Init("popup", "jquery");
                         "CITY_COUNT" => "30",
                         "CITY_LABEL" => "",
                         "CITY_SHOW" => "Y",
-                        "ENABLE_JQUERY" => "Y",
                         "FAVORITE_SHOW" => "Y",
                         "FID" => "1",
                         "INFO_SHOW" => "Y",
@@ -136,7 +135,6 @@ CJSCore::Init("popup", "jquery");
                 array(
                     "BTN_EDIT" => "Изменить город",
                     "CACHE_TIME" => "36000",
-                    "ENABLE_JQUERY" => "Y",
                     "CACHE_TYPE" => "N",
                     "CITY_COUNT" => "30",
                     "CITY_LABEL" => "",

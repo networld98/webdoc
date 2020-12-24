@@ -17,7 +17,6 @@ $templateData = array(
 	'TEMPLATE_CLASS' => 'bx_'.$arParams['TEMPLATE_THEME']
 );
 ?>
-
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
 	<div class="bx_filter_section container">
 	<?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
@@ -846,6 +845,9 @@ $templateData = array(
 <script>
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
     $(document).ready(function () {
+        geoCity = getCookie('bxmaker.geoip.2.4.2_city');
+        $('.bx_filter_param_label_'+geoCity).trigger('click');
+        $('.popup-window').hide();
         let city = $('.city_input');
         city.css('color','transparent');
         let city_input = city.val();
