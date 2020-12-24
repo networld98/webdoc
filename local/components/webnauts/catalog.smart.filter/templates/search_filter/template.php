@@ -17,6 +17,16 @@ $templateData = array(
 	'TEMPLATE_CLASS' => 'bx_'.$arParams['TEMPLATE_THEME']
 );
 ?>
+<?
+$cityTable = [];
+$res = \Bitrix\Sale\Location\LocationTable::getList(array(
+    'filter' => array('=TYPE.ID' => '5', '=NAME.LANGUAGE_ID' => LANGUAGE_ID),
+    'select' => array('NAME_RU' => 'NAME.NAME', 'EXTERNAL.LOCATION.ID')
+));
+while ($item = $res->fetch()) {
+    $cityTable[$item['NAME_RU']] =  $item['SALE_LOCATION_LOCATION_EXTERNAL_LOCATION_ID'];
+}
+?>
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
 	<div class="bx_filter_section container">
 	<?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
@@ -344,8 +354,7 @@ $templateData = array(
                                                                 ?>
                                                                 <li>
                                                                     <label for="<?= $ar["CONTROL_ID"] ?>"
-                                                                           class="bx_filter_param_label<?= $class ?> bx_filter_param_label_<?= CUtil::JSEscape($key) ?>  bx_filter_param_label_<?
-                                                                           echo trim($ar["VALUE"], ".") ?>"
+                                                                           class="bx_filter_param_label<?= $class ?> bx_filter_param_label_<?= CUtil::JSEscape($key) ?>  bx_filter_param_label_<?echo trim($ar["VALUE"], ".") ?>" data-id="<?=$cityTable[trim($ar["VALUE"], ".")]?>"
                                                                            data-role="label_<?= $ar["CONTROL_ID"] ?>"
                                                                            onclick="smartFilter.selectDropDownItem(this, '<?= CUtil::JSEscape($ar["CONTROL_ID"]) ?>')"><?
                                                                         echo trim($ar["VALUE"], ".") ?></label>
@@ -851,6 +860,10 @@ $templateData = array(
         let city = $('.city_input');
         city.css('color','transparent');
         let city_input = city.val();
+        let city_name = $('.bx_filter_param_label');
+        city_name.on('click',function() {
+            window.BXmakerGeoIPCity.selectLocation($(this).data('id'));
+        });
         city.on('focus',function() {
             $(this).css('color','black');
         });
@@ -881,7 +894,6 @@ $templateData = array(
                         $('.bx_filter_param_label_'+ $( this ).text() ).show();
                     }
                 });
-
             }else{
                 $('.bx_filter_param_label_94').show();
                 $('.bx_filter_param_label_115').show();
