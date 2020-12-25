@@ -301,16 +301,16 @@ CModule::IncludeModule("form"); ?>
     <? $this->SetViewTarget('filterTitle'); ?>
     <div class="container">
         <?if (strpos($GLOBALS['titleFilterClinic'], 'Врач') !== false) {?>
-            <h2 class="title-h2"><?= substr($GLOBALS['titleFilterClinic'], 1); ?> -
+            <h2 class="title-h2"><?= mb_substr($GLOBALS['titleFilterClinic'], 1); ?> -
             <?}else{?>
-            <h2 class="title-h2">Врачи-<?= mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1)); ?>и -
+            <h2 class="title-h2">Врачи-<?= mb_strtolower(mb_substr($GLOBALS['titleFilterClinic'], 1)); ?>и -
         <?}?>
             (<?= $arResult['NAV_RESULT']->NavRecordCount ?>)</h2>
     </div>
     <? $this->EndViewTarget(); ?>
     <?
-    $APPLICATION->SetPageProperty("description", "Врачи-" . mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1)) . "и отзывы, контактные телефоны, время и место работы.");
-    $APPLICATION->SetTitle("Врачи-" . mb_strtolower(substr($GLOBALS['titleFilterClinic'], 1)) . "и, отзывы, время работы, запись на прием."); ?>
+    $APPLICATION->SetPageProperty("description", "Врачи-" . mb_strtolower(mb_substr($GLOBALS['titleFilterClinic'], 1)) . "и отзывы, контактные телефоны, время и место работы.");
+    $APPLICATION->SetTitle("Врачи-" . mb_strtolower(mb_substr($GLOBALS['titleFilterClinic'], 1)) . "и, отзывы, время работы, запись на прием."); ?>
 <? } else { ?>
     <? $this->SetViewTarget('filterTitle'); ?>
     <? $this->EndViewTarget(); ?>

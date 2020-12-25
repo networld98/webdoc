@@ -25,8 +25,8 @@ class NeatekTinkoff
      * @var array
      */
     protected $_params = array(
-        'TerminalKey' => '1593760029040',
-        'Password'    => '0lw0dq0se99oe4kq',
+        'TerminalKey' => '1593760029040DEMO',
+        'Password'    => 'ogmj47gu8mcxqkw0',
     );
     /**
      * @var array

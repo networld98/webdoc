@@ -701,6 +701,9 @@ main >.main-seo-text {
     padding: 0;
     width: 22px;
 }
+.services-detail h6.title-h3-top {
+    margin-top: 60px;
+}
 @media (max-width: 1430px) {
 .personal-cabinet-content__my-profile .contacts-group {
     width: 100%;

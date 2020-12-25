@@ -1,5 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+use \CUtilEx as CUtil;
 $PROPS = [];
 foreach ($_POST as $key => $data){
     if (strpos($key, 'METRO') !== false) {

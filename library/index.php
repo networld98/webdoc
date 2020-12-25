@@ -7,7 +7,7 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
     header('Location: http://lib.webdoc.clinic/');
     exit;
 }?>
-111111
+
 <section class="container library">
     <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
@@ -49,14 +49,15 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
 		"BROWSER_TITLE" => "-",
 		"DETAIL_SET_CANONICAL_URL" => "Y",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"DETAIL_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"DETAIL_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+        "DETAIL_FIELD_CODE" => array(
+            0 => "",
+            1 => "",
+        ),
+        "DETAIL_PROPERTY_CODE" => array(
+            0 => "DOCTORS_SPEC",
+            1 => "DOCTORS_TEXT",
+            2 => "CLINICS_SPEC",
+        ),
 		"DETAIL_DISPLAY_TOP_PAGER" => "Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_PAGER_TITLE" => "Страница",

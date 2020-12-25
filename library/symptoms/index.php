@@ -38,8 +38,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+            0 => "DOCTORS_SPEC",
+            1 => "DOCTORS_TEXT",
+            2 => "CLINICS_SPEC",
 		),
 		"HIDE_LINK_WHEN_NO_DETAIL" => "Y",
 		"DISPLAY_NAME" => "Y",

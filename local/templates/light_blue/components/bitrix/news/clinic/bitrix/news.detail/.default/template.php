@@ -226,7 +226,7 @@ function propsClinic($prop){
         <div class="clinic-card-info-detail">
             <div class="grey-block">
                 <div class="clinic-card-info-detail__block">
-                    <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
+                    <?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]):?>
                         <p class="clinic-card-info-detail__title map">Адрес</p>
                         <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                         <?$this->SetViewTarget('address_clinic');?>
@@ -790,7 +790,7 @@ function propsClinic($prop){
                                             <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
                                         </div>
                                     <?endif;?>
-                                    <?if($arResult["DISPLAY_PROPERTIES"]["SPECIALIZATION"]["DISPLAY_VALUE"]):?>
+                                    <?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]):?>
                                         <div class="col-12 col-margin no-padding">
                                             <p class="clinic-card-info-detail__title map">Адрес</p>
                                             <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>

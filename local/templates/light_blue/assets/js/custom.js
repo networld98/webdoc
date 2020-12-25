@@ -84,6 +84,21 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
+    function setEqualHeight(columns)
+    {
+        var tallestcolumn = 0;
+        columns.each(
+            function()
+            {
+                currentHeight = $(this).height();
+                if(currentHeight > tallestcolumn)
+                {
+                    tallestcolumn = currentHeight;
+                }
+            }
+        );
+        columns.height(tallestcolumn);
+    }
     let anc = window.location.hash.replace("#","");
     if (anc === "otzivy-yakor") {
         $('.clinic-card-full-desc__tabs li').removeClass('active');

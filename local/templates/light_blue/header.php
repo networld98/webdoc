@@ -164,12 +164,17 @@ CJSCore::Init("popup", "jquery");
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </div>
                 <?}else{?>
-                    <a class="header-auth" href=" <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>">
+                    <a class="header-auth" href=" <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}elseif($_SERVER["SERVER_NAME"]==="www.webdoc.btx.bz" || $_SERVER["SERVER_NAME"]==="webdoc.btx.bz" ){?>/lc/<?}else{?>http://webdoc.clinic/lc/<?}?>">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </a>
                 <?}?>
-                <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>
+                <?if($_SERVER["SERVER_NAME"] ==="webdoc.clinic"){?>
                     <a id="header-records" href="https://lib.webdoc.clinic/">
+                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_new.svg" alt="folder" class="records">
+                    </a>
+                <?}?>
+                <?if($_SERVER["SERVER_NAME"] === 'www.webdoc.btx.bz' || $_SERVER["SERVER_NAME"]==="webdoc.btx.bz"){?>
+                    <a id="header-records" href="http://libdoc.btx.bz/">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_new.svg" alt="folder" class="records">
                     </a>
                 <?}?>

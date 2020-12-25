@@ -1,5 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+use \CUtilEx as CUtil;
 function searchDoctor($id, $param)
 {
     CModule::IncludeModule('iblock');

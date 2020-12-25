@@ -1,5 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+use \CUtilEx as CUtil;
 $PROPS = [];
 if($_POST['ID_CLINIC']!=NULL){
     $SCHEDULE = $_POST['ID_CLINIC'];

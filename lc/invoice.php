@@ -1,5 +1,6 @@
 <?require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");?>
 <?
+use \CUtilEx as CUtil;
 //Инфоблок со счетами
 $iblock = 24;
 CModule::IncludeModule('iblock');
