@@ -373,6 +373,7 @@ main > .container:last-child {
 }
 #header-auth {
     margin-left: auto;
+    cursor: pointer;
 }
 .records {
     width: 100%;

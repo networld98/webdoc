@@ -1,6 +1,6 @@
 <?
 use Bitrix\Main\Loader;
-
+use \CUtilEx as CUtil;
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
 /*DEMO CODE for component inheritance

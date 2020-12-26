@@ -100,6 +100,6 @@
 </div>
 <script>
     $(document).ready(function () {
-        $('.city_input').trigger('click'); $('.bx_filter_param_label_<?=$_COOKIE['bxmaker_geoip_2_4_2_s1_city']?>').trigger('click');$('.popup-window').hide();
+        $('.city_input').trigger('click'); $('.bx_filter_param_label_<?=$_COOKIE['bxmaker.geoip.2.4.2_city']?>').trigger('click');$('.popup-window').hide();
     })
 </script>
