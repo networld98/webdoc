@@ -24,7 +24,7 @@ $CONTAINER_ID = CUtil::JSEscape($CONTAINER_ID);
 
 if($arParams["SHOW_INPUT"] !== "N"):?>
 	<div id="<?echo $CONTAINER_ID?>">
-		<input id="<?echo $INPUT_ID?>" type="text" name="q" value="<?=$_GET['q']?>" placeholder="Клиника, врач, услуга" size="40" maxlength="50" autocomplete="off" onkeyup="smartFilter.keyup(this)"/>
+		<input id="<?echo $INPUT_ID?>" type="text" name="q" value="<?=$_GET['q']?>" placeholder="Клиника, врач, услуга" size="40" maxlength="50" autocomplete="off" "/>
 	</div>
 <?endif?>
 <script>

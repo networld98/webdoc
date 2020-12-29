@@ -41,7 +41,7 @@
 		"FORM_MESS_STAR_RATING_3" => "Удовлетворительно",
 		"FORM_MESS_STAR_RATING_4" => "Хорошо",
 		"FORM_MESS_STAR_RATING_5" => "Отлично",
-		"FORM_PREMODERATION" => "N",
+		"FORM_PREMODERATION" => "Y",
 		"FORM_REQUIRED_FIELDS" => array(
 			0 => "RATING",
 			1 => "ANNOTATION",

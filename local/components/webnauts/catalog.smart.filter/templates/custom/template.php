@@ -342,7 +342,7 @@ $templateData = array(
                                                 <? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
                                                     onclick="smartFilter.click(this)"
                                             />
-											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?><?
+											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>" onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?><?
                                                 if ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])):
                                                     ?> (<span data-role="count_<?=$ar["CONTROL_ID"]?>"><? echo $ar["ELEMENT_COUNT"]; ?></span>)<?
                                                 endif;?></span>
