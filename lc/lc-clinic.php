@@ -195,10 +195,10 @@ $days_between = ceil(($end - $start) / 86400);
                     <!--                            </select>-->
                     <!--                        </li>-->
                 </ul>
-                <div class="text-view">
+                <div class="text-view mobile-none">
                     <div id="message-form"></div>
                     <div id="photo-form" style="display:none;"></div>
-                    <button type="submit" name="saveProfile" class="save" <? if($days_between<=0 &&$_COOKIE['pauseSubscription']!='Y'){?>onclick="$('.finance-modal').show()"<?}?> id="saveProfile">Сохранить</button>
+                    <button type="submit" name="saveProfile" class="save" <? if($days_between<=0 &&$_COOKIE['pauseSubscription']!='Y'){?>onclick="$('.finance-modal').show()"<?}?>>Сохранить</button>
                 </div>
             </div>
             <div class="personal-cabinet-content__my-profile__info-desc">
@@ -270,6 +270,10 @@ $days_between = ceil(($end - $start) / 86400);
                         </li>
                     <?}?>
                 </ul>
+            </div>
+            <div class="text-view desktop-none">
+                <div id="message-form-mobile"></div>
+                <button type="submit" name="saveProfile" class="save" <? if($days_between<=0 &&$_COOKIE['pauseSubscription']!='Y'){?>onclick="$('.finance-modal').show()"<?}?>>Сохранить</button>
             </div>
         </div>
     </div>
@@ -373,6 +377,7 @@ $days_between = ceil(($end - $start) / 86400);
             let formID = $(this).attr('id');
             let formNm = $('#' + formID);
             let formMs = $('#message-form');
+            let formMsMobile = $('#message-form-mobile');
             $.ajax({
                 type: "POST",
                 url: '/lc/clinic-save.php',
@@ -380,6 +385,7 @@ $days_between = ceil(($end - $start) / 86400);
                 success: function (data) {
                     // Вывод текста результата отправки
                     $(formMs).html(data);
+                    $(formMsMobile).html(data);
                 }
             });
             return false;

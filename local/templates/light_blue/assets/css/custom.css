@@ -704,6 +704,7 @@ main >.main-seo-text {
 .services-detail h6.title-h3-top {
     margin-top: 60px;
 }
+
 @media (max-width: 1430px) {
 .personal-cabinet-content__my-profile .contacts-group {
     width: 100%;
@@ -794,6 +795,11 @@ label.photoFile-label {
     display: block;
 }
 }
+@media (min-width: 450px) {
+    .desktop-none {
+        display: none!important;
+    }
+}
 @media (max-width: 450px) {
     .container-flex .title-h2{
         margin: 0;
@@ -875,6 +881,9 @@ label.photoFile-label {
     width: 100%;
 }
 @media (max-width: 450px){
+    .mobile-none{
+        display: none!important;
+    }
     .specializations .nav-pills .nav-link.active, .specializations .nav-pills .nav-link {
         padding: 10px 0 10px;
         line-height: 1;
