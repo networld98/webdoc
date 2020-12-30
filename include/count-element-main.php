@@ -55,7 +55,19 @@ function count_element($iblock){
         </div>
         <div class="statistics__block">
             <div class="statistics__number">
-                1750+
+                <?
+                $countReviews = 0;
+                $arSelect = Array("ID", "IBLOCK_ID", "NAME", "PROPERTY_API_REVIEWS_COUNT");//IBLOCK_ID и ID обязательно должны быть указаны, см. описание arSelectFields выше
+                $arFilter = Array("IBLOCK_ID"=>array(9,10));
+                $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
+                while($ob = $res->GetNextElement()){
+                    $arFields = $ob->GetFields();
+                    if($arFields['PROPERTY_API_REVIEWS_COUNT_VALUE']!=NULL){
+                        $countReviews= $countReviews + $arFields['PROPERTY_API_REVIEWS_COUNT_VALUE'];
+                    }
+                }
+                echo 1700+$countReviews;
+                ?>
             </div>
             <div class="statistics__text">
                 отзывов
