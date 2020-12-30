@@ -66,7 +66,7 @@ function count_element($iblock){
                         $countReviews= $countReviews + $arFields['PROPERTY_API_REVIEWS_COUNT_VALUE'];
                     }
                 }
-                echo 1700+$countReviews;
+                echo 1700+$countReviews,'+';
                 ?>
             </div>
             <div class="statistics__text">
