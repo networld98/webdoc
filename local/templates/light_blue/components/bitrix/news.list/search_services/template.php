@@ -20,32 +20,33 @@ global $countSearchArticles;
 global $countSearchSymptoms;
 if($countSearchService==NULL && ($arParams['IBLOCK_ID'] == 18 || $arParams['IBLOCK_ID'] == 19)){
     $countSearchService = count($arResult['ITEMS']);
+    $noneSearch++;
     $this->SetViewTarget('searchCountService'); ?>
     <? if ($countSearchService != NULL) { ?><a href="#blockService">
         <strong><?= $countSearchService ?></strong> услуг(а); <? } ?></a>
     <? $this->EndViewTarget();
 }elseif($countSearchIllness==NULL && $arParams['IBLOCK_ID'] == 21){
     $countSearchIllness = count($arResult['ITEMS']);
+    $noneSearch++;
     $this->SetViewTarget('searchCountService'); ?>
     <? if ($countSearchIllness != NULL) { ?><a href="#blockIllness">
         <strong><?= $countSearchIllness ?></strong> болезнь(ей); <? } ?></a>
     <? $this->EndViewTarget();
 }elseif($countSearchSymptoms==NULL && $arParams['IBLOCK_ID'] == 22){
     $countSearchSymptoms = count($arResult['ITEMS']);
+    $noneSearch++;
     $this->SetViewTarget('searchCountService'); ?>
     <? if ($countSearchSymptoms != NULL) { ?><a href="#blockSymptoms">
         <strong><?= $countSearchSymptoms ?></strong> симптом(ов); <? } ?></a>
     <? $this->EndViewTarget();
 }elseif($countSearchArticles==NULL && $arParams['IBLOCK_ID'] == 21){
     $countSearchArticles = count($arResult['ITEMS']);
+    $noneSearch++;
     $this->SetViewTarget('searchCountService'); ?>
     <? if ($countSearchArticles != NULL) { ?><a href="#blockArticles">
         <strong><?= $countSearchArticles ?></strong> статья(и); <? } ?></a>
     <? $this->EndViewTarget();
 }?>
-<?if($arResult['ITEMS']!=NULL){
-$noneSearch++;
-?>
 <div class="row">
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?
@@ -63,4 +64,3 @@ $noneSearch++;
         <br /><?=$arResult["NAV_STRING"]?>
     <?endif;?>
 </div>
-<?}?>
