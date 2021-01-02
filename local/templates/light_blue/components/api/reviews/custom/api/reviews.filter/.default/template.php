@@ -62,7 +62,7 @@ if(method_exists($this, 'setFrameMode'))
 				$active = (in_array($i, $arResult['SESSION_RATING']));
 				?>
                 <li>
-                    <a href="<?=$APPLICATION->GetCurPageParam('arfilter=1&arrating=' . join('|', array_merge(array($i),$arResult['SESSION_RATING'])), array('arfilter', 'arrating'))?>"
+                    <a href="<?=$APPLICATION->GetCurPageParam('arfilter=1&arrating=' . $i, array('arfilter', 'arrating'))?>"
                        class="api-filters-item clinic-card-full-desc__content__feedback-item-left__mark <?if($i==1){?>red<?}elseif ($i==2){?>pink<?}elseif ($i==3){?>orange<?}elseif ($i==4){?>chartreuse<?}else{?>green<?}?> <?=$active ? 'api-active' : ''?>"
                        data-rating="<?=$i?>"
                        rel="nofollow">
