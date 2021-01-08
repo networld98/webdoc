@@ -8951,9 +8951,6 @@ button:focus {
     .main-filter {
         margin-top: 0;
     }
-    #header-auth {
-        margin-left: 16px;
-    }
     #header-records {
         margin-left: 17px;
         margin-right: 0;
@@ -9123,7 +9120,6 @@ button:focus {
     }
     #header-auth {
         transform: scale(1.05);
-        margin-right: 10px;
     }
     #header-records {
         margin-left: 10px;
@@ -9411,6 +9407,9 @@ button:focus {
 }
 
 @media (max-width: 360px) {
+    #header-records {
+        margin-left: 5px;
+    }
     .footer .col__block:nth-child(2) {
         padding-left: 40px;
     }
@@ -9419,6 +9418,9 @@ button:focus {
     }
 }
 @media (max-width: 320px) {
+    .header .container .logo .mobile {
+        width: 164px;
+    }
     .header .container,.header .container.cabinet {
         padding-left: 61px;
     }
