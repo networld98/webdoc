@@ -42,7 +42,8 @@ function count_element($iblock){
         </div>
         <div class="statistics__block">
             <div class="statistics__number">
-                5162+
+                <? $file = file_get_contents($_SERVER["DOCUMENT_ROOT"] .'/local/scripts/count_call.txt', true);?>
+                <?=$file?>+
             </div>
             <div class="statistics__text">
                 подтвержденных<br> звонков

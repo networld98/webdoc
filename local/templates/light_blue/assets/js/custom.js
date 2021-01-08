@@ -84,6 +84,17 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
+    $('a').on('click', function() {
+        href = $(this).attr('href');
+        tel = href.indexOf('tel:')!==-1 ;
+            if(tel===true){
+                $.ajax({
+                    type: "POST",
+                    url: '/local/scripts/save_call.php',
+                });
+            }
+        });
+
     function setEqualHeight(columns)
     {
         var tallestcolumn = 0;
