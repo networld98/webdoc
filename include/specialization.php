@@ -1,4 +1,5 @@
 <?require_once $_SERVER['DOCUMENT_ROOT'] . '/include/Mobile_Detect.php';
+use \CUtilEx as CUtil;
 $arParams = array("replace_space"=>"-","replace_other"=>"-");
 $detect = new Mobile_Detect;
 if ($detect->isMobile() && !$detect->isTablet()) {

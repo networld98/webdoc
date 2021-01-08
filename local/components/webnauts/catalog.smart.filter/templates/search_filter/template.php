@@ -872,7 +872,7 @@ while ($item = $res->fetch()) {
         });
         city.mouseout(function() {
             $('.bx_filter_select_text').show();
-            city.css('color','transparent');
+            city.val('');
         });
         city.on('keyup',function() {
             var select = $(this).val();

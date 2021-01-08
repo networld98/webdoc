@@ -8956,7 +8956,7 @@ button:focus {
     }
     #header-records {
         margin-left: 17px;
-        margin-right: 10px;
+        margin-right: 0;
     }
     .bx_filter .main-filter .bx_filter_select_block {
         margin-bottom: 6px;
@@ -9133,7 +9133,7 @@ button:focus {
     }
     .header .container,.header .container.cabinet {
         padding-left: 80px;
-        padding-right: 3px;
+        padding-right: 14px;
     }
     .head > img {
         bottom: -555px;
