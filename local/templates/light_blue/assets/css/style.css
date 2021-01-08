@@ -9126,8 +9126,7 @@ button:focus {
         margin-right: 10px;
     }
     #header-records {
-
-        margin-left: 0;
+        margin-left: 10px;
         transform: scale(1.05);
         flex: none;
     }
