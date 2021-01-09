@@ -130,10 +130,14 @@ function propsClinic($prop){
         <?if($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
             <ul class="clinic-card-desc__spec-list">
                 <?foreach ($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
+                if($item != $arResult["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]) {
                     $res = CIBlockElement::GetByID($item);
-                    if($ar_res = $res->GetNext()){?>
-                        <li><a href="#"><?=$ar_res['NAME']?></a></li>
-                    <?}
+                    if ($ar_res = $res->GetNext()) {
+                        ?>
+                        <li><a href="#"><?= $ar_res['NAME'] ?></a></li>
+                    <?
+                    }
+                  }
                 }?>
             </ul>
         <?endif;?>
