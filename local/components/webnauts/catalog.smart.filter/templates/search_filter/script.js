@@ -218,7 +218,7 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
                 urlPath2 = urlPath[1].split('&');
                 urlPath2[0] = "q="+SearchParam;
                 urlPathNew = urlPath2.join('&');
-                finalUrl = "/search/?"+ urlPathNew;
+                finalUrl = "/search/?"+ urlPathNew + '&set_filter=y';
                 $('#modef').find('a').attr('href',finalUrl);
 
             }

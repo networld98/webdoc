@@ -91,26 +91,8 @@ endif;?>
         </div>
         <?$serviceKey = 0;
         global $arrFilter;
-    $searchArray = array(9,10,18,19,20,21,22);
+    $searchArray = array(9,10);
         foreach($searchArray as $iblockId){
-            if (($iblockId == 18 || $iblockId == 19) && $serviceKey == 0 ){
-                $serviceKey++;?>
-                <div class="container" id="blockService">
-                    <h2>Услуги</h2>
-                </div>
-            <?}elseif($iblockId == 20){?>
-                <div class="container" id="blockArticles">
-                    <h2>Статьи</h2>
-                </div>
-            <?}elseif($iblockId == 21){?>
-                <div class="container" id="blockIllness">
-                    <h2>Болезни</h2>
-                </div>
-            <?}elseif($iblockId == 22){?>
-                <div class="container" id="blockSymptoms">
-                    <h2>Симптомы</h2>
-                </div>
-            <?}
             if ($iblockId == 9){$template = "search_clinic";}
             if ($iblockId == 10){
                 if($arrFilter["=PROPERTY_94"] !=NULL){
