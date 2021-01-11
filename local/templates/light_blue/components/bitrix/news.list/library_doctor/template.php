@@ -11,6 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+global $doctor_spec;
 CModule::IncludeModule("form");
 require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
 ?>
@@ -22,7 +23,6 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
     ?>
     <div class="doctors-slider-item">
         <div class="doctors-list-item__img">
-            <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                 <? if ($arItem['DETAIL_PICTURE']['SRC'] != NULL) { ?>
                     <a style="background-image: url('<?= $arItem['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image" href="<?= $arItem['DETAIL_PAGE_URL'] ?>">
                     </a>
@@ -51,15 +51,31 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
                              alt="star">
                     </div>
                 </div>
-                <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?getTerminationEx($arRaing['COUNT'])?></p>
+                    <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?getTerminationEx($arRaing['COUNT'])?></a></p>
             </div>
         </div>
         <div class="doctors-list-item__description">
-            <? $res = CIBlockSection::GetByID($arItem['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
-            if ($ar_res = $res->GetNext()) {
-                ?>
-                <p class="doctors-list-item__description-position"><?= $ar_res['NAME'] ?></p>
-            <? } ?>
+            <?if(in_array($arItem['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE'],$doctor_spec)) {
+                $res = CIBlockSection::GetByID($arItem['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
+                if ($ar_res = $res->GetNext()) {?>
+                    <p class="doctors-list-item__description-position"><?= $ar_res['NAME'] ?></p>
+                <? }
+            }elseif(in_array($arItem['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE'],$doctor_spec)) {
+                $res = CIBlockSection::GetByID($arItem['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
+                if ($ar_res = $res->GetNext()) {?>
+                    <p class="doctors-list-item__description-position"><?= $ar_res['NAME'] ?></p>
+                <? }
+            }else{
+                foreach ($arItem['PROPERTIES']['SPECIALIZATIONS']['VALUE'] as $item){
+                    if(in_array($item,$doctor_spec)){
+                        $res = CIBlockElement::GetByID($item);
+                        if ($ar_res = $res->GetNext()) {?>
+                            <p class="doctors-list-item__description-position"><?=$ar_res['NAME'] ?></p>
+                        <?}
+                        break;
+                    }
+                }
+            }?>
             <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                 <p class="doctors-list-item__description-title"><?=$arItem['NAME']?></p>
             </a>
@@ -118,3 +134,10 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
     </div>
 <?endforeach;?>
 </div>
+<?if(count($arResult["ITEMS"])==0 ){?>
+    <style>
+        .illness-doctor-list-block {
+            display: none;
+        }
+    </style>
+<?}?>

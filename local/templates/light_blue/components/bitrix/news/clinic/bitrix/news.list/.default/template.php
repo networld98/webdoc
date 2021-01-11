@@ -130,7 +130,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                 <div class="clone-adapt">
                     <p class="clinic-card-desc__about"><?=$arItem["PREVIEW_TEXT"]?></p>
                     <?if($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
-                        <p class="doctors-title-spec">Все направления клиник</p>
+                        <p class="doctors-title-spec">Все направления клиники</p>
                         <ul class="clinic-card-desc__spec-list">
                             <?foreach ($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
                                 if($item != $arItem["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]) {
@@ -163,7 +163,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                 ?>
                 <p class="clinic-card-desc__about"><?=$arItem["PREVIEW_TEXT"]?></p>
                 <?if($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
-                    <p class="doctors-title-spec">Все направления клиник</p>
+                    <p class="doctors-title-spec">Все направления клиники</p>
                     <ul class="clinic-card-desc__spec-list list-2">
                         <?foreach ($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
                             if($item != $arItem["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]){

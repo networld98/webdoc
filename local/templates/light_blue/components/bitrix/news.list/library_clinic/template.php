@@ -12,6 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CModule::IncludeModule("form");
+global $clinic_spec;
 require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
 ?>
 <style>
@@ -85,12 +86,17 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
                 <?}
                 ?>
                 <?if($arItem["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]== NULL) {
-                    $res = CIBlockElement::GetByID($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"][0]);
-                    if ($ar_res = $res->GetNext()) {?>
-                        <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
-                            <span class="main-spec"><?=$ar_res['NAME']?></span>
-                        </a>
-                    <?}
+                    foreach ($arItem["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
+                        if(in_array($item, $clinic_spec)){
+                            $res = CIBlockElement::GetByID($item);
+                            if ($ar_res = $res->GetNext()) {?>
+                                <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
+                                    <span class="main-spec"><?=$ar_res['NAME']?></span>
+                                </a>
+                            <?}
+                            break;
+                        }
+                    }
                 }?>
                 <p class="doctors-list-item__description-exp">
                     <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
@@ -117,3 +123,10 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
         setEqualHeight($(".doctors-slider-item"));
     });
 </script>
+<?if(count($arResult["ITEMS"])==0 ){?>
+    <style>
+        .illness-clinic-list-block {
+            display: none;
+        }
+    </style>
+<?}?>

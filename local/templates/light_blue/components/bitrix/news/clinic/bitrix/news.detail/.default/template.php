@@ -126,7 +126,7 @@ function propsClinic($prop){
             ?>
         </div>
         <p class="clinic-card-desc__about"><?=$arResult["PREVIEW_TEXT"]?></p>
-        <p class="doctors-title-spec">Все направления клиник</p>
+        <p class="doctors-title-spec">Все направления клиники</p>
         <?if($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"]):?>
             <ul class="clinic-card-desc__spec-list">
                 <?foreach ($arResult["PROPERTIES"]["SPECIALIZATION"]["VALUE"] as $item){
