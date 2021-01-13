@@ -353,22 +353,50 @@ $(document).ready(()=>{
             $(`.personal-cabinet-content__price-page__content[data-tabs="${data}"]`).toggleClass('active');
         });
     });
+    $(function () {
+        if(window.outerWidth <= 650) {
+            $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
+        }
+    });
 
     $('.personal-cabinet-content__price-page__content__list > li').on( "click", function() {
-        $(this).parent().children().removeClass('active');
-        // $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
-        $(this).toggleClass('active');
+        if(window.outerWidth > 650) {
+            $(this).parent().children().removeClass('active');
+            // $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
+            $(this).toggleClass('active');
+        }
+
     });
+
 
 
     $('.personal-cabinet-content__price-page__content__list > li').hover(function () {
         // $('.personal-cabinet-content__price-page__content__list > li').removeClass('active');
         // $(this).toggleClass('active');
+        $(this).parents('.personal-cabinet-content__price-page__content').find('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
+        // $('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
+        var data = $(this).data('tabs');
+        $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
         $(this).on("click" , function () {
-            $(this).parents('.personal-cabinet-content__price-page__content').find('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
-            // $('.personal-cabinet-content__price-page__content__list-content').removeClass('active');
-            var data = $(this).data('tabs');
-            $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
+            if(window.outerWidth <= 650) {
+                console.dir($(this));
+                var box = $(this).parents('.personal-cabinet-content__price-page__content').find('.personal-cabinet-content__price-page__content__list-box');
+                console.dir(box);
+                var calcHeight = $(this)[0].offsetTop + $(this).outerHeight() + box.outerHeight();
+                console.log(calcHeight);
+                if($(this).delay(500).hasClass('active')){
+                    $(this).parent().children().removeClass('active');
+                    box.hide();
+                    $(this).parents('.personal-cabinet-content__price-page__content').height('auto');
+                } else {
+                    $(this).addClass('active');
+                    var offsetTopLi = $(this)[0].offsetTop + $(this).outerHeight();
+                    box.css({top: offsetTopLi + 'px'});
+                    box.show();
+                    $(this).parents('.personal-cabinet-content__price-page__content').height(calcHeight);
+                }
+
+            }
         });
     });
 
