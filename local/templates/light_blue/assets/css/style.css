@@ -7776,10 +7776,14 @@ button:focus {
     }
         .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child {
             display: flex;
-            flex-direction: row-reverse;
+            flex-direction: column;
+            padding-top: 10px;
         }
+    .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child input {
+        margin-left: auto;
+    }
         .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child span {
-            margin-left: 0;
+            margin-left: auto;
             margin-top: 10px;
         }
         .personal-cabinet-content__price-page__content__list-content__price table tbody tr {
@@ -7829,6 +7833,12 @@ button:focus {
 
     .personal-cabinet-content__price-page__content__list > li.active:before {
         transform: translateY(-50%) rotate(-180deg);
+    }
+    .personal-cabinet .personal-cabinet-content__price-page__content__list-content__price .bx_filter_input_checkbox {
+        margin-bottom: 0;
+    }
+    .personal-cabinet .personal-cabinet-content__price-page__content__list-content__price td label {
+        margin-bottom: 0;
     }
 }
 @media (max-width: 600px) {
