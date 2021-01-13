@@ -7732,6 +7732,9 @@ button:focus {
     .personal-cabinet-content__price-page__content__list-content__price table thead tr td {
         padding-bottom: 10px;
     }
+    .personal-cabinet-content__price-page__content__list-content__price table thead tr td:last-child {
+        text-align: right;
+    }
     /*.personal-cabinet-content__price-page__content__list-content__price table, .personal-cabinet-content__price-page__content__list-content__price thead, .personal-cabinet-content__price-page__content__list-content__price tbody, .personal-cabinet-content__price-page__content__list-content__price th, .personal-cabinet-content__price-page__content__list-content__price td, .personal-cabinet-content__price-page__content__list-content__price tr {*/
     /*    display: block; }*/
     /*    .personal-cabinet-content__price-page__content__list-content__price table thead tr {*/
@@ -7773,7 +7776,7 @@ button:focus {
     }
         .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child {
             display: flex;
-            flex-direction: column;
+            flex-direction: row-reverse;
         }
         .personal-cabinet-content__price-page__content__list-content__price table tbody tr td:last-child span {
             margin-left: 0;
@@ -7801,13 +7804,14 @@ button:focus {
             position: absolute;
             background: white;
             padding: 10px;
+            padding-left: 20px;
         }
     .personal-cabinet-content__price-page__tabs {
         justify-content: center;
     }
     .personal-cabinet-content__price-page__content__list > li {
         position: relative;
-        padding-left: 10px;
+        padding-left: 20px;
     }
     .personal-cabinet-content__price-page__content__list > li:before {
         background-image: url(/local/templates/light_blue/assets/images/select-arrow-grey.svg);
