@@ -38,6 +38,18 @@ global $clinic_spec;
             <div class="illness-detail-block">
                 <?= $arResult["DETAIL_TEXT"];?>
             </div>
+            <?
+            $arSelect = array("ID", "NAME");
+            $arFilter = array("IBLOCK_ID"=>14);
+            $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+            while($ar_result = $obSections->GetNext())
+            {
+                if($ar_result['NAME'] == $_COOKIE['bxmaker_geoip_2_4_2_city']){
+                    $cityId = $ar_result['ID'];
+                    break;
+                }
+            }
+            ?>
             <?if($arResult['PROPERTIES']['DOCTORS_SPEC']['VALUE'] || $arResult['PROPERTIES']['CLINICS_SPEC']['VALUE']){?>
             <div class="illness-doctor-block">
                 <?
@@ -61,6 +73,7 @@ global $clinic_spec;
                         $arrFilter = Array(
                             "PROPERTY_SPECIALIZATIONS" => $arResult['PROPERTIES']['DOCTORS_SPEC']['VALUE'],
                             "PROPERTY_MAIN_SPECIALIZATION" => $arResult['PROPERTIES']['DOCTORS_SPEC']['VALUE'],
+                            "PROPERTY_CITY" => $cityId,
                         );?>
                         <?$APPLICATION->IncludeComponent("bitrix:news.list","library_doctor",
                             Array(
@@ -73,8 +86,8 @@ global $clinic_spec;
                                 "IBLOCK_ID" => 10,
                                 "PAGER_SHOW_ALL" => "Y",
                                 "NEWS_COUNT" => "8",
-                                "SORT_BY1" => "ACTIVE_FROM",
-                                "SORT_ORDER1" => "DESC",
+                                "SORT_BY1" => "property_RATING",
+                                "SORT_ORDER1" => "desc",
                                 "SORT_BY2" => "SORT",
                                 "SORT_ORDER2" => "ASC",
                                 "CHECK_DATES" => "Y",
@@ -148,7 +161,8 @@ global $clinic_spec;
                     <?if($arResult['PROPERTIES']['CLINICS_SPEC']['VALUE']):?>
                         <h6 class="title-h3 title-h3-top to-choice">Клиники по профилю</h6>
                         <?$arrFilter = Array(
-                            "PROPERTY_SPECIALIZATION" => $arResult['PROPERTIES']['CLINICS_SPEC']['VALUE']
+                            "PROPERTY_SPECIALIZATION" => $arResult['PROPERTIES']['CLINICS_SPEC']['VALUE'],
+                            "PROPERTY_CITY" => $cityId,
                         );?>
                         <?$APPLICATION->IncludeComponent("bitrix:news.list","library_clinic",
                             Array(
@@ -161,8 +175,8 @@ global $clinic_spec;
                                 "IBLOCK_ID" => 9,
                                 "PAGER_SHOW_ALL" => "Y",
                                 "NEWS_COUNT" => "8",
-                                "SORT_BY1" => "ACTIVE_FROM",
-                                "SORT_ORDER1" => "DESC",
+                                "SORT_BY1" => "property_RATING",
+                                "SORT_ORDER1" => "desc",
                                 "SORT_BY2" => "SORT",
                                 "SORT_ORDER2" => "ASC",
                                 "FILTER_NAME" => 'arrFilter',
