@@ -74,14 +74,18 @@ $this->setFrameMode(true);
     ),
         false
     );?>
-    <?if (
-        isset($_GET["sort"]) && isset($_GET["order"]) && (
+    <?if (isset($_GET["sort"]) && isset($_GET["order"]) && (
+            $_GET["sort"] == "property_RATING" ||
             $_GET["sort"] == "property_COST_PRICE" ||
             $_GET["sort"] == "property_MAIN_SPECIALIZATION")){
         global $sort, $order;
         $sort = $_GET["sort"];
         $order = $_GET["order"];
-    }?>
+    }else{
+        $sort = "property_RATING";
+        $order = "desc";
+    }
+    ?>
 </section>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
