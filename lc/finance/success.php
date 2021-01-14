@@ -35,7 +35,11 @@ if($_COOKIE['idOrder']!=NULL && $_COOKIE['serviceId']) {
         $NewDate = $datetime->format('d.m.Y');
     }
     $PROP[174] = $NewDate;
+    $PROP[175] = $NewDate;
     $PROP[176] = $_COOKIE['serviceId'];
+    $PROP[177] = $_COOKIE['serviceId'];
+    $PROP[127] = 128;
+    $PROP[125] = 89;
     CIBlockElement::SetPropertyValuesEx($idClinic, false, $PROP);
 }
 if($_GET['Id']==NULL) {

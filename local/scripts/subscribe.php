@@ -4,7 +4,7 @@ $iblock = [9,10];
 $start = strtotime(date('d.m.Y'));
 if(CModule::IncludeModule('iblock')) {
     $arFilter = Array("IBLOCK_ID" => $iblock, "INCLUDE_SUBSECTIONS" => "Y");
-    $res = CIBlockElement::GetList(Array(), $arFilter, false, array(), Array('ID', 'NAME', 'PROPERTY_DATE_END_ACTIVE','PROPERTY_SUBSCRIBE','PROPERTY_PHONE'));
+    $res = CIBlockElement::GetList(Array(), $arFilter, false, array(), Array('ID', 'NAME', 'PROPERTY_DATE_END_ACTIVE','PROPERTY_SUBSCRIBE','PROPERTY_PHONE','PROPERTY_API_REVIEWS_RATING'));
     while ($ob = $res->GetNextElement()) {
         $Element = $ob->GetFields();
         if($Element['PROPERTY_DATE_END_ACTIVE_VALUE']!=NULL){
@@ -25,8 +25,27 @@ if(CModule::IncludeModule('iblock')) {
                     "DATE" => $Element['PROPERTY_DATE_END_ACTIVE_VALUE'],
                     );
                 CEvent::Send("PAUSE_SUBSCRIPTION", s1, $arEventFields, "N", 97);
+            }elseif ($days_between < 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
+                $PROP[127] = NULL;
+                $PROP[125] = NULL;
+            }elseif ($days_between > 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
+                $PROP[127] = 128;
+                $PROP[125] = 89;
+            }else{
+                $PROP[127] = 128;
+                $PROP[125] = 89;
+            }
+        }else{
+            if ($Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
+                $PROP[127] = NULL;
+                $PROP[125] = NULL;
+             }else{
+                $PROP[127] = 128;
+                $PROP[125] = 89;
+
             }
         }
+        CIBlockElement::SetPropertyValuesEx($Element['ID'], false, $PROP);
     }
 }
 print "Отработал";
