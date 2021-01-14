@@ -341,6 +341,7 @@ $modalId = $formId . '_modal';
 							<div class="api_controls">
 								<label class="api-rules-label">
 									<input type="checkbox" name="EULA_ACCEPTED" value="Y" class="api-field" <?=$arResult['EULA_ACCEPTED'] == 'Y' ? ' checked' : ''?>>
+                                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
 									<div class="api-rules-text"><?=$arParams['MESS_EULA']?></div>
 								</label>
 								<div class="api-rules-error api-eula-error"><?=$arParams['MESS_EULA_CONFIRM']?></div>
@@ -353,6 +354,7 @@ $modalId = $formId . '_modal';
 							<div class="api_controls">
 								<label class="api-rules-label">
 									<input type="checkbox" name="PRIVACY_ACCEPTED" value="Y" class="api-field" <?=$arResult['PRIVACY_ACCEPTED'] == 'Y' ? ' checked' : ''?>>
+                                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
 									<div class="api-rules-text">
 										<? if($arParams['MESS_PRIVACY_LINK']): ?>
 											<a rel="nofollow" href="<?=$arParams['MESS_PRIVACY_LINK']?>" target="_blank"><?=$arParams['MESS_PRIVACY']?></a>

@@ -57,7 +57,7 @@ $modalId = $formId . '_modal';
 		</div>
 	<? endif ?>
 
-	<div id="<?=$modalId?>" class="api_modal">
+	<div id="<?=$modalId?>" class="api_modal ">
 		<div class="api_modal_dialog">
 			<a class="api_modal_close"></a>
 			<? if($arParams['MESS_FORM_TITLE'] || $arParams['MESS_FORM_SUBTITLE']): ?>

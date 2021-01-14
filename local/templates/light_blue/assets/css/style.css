@@ -6209,6 +6209,38 @@ button:focus {
 .place-work {
     margin-left: 10px;
 }
+.api_controls .api-rules-label input[type=checkbox] {
+    display: none;
+}
+.api_controls .checkbox {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #9DD4B3;
+    box-sizing: border-box;
+    border-radius: 5px 0 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.api_controls .checkbox img {
+    opacity: 0;
+}
+.api-rules-text {
+    margin-left: 5px;
+}
+
+.api_controls input:checked + .checkbox {
+    background: #9DD4B3;
+    border-radius: 5px 0px 5px 5px;
+}
+.api_controls input:checked + .checkbox img {
+    opacity: 1;
+}
+
+
 @media (max-width: 1600px) {
     .main__img2 {
         right: -90px;

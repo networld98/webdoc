@@ -48,7 +48,7 @@ global $doctorName;
 				<?=$arParams['MESS_SHOP_BTN_TEXT']?>
 			</button>
 		</div>
-	<div id="<?=$modalId?>" class="api_modal">
+	<div id="<?=$modalId?>" class="api_modal custom">
 		<div class="api_modal_dialog">
 			<a class="api_modal_close"></a>
 			<? if($arParams['MESS_FORM_TITLE'] || $arParams['MESS_FORM_SUBTITLE']): ?>
@@ -343,6 +343,7 @@ global $doctorName;
 							<div class="api_controls">
 								<label class="api-rules-label">
 									<input type="checkbox" name="EULA_ACCEPTED" value="Y" class="api-field" <?=$arResult['EULA_ACCEPTED'] == 'Y' ? ' checked' : ''?>>
+                                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
 									<div class="api-rules-text"><?=$arParams['MESS_EULA']?></div>
 								</label>
 								<div class="api-rules-error api-eula-error"><?=$arParams['MESS_EULA_CONFIRM']?></div>
@@ -355,6 +356,7 @@ global $doctorName;
 							<div class="api_controls">
 								<label class="api-rules-label">
 									<input type="checkbox" name="PRIVACY_ACCEPTED" value="Y" class="api-field" <?=$arResult['PRIVACY_ACCEPTED'] == 'Y' ? ' checked' : ''?>>
+                                    <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
 									<div class="api-rules-text">
 										<? if($arParams['MESS_PRIVACY_LINK']): ?>
 											<a rel="nofollow" href="<?=$arParams['MESS_PRIVACY_LINK']?>" target="_blank"><?=$arParams['MESS_PRIVACY']?></a>
