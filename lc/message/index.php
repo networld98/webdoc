@@ -91,7 +91,9 @@ $idClient = $arFields['ID'];
                 <div class="col-xl-2 col-sm-6 order-sm-4 order-4"><?=$arAnswer['SIMPLE_'.$form.'_2'][0]['USER_TEXT']?></div>
                 <div class="col-xl-2 col-sm-6 order-sm-2 order-5"><?=$arAnswer['SIMPLE_'.$form.'_5'][0]['USER_TEXT']?></div>
                 <div class="col-xl-1 col-sm-6 order-sm-6 order-6"><?=$arAnswer['SIMPLE_'.$form.'_6'][0]['USER_TEXT']?></div>
-                <div class="col-xl-2 col-sm-6 offset-xl-0 offset-sm-6 order-sm-7 order-7"><?=$arAnswer['SIMPLE_'.$form.'_4'][0]['USER_TEXT']?></div>
+                <div class="col-xl-2 col-sm-6 offset-xl-0 offset-sm-6 order-sm-7 order-7"><?=$arAnswer['SIMPLE_'.$form.'_4'][0]['USER_TEXT']?>
+                    <?if($id==5){?><br><?=$arAnswer['SIMPLE_'.$form.'_ADDRESS'][0]['USER_TEXT']?><?}?>
+                </div>
 
 
         </div>
