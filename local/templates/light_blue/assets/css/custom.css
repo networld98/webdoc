@@ -881,6 +881,19 @@ label.photoFile-label {
     width: 100%;
 }
 @media (max-width: 450px){
+    .main-filter .row > div:last-child .bx_filter_parameters_box.active:last-child {
+        width: auto!important;
+    }
+    .personal-cabinet-content__doctors-page__filter__options .main-filter .row > div:last-child {
+        display: flex;
+    }
+    .personal-cabinet-content__doctors-page__filter__options .main-filter .row > div:last-child .bx_filter_parameters_box.active:last-child {
+        margin-bottom: 10px;
+    }
+    .bx_filter .main-filter .bx_filter_input_checkbox {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
     .mobile-none{
         display: none!important;
     }

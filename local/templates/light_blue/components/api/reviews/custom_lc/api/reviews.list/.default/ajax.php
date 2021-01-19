@@ -75,6 +75,9 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                 <? else: ?>
                                     <?=$arItem['GUEST_NAME']?>
                                 <? endif ?>
+                                <? if($arItem['GUEST_EMAIL']): ?>
+                                    (<?=explode("@", $arItem['GUEST_EMAIL'])[0]?>@******)
+                                <? endif ?>
                             </span>
                                 </p>
                             <? endif; ?>
