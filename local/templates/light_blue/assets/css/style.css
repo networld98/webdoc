@@ -4873,6 +4873,9 @@ button:focus {
 .clinic-card-full-desc__content__info-left__facilities .icon7::before {
     background-image: url(../images/wifi.svg);
 }
+.clinic-card-full-desc__content__info-left__facilities .icon8::before {
+    background-image: url(../images/weblink.svg);
+}
 .clinic-card-full-desc__content__info-right {
     max-width: 482px;
     width: 100%;
