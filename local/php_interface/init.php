@@ -46,7 +46,7 @@ class UserGroup
                 CIBlockElement::SetPropertyValuesEx($nameClinic, false, array("PHONE" => $arUser['LOGIN']));
             }
         }elseif($arUser['UF_TYPE_USER']==7) {
-            $login = self::searchClinic(10, array("PROPERTY_PHONE"=> $arUser['LOGIN']));
+            $login = self::searchClinic(10, array("TECH_PHONE"=> $arUser['LOGIN']));
             if($login == NULL) {
                 $el = new CIBlockElement;
                 $PROP = array();

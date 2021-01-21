@@ -227,11 +227,21 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                                 <? } else { ?>
                                     <p class="doctor-card__description-address-title">Адрес</p>
                                 <? } ?>
-                                <? if ($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]): ?>
+                                <? if ($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>
                                     <p class="doctor-card__clinic-adress">
-                                        г. <?= str_replace('/', ', ', $arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]) ?>
+                                        <?if(count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
+                                        <?= str_replace('/', ', ', $arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]) ?>
                                     </p>
-                                <? endif; ?>
+                                <? }elseif ($arItem["PROPERTIES"]["CITY"]["VALUE"][0]){?>
+                                    <p class="doctor-card__clinic-adress">
+                                        <? $res = CIBlockSection::GetByID($arItem["PROPERTIES"]["CITY"]["VALUE"][0]);
+                                        if ($ar_res = $res->GetNext()) {
+                                            ?>
+                                             г. <?= $ar_res['NAME'] ?>
+                                        <?}?>
+                                        <?if(count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))==1){echo ' '.$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0];}?>
+                                    </p>
+                                <?}?>
                                 <? if ($arItem["PROPERTIES"]["METRO"]["VALUE"]): ?>
                                     <ul class="doctors-list-item__metro-list">
                                         <? foreach ($arItem["PROPERTIES"]["METRO"]["VALUE"] as $key => $item) { ?>

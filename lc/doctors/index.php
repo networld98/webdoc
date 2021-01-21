@@ -11,13 +11,15 @@ if($arUser['UF_TYPE_USER']!=6) {
     exit;
 }
 global $idClinic;
-
+global $cityClinic;
 $arFilter = Array("IBLOCK_ID"=>"9", "PROPERTY_PHONE"=> $arUser['LOGIN']);
-$arSelect = Array("ID");
+$arSelect = Array("ID","PROPERTY_CITY","PROPERTY_ADDRESS");
 $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
 while($ob = $res->GetNextElement()){
     $arFields = $ob->GetFields();
     $idClinic = $arFields['ID'];
+    $cityClinic = $arFields['PROPERTY_CITY_VALUE'];
+    $addressClinic = $arFields['PROPERTY_ADDRESS_VALUE'];
 }
 ?>
 

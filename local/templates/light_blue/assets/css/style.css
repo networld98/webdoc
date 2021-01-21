@@ -7716,7 +7716,7 @@ button:focus {
 		clear: none;
     }
     .main-filter .row > div:last-child .bx_filter_parameters_box.active {
-        width: 33% !important;
+        width: 27% !important;
     }
     .bx-touch .personal-cabinet-content__doctors-page__filter__options .bx_filter.bx_horizontal .bx_filter_parameters_box.active {
         width: 50% !important;

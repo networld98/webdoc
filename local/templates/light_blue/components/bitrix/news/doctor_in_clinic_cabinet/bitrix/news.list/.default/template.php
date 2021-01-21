@@ -13,6 +13,8 @@
 $this->setFrameMode(true);
 CModule::IncludeModule("iblock");
 global $idClinic;
+global $cityClinic;
+global $addressClinic;
 $week = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
 ?>
 <?function propview($prop,$id,$iblock){
@@ -100,7 +102,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
     <form id="form_doctor_<?=$arItem['ID']?>" name="form_doctor_<?=$arItem['ID']?>" action="" method="post" class="personal-cabinet-content__doctors-page-box-item card-item">
             <input type="hidden" name="ID_DOCTOR" value="<?=$arItem['ID']?>">
             <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
-             <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
+            <input type="hidden" name="PHOTO" value="<?=$photoFile?>">
             <div class="row">
                 <div class="" style="padding-left: 15px;">
                     <div class="personal-cabinet-content__doctors-page-box-item__img">
@@ -444,6 +446,8 @@ $week = array('Понедельник','Вторник','Среда','Четве
                 var str = ' <input type="hidden" name="ID_DOCTOR" value="NEW">\n' +
                     ' <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">\n' +
                     ' <input type="hidden" name="PHOTO" value="<?=$photoFile?>">\n' +
+                    ' <input type="hidden" name="CITY" value="<?=$cityClinic?>">\n' +
+                    ' <input type="hidden" name="ADDRESS" value="<?=$addressClinic?>">\n' +
                     '    <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +
                     '        <div class="personal-cabinet-content__doctors-page-box-item__desc__head none-margin">\n' +
                     '            <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +

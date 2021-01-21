@@ -685,7 +685,7 @@ $templateData = array(
                     ?>
                 </div>
             </div>
-            <div class="search-doctors">Поиск врачей</div>
+            <div class="search-doctors">Найти</div>
 		</form>
 		<div style="clear: both;"></div>
 	</div>

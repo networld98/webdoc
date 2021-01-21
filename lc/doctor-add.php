@@ -47,6 +47,12 @@ if($_POST['PHONE']!=NULL){
         if(empty($_POST['PHOTO'])){
             $PROP[141] = 107;
         }
+        $res = CIBlockSection::GetByID($_POST['CITY']);
+        if ($ar_res = $res->GetNext()) {
+            $cityName = $ar_res['NAME'];
+        }
+        $PROP[75] = $cityName.'/'.$_POST['ADDRESS'];
+        $PROP[115][] = $_POST['CITY'];
         $PROP[74] = $_POST['ID_CLINIC'];
         $PROP[139] = 98;
         $PROP[148] = $_POST['PHONE'];
