@@ -93,7 +93,9 @@ endif;?>
         global $arrFilter;
     $searchArray = array(9,10);
         foreach($searchArray as $iblockId){
-            if ($iblockId == 9){$template = "search_clinic";}
+            if ($iblockId == 9){
+                $template = "search_clinic";
+            }
             if ($iblockId == 10){
                 if($arrFilter["=PROPERTY_94"] !=NULL){
                     $arrFilter["=PROPERTY_115"] = $arrFilter["=PROPERTY_94"];
@@ -142,8 +144,8 @@ endif;?>
                     "IBLOCK_ID" => $iblockId,
                     "PAGER_SHOW_ALL" => "Y",
                     "NEWS_COUNT" => "20",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_ORDER1" => "DESC",
+                    "SORT_BY1" => "property_RATING",
+                    "SORT_ORDER1" => "desc",
                     "SORT_BY2" => "SORT",
                     "SORT_ORDER2" => "ASC",
                     "FILTER_NAME" => "arrFilter",
