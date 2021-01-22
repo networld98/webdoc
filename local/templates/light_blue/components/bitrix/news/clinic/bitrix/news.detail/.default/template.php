@@ -487,14 +487,10 @@ function propsClinic($prop){
 <div class="clinic-card-full-desc" id="otzivy-yakor">
     <div class="clinic-card-full-desc__tabs">
         <ul>
+            <li data-tabs="1" id="openBlockOtzivy" class="active">Отзывы<span><?=$arRaing['COUNT']?></span></li>
             <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]!=NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]!=NULL || $arResult['DETAIL_TEXT']!=NULL || $arResult["PROPERTIES"]["SERVICES"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["PARKING"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]!=NULL ){?>
-                <li class="active" data-tabs="1">Информация</li>
+                <li data-tabs="2">Информация</li>
             <?}?>
-            <li data-tabs="2" id="openBlockOtzivy"
-                <?
-                if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]==NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]==NULL && $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]==NULL && $arResult['DETAIL_TEXT']==NULL && $arResult["PROPERTIES"]["SERVICES"]["VALUE"]==NULL && $arResult["PROPERTIES"]["PARKING"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]==NULL ){?>
-                    class="active"
-                <?}?>>Отзывы<span><?=$arRaing['COUNT']?></span></li>
             <?if($days_between>0){?>
                 <?if($arResult["PROPERTIES"]["STOCKS"]["VALUE"]):?>
                     <li data-tabs="3">Акции<span><?=count($arResult["PROPERTIES"]["STOCKS"]["VALUE"])?></span></li>
@@ -511,121 +507,7 @@ function propsClinic($prop){
             <?}?>
         </ul>
     </div>
-        <div class="clinic-card-full-desc__content
-           <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]!=NULL || $arResult['DETAIL_TEXT']!=NULL || $arResult["PROPERTIES"]["SERVICES"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["PARKING"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]!=NULL ){?>
-                        active
-            <?}?>" data-tabs="1">
-            <div class="clinic-card-full-desc__content__info">
-                <div class="clinic-card-full-desc__content__info-left">
-                    <div class="clinic-card-full-desc__content__info-left__map" id="map_view_<?=$arResult['ID']?>">
-                    </div>
-                    <?if($days_between>0){?>
-                        <div class="clinic-card-full-desc__content__info-left__phone">
-                            <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
-                                <span class="clinic-card-full-desc__content__info-left__phone__text">Телефон для записи</span>
-                                <a href="tel:<?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?>"><?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?></a>
-                            <?endif;?>
-                        </div>
-                    <?}?>
-                    <div class="clinic-card-full-desc__content__info-left__adress">
-                        <span class="clinic-card-full-desc__content__info-left__adress__text"><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
-                        <ul class="clinic-card__metro-list">
-                            <?foreach ($arResult["DISPLAY_PROPERTIES"]["METRO"]["DISPLAY_VALUE"] as $key => $item){?>
-                                <li class="clinic-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$item?></li>
-                            <?}?>
-                        </ul>
-                    </div>
-                    <div class="clinic-card-full-desc__content__info-left__name">
-                        <?if($arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]):?>
-                            <span class="clinic-card-full-desc__content__info-left__name__text"><?=$arResult["PROPERTIES"]["OFFICIAL_NAME"]["NAME"]?></span>
-                            <p><?=$arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]?></p>
-                        <?endif;?>
-                    </div>
-                    <div class="clinic-card-full-desc__content__info-left__head">
-                        <?if($arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]):?>
-                            <span class="clinic-card-full-desc__content__info-left__head__text"><?=$arResult["PROPERTIES"]["DIRECTOR"]["NAME"]?></span>
-                            <p><?=$arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]?></p>
-                        <?endif;?>
-                    </div>
-                    <div class="clinic-card-full-desc__content__info-left__facilities">
-                        <ul>
-                            <?if($arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]=='Y'):?>
-                                <li class="icon1"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'):?>
-                                <li class="icon2">
-                                    <?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y'){ echo $arResult["PROPERTIES"]["PAY_MONEY"]["NAME"];}?><?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){?>, <?}?>
-                                    <?if($arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){
-                                        if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){
-                                            echo mb_strtolower($arResult["PROPERTIES"]["PAY_CARD"]["NAME"]);
-                                        }else{
-                                            echo $arResult["PROPERTIES"]["PAY_CARD"]["NAME"];
-                                        }
-                                    }?>
-                                </li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'):?>
-                                <li class="icon3">
-                                    <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y'){ echo $arResult["PROPERTIES"]["CHILD"]["NAME"];}?><?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){?>, <?}?>
-                                    <?if($arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){
-                                        if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){
-                                            echo mb_strtolower($arResult["PROPERTIES"]["ADULT"]["NAME"]);
-                                        }else{
-                                            echo $arResult["PROPERTIES"]["ADULT"]["NAME"];
-                                        }
-                                    }?>
-                                </li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["SITE"]["VALUE"]!=NULL):?>
-                                <li class="<?if($days_between>0){?>icon8<?}else{?>icon4<?}?>"><a <?if($days_between>0){?>style="color:#32B4C3;"<?}?> href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SITE"]["NAME"]?></a></li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["WIFI"]["VALUE"]!=NULL):?>
-                                <li class="icon7"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["SMS_MESSAGE"]["VALUE"]!=NULL):?>
-                                <li class="icon6"><?=$arResult["PROPERTIES"]["SMS_MESSAGE"]["NAME"]?></li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["EMAIL_MESSAGE"]["VALUE"]!=NULL):?>
-                                <li class="icon4"><?=$arResult["PROPERTIES"]["EMAIL_MESSAGE"]["NAME"]?></li>
-                            <?endif;?>
-                            <?if($arResult["PROPERTIES"]["LICENSE"]["VALUE"]):?>
-                                <li class="icon5"><?=$arResult["PROPERTIES"]["LICENSE"]["NAME"]?></li>
-                            <?endif;?>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clinic-card-full-desc__content__info-right">
-                    <?if($arResult['DETAIL_TEXT']!=NULL):?>
-                    <div class="clinic-card-full-desc__content__info-right__desc">
-                        <h4 class="title-h4">Описание</h4>
-                        <p><?=htmlspecialchars_decode($arResult['DETAIL_TEXT'])?></p>
-                    </div>
-                    <?endif;?>
-                    <?if($arResult["PROPERTIES"]["SERVICES"]["VALUE"]!=NULL):?>
-                        <div class="clinic-card-full-desc__content__info-right__services">
-                            <h4 class="title-h4">Услуги</h4>
-                            <p><?=htmlspecialchars_decode($arResult["PROPERTIES"]["SERVICES"]["VALUE"]['TEXT'])?></p>
-                        </div>
-                    <?endif;?>
-                    <?if($arResult["PROPERTIES"]["PARKING"]["VALUE"]!=NULL):?>
-                        <div class="clinic-card-full-desc__content__info-right__parking">
-                            <h4 class="title-h4">Парковка</h4>
-                            <p><?=htmlspecialchars_decode($arResult["PROPERTIES"]["PARKING"]["VALUE"]['TEXT'])?></p>
-                        </div>
-                    <?endif;?>
-                    <?if($arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]!=NULL):?>
-                        <div class="clinic-card-full-desc__content__info-right__transit">
-                            <h4 class="title-h4">Проезд</h4>
-                            <p><?=htmlspecialchars_decode($arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]['TEXT'])?></p>
-                        </div>
-                    <?endif;?>
-                </div>
-            </div>
-        </div>
-    <div class="otzivy-block clinic-card-full-desc__content
-    <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]==NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]==NULL && $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]==NULL && $arResult['DETAIL_TEXT']==NULL && $arResult["PROPERTIES"]["SERVICES"]["VALUE"]==NULL && $arResult["PROPERTIES"]["PARKING"]["VALUE"]==NULL && $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]==NULL ){?>
-                active
-    <?}?>" data-tabs="2" >
+    <div class="otzivy-block clinic-card-full-desc__content active" data-tabs="1" >
         <?
         if(CModule::IncludeModule('api.uncachedarea'))
         {
@@ -638,6 +520,114 @@ function propsClinic($prop){
             );
         }
         ?>
+    </div>
+    <div class="clinic-card-full-desc__content" data-tabs="2">
+        <div class="clinic-card-full-desc__content__info">
+            <div class="clinic-card-full-desc__content__info-left">
+                <div class="clinic-card-full-desc__content__info-left__map" id="map_view_<?=$arResult['ID']?>">
+                </div>
+                <?if($days_between>0){?>
+                    <div class="clinic-card-full-desc__content__info-left__phone">
+                        <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
+                            <span class="clinic-card-full-desc__content__info-left__phone__text">Телефон для записи</span>
+                            <a href="tel:<?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?>"><?=$arResult["PROPERTIES"]["CONTACTS"]["VALUE"][0]?></a>
+                        <?endif;?>
+                    </div>
+                <?}?>
+                <div class="clinic-card-full-desc__content__info-left__adress">
+                    <span class="clinic-card-full-desc__content__info-left__adress__text"><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                    <ul class="clinic-card__metro-list">
+                        <?foreach ($arResult["DISPLAY_PROPERTIES"]["METRO"]["DISPLAY_VALUE"] as $key => $item){?>
+                            <li class="clinic-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$item?></li>
+                        <?}?>
+                    </ul>
+                </div>
+                <div class="clinic-card-full-desc__content__info-left__name">
+                    <?if($arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]):?>
+                        <span class="clinic-card-full-desc__content__info-left__name__text"><?=$arResult["PROPERTIES"]["OFFICIAL_NAME"]["NAME"]?></span>
+                        <p><?=$arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]?></p>
+                    <?endif;?>
+                </div>
+                <div class="clinic-card-full-desc__content__info-left__head">
+                    <?if($arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]):?>
+                        <span class="clinic-card-full-desc__content__info-left__head__text"><?=$arResult["PROPERTIES"]["DIRECTOR"]["NAME"]?></span>
+                        <p><?=$arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]?></p>
+                    <?endif;?>
+                </div>
+                <div class="clinic-card-full-desc__content__info-left__facilities">
+                    <ul>
+                        <?if($arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]=='Y'):?>
+                            <li class="icon1"><?=$arResult["PROPERTIES"]["GUEST_PARKING"]["NAME"]?></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'):?>
+                            <li class="icon2">
+                                <?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y'){ echo $arResult["PROPERTIES"]["PAY_MONEY"]["NAME"];}?><?if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){?>, <?}?>
+                                <?if($arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){
+                                    if($arResult["PROPERTIES"]["PAY_MONEY"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["PAY_CARD"]["VALUE"] == 'Y'){
+                                        echo mb_strtolower($arResult["PROPERTIES"]["PAY_CARD"]["NAME"]);
+                                    }else{
+                                        echo $arResult["PROPERTIES"]["PAY_CARD"]["NAME"];
+                                    }
+                                }?>
+                            </li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' || $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'):?>
+                            <li class="icon3">
+                                <?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y'){ echo $arResult["PROPERTIES"]["CHILD"]["NAME"];}?><?if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){?>, <?}?>
+                                <?if($arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){
+                                    if($arResult["PROPERTIES"]["CHILD"]["VALUE"] == 'Y' && $arResult["PROPERTIES"]["ADULT"]["VALUE"] == 'Y'){
+                                        echo mb_strtolower($arResult["PROPERTIES"]["ADULT"]["NAME"]);
+                                    }else{
+                                        echo $arResult["PROPERTIES"]["ADULT"]["NAME"];
+                                    }
+                                }?>
+                            </li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["SITE"]["VALUE"]!=NULL):?>
+                            <li class="<?if($days_between>0){?>icon8<?}else{?>icon4<?}?>"><a <?if($days_between>0){?>style="color:#32B4C3;"<?}?> href="<?=$arResult["PROPERTIES"]["SITE"]["VALUE"]?>"><?=$arResult["PROPERTIES"]["SITE"]["NAME"]?></a></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["WIFI"]["VALUE"]!=NULL):?>
+                            <li class="icon7"><?=$arResult["PROPERTIES"]["WIFI"]["NAME"]?></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["SMS_MESSAGE"]["VALUE"]!=NULL):?>
+                            <li class="icon6"><?=$arResult["PROPERTIES"]["SMS_MESSAGE"]["NAME"]?></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["EMAIL_MESSAGE"]["VALUE"]!=NULL):?>
+                            <li class="icon4"><?=$arResult["PROPERTIES"]["EMAIL_MESSAGE"]["NAME"]?></li>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["LICENSE"]["VALUE"]):?>
+                            <li class="icon5"><?=$arResult["PROPERTIES"]["LICENSE"]["NAME"]?></li>
+                        <?endif;?>
+                    </ul>
+                </div>
+            </div>
+            <div class="clinic-card-full-desc__content__info-right">
+                <?if($arResult['DETAIL_TEXT']!=NULL):?>
+                    <div class="clinic-card-full-desc__content__info-right__desc">
+                        <h4 class="title-h4">Описание</h4>
+                        <p><?=htmlspecialchars_decode($arResult['DETAIL_TEXT'])?></p>
+                    </div>
+                <?endif;?>
+                <?if($arResult["PROPERTIES"]["SERVICES"]["VALUE"]!=NULL):?>
+                    <div class="clinic-card-full-desc__content__info-right__services">
+                        <h4 class="title-h4">Услуги</h4>
+                        <p><?=htmlspecialchars_decode($arResult["PROPERTIES"]["SERVICES"]["VALUE"]['TEXT'])?></p>
+                    </div>
+                <?endif;?>
+                <?if($arResult["PROPERTIES"]["PARKING"]["VALUE"]!=NULL):?>
+                    <div class="clinic-card-full-desc__content__info-right__parking">
+                        <h4 class="title-h4">Парковка</h4>
+                        <p><?=htmlspecialchars_decode($arResult["PROPERTIES"]["PARKING"]["VALUE"]['TEXT'])?></p>
+                    </div>
+                <?endif;?>
+                <?if($arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]!=NULL):?>
+                    <div class="clinic-card-full-desc__content__info-right__transit">
+                        <h4 class="title-h4">Проезд</h4>
+                        <p><?=htmlspecialchars_decode($arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]['TEXT'])?></p>
+                    </div>
+                <?endif;?>
+            </div>
+        </div>
     </div>
     <?if($days_between>0){?>
         <div class="clinic-card-full-desc__content" data-tabs="3">
