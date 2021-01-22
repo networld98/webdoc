@@ -147,7 +147,7 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                                     <div class="api-guest-contacts">
                                         (
                                         <? if($arItem['GUEST_EMAIL']): ?>
-                                            <a href="mailto:<?=$arItem['GUEST_EMAIL']?>"><?=$arItem['GUEST_EMAIL']?></a> <? endif ?>
+                                            <a href="mailto:<?=$arItem['GUEST_EMAIL']?>"><?=explode("@", $arItem['GUEST_EMAIL'])[0]?>@******</a> <? endif ?>
                                         <? if($arItem['GUEST_PHONE']): ?> |
                                             <a href="tel:<?=$arItem['GUEST_PHONE']?>"><?=$arItem['GUEST_PHONE']?></a> <? endif ?>
                                         <? if($arItem['ORDER_ID']): ?> | <?=Loc::getMessage('API_REVIEWS_LIST_ORDER_NUM')?> <?=$arItem['ORDER_ID']?><? endif ?>
