@@ -3,10 +3,17 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Услуги");
 ?>
 <?
-$curPagePath = $APPLICATION->GetCurDir();
-$curPagePath = explode("/", $curPagePath);
+function console_log( $data ){
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+}
+
 ?>
 <?
+$curPagePath = $APPLICATION->GetCurDir();
+$curPagePath = explode("/", $curPagePath);
+console_log($_GET['view']);
 function services_list($iblock){
     $services = [];
     $arSelect = array("NAME","ID");
@@ -81,18 +88,18 @@ function services_list($iblock){
         <div class="sort-block">
             <ul class="nav nav-tabs sort-block-list" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="sort-block-list-item active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Направления</a>
+                    <a class="sort-block-list-item <?if($_GET['view'] == 'serv') echo 'active'?>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="<?if($_GET['view'] == 'serv'){echo 'true';} else echo 'false';?>">Направления</a>
                 </li>
                 <li class="nav-item">
-                    <a class="sort-block-list-item" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Диагностика</a>
+                    <a class="sort-block-list-item <?if($_GET['view'] == 'diag') echo 'active'?>" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="<?if($_GET['view'] == 'diag'){echo 'true';} else echo 'false';?>">Диагностика</a>
                 </li>
             </ul>
         </div>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-pane fade <?if($_GET['view'] == 'serv') echo ' show active'?>" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <? services_list(19)?>
                 </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="tab-pane fade <?if($_GET['view'] == 'diag') echo 'show active'?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <? services_list(18)?>
             </div>
         </div>

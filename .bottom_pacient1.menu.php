@@ -16,14 +16,14 @@ $aMenuLinks = Array(
 	),
     Array(
         "Диагностика",
-        "/services/",
+        "/services/?view=diag",
         Array(),
         Array(),
         ""
     ),
     Array(
         "Услуги",
-        "/services/",
+        "/services/?view=serv",
         Array(),
         Array(),
         ""

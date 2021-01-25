@@ -176,7 +176,7 @@ $days_between = ceil(($end - $start) / 86400);
                         </ul>
                     </li>
                     <li>
-                        <label for="">Прочие</label>
+                        <label for="">Прочее</label>
                         <ul class="checkbox-group">
                             <? propview($arProps["ONLINE"])?>
                             <? propview($arProps["DIAGNOSTICS"])?>

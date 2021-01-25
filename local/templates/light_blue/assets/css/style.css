@@ -7694,29 +7694,38 @@ button:focus {
     .personal-cabinet-content__doctors-page__filter__options .main-filter .row > div:last-child {
         padding-top: 0;
     }
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(6) {
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(6) {*/
+    /*    width: 36% !important;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5) {*/
+    /*    width: 27% !important;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
+    /*    width: 27% !important;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
+    /*    width: 36% !important;*/
+    /*}*/
+    /* .main-filter .row > div:last-child .bx_filter_parameters_box.active:last-child {*/
+    /*    width: 27% !important;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7), .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
+    /*    width: 36% !important;*/
+    /*}*/
+    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) {
         width: 36% !important;
     }
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5) {
-        width: 27% !important;
+    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
+        width: 30% !important;
     }
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
-        width: 27% !important;
-    }
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
-        width: 36% !important;
-    }
-     .main-filter .row > div:last-child .bx_filter_parameters_box.active:last-child {
-        width: 27% !important;
-    }
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7), .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
-        width: 36% !important;
+    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9) {
+        width: 34% !important;
     }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box:nth-child(2n+2) {
 		clear: none;
     }
     .main-filter .row > div:last-child .bx_filter_parameters_box.active {
-        width: 27% !important;
+        width: 33% !important;
     }
     .bx-touch .personal-cabinet-content__doctors-page__filter__options .bx_filter.bx_horizontal .bx_filter_parameters_box.active {
         width: 50% !important;
