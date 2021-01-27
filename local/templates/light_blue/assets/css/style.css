@@ -1429,7 +1429,7 @@ main {
 .doctors-list-item_options-list-item::before {
     content: '';
     display: block;
-    background-image: url(../images/fa-solid_check.svg);
+    background-image: url(../images/fa-solid_check-blue.svg);
     width: 16px;
     height: 16px;
     margin-right: 10px;
@@ -2066,7 +2066,7 @@ main {
 .doctor-card_options-list-item::before {
     content: '';
     display: block;
-    background-image: url(../images/fa-solid_check.svg);
+    background-image: url(../images/fa-solid_check-blue.svg);
     width: 16px;
     height: 16px;
     margin-right: 10px;
@@ -3070,14 +3070,14 @@ main {
     height: 24px;
 }
 .clinic-card-info__title.map::before {
-    background-image: url(../images/map-ico.svg);
+    background-image: url(../images/map-ico-blue.svg);
 
 }
 .clinic-card-info__title.contacts-phone::before {
-    background-image: url(../images/phone-ico.svg);
+    background-image: url(../images/phone-ico-blue.svg);
 }
 .clinic-card-info__title.time::before {
-    background-image: url(../images/time-ico.svg);
+    background-image: url(../images/time-ico-blue.svg);
 }
 .clinic-card-info__block span {
     font-family: "Ubuntu-Light";
@@ -3145,14 +3145,14 @@ main {
     height: 24px;
 }
 .clinic-card-info-detail__title.map::before {
-    background-image: url(../images/map-ico.svg);
+    background-image: url(../images/map-ico-blue.svg);
 
 }
 .clinic-card-info-detail__title.contacts-phone::before {
-    background-image: url(../images/phone-ico.svg);
+    background-image: url(../images/phone-ico-blue.svg);
 }
 .clinic-card-info-detail__title.time::before {
-    background-image: url(../images/time-ico.svg);
+    background-image: url(../images/time-ico-blue.svg);
 }
 .clinic-card-info-detail__block span {
     font-family: "Ubuntu";
@@ -3675,10 +3675,10 @@ main {
     align-items: center;
 }
 .personal-cabinet-content__schedule-page__adress-info .adress > span::before {
-    background-image: url(../images/map-ico.svg);
+    background-image: url(../images/map-ico-blue.svg);
 }
 .personal-cabinet-content__schedule-page__adress-info .schedule > span::before {
-    background-image: url(../images/time-ico.svg);
+    background-image: url(../images/time-ico-blue.svg);
 }
 .personal-cabinet-content__schedule-page__adress-info .adress > p, .personal-cabinet-content__schedule-page__adress-info .schedule > p {
     display: block;
@@ -4758,7 +4758,7 @@ button:focus {
     color: #000000;
 }
 .clinic-card-full-desc__content__info-left__phone a::before {
-    background-image: url(../images/phone-ico.svg);
+    background-image: url(../images/phone-ico-blue.svg);
     display: block;
     content: '';
     margin-right: 13px;
@@ -5055,7 +5055,7 @@ button:focus {
     color: #000000;
 }
 .clinic-card-full-desc__content__actions-item__phone a::before {
-    background-image: url(../images/phone-ico.svg);
+    background-image: url(../images/phone-ico-blue.svg);
     display: block;
     content: '';
     margin-right: 13px;
@@ -5951,6 +5951,7 @@ button:focus {
     padding: 30px 20px;
     /* max-width: 285px; */
     width: 100%;
+    outline: 5px solid rgb(255, 255, 255);
 }
 .anchor-block-list {
     padding: 0;
@@ -8884,6 +8885,10 @@ button:focus {
 @media (max-width: 560px) {
     .clinic-card-full-desc__content__feedback-item {
         flex-direction: column;
+        border-bottom: 2px solid #98D7DC;
+    }
+    .clinic-card-full-desc__content__feedback-item:last-child {
+        border-bottom: none;
     }
     .clinic-card-full-desc__content__feedback-item-left {
         margin-right: 0;
@@ -9143,10 +9148,15 @@ button:focus {
         border-radius: 0;
     }
     .specializations .nav-pills .nav-link {
-        border: 1px dashed #979797;
+        border: 2px solid #b5f0f5;
+        border-radius: 50px;
+        color: #b5f0f5;
     }
     .specializations .nav-pills .nav-link.active {
-        border: 1px dashed #000000;
+        /*border: 1px dashed #000000;*/
+        border: 2px solid #98D7DC;
+        border-radius: 50px;
+        color: #98D7DC;
     }
     .specializations .nav-pills {
         padding-bottom: 25px;
