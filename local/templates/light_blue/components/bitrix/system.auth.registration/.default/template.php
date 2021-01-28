@@ -13,7 +13,12 @@
  * @var array $arResult
  * @var CBitrixComponentTemplate $this
  */
-
+function console_log( $data ){
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+}
+console_log($_GET['who']);
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <div class="personal-cabinet-content__my-profile personal-cabinet-content-auth">
     <div class="personal-cabinet-content__my-profile__info">
@@ -194,7 +199,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
                        $("#UF_NAME_CLINIC").find('input').val('-');
 
                    }
-                })
+                });
+                <?if($_GET['who'] == 'doctor') {?>
+                $('input[name=UF_TYPE_USER]').trigger('change');
+                <?}?>
             })
         </script>
             <style>

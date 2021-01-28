@@ -30,6 +30,7 @@ body {
     margin: 0;
     font-size: 15px;
     line-height: 24px;
+    background-color: #ffffff;
 }
 
 :root {
@@ -1429,10 +1430,12 @@ main {
 .doctors-list-item_options-list-item::before {
     content: '';
     display: block;
-    background-image: url(../images/fa-solid_check-blue.svg);
+    background-image: url(../images/fa-solid_check-green.svg);
     width: 16px;
     height: 16px;
     margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .doctors-list-item-favorites {
     display: block;
@@ -2066,7 +2069,7 @@ main {
 .doctor-card_options-list-item::before {
     content: '';
     display: block;
-    background-image: url(../images/fa-solid_check-blue.svg);
+    background-image: url(../images/fa-solid_check-green.svg);
     width: 16px;
     height: 16px;
     margin-right: 10px;
@@ -3068,9 +3071,11 @@ main {
     margin-right: 10px;
     width: 26px;
     height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .clinic-card-info__title.map::before {
-    background-image: url(../images/map-ico-blue.svg);
+    background-image: url(../images/map-ico-red.svg);
 
 }
 .clinic-card-info__title.contacts-phone::before {
@@ -3145,7 +3150,7 @@ main {
     height: 24px;
 }
 .clinic-card-info-detail__title.map::before {
-    background-image: url(../images/map-ico-blue.svg);
+    background-image: url(../images/map-ico-red.svg);
 
 }
 .clinic-card-info-detail__title.contacts-phone::before {
@@ -3675,7 +3680,7 @@ main {
     align-items: center;
 }
 .personal-cabinet-content__schedule-page__adress-info .adress > span::before {
-    background-image: url(../images/map-ico-blue.svg);
+    background-image: url(../images/map-ico-red.svg);
 }
 .personal-cabinet-content__schedule-page__adress-info .schedule > span::before {
     background-image: url(../images/time-ico-blue.svg);
@@ -9138,7 +9143,8 @@ button:focus {
         margin-top: 4px;
     }
     .specializations {
-        margin-top: 40px !important;
+        /*margin-top: 40px !important;*/
+        margin-top: 0 !important;
     }
     .specializations .nav-pills .nav-link.active, .specializations .nav-pills .nav-link {
         padding-left: 51px;
@@ -9148,15 +9154,15 @@ button:focus {
         border-radius: 0;
     }
     .specializations .nav-pills .nav-link {
-        border: 2px solid #b5f0f5;
+        border: 1px solid #9DD4B3;
         border-radius: 50px;
-        color: #b5f0f5;
+        color: #6e6e6e;
     }
     .specializations .nav-pills .nav-link.active {
         /*border: 1px dashed #000000;*/
-        border: 2px solid #98D7DC;
+        border: 1px solid #9DD4B3;
         border-radius: 50px;
-        color: #98D7DC;
+        color: #9DD4B3;
     }
     .specializations .nav-pills {
         padding-bottom: 25px;
