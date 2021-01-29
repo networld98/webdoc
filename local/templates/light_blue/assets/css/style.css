@@ -3068,7 +3068,7 @@ main {
 .clinic-card-info__title::before {
     display: block;
     content: '';
-    margin-right: 10px;
+    margin-right: 8px;
     width: 26px;
     height: 24px;
     background-repeat: no-repeat;
@@ -3103,7 +3103,8 @@ main {
     line-height: 24px;
 }
 .clinic-card-info .doctors-list-item_options-list-item::before {
-    margin-right: 15px;
+    margin-right: 10px;
+    margin-left: 5px;
 }
 .clinic-card-info .doctor-card-popUp-group__route {
     width: initial;
@@ -7963,6 +7964,19 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .clinic-card-info .doctor-card-popUp-group__route {
+        border: 1px solid #9DD4B3;
+        border-radius: 50px;
+        color: #9DD4B3;
+        font-size: 18px;
+    }
+    .clinic-card-info .doctor-card-popUp-group__route span {
+         color: #9DD4B3;
+        border-bottom: none;
+    }
+    .clinic-card-info .doctor-card-popUp-group__route::before {
+        display: none;
+    }
     .options-block {
         margin-bottom: 15px;
     }
