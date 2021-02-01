@@ -2073,6 +2073,8 @@ main {
     width: 16px;
     height: 16px;
     margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .doctor-card__position-desc {
     font-family: "Ubuntu-Light";
@@ -8909,10 +8911,15 @@ button:focus {
 @media (max-width: 560px) {
     .clinic-card-full-desc__content__feedback-item {
         flex-direction: column;
-        border-bottom: 2px solid #98D7DC;
+        box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        margin-bottom: 20px;
     }
     .clinic-card-full-desc__content__feedback-item:last-child {
         border-bottom: none;
+        margin-bottom: 0;
     }
     .clinic-card-full-desc__content__feedback-item-left {
         margin-right: 0;
