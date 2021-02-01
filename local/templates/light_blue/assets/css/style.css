@@ -3149,6 +3149,8 @@ main {
     margin-right: 10px;
     width: 26px;
     height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .clinic-card-info-detail__title.map::before {
     background-image: url(../images/map-ico-red.svg);
@@ -7964,18 +7966,21 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
-    .clinic-card-info .doctor-card-popUp-group__route {
+    .clinic-card-info .doctor-card-popUp-group__route,.clinic-card-desc-detail .doctor-card-popUp-group__route {
         border: 1px solid #9DD4B3;
         border-radius: 50px;
         color: #9DD4B3;
         font-size: 18px;
     }
-    .clinic-card-info .doctor-card-popUp-group__route span {
+    .clinic-card-info .doctor-card-popUp-group__route span,.clinic-card-desc-detail .doctor-card-popUp-group__route span {
          color: #9DD4B3;
         border-bottom: none;
     }
-    .clinic-card-info .doctor-card-popUp-group__route::before {
+    .clinic-card-info .doctor-card-popUp-group__route::before,.clinic-card-desc-detail .doctor-card-popUp-group__route::before {
         display: none;
+    }
+    .clinic-card-desc-detail .doctor-card-popUp-group {
+        margin-top: 15px;
     }
     .options-block {
         margin-bottom: 15px;

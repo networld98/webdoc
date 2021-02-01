@@ -17,7 +17,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
     <?$APPLICATION->ShowViewContent('filterTitle');?>
     <div class="sort">
         <span>
-            Сортировать по:
+            Выбрать:
         </span>
         <select name="" onchange="location=this.value" id="">
             <option value="?sort=property_RATING&order=desc"<?if ($_GET["sort"] == "property_RATING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Высокий рейтинг</option>

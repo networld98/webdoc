@@ -51,7 +51,7 @@ $aMenuLinks = Array(
         ),
     ),
     Array(
-        "Пополнить счет",
+        "Платное размещение",
         "/lc/finance/",
         Array(),
         Array(
