@@ -694,11 +694,11 @@ function propsClinic($prop){
                              <tr>
                                  <td><?=$item['SERVICE']?></td>
                                  <td class="clinic-card-full-desc__content__price-item__price"><?=$item['PRICE']?> ₽</td>
-                                 <td><button class="popup-service-click popup-service-click-one-<?=$i?>-<?=$key?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
+                                 <td><button class="popup-service-click popup-service-click-one-<?=$i?>-<?=str_replace(" ","",$key);?>" data-service="<?=$key?> (<?=$item['SERVICE']?>)">Запись на услугу</button></td>
                              </tr>
                                  <script>
                                      $(document).ready(function () {
-                                         $(".popup-service-click-one-<?=$i?>-<?=$key?>").click(function () {
+                                         $(".popup-service-click-one-<?=$i?>-<?=str_replace(" ","",$key);?>").click(function () {
                                              let service = $(this).data('service');
                                              $('#option_service').val(service);
                                          });
