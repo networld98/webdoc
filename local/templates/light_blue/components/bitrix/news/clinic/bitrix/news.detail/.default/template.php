@@ -758,48 +758,21 @@ function propsClinic($prop){
                             <div class="col-12 text-center">
                                 <p class="clinic-card-desc__clinic-name"><?=$arResult["NAME"]?></p>
                             </div>
-                            <div class="col-4">
-                                <div class="clinic-popup_img">
-                                    <?if($arResult["PROPERTIES"]["LOGO"]["VALUE"]){
-                                        ?>
-                                        <img src="<?= CFile::GetPath($arResult["PROPERTIES"]["LOGO"]["VALUE"]); ?>" alt='<?=$arResult["NAME"]?>'>
-                                    <?}else{?>
-                                        <img src="<?= SITE_TEMPLATE_PATH ?>/icon/hospital_building.svg" alt="нет лого">
-                                    <?}?>
-                                    <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
-                                </div>
-                                <div class="clinic-card-img__ratings text-center">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='1'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='2'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='3'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                                    <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
-                                </div>
-                                <a class="clinic-card-img__link" id="goToOtzivy" href="#otzivy-yakor"><?=$arRaing['COUNT']?> отзывов</a>
-                            </div>
-                            <div class="col-8 no-padding">
+                            <div class="col-12">
                                 <div class="row no-margin">
                                     <?if($arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]):?>
-                                        <div class="col-12 no-padding">
+                                        <div class="col-12 ">
                                             <p class="clinic-card-desc__price">Первичная стоимость приёма - <span><?=$arResult["DISPLAY_PROPERTIES"]["COST_PRICE"]["DISPLAY_VALUE"]?></span></p>
                                         </div>
                                     <?endif;?>
                                     <?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]):?>
-                                        <div class="col-12 col-margin no-padding">
+                                        <div class="col-12 col-margin ">
                                             <p class="clinic-card-info-detail__title map">Адрес</p>
                                             <span><?if($arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arResult["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arResult["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                                         </div>
                                     <?endif;?>
-                                    <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
-                                        <div class="col-6 col-margin no-padding">
-                                            <p class="clinic-card-info-detail__title contacts-phone">Контакты</p>
-                                            <?foreach ($arResult["PROPERTIES"]["CONTACTS"]["VALUE"] as $item){?>
-                                                <span><a href="tel:<?=$item?>"><?=$item?></a></span>
-                                            <?}?>
-                                        </div>
-                                    <?endif;?>
                                     <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]!=NULL):?>
-                                        <div class="col-6 col-margin no-padding">
+                                        <div class="col-6 col-margin flex-direct">
                                             <p class="clinic-card-info__title time">Время работы</p>
                                             <?if($arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"] == "Круглосуточно"):?>
                                                 <span><?=$arResult["DISPLAY_PROPERTIES"]["WORK_TIME"]["DISPLAY_VALUE"]?></span>
@@ -816,7 +789,15 @@ function propsClinic($prop){
                                             <?endif;?>
                                         </div>
                                     <?endif;?>
-                                    <div class="col-12 col-margin no-padding">
+                                    <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
+                                        <div class="col-6 col-margin flex-direct">
+                                            <p class="clinic-card-info-detail__title contacts-phone">Контакты</p>
+                                            <?foreach ($arResult["PROPERTIES"]["CONTACTS"]["VALUE"] as $item){?>
+                                                <span><a href="tel:<?=$item?>"><?=$item?></a></span>
+                                            <?}?>
+                                        </div>
+                                    <?endif;?>
+                                    <div class="col-12 col-margin">
                                         <ul class="doctors-list-item_options-list">
                                             <?propsClinic($arResult["PROPERTIES"]["DIAGNOSTICS"])?>
                                             <?propsClinic($arResult["PROPERTIES"]["CHILDREN_DOCTOR"])?>

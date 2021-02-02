@@ -6253,7 +6253,15 @@ button:focus {
 .api_controls input:checked + .checkbox img {
     opacity: 1;
 }
-
+.clinic-popup .flex-direct {
+    display: flex;
+    flex-direction: column;
+}
+.clinic-popup .work-day {
+    float: left;
+    padding: 0;
+    width: 22px;
+}
 
 @media (max-width: 1600px) {
     .main__img2 {
@@ -6440,6 +6448,12 @@ button:focus {
     }
 }
 @media (max-width: 1200px) {
+    .call-popup .clinic-popup.doctors-list .flex-left > .row > div:last-child {
+        display: none;
+    }
+    .call-popup .clinic-popup.doctors-list .flex-left > .row {
+        padding: 0 30px;
+    }
     .burger__btn {
         left: 20px;
     }
@@ -7974,7 +7988,7 @@ button:focus {
         color: #9DD4B3;
         font-size: 18px;
     }
-    .clinic-card-info .doctor-card-popUp-group__route span,.clinic-card-desc-detail .doctor-card-popUp-group__route span {
+    .clinic-card-info .doctor-card-popUp-group__route span,.clinic-card-desc-detail .doctor-card-popUp-group__route span , .clinic-card-desc-detail .doctor-card-popUp-group__route > a {
          color: #9DD4B3;
         border-bottom: none;
     }
@@ -8025,7 +8039,7 @@ button:focus {
     }
     .sort-arrow {
         right: initial;
-        left: 272px;
+        left: 220px;
     }
     .sharding-block-doctor-detail-ghost {
         display: flex;

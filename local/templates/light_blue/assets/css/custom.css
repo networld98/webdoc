@@ -682,19 +682,21 @@ main >.main-seo-text {
     font-size: 25px;
     line-height: 29px;
     color: #000000;
-    margin-bottom: 30px;
     max-width: 100%;
 }
 .clinic-popup .doctors-list-item_options-list {
     padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 .clinic-popup .doctors-list-item_options-list li{
     display: inline-flex;
     align-items: center;
-    margin-right: 15px;
+    flex-basis: 33%;
+    margin-bottom: 10px;
 }
 .clinic-popup .col-margin {
-    margin: 17px 0;
+    margin: 8px 0;
 }
 .clinic-card-info__block .work-day,.clinic-card-info-detail__block .work-day {
     float: left;
