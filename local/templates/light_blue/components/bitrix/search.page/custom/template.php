@@ -91,6 +91,7 @@ endif;?>
         </div>
         <?$serviceKey = 0;
         global $arrFilter;
+
     $searchArray = array(9,10);
         foreach($searchArray as $iblockId){
             if ($iblockId == 9){
@@ -145,7 +146,7 @@ endif;?>
                     "PAGER_SHOW_ALL" => "Y",
                     "NEWS_COUNT" => "20",
                     "SORT_BY1" => "property_RATING",
-                    "SORT_ORDER1" => "desc",
+                    "SORT_ORDER1" => "DESC",
                     "SORT_BY2" => "SORT",
                     "SORT_ORDER2" => "ASC",
                     "FILTER_NAME" => "arrFilter",
@@ -230,7 +231,44 @@ endif;?>
         </div>
         <?$serviceKey = 0;
           global $arrFilter;
+          $search = ksort($searchArray);
           foreach(array_keys($searchArray) as $iblockId){
+              if ($iblockId == 9){$template = "search_clinic";}
+              if ($iblockId == 10){
+                  if($arrFilter["=PROPERTY_94"] !=NULL){
+                      $arrFilter["=PROPERTY_115"] = $arrFilter["=PROPERTY_94"];
+                      unset($arrFilter["=PROPERTY_94"]);
+                  }
+                  if($arrFilter["=PROPERTY_97"] !=NULL){
+                      $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
+                      unset($arrFilter["=PROPERTY_97"]);
+                  }
+                  if($arrFilter["=PROPERTY_97"] !=NULL){
+                      $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
+                      unset($arrFilter["=PROPERTY_97"]);
+                  }
+                  if($arrFilter["=PROPERTY_83"] !=NULL){
+                      $arrFilter["=PROPERTY_124"] = $arrFilter["=PROPERTY_83"];
+                      unset($arrFilter["=PROPERTY_83"]);
+                  }
+                  if($arrFilter["=PROPERTY_86"] !=NULL){
+                      $arrFilter["=PROPERTY_77"] = $arrFilter["=PROPERTY_86"];
+                      unset($arrFilter["=PROPERTY_86"]);
+                  }
+                  if($arrFilter["=PROPERTY_86"] !=NULL){
+                      $arrFilter["=PROPERTY_76"] = $arrFilter["=PROPERTY_84"];
+                      unset($arrFilter["=PROPERTY_84"]);
+                  }
+                  if($arrFilter["=PROPERTY_85"] !=NULL){
+                      $arrFilter["=PROPERTY_123"] = $arrFilter["=PROPERTY_85"];
+                      unset($arrFilter["=PROPERTY_85"]);
+                  }
+                  if($arrFilter["=PROPERTY_89"] !=NULL){
+                      $arrFilter["=PROPERTY_122"] = $arrFilter["=PROPERTY_89"];
+                      unset($arrFilter["=PROPERTY_89"]);
+                  }
+                  $template = "search_doctor";
+              }
               if (($iblockId == 18 || $iblockId == 19) && $serviceKey == 0 ){
                   $serviceKey++;?>
                   <div class="container" id="blockService">
@@ -249,42 +287,6 @@ endif;?>
                       <h2>Симптомы</h2>
                   </div>
               <?}
-            if ($iblockId == 9){$template = "search_clinic";}
-            if ($iblockId == 10){
-                if($arrFilter["=PROPERTY_94"] !=NULL){
-                    $arrFilter["=PROPERTY_115"] = $arrFilter["=PROPERTY_94"];
-                    unset($arrFilter["=PROPERTY_94"]);
-                }
-                if($arrFilter["=PROPERTY_97"] !=NULL){
-                    $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
-                    unset($arrFilter["=PROPERTY_97"]);
-                }
-                if($arrFilter["=PROPERTY_97"] !=NULL){
-                    $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
-                    unset($arrFilter["=PROPERTY_97"]);
-                }
-                if($arrFilter["=PROPERTY_83"] !=NULL){
-                    $arrFilter["=PROPERTY_124"] = $arrFilter["=PROPERTY_83"];
-                    unset($arrFilter["=PROPERTY_83"]);
-                }
-               if($arrFilter["=PROPERTY_86"] !=NULL){
-                    $arrFilter["=PROPERTY_77"] = $arrFilter["=PROPERTY_86"];
-                    unset($arrFilter["=PROPERTY_86"]);
-                }
-               if($arrFilter["=PROPERTY_86"] !=NULL){
-                    $arrFilter["=PROPERTY_76"] = $arrFilter["=PROPERTY_84"];
-                    unset($arrFilter["=PROPERTY_84"]);
-                }
-               if($arrFilter["=PROPERTY_85"] !=NULL){
-                    $arrFilter["=PROPERTY_123"] = $arrFilter["=PROPERTY_85"];
-                    unset($arrFilter["=PROPERTY_85"]);
-                }
-                 if($arrFilter["=PROPERTY_89"] !=NULL){
-                    $arrFilter["=PROPERTY_122"] = $arrFilter["=PROPERTY_89"];
-                    unset($arrFilter["=PROPERTY_89"]);
-                }
-                $template = "search_doctor";
-            }
             if ($iblockId == 18 || $iblockId == 19 || $iblockId == 20 || $iblockId == 21 || $iblockId == 22){$template = "search_services";}
              $arrFilter['=ID'] = $searchArray[$iblockId];
 
@@ -298,7 +300,7 @@ endif;?>
                     "IBLOCK_ID" => $iblockId,
                     "PAGER_SHOW_ALL" => "Y",
                     "NEWS_COUNT" => "20",
-                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY1" => "property_RATING",
                     "SORT_ORDER1" => "DESC",
                     "SORT_BY2" => "SORT",
                     "SORT_ORDER2" => "ASC",
