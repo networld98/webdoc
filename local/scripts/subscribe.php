@@ -48,5 +48,8 @@ if(CModule::IncludeModule('iblock')) {
         CIBlockElement::SetPropertyValuesEx($Element['ID'], false, $PROP);
     }
 }
+$f = fopen('subscribe.log', 'a');
+fwrite($f, date('d.m.Y H:i:s') . " скрипт выполнился\n");
+fclose($f);
 print "Отработал";
 ?>
