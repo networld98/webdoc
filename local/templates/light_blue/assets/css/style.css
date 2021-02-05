@@ -4688,9 +4688,10 @@ button:focus {
     font-weight: normal;
     font-size: 18px;
     line-height: 26px;
+    min-height: 58px;
     color: #000000;
     padding: 10px 10px 10px 20px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     border-radius: 5px;
     transition: 0.3s;
     margin-bottom: 10px;
@@ -4700,10 +4701,10 @@ button:focus {
     justify-content: space-between;
 }
 .clinic-card-full-desc__tabs > ul > li.active {
-    border: 2px solid #98D7DC;
+    border: 1px solid #98D7DC;
 }
 .clinic-card-full-desc__tabs > ul > li:hover {
-    border: 2px solid #98D7DC;
+    border: 1px solid #98D7DC;
 }
 .clinic-card-full-desc__tabs > ul > li span {
     font-family: "Ubuntu";
@@ -5852,7 +5853,7 @@ button:focus {
 .variable-block-item {
     border-radius: 10px;
     background: #FFFFFF;
-    border: 1px solid #E3EAEA;
+    border: 1px solid #98D7DC;
     padding: 30px 40px 20px;
     margin-bottom: 20px;
 }
@@ -6439,7 +6440,7 @@ button:focus {
         max-width: 435px;
     }
     .flex-right .doctor-card-top-content,.flex-left .doctor-card-top-content {
-        min-height: 516x;
+        min-height: 516px;
     }
     .doctor-card-popUp-group__call {
         max-width: 275px;
@@ -7737,13 +7738,13 @@ button:focus {
     /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7), .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
     /*    width: 36% !important;*/
     /*}*/
-    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) {
+    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) {
         width: 36% !important;
     }
-    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
+    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
         width: 30% !important;
     }
-    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9) {
+    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9), .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9) {
         width: 34% !important;
     }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box:nth-child(2n+2) {
@@ -7939,7 +7940,7 @@ button:focus {
         margin-bottom: 30px;
     }
     .clinic-card-full-desc__tabs > ul > li {
-        margin-right: 0;
+        margin-right: 5px;
     }
     .clinic-card-full-desc__content__info {
         flex-direction: column;
@@ -7985,7 +7986,7 @@ button:focus {
     .clinic-card-info .doctor-card-popUp-group__route,.clinic-card-desc-detail .doctor-card-popUp-group__route {
         border: 1px solid #9DD4B3;
         border-radius: 50px;
-        color: #9DD4B3;
+        color: #9DD4B3 !important;
         font-size: 18px;
     }
     .clinic-card-info .doctor-card-popUp-group__route span,.clinic-card-desc-detail .doctor-card-popUp-group__route span , .clinic-card-desc-detail .doctor-card-popUp-group__route > a {
