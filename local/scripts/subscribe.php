@@ -1,4 +1,7 @@
 <?
+if ('cli' ==  php_sapi_name()){
+    $_SERVER["DOCUMENT_ROOT"] = '/home/bitrix/ext_www/webdoc.clinic';
+}
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 $iblock = [9,10];
 $start = strtotime(date('d.m.Y'));
@@ -48,7 +51,7 @@ if(CModule::IncludeModule('iblock')) {
         CIBlockElement::SetPropertyValuesEx($Element['ID'], false, $PROP);
     }
 }
-$f = fopen('subscribe.log', 'a');
+$f = fopen($_SERVER["DOCUMENT_ROOT"].'/local/scripts/subscribe.log', 'a');
 fwrite($f, date('d.m.Y H:i:s') . " скрипт выполнился\n");
 fclose($f);
 print "Отработал";
