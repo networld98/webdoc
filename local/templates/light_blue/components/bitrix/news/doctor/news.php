@@ -47,7 +47,7 @@ $this->setFrameMode(true);
         "FILTER_VIEW_MODE" => "vertical",
         "HIDE_NOT_AVAILABLE" => "N",
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+        "IBLOCK_ID" => "9",
         "PAGER_PARAMS_NAME" => "arrPager",
         "PREFILTER_NAME" => "",
         "SAVE_IN_SESSION" => "N",
