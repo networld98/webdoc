@@ -3686,9 +3686,13 @@ main {
 }
 .personal-cabinet-content__schedule-page__adress-info .adress > span::before {
     background-image: url(../images/map-ico-red.svg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .personal-cabinet-content__schedule-page__adress-info .schedule > span::before {
     background-image: url(../images/time-ico-blue.svg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .personal-cabinet-content__schedule-page__adress-info .adress > p, .personal-cabinet-content__schedule-page__adress-info .schedule > p {
     display: block;

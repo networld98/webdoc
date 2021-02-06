@@ -653,7 +653,7 @@ $(document).ready(()=>{
     $(window).resize(centerBox);
     $(window).scroll(centerBox);
     centerBox();
-    $('.popup-link').click(function(e) {
+    $('.clinic-card-item .popup-link').click(function(e) {
      
         /* Предотвращаем действия по умолчанию */
         e.preventDefault();
@@ -668,14 +668,14 @@ $(document).ready(()=>{
         $('.popup-box .map-popup').css('display', 'block');
         console.log($(this).parents('.clinic-card'));
         // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
-        $($(this).parents('main').find('.map-wrapper .popup-box')).show();
+        $($(this).parents('.clinic-card-item').find('.map-wrapper .popup-box')).show();
         $('#blackout').show();
         $('html,body').css('overflow', 'hidden');
          
         /* Убираем баг в Firefox */
         $('html').scrollTop(scrollPos);
     });
-    $('.popup-link-marker').click(function(e) {
+    $('.clinic-card-item .popup-link-marker').click(function(e) {
      
         /* Предотвращаем действия по умолчанию */
         e.preventDefault();
@@ -687,10 +687,51 @@ $(document).ready(()=>{
         var scrollPos = $(window).scrollTop();
         /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
         $('.popup-box .map-popup-marker').css('display', 'block');
-        $(this).parents('.clinic-card').find('.map-wrapper .popup-box').show();
+        $(this).parents('.clinic-card-item').find('.map-wrapper .popup-box').show();
         $('#blackout').show();
         $('html,body').css('overflow', 'hidden');
          
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
+    $('.doctor-card .popup-link').click(function(e) {
+
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        $('.popup-box .map-popup').css('display', 'block');
+        console.log($(this).parents('.clinic-card'));
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $($(this).parents('.doctor-card').find('.map-wrapper .popup-box')).show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
+    $('.doctor-card .popup-link-marker').click(function(e) {
+
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        $('.popup-box .map-popup-marker').css('display', 'block');
+        $(this).parents('.doctor-card').find('.map-wrapper .popup-box').show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+
         /* Убираем баг в Firefox */
         $('html').scrollTop(scrollPos);
     });
