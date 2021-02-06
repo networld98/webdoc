@@ -43,15 +43,15 @@ $this->setFrameMode(true);
         "COMPONENT_TEMPLATE" => "search_filter",
         "CONVERT_CURRENCY" => "N",
         "DISPLAY_ELEMENT_COUNT" => "N",
-        "FILTER_NAME" => "arrFilter",
+        "FILTER_NAME" => $arParams["FILTER_NAME"],
         "FILTER_VIEW_MODE" => "vertical",
         "HIDE_NOT_AVAILABLE" => "N",
-        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+        "IBLOCK_TYPE" => "content",
         "IBLOCK_ID" => "9",
         "PAGER_PARAMS_NAME" => "arrPager",
         "PREFILTER_NAME" => "",
         "SAVE_IN_SESSION" => "N",
-        "SECTION_CODE" => "search",
+        "SECTION_CODE" => "",
         "SECTION_DESCRIPTION" => "-",
         "SECTION_ID" => "",
         "SECTION_TITLE" => "-",
@@ -59,10 +59,7 @@ $this->setFrameMode(true);
         "TEMPLATE_THEME" => "blue",
         "XML_EXPORT" => "N",
         "POPUP_POSITION" => "left",
-        "NOT_FILTER" => "N",
-        "SEF_RULE" => "#SMART_FILTER_PATH#",
-        "SECTION_CODE_PATH" => "",
-        "SMART_FILTER_PATH" => $_REQUEST["SMART_FILTER_PATH"]
+        "NOT_FILTER" => "N"
     ),
     false
 );
