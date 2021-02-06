@@ -278,7 +278,7 @@ function propsClinic($prop){
             </div>
 
         </div>
-        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]):?>
+        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] && $days_between>0):?>
                 <div class="doctor-card-popUp-group">
                     <a id="header-map" class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
                 </div>

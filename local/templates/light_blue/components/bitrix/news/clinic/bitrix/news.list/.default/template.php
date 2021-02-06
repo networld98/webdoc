@@ -311,9 +311,9 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                         <?propsClinic($arItem["PROPERTIES"]["DAY_HOSPITAL"])?>
                     </ul>
                 </div>
-                <?if($arItem["PROPERTIES"]["MAP"]["VALUE"]):?>
+                <?if($arItem["PROPERTIES"]["MAP"]["VALUE"] && $days_between>0 ):?>
                     <div class="doctor-card-popUp-group">
-                        <a id="header-map" class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
+                        <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
                     </div>
                 <?endif;?>
             </div>
