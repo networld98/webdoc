@@ -118,11 +118,7 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
     </div>
 <?endforeach;?>
 </div>
-<script>
-    $(document).ready(function() {
-        setEqualHeight($(".doctors-slider-item"));
-    });
-</script>
+
 <?if(count($arResult["ITEMS"])==0 ){?>
     <style>
         .illness-clinic-list-block {

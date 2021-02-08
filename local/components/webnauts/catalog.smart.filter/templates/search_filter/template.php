@@ -855,6 +855,11 @@ while ($item = $res->fetch()) {
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
     $(document).ready(function () {
         geoCity = getCookie('bxmaker.geoip.2.4.2_city');
+        if(getCookie('displayBtnSearch') == 'false') {
+            $('.search-doctors').hide();
+            $('.clinic-card .main-filter').css({'padding-top': '32px', 'padding-bottom': '29px'});
+            $('.main-filter > .row').css({'display': 'flex'});
+        }
         $('.bx_filter_param_label_'+geoCity).trigger('click');
         $('.popup-window').hide();
         let city = $('.city_input');
@@ -862,6 +867,7 @@ while ($item = $res->fetch()) {
         let city_input = city.val();
         let city_name = $('.bx_filter_param_label');
         city_name.on('click',function() {
+            document.cookie = "displayBtnSearch=false; path=/;"
             window.BXmakerGeoIPCity.selectLocation($(this).data('id'));
         });
         city.on('focus',function() {
