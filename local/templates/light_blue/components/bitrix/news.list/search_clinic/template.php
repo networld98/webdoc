@@ -17,13 +17,13 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
 global $noneSearch;
 $countSearchClinic = count($arResult['ITEMS']);
 $this->SetViewTarget('searchCountClinic'); ?>
-<?if ($countSearchClinic!=NULL){?><a href="#blockClinic"><strong><?= $countSearchClinic?></strong> клиник(а); <?}?></a>
+<?if ($countSearchClinic!=NULL){?><a href="#blockClinic"><strong><?= $countSearchClinic?></strong> клиник(а)/врачей(а); <?}?></a>
 <?$this->EndViewTarget();?>
 <?
 if($arResult['ITEMS']!=NULL) {
     $noneSearch++; ?>
     <div id="blockClinic">
-        <h2>Клиники</h2>
+        <h2>Клиники/Врачи</h2>
     </div>
     <? function propsClinic($prop)
     {
