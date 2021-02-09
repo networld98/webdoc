@@ -36,7 +36,7 @@ $this->setFrameMode(true);
     <div class="personal-cabinet-content__doctors-page__filter__options">
         <h4 class="title-h4">Фильтры</h4>
         <? $APPLICATION->IncludeComponent(
-            "bitrix:catalog.smart.filter",
+            "webnauts:catalog.smart.filter",
             "doctor_in_clinic",
             array(
                 "CACHE_GROUPS" => "Y",

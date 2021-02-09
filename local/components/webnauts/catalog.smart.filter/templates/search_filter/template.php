@@ -12,6 +12,37 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
+//Подключаем список городо которые выводим в списке
+use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
+const MY_HL_BLOCK_ID = 2;
+CModule::IncludeModule('highloadblock');
+//Функция получения экземпляра класса:
+function GetEntityDataClass($HlBlockId) {
+    if (empty($HlBlockId) || $HlBlockId < 1)
+    {
+        return false;
+    }
+    $hlblock = HLBT::getById($HlBlockId)->fetch();
+    $entity = HLBT::compileEntity($hlblock);
+    $entity_data_class = $entity->getDataClass();
+    return $entity_data_class;
+}
+$entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);
+$rsData = $entity_data_class::getList(array(
+    'order' => array('UF_NAME'=>'ASC'),
+    'select' => array('*'),
+    'filter' => array('!UF_NAME'=>false)
+));
+while($el = $rsData->fetch()){
+    $cityKey[] = $el['UF_CITY'];
+}
+foreach ($cityKey as $keycity) {
+    if ($arResult["ITEMS"][94]["VALUES"][$keycity] != NULL) {
+        $city[$keycity] = $arResult["ITEMS"][94]["VALUES"][$keycity];
+    }
+}
+$arResult["ITEMS"][94]["VALUES"] = NULL;
+$arResult["ITEMS"][94]["VALUES"] = $city;
 $templateData = array(
 	'TEMPLATE_THEME' => $this->GetFolder().'/themes/'.$arParams['TEMPLATE_THEME'].'/colors.css',
 	'TEMPLATE_CLASS' => 'bx_'.$arParams['TEMPLATE_THEME']
@@ -24,7 +55,7 @@ $res = \Bitrix\Sale\Location\LocationTable::getList(array(
     'select' => array('NAME_RU' => 'NAME.NAME', 'EXTERNAL.LOCATION.ID')
 ));
 while ($item = $res->fetch()) {
-    $cityTable[$item['NAME_RU']] =  $item['SALE_LOCATION_LOCATION_EXTERNAL_LOCATION_ID'];
+    $cityTable[$item['NAME_RU']] = $item['SALE_LOCATION_LOCATION_EXTERNAL_LOCATION_ID'];
 }
 ?>
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
@@ -345,7 +376,7 @@ while ($item = $res->fetch()) {
                                                                 </label>
                                                             </li>
                                                             <?
-                                                            foreach ($arItem["VALUES"] as $val => $ar):
+                                                            foreach ($city as $val => $ar):
                                                                 $class = "";
                                                                 if ($ar["CHECKED"])
                                                                     $class .= " selected";

@@ -1,6 +1,32 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 use \CUtilEx as CUtil;
+CModule::IncludeModule('iblock');
+
+//Получаем список городов показываемых в фильтре
+use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
+const MY_HL_BLOCK_ID = 2;
+CModule::IncludeModule('highloadblock');
+function GetEntityDataClass($HlBlockId) {
+    if (empty($HlBlockId) || $HlBlockId < 1)
+    {
+        return false;
+    }
+    $hlblock = HLBT::getById($HlBlockId)->fetch();
+    $entity = HLBT::compileEntity($hlblock);
+    $entity_data_class = $entity->getDataClass();
+    return $entity_data_class;
+}
+
+//Собираем названия городов
+$arSelect = array("ID", "NAME");
+$arFilter = array("IBLOCK_ID"=>14);
+$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+while($ar_result = $obSections->GetNext())
+{
+    $cityName[$ar_result['ID']] = trim($ar_result['NAME'], ".");
+}
+
 $PROPS = [];
 if($_POST['ID_CLINIC']!=NULL){
     $SCHEDULE = $_POST['ID_CLINIC'];
@@ -58,6 +84,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         CIBlockElement::SetPropertyValuesEx($_POST['ID_DOCTOR'], false, $PROPS);
         $nameClinic = $obEl->Update($_POST['ID_DOCTOR'],array('NAME' => $_POST['NAME_DOCTOR'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT'], 'PREVIEW_TEXT' => $_POST['PREVIEW_TEXT'], "DETAIL_PICTURE" => CFile::MakeFileArray($_POST['PHOTO'])));
     unlink($_POST['PHOTO']);
+?>
+<?
+//Получаем список городов показываемых в фильтре
+$entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);
+$rsData = $entity_data_class::getList(array(
+    'order' => array('UF_CITY'=>'ASC'),
+    'select' => array('*'),
+    'filter' => array('!UF_CITY'=>false)
+));
+while($el = $rsData->fetch()){
+    $cityKey[$el['ID']] = $el['UF_CITY'];
+}
+foreach($PROPS['CITY'] as $cityDoctor) {
+    if (!in_array($cityDoctor, $cityKey)) {
+        $entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);
+        $result = $entity_data_class::add(array(
+            'UF_CITY' => $cityDoctor,
+            'UF_NAME' => $cityName[$cityDoctor],
+        ));
+    }
+}
 ?>
     <span style="color:green">Данные сохранены</span>
 <?}?>
