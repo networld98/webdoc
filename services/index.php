@@ -5,7 +5,6 @@ $APPLICATION->SetTitle("Услуги");
 <?
 $curPagePath = $APPLICATION->GetCurDir();
 $curPagePath = explode("/", $curPagePath);
-console_log($_GET['view']);
 function services_list($iblock){
     $services = [];
     $arSelect = array("NAME","ID");
@@ -33,38 +32,37 @@ function services_list($iblock){
 ?>
 <div class="full-screen__filter-bg services-filter">
     <section class="container">
-    <? $APPLICATION->IncludeComponent(
-        "webnauts:catalog.smart.filter",
-        "search_filter",
-        array(
-            "CACHE_GROUPS" => "Y",
-            "CACHE_TIME" => "36000000",
-            "CACHE_TYPE" => "A",
-            "COMPONENT_TEMPLATE" => "search_filter",
-            "CONVERT_CURRENCY" => "N",
-            "DISPLAY_ELEMENT_COUNT" => "N",
-            "FILTER_NAME" => $arParams["FILTER_NAME"],
-            "FILTER_VIEW_MODE" => "vertical",
-            "HIDE_NOT_AVAILABLE" => "N",
-            "IBLOCK_TYPE" => "content",
-            "IBLOCK_ID" => "9",
-            "PAGER_PARAMS_NAME" => "arrPager",
-            "PREFILTER_NAME" => "",
-            "SAVE_IN_SESSION" => "N",
-            "SECTION_CODE" => "",
-            "SECTION_DESCRIPTION" => "-",
-            "SECTION_ID" => "",
-            "SECTION_TITLE" => "-",
-            "SEF_MODE" => "N",
-            "TEMPLATE_THEME" => "blue",
-            "XML_EXPORT" => "N",
-            "POPUP_POSITION" => "left",
-            "NOT_FILTER" => "N"
-        ),
-        false
-    );
-    ?>
-    </section>
+        <? $APPLICATION->IncludeComponent(
+	"webnauts:catalog.smart.filter",
+	"search_filter", 
+	array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => "search_filter",
+		"CONVERT_CURRENCY" => "N",
+		"DISPLAY_ELEMENT_COUNT" => "N",
+		"FILTER_NAME" => $arParams["FILTER_NAME"],
+		"FILTER_VIEW_MODE" => "vertical",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"IBLOCK_TYPE" => "content",
+		"IBLOCK_ID" => "9",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"PREFILTER_NAME" => "",
+		"SAVE_IN_SESSION" => "N",
+		"SECTION_CODE" => "",
+		"SECTION_DESCRIPTION" => "-",
+		"SECTION_ID" => "",
+		"SECTION_TITLE" => "-",
+		"SEF_MODE" => "N",
+		"TEMPLATE_THEME" => "blue",
+		"XML_EXPORT" => "N",
+		"POPUP_POSITION" => "left",
+		"NOT_FILTER" => "N"
+	),
+	false
+);
+        ?></section>
 </div>
 <section class="container">
     <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
@@ -81,7 +79,7 @@ function services_list($iblock){
         <div class="sort-block">
             <ul class="nav nav-tabs sort-block-list" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="sort-block-list-item <?if($_GET['view'] == 'serv') echo 'active'?>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="<?if($_GET['view'] == 'serv'){echo 'true';} else echo 'false';?>">Направления</a>
+                    <a class="sort-block-list-item <?if($_GET['view'] == 'serv' || $_GET['view'] == NULL) echo 'active'?>" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="<?if($_GET['view'] == 'serv'){echo 'true';} else echo 'false';?>">Направления</a>
                 </li>
                 <li class="nav-item">
                     <a class="sort-block-list-item <?if($_GET['view'] == 'diag') echo 'active'?>" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="<?if($_GET['view'] == 'diag'){echo 'true';} else echo 'false';?>">Диагностика</a>
@@ -89,7 +87,7 @@ function services_list($iblock){
             </ul>
         </div>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade <?if($_GET['view'] == 'serv') echo ' show active'?>" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-pane fade <?if($_GET['view'] == 'serv' || $_GET['view'] == NULL) echo ' show active'?>" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <? services_list(19)?>
                 </div>
             <div class="tab-pane fade <?if($_GET['view'] == 'diag') echo 'show active'?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
