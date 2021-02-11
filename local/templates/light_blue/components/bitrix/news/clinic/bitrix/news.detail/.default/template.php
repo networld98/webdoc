@@ -238,7 +238,7 @@ function propsClinic($prop){
                         <?$this->EndViewTarget();?>
                     <?endif;?>
                 </div>
-                <?if($days_between>0){?>
+                <?if($arResult["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
                 <div class="clinic-card-info-detail__block">
                     <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
                         <p class="clinic-card-info-detail__title contacts-phone">Контакты</p>
@@ -278,7 +278,7 @@ function propsClinic($prop){
             </div>
 
         </div>
-        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] && $days_between>0):?>
+        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] && $arResult["PROPERTIES"]["RATING"]["VALUE"]=='Y'):?>
                 <div class="doctor-card-popUp-group">
                     <a id="header-map" class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
                 </div>
@@ -491,7 +491,7 @@ function propsClinic($prop){
             <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]!=NULL && $arResult["PROPERTIES"]["OFFICIAL_NAME"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECTOR"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["GUEST_PARKING"]["VALUE"]!=NULL || $arResult['DETAIL_TEXT']!=NULL || $arResult["PROPERTIES"]["SERVICES"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["PARKING"]["VALUE"]!=NULL || $arResult["PROPERTIES"]["DIRECITONS"]["VALUE"]!=NULL ){?>
                 <li data-tabs="2">Информация</li>
             <?}?>
-            <?if($days_between>0){?>
+            <?if($arResult["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
                 <?if($arResult["PROPERTIES"]["STOCKS"]["VALUE"]):?>
                     <li data-tabs="3">Акции<span><?=count($arResult["PROPERTIES"]["STOCKS"]["VALUE"])?></span></li>
                 <?endif;?>
@@ -526,7 +526,7 @@ function propsClinic($prop){
             <div class="clinic-card-full-desc__content__info-left">
                 <div class="clinic-card-full-desc__content__info-left__map" id="map_view_<?=$arResult['ID']?>">
                 </div>
-                <?if($days_between>0){?>
+                <?if($arResult["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
                     <div class="clinic-card-full-desc__content__info-left__phone">
                         <?if($arResult["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
                             <span class="clinic-card-full-desc__content__info-left__phone__text">Телефон для записи</span>
@@ -629,7 +629,7 @@ function propsClinic($prop){
             </div>
         </div>
     </div>
-    <?if($days_between>0){?>
+    <?if($arResult["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
         <div class="clinic-card-full-desc__content" data-tabs="3">
             <div class="clinic-card-full-desc__content__actions">
                 <h4 class="title-h4">Акции</h4>
