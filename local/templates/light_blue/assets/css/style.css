@@ -6014,11 +6014,12 @@ button:focus {
     justify-content: center;
 }
 .doctors-slider .slick-prev:before {
-    background-image: url(../images/bi_arrow-left-circle.svg);
+    background-image: url(../images/bi_arrow-right-circle-new.svg);
+    transform: rotate(180deg);
 }
 .doctors-slider .slick-next:before {
-    background-image: url(../images/bi_arrow-left-circle.svg);
-    transform: rotate(180deg);
+    background-image: url(../images/bi_arrow-right-circle-new.svg);
+
 }
 .doctors-slider .slick-prev:before, .doctors-slider .slick-next:before{
     content: "";
@@ -7724,22 +7725,22 @@ button:focus {
     .personal-cabinet-content__doctors-page__filter__options .main-filter .row > div:last-child {
         padding-top: 0;
     }
-    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(6) {*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(6) {*/
     /*    width: 36% !important;*/
     /*}*/
-    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5) {*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5) {*/
     /*    width: 27% !important;*/
     /*}*/
-    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {*/
     /*    width: 27% !important;*/
     /*}*/
-    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {*/
     /*    width: 36% !important;*/
     /*}*/
     /* .main-filter .row > div:last-child .bx_filter_parameters_box.active:last-child {*/
     /*    width: 27% !important;*/
     /*}*/
-    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7), .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7), .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {*/
     /*    width: 36% !important;*/
     /*}*/
 
@@ -7752,37 +7753,49 @@ button:focus {
     .bx-touch .personal-cabinet-content__doctors-page__filter__options .bx_filter.bx_horizontal .bx_filter_parameters_box.active {
         width: 50% !important;
     }
-    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {*/
+    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {*/
     /*    width: 36% !important;*/
     /*}*/
-    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8), .clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-child(9) {*/
+    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8), .clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9) {*/
     /*    width: 30% !important;*/
     /*}*/
-    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9), .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9), .clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-child(6),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-child(10){*/
+    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9), .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9), .clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(6),.clinic-card .bx_filter.bx_blue.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(10){*/
     /*    width: 34% !important;*/
     /*}*/
-    .bx-touch .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.active:nth-child(3),.bx-touch .main-filter .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) {
-        width: 36% !important;
-        margin-right: 0;
-    }
-    .bx-touch .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.active:nth-child(4),.bx-touch .main-filter .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
-        width: 30% !important;
-        margin-right: 0;
-    }
-    .bx-touch .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.active:nth-child(5),.bx-touch .main-filter .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9), .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9) {
+    /*.bx-touch .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .main-filter .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) {*/
+    /*    width: 36% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .main-filter .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {*/
+    /*    width: 30% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.active:nth-last-of-type(5),.bx-touch .main-filter .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9), .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9) {*/
+    /*    width: 34% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) {*/
+    /*    width: 36% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {*/
+    /*    width: 30% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9), .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9) {*/
+    /*    width: 34% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(1),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5) {
         width: 34% !important;
         margin-right: 0;
     }
-    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(3),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(7) {
-        width: 36% !important;
-        margin-right: 0;
-    }
-    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) , .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(4),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(8) {
+    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(6) {
         width: 30% !important;
         margin-right: 0;
     }
-    .bx-touch .main-screen .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9), .bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(5),.bx-touch .full-screen__filter-bg .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-child(9) {
-        width: 34% !important;
+    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) {
+        width: 36% !important;
         margin-right: 0;
     }
     .personal-cabinet-content__doctors-page__filter__options .bx_filter.bx_horizontal .bx_filter_parameters_box {
@@ -8012,6 +8025,10 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .bx-breadcrumb .bx-breadcrumb-item > i + span {
+        margin-top: -4px;
+        line-height: 20px;
+    }
     .clinic-card-info .doctor-card-popUp-group__route,.clinic-card-desc-detail .doctor-card-popUp-group__route {
         border: 1px solid #9DD4B3;
         border-radius: 50px;
@@ -8909,6 +8926,7 @@ button:focus {
         max-width: 335px;
         width: 100%;
         margin-top: 20px;
+        margin-bottom: 20px;
         text-align: center;
     }
     .clinic-card .doctors-lastfeedback {
@@ -9270,6 +9288,29 @@ button:focus {
     /*}*/
 /*}*/
 @media (max-width: 428px) {
+    .doctors-slider-item {
+        flex-direction: column;
+        max-width: 320px;
+    }
+    .doctors-slider-item .doctors-list-item__description {
+        padding: 0;
+    }
+    .doctors-slider-item .clinic-card-info__title.map::before {
+        left: 0;
+    }
+    .doctors-slider-item .doctors-list-item__img-info {
+        padding: 0;
+        max-width: 98px;
+    }
+    .doctors-slider-item .doctors-list-item__img {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100%;
+    }
+    .doctors-list-item__img-info .doctors-slider-item {
+
+    }
+
     .radio-group .bx_filter_input_radio .checkbox{
         min-width: 18px;
         margin-right: 10px;
