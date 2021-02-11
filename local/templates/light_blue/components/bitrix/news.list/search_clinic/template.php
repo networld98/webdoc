@@ -318,7 +318,6 @@ if($arResult['ITEMS']!=NULL) {
                             <? endif; ?>
                         </div>
                         <?if($arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
-                            ?>
                             <div class="clinic-card-info__block">
                                 <? if ($arItem["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
                                     <p class="clinic-card-info__title contacts-phone">Контакты</p>
