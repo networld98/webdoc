@@ -216,9 +216,12 @@
     background: #32B4C3;
     color: #fff;
 }
-.link-checkbox label:hover, .link-checkbox label:hover span {
-    background: #32B4C3;
-    color: #fff;
+.link-checkbox label:hover {
+    box-shadow: 0px 0px 10px 0px rgba(50,180,195,1);
+    transition: 0.3s;
+}
+.link-checkbox label:hover span {
+
 }
 .link-checkbox > label:hover {
     background: initial;
@@ -795,6 +798,10 @@ label.photoFile-label {
     margin-right: 0;
     margin-bottom: 10px;
     display: block;
+}
+.services-detail > .row > div {
+    padding-left: 0;
+    padding-right: 0;
 }
 }
 @media (min-width: 450px) {

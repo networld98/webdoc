@@ -513,6 +513,7 @@ $(document).ready(()=>{
                     slidesToShow: 1,
                     variableWidth: true,
                     infinite:false,
+                    adaptiveHeight: true,
                 }
               },
         ]

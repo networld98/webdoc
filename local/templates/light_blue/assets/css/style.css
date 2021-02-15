@@ -9290,13 +9290,15 @@ button:focus {
 @media (max-width: 428px) {
     .doctors-slider-item {
         flex-direction: column;
-        max-width: 320px;
+        max-width: 260px;
+        padding: 10px;
+        margin-right: 10px;
     }
     .doctors-slider-item .doctors-list-item__description {
         padding: 0;
     }
     .doctors-slider-item .clinic-card-info__title.map::before {
-        left: 0;
+        left: -6px;
     }
     .doctors-slider-item .doctors-list-item__img-info {
         padding: 0;
@@ -9307,8 +9309,14 @@ button:focus {
         justify-content: space-between;
         max-width: 100%;
     }
-    .doctors-list-item__img-info .doctors-slider-item {
+    .doctors-slider-item {
 
+    }
+    .clinic-card-info__block .clinic-card-info__title {
+        padding-left: 20px;
+    }
+    .doctors-slider-item .doctors-list-item__description-exp {
+        margin-top: 10px;
     }
 
     .radio-group .bx_filter_input_radio .checkbox{
