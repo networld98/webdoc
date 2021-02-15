@@ -1,7 +1,7 @@
 <?
 define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Цены на услуги клиники");
+$APPLICATION->SetTitle("Выбор услуг клиники");
 CModule::IncludeModule('iblock');
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();

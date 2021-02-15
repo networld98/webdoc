@@ -1,7 +1,7 @@
 <?
 define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Мой профиль");
+$APPLICATION->SetTitle("Профиль клиник");
 $rsUser = CUser::GetByID($USER->GetID());
     $arUser = $rsUser->Fetch();
 ?>

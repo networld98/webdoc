@@ -19,7 +19,7 @@ function count_element($iblock){
                 <? count_element(9)?>+
             </div>
             <div class="statistics__text">
-                клиник в нашей базе
+                клиник в поиске
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@ function count_element($iblock){
                 <? count_element(10)?>+
             </div>
             <div class="statistics__text">
-                врачей в нашей базе
+                врачей в поиске
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@ function count_element($iblock){
                 <?=$file?>+
             </div>
             <div class="statistics__text">
-                подтвержденных<br> звонков
+                исходящих<br> звонков
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@ function count_element($iblock){
                 ?>
             </div>
             <div class="statistics__text">
-                отзывов
+                честных отзывов
             </div>
         </div>
     </div>

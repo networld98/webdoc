@@ -312,6 +312,7 @@ label.photoFile-label {
     text-overflow: ellipsis;
     max-width: 150px;
     margin-left: 15px;
+    display: none;
 }
 label.photoFile-label:hover {
     background: transparent;

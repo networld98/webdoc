@@ -76,10 +76,6 @@ $days_between = ceil(($end - $start) / 86400);
                             );?>
                         </div>
                     </li>
-                    <? propofficial($arProps['YEAR_FONDATION']);?>
-                    <? propofficial($arProps['DIRECTOR']);?>
-                    <? propofficial($arProps['SITE']);?>
-                    <? propofficial($arProps['OFFICIAL_NAME']);?>
                     <li>
                         <label for="">Основная специализация клиники</label>
                         <select name="MAIN_SPECIALIZATION">
@@ -92,6 +88,10 @@ $days_between = ceil(($end - $start) / 86400);
                             <?}?>
                         </select>
                     </li>
+                    <? propofficial($arProps['YEAR_FONDATION']);?>
+                    <? propofficial($arProps['DIRECTOR']);?>
+                    <? propofficial($arProps['SITE']);?>
+                    <? propofficial($arProps['OFFICIAL_NAME']);?>
                     <li>
                         <label for=""><?=$arProps['CITY']['NAME']?></label>
                         <select name="CITY" id="city">

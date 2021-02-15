@@ -7,17 +7,17 @@ $aMenuLinks = Array(
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon1.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon1-un.svg",
-            "SPAN"=> "профиль, услуги, способы оплаты"
+            "SPAN"=> ""
         ),
     ),
     Array(
-        "Расписание клиники",
+        "Время работы",
         "/lc/schedule/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon2.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon2-un.svg",
-            "SPAN"=> "время работы"
+            "SPAN"=> ""
         ),
     ),
     Array(
@@ -31,7 +31,7 @@ $aMenuLinks = Array(
         ),
     ),
     Array(
-        "Цены на услуги клиники",
+        "Выбор услуг и стоимость",
         "/lc/price/",
         Array(),
         Array(

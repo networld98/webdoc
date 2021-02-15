@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Пополнить баланс";
+$sSectionName = "Платное размещение";
 $arDirProperties = Array(
 
 );

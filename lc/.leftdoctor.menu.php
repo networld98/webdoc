@@ -7,7 +7,7 @@ $aMenuLinks = Array(
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon1.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon1-un.svg",
-            "SPAN"=> "профиль, услуги, способы оплаты"
+            "SPAN"=> ""
         ),
     ),
     Array(

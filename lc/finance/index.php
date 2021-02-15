@@ -1,7 +1,7 @@
 <?
 define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Пополнить баланс");
+$APPLICATION->SetTitle("Платное размещение");
 
 CModule::IncludeModule('iblock');
 $rsUser = CUser::GetByID($USER->GetID());
