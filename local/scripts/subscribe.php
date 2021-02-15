@@ -29,8 +29,8 @@ if(CModule::IncludeModule('iblock')) {
                     );
                 CEvent::Send("PAUSE_SUBSCRIPTION", s1, $arEventFields, "N", 97);
             }elseif ($days_between < 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
-                $PROP[127] = NULL;
-                $PROP[125] = NULL;
+           /*     $PROP[127] = NULL;
+                $PROP[125] = NULL;*/
             }elseif ($days_between > 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
                 $PROP[127] = 128;
                 $PROP[125] = 89;
@@ -40,8 +40,8 @@ if(CModule::IncludeModule('iblock')) {
             }
         }else{
             if ($Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
-                $PROP[127] = NULL;
-                $PROP[125] = NULL;
+             /*   $PROP[127] = NULL;
+                $PROP[125] = NULL;*/
              }else{
                 $PROP[127] = 128;
                 $PROP[125] = 89;

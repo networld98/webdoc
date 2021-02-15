@@ -317,8 +317,7 @@ if($arResult['ITEMS']!=NULL) {
                                         ?><?= $arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"] ?><? } ?></span>
                             <? endif; ?>
                         </div>
-                        <? if ($days_between > 0) {
-                            ?>
+                        <?if($arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
                             <div class="clinic-card-info__block">
                                 <? if ($arItem["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
                                     <p class="clinic-card-info__title contacts-phone">Контакты</p>
@@ -361,7 +360,7 @@ if($arResult['ITEMS']!=NULL) {
                             <? propsClinic($arItem["PROPERTIES"]["DAY_HOSPITAL"]) ?>
                         </ul>
                     </div>
-                    <? if ($arItem["PROPERTIES"]["MAP"]["VALUE"]):?>
+                    <? if ($arItem["PROPERTIES"]["MAP"]["VALUE"] && $arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'):?>
                         <div class="doctor-card-popUp-group">
                             <a id="header-map"
                                class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>

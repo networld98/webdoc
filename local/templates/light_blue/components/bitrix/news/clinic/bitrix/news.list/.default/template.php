@@ -272,7 +272,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                             <span><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                         <?endif;?>
                     </div>
-                    <?if($days_between>0){?>
+                    <?if($arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
                         <div class="clinic-card-info__block">
                             <?if($arItem["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
                                 <p class="clinic-card-info__title contacts-phone">Контакты</p>
@@ -311,7 +311,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                         <?propsClinic($arItem["PROPERTIES"]["DAY_HOSPITAL"])?>
                     </ul>
                 </div>
-                <?if($arItem["PROPERTIES"]["MAP"]["VALUE"] && $days_between>0 ):?>
+                <?if($arItem["PROPERTIES"]["MAP"]["VALUE"] && $arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'):?>
                     <div class="doctor-card-popUp-group">
                         <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
                     </div>
