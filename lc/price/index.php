@@ -17,7 +17,7 @@ while($ob = $res->GetNextElement()){
     $idClinic = $arFields['ID'];
 }?>
 <?
-$arSelect = Array("PROPERTY_PRICE_DOCTOR", "PROPERTY_PRICE_DIAGNOST");
+$arSelect = Array("PROPERTY_PRICE_DOCTOR", "PROPERTY_PRICE_DIAGNOST", "PROPERTY_SPECIALIZATION");
 $arFilter = Array("IBLOCK_ID"=>9, "ID"=>$idClinic);
 $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
 while($ob = $res->GetNextElement())
@@ -25,6 +25,7 @@ while($ob = $res->GetNextElement())
     $arFields = $ob->GetFields();
     $doctor = explode("/",$arFields['PROPERTY_PRICE_DOCTOR_VALUE']);
     $diagnost = explode("/",$arFields['PROPERTY_PRICE_DIAGNOST_VALUE']);
+    $specializations[] = $arFields['PROPERTY_SPECIALIZATION_VALUE'];
     $priceClinic[$doctor[1]] = array(
         "NAME" =>$doctor[1],
         "PRICE" =>$doctor[2],
@@ -89,16 +90,18 @@ while($ob = $res->GetNextElement())
             <ul class="personal-cabinet-content__price-page__content__list">
                 <?
                 $i=0;
-                $arSelect = array("ID", "NAME");
+                $arSelect = array("ID", "NAME", "UF_SPECIF");
                 $arFilter = array("IBLOCK_ID"=>18);
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                 while($ar_result = $obSections->GetNext())
                 {
-                    $i++;
-                    $formList_diagnost[]=array("NAME"=>$ar_result['NAME'],"ID"=>$ar_result['ID']);
-                    ?>
-                    <li <?if($i==1){?>class="active"<?}?> data-tabs="<?=$ar_result['ID']?>"><?=$ar_result['NAME']?></li>
-                <?}?>
+                    if(in_array($ar_result['UF_SPECIF'],$specializations)){
+                        $i++;
+                        $formList_diagnost[]=array("NAME"=>$ar_result['NAME'],"ID"=>$ar_result['ID']);
+                        ?>
+                        <li <?if($i==1){?>class="active"<?}?> data-tabs="<?=$ar_result['ID']?>"><?=$ar_result['NAME']?></li>
+                    <?}
+                }?>
             </ul>
             <div class="personal-cabinet-content__price-page__content__list-box">
                 <form id="form_clinic_PRICE_DIAGNOST" name="form_clinic_PRICE_DIAGNOST" action="" method="post">
@@ -124,16 +127,21 @@ while($ob = $res->GetNextElement())
             <ul class="personal-cabinet-content__price-page__content__list">
                 <?
                 $i=0;
-                $arSelect = array("ID", "NAME");
+                $arSelect = array("ID", "NAME", "UF_SPECIF");
                 $arFilter = array("IBLOCK_ID"=>19);
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
-                while($ar_result = $obSections->GetNext())
-                {
-                    $i++;
-                    $formList_uslugi[]=array("NAME"=>$ar_result['NAME'],"ID"=>$ar_result['ID']);
-                    ?>
-                    <li <?if($i==1){?>class="active"<?}?> data-tabs="<?=$ar_result['ID']?>"><?=$ar_result['NAME']?></li>
-                <?}?>
+                while($ar_result = $obSections->GetNext()) {
+                    if (in_array($ar_result['UF_SPECIF'], $specializations)) {
+                        $i++;
+                        $formList_uslugi[] = array("NAME" => $ar_result['NAME'], "ID" => $ar_result['ID']);
+                        ?>
+                        <li <?
+                            if ($i == 1){
+                            ?>class="active"<?
+                        } ?> data-tabs="<?= $ar_result['ID'] ?>"><?= $ar_result['NAME'] ?></li>
+                    <?
+                    }
+                }?>
             </ul>
             <div class="personal-cabinet-content__price-page__content__list-box">
                 <form id="form_clinic_PRICE_DOCTOR" name="form_clinic_PRICE_DOCTOR" action="" method="post">
