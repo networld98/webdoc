@@ -103,25 +103,32 @@ while($ob = $res->GetNextElement())
                     <?}
                 }?>
             </ul>
-            <div class="personal-cabinet-content__price-page__content__list-box">
-                <form id="form_clinic_PRICE_DIAGNOST" name="form_clinic_PRICE_DIAGNOST" action="" method="post">
-                <?
-                foreach($formList_diagnost as $key => $formItem){?>
-                    <input type="hidden" name="PROPS" value="PRICE_DIAGNOST">
-                    <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
-                    <div class="personal-cabinet-content__price-page__content__list-content <?if($key==0){?>active<?}?>" data-tabs="<?=$formItem['ID']?>">
-                        <div class="personal-cabinet-content__price-page__content__list-content__price">
-                            <h4 class="title-h4">Цены на <?=$formItem['NAME']?></h4>
-                               <?tablePrice($formItem, 18, $priceClinic)?>
-                            </div>
-                        </div>
+            <?if($i==NUll || $i<1){?>
+                <div style="text-align:center;padding:40px 30px;width: 100%;">
+                    <h5>Услуги не вы выбраны при заполнении данных о личном кабинете, выберите их <a href="/lc/"> тут</a></h5>
                     <?}?>
-                    <div class="text-view">
-                        <div id="message-form_PRICE_DIAGNOST"></div>
-                        <button type="submit" name="saveProfile" class="save" id="saveProfile">Сохранить</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+            <?if($i>0){?>
+                <div class="personal-cabinet-content__price-page__content__list-box">
+                    <form id="form_clinic_PRICE_DIAGNOST" name="form_clinic_PRICE_DIAGNOST" action="" method="post">
+                    <?
+                    foreach($formList_diagnost as $key => $formItem){?>
+                        <input type="hidden" name="PROPS" value="PRICE_DIAGNOST">
+                        <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
+                        <div class="personal-cabinet-content__price-page__content__list-content <?if($key==0){?>active<?}?>" data-tabs="<?=$formItem['ID']?>">
+                            <div class="personal-cabinet-content__price-page__content__list-content__price">
+                                <h4 class="title-h4">Цены на <?=$formItem['NAME']?></h4>
+                                   <?tablePrice($formItem, 18, $priceClinic)?>
+                                </div>
+                            </div>
+                        <?}?>
+                        <div class="text-view">
+                            <div id="message-form_PRICE_DIAGNOST"></div>
+                            <button type="submit" name="saveProfile" class="save" id="saveProfile">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            <?}?>
         </div>
         <div class="personal-cabinet-content__price-page__content" data-tabs="1">
             <ul class="personal-cabinet-content__price-page__content__list">
@@ -143,25 +150,32 @@ while($ob = $res->GetNextElement())
                     }
                 }?>
             </ul>
-            <div class="personal-cabinet-content__price-page__content__list-box">
-                <form id="form_clinic_PRICE_DOCTOR" name="form_clinic_PRICE_DOCTOR" action="" method="post">
-                    <input type="hidden" name="PROPS" value="PRICE_DOCTOR">
-                    <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
-                <?
-                foreach($formList_uslugi as $key => $formItem){?>
-                    <div class="personal-cabinet-content__price-page__content__list-content <?if($key==0){?>active<?}?>" data-tabs="<?=$formItem['ID']?>">
-                        <div class="personal-cabinet-content__price-page__content__list-content__price">
-                            <h4 class="title-h4">Цены на <?=$formItem['NAME']?></h4>
-                                <?tablePrice($formItem, 19, $priceClinic)?>
+            <?if($i==NUll || $i<1){?>
+                <div style="text-align:center;padding:40px 30px;width: 100%;">
+                    <h5>Услуги не вы выбраны при заполнении данных о личном кабинете, выберите их <a href="/lc/"> тут</a></h5>
+                </div>
+            <?}?>
+            <?if($i>0){?>
+                <div class="personal-cabinet-content__price-page__content__list-box">
+                    <form id="form_clinic_PRICE_DOCTOR" name="form_clinic_PRICE_DOCTOR" action="" method="post">
+                        <input type="hidden" name="PROPS" value="PRICE_DOCTOR">
+                        <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
+                    <?
+                    foreach($formList_uslugi as $key => $formItem){?>
+                        <div class="personal-cabinet-content__price-page__content__list-content <?if($key==0){?>active<?}?>" data-tabs="<?=$formItem['ID']?>">
+                            <div class="personal-cabinet-content__price-page__content__list-content__price">
+                                <h4 class="title-h4">Цены на <?=$formItem['NAME']?></h4>
+                                    <?tablePrice($formItem, 19, $priceClinic)?>
+                                </div>
                             </div>
+                        <?}?>
+                        <div class="text-view">
+                            <div id="message-form_PRICE_DOCTOR"></div>
+                            <button type="submit" name="saveProfile" class="save" id="saveProfile">Сохранить</button>
                         </div>
-                    <?}?>
-                    <div class="text-view">
-                        <div id="message-form_PRICE_DOCTOR"></div>
-                        <button type="submit" name="saveProfile" class="save" id="saveProfile">Сохранить</button>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
+            <?}?>
         </div>
     </div>
 </div>
