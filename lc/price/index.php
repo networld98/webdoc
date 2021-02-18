@@ -103,7 +103,7 @@ while($ob = $res->GetNextElement())
                     <?}
                 }?>
             </ul>
-            <?if($i==NUll || $i<1){?>
+            <?if($i==NUll){?>
                 <div style="text-align:center;padding:40px 30px;width: 100%;">
                     <h5>Услуги не вы выбраны при заполнении данных о личном кабинете, выберите их <a href="/lc/"> тут</a></h5>
                     <?}?>
@@ -150,7 +150,7 @@ while($ob = $res->GetNextElement())
                     }
                 }?>
             </ul>
-            <?if($i==NUll || $i<1){?>
+            <?if($i==NUll){?>
                 <div style="text-align:center;padding:40px 30px;width: 100%;">
                     <h5>Услуги не вы выбраны при заполнении данных о личном кабинете, выберите их <a href="/lc/"> тут</a></h5>
                 </div>
