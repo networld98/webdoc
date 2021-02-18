@@ -106,8 +106,8 @@ while($ob = $res->GetNextElement())
             <?if($i==NUll){?>
                 <div style="text-align:center;padding:40px 30px;width: 100%;">
                     <h5>Услуги не вы выбраны при заполнении данных о личном кабинете, выберите их <a href="/lc/"> тут</a></h5>
-                    <?}?>
                 </div>
+            <?}?>
             <?if($i>0){?>
                 <div class="personal-cabinet-content__price-page__content__list-box">
                     <form id="form_clinic_PRICE_DIAGNOST" name="form_clinic_PRICE_DIAGNOST" action="" method="post">
