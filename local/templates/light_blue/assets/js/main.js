@@ -70,7 +70,7 @@ $(document).ready(()=>{
                                 // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                                 // console.log("FIXED");
                                 $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
-                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
+                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().outerWidth()}px`});
                             } else {
                                 $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                                 // console.log('ABSOLUTED');
@@ -82,7 +82,7 @@ $(document).ready(()=>{
                                 // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                                 // console.log("FIXED");
                                 $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
-                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().width()}px`});
+                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().outerWidth()}px`});
                             } else {
                                 // console.log('ABSOLUTED');
                                 elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
@@ -196,7 +196,7 @@ $(document).ready(()=>{
                             // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                             // console.log("FIXED");
                             $('.fixed-block-ghost').css({height: $('.fixed-block-alp').innerHeight()+'px', display: 'block'});
-                            elem2.css({top: topfixed2, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem2.parent().width()}px`});
+                            elem2.css({top: topfixed2, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem2.parent().outerWidth()}px`});
                         } else {
                             $('.fixed-block-ghost').css({height: $('.fixed-block-alp').innerHeight()+'px', display: 'block'});
                             // console.log('ABSOLUTED');
@@ -208,7 +208,7 @@ $(document).ready(()=>{
                             // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                             // console.log("FIXED");
                             $('.fixed-block-ghost').css({height: $('.fixed-block-alp').innerHeight()+'px', display: 'block'});
-                            elem2.css({top: topfixed2, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem2.parent().width()}px`});
+                            elem2.css({top: topfixed2, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem2.parent().outerWidth()}px`});
                         } else {
                             // console.log('ABSOLUTED');
                             elem2.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});

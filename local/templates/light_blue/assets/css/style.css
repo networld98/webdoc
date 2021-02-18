@@ -831,7 +831,7 @@ main {
     font-family: 'Montserrat Alternates-Bold', sans-serif;
     font-size: 35px;
     line-height: 43px;
-    color: var(--primary);
+    color: #9DD4B3;
     text-transform: capitalize;
     margin-bottom: 5px;
 }
@@ -1025,10 +1025,15 @@ main {
     color: #000000;
     cursor: pointer;
 }
+.sort-block-list-item {
+    border: 1px solid #98D7DC;
+
+}
 .sort-block-list-item.active,.sort-block-list-item:hover {
-    background: #E3EAEA;
-    border: 1px solid #E3EAEA;
+    background: #98D7DC;
+    border: 1px solid #98D7DC;
     cursor: pointer;
+    color: #fff;
 }
 .sort-block-list-item.active a {
     cursor: pointer;
@@ -5747,10 +5752,10 @@ button:focus {
     font-weight: bold;
     font-size: 20px;
     line-height: 30px;
-    color: #98D7DC;
+    color: #9DD4B3;
 }
 .alphabet-block-list > li a:hover {
-    color: #6A969A;
+    color: #547360;
 }
 .alp-detail {
     margin-top: 60px !important;
@@ -5760,7 +5765,7 @@ button:focus {
     font-family: 'Montserrat Alternates-Bold', sans-serif;
     font-size: 35px;
     line-height: 43px;
-    color: var(--primary);
+        color: #9DD4B3;
     text-transform: capitalize;
     margin-bottom: 5px;
 }
@@ -7297,11 +7302,14 @@ button:focus {
     }
     .personal-cabinet-menu__desc {
         flex-basis: 70%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
+
     .personal-cabinet-menu__desc h5 {
         font-size: 15px;
         line-height: 17px;
-        margin-bottom: 5px;
     }
     .bx_filter .main-filter .bx_filter_param_label .checkbox {
         width: 16px;

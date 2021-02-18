@@ -164,6 +164,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
     float: right;
+    flex: none;
 }
 .place-education-block .add-place, .place-education-block .add-education, .place-education-block .add-address {
     position: absolute;
@@ -896,6 +897,7 @@ label.photoFile-label {
     /*}*/
     .personal-cabinet-content__doctors-page__filter__options .main-filter .row > div:last-child {
         display: flex;
+        flex-wrap: wrap;
     }
     .personal-cabinet-content__doctors-page__filter__options .main-filter .row > div:last-child .bx_filter_parameters_box.active:last-child {
         margin-bottom: 10px;

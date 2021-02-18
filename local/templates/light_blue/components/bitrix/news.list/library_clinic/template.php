@@ -14,6 +14,12 @@ $this->setFrameMode(true);
 CModule::IncludeModule("form");
 global $clinic_spec;
 require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
+function console_log( $data ){
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+}
+console_log($arResult);
 ?>
 <style>
     .clinic-card-info__title::before {
@@ -46,7 +52,7 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
     ?>
     <div class="doctors-slider-item">
         <div class="doctors-list-item__img <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){?>logo<?}?>">
-            <a href="https://webdoc.clinic/<?=$arItem["DETAIL_PAGE_URL"]?>">
+            <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                 <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){
                     $file = CFile::ResizeImageGet($arItem["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                     ?>
@@ -73,7 +79,7 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
                          alt="star">
                 </div>
             </div>
-                <a class="clinic-card-img__link" href="<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
+                <a class="clinic-card-img__link" href="https://webdoc.clinic<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
             </div>
         </div>
         <div class="doctors-list-item__description">
@@ -104,8 +110,13 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/termination.php');
                     </a>
                 </p>
                 <?if($arItem["PROPERTIES"]["CITY"]["VALUE"]):?>
+                <?
+                    $rez = CIBlockSection::GetByID($arItem["DISPLAY_PROPERTIES"]["CITY"]["VALUE"]);
+                    if ($ar_res = $rez->GetNext())
+                        $city = $ar_res['NAME'];
+                    ?>
                     <div class="clinic-card-info__block">
-                        <span class="clinic-card-info__title map"><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                        <span class="clinic-card-info__title map"><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?>г. <?=$city?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                     </div>
                 <?endif;?>
                 <?if($arItem["PROPERTIES"]["CONTACTS"]["VALUE"]):?>

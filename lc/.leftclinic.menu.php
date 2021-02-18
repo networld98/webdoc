@@ -1,7 +1,7 @@
 <?
 $aMenuLinks = Array(
     Array(
-        "Клиника",
+        "Клиника. Направления клиники",
         "/lc/",
         Array(),
         Array(
@@ -27,17 +27,17 @@ $aMenuLinks = Array(
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon3.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon3-un.svg",
-            "SPAN"=> "фотографии, квалификация"
+            "SPAN"=> ""
         ),
     ),
     Array(
-        "Выбор услуг и стоимость",
+        "Стоимость услуг",
         "/lc/price/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon4.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon4-un.svg",
-            "SPAN"=> "МРТ, КТ, УЗИ"
+            "SPAN"=> "по направлениям"
         ),
     ),
     Array(
@@ -51,33 +51,23 @@ $aMenuLinks = Array(
         ),
     ),
     Array(
-        "Документы",
-        "/lc/invoices/",
-        Array(),
-        Array(
-            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
-            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
-            "SPAN"=> "Cчета, акты"
-        ),
-    ),
-    Array(
-        "Отзывы",
+        "Ответы на отзывы",
         "/lc/reviews/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon6.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon6-un.svg",
-            "SPAN"=> "Ответы на отзывы"
+            "SPAN"=> ""
         ),
     ),
     Array(
-        "Советы",
+        "Продвижение клиники",
         "/lc/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon7.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon7-un.svg",
-            "SPAN"=> "по продвижению клиники"
+            "SPAN"=> ""
         ),
     ),
     Array(
@@ -87,6 +77,16 @@ $aMenuLinks = Array(
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
+        ),
+    ),
+    Array(
+        "Cчета, акты",
+        "/lc/invoices/",
+        Array(),
+        Array(
+            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
+            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
+            "SPAN"=> ""
         ),
     ),
     /*Array(

@@ -15,7 +15,7 @@ global $doctor_spec;
 CModule::IncludeModule("form");
 require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
 ?>
-<div class="doctors-slider slick-slider4">
+<div class="    doctors-slider slick-slider4">
 <?foreach($arResult["ITEMS"] as $arItem):?>
     <?
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));

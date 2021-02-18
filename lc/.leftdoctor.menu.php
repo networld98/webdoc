@@ -21,23 +21,13 @@ $aMenuLinks = Array(
         ),
     ),
     Array(
-        "Документы",
-        "/lc/invoices/",
-        Array(),
-        Array(
-            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
-            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
-            "SPAN"=> "Cчета, акты"
-        ),
-    ),
-    Array(
-        "Отзывы",
+        "Ответы на отзывы",
         "/lc/reviews/",
         Array(),
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon6.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon6-un.svg",
-            "SPAN"=> "Ответы на отзывы"
+            "SPAN"=> ""
         ),
     ),
     Array(
@@ -57,6 +47,16 @@ $aMenuLinks = Array(
         Array(
             "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
             "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
+        ),
+    ),
+    Array(
+        "Cчета, акты",
+        "/lc/invoices/",
+        Array(),
+        Array(
+            "ICON_FILE"=>"/local/templates/light_blue/assets/images/menu-icon5.svg",
+            "ICON_FILE_UN"=>"/local/templates/light_blue/assets/images/menu-icon5-un.svg",
+            "SPAN"=> ""
         ),
     ),
     /*Array(
