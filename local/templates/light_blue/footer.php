@@ -6,7 +6,7 @@ IncludeTemplateLangFile(__FILE__);
     <div class="container">
         <div class="row">
             <div class="footer__col-1 col-sm-4 col-xl-4 col-lg-4">
-                <div class="logo"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO-dark-bg.svg" alt="logo"></div>
+                <div class="logo"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO-dark-bg-new.svg" alt="logo"></div>
                 <div class="footer__contacts">
                     <? $APPLICATION->IncludeComponent(
                         "bitrix:main.include",
