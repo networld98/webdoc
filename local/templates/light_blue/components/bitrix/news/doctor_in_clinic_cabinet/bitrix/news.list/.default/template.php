@@ -402,7 +402,6 @@ $week = array('Понедельник','Вторник','Среда','Четве
                         let fileRes = file.split("/");
                         $('#form_doctor_<?=$arItem['ID']?> .photoFile-name').text(fileRes[fileRes.length - 1 ]);
                         $('#form_doctor_<?=$arItem['ID']?> .photoFile-name').css({'display': 'block'});
-                        $('.photoFile-label').css({marginRight: '10px'});
                     }
                 });
                 return false;
