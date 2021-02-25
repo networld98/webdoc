@@ -3288,6 +3288,7 @@ main {
     background-position: center;
     margin-right: 20px;
     transition: 0.3s;
+    flex:none;
 }
 .bx_filter .main-filter .bx_filter_select_text {
     color: rgba(33,37,41,0.65);
@@ -7629,6 +7630,7 @@ button:focus {
     }
     .services-list .sort-block-list, .library .sort-block-list {
         display: flex;
+        flex-wrap: wrap;
     }
     .flex-right .doctors-list-item__description .adapt > div:first-child {
         margin-right: 0;
@@ -8035,6 +8037,13 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .library .sort-block-list-item > a {
+        font-size: 12px;
+        padding: 5px 5px;
+    }
+    .fixed-block-alp .sort-block-list .sort-block-list-item {
+        margin-bottom: 5px;
+    }
     .bx-breadcrumb .bx-breadcrumb-item > i + span {
         margin-top: -4px;
         line-height: 20px;

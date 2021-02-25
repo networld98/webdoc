@@ -614,6 +614,10 @@ main >.main-seo-text {
     top: 40vh;
     left: calc((100vw - 450px)/2);
 }
+.finance-modal {
+    left: 50%;
+    transform: translateX(-50%);
+}
 .delete-doctor-modal .save.close-modal {
     cursor: pointer;
 }

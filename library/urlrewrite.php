@@ -32,4 +32,12 @@ $arUrlRewrite=array (
     'PATH' => '/404.php',
     'SORT' => 100,
   ),
+25 =>
+array (
+    'CONDITION' => '#^/cosmetic/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/cosmetic/index.php',
+    'SORT' => 100,
+),
 );

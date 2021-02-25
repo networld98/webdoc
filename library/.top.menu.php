@@ -22,10 +22,10 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Телемедицина", 
+		"Косметология",
 		"", 
 		Array(), 
-		Array("ICON_FILE"=>"local/templates/light_blue/assets/images/Frame%20163-2.svg"), 
+		Array("ICON_FILE"=>"local/templates/light_blue/assets/images/cosmetic.svg"),
 		"" 
 	)
 );
