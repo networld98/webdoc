@@ -31,7 +31,21 @@ $this->setFrameMode(true);
 );?>
 <br />
 <?endif?>
-
+<?
+global $Filter;
+\Bitrix\Main\Loader::includeModule('iblock');
+$rsSection = \Bitrix\Iblock\SectionTable::getList(array(
+    'filter' => array(
+        'IBLOCK_ID' => 14,
+        'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city'],
+    ),
+    'select' =>  array('ID'),
+));
+while ($arSection=$rsSection->fetch())
+{
+    $cityId = $arSection['ID'];
+}
+$Filter = array("PROPERTY_CITY" => $cityId);?>
 <? $APPLICATION->IncludeComponent(
     "webnauts:catalog.smart.filter",
     "search_filter",
@@ -134,7 +148,7 @@ $this->setFrameMode(true);
 		"ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
 		"USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
 		"GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
-		"FILTER_NAME" => $arParams["FILTER_NAME"],
+		"FILTER_NAME" => "Filter",
 		"HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
 		"CHECK_DATES" => $arParams["CHECK_DATES"],
 	),

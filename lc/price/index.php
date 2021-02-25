@@ -95,7 +95,7 @@ while($ob = $res->GetNextElement())
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                 while($ar_result = $obSections->GetNext())
                 {
-                    if(in_array($ar_result['UF_SPECIF'],$specializations)){
+                    if(array_intersect($ar_result['UF_SPECIF'],$specializations)!=NULL){
                         $i++;
                         $formList_diagnost[]=array("NAME"=>$ar_result['NAME'],"ID"=>$ar_result['ID']);
                         ?>
@@ -138,7 +138,7 @@ while($ob = $res->GetNextElement())
                 $arFilter = array("IBLOCK_ID"=>19);
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                 while($ar_result = $obSections->GetNext()) {
-                    if (in_array($ar_result['UF_SPECIF'], $specializations)) {
+                    if (array_intersect($ar_result['UF_SPECIF'],$specializations)!=NULL) {
                         $i++;
                         $formList_uslugi[] = array("NAME" => $ar_result['NAME'], "ID" => $ar_result['ID']);
                         ?>
