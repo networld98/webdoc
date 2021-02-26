@@ -723,12 +723,16 @@ main {
     font-size: 25px;
     line-height: 35px;
     color: #979797;
+    border: 1px solid #9DD4B3;
+    border-radius: 50px;
     font-family: "Montserrat Alternates-Bold", sans-serif;
 }
 
 .specializations .nav-pills .nav-link.active, .specializations .nav-pills .show > .nav-link{
     color: #000;
     background: none;
+
+    color: #9DD4B3;
     /*-webkit-text-decoration-line: underline;*/
     /*        text-decoration-line: underline;*/
     /*padding: 8px;*/
@@ -5663,8 +5667,11 @@ button:focus {
 /* {*/
     /*margin-top: 38px;*/
 /*}*/
-.specializations .nav-pills > li:first-child {
+.specializations .nav-pills > li {
     margin-right: 16px;
+}
+.specializations .nav-pills > li:last-child {
+    margin-right: 0;
 }
 .search-doctors {
     display: none;
@@ -5837,9 +5844,10 @@ button:focus {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 .general-block-item-list > li {
-    flex-basis: 50%;
+    flex-basis: 49%;
     margin-bottom: 10px;
 }
 .general-block-item-list > li > a {
@@ -7210,6 +7218,17 @@ button:focus {
     }
 }
 @media (max-width: 768px) {
+    .specializations .nav-pills > li {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    .specializations .nav-pills > li:last-child {
+        margin-bottom: 0;
+    }
+    .specializations .nav-pills .nav-link {
+        justify-content: center;
+    }
     .print-table, .print-table thead, .print-table tbody, .print-table th, .print-table td, .print-table tr {
         display: block; }
     .print-table thead tr {
@@ -7351,7 +7370,7 @@ button:focus {
         padding-top: 35px;
     }
     .top-menu-mobile .nav .nav__item:nth-child(2) {
-        padding-left: 12px;
+        /*padding-left: 12px;*/
     }
     .statistics__item:nth-child(2) {
         padding-right: 46px;
@@ -8037,12 +8056,18 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .general-block-item {
+        padding: 20px 20px 20px;
+    }
     .library .sort-block-list-item > a {
-        font-size: 12px;
+        font-size: 15px;
         padding: 5px 5px;
     }
     .fixed-block-alp .sort-block-list .sort-block-list-item {
         margin-bottom: 5px;
+    }
+    .fixed-block-alp .sort-block-list .sort-block-list-item:last-child {
+        margin-right: 0;
     }
     .bx-breadcrumb .bx-breadcrumb-item > i + span {
         margin-top: -4px;
@@ -9672,6 +9697,9 @@ button:focus {
 @media (max-width: 375px) {
     .statistics__item:nth-child(3) {
         width: 83%;
+    }
+    .library .sort-block-list-item > a {
+        font-size: 12px;
     }
 }
 @media (max-width: 360px) {
