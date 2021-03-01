@@ -89,14 +89,14 @@ $Filter = array("PROPERTY_CITY" => $cityId);?>
         false
     );?>
     <?if (isset($_GET["sort"]) && isset($_GET["order"]) && (
-            $_GET["sort"] == "property_RATING" ||
+            $_GET["sort"] == "property_SECT_RATING" ||
             $_GET["sort"] == "property_COST_PRICE" ||
             $_GET["sort"] == "property_MAIN_SPECIALIZATION")){
         global $sort, $order;
         $sort = $_GET["sort"];
         $order = $_GET["order"];
     }else{
-        $sort = "property_RATING";
+        $sort = "property_SECT_RATING";
         $order = "desc";
     }
     ?>

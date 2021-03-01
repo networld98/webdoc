@@ -28,23 +28,33 @@ if(CModule::IncludeModule('iblock')) {
                     "DATE" => $Element['PROPERTY_DATE_END_ACTIVE_VALUE'],
                     );
                 CEvent::Send("PAUSE_SUBSCRIPTION", s1, $arEventFields, "N", 97);
-            }elseif ($days_between < 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
-           /*     $PROP[127] = NULL;
-                $PROP[125] = NULL;*/
-            }elseif ($days_between > 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
+            }elseif ($days_between < 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 4){
+                $PROP[127] = NULL;
+                $PROP[125] = NULL;
+                $PROP[187] = NULL;
+                $PROP[186] = NULL;
+            }elseif ($days_between > 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 4){
                 $PROP[127] = 128;
                 $PROP[125] = 89;
-            }else{
+                $PROP[187] = 133;
+                $PROP[186] = 131;
+            }elseif ($days_between > 1 && $Element['PROPERTY_API_REVIEWS_RATING_VALUE'] >= 4){
                 $PROP[127] = 128;
                 $PROP[125] = 89;
+                $PROP[187] = 134;
+                $PROP[186] = 132;
             }
         }else{
-            if ($Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 5){
-             /*   $PROP[127] = NULL;
-                $PROP[125] = NULL;*/
+            if ($Element['PROPERTY_API_REVIEWS_RATING_VALUE'] < 4){
+                $PROP[127] = NULL;
+                $PROP[125] = NULL;
+                $PROP[187] = NULL;
+                $PROP[186] = NULL;
              }else{
                 $PROP[127] = 128;
                 $PROP[125] = 89;
+                $PROP[187] = 134;
+                $PROP[186] = 132;
 
             }
         }

@@ -20,7 +20,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
             Выбрать:
         </span>
         <select name="" onchange="location=this.value" id="">
-            <option value="?sort=property_RATING&order=desc"<?if ($_GET["sort"] == "property_RATING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Высокий рейтинг</option>
+            <option value="?sort=property_SECT_RATING&order=desc"<?if ($_GET["sort"] == "property_SECT_RATING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Высокий рейтинг</option>
             <option value="?sort=property_MAIN_SPECIALIZATION&order=asc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="asc"):?> selected <?endif;?>>Специализация (А-Я)</option>
             <option value="?sort=property_MAIN_SPECIALIZATION&order=desc" <?if ($_GET["sort"] == "property_MAIN_SPECIALIZATION" && $_GET["order"]=="desc"):?> selected <?endif;?>>Специализация (Я-А)</option>
             <option value="?sort=property_COST_PRICE&order=asc" <?if ($_GET["sort"] == "property_COST_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Первичная стоимость (&#8593;)</option>

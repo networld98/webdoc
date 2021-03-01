@@ -20,7 +20,7 @@ CModule::IncludeModule("form"); ?>
         <div class="sort-block">
             <ul class="sort-block-list">
                 <li class="sort-block-list-item <?if ($_GET["sort"] == "show_counter"):?>active<?endif;?>"><a href="?sort=show_counter&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Популярные</a></li>
-                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_RATING"):?>active<?endif;?>"><a href="?sort=property_RATING&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Рейтинг</a></li>
+                <li class="sort-block-list-item <?if ($_GET["sort"] == "property_SECT_RATING"):?>active<?endif;?>"><a href="?sort=property_SECT_RATING&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Рейтинг</a></li>
                 <li class="sort-block-list-item <?if ($_GET["sort"] == "property_STANDING"):?>active<?endif;?>"><a href="?sort=property_STANDING&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Стаж</a></li>
                 <li class="sort-block-list-item <?if ($_GET["sort"] == "property_PRICE"):?>active<?endif;?>"><a href="?sort=property_PRICE&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Стоимость</a></li>
                 <li class="sort-block-list-item <?if ($_GET["sort"] == "property_REVIEWS"):?>active<?endif;?>"><a href="?sort=property_REVIEWS&order=<?if ($_GET["order"] == NULL || $_GET["order"] == 'desc'){?>asc<?}else{?>desc<?}?>">Отзывы</a></li>
@@ -29,8 +29,8 @@ CModule::IncludeModule("form"); ?>
                 <select name="" onchange="location=this.value" id="">
                     <option value="?sort=show_counter&order=asc" <?if ($_GET["sort"] == "show_counter" && $_GET["order"]=="asc"):?> selected <?endif;?>>Популярные(&#8593;)</option>
                     <option value="?sort=show_counter&order=desc" <?if ($_GET["sort"] == "show_counter" && $_GET["order"]=="desc"):?> selected <?endif;?>>Популярные(&#8595;)</option>
-                    <option value="?sort=property_RATING&order=asc" <?if ($_GET["sort"] == "property_RATING" && $_GET["order"]=="asc"):?> selected <?endif;?>>Рейтинг(&#8593;)</option>
-                    <option value="?sort=property_RATING&order=desc" <?if ($_GET["sort"] == "property_RATING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Рейтинг(&#8595;)</option>
+                    <option value="?sort=property_SECT_RATING&order=asc" <?if ($_GET["sort"] == "property_SECT_RATING" && $_GET["order"]=="asc"):?> selected <?endif;?>>Рейтинг(&#8593;)</option>
+                    <option value="?sort=property_SECT_RATING&order=desc" <?if ($_GET["sort"] == "property_SECT_RATING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Рейтинг(&#8595;)</option>
                     <option value="?sort=property_STANDING&order=asc" <?if ($_GET["sort"] == "property_STANDING" && $_GET["order"]=="asc"):?> selected <?endif;?>>Стаж(&#8593;)</option>
                     <option value="?sort=property_STANDING&order=desc" <?if ($_GET["sort"] == "property_STANDING" && $_GET["order"]=="desc"):?> selected <?endif;?>>Стаж(&#8595;)</option>
                     <option value="?sort=property_PRICE&order=asc>" <?if ($_GET["sort"] == "property_PRICE" && $_GET["order"]=="asc"):?> selected <?endif;?>>Стоимость(&#8593;)</option>
