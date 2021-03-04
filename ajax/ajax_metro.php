@@ -11,7 +11,7 @@ if($metroInCity>0):?>
             <ul class="checkbox-group">
                 <?
                 $arSelect = array("ID", "NAME");
-                $arFilter = array("IBLOCK_ID"=>14, 'IBLOCK_SECTION_ID'=> $_POST['ID']);
+                $arFilter = array("IBLOCK_ID"=>14, 'SECTION_ID'=> $_POST['ID'], 'INCLUDE_SUBSECTIONS' => 'Y');
                 $res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);
                 while($ob = $res->GetNextElement()){
                     $arField = $ob->GetFields();?>

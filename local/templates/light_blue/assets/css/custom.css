@@ -231,13 +231,15 @@
 .link-checkbox input {
     display: none;
 }
-#metro-block-ajax {
+#metro-block-ajax, #area-block-ajax  {
     margin-bottom: 0;
+}
+#area-block-ajax select {
+    margin-bottom: 20px;
 }
 .metro-container {
     margin-bottom: 20px;
 }
-
 .header .container.cabinet .contacts {
     min-width: 170px;
     display: flex;

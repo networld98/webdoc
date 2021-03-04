@@ -164,7 +164,7 @@ $templateData = array(
                                         <div class="bx_filter_select_container">
                                             <div class="bx_filter_select_block" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                 <?if ($arItem['CODE'] != "SPECIALIZATION") {?>
-                                                    <input type="text" class="city_input" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" id="city_input_search_<?=CUtil::JSEscape($key)?>">
+                                                    <input type="text" class="city_input" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" >
                                                 <?}?>
                                                 <div class="bx_filter_select_text" data-role="currentOption"><?
                                                     foreach ($arItem["VALUES"] as $val => $ar)

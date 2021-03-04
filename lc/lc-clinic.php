@@ -106,8 +106,28 @@ $days_between = ceil(($end - $start) / 86400);
                             <?}?>
                         </select>
                     </li>
+                    <li id="area-block-ajax">
+                        <?
+                         $areaCount =  CIBlockSection::GetCount(array("IBLOCK_ID"=>14, "SECTION_ID"=>$cityId));
+                        if($areaCount>0):?>
+                        <label for=""><?=$arProps['AREA']['NAME']?></label>
+                        <select name="AREA" id="area">
+                            <?
+                            $arSelect = array("ID", "NAME");
+                            $arFilter = array("IBLOCK_ID"=>14, 'SECTION_ID' => $cityId);
+                            $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+                            while($ar_result = $obSections->GetNext())
+                            {
+                                $AreaId = $arProps['AREA']['VALUE'];
+                               ?>
+                                <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$arProps['AREA']['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
+                            <?}?>
+                        </select>
+                        <?endif;?>
+                    </li>
                     <li id="metro-block-ajax">
                         <?
+                        $metroInArea = CIBlockSection::GetSectionElementsCount($AreaId, Array("CNT_ACTIVE"=>"Y"));
                         $metroInCity = CIBlockSection::GetSectionElementsCount($cityId, Array("CNT_ACTIVE"=>"Y"));
                         if($metroInCity>0):?>
                             <label for=""><?=$arProps['METRO']['NAME']?></label>
@@ -115,10 +135,11 @@ $days_between = ceil(($end - $start) / 86400);
                                 <ul class="checkbox-group">
                                     <?
                                     $arSelect = array("ID", "NAME");
-                                    $arFilter = array("IBLOCK_ID"=>14, 'IBLOCK_SECTION_ID'=> $cityId);
+                                    $arFilter = array("IBLOCK_ID"=>14, 'SECTION_ID'=> $cityId, 'INCLUDE_SUBSECTIONS' => 'Y');
                                     $res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);
                                     while($ob = $res->GetNextElement()){
-                                        $arField = $ob->GetFields();?>
+                                        $arField = $ob->GetFields();
+                                        ?>
                                         <li>
                                             <label data-role="label_<?=$arField['ID']?>" class="bx_filter_param_label " for="<?=$arField['ID']?>">
                                         <span class="bx_filter_input_checkbox">
@@ -391,14 +412,24 @@ $days_between = ceil(($end - $start) / 86400);
         });
         $("#city").change(function () {
             let id = $(this).val();
-            let block = $('#metro-block-ajax');
+            let metro = $('#metro-block-ajax');
+            let area = $('#area-block-ajax');
             $.ajax({
                 type: "POST",
                 url: '/ajax/ajax_metro.php',
                 data: id,
                 success: function (data) {
                     // Вывод текста результата отправки
-                    $(block).html(data);
+                    $(metro).html(data);
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: '/ajax/ajax_area.php',
+                data: id,
+                success: function (data) {
+                    // Вывод текста результата отправки
+                    $(area).html(data);
                 }
             });
             return false;

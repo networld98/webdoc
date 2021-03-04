@@ -8,5 +8,7 @@ $MESS ['CT_BCSF_FILTER_COUNT'] = "Выбрано: #ELEMENT_COUNT#";
 $MESS ['CT_BCSF_FILTER_SHOW'] = "Найти";
 $MESS ['CT_BCSF_FILTER_ALL'] = "Все";
 $MESS ['CT_BCSF_FILTER_CITY'] = "Город";
+$MESS ['CT_BCSF_FILTER_AREA'] = "Район";
+$MESS ['CT_BCSF_FILTER_METRO'] = "Метро";
 $MESS ['CT_BCSF_FILTER_SPECIALIZATION'] = "Специализация";
 ?>

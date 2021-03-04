@@ -57,7 +57,24 @@ $res = \Bitrix\Sale\Location\LocationTable::getList(array(
 while ($item = $res->fetch()) {
     $cityTable[$item['NAME_RU']] = $item['SALE_LOCATION_LOCATION_EXTERNAL_LOCATION_ID'];
 }
+
+///Получить айди текущего города
+
+    $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
+    while($ob = $res->GetNextElement()){
+        $arFields = $ob->GetFields();
+        $areaCount = CIBlockSection::GetCount(array("IBLOCK_ID"=>14, "SECTION_ID"=>$arFields['ID']));
+        $metroCount = CIBlockSection::GetSectionElementsCount($arFields['ID'], Array("CNT_ACTIVE"=>"Y"));
+
+      /*  echo '<pre>';
+        print_r($areaCount);
+        echo '</pre>';
+        echo '<pre>';
+        print_r($metroCount);
+        echo '</pre>';*/
+    }
 ?>
+
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
 	<div class="bx_filter_section container">
 	<?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
@@ -180,7 +197,7 @@ while ($item = $res->fetch()) {
                         if ($arItem['CODE'] != "SPECIALIZATION" && $arItem['CODE'] != "SPECIALIZATION_MAIN") { ?>
                             <div class="bx_filter_parameters_box <?
                             if ($arItem["DISPLAY_EXPANDED"] == "Y"): ?>active<?endif ?> <?
-                            if ($arItem["DISPLAY_TYPE"] == "P") : ?>col-12 col-sm-6<?endif ?>">
+                            if ($arItem["DISPLAY_TYPE"] == "P") : ?>col-12 col-sm-6<?endif ?>" <?if($arItem['CODE'] != "METRO" && $arItem['CODE'] != "AREA"){?>style="display:none;"<?}?>>
                                 <span class="bx_filter_container_modef"></span>
                                 <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">-->
                                 <?//=$arItem["NAME"]?><!--</div>-->
@@ -319,27 +336,34 @@ while ($item = $res->fetch()) {
                                         case "P"://DROPDOWN
                                         $checkedItemExist = false;
                                         ?>
-                                            <div class="bx_filter_select_container">
-                                                <div class="bx_filter_select_block"
-                                                     onclick="smartFilter.showDropDownPopup(this, '<?= CUtil::JSEscape($key) ?>')">
-                                                    <?
-                                                    if ($arItem['CODE'] != "SPECIALIZATION") { ?>
-                                                        <input type="text" class="city_input" value=""
-                                                               onkeyup="smartFilter.showDropDownPopup(this, '<?= CUtil::JSEscape($key) ?>')"
-                                                               id="city_input_search_<?= CUtil::JSEscape($key) ?>">
-                                                    <?
-                                                    } ?>
+                                            <div class="bx_filter_select_container" id="input_<?=CUtil::JSEscape($key)?>">
+                                                <div class="bx_filter_select_block" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
+                                                    <?if ($arItem['CODE'] != "SPECIALIZATION") {?>
+                                                        <input type="text" class="city_input city_input_<?=mb_strtolower(CUtil::JSEscape($key))?>" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" <?/*id="city_input_search_<?=CUtil::JSEscape($key)?>*/?>">
+                                                    <?}?>
                                                     <div class="bx_filter_select_text" data-role="currentOption"><?
-                                                        foreach ($arItem["VALUES"] as $val => $ar) {
-                                                            if ($ar["CHECKED"]) {
+                                                        foreach ($arItem["VALUES"] as $val => $ar)
+                                                        {
+                                                            if ($ar["CHECKED"])
+                                                            {
                                                                 echo trim($ar["VALUE"], ".");
+                                                                if ($arItem['CODE'] == "SPECIALIZATION") {
+                                                                    $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
+                                                                }
+                                                                if ($arItem['CODE'] == "SPECIALIZATION_MAIN") {
+                                                                    $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
+                                                                }
                                                                 $checkedItemExist = true;
                                                             }
                                                         }
                                                         if (!$checkedItemExist) {
-                                                            if ($arItem['CODE'] == "CITY") {
+                                                           if ($arItem['CODE'] == "CITY") {
                                                                 echo GetMessage("CT_BCSF_FILTER_CITY");
-                                                            } else {
+                                                            }elseif ($arItem['CODE'] == "AREA") {
+                                                                echo GetMessage("CT_BCSF_FILTER_AREA");
+                                                            }elseif ($arItem['CODE'] == "METRO") {
+                                                                echo GetMessage("CT_BCSF_FILTER_METRO");
+                                                            }else{
                                                                 echo GetMessage("CT_BCSF_FILTER_ALL");
                                                             }
                                                         }
@@ -349,48 +373,42 @@ while ($item = $res->fetch()) {
                                                     <input
                                                             style="display: none"
                                                             type="radio"
-                                                            name="<?= $arCur["CONTROL_NAME_ALT"] ?>"
-                                                            id="<? echo "all_" . $arCur["CONTROL_ID"] ?>"
+                                                            name="<?=$arCur["CONTROL_NAME_ALT"]?>"
+                                                            id="<? echo "all_".$arCur["CONTROL_ID"] ?>"
                                                             value=""
                                                     />
-                                                    <?
-                                                    foreach ($arItem["VALUES"] as $val => $ar):?>
+                                                    <?foreach ($arItem["VALUES"] as $val => $ar):
+                                                        if($ar["CHECKED"]){
+                                                            $cityName = $ar["VALUE"];
+                                                        }?>
                                                         <input
                                                                 style="display: none"
                                                                 type="radio"
-                                                                name="<?= $ar["CONTROL_NAME_ALT"] ?>"
-                                                                id="<?= $ar["CONTROL_ID"] ?>"
+                                                                name="<?=$ar["CONTROL_NAME_ALT"]?>"
+                                                                id="<?=$ar["CONTROL_ID"]?>"
                                                                 value="<? echo $ar["HTML_VALUE_ALT"] ?>"
-                                                            <? echo $ar["CHECKED"] ? 'checked="checked"' : '' ?>
+                                                            <? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
                                                         />
-                                                    <?endforeach ?>
-                                                    <div class="bx_filter_select_popup" data-role="dropdownContent"
-                                                         style="display: none;">
+                                                    <?endforeach?>
+                                                    <div class="bx_filter_select_popup" data-role="dropdownContent" style="display: none;">
                                                         <ul>
                                                             <li>
-                                                                <label for="<?= "all_" . $arCur["CONTROL_ID"] ?>"
-                                                                       class="bx_filter_param_label"
-                                                                       data-role="label_<?= "all_" . $arCur["CONTROL_ID"] ?>"
-                                                                       onclick="smartFilter.selectDropDownItem(this, '<?= CUtil::JSEscape("all_" . $arCur["CONTROL_ID"]) ?>')">
+                                                                <label for="<?="all_".$arCur["CONTROL_ID"]?>" class="bx_filter_param_label" data-role="label_<?="all_".$arCur["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape("all_".$arCur["CONTROL_ID"])?>')">
                                                                     <? echo GetMessage("CT_BCSF_FILTER_ALL"); ?>
                                                                 </label>
                                                             </li>
                                                             <?
-                                                            foreach ($city as $val => $ar):
+                                                            foreach ($arItem["VALUES"] as $val => $ar):
                                                                 $class = "";
                                                                 if ($ar["CHECKED"])
-                                                                    $class .= " selected";
+                                                                    $class.= " selected";
                                                                 if ($ar["DISABLED"])
-                                                                    $class .= " disabled";
+                                                                    $class.= " disabled";
                                                                 ?>
                                                                 <li>
-                                                                    <label for="<?= $ar["CONTROL_ID"] ?>"
-                                                                           class="bx_filter_param_label<?= $class ?> bx_filter_param_label_<?= CUtil::JSEscape($key) ?>  bx_filter_param_label_<?echo trim($ar["VALUE"], ".") ?>" data-id="<?=$cityTable[trim($ar["VALUE"], ".")]?>"
-                                                                           data-role="label_<?= $ar["CONTROL_ID"] ?>"
-                                                                           onclick="smartFilter.selectDropDownItem(this, '<?= CUtil::JSEscape($ar["CONTROL_ID"]) ?>')"><?
-                                                                        echo trim($ar["VALUE"], ".") ?></label>
+                                                                    <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?=CUtil::JSEscape($key)?>  bx_filter_param_label_<?echo trim($ar["VALUE"], ".")?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
                                                                 </li>
-                                                            <?endforeach ?>
+                                                            <?endforeach?>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -886,6 +904,7 @@ while ($item = $res->fetch()) {
 	var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
     $(document).ready(function () {
         geoCity = getCookie('bxmaker.geoip.2.4.2_city');
+        console.log( geoCity);
         if(getCookie('displayBtnSearch') == 'false') {
             $('.search-doctors').hide();
             $('.clinic-card .main-filter').css({'padding-top': '32px', 'padding-bottom': '29px'});
@@ -893,7 +912,8 @@ while ($item = $res->fetch()) {
         }
         $('.bx_filter_param_label_'+geoCity).trigger('click');
         $('.popup-window').hide();
-        let city = $('.city_input');
+        /*let id = '93';
+        let city = $('.city_input_'+id);
         city.css('color','transparent');
         let city_input = city.val();
         let city_name = $('.bx_filter_param_label');
@@ -915,8 +935,7 @@ while ($item = $res->fetch()) {
             var select = $(this).val();
             if (select.length >= 1) {
                 $(this).parent('.bx_filter_select_block').find('.bx_filter_select_text').hide();
-                $('.bx_filter_param_label_94').hide();
-                $('.bx_filter_param_label_115').hide();
+                $('.bx_filter_param_label_'+id).hide();
                 $('#smartFilterDropDown94 .bx_filter_param_label').each(function( index ) {
                     if ($(this).text().toLowerCase().indexOf(select) === 0) {
                         $('.bx_filter_param_label_'+ $( this ).text() ).show();
@@ -932,22 +951,17 @@ while ($item = $res->fetch()) {
                     }
                 });
             }else{
-                $('.bx_filter_param_label_94').show();
-                $('.bx_filter_param_label_115').show();
+                $('.bx_filter_param_label_'+id).show();
                 $(this).parent('.bx_filter_select_block').find('bx_filter_select_text').show();
             }
         });
-        $('.bx_filter_param_label_94').on('click',function () {
-            $('.bx_filter_select_text').show();
-            city.css('color','transparent');
-        });
-        $('.bx_filter_param_label_115').on('click',function () {
+        $('.bx_filter_param_label_'+id).on('click',function () {
             $('.bx_filter_select_text').show();
             city.css('color','transparent');
         });
         if (city_input !== '' || city_input !== null) {
             $('.bx_filter_select_text').show();
             city.css('color','transparent');
-        }
+        }*/
     });
 </script>
