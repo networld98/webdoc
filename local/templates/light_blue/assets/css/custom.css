@@ -937,3 +937,9 @@ label.photoFile-label {
 .arstat-color-blue .api-info .api-info-bar.api-info-bar5{
     background-color:#9acc9b!important;
 }
+.bx_filter .main-filter .bx_filter_select_block.disabled {
+    border: 2px solid #9DD4B3;
+    pointer-events: none;
+    cursor: default;
+    background: #ececec;
+}
