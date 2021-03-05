@@ -5582,7 +5582,7 @@ button:focus {
    background: #32B4C3;
 }
 .bx_filter.bx_blue.bx_horizontal {
-    padding: 1px 0 35px 0;
+    padding: 1px 0 35Fpx 0;
 }
 .clinic-card .bx_filter.bx_blue.bx_horizontal {
     background: #F3F4EF;
@@ -5609,12 +5609,8 @@ button:focus {
     border-radius: 5px;
 }
 .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
-    padding: 0;
-    max-width: 22%;
-    margin-right: 25px;
-}
-.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box:first-child {
-    max-width: 46%;
+        padding: 0;
+        max-width: 46%;
 }
 .bx_filter_select_container {
     max-width:100%;
@@ -7130,9 +7126,6 @@ button:focus {
     }
 }
 @media (max-width: 900px) {
-    .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
-        margin-right: 10px;
-    }
     .personal-cabinet-content__doctors-page__filter {
         flex-direction: column-reverse;
     }
@@ -7493,9 +7486,6 @@ button:focus {
 }
 
 @media (max-width: 750px) {
-    .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box:first-child {
-        max-width: 100%;
-    }
     .specializations .nav-pills > li:last-child {
         margin-left: 0;
     }
@@ -7547,7 +7537,7 @@ button:focus {
         width: 15px;
     }
     .alphabet-block-list > li a {
-        font-size: 17px;
+        font-size: 14px;
     }
     .fixed-block-alp {
         padding-bottom: 10px !important;
@@ -7827,15 +7817,15 @@ button:focus {
     /*    width: 34% !important;*/
     /*    margin-right: 0;*/
     /*}*/
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(1),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(5) {
+    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(1),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) {
         width: 34% !important;
         margin-right: 0;
     }
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(6) {
+    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {
         width: 30% !important;
         margin-right: 0;
     }
-    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(3),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) {
+    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9) {
         width: 36% !important;
         margin-right: 0;
     }

@@ -1079,7 +1079,6 @@
 .bx_filter .bx_filter_popup_result_close {
 	display: none;
 }
-
 @media (max-width: 530px) {
 	.bx-touch .bx_filter .bx_filter_popup_result {
 		font-size: 12px;
