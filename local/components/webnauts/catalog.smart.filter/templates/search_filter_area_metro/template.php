@@ -82,17 +82,27 @@ while($ar_result = $obSections->GetNext()) {
 }
 ?>
 <style>
-    .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
+    .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box {
         padding: 0;
         max-width: 22%;
         margin-right: 25px;
     }
-    .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box:first-child {
+    .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box:first-child {
         max-width: 46%;
     }
     @media (max-width: 900px) {
-        .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
+        .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box {
             margin-right: 10px;
+        }
+    }
+    @media (max-width: 576px) {
+        .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box:first-child {
+            max-width: 100%;
+        }
+        .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box {
+            padding: 0;
+            max-width: 100%;
+            margin-right: 25px;
         }
     }
 </style>
@@ -101,7 +111,7 @@ while($ar_result = $obSections->GetNext()) {
         <?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
         <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter main-filter">
             <div class="row">
-                <div class="col-12 col-sm-11">
+                <div class="col-12 col-sm-11 search-filter-area">
                     <div class="bx_filter_parameters_box active col-12 col-sm-6 search-order">
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container checkboxes">

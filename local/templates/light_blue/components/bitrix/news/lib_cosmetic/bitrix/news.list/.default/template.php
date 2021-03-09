@@ -34,7 +34,7 @@ $items_en = [];
 foreach($arResult['ITEMS'] as $item)
 {
     $chr_en = "a-zA-Z0-9\s`~!@#$%^&*()_+-={}|:;<>?,.\/\"\'\\\[\]";
-    if (preg_match("/^[$chr_en]+$/", $item['NAME'])) {
+    if (preg_match("/^[$chr_en]+$/", mb_strtoupper(mb_substr($item['NAME'], 0,1)))) {
         $items_en[mb_strtoupper(mb_substr($item['NAME'], 0,1))][] = array("NAME" => $item['NAME'],"URL"=> $item['DETAIL_PAGE_URL']);
     }
     else {
@@ -72,7 +72,7 @@ console_log($arResult);
                 </ul>
                 <ul class="alphabet-block-list">
                     <?foreach ($items_en as $key=> $item){?>
-                        <li><a href="javascript:void(0);" class="popup-alp-click"><?=$key?></a></li>
+                        <li><a href="javascript:void(0);" class="popup-alp-click alp-pink"><?=$key?></a></li>
                     <?}?>
                 </ul>
             </div>
@@ -124,7 +124,7 @@ console_log($arResult);
     <div class="row">
         <?foreach ($items_en as $key=> $item){?>
             <div class="col-lg-3 col-md-4 col-sm-6 alp-item">
-                <div class="col__heading"><?=$key?></div>
+                <div class="col__heading alp-pink"><?=$key?></div>
                 <ul class="col__list">
 
                     <?$i=0;
@@ -142,7 +142,7 @@ console_log($arResult);
                     <div class="alp-detail container">
                         <div class="col-lg-12">
                             <h1>Все услуги</h1>
-                            <div class="col__heading"><?=$key?></div>
+                            <div class="col__heading alp-pink"><?=$key?></div>
                             <div class="row col-lg-12">
                                 <ul class="col__list col-lg-3 col-md-4 col-sm-6">
                                     <?$i=0;

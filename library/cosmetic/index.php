@@ -52,8 +52,9 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
 			1 => "",
 		),
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+            0 => "DOCTORS_SPEC",
+            1 => "DOCTORS_TEXT",
+            2 => "CLINICS_SPEC",
 		),
 		"DETAIL_DISPLAY_TOP_PAGER" => "Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",

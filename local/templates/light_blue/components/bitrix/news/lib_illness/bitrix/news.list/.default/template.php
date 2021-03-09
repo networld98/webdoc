@@ -30,10 +30,16 @@ function console_log( $data ){
 
 <? 
 $items = [];
+$items_en = [];
 foreach($arResult['ITEMS'] as $item)
 {
-
-    $items[mb_strtoupper(mb_substr($item['NAME'], 0,1))][] = array("NAME" => $item['NAME'],"URL"=> $item['DETAIL_PAGE_URL']);
+    $chr_en = "a-zA-Z0-9\s`~!@#$%^&*()_+-={}|:;<>?,.\/\"\'\\\[\]";
+    if (preg_match("/^[$chr_en]+$/", mb_strtoupper(mb_substr($item['NAME'], 0,1)))) {
+        $items_en[mb_strtoupper(mb_substr($item['NAME'], 0,1))][] = array("NAME" => $item['NAME'],"URL"=> $item['DETAIL_PAGE_URL']);
+    }
+    else {
+        $items[mb_strtoupper(mb_substr($item['NAME'], 0,1))][] = array("NAME" => $item['NAME'],"URL"=> $item['DETAIL_PAGE_URL']);
+    }
 }
 console_log($arResult);
 ?>
@@ -54,9 +60,17 @@ console_log($arResult);
         </div>
         <div class="col-lg-12">
             <div class="alphabet-block">
+                <?
+
+                ?>
                 <ul class="alphabet-block-list">
                     <?foreach ($items as $key=> $item){?>
                         <li><a href="javascript:void(0);" class="popup-alp-click"><?=$key?></a></li>
+                    <?}?>
+                </ul>
+                <ul class="alphabet-block-list">
+                    <?foreach ($items_en as $key=> $item){?>
+                        <li><a href="javascript:void(0);" class="popup-alp-click alp-pink"><?=$key?></a></li>
                     <?}?>
                 </ul>
             </div>
@@ -66,43 +80,84 @@ console_log($arResult);
 <div class="library-content active illness-box" data-tabs='0'>
     <div class="row">
         <?foreach ($items as $key=> $item){?>
-        <div class="col-lg-3 col-md-4 col-sm-6 alp-item">
-            <div class="col__heading"><?=$key?></div>
-            <ul class="col__list">
-                
-                <?$i=0;
-                foreach ($item as $illness){
-                    $i++;
-                    if( $i < 8){?>
-                    <li class="col__item"><a href="<?=$illness['URL']?>"><?=$illness['NAME']?></a></li>
-                    
-                    <?}
-                }?>
-            </ul>
-            <a href="javascript:void(0);" class="col__show-more popup-alp-click">показать все</a>
-            <div class="popup-box popup-library">
-                <div class="close"></div>
-                <div class="alp-detail container">
-                    <div class="col-lg-12">
-                        <h1>Все болезни</h1>
-                        <div class="col__heading"><?=$key?></div>
-                        <div class="row col-lg-12">
-                            <ul class="col__list col-lg-3 col-md-4 col-sm-6">
-                                <?$i=0;
-                                foreach ($item as $illness){
+            <div class="col-lg-3 col-md-4 col-sm-6 alp-item">
+                <div class="col__heading"><?=$key?></div>
+                <ul class="col__list">
+
+                    <?$i=0;
+                    foreach ($item as $illness){
+                        $i++;
+                        if( $i < 8){?>
+                            <li class="col__item"><a href="<?=$illness['URL']?>"><?=$illness['NAME']?></a></li>
+
+                        <?}
+                    }?>
+                </ul>
+                <a href="javascript:void(0);" class="col__show-more popup-alp-click">показать все</a>
+                <div class="popup-box popup-library">
+                    <div class="close"></div>
+                    <div class="alp-detail container">
+                        <div class="col-lg-12">
+                            <h1>Все услуги</h1>
+                            <div class="col__heading"><?=$key?></div>
+                            <div class="row col-lg-12">
+                                <ul class="col__list col-lg-3 col-md-4 col-sm-6">
+                                    <?$i=0;
+                                    foreach ($item as $illness){
                                     $i++;
                                     ?><li class="col__item"><a href="<?=$illness['URL']?>"><?=$illness['NAME']?></a></li>
                                     <?if( ($i % 14) == 0){?>
-                                        </ul>
-                                        <ul class="col__list col-lg-3 col-md-4 col-sm-6">
+                                </ul>
+                                <ul class="col__list col-lg-3 col-md-4 col-sm-6">
                                     <?}
-                                }?>
-                            </ul>
+                                    }?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?}?>
+    </div>
+    <div class="row">
+        <?foreach ($items_en as $key=> $item){?>
+            <div class="col-lg-3 col-md-4 col-sm-6 alp-item">
+                <div class="col__heading alp-pink"><?=$key?></div>
+                <ul class="col__list">
+
+                    <?$i=0;
+                    foreach ($item as $illness){
+                        $i++;
+                        if( $i < 8){?>
+                            <li class="col__item"><a href="<?=$illness['URL']?>"><?=$illness['NAME']?></a></li>
+
+                        <?}
+                    }?>
+                </ul>
+                <a href="javascript:void(0);" class="col__show-more popup-alp-click">показать все</a>
+                <div class="popup-box popup-library">
+                    <div class="close"></div>
+                    <div class="alp-detail container">
+                        <div class="col-lg-12">
+                            <h1>Все услуги</h1>
+                            <div class="col__heading alp-pink"><?=$key?></div>
+                            <div class="row col-lg-12">
+                                <ul class="col__list col-lg-3 col-md-4 col-sm-6">
+                                    <?$i=0;
+                                    foreach ($item as $illness){
+                                    $i++;
+                                    ?><li class="col__item"><a href="<?=$illness['URL']?>"><?=$illness['NAME']?></a></li>
+                                    <?if( ($i % 14) == 0){?>
+                                </ul>
+                                <ul class="col__list col-lg-3 col-md-4 col-sm-6">
+                                    <?}
+                                    }?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?}?>
     </div>
 </div>

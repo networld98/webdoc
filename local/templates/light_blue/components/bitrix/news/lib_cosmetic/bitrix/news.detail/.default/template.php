@@ -65,8 +65,8 @@ global $clinic_spec;
                         <?}
                     }?>
                     <p>С помощью нашего сервиса вы можете найти хорошего ортопеда или ортопедическую клинику, где можно пройти полное обследование по поводу искривления позвоночника. Если вам требуется операция, ознакомьтесь с отзывами и выберете хорошую ортопедическую больницу.</p>
-                    <? if ($arResult['PROPERTIES']['DOCTORS_TEXT']["VALUE"]): ?>
-                        <p><?= $arResult['PROPERTIES']['DOCTORS_TEXT']['VALUE'] ?></p>
+                    <? if ($arResult['PROPERTIES']['DOCTORS_TEXT']['VALUE']): ?>
+                        <p><?= html_entity_decode($arResult['PROPERTIES']['DOCTORS_TEXT']['VALUE']['TEXT'])?></p>
                     <? endif; ?>
                     <?if($arResult['PROPERTIES']['DOCTORS_SPEC']['VALUE']):?>
                         <?global $arrFilter;
