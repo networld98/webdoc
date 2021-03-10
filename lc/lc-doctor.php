@@ -46,6 +46,7 @@ while($ob = $res->GetNextElement()){
     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
         <span><?=$prop['NAME']?></span>
         <select name="<?=$prop['CODE']?>" id="<?=$prop['CODE']?>" value="">
+
             <?
             $arSelect = array("ID", "NAME");
             $arFilter = array("IBLOCK_ID"=>$iblock);
@@ -54,6 +55,7 @@ while($ob = $res->GetNextElement()){
             {?>
                 <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
             <?}?>
+                <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$prop['VALUE']){?>selected<?}?>>-</option>
         </select>
     </div>
 <?}?>
