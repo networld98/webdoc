@@ -1370,6 +1370,9 @@ main {
 .doctors-list-item__worktimming-list-item.closed a {
     cursor: default;
 }
+.main-seo-text p {
+    text-align: justify;
+}
 .doctors-list-item__worktimming-list-item.closed:hover:before {
     content: '';
     position: absolute;
@@ -5608,6 +5611,10 @@ button:focus {
     color: #000000;
     border-radius: 5px;
 }
+/*.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {*/
+/*        padding: 0;*/
+/*        max-width: 46%;*/
+/*}*/
 .bx_filter_select_container {
     max-width:100%;
     width: 100%;
@@ -8059,6 +8066,9 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .bx_filter .main-filter .bx_filter_select_block {
+        margin-bottom: 6px;
+    }
     .general-block-item {
         padding: 20px 20px 20px;
     }
@@ -9204,9 +9214,7 @@ button:focus {
         margin-left: 17px;
         margin-right: 0;
     }
-    .bx_filter .main-filter .bx_filter_select_block {
-        margin-bottom: 6px;
-    }
+
     .bx_filter .main-filter .bx_filter_select_text {
         height: 47px;
         line-height: 44px;

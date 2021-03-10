@@ -1082,10 +1082,10 @@
 
 .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
 	padding: 0;
-	max-width: 22%;
+	max-width: 30%;
 	margin-right: 25px;
 }
-.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box:first-child, .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.non-metro {
+.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.non-metro {
 	max-width: 46%;
 }
 @media (max-width: 530px) {
