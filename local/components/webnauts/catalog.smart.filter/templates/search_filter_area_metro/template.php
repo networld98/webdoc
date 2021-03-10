@@ -57,13 +57,13 @@ $res = \Bitrix\Sale\Location\LocationTable::getList(array(
 while ($item = $res->fetch()) {
     $cityTable[$item['NAME_RU']] = $item['SALE_LOCATION_LOCATION_EXTERNAL_LOCATION_ID'];
 }
-/*if ($_COOKIE['old-city']==NULL || $_COOKIE['bxmaker_geoip_2_4_2_city']!== $_COOKIE['old-city']){
+if ($_COOKIE['old-city']==NULL || $_COOKIE['bxmaker_geoip_2_4_2_city']!== $_COOKIE['old-city']){
     $arParams = array("replace_space"=>"-","replace_other"=>"-");
     $transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
     setcookie("old-city", $_COOKIE['bxmaker_geoip_2_4_2_city'], time()+3600, "/", "",  0);
     header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
     exit;
-}*/
+}
 ///Получить айди текущего города
 $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
 while($ob = $res->GetNextElement()){
@@ -72,46 +72,13 @@ while($ob = $res->GetNextElement()){
     $metroCount = CIBlockSection::GetSectionElementsCount($arFields['ID'], Array("CNT_ACTIVE"=>"Y"));
     $cityId = $arFields['ID'];
 }
-//Получаем список районов города
-$areaArray = [];
-$arSelect = array("ID", "NAME");
-$arFilter = array("IBLOCK_ID"=>14,"SECTION_ID"=>$cityId);
-$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
-while($ar_result = $obSections->GetNext()) {
-    $areaArray[] = $ar_result['NAME'];
-}
 ?>
-<style>
-    .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box {
-        padding: 0;
-        max-width: 22%;
-        margin-right: 25px;
-    }
-    .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box:first-child {
-        max-width: 46%;
-    }
-    @media (max-width: 900px) {
-        .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box {
-            margin-right: 10px;
-        }
-    }
-    @media (max-width: 576px) {
-        .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box:first-child {
-            max-width: 100%;
-        }
-        .bx_filter.bx_horizontal .main-filter .search-filter-area .bx_filter_parameters_box {
-            padding: 0;
-            max-width: 100%;
-            margin-right: 25px;
-        }
-    }
-</style>
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
     <div class="bx_filter_section container">
         <?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
         <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter main-filter">
             <div class="row">
-                <div class="col-12 col-sm-11 search-filter-area">
+                <div class="col-12 col-sm-11">
                     <div class="bx_filter_parameters_box active col-12 col-sm-6 search-order">
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container checkboxes">
@@ -228,7 +195,7 @@ while($ar_result = $obSections->GetNext()) {
                         if ($arItem['CODE'] != "SPECIALIZATION" && $arItem['CODE'] != "SPECIALIZATION_MAIN") { ?>
                             <div class="bx_filter_parameters_box <?
                             if ($arItem["DISPLAY_EXPANDED"] == "Y"): ?>active<?endif ?> <?
-                            if ($arItem["DISPLAY_TYPE"] == "P") : ?>col-12 col-sm-6<?endif ?>" <?if($arItem['CODE'] != "METRO" && $arItem['CODE'] != "AREA"){?>style="display:none;"<?}?>>
+                            if ($arItem["DISPLAY_TYPE"] == "P"):?>col-12 col-sm-6<?endif ?> <?if($arItem['CODE'] == "AREA" && $metroCount == 0):?>non-metro<?endif ?>" <?if(($arItem['CODE'] != "METRO" && $arItem['CODE'] != "AREA") || ($arItem['CODE'] == "METRO" && $metroCount == 0) ){?>style="display:none;"<?}?>>
                                 <span class="bx_filter_container_modef"></span>
                                 <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">-->
                                 <?//=$arItem["NAME"]?><!--</div>-->
@@ -366,15 +333,18 @@ while($ar_result = $obSections->GetNext()) {
                                         break;
                                         case "P"://DROPDOWN
                                         $checkedItemExist = false;
+                                        $showArea = 0;
                                         if($arItem['CODE'] == "AREA"){
                                             $areaArrayFilter = [];
                                             foreach($arItem["VALUES"] as $item){
-                                                $areaArrayFilter[] = (trim($item['VALUE'], "."));
+                                                if($item['DISABLED']!=1){
+                                                    $showArea++;
+                                                }
                                             }
                                         }
                                         ?>
                                             <div class="bx_filter_select_container" id="input_<?=CUtil::JSEscape($key)?>">
-                                                <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && count(array_intersect($areaArrayFilter, $areaArray)) == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
+                                                <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                     <input type="text" class="city_input city_input_<?=mb_strtolower(CUtil::JSEscape($key))?>" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" <?/*id="city_input_search_<?=CUtil::JSEscape($key)?>*/?>">
                                                     <div class="bx_filter_select_text" data-role="currentOption"><?
                                                         foreach ($arItem["VALUES"] as $val => $ar)

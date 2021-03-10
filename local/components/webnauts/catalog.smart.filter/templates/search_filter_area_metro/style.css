@@ -1079,7 +1079,19 @@
 .bx_filter .bx_filter_popup_result_close {
 	display: none;
 }
+
+.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
+	padding: 0;
+	max-width: 22%;
+	margin-right: 25px;
+}
+.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box:first-child, .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.non-metro {
+	max-width: 46%;
+}
 @media (max-width: 530px) {
+	.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
+		max-width: 100%!important;
+	}
 	.bx-touch .bx_filter .bx_filter_popup_result {
 		font-size: 12px;
 		line-height: 14px;
@@ -1112,5 +1124,10 @@
 		margin-top: -11px;
 		background: url(images/x.png) no-repeat center;
 		background-size: 16px;
+	}
+}
+@media (max-width: 900px) {
+	.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
+		margin-right: 10px;
 	}
 }

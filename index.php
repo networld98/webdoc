@@ -29,12 +29,12 @@ $APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врач
 <section class="container">
     <? $APPLICATION->IncludeComponent(
 	"webnauts:catalog.smart.filter", 
-	"search_filter", 
+	"search_filter_area_metro",
 	array(
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
-		"COMPONENT_TEMPLATE" => "search_filter",
+		"COMPONENT_TEMPLATE" => "search_filter_area_metro",
 		"CONVERT_CURRENCY" => "N",
 		"DISPLAY_ELEMENT_COUNT" => "N",
 		"FILTER_NAME" => "arrFilter",

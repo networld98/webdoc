@@ -49,12 +49,12 @@ while ($arSection=$rsSection->fetch())
 $Filter = array("PROPERTY_CITY" => $cityId);?>
 <? $APPLICATION->IncludeComponent(
     "webnauts:catalog.smart.filter",
-    "search_filter",
+    "search_filter_area_metro",
     array(
         "CACHE_GROUPS" => "Y",
         "CACHE_TIME" => "36000000",
         "CACHE_TYPE" => "A",
-        "COMPONENT_TEMPLATE" => "search_filter",
+        "COMPONENT_TEMPLATE" => "search_filter_area_metro",
         "CONVERT_CURRENCY" => "N",
         "DISPLAY_ELEMENT_COUNT" => "N",
         "FILTER_NAME" => $arParams["FILTER_NAME"],

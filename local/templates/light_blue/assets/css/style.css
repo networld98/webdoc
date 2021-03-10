@@ -5608,10 +5608,6 @@ button:focus {
     color: #000000;
     border-radius: 5px;
 }
-.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
-        padding: 0;
-        max-width: 46%;
-}
 .bx_filter_select_container {
     max-width:100%;
     width: 100%;
