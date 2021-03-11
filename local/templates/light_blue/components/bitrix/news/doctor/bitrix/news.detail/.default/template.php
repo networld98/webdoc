@@ -560,14 +560,14 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <div class="flex-content">
                     <a href="/" class="logo">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
-                        <h2 class="title-h2 tablet-title">Запись на приём</h2>
+                        <h2 class="title-h2 tablet-title"><span class="green-color">Запись</span> на приём</h2>
                     </a>
                     <div class="flex-left">
                         <?formRecord($arResult, 'Запись на приём')?>
                     </div>
                 </div>
                 <div class="flex-right">
-                    <h2 class="title-h2">Запись на приём</h2>
+                    <h2 class="title-h2"><span class="green-color">Запись</span> на приём</h2>
                     <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_record",Array(
                             "SEF_MODE" => "N",
                             "WEB_FORM_ID" => "4",

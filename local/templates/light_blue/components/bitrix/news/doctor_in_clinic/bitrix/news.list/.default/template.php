@@ -25,7 +25,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
 ?>
 <?if(count($arResult["ITEMS"])>0){?>
     <div class="container">
-        <h1 class="title-h2">Врачи <?=$clinicName?></h1>
+        <h1 class="title-h2">Наши врачи:</h1>
     </div>
 <?}?>
 <section class="container result-filter">

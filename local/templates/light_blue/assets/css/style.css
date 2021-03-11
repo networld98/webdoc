@@ -431,7 +431,7 @@ main > .container:last-child {
 
 
 .popup-window-close-icon:after{
-    background: url("/local/templates/light_blue/assets/images/emojione-monotone_cross-mark.svg") no-repeat;
+    background: url("/local/templates/light_blue/assets/images/emojione-monotone_cross-mark-blue.svg") no-repeat;
     width: 42px;
     height: 42px;
     top: 61px;
@@ -494,7 +494,7 @@ main > .container:last-child {
     font-size: 20px;
     background: #fff;
     opacity: 1;
-    background-image: url("/local/templates/light_blue/assets/images/emojione-monotone_cross-mark.svg");
+    background-image: url("/local/templates/light_blue/assets/images/emojione-monotone_cross-mark-blue.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 42px 42px;
@@ -1260,7 +1260,7 @@ main {
 .doctors-list-item__description-counts::before {
     content: '';
     display: block;
-    background-image: url(../images/fa-solid_check_grey.svg);
+    background-image: url(../images/solid_check_green-unfilled.svg);
     width: 16px;
     height: 12px;
     margin-right: 10px;
@@ -1356,8 +1356,8 @@ main {
     top: -45px;
     left: 0;
     display: block;
-    background-image: url(../images/passed-time.svg);
-    width: 153px;
+    background-image: url(../images/passed-time-white.svg);
+    width: 107px;
     height: 47px;
     cursor: default;
 }
@@ -1645,6 +1645,7 @@ main {
 
 .doctor-card .doctor-card-location-map {
     bottom: 43px;
+    z-index: 1;
 }
 
 .doctor-card {
@@ -2305,8 +2306,8 @@ main {
     top: -45px;
     left: 0;
     display: block;
-    background-image: url(../images/passed-time.svg);
-    width: 153px;
+    background-image: url(../images/passed-time-white.svg);
+    width: 107px;
     height: 47px;
     cursor: default;
 }
@@ -4424,7 +4425,7 @@ button:focus {
         width: 18px;
         height: 18px;
         opacity: 1;
-        background-image: url("/local/templates/light_blue/assets/images/emojione-monotone_cross-mark-small.svg");
+        background-image: url("/local/templates/light_blue/assets/images/emojione-monotone_cross-mark-blue.svg");
         background-repeat: no-repeat;
         background-position: center;
 }
@@ -6566,6 +6567,9 @@ button:focus {
         line-height: 30px;
         margin-bottom: 0;
         margin-top: 0;
+    }
+    .reception-popup .logo .title-h2 > span {
+        color: #9DD4B3;
     }
     .reception-popup .logo, .call-popup .logo {
         display: flex;
@@ -9725,6 +9729,9 @@ button:focus {
     }
     .bx_filter_parameters_box.active {
         width: 50% !important;
+    }
+    .print-table tbody tr td:nth-of-type(4):before {
+        margin-top: 14px;
     }
 }
 @media (max-width: 320px) {
