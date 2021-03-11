@@ -346,10 +346,9 @@ while($ob = $res->GetNextElement()){
                                                     $showArea++;
                                                 }
                                             }
-                                        }
-                                        ?>
+                                        }?>
                                             <div class="bx_filter_select_container" id="input_<?=CUtil::JSEscape($key)?>">
-                                                <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && $AreaCount == 0) || ($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
+                                                <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && $areaCount == 0) || ($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                     <input type="text" class="city_input city_input_<?=mb_strtolower(CUtil::JSEscape($key))?>" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" <?/*id="city_input_search_<?=CUtil::JSEscape($key)?>*/?>">
                                                     <div class="bx_filter_select_text" data-role="currentOption"><?
                                                         foreach ($arItem["VALUES"] as $val => $ar)
