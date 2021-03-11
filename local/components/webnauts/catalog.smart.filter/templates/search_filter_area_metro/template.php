@@ -79,7 +79,7 @@ while($ob = $res->GetNextElement()){
         <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter main-filter">
             <div class="row">
                 <div class="col-12 col-sm-11">
-                    <div class="bx_filter_parameters_box active col-12 col-sm-6 search-order">
+                    <div class="bx_filter_parameters_box active col-12 col-sm-6 search-order <?if($metroCount == 0):?>non-metro<?endif ?>">
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container checkboxes">
                                 <?$APPLICATION->IncludeComponent(

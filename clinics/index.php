@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("description", "Клиники, информация о врачах, отзывы, услуги, актуальная информация, контактные данные.");
 $APPLICATION->SetTitle("Клиники, отзывы, время работы, запись на прием."); ?>
 <section class="clinic-card">
-       <?$APPLICATION->IncludeComponent(
+<?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
 	"clinic",
 	array(
