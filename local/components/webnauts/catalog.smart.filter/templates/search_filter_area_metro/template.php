@@ -57,12 +57,17 @@ $res = \Bitrix\Sale\Location\LocationTable::getList(array(
 while ($item = $res->fetch()) {
     $cityTable[$item['NAME_RU']] = $item['SALE_LOCATION_LOCATION_EXTERNAL_LOCATION_ID'];
 }
+$arParams = array("replace_space"=>"-","replace_other"=>"-");
+$transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
 if ($_COOKIE['old-city']==NULL || $_COOKIE['bxmaker_geoip_2_4_2_city']!== $_COOKIE['old-city']){
     $arParams = array("replace_space"=>"-","replace_other"=>"-");
     $transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
     setcookie("old-city", $_COOKIE['bxmaker_geoip_2_4_2_city'], time()+3600, "/", "",  0);
-    header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
-    exit;
+    if($APPLICATION->GetCurDir() == '/doctors/'){
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_115=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_115='.$transName.'&set_filter=y');
+    }else{
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
+    }    exit;
 }
 ///Получить айди текущего города
 $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
@@ -344,7 +349,7 @@ while($ob = $res->GetNextElement()){
                                         }
                                         ?>
                                             <div class="bx_filter_select_container" id="input_<?=CUtil::JSEscape($key)?>">
-                                                <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
+                                                <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && $AreaCount == 0) || ($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                     <input type="text" class="city_input city_input_<?=mb_strtolower(CUtil::JSEscape($key))?>" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" <?/*id="city_input_search_<?=CUtil::JSEscape($key)?>*/?>">
                                                     <div class="bx_filter_select_text" data-role="currentOption"><?
                                                         foreach ($arItem["VALUES"] as $val => $ar)
