@@ -9,19 +9,15 @@ if ($detect->isMobile() && !$detect->isTablet()) {
 }elseif(!$detect->isMobile()){
     $specializationCount = 6;
 }
-function console_log( $data ){
-    echo '<script>';
-    echo 'console.log('. json_encode( $data ) .')';
-    echo '</script>';
-}
+global $transName;
 ?>
 <ul class="nav nav-pills" id="pills-tab" role="tablist">
-    <li class="nav-item"><a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Специализации врачей</a></li>
-    <li class="nav-item"><a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Специализации клиник</a></li>
+    <li class="nav-item"><a class="nav-link <?if($APPLICATION->GetCurDir() != '/clinics/'){?>active<?}?>" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Специализации врачей</a></li>
+    <li class="nav-item"><a class="nav-link <?if($APPLICATION->GetCurDir() == '/clinics/'){?>active<?}?>" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Специализации клиник</a></li>
     <li class="nav-item"><a class="nav-link" id="pills-cosmetic-tab" data-toggle="pill" href="#pills-cosmetic" role="tab" aria-controls="pills-cosmetic" aria-selected="true">Косметологические услуги</a></li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="tab-pane fade <?if($APPLICATION->GetCurDir() != '/clinics/'){?>show active<?}?>" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <div class="row">
             <?
             $doctors = [];
@@ -39,7 +35,7 @@ function console_log( $data ){
                     </div>
                     <ul class="col__list">
                         <?foreach ($doctor as $specialization){?>
-                            <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
+                            <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_115=<?=$transName?>&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                         <?}?>
                     </ul>
                 </div>
@@ -54,7 +50,7 @@ function console_log( $data ){
                         </div>
                         <ul class="col__list">
                             <?foreach ($doctor as $specialization){?>
-                                <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
+                                <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_115=<?=$transName?>&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                             <?}?>
                         </ul>
                     </div>
@@ -63,7 +59,7 @@ function console_log( $data ){
         </div>
         <div class="load_more">Показать ещё</div>
     </div>
-    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <div class="tab-pane fade <?if($APPLICATION->GetCurDir() == '/clinics/'){?>show active<?}?>" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="row">
             <?
             $clinicks = [];
@@ -84,7 +80,7 @@ function console_log( $data ){
                     </div>
                     <ul class="col__list">
                         <?foreach ($clinick as $specialization){?>
-                            <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
+                            <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_94=<?=$transName?>&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                         <?}?>
                     </ul>
                 </div>
@@ -100,7 +96,7 @@ function console_log( $data ){
                         </div>
                         <ul class="col__list">
                             <?foreach ($clinick as $specialization){?>
-                                <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
+                                <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_94=<?=$transName?>&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                             <?}?>
                         </ul>
                     </div>
