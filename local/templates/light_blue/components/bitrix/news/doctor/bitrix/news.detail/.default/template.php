@@ -263,7 +263,9 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <div class="doctor-card-popUp-group">
             <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
                 <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
-                <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
+            <?} ?>
+            <?if(empty($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"])){?>
+                <a class="doctor-card-popUp-group__call popup-call-click"><span>Выезд на дом</span></a>
             <?} ?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
