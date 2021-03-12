@@ -108,7 +108,7 @@ if($days_between<=0){
                         </li>
                     <?}?>
                 </ul>
-                <button type="submit" <?if($subscrube==NULL){?>disabled<?}?> class="save invoice-btn">Выписать счёт</button>
+                <button type="submit" <?if($subscrube==NULL){?>disabled<?}?> class="save invoice-btn">Оплатить</button>
             </form>
             <div id="invoice"></div>
         </div>

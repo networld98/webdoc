@@ -89,8 +89,8 @@ CModule::IncludeModule("form"); ?>
                                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='5') { ?>filled-star.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
                             </div>
-                            <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов
-                                рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?getTerminationEx($arRaing['COUNT'])?></a></p>
+
+                            <p class="doctors-list-item__img-info-commend"><?=$arRaing['COUNT']?> пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Все отзывы о враче</a></p>
                         </div>
                     </div>
                     <div class="doctors-list-item__description">

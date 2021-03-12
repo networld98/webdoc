@@ -1264,7 +1264,9 @@ main {
     width: 16px;
     height: 12px;
     margin-right: 10px;
+    flex: none;
 }
+
 .doctors-list-item_timing {
     font-family: "Ubuntu-Light";
     font-style: normal;
@@ -2062,6 +2064,18 @@ main {
     color: #32B4C3;
     display: block;
     margin-bottom: 20px;
+}
+.commend-logo {
+    background-image: url("../images/commend-logo.svg");
+    flex: none;
+    flex: none;
+    display: inline-block;
+    width: 118px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 27px;
+    margin-left: 10px;
+    margin-bottom: -6px;
 }
 .doctor-card_options-list {
     display: flex;
@@ -3514,7 +3528,7 @@ main {
 .bx_filter_input_radio .bx_filter_param_text {
     display: block;
     padding: 10px 15px;
-    border: 1px dashed #B4B4B4;
+    border: 1px dashed #9DD4B3;
     border-radius: 5px;
     margin-left: 0;
     width: 100%;
@@ -9350,6 +9364,9 @@ button:focus {
     /*}*/
 /*}*/
 @media (max-width: 428px) {
+    .commend-logo {
+        margin-left: 0;
+    }
     .doctors-slider-item {
         flex-direction: column;
         max-width: 260px;
@@ -9699,6 +9716,7 @@ button:focus {
     }
 }
 @media (max-width: 380px) {
+
     .top-menu-mobile .nav .nav__item:nth-child(4),.top-menu-mobile .nav .nav__item:nth-child(3) {
         padding-left: 10px;
     }
