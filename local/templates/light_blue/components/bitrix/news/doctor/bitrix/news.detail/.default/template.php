@@ -263,7 +263,9 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <div class="doctor-card-popUp-group">
             <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
                 <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
-                <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
+            <?} ?>
+            <?if(empty($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"])){?>
+                <a class="doctor-card-popUp-group__call popup-call-click"><span>Выезд на дом</span></a>
             <?} ?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
@@ -560,14 +562,14 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <div class="flex-content">
                     <a href="/" class="logo">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
-                        <h2 class="title-h2 tablet-title">Запись на приём</h2>
+                        <h2 class="title-h2 tablet-title"><span class="green-color">Запись</span> на приём</h2>
                     </a>
                     <div class="flex-left">
                         <?formRecord($arResult, 'Запись на приём')?>
                     </div>
                 </div>
                 <div class="flex-right">
-                    <h2 class="title-h2">Запись на приём</h2>
+                    <h2 class="title-h2"><span class="green-color">Запись</span> на приём</h2>
                     <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_record",Array(
                             "SEF_MODE" => "N",
                             "WEB_FORM_ID" => "4",
