@@ -96,14 +96,13 @@ if($days_between<=0){
                     $res = CIBlockElement::GetList(Array(), $arFilter, false, Array(), $arSelect);
                     while($ob = $res->GetNextElement()) {
                         $arFields = $ob->GetFields();?>
-                        <input type="hidden" name="ID" value="<?=$arFields['ID']?>">
                         <li>
                             <label data-role="label_<?=$arFields['ID']?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>">
-                        <span class="bx_filter_input_radio">
-                            <input type="radio" value="<?=$arFields["NAME"]?>/<?=$arFields['PROPERTY_PRICE_VALUE']?>" <?if($subscrube!=NULL && $subscrube!=$arFields['ID'] ){?>disabled<?}?> <?if($subscrube!=NULL && $subscrube==$arFields['ID'] ){?>checked<?}?> name="NAME_PRICE" id="<?=$arFields['ID']?>">
-                                <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
-                            <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>
-                        </span>
+                            <span class="bx_filter_input_radio">
+                                <input type="radio" value="<?=$arFields["NAME"]?>/<?=$arFields['PROPERTY_PRICE_VALUE']?>/<?=$arFields['ID']?>" <?if($subscrube!=NULL && $subscrube!=$arFields['ID'] ){?>disabled<?}?> <?if($subscrube!=NULL && $subscrube==$arFields['ID'] ){?>checked<?}?> name="NAME_PRICE" id="<?=$arFields['ID']?>">
+                                    <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
+                                <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>
+                            </span>
                             </label>
                         </li>
                     <?}?>
@@ -116,6 +115,7 @@ if($days_between<=0){
     <script>
         $(document).ready(function () {
             $("input[name=NAME_PRICE]").change(function () {
+                $('#invoice').html('');
                 $('.invoice-btn').show();
                 $('.invoice-btn').removeAttr('disabled');
             });

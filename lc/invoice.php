@@ -9,6 +9,7 @@ $year = date("Y");
 $str = explode('/',$_POST['NAME_PRICE']);
 $itemName = $str[0];
 $itemPrice = $str[1];
+$itemId = $str[2];
 $cnt = 0;
 $res = CIBlockElement::GetList(
     array("SORT"=>"ID"),
@@ -388,7 +389,7 @@ $PRODUCT_ID = $el->Add($arLoadProductArray);
 <script>
     $(document).ready(function () {
         $("#tinkoff-btn").click(function () {
-            location.href = '/lc/pay/?Id=<?=$PRODUCT_ID?>&OrderId=<?=$cnt?>&Description=<?=$itemName?>&Price=<?=$itemPrice?>&Email=<?=$_POST["EMAIL"]?>&Phone=<?=$_POST["LOGIN"]?>&ServiceId=<?=$_POST["ID"]?>';
+            location.href = '/lc/pay/?Id=<?=$PRODUCT_ID?>&OrderId=<?=$cnt?>&Description=<?=$itemName?>&Price=<?=$itemPrice?>&Email=<?=$_POST["EMAIL"]?>&Phone=<?=$_POST["LOGIN"]?>&ServiceId=<?=$itemId?>';
         });
     });
 </script>
