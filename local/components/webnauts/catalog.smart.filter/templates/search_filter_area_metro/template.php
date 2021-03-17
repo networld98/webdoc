@@ -57,6 +57,7 @@ $res = \Bitrix\Sale\Location\LocationTable::getList(array(
 while ($item = $res->fetch()) {
     $cityTable[$item['NAME_RU']] = $item['SALE_LOCATION_LOCATION_EXTERNAL_LOCATION_ID'];
 }
+global $transName;
 $arParams = array("replace_space"=>"-","replace_other"=>"-");
 $transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
 if ($_COOKIE['old-city']==NULL || $_COOKIE['bxmaker_geoip_2_4_2_city']!== $_COOKIE['old-city']){
@@ -592,7 +593,7 @@ while($ob = $res->GetNextElement()){
                                     if ($arItem['CODE'] == "SPECIALIZATION") {
                                         $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
                                     }
-                                    if ($arItem['CODE'] == "SPECIALIZATION_MAIN") {
+                                    if ($arItem['CODE'] == "SPECIALIZATION_MAIN" || $_GET['arrFilter_52']) {
                                         $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
                                     }
                                     $checkedItemExist = true;
@@ -640,13 +641,12 @@ while($ob = $res->GetNextElement()){
                             $show = false;
                         }elseif($arParams['NOT_FILTER'] == 'Y'){
                             $show = true;
-                        }
-                        if (strpos($arItem["CODE"], 'NOT') === $show) {?>
+                        } ?>
                             <div class="bx_filter_parameters_box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>active<?endif?>" <?if ($arItem["DISPLAY_TYPE"] == "P") :?>style="display: none"<?endif?>>
                                 <span class="bx_filter_container_modef"></span>
                                 <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">--><?//=$arItem["NAME"]?><!--</div>-->
                                 <div class="bx_filter_block">
-                                    <div class="bx_filter_parameters_box_container checkboxes 1">
+                                    <div class="bx_filter_parameters_box_container checkboxes">
                                         <?
                                         $arCur = current($arItem["VALUES"]);
                                         switch ($arItem["DISPLAY_TYPE"])
@@ -894,7 +894,7 @@ while($ob = $res->GetNextElement()){
                                     </div>
                                 </div>
                             </div>
-                        <?}
+                        <?
                     }
                     ?>
                 </div>
