@@ -63,13 +63,13 @@ global $transName;
         <div class="row">
             <?
             $clinicks = [];
-            $arSelect = array("NAME", "PROPERTY_COSMETIC_VALUE");
+            $arSelect = array("NAME", "PROPERTY_COSMETIC");
             $arFilter = array("IBLOCK_ID"=>13);
             $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
             while($ob = $res->GetNextElement())
             {
                 $arFields = $ob->GetFields();
-                if(!$arFields['PROPERTY_COSMETIC_VALUE']) {
+                if($arFields['PROPERTY_COSMETIC_VALUE']!='Y') {
                     $clinicks[mb_strtoupper(mb_substr($arFields['NAME'], 0, 1))][] = $arFields['NAME'];
                 }
             }?>
