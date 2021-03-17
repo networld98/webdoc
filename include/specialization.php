@@ -63,14 +63,15 @@ global $transName;
         <div class="row">
             <?
             $clinicks = [];
-            $arSelect = array("NAME");
+            $arSelect = array("NAME", "PROPERTY_COSMETIC_VALUE");
             $arFilter = array("IBLOCK_ID"=>13);
             $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
             while($ob = $res->GetNextElement())
             {
                 $arFields = $ob->GetFields();
-                $arProps = $ob->GetProperties();
-                $clinicks[mb_strtoupper(mb_substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+                if(!$arFields['PROPERTY_COSMETIC_VALUE']) {
+                    $clinicks[mb_strtoupper(mb_substr($arFields['NAME'], 0, 1))][] = $arFields['NAME'];
+                }
             }?>
             <?
             foreach (array_slice($clinicks, 0, $specializationCount) as $key=> $clinick){?>
@@ -109,14 +110,15 @@ global $transName;
         <div class="row">
             <?
             $сosmetics = [];
-            $arSelect = array("NAME","ID");
-            $arFilter = array("IBLOCK_ID"=>25);
+            $arSelect = array("NAME","ID","PROPERTY_COSMETIC");
+            $arFilter = array("IBLOCK_ID"=>13);
             $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
             while($ob = $res->GetNextElement())
             {
                 $arFields = $ob->GetFields();
-                $arProps = $ob->GetProperties();
-                $сosmetics[mb_strtoupper(mb_substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+                if($arFields ['PROPERTY_COSMETIC_VALUE']){
+                    $сosmetics[mb_strtoupper(mb_substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+                }
 
             }
             ?>
@@ -128,7 +130,7 @@ global $transName;
                     </div>
                     <ul class="col__list">
                         <?foreach ($сosmetic as $specialization){?>
-                            <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                            <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_94=<?=$transName?>&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                         <?}?>
                     </ul>
                 </div>
@@ -144,7 +146,7 @@ global $transName;
                         </div>
                         <ul class="col__list">
                             <?foreach ($сosmetics as $specialization){?>
-                                <li class="col__item"><a href="#"><?=mb_ucfirst($specialization)?></a></li>
+                                <li class="col__item"><a href="/clinics/?set_filter=y&arrFilter_94=<?=$transName?>&arrFilter_91=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                             <?}?>
                         </ul>
                     </div>
