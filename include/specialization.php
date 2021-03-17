@@ -111,10 +111,15 @@ global $transName;
             $сosmetics = [];
             $arSelect = array("NAME","ID");
             $arFilter = array("IBLOCK_ID"=>25);
-            $obSections = CIBlockSection::GetList(array("NAME" => "ASC"), $arFilter, false, $arSelect);
-            while($ar_result = $obSections->GetNext()) {
-                $сosmetics[mb_strtoupper(mb_substr($ar_result['NAME'], 0,1))][] = $ar_result['NAME'];
-            }?>
+            $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
+            while($ob = $res->GetNextElement())
+            {
+                $arFields = $ob->GetFields();
+                $arProps = $ob->GetProperties();
+                $сosmetics[mb_strtoupper(mb_substr($arFields['NAME'], 0,1))][] = $arFields['NAME'];
+
+            }
+            ?>
             <?
             foreach (array_slice($сosmetics, 0, $specializationCount) as $key=> $сosmetic){?>
                 <div class="col-xl-2 col-md-3 col-6">
