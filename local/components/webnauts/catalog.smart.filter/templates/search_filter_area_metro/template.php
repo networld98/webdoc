@@ -636,17 +636,12 @@ while($ob = $res->GetNextElement()){
                             )
                         )
                             continue;
-
-                        if($arParams['NOT_FILTER'] == 'N'){
-                            $show = false;
-                        }elseif($arParams['NOT_FILTER'] == 'Y'){
-                            $show = true;
-                        } ?>
+                        if (strpos($arItem["CODE"], 'NOT') === false) {?>
                             <div class="bx_filter_parameters_box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>active<?endif?>" <?if ($arItem["DISPLAY_TYPE"] == "P") :?>style="display: none"<?endif?>>
                                 <span class="bx_filter_container_modef"></span>
                                 <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">--><?//=$arItem["NAME"]?><!--</div>-->
                                 <div class="bx_filter_block">
-                                    <div class="bx_filter_parameters_box_container checkboxes">
+                                    <div class="bx_filter_parameters_box_container checkboxes 1">
                                         <?
                                         $arCur = current($arItem["VALUES"]);
                                         switch ($arItem["DISPLAY_TYPE"])
@@ -781,10 +776,7 @@ while($ob = $res->GetNextElement()){
                                                 <span class="bx_filter_btn_color_icon" style="background-image:url('<?=$ar["FILE"]["SRC"]?>');"></span>
                                             <?endif?>
 										</span>
-                                                <span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>" onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?><?
-                                                    if ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])):
-                                                        ?> (<span data-role="count_<?=$ar["CONTROL_ID"]?>"><? echo $ar["ELEMENT_COUNT"]; ?></span>)<?
-                                                    endif;?></span>
+                                                <span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>" onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?></span>
                                             </label>
                                         <?endforeach?>
                                         <?
@@ -819,10 +811,7 @@ while($ob = $res->GetNextElement()){
                                                 <? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
                                                     onclick="smartFilter.click(this)"
                                             />
-											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?><?
-                                                if ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])):
-                                                    ?> (<span data-role="count_<?=$ar["CONTROL_ID"]?>"><? echo $ar["ELEMENT_COUNT"]; ?></span>)<?
-                                                endif;?></span>
+											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?></span>
 										</span>
                                             </label>
                                         <?endforeach;?>
@@ -880,11 +869,7 @@ while($ob = $res->GetNextElement()){
                                                     onclick="smartFilter.click(this)"
                                             />
 											        <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
-											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?><?
-                                                if ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])):
-                                                    ?> (<span data-role="count_<?=$ar["CONTROL_ID"]?>"><? echo $ar["ELEMENT_COUNT"]; ?></span>)<?
-                                                endif;?>
-                                            </span>
+											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?></span>
 										</span>
                                             </label>
                                         <?endforeach;?>
@@ -894,7 +879,7 @@ while($ob = $res->GetNextElement()){
                                     </div>
                                 </div>
                             </div>
-                        <?
+                        <?}
                     }
                     ?>
                 </div>
