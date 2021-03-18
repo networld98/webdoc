@@ -43,7 +43,7 @@ $templateData = array(
                             )
                         )
                             continue;
-                        if ($arItem["CODE"]!=='CITY') {?>
+                        if ($arItem["CODE"]!=='CITY' && $arItem['CODE'] != "SPECIALIZATION" && $arItem['CODE'] != "SPECIALIZATION_MAIN" && $arItem['CODE'] != "AREA" && $arItem['CODE'] != "METRO") {?>
                         <div class="bx_filter_parameters_box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>active<?endif?> <?if ($arItem["DISPLAY_TYPE"] == "P") :?>col-12 col-sm-12<?endif?>" >
                             <span class="bx_filter_container_modef"></span>
                             <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">--><?//=$arItem["NAME"]?><!--</div>-->

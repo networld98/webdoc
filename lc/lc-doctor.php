@@ -152,6 +152,11 @@ while($ob = $res->GetNextElement()){
                                                         <?propofficialspan($arProps['PHONE'],$idDoctor,$IBLOCK_ID)?>
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-12">
+                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                        <?propofficialspan($arProps['PRICE'],$idDoctor,$IBLOCK_ID)?>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content main-block " data-tabs="1">

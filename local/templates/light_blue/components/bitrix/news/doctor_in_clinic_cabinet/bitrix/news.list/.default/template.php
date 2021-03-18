@@ -186,6 +186,18 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                                     <textarea name="DETAIL_TEXT"><?=$arItem['DETAIL_TEXT']?></textarea>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-12 no-padding">
+                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                    <span><?=$arItem['PROPERTIES']['PHONE']['NAME']?></span>
+                                                    <input type="text" name="<?=$arItem['PROPERTIES']['PHONE']['CODE']?>" value="<?=$arItem['PROPERTIES']['PHONE']['VALUE']?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 no-padding">
+                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                    <span><?=$arItem['PROPERTIES']['PRICE']['NAME']?></span>
+                                                    <input type="text" name="<?=$arItem['PROPERTIES']['PRICE']['CODE']?>" value="<?=$arItem['PROPERTIES']['PRICE']['VALUE']?>">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content" data-tabs="2">
@@ -311,8 +323,6 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                     <div class="text-view">
                                         <div id="message-form_<?=$arItem['ID']?>"></div>
                                         <div id="photo-form_<?=$arItem['ID']?>" style="display:none;"></div>
-                                        <? global $USER;
-                                        if ($USER->IsAdmin()) {?>
                                             <div class="delete-doctor-modal delete-doctor-modal_<?=$arItem['ID']?>">
                                                 <div class="close close-modal"></div>
                                                 <h6>Вы точно хотите отвязать от клиники врача"<?=$arItem['NAME']?>" ?</h6>
@@ -325,8 +335,6 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?}
-                                        ?>
 
                                         <span class="save delete-doctor" id="btn-del-doctor_<?=$arItem['ID']?>">Отвязать врача от клиники</span>
                                         <button type="submit" name="saveProfile" class="save">Сохранить</button>
