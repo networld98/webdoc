@@ -1177,8 +1177,9 @@ main {
     font-weight: 300;
     font-size: 15px;
     line-height: 24px;
-    color: #000000;
+    color: #9DD4B3;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 .doctors-list-item__description-title {
     font-family: "Ubuntu";
@@ -1235,15 +1236,24 @@ main {
     line-height: 29px;
     color: #000000;
 }
+
 .doctors-list-item__description-phone span {
-    font-family: "Ubuntu-Light";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 15px;
-    color: #8A8A8A;
+    /*font-family: "Ubuntu-Light";*/
+    /*font-style: normal;*/
+    /*font-weight: 300;*/
+    /*font-size: 13px;*/
+    /*line-height: 15px;*/
+    /*color: #8A8A8A;*/
+    /*display: block;*/
+    /*margin-bottom: 2px;*/
     display: block;
-    margin-bottom: 2px;
+    content: '';
+    margin-right: 10px;
+    width: 26px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue.svg);
 }
 .doctors-list-item__description-counts {
     font-family: "Ubuntu-Light";
@@ -6130,6 +6140,7 @@ button:focus {
 .doctors-slider-item .doctors-list-item__description-price, .doctors-slider-item .doctors-list-item__description-phone {
     font-size: 16px;
     line-height: 18px;
+    font-weight: 600;
 }
 .doctors-slider-item .doctors-list-item__description-counts {
     margin-top: 6px;
@@ -8480,6 +8491,13 @@ button:focus {
         font-size: 16px;
         line-height: 18px;
         margin-bottom: 6px;
+        font-weight: 600;
+    }
+    .doctors-list-item__img-info .commend-logo {
+        width: 100%;
+        height: 19px;
+        margin-bottom: 4px;
+        margin-top: 4px;
     }
     .doctors-list-item__description-exp,.doctors-list-item__clinic-name {
         font-size: 15px;
@@ -8489,6 +8507,7 @@ button:focus {
     .doctors-list-item__description-price,.doctors-list-item__description-phone {
         font-size: 16px;
         line-height: 18px;
+        font-weight: 600;
     }
     .doctors-list-item__img-info-commend,.doctors-list-item__days-list-item {
         font-size: 12px;
@@ -8657,6 +8676,7 @@ button:focus {
     .doctor-card__description-title,.doctor-card__description-price,.doctor-card__description-phone,.doctor-card__clinic-name {
         font-size: 16px;
         line-height: 18px;
+        font-weight: 600;
     }
     .flex-left .doctor-card__description {
         position: relative;
