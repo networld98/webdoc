@@ -198,7 +198,7 @@ while($ob = $res->GetNextElement()){
                             )
                         )
                             continue;
-                        if ($arItem['CODE'] != "SPECIALIZATION" && $arItem['CODE'] != "SPECIALIZATION_MAIN") { ?>
+                        if ($arItem['CODE'] != "SPECIALIZATION" && $arItem['CODE'] != "SPECIALIZATION_FULL") { ?>
                             <div class="bx_filter_parameters_box <?
                             if ($arItem["DISPLAY_EXPANDED"] == "Y"): ?>active<?endif ?> <?
                             if ($arItem["DISPLAY_TYPE"] == "P"):?>col-12 col-sm-6<?endif ?> <?if($arItem['CODE'] == "AREA" && $metroCount == 0):?>non-metro<?endif ?>" <?if(($arItem['CODE'] != "METRO" && $arItem['CODE'] != "AREA") || ($arItem['CODE'] == "METRO" && $metroCount == 0) ){?>style="display:none;"<?}?>>
@@ -593,7 +593,7 @@ while($ob = $res->GetNextElement()){
                                     if ($arItem['CODE'] == "SPECIALIZATION") {
                                         $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
                                     }
-                                    if ($arItem['CODE'] == "SPECIALIZATION_MAIN" || $_GET['arrFilter_52']) {
+                                    if ($arItem['CODE'] == "SPECIALIZATION_FULL") {
                                         $GLOBALS['titleFilterClinic'] = $ar["VALUE"];
                                     }
                                     $checkedItemExist = true;

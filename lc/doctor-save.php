@@ -33,9 +33,15 @@ if($_POST['ID_CLINIC']!=NULL){
 }else{
     $SCHEDULE = $_POST['ID_DOCTOR'];
 }
+if($_POST['SPECIALIZATION_MAIN']!=NULL || $_POST['SPECIALIZATION_DOP']!=NULL){
+    $PROPS['SPECIALIZATION_FULL'] = array($_POST['SPECIALIZATION_MAIN'],$_POST['SPECIALIZATION_DOP']);
+}
 foreach ($_POST as $key => $data){
     if (strpos($key, 'SPECIALIZATIONS') !== false) {
-        $PROPS['SPECIALIZATIONS'] = $data;
+        foreach ($data as $dataProp){
+            $PROPS['SPECIALIZATIONS'][] = explode('/', $dataProp)[0];
+            $specialization_technical_text[] = explode('/',$dataProp)[1];
+        }
     }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]==NULL ) {
         $PROPS['RECEPTION_SCHEDULE'][] = $data[0];
     }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
@@ -59,6 +65,13 @@ foreach ($_POST as $key => $data){
         $PROPS[$key] = $data;
     }
 }
+
+if($ar_res = CIBlockSection::GetByID($_POST['SPECIALIZATION_MAIN'])->GetNext())
+    $main = $ar_res['NAME'];
+if($ar_res = CIBlockSection::GetByID($_POST['SPECIALIZATION_DOP'])->GetNext())
+    $dop = $ar_res['NAME'];
+
+$PROPS['SPECIALIZATION_TECHNICAL_FIELD'] = $main.' '.$dop.' '.implode(" ", $specialization_technical_text);
 foreach ($_POST['FULL_PROPERTY'] as $data) {
     if (!array_key_exists($data, $_POST)) {
         $PROPS[$data] = NULL;

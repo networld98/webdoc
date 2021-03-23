@@ -211,7 +211,7 @@ $week = array('Понедельник','Вторник','Среда','Четве
                                             while($ob = $res->GetNextElement()){
                                                 $arFields = $ob->GetFields(); ?>
                                                 <li>
-                                                    <input type="checkbox" <?if(in_array($arFields['ID'],$arItem['PROPERTIES']['SPECIALIZATIONS']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>" name="<?=$arItem['PROPERTIES']['SPECIALIZATIONS']['CODE']?>[]" id="<?=$arFields['ID']?>_<?=$arItem['ID']?>">
+                                                    <input type="checkbox" <?if(in_array($arFields['ID'],$arItem['PROPERTIES']['SPECIALIZATIONS']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>/<?=$arFields['NAME']?>" name="<?=$arItem['PROPERTIES']['SPECIALIZATIONS']['CODE']?>[]" id="<?=$arFields['ID']?>_<?=$arItem['ID']?>">
                                                     <label data-role="label_<?=$arFields['ID']?>_<?=$arItem['ID']?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>_<?=$arItem['ID']?>">
                                                         <span class="bx_filter_input_checkbox">
                                                             <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>

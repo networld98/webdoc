@@ -35,7 +35,7 @@ global $transName;
                     </div>
                     <ul class="col__list">
                         <?foreach ($doctor as $specialization){?>
-                            <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_115=<?=$transName?>&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
+                            <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_115=<?=$transName?>&arrFilter_194=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                         <?}?>
                     </ul>
                 </div>
@@ -50,7 +50,7 @@ global $transName;
                         </div>
                         <ul class="col__list">
                             <?foreach ($doctor as $specialization){?>
-                                <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_115=<?=$transName?>&arrFilter_52=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
+                                <li class="col__item"><a href="/doctors/?set_filter=y&arrFilter_115=<?=$transName?>&arrFilter_194=<?=Cutil::translit($specialization,"ru",$arParams)?>"><?=mb_ucfirst($specialization)?></a></li>
                             <?}?>
                         </ul>
                     </div>
