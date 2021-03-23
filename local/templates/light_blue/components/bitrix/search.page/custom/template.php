@@ -239,9 +239,13 @@ endif;?>
                       $arrFilter["=PROPERTY_115"] = $arrFilter["=PROPERTY_94"];
                       unset($arrFilter["=PROPERTY_94"]);
                   }
-                  if($arrFilter["=PROPERTY_97"] !=NULL){
-                      $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
-                      unset($arrFilter["=PROPERTY_97"]);
+                  if($arrFilter["=PROPERTY_93"] !=NULL){
+                      $arrFilter["=PROPERTY_192"] = $arrFilter["=PROPERTY_93"];
+                      unset($arrFilter["=PROPERTY_93"]);
+                  }
+                  if($arrFilter["=PROPERTY_92"] !=NULL){
+                      $arrFilter["=PROPERTY_78"] = $arrFilter["=PROPERTY_92"];
+                      unset($arrFilter["=PROPERTY_78"]);
                   }
                   if($arrFilter["=PROPERTY_97"] !=NULL){
                       $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
