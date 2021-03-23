@@ -121,7 +121,7 @@ console_log($arResult);
                 <?endif;?>
                 <?if($arItem["PROPERTIES"]["CONTACTS"]["VALUE"]):?>
                     <a href="tel:<?= $arItem["PROPERTIES"]["CONTACTS"]["VALUE"][0]?>"
-                       class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?= $arItem["PROPERTIES"]["CONTACTS"]["VALUE"][0]?>
+                       class="doctors-list-item__description-phone"><span></span><?= $arItem["PROPERTIES"]["CONTACTS"]["VALUE"][0]?>
                     </a>
                 <?endif;?>
 

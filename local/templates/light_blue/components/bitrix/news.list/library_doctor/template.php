@@ -91,7 +91,7 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
                     Р<span>Цена приема в клинике</span></p>
             <? endif; ?>
             <a href="tel:<?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>"
-               class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>
+               class="doctors-list-item__description-phone"><span></span><?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>
             </a>
             <?
             $FORM_ID = 4;

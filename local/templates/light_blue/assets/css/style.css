@@ -2085,7 +2085,7 @@ main {
     background-repeat: no-repeat;
     height: 27px;
     margin-left: 10px;
-    margin-bottom: -6px;
+    /*margin-bottom: -6px;*/
 }
 .doctor-card_options-list {
     display: flex;

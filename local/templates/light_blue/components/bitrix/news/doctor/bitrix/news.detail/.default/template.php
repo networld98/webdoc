@@ -80,7 +80,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             <p class="doctors-list-item__description-price"><?=$arResult["PROPERTIES"]["PRICE"]["VALUE"]?> Р<span>Цена приема в клинике</span></p>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["PHONE"]["VALUE"]):?>
-            <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
+            <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctors-list-item__description-phone"><span></span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
             <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
@@ -336,7 +336,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     <?}?>
                 </div>
             </div>
-            <p class="doctor-card__img-info-commend"><?=$arRaing['COUNT']?> пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Все отзывы о враче</a></p>
+            <p class="doctor-card__img-info-commend"><a href="#full-feedback">Все отзывы о враче</a><?=$arRaing['COUNT']?> пациентов записались к врачу через <span class="commend-logo"></span></p>
             <ul class="doctor-card_options-list">
                 <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
                     <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
