@@ -69,7 +69,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                             <p class="doctors-list-item__description-title"><?=$arItem['NAME']?></p>
                         </a>
                         <?if($arItem["PROPERTIES"]["STANDING"]["VALUE"]):?>
-                            <p class="doctors-list-item__description-exp">Стаж <?=$arItem['PROPERTIES']['STANDING']['VALUE']?></p>
+                            <p class="doctors-list-item__description-exp">Стаж по специальности <?=$arItem['PROPERTIES']['STANDING']['VALUE']?></p>
                         <?endif;?>
                         <?if($arItem["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]):?>
                             <p class="doctors-list-item__description-degree"><?=($arItem['PROPERTIES']['SCIENCE_DEGREE']['VALUE']!='-' ? $arItem['PROPERTIES']['SCIENCE_DEGREE']['VALUE']: ' ')?></p>
@@ -77,7 +77,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         <?if($arItem["PROPERTIES"]["PRICE"]["VALUE"]):?>
                             <p class="doctors-list-item__description-price"><?=$arItem['PROPERTIES']['PRICE']['VALUE']?> Р<span>Цена приема в клинике</span></p>
                         <?endif;?>
-                        <a href="tel:<?=$arItem['PROPERTIES']['PHONE']['VALUE']?>" class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?=$arItem['PROPERTIES']['PHONE']['VALUE']?></a>
+                        <a href="tel:<?=$arItem['PROPERTIES']['PHONE']['VALUE']?>" class="doctors-list-item__description-phone"><span></span><?=$arItem['PROPERTIES']['PHONE']['VALUE']?></a>
                         <?
                         $FORM_ID = 4;
                         $arFilter = array(
@@ -112,7 +112,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         <?if($countRecords>0){?>
                             <span class="doctors-list-item__description-counts">Всего записалось <?= $countRecords?> человек(а)</span>
                         <?}else{?>
-                            <span class="doctors-list-item__description-counts">К этому врачу еще никто не записался</span>
+                            <span class="doctors-list-item__description-counts">Сегодня к этому врачу еще никто не записался</span>
                         <?}?>
                         <?/*<div class="doctors-list-item-favorites"></div>*/?>
                     </div>
