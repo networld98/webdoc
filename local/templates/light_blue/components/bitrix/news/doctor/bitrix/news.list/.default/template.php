@@ -328,7 +328,7 @@ CModule::IncludeModule("form"); ?>
         <?
         $wordCount = str_word_count(str_replace('-',' ',$_GET['arrFilter_194']));
         $arFilter = array('IBLOCK_ID' => 11, 'CODE' => $_GET['arrFilter_194']);
-        $res = CIBlockElement::GetList(array(), $arFilter, false, array("nPageSize"=>1), array('NAME'));
+        $res = CIBlockSection::GetList(array(), $arFilter, false, array("nPageSize"=>1), array('NAME','ID'));
         $element = $res->Fetch();
         ?>
         <?if (strpos($element['NAME'], 'врач') !== false) {?>
