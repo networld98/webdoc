@@ -33,6 +33,9 @@ $this->setFrameMode(true);
 <?endif?>
 <?
 global $Filter;
+if($_COOKIE['bxmaker_geoip_2_4_2_city'] == NULL){
+    $_COOKIE['bxmaker_geoip_2_4_2_city'] = $_COOKIE[bxmaker_geoip_2_4_2_city];
+}
 \Bitrix\Main\Loader::includeModule('iblock');
 $rsSection = \Bitrix\Iblock\SectionTable::getList(array(
     'filter' => array(
@@ -56,7 +59,7 @@ $Filter = array("PROPERTY_CITY" => $cityId);?>
         "COMPONENT_TEMPLATE" => "search_filter_area_metro",
         "CONVERT_CURRENCY" => "N",
         "DISPLAY_ELEMENT_COUNT" => "N",
-        "FILTER_NAME" =>  $arParams["FILTER_NAME"],
+        "FILTER_NAME" => 'Filter',
         "FILTER_VIEW_MODE" => "vertical",
         "HIDE_NOT_AVAILABLE" => "N",
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
@@ -148,7 +151,7 @@ $Filter = array("PROPERTY_CITY" => $cityId);?>
 		"ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
 		"USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
 		"GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
-		"FILTER_NAME" =>  $arParams["FILTER_NAME"],
+        "FILTER_NAME" => 'Filter',
 		"HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
 		"CHECK_DATES" => $arParams["CHECK_DATES"],
 	),
