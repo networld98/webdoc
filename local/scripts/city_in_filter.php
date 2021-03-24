@@ -12,7 +12,6 @@ while($ar_result = $obSections->GetNext())
 {
     $cityName[$ar_result['ID']] = trim($ar_result['NAME'], ".");
 }
-
 //Подключаем список городо которые выводим в списке
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
 const MY_HL_BLOCK_ID = 2;

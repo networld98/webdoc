@@ -74,13 +74,11 @@ $noneSearch = 0;
 		<input type="hidden" name="how" value="<?echo $arResult["REQUEST"]["HOW"]=="d"? "d": "r"?>" />
 	</form>
 
-<?if(isset($arResult["REQUEST"]["ORIGINAL_QUERY"])):
-	?>
+<?if(isset($arResult["REQUEST"]["ORIGINAL_QUERY"])):?>
 	<div class="search-language-guess">
 		<?echo GetMessage("CT_BSP_KEYBOARD_WARNING", array("#query#"=>'<a href="'.$arResult["ORIGINAL_QUERY_URL"].'">'.$arResult["REQUEST"]["ORIGINAL_QUERY"].'</a>'))?>
-	</div><br /><?
-endif;?>
-
+	</div><br />
+<?endif;?>
 	<div class="search-result list-item">
 	<?if($arResult["REQUEST"]["QUERY"] === false && $arResult["REQUEST"]["TAGS"] === false):?>
 	<?elseif($arResult["ERROR_CODE"]!=0):?>
@@ -91,45 +89,40 @@ endif;?>
         </div>
         <?$serviceKey = 0;
         global $arrFilter;
+        if($arrFilter["=PROPERTY_94"] !=NULL){
+            $arrFilter["=PROPERTY_115"] = $arrFilter["=PROPERTY_94"];
+        }
+        if($arrFilter["=PROPERTY_93"] !=NULL){
+            $arrFilter["=PROPERTY_192"] = $arrFilter["=PROPERTY_93"];
+        }
+        if($arrFilter["=PROPERTY_92"] !=NULL){
+            $arrFilter["=PROPERTY_78"] = $arrFilter["=PROPERTY_92"];
+        }
 
+        if($arrFilter["=PROPERTY_97"] !=NULL){
+            $arrFilter["=PROPERTY_90"] = array(68);
+        }
+        if($arrFilter["=PROPERTY_83"] !=NULL){
+            $arrFilter["=PROPERTY_124"] = array(88);
+        }
+        if($arrFilter["=PROPERTY_86"] !=NULL){
+            $arrFilter["=PROPERTY_77"] = array(59);
+        }
+        if($arrFilter["=PROPERTY_84"] !=NULL){
+            $arrFilter["=PROPERTY_76"] = array(58);
+        }
+        if($arrFilter["=PROPERTY_85"] !=NULL){
+            $arrFilter["=PROPERTY_123"] = array(87);
+        }
+        if($arrFilter["=PROPERTY_89"] !=NULL){
+            $arrFilter["=PROPERTY_122"] = array(86);
+        }
     $searchArray = array(9,10);
         foreach($searchArray as $iblockId){
             if ($iblockId == 9){
                 $template = "search_clinic";
             }
             if ($iblockId == 10){
-                if($arrFilter["=PROPERTY_94"] !=NULL){
-                    $arrFilter["=PROPERTY_115"] = $arrFilter["=PROPERTY_94"];
-                    unset($arrFilter["=PROPERTY_94"]);
-                }
-                if($arrFilter["=PROPERTY_97"] !=NULL){
-                    $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
-                    unset($arrFilter["=PROPERTY_97"]);
-                }
-                if($arrFilter["=PROPERTY_97"] !=NULL){
-                    $arrFilter["=PROPERTY_90"] = $arrFilter["=PROPERTY_97"];
-                    unset($arrFilter["=PROPERTY_97"]);
-                }
-                if($arrFilter["=PROPERTY_83"] !=NULL){
-                    $arrFilter["=PROPERTY_124"] = $arrFilter["=PROPERTY_83"];
-                    unset($arrFilter["=PROPERTY_83"]);
-                }
-                if($arrFilter["=PROPERTY_86"] !=NULL){
-                    $arrFilter["=PROPERTY_77"] = $arrFilter["=PROPERTY_86"];
-                    unset($arrFilter["=PROPERTY_86"]);
-                }
-                if($arrFilter["=PROPERTY_86"] !=NULL){
-                    $arrFilter["=PROPERTY_76"] = $arrFilter["=PROPERTY_84"];
-                    unset($arrFilter["=PROPERTY_84"]);
-                }
-                if($arrFilter["=PROPERTY_85"] !=NULL){
-                    $arrFilter["=PROPERTY_123"] = $arrFilter["=PROPERTY_85"];
-                    unset($arrFilter["=PROPERTY_85"]);
-                }
-                if($arrFilter["=PROPERTY_89"] !=NULL){
-                    $arrFilter["=PROPERTY_122"] = $arrFilter["=PROPERTY_89"];
-                    unset($arrFilter["=PROPERTY_89"]);
-                }
                 $template = "search_doctor";
             }
             if ($iblockId == 18 || $iblockId == 19 || $iblockId == 20 || $iblockId == 21 || $iblockId == 22){$template = "search_services";}

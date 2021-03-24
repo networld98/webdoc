@@ -308,13 +308,14 @@ CModule::IncludeModule("form"); ?>
         </div>
     </section>
 <?}?>
-<? if ($GLOBALS['titleFilterClinic'] != NULL) { ?>
+<? if ($GLOBALS['titleFilterClinic'] != NULL) {
+    $end = mb_substr($GLOBALS['titleFilterClinic'], -1); ?>
     <? $this->SetViewTarget('filterTitle'); ?>
     <div class="container">
-        <?if (strpos($GLOBALS['titleFilterClinic'], 'Врач') !== false) {?>
+        <?if (strpos($GLOBALS['titleFilterClinic'], 'Врач') !== false || strpos($GLOBALS['titleFilterClinic'], 'врач') !== false) {?>
             <h2 class="title-h2"><?= mb_substr($GLOBALS['titleFilterClinic'], 1); ?> -
             <?}else{?>
-            <h2 class="title-h2">Врачи-<?= mb_strtolower(mb_substr($GLOBALS['titleFilterClinic'], 1)); ?>и -
+            <h2 class="title-h2">Врачи-<?= mb_strtolower(mb_substr($GLOBALS['titleFilterClinic'], 1)); ?><?if($end=='р' || $end=='т'){?>ы<?}else{?>и<?}?> -
         <?}?>
             (<?= $arResult['NAV_RESULT']->NavRecordCount ?>)</h2>
     </div>
@@ -330,13 +331,14 @@ CModule::IncludeModule("form"); ?>
         $arFilter = array('IBLOCK_ID' => 11, 'CODE' => $_GET['arrFilter_194']);
         $res = CIBlockSection::GetList(array(), $arFilter, false, array("nPageSize"=>1), array('NAME','ID'));
         $element = $res->Fetch();
+        $end = mb_substr($element['NAME'], -1);
         ?>
-        <?if (strpos($element['NAME'], 'врач') !== false) {?>
+        <?if (strpos($element['NAME'], 'врач') !== false || strpos($element['NAME'], 'Врач') !== false) {?>
             <h2 class="title-h2"><?= str_replace('врач','Врачи',$element['NAME']); ?> -
         <?}elseif($wordCount > 1){?>
             <h2 class="title-h2">Врач-<?= mb_strtolower($element['NAME']); ?> -
         <?}else{?>
-            <h2 class="title-h2">Врачи-<?= mb_strtolower($element['NAME']); ?>и -
+            <h2 class="title-h2">Врачи-<?= mb_strtolower($element['NAME']); ?><?if($end=='р' || $end=='т'){?>ы<?}else{?>и<?}?> -
         <?}?> (0)</h2>
     </div>
     <? $this->EndViewTarget(); ?>
