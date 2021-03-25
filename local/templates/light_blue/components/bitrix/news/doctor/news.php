@@ -33,7 +33,7 @@ $this->setFrameMode(true);
 <br />
 <?endif?>
 <?
-global $Filter;
+global $smartPreFilter;
 if($_COOKIE['bxmaker_geoip_2_4_2_city']==NULL){
     $_COOKIE['bxmaker_geoip_2_4_2_city'] = $_COOKIE[bxmaker_geoip_2_4_2_city];
 }
@@ -49,7 +49,9 @@ while ($arSection=$rsSection->fetch())
 {
     $cityId = $arSection['ID'];
 }
-$Filter = array("PROPERTY_CITY" => $cityId);?>
+$smartPreFilter = $smartPreFilter = [
+    'PROPERTY_CITY' => [$cityId],
+];?>
 <? $APPLICATION->IncludeComponent(
     "webnauts:catalog.smart.filter",
     "search_filter_area_metro",
@@ -66,7 +68,7 @@ $Filter = array("PROPERTY_CITY" => $cityId);?>
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
         "PAGER_PARAMS_NAME" => "arrPager",
-        "PREFILTER_NAME" => "",
+        "PREFILTER_NAME" => "smartPreFilter",
         "SAVE_IN_SESSION" => "N",
         "SECTION_CODE" => "",
         "SECTION_DESCRIPTION" => "-",
