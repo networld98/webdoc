@@ -17,6 +17,10 @@ global $transName;
     <li class="nav-item"><a class="nav-link" id="pills-cosmetic-tab" data-toggle="pill" href="#pills-cosmetic" role="tab" aria-controls="pills-cosmetic" aria-selected="true">Косметологические услуги</a></li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
+    <?
+    $chr_en = "a-zA-Z0-9\s`~!@#$%^&*()_+-={}|:;<>?,.\/\"\'\\\[\]";
+
+    ?>
     <div class="tab-pane fade <?if($APPLICATION->GetCurDir() != '/clinics/'){?>show active<?}?>" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <div class="row">
             <?
@@ -125,7 +129,7 @@ global $transName;
             <?
             foreach (array_slice($сosmetics, 0, $specializationCount) as $key=> $сosmetic){?>
                 <div class="col-xl-2 col-md-3 col-6">
-                    <div class="col__heading">
+                    <div class="col__heading <?if (preg_match("/^[$chr_en]+$/", $key)) { echo 'alp-pink';}?>">
                         <?=$key?>
                     </div>
                     <ul class="col__list">
@@ -141,7 +145,7 @@ global $transName;
                 <?
                 foreach (array_slice($сosmetics, $specializationCount) as $key=> $сosmetics){?>
                     <div class="col-xl-2 col-md-3 col-6">
-                        <div class="col__heading">
+                        <div class="col__heading <?if (preg_match("/^[$chr_en]+$/", $key)) { echo 'alp-pink';}?>">
                             <?=$key?>
                         </div>
                         <ul class="col__list">

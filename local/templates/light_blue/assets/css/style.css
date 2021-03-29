@@ -1784,7 +1784,8 @@ main {
     font-weight: 300;
     font-size: 15px;
     line-height: 24px;
-    color: #000000;
+
+    color: #9DD4B3;
     margin-bottom: 10px;
 }
 .doctor-card__description-title {
@@ -5796,6 +5797,9 @@ button:focus {
 .alphabet-block-list > li a:hover {
     color: #547360;
 }
+.specializations .alp-pink {
+    color: #E795AC;
+}
 .alphabet-block-list .alp-pink {
     color: #E795AC;
 }
@@ -6121,10 +6125,14 @@ button:focus {
 }
 .doctors-slider-item .doctors-list-item__description-position {
     margin-bottom: 6px;
+    color: #9DD4B3;
 }
 .doctors-slider-item .doctors-list-item__description-position,.doctors-slider-item .doctors-list-item__description-degree {
     font-size: 13px;
     line-height: 20px;
+}
+.doctors-slider-item .doctors-list-item__description-position {
+    font-size: 17px;
 }
 .doctors-slider-item .doctors-list-item__description-exp {
     margin-bottom: 4px;
@@ -7499,7 +7507,9 @@ button:focus {
     }
     .doctors-list-item__description-position {
         margin-bottom: 6px;
+        color: #9DD4B3;
     }
+
     .doctors-list-item__description-exp {
         margin-bottom: 7px;
     }
@@ -8483,6 +8493,10 @@ button:focus {
         font-size: 13px;
         line-height: 20px;
     }
+    .doctors-list-item__description-position {
+        font-size: 17px;
+        color: #9DD4B3;
+    }
     .sort-block-list__select,.calendar {
         font-size: 13px;
         line-height: 23px;
@@ -8672,6 +8686,9 @@ button:focus {
     .doctor-card__description-position,.doctor-card__clinic-adress,.doctor-card__description ul {
         font-size: 13px;
         line-height: 20px;
+    }
+    .doctor-card__description-position {
+        font-size: 17px;
     }
     .doctor-card__description-title,.doctor-card__description-price,.doctor-card__description-phone,.doctor-card__clinic-name {
         font-size: 16px;
