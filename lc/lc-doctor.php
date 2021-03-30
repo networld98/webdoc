@@ -309,29 +309,35 @@ while($ob = $res->GetNextElement()){
                                                             $addr = $str[1];
                                                             $area = $str[2];
                                                             ?>
-                                                            <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
+                                                            <div id="city_<?=$key?>" class="adress-fix-list">
+                                                                <?
+                                                                $areaCount =  CIBlockSection::GetCount(array("IBLOCK_ID"=>14, "SECTION_ID"=>$selectCity));
+                                                                ?>
+                                                                <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                                 <div class="del-city close" data-val="<?=$key?>" title="Удалить адрес"></div>
-                                                                <div id="city_<?=$key?>">
-                                                                    <span><?=$arProps['CITY']['NAME']?></span>
-                                                                    <select name="ADDRESSES_<?=$key?>[]" class="citys" data-key="<?=$key?>" value="">
+                                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row-container <?if($areaCount > 0) echo 'container-50-flexbasis'?>">
+                                                                        <span><?=$arProps['CITY']['NAME']?></span>
+                                                                        <select name="ADDRESSES_<?=$key?>[]" class="citys" value="">
+                                                                            <?
+                                                                            $arSelect = array("ID", "NAME");
+                                                                            $arFilter = array("IBLOCK_ID"=>14);
+                                                                            $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+                                                                            while($ar_result = $obSections->GetNext())
+                                                                            {
+                                                                                if($ar_result['NAME']==$city){
+                                                                                    $selectCity = $ar_result['ID'];
+                                                                                }
+                                                                                ?>
+                                                                                <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$city){?>selected<?}?>><?=$ar_result['NAME']?></option>
+                                                                            <?}?>
+                                                                        </select>
+                                                                    </div>
                                                                         <?
-                                                                        $arSelect = array("ID", "NAME");
-                                                                        $arFilter = array("IBLOCK_ID"=>14);
-                                                                        $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
-                                                                        while($ar_result = $obSections->GetNext())
-                                                                        {
-                                                                            if($ar_result['NAME']==$city){
-                                                                                $selectCity = $ar_result['ID'];
-                                                                            }
-                                                                            ?>
-                                                                            <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$city){?>selected<?}?>><?=$ar_result['NAME']?></option>
-                                                                        <?}?>
-                                                                    </select>
-                                                                    <div id="area-block-ajax-<?=$key?>">
-                                                                        <?
-                                                                        $areaCount =  CIBlockSection::GetCount(array("IBLOCK_ID"=>14, "SECTION_ID"=>$selectCity));
+
                                                                         if($areaCount>0):?>
+                                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row-container <?if($areaCount > 0) echo 'container-50-flexbasis'?>">
                                                                             <span>Район</span>
+                                                                            <div id="area-block-ajax-<?=$key?>" class="container-100-flexbasis">
                                                                                 <select name="ADDRESSES_<?=$key?>[]" class="area">
                                                                                     <?
                                                                                     $arSelect = array("ID", "NAME");
@@ -348,6 +354,13 @@ while($ob = $res->GetNextElement()){
                                                                     </div>
                                                                     <span class="doctor-adress">Адрес</span>
                                                                     <input type="text" class="input-doctor-address" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
+                                                                            </div>
+                                                                        </div>
+                                                                        <?endif;?>
+                                                                    <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row-container <?if($areaCount > 0) echo 'container-100-flexbasis'?>">
+                                                                        <span class="doctor-adress">Адрес</span>
+                                                                        <input type="text" class="input-doctor-address" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <?

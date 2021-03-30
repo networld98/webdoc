@@ -1527,6 +1527,19 @@ main {
 .doctor-pagination_block__arrows.arrow-right {
     background-image: url(../images/bx_bx-right-arrow.svg);
 }
+.container-50-flexbasis {
+    flex-basis: 50%;
+}
+.container-100-flexbasis {
+    flex-basis: 100%;
+
+}
+.container-100-flexbasis.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row-container {
+    margin-top: 10px;
+}
+.adress-fix-list .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row {
+    flex-wrap: wrap;
+}
 .doctor-pagination_block-list {
     margin: 0;
     padding: 0;
@@ -6288,6 +6301,9 @@ button:focus {
 
 .personal-cabinet .del-city {
     align-self: normal;
+    flex: none;
+    position: absolute;
+    right: -38px;
 }
 .place-work {
     margin-left: 10px;
@@ -9210,6 +9226,9 @@ button:focus {
     }
 }
 @media (max-width: 450px) {
+    .personal-cabinet .del-city {
+        right: -20px;
+    }
 
     .place-education-block {
         margin-left: 0;
