@@ -24,11 +24,6 @@ global $doctorId;
 global $period;
 $doctorName = $arResult['NAME'];
 $doctorId = $arResult['ID'];
-//function console_log( $data ){
-//    echo '<script>';
-//    echo 'console.log('. json_encode( $data ) .')';
-//    echo '</script>';
-//}
 $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
 ?>
 <?function formRecord($arResult, $mobileTitle){?>
@@ -50,10 +45,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
             </div>
-<!--            --><?//
-//
-//            console_log($arRaing)?>
-            <p class="doctors-list-item__img-info-commend"><?=$arRaing['COUNT']?> пациентов записались к врачу через <span class="commend-logo"></span></p>
+            <p class="doctors-list-item__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <?getTerminationEx($arRaing['COUNT'])?></p>
         </div>
     </div>
     <div class="doctors-list-item__description">
@@ -80,7 +72,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             <p class="doctors-list-item__description-price"><?=$arResult["PROPERTIES"]["PRICE"]["VALUE"]?> Р<span>Цена приема в клинике</span></p>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["PHONE"]["VALUE"]):?>
-            <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctors-list-item__description-phone"><span></span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
+            <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
             <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
@@ -271,9 +263,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <div class="doctor-card-popUp-group">
             <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
                 <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
-            <?} ?>
-            <?if(empty($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"])){?>
-                <a class="doctor-card-popUp-group__call popup-call-click"><span>Выезд на дом</span></a>
+                <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
             <?} ?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
@@ -336,7 +326,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     <?}?>
                 </div>
             </div>
-            <p class="doctor-card__img-info-commend"><a href="#full-feedback">Все отзывы о враче</a><?=$arRaing['COUNT']?> пациентов записались к врачу через <span class="commend-logo"></span></p>
+            <p class="doctor-card__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <?getTerminationEx($arRaing['COUNT'])?><a href="#full-feedback">Все отзывы о враче</a></p>
             <ul class="doctor-card_options-list">
                 <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
                     <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
@@ -570,14 +560,14 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <div class="flex-content">
                     <a href="/" class="logo">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
-                        <h2 class="title-h2 tablet-title"><span class="green-color">Запись</span> на приём</h2>
+                        <h2 class="title-h2 tablet-title">Запись на приём</h2>
                     </a>
                     <div class="flex-left">
                         <?formRecord($arResult, 'Запись на приём')?>
                     </div>
                 </div>
                 <div class="flex-right">
-                    <h2 class="title-h2"><span class="green-color">Запись</span> на приём</h2>
+                    <h2 class="title-h2">Запись на приём</h2>
                     <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_record",Array(
                             "SEF_MODE" => "N",
                             "WEB_FORM_ID" => "4",

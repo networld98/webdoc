@@ -95,6 +95,34 @@ $noneSearch = 0;
                 $template = "search_clinic";
             }
             if ($iblockId == 10){
+                if($arrFilter["=PROPERTY_94"] !=NULL){
+                    $arrFilter["=PROPERTY_115"] = $arrFilter["=PROPERTY_94"];
+                }
+                if($arrFilter["=PROPERTY_93"] !=NULL){
+                    $arrFilter["=PROPERTY_192"] = $arrFilter["=PROPERTY_93"];
+                }
+                if($arrFilter["=PROPERTY_92"] !=NULL){
+                    $arrFilter["=PROPERTY_78"] = $arrFilter["=PROPERTY_92"];
+                }
+
+                if($arrFilter["=PROPERTY_97"] !=NULL){
+                    $arrFilter["=PROPERTY_90"] = array(68);
+                }
+                if($arrFilter["=PROPERTY_83"] !=NULL){
+                    $arrFilter["=PROPERTY_124"] = array(88);
+                }
+                if($arrFilter["=PROPERTY_86"] !=NULL){
+                    $arrFilter["=PROPERTY_77"] = array(59);
+                }
+                if($arrFilter["=PROPERTY_84"] !=NULL){
+                    $arrFilter["=PROPERTY_76"] = array(58);
+                }
+                if($arrFilter["=PROPERTY_85"] !=NULL){
+                    $arrFilter["=PROPERTY_123"] = array(87);
+                }
+                if($arrFilter["=PROPERTY_89"] !=NULL){
+                    $arrFilter["=PROPERTY_122"] = array(86);
+                }
                 $template = "search_doctor";
             }
             if ($iblockId == 18 || $iblockId == 19 || $iblockId == 20 || $iblockId == 21 || $iblockId == 22){$template = "search_services";}

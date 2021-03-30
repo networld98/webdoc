@@ -9,6 +9,7 @@ if(CModule::IncludeModule('iblock')) {
         $doctorAddress = [];
         $doctorArea= [];
         $specClinic = [];
+        $doctorcity = [];
         $doctorFullAddress = [];
         $Element = $ob->GetFields();
         $Prop = $ob->GetProperties();
@@ -23,11 +24,20 @@ if(CModule::IncludeModule('iblock')) {
 
             }
        }
+        if ($Prop['CITY']['VALUE']!= NULL) {
+            foreach ($Prop['CITY']['VALUE'] as $key => $city){
+                $obElement = CIBlockSection::GetByID($city);
+                if ($arEl = $obElement->GetNext())
+                    $doctorcity[] = $arEl['NAME'];
+
+            }
+        }
         foreach ($doctorAddress as $key => $item) {
-            if(count($item)!=3){
+            if($item[1]==NULL || $item[1]==''){
+                $doctorFullAddress[] = implode('/',array( $doctorcity[$key],$item[0], $doctorArea[$key]));
+            }else{
                 $doctorFullAddress[] = implode('/',array( $item[0],$item[1], $doctorArea[$key]));
             }
-
        }
        if ($Prop['SPECIALIZATION_MAIN']['VALUE']!= NULL) {
            $specClinic[] = $Prop['SPECIALIZATION_MAIN']['VALUE'];
