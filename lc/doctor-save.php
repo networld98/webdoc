@@ -57,9 +57,12 @@ foreach ($_POST as $key => $data){
         }
     } elseif (strpos($key, 'ADDRESSES') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
         if (is_array($data)) {
+
             $city = explode('/', $data[0]);
-            $PROPS['RECEPTION_ADDRESSES'][] = $city[1].'/'.$data[1];
+            $area = explode('/', $data[1]);
+            $PROPS['RECEPTION_ADDRESSES'][] = $city[1].'/'.$data[2].'/'.$area[1];
             $PROPS['CITY'][] = $city[0];
+            $PROPS['AREA'][] = $area[0];
         }
     } else {
         $PROPS[$key] = $data;
