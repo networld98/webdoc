@@ -307,6 +307,7 @@ while($ob = $res->GetNextElement()){
                                                             <?$str = explode('/',$address);
                                                             $city = $str[0];
                                                             $addr = $str[1];
+                                                            $area = $str[2];
                                                             ?>
                                                             <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                                 <div class="del-city close" data-val="<?=$key?>" title="Удалить адрес"></div>
@@ -340,7 +341,7 @@ while($ob = $res->GetNextElement()){
                                                                                     {
                                                                                         $AreaId = $arProps['AREA']['VALUE'];
                                                                                         ?>
-                                                                                        <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$arProps['AREA']['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
+                                                                                        <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$area){?>selected<?}?>><?=$ar_result['NAME']?></option>
                                                                                     <?}?>
                                                                                 </select>
                                                                             </div>
