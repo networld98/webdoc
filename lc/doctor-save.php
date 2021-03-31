@@ -59,10 +59,9 @@ foreach ($_POST as $key => $data){
         if (is_array($data)) {
             $city = explode('/', $data[0]);
             $area = explode('/', $data[2]);
-            $metro = explode('/', $data[3]);
             $PROPS['RECEPTION_ADDRESSES'][] = $city[1].'/'.$data[1].'/'.$area[1].'/'.$metro[1];
-            $PROPS['CITY'][] = $area[0];
-            $PROPS['AREA'][] = $metro[0];
+            $PROPS['CITY'][] = $city[0];
+            $PROPS['AREA'][] = $area[0];
         }
     } else {
         $PROPS[$key] = $data;

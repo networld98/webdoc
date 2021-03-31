@@ -50,7 +50,7 @@ while ($arSection=$rsSection->fetch())
     $cityId = $arSection['ID'];
 }
 $smartPreFilter = $smartPreFilter = [
-    'PROPERTY_CITY' => [$cityId],
+    'PROPERTY_CITY' => $cityId,
 ];?>
 <? $APPLICATION->IncludeComponent(
     "webnauts:catalog.smart.filter",
