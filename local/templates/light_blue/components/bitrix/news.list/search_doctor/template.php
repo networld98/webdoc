@@ -230,7 +230,11 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                                 <? if ($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>
                                     <p class="doctor-card__clinic-adress">
                                         <?if(count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
-                                        <?= str_replace('/', ', ', $arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]) ?>
+                                        <?=explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
+                                        <?if(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
+                                            echo explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
+                                        <?}?>
+                                        <?=explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
                                     </p>
                                 <? }elseif ($arItem["PROPERTIES"]["CITY"]["VALUE"][0]){?>
                                     <p class="doctor-card__clinic-adress">

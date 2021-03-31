@@ -86,8 +86,14 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <?}?>
         <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
             <p class="doctor-card__clinic-adress">
+            <p class="doctor-card__clinic-adress">
                 <?if(count(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
-                <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
+                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
+                <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]){
+                    echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
+                <?}?>
+                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
+            </p>
             </p>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
@@ -205,7 +211,11 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
                     <p class="doctor-card__clinic-adress">
                         <?if(count(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
-                        <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
+                        <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
+                        <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]){
+                            echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
+                        <?}?>
+                        <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
                     </p>
                 <?endif;?>
                 <!-- <div class="doctor-card-location-map"></div> -->
@@ -263,7 +273,9 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <div class="doctor-card-popUp-group">
             <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
                 <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
-                <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
+                <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
+                    <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
+                <?endif;?>
             <?} ?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
 			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
