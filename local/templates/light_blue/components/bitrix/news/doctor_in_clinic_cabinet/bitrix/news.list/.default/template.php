@@ -14,7 +14,10 @@ $this->setFrameMode(true);
 CModule::IncludeModule("iblock");
 global $idClinic;
 global $cityClinic;
+global $areaClinic;
+global $metroClinic;
 global $addressClinic;
+global $mapClinic;
 $week = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
 ?>
 <?function propview($prop,$id,$iblock){
@@ -456,7 +459,10 @@ $week = array('Понедельник','Вторник','Среда','Четве
                     ' <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">\n' +
                     ' <input type="hidden" name="PHOTO" value="<?=$photoFile?>">\n' +
                     ' <input type="hidden" name="CITY" value="<?=$cityClinic?>">\n' +
+                    ' <input type="hidden" name="AREA" value="<?=$areaClinic?>">\n' +
+                    ' <input type="hidden" name="METRO" value="<?=$metroClinic?>">\n' +
                     ' <input type="hidden" name="ADDRESS" value="<?=$addressClinic?>">\n' +
+                    ' <input type="hidden" name="MAP" value="<?=$mapClinic?>">\n' +
                     '    <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +
                     '        <div class="personal-cabinet-content__doctors-page-box-item__desc__head none-margin">\n' +
                     '            <div class="personal-cabinet-content__doctors-page-box-item__desc">\n' +

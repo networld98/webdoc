@@ -51,9 +51,16 @@ if($_POST['PHONE']!=NULL){
         if ($ar_res = $res->GetNext()) {
             $cityName = $ar_res['NAME'];
         }
-        $PROP[75] = $cityName.'/'.$_POST['ADDRESS'];
+        $res = CIBlockSection::GetByID($_POST['AREA']);
+        if($ar_res = $res->GetNext()){
+            $areaClinicName =  $ar_res['NAME'];
+        }
+        $PROP[75] = $cityName.'/'.$_POST['ADDRESS'].'/'.$_POST['AREA'];
         $PROP[115][] = $_POST['CITY'];
+        $PROP[192][] = $_POST['AREA'];
+        $PROP[78][] = $_POST['METRO'];
         $PROP[74] = $_POST['ID_CLINIC'];
+        $PROP[79] = $_POST['MAP'];
         $PROP[139] = 98;
         $PROP[148] = $_POST['PHONE'];
         $arParams = array("replace_space"=>"-","replace_other"=>"-");

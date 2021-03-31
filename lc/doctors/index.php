@@ -12,17 +12,23 @@ if($arUser['UF_TYPE_USER']!=6) {
 }
 global $idClinic;
 global $cityClinic;
+global $areaClinic;
+global $metroClinic;
+global $addressClinic;
+global $mapClinic;
 $arFilter = Array("IBLOCK_ID"=>"9", "PROPERTY_PHONE"=> $arUser['LOGIN']);
-$arSelect = Array("ID","PROPERTY_CITY","PROPERTY_ADDRESS");
+$arSelect = Array("ID","PROPERTY_CITY","PROPERTY_ADDRESS","PROPERTY_AREA","PROPERTY_METRO","PROPERTY_MAP");
 $res = CIBlockElement::GetList(Array("SORT"=>"ASC"), $arFilter,false, false, $arSelect);
 while($ob = $res->GetNextElement()){
     $arFields = $ob->GetFields();
     $idClinic = $arFields['ID'];
     $cityClinic = $arFields['PROPERTY_CITY_VALUE'];
+    $areaClinic = $arFields['PROPERTY_AREA_VALUE'];
+    $metroClinic = $arFields['PROPERTY_METRO_VALUE'];
     $addressClinic = $arFields['PROPERTY_ADDRESS_VALUE'];
+    $mapClinic = $arFields['PROPERTY_MAP_VALUE'];
 }
 ?>
-
 <? include '../menu.php';?>
 <?if($idClinic !=NULL){?>
     <div class="personal-cabinet-content__doctors-page">
