@@ -718,7 +718,18 @@ main >.main-seo-text {
     margin-top: 60px;
     color: #9DD4B3;
 }
-
+.metro-block .metro-container .metro-city-select-block {
+    padding: 10px;
+    box-shadow: 0px 4px 30px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    background: #FFFFFF;
+    margin-bottom: 20px;
+}
+.metro-block .metro-container .metro-city-select-block ul {;
+    height: 150px;
+    overflow: auto;
+    overflow-x: hidden;
+}
 @media (max-width: 1430px) {
 .personal-cabinet-content__my-profile .contacts-group {
     width: 100%;

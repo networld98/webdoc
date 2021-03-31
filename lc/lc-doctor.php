@@ -181,7 +181,7 @@ while($ob = $res->GetNextElement()){
                                                                 while($ob = $res->GetNextElement()){
                                                                     $arFields = $ob->GetFields(); ?>
                                                                     <li>
-                                                                        <input type="checkbox" <?if(in_array($arFields['ID'],$arProps['SPECIALIZATIONS']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>" name="<?=$arProps['SPECIALIZATIONS']['CODE']?>[]" id="<?=$arFields['ID']?>_<?=$idDoctor?>">
+                                                                        <input type="checkbox" <?if(in_array($arFields['ID'],$arProps['SPECIALIZATIONS']['VALUE'])){?>checked<?}?> value="<?=$arFields['ID']?>/<?=$arFields['NAME']?>" name="<?=$arProps['SPECIALIZATIONS']['CODE']?>[]" id="<?=$arFields['ID']?>_<?=$idDoctor?>">
                                                                         <label data-role="label_<?=$arFields['ID']?>_<?=$idDoctor?>" class="bx_filter_param_label" for="<?=$arFields['ID']?>_<?=$idDoctor?>">
                                                         <span class="bx_filter_input_checkbox">
                                                             <span class="bx_filter_param_text"><?=$arFields["NAME"]?></span>
@@ -306,23 +306,49 @@ while($ob = $res->GetNextElement()){
                                                             <?foreach ($arProps['RECEPTION_ADDRESSES']['VALUE'] as $key => $address){?>
                                                                 <?$str = explode('/',$address);
                                                                 $city = $str[0];
-                                                                $addr = $str[1]; ?>
+                                                                $addr = $str[1];
+                                                                $area = $str[2];
+                                                                ?>
                                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                                     <div class="del-city close" data-val="<?=$key?>" title="Удалить адрес"></div>
                                                                     <div id="city_<?=$key?>">
                                                                         <span><?=$arProps['CITY']['NAME']?></span>
-                                                                        <select name="ADDRESSES_<?=$key?>[]" id="city" value="">
+                                                                        <select name="ADDRESSES_<?=$key?>[]" class="citys" data-key="<?=$key?>" value="">
                                                                             <?
                                                                             $arSelect = array("ID", "NAME");
-                                                                            $arFilter = array("IBLOCK_ID"=>14);
+                                                                            $arFilter = array("IBLOCK_ID"=>14, 'DEPTH_LEVEL' => 1);
                                                                             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                                                                             while($ar_result = $obSections->GetNext())
-                                                                            {?>
+                                                                            {
+                                                                                if($ar_result['NAME']==$city){
+                                                                                    $selectCity = $ar_result['ID'];
+                                                                                    $selectCityArray[$ar_result['NAME']] = $ar_result['ID'];
+                                                                                }
+                                                                                ?>
                                                                                 <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$city){?>selected<?}?>><?=$ar_result['NAME']?></option>
                                                                             <?}?>
                                                                         </select>
                                                                         <span class="doctor-adress">Адрес</span>
                                                                         <input type="text" class="input-doctor-address" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
+                                                                        <div id="area-block-ajax-<?=$key?>">
+                                                                            <?
+                                                                            $areaCount =  CIBlockSection::GetCount(array("IBLOCK_ID"=>14, "SECTION_ID"=>$selectCity));
+                                                                            if($areaCount>0):?>
+                                                                                <span>Район</span>
+                                                                                <select name="ADDRESSES_<?=$key?>[]" class="area">
+                                                                                    <?
+                                                                                    $arSelect = array("ID", "NAME");
+                                                                                    $arFilter = array("IBLOCK_ID"=>14, 'SECTION_ID' => $selectCity);
+                                                                                    $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+                                                                                    while($ar_result = $obSections->GetNext())
+                                                                                    {
+                                                                                        $AreaId = $arProps['AREA']['VALUE'];
+                                                                                        ?>
+                                                                                        <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$area){?>selected<?}?>><?=$ar_result['NAME']?></option>
+                                                                                    <?}?>
+                                                                                </select>
+                                                                            <?endif;?>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <?
@@ -332,6 +358,50 @@ while($ob = $res->GetNextElement()){
                                                             <div id="input_address<?=$idDoctor?><?=$address_key_last?>"></div>
                                                             <div class="add-address" value="<?=$idDoctor?><?=$address_key_last?>" title="Добавить адрес">+</div>
                                                         </div>
+                                                        <?
+                                                        $metroInCity = 0;
+                                                        foreach ($selectCityArray as $city){
+                                                            $metroInCity = $metroInCity +  CIBlockSection::GetSectionElementsCount($city, Array("CNT_ACTIVE"=>"Y"));
+                                                        }?>
+                                                        <div class="<?if($metroInCity>0){?>col-lg-6<?}else{?>col-lg-12<?}?>">
+                                                                <label for="">Ваши координаты на карте:</label>
+                                                                <div id="map" style="width: 100%; height: 300px"></div>
+                                                            <? propofficial($arProps['MAP']);?>
+                                                        </div>
+                                                        <?if($metroInCity>0):?>
+                                                            <div class="col-lg-6 metro-block">
+                                                                <label for=""><?=$arProps['METRO']['NAME']?>(обновляется, после сохранения и обновления страницы):</label>
+                                                                <div class="metro-container">
+                                                                        <? function metroDoctor($iblock,$sectionId,$arProps){?>
+                                                                            <ul class="checkbox-group">
+                                                                                <?$arSelect = array("ID", "NAME");
+                                                                                $arFilter = array("IBLOCK_ID"=>$iblock, 'SECTION_ID'=> $sectionId, 'INCLUDE_SUBSECTIONS' => 'Y');
+                                                                                $res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);
+                                                                                while($ob = $res->GetNextElement()){
+                                                                                    $arField = $ob->GetFields();
+                                                                                    ?>
+                                                                                    <li>
+                                                                                        <label data-role="label_<?=$arField['ID']?>" class="bx_filter_param_label " for="<?=$arField['ID']?>">
+                                                                                        <span class="bx_filter_input_checkbox">
+                                                                                            <input type="checkbox" <?if(in_array($arField['ID'],$arProps['METRO']['VALUE'])){?>checked<?}?> value="<?=$arField['ID']?>" name="<?=$arProps['METRO']['CODE']?>_<?=$arField['ID']?>" id="<?=$arField['ID']?>">
+                                                                                                <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
+                                                                                            <span class="bx_filter_param_text"><?=$arField["NAME"]?></span>
+                                                                                        </span>
+                                                                                        </label>
+                                                                                    </li>
+                                                                                <?}?>
+                                                                            </ul>
+                                                                        <?}?>
+                                                                        <? foreach ($selectCityArray as $key => $city){?>
+                                                                            <div class="metro-city-select-block">
+                                                                                <label for=""><?=$key?>:</label>
+                                                                                <? metroDoctor(14,$city,$arProps);?>
+                                                                            </div>
+                                                                        <?}?>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        <?endif;?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -361,6 +431,27 @@ while($ob = $res->GetNextElement()){
     </div>
     <script>
         $(document).ready(function () {
+            function citys(){
+                $(".citys").change(function () {
+                    let id = $(this).val().split('/')[0];
+                    let key = $(this).data('key');
+                    let area = $('#area-block-ajax-'+ key);
+                    alert(id);
+                    alert(key);
+                    alert(area);
+                    $.ajax({
+                        type: "POST",
+                        url: '/ajax/ajax_area_doctor.php',
+                        data: id,
+                        success: function (data) {
+                            // Вывод текста результата отправки
+                            $(area).html(data);
+                        }
+                    });
+                    return false;
+                });
+            }
+            citys();
             if($('.personal-cabinet-content__doctors-page-box-item').hasClass('doctor-lc')) {
                 $('.personal-cabinet-menu__manager.mobile-display').css({display : 'none'});
             }
@@ -430,12 +521,13 @@ while($ob = $res->GetNextElement()){
             let w = <?=$address_key_last?>;
             $('.add-address').on('click', function () {
                 if (w < 10) {
-                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Город</span><select name="ADDRESSES_' + (w + 1) + '[]" id="city" value=""><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>14);$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);while($ar_result = $obSections->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select><span class="doctor-adress">Адрес</span><input type="text" class="place-education-block_place" name="ADDRESSES_' + (w + 1) + '[]"></div><div id="input_address' + id + (w + 1) + '"></div>';
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Город</span><select name="ADDRESSES_' + (w + 1) + '[]" class="citys" data-key="' + (w + 1) + '" value=""><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>14, 'DEPTH_LEVEL' => 1);$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);while($ar_result = $obSections->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select><span class="doctor-adress">Адрес</span><input type="text" class="place-education-block_place" name="ADDRESSES_' + (w + 1) + '[]"><div id="area-block-ajax-' + (w + 1) + '"></div></div><div id="input_address' + id + (w + 1) + '"></div>';
                     document.getElementById('input_address' + id + w).innerHTML = str;
                     w++;
                 }else{
                     $('.add-address').hide();
                 }
+                citys();
             });
             $('.del').on('click', function () {
                 let del = $(this).data('val');
@@ -447,6 +539,73 @@ while($ob = $res->GetNextElement()){
                 $('#city_'+ del).css('text-decoration','line-through');
                 $('#address_'+ del).val('');
             });
+            ymaps.ready(init);
+
+            function init() {
+                var myMap = new ymaps.Map('map', {
+                    center: [<?=$arProps["MAP"]['VALUE']?>],
+                    zoom: 12,
+                    hintContent: '<?=$arFields['NAME']?>'
+                }, {
+                    searchControlProvider: 'yandex#search',
+                });
+                var myPlacemark = new ymaps.Placemark([<?=$arProps["MAP"]['VALUE']?>], {
+                    hintContent: 'Содержимое всплывающей подсказки',
+                    balloonContent: 'Содержимое балуна'
+                });
+                myMap.geoObjects.add(myPlacemark);
+                // Слушаем клик на карте.
+                myMap.events.add('click', function (e) {
+                    var coords = e.get('coords');
+                    console.log(coords);
+                    $('input[name="MAP"]').val(coords);
+                    // Если метка уже создана – просто передвигаем ее.
+                    if (myPlacemark) {
+                        myPlacemark.geometry.setCoordinates(coords);
+                    }
+                    // Если нет – создаем.
+                    else {
+                        myPlacemark = createPlacemark(coords);
+                        myMap.geoObjects.add(myPlacemark);
+                        // Слушаем событие окончания перетаскивания на метке.
+                        myPlacemark.events.add('dragend', function () {
+                            getAddress(myPlacemark.geometry.getCoordinates());
+                        });
+                    }
+                    getAddress(coords);
+                });
+
+                // Создание метки.
+                function createPlacemark(coords) {
+                    return new ymaps.Placemark(coords, {
+                        iconCaption: 'поиск...'
+                    }, {
+                        preset: 'islands#violetDotIconWithCaption',
+                        draggable: true
+                    });
+                }
+
+                // Определяем адрес по координатам (обратное геокодирование).
+                function getAddress(coords) {
+                    myPlacemark.properties.set('iconCaption', 'поиск...');
+                    ymaps.geocode(coords).then(function (res) {
+                        var firstGeoObject = res.geoObjects.get(0);
+
+                        myPlacemark.properties
+                            .set({
+                                // Формируем строку с данными об объекте.
+                                iconCaption: [
+                                    // Название населенного пункта или вышестоящее административно-территориальное образование.
+                                    firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas(),
+                                    // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
+                                    firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
+                                ].filter(Boolean).join(', '),
+                                // В качестве контента балуна задаем строку с адресом объекта.
+                                balloonContent: firstGeoObject.getAddressLine()
+                            });
+                    });
+                }
+            }
         });
     </script>
 <?}else{?>

@@ -114,7 +114,7 @@ $days_between = ceil(($end - $start) / 86400);
                         <select name="AREA" id="area">
                             <?
                             $arSelect = array("ID", "NAME");
-                            $arFilter = array("IBLOCK_ID"=>14, 'SECTION_ID' => $cityId);
+                            $arFilter = array("IBLOCK_ID"=>14, 'DEPTH_LEVEL' => 1, 'SECTION_ID' => $cityId);
                             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                             while($ar_result = $obSections->GetNext())
                             {
