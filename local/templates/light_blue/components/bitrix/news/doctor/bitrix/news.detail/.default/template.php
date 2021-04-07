@@ -336,7 +336,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <?if($arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["VALUE"]=='Y'):?>
                     <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["NAME"]?></li>
                 <?endif;?>
-                <?if($arResultm["PROPERTIES"]["DMC"]["VALUE"]=='Y'):?>
+                <?if($arResult["PROPERTIES"]["DMC"]["VALUE"]=='Y'):?>
                     <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DMC"]["NAME"]?></li>
                 <?endif;?>
                 <?if($arResult["PROPERTIES"]["UMC"]["VALUE"]=='Y'):?>
