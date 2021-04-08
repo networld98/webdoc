@@ -101,7 +101,7 @@ foreach ($work_time as $time){
                 <span>Адрес</span>
                 <?$res = CIBlockSection::GetByID($arProps['CITY']['VALUE']);
                 if($ar_res = $res->GetNext()){?>
-                    <p>г. <?=$ar_res['NAME']?>, <?=$arProps['ADDRESS']['VALUE']?></p>
+                    <p><?=$ar_res['NAME']?>, <?=$arProps['ADDRESS']['VALUE']?></p>
                 <?}?>
 
             </div>

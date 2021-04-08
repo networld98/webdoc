@@ -312,7 +312,7 @@ if($arResult['ITEMS']!=NULL) {
                                 <p class="clinic-card-info__title map">Адрес</p>
                                 <span><? if ($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]) {
                                         ?><?= $arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"] ?>, <? } ?><? if ($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]) {
-                                        ?>г. <?= $arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"] ?>, <? } ?><? if ($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]) {
+                                        ?><?= $arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"] ?>, <? } ?><? if ($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]) {
                                         ?><?= $arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"] ?>, <? } ?><? if ($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]) {
                                         ?><?= $arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"] ?><? } ?></span>
                             <? endif; ?>

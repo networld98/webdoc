@@ -229,7 +229,6 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                                 <? } ?>
                                 <? if ($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>
                                     <p class="doctor-card__clinic-adress">
-                                        <?if(count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>г.<?}?>
                                         <?=explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
                                         <?if(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
                                             echo explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
@@ -239,10 +238,7 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                                 <? }elseif ($arItem["PROPERTIES"]["CITY"]["VALUE"][0]){?>
                                     <p class="doctor-card__clinic-adress">
                                         <? $res = CIBlockSection::GetByID($arItem["PROPERTIES"]["CITY"]["VALUE"][0]);
-                                        if ($ar_res = $res->GetNext()) {
-                                            ?>
-                                             г. <?= $ar_res['NAME'] ?>
-                                        <?}?>
+                                        if ($ar_res = $res->GetNext()) {echo $ar_res['NAME'];}?>
                                         <?if(count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))==1){echo ' '.$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0];}?>
                                     </p>
                                 <?}?>
