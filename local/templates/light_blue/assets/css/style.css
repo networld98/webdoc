@@ -6372,6 +6372,9 @@ button:focus {
 
 }
 @media (max-width: 1400px) {
+    #modef .bx_filter .bx_filter_search_button {
+        max-width: 100px;
+    }
     .main__img2 {
         right: -45px;
          top: 26px;
@@ -8124,6 +8127,9 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
+    .choosing-time_block-list {
+        margin-top: 28px;
+    }
     .bx_filter .main-filter .bx_filter_select_block {
         margin-bottom: 6px;
     }
@@ -8756,7 +8762,7 @@ button:focus {
         margin-right: 0;
     }
     .doctor-card .doctor-card-location-map {
-    z-index: 2;
+        z-index: 1;
     }
     .doctor-card-top-content .title-h3,.choosing-time .title-h3 {
         font-size: 20px;

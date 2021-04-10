@@ -95,27 +95,27 @@
   width: 50%;
   text-align: center;
   padding: 8px 0;
-  border-left: 1px solid #4696dd;
+  border-left: 1px solid #cbab86;
   margin-left: -1px;
-  background: #3585CC;
+  background: #fcdebc;
   border-radius: 0 0 5px 0;
 }
 .bxmaker__geoip__city__line-question-btn-yes:hover {
-  background: #2474bb;
-  border-left: 1px solid #2474bb;
+  background: #cbab86;
+  border-left: 1px solid #cbab86;
 }
 .bxmaker__geoip__city__line-question-btn-no {
   float: left;
   width: 50%;
   text-align: center;
   padding: 8px 0;
-  border-right: 1px solid #1363aa;
+  border-right: 1px solid #cbab86;
   margin-right: -1px;
-  background: #3585CC;
+  background: #fcdebc;
   border-radius: 0 0 0 5px;
 }
 .bxmaker__geoip__city__line-question-btn-no:hover {
-  background: #2474bb;
+  background: #cbab86
 }
 .bxmaker__geoip__city__line-info-content {
   padding: 20px 10px;
