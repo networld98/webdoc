@@ -775,7 +775,7 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 
 		$filterPropertyID = $this->SAFE_FILTER_NAME.'_'.$PROPERTY_ID;
 		$filterPropertyIDKey = $filterPropertyID.'_'.$keyCrc;
-        $arParams = array("replace_space"=>"-","replace_other"=>"-");
+        $arParams = array("replace_space"=>"-","replace_other"=>"");
 		$resultItem["VALUES"][$htmlKey] = array(
 			"CONTROL_ID" => $filterPropertyIDKey,
 			"CONTROL_NAME" => $filterPropertyIDKey,

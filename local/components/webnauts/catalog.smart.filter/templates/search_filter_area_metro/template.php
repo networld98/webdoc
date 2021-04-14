@@ -901,56 +901,5 @@ while($ob = $res->GetNextElement()){
         }
         $('.bx_filter_param_label_'+geoCity).trigger('click');
         $('.popup-window').hide();
-        /*let id = '93';
-        let city = $('.city_input_'+id);
-        city.css('color','transparent');
-        let city_input = city.val();
-        let city_name = $('.bx_filter_param_label');
-        city_name.on('click',function() {
-            document.cookie = "displayBtnSearch=false; path=/;"
-            window.BXmakerGeoIPCity.selectLocation($(this).data('id'));
-        });
-        city.on('focus',function() {
-            $(this).css('color','black');
-        });
-        city.focus(function() {
-            $(this).parent('.bx_filter_select_block').trigger('click');
-        });
-        city.mouseout(function() {
-            $('.bx_filter_select_text').show();
-            city.val('');
-        });
-        city.on('keyup',function() {
-            var select = $(this).val();
-            if (select.length >= 1) {
-                $(this).parent('.bx_filter_select_block').find('.bx_filter_select_text').hide();
-                $('.bx_filter_param_label_'+id).hide();
-                $('#smartFilterDropDown94 .bx_filter_param_label').each(function( index ) {
-                    if ($(this).text().toLowerCase().indexOf(select) === 0) {
-                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
-                    }else if ($(this).text().indexOf(select) === 0) {
-                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
-                    }
-                });
-                $('#smartFilterDropDown115 .bx_filter_param_label').each(function( index ) {
-                    if ($(this).text().toLowerCase().indexOf(select) === 0) {
-                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
-                    }else if ($(this).text().indexOf(select) === 0) {
-                        $('.bx_filter_param_label_'+ $( this ).text() ).show();
-                    }
-                });
-            }else{
-                $('.bx_filter_param_label_'+id).show();
-                $(this).parent('.bx_filter_select_block').find('bx_filter_select_text').show();
-            }
-        });
-        $('.bx_filter_param_label_'+id).on('click',function () {
-            $('.bx_filter_select_text').show();
-            city.css('color','transparent');
-        });
-        if (city_input !== '' || city_input !== null) {
-            $('.bx_filter_select_text').show();
-            city.css('color','transparent');
-        }*/
     });
 </script>
