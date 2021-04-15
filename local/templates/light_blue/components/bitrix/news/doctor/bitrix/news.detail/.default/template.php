@@ -522,12 +522,12 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             <li>
                 <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
                 if($ar_res = $res->GetNext()){?>
-                    <p class="spec-info-block__spec-list__title"><?=$ar_res['NAME']?>
-                <?}?>
-                <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
-                if($ar_res = $res->GetNext()){?>
-                , <?=$ar_res['NAME']?>
-                    </p>
+                <p class="spec-info-block__spec-list__title"><?=$ar_res['NAME']?>
+                    <?}?>
+                    <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
+                    if($ar_res = $res->GetNext()){?>
+                    , <?=$ar_res['NAME']?>
+                </p>
                 <?}?>
                 <?if($arResult["PROPERTIES"]["SPECIALIZATIONS"]["VALUE"]):?>
                     <ul>
