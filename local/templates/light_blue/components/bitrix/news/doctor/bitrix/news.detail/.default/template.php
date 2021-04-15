@@ -205,8 +205,13 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                                     $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
                                 }?>
                             <?}?>
-                            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]==NULL && $cord[0]!=NULL){?>
-                                <? $arResult["PROPERTIES"]["MAP"]["VALUE"] = $cord[0]?>
+
+                            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]==NULL && $cord!=NULL){?>
+                                <?if(is_array($cord)){?>
+                                    <? $arResult["PROPERTIES"]["MAP"]["VALUE"] = $cord[0]?>
+                                <?}else{?>
+                                    <? $arResult["PROPERTIES"]["MAP"]["VALUE"] = $cord?>
+                                <?}?>
                             <?}?>
                             <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
                         <?}else{
@@ -522,12 +527,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             <li>
                 <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
                 if($ar_res = $res->GetNext()){?>
-                <p class="spec-info-block__spec-list__title"><?=$ar_res['NAME']?>
-                    <?}?>
-                    <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
-                    if($ar_res = $res->GetNext()){?>
-                    , <?=$ar_res['NAME']?>
-                </p>
+                    <p class="spec-info-block__spec-list__title"><?=$ar_res['NAME']?></p>
                 <?}?>
                 <?if($arResult["PROPERTIES"]["SPECIALIZATIONS"]["VALUE"]):?>
                     <ul>
