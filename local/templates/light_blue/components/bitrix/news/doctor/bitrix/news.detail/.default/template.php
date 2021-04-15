@@ -33,7 +33,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']==NULL || $arResult['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
             <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctors-list-item__img-photo doctor-card__img-link photo-back-image photo-back-image-contain">
                 <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctors-list-item__img-photo doctor-card__img-link photo-back-image photo-back-image-contain">
+                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female-new.svg')" class="doctors-list-item__img-photo doctor-card__img-link photo-back-image photo-back-image-contain">
                     <?}?>
                 </div>
         <div class="doctors-list-item__img-info">
@@ -45,7 +45,8 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
             </div>
-            <p class="doctors-list-item__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <?getTerminationEx($arRaing['COUNT'])?></p>
+<!--            <p class="doctors-list-item__img-info-commend">--><?//=$arRaing['PERCENT']?><!-- пациентов рекомендуют врача на основе --><?//getTerminationEx($arRaing['COUNT'])?><!--</p>-->
+            <p class="doctors-list-item__img-info-commend"><a href="#full-feedback">Все отзывы о враче</a></p>
         </div>
     </div>
     <div class="doctors-list-item__description">
@@ -110,316 +111,330 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         false
     );?>
 </section>
-<section class="container doctor-card">
-    <div class="flex-left">
-        <div class="doctor-card-top-content">
-            <div class="doctor-card-location-map popup-link-marker"></div>
-            <div class="doctor-card__img <?if($arResult['DETAIL_PICTURE']!=NULL){?>doctor-card-img<?}?>">
-                <?if($arResult['DETAIL_PICTURE']!=NULL){?>
-                <div style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link photo-back-image photo-back-image">
-                    <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']==NULL || $arResult['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
-                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
-                    <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
-                <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
-                <?}?>
-                </div>
-                <div class="doctor-card__img-info">
-                    <?
-                    $rsUser = CUser::GetByLogin($arResult["PROPERTIES"]["TECH_PHONE"]["VALUE"]);
-                    $arUser = $rsUser->Fetch();
-                    ?>
-                    <?if($arUser!=NULL){
-                        $doctorEmail = $arUser['EMAIL'];
-                        $doctorPhone = $arUser['LOGIN'];?>
-                        <a class="popup-mess-click" href="mailto:<?=$doctorEmail?>" style="cursor:pointer;">
-                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/write-to-doctor.svg" alt="mail-ico">
+<section class="container">
+    <div class="doctor-card">
+        <div class="flex-left">
+            <div class="doctor-card-top-content">
+                <div class="doctor-card-location-map popup-link-marker"></div>
+                <div class="doctor-card__img <?if($arResult['DETAIL_PICTURE']!=NULL){?>doctor-card-img<?}?>">
+                    <?if($arResult['DETAIL_PICTURE']!=NULL){?>
+                    <div style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link photo-back-image photo-back-image">
+                        <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']==NULL || $arResult['PROPERTIES']['GENDER']['VALUE']=="Мужчина" ){?>
+                    <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
+                        <?}elseif($arResult['PROPERTIES']['GENDER']['VALUE']=="Женщина" ){?>
+                    <div style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female-new.svg')" class="doctor-card__img-link photo-back-image photo-back-image-contain">
+                    <?}?>
+                    </div>
+                    <div class="doctor-card__img-info">
+                        <?
+                        $rsUser = CUser::GetByLogin($arResult["PROPERTIES"]["TECH_PHONE"]["VALUE"]);
+                        $arUser = $rsUser->Fetch();
+                        ?>
+                        <?if($arUser!=NULL){
+                            $doctorEmail = $arUser['EMAIL'];
+                            $doctorPhone = $arUser['LOGIN'];?>
+                            <a class="popup-mess-click" href="mailto:<?=$doctorEmail?>" style="cursor:pointer;">
+                                <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/write-to-doctor.svg" alt="mail-ico">
+                            </a>
+                        <?}?>
+                        <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>">
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/phone-to-doctor.svg" alt="phone-ico">
                         </a>
-                    <?}?>
-                    <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/phone-to-doctor.svg" alt="phone-ico">
-                    </a>
+                    </div>
+                    <div class="doctor-card-favorites"></div>
+                        <div class="doctors-list-item__img-info">
+                            <div class="doctors-list-item__img-info-ratings">
+                                <img src="/local/templates/light_blue/assets/images/unfilled-star.svg" alt="star">
+                                <img src="/local/templates/light_blue/assets/images/unfilled-star.svg" alt="star">
+                                <img src="/local/templates/light_blue/assets/images/unfilled-star.svg" alt="star">
+                                <img src="/local/templates/light_blue/assets/images/unfilled-star.svg" alt="star">
+                                <img src="/local/templates/light_blue/assets/images/unfilled-star.svg" alt="star">
+                            </div>
+
+                            <p class="doctors-list-item__img-info-commend">0 пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Все отзывы о враче</a></p>
+                        </div>
                 </div>
-                <div class="doctor-card-favorites"></div>
-            </div>
-            <div class="doctor-card__description">
-                <p class="doctor-card__description-position">
-                    <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
-                    if($ar_res = $res->GetNext()){?>
-                        <?=$ar_res['NAME']?>
-                    <?}?>
-                    <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"]):?>
-                        <?echo " · "?>
-                        <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
+                <div class="doctor-card__description">
+                    <p class="doctor-card__description-position">
+                        <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_MAIN']['VALUE']);
                         if($ar_res = $res->GetNext()){?>
                             <?=$ar_res['NAME']?>
                         <?}?>
-                    <?endif;?>
-                    <?if($arResult["PROPERTIES"]["RANK"]["VALUE"]):?>
-                        <?= " · "?>
-                        <?=$arResult['PROPERTIES']['RANK']['VALUE']?>
-                    <?endif;?>
-                </p>
-                <p class="doctor-card__description-title"><?=$arResult['NAME']?></p>
-                <?if($arResult["PROPERTIES"]["STANDING"]["VALUE"]):?>
-                    <p class="doctor-card__description-exp">Стаж <?=$arResult['PROPERTIES']['STANDING']['VALUE']?></p>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]):?>
-                    <p class="doctor-card__description-degree"><?=$arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]?></p>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["PRICE"]["VALUE"]):?>
-                    <p class="doctor-card__description-price"><?=$arResult["PROPERTIES"]["PRICE"]["VALUE"]?> Р<span>Цена приема в клинике</span></p>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["PHONE"]["VALUE"]):?>
-                    <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctor-card__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
-                <?endif;?>
-                <div class="doctor-card__description__adapt">
-                    <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
-                        <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
-                            <?$res = CIBlockElement::GetByID($item);
-                            if($ar_res = $res->GetNext()){
-                                $db_props = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"PHONE"));
-                                if($ar_props = $db_props->Fetch()) {
-                                    $phone = IntVal($ar_props["VALUE"]);
-                                }
-                                $db_cords = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"MAP"));
-                                if($ar_props = $db_cords->Fetch()) {
-                                    $cord = $ar_props["VALUE"];
-                                }
-                                $db_address = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"ADDRESS"));
-                                if($ar_props = $db_address->Fetch()) {
-                                    $address = $ar_props["VALUE"];
-                                }
-                                $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
-                            }?>
-                        <?}?>
-                        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]==NULL && $cord[0]!=NULL){?>
-                            <? $arResult["PROPERTIES"]["MAP"]["VALUE"] = $cord[0]?>
-                        <?}?>
-                        <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
-                    <?}else{
-                        $noneClinic = "Y";
-                        ?>
-                        <p class="doctor-card__clinic-name">Адрес</p>
-                    <?}?>
-                <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
-                    <p class="doctor-card__clinic-adress">
-                        <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
-                    </p>
-                <?endif;?>
-                <!-- <div class="doctor-card-location-map"></div> -->
-                <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
-                    <ul class="doctor-card__metro-list">
-                        <?foreach ($arResult["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
-                            <?$res = CIBlockElement::GetByID($item);
+                        <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"]):?>
+                            <?echo " · "?>
+                            <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
                             if($ar_res = $res->GetNext()){?>
-                                <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                                <?=$ar_res['NAME']?>
                             <?}?>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["RANK"]["VALUE"]):?>
+                            <?= " · "?>
+                            <?=$arResult['PROPERTIES']['RANK']['VALUE']?>
+                        <?endif;?>
+                    </p>
+                    <p class="doctor-card__description-title"><?=$arResult['NAME']?></p>
+                    <?if($arResult["PROPERTIES"]["STANDING"]["VALUE"]):?>
+                        <p class="doctor-card__description-exp">Стаж <?=$arResult['PROPERTIES']['STANDING']['VALUE']?></p>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]):?>
+                        <p class="doctor-card__description-degree"><?=$arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]?></p>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["PRICE"]["VALUE"]):?>
+                        <p class="doctor-card__description-price"><?=$arResult["PROPERTIES"]["PRICE"]["VALUE"]?> Р<span>Цена приема в клинике</span></p>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["PHONE"]["VALUE"]):?>
+                        <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctor-card__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
+                    <?endif;?>
+                    <div class="doctor-card__description__adapt">
+                        <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
+                            <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
+                                <?$res = CIBlockElement::GetByID($item);
+                                if($ar_res = $res->GetNext()){
+                                    $db_props = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"PHONE"));
+                                    if($ar_props = $db_props->Fetch()) {
+                                        $phone = IntVal($ar_props["VALUE"]);
+                                    }
+                                    $db_cords = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"MAP"));
+                                    if($ar_props = $db_cords->Fetch()) {
+                                        $cord = $ar_props["VALUE"];
+                                    }
+                                    $db_address = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"ADDRESS"));
+                                    if($ar_props = $db_address->Fetch()) {
+                                        $address = $ar_props["VALUE"];
+                                    }
+                                    $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
+                                }?>
+                            <?}?>
+                            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"]==NULL && $cord[0]!=NULL){?>
+                                <? $arResult["PROPERTIES"]["MAP"]["VALUE"] = $cord[0]?>
+                            <?}?>
+                            <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
+                        <?}else{
+                            $noneClinic = "Y";
+                            ?>
+                            <p class="doctor-card__clinic-name">Адрес</p>
                         <?}?>
-                    </ul>
-                <?endif;?>
-                <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
-                    <ul class="sharding-block sharding-block-doctor-detail">
-                        <!--            <li class="sharding-item">-->
-                        <!--                <a class="sharding-item-link" href="#">-->
-                        <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-mail.svg" alt="mail">-->
-                        <!--                </a>-->
-                        <!--            </li>-->
-                        <!--            <li class="sharding-item">-->
-                        <!--                <a class="sharding-item-link" href="#">-->
-                        <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-wtf.svg" alt="wtf">-->
-                        <!--                </a>-->
-                        <!--            </li>-->
-                        <li class="sharding-item">
-                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://www.facebook.com/sharer.php?src=sp&u=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" target="_blank" title="Facebook">
-                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
-                            </a>
-                        </li>
-                        <li class="sharding-item">
-                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://vk.com/share.php?url=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="ВКонтакте">
-                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
-                            </a>
-                        </li>
-                        <li class="sharding-item">
-                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://t.me/share/url?url=<?=$_SERVER["SCRIPT_URI"]?>&text=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"  href="" rel="nofollow noopener"title="Telegram">
-                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
-                            </a>
-                        </li>
-                        <li class="sharding-item">
-                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://api.whatsapp.com/send?text=<?=$arResult["NAME"]?> <?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'top=25%,left=25,location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="WhatsApp">
-                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
-                            </a>
-                        </li>
-                        <li class="sharding-item">
-                            <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://twitter.com/intent/tweet?text=<?=$arResult["NAME"]?>&url=<?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="Twitter">
-                                <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
-                            </a>
-                        </li>
-                    </ul>
+                    <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
+                        <p class="doctor-card__clinic-adress">
+                            <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
+                        </p>
+                    <?endif;?>
+
+                    <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
+                        <ul class="doctor-card__metro-list">
+                            <?foreach ($arResult["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
+                                <?$res = CIBlockElement::GetByID($item);
+                                if($ar_res = $res->GetNext()){?>
+                                    <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                                <?}?>
+                            <?}?>
+                        </ul>
+                    <?endif;?>
+                        <div class="doctor-card-location-map"></div>
+                    <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
+                        <ul class="sharding-block sharding-block-doctor-detail">
+                            <!--            <li class="sharding-item">-->
+                            <!--                <a class="sharding-item-link" href="#">-->
+                            <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-mail.svg" alt="mail">-->
+                            <!--                </a>-->
+                            <!--            </li>-->
+                            <!--            <li class="sharding-item">-->
+                            <!--                <a class="sharding-item-link" href="#">-->
+                            <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-wtf.svg" alt="wtf">-->
+                            <!--                </a>-->
+                            <!--            </li>-->
+                            <li class="sharding-item">
+                                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://www.facebook.com/sharer.php?src=sp&u=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" target="_blank" title="Facebook">
+                                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
+                                </a>
+                            </li>
+                            <li class="sharding-item">
+                                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://vk.com/share.php?url=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="ВКонтакте">
+                                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
+                                </a>
+                            </li>
+                            <li class="sharding-item">
+                                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://t.me/share/url?url=<?=$_SERVER["SCRIPT_URI"]?>&text=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"  href="" rel="nofollow noopener"title="Telegram">
+                                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
+                                </a>
+                            </li>
+                            <li class="sharding-item">
+                                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://api.whatsapp.com/send?text=<?=$arResult["NAME"]?> <?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'top=25%,left=25,location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="WhatsApp">
+                                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
+                                </a>
+                            </li>
+                            <li class="sharding-item">
+                                <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://twitter.com/intent/tweet?text=<?=$arResult["NAME"]?>&url=<?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="Twitter">
+                                    <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="doctor-card-popUp-group">
-            <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
-                <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
-            <?}?>
-            <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
-                <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
-            <?endif;?>
-            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
-			    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
-            <?endif;?>
-        </div>
-                <ul class="sharding-block sharding-block-doctor-detail sharding-block-doctor-detail-ghost">
-                <!--            <li class="sharding-item">-->
-                <!--                <a class="sharding-item-link" href="#">-->
-                <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-mail.svg" alt="mail">-->
-                <!--                </a>-->
-                <!--            </li>-->
-                <!--            <li class="sharding-item">-->
-                <!--                <a class="sharding-item-link" href="#">-->
-                <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-wtf.svg" alt="wtf">-->
-                <!--                </a>-->
-                <!--            </li>-->
-                <li class="sharding-item">
-                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://www.facebook.com/sharer.php?src=sp&u=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" target="_blank" title="Facebook">
-                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
-                    </a>
-                </li>
-                <li class="sharding-item">
-                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://vk.com/share.php?url=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="ВКонтакте">
-                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
-                    </a>
-                </li>
-                <li class="sharding-item">
-                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://t.me/share/url?url=<?=$_SERVER["SCRIPT_URI"]?>&text=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"  href="" rel="nofollow noopener"title="Telegram">
-                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
-                    </a>
-                </li>
-                <li class="sharding-item">
-                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://api.whatsapp.com/send?text=<?=$arResult["NAME"]?> <?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'top=25%,left=25,location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="WhatsApp">
-                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
-                    </a>
-                </li>
-                <li class="sharding-item">
-                    <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://twitter.com/intent/tweet?text=<?=$arResult["NAME"]?>&url=<?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="Twitter">
-                        <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
-                    </a>
-                </li>
-                </ul>
-    </div>
-    <div class="flex-right">
-        <div class="doctor-card-top-content">
-            <div class="doctor-card__title">
-                <h3 class="title-h3">Информация о враче</h3>
-                <div class="doctor-card__img-info-ratings">
-                    <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
-                    <?if($arRaing['RATING']>=1){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-1">
-                    <?}if ($arRaing['RATING']>=2){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-2">
-                    <?}if ($arRaing['RATING']>=3){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-3">
-                    <?}if ($arRaing['RATING']>=4){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-4">
-                    <?}if ($arRaing['RATING']>=5){?>
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-5">
-                    <?}?>
-                </div>
-            </div>
-            <p class="doctor-card__img-info-commend"><?=$arRaing['PERCENT']?> пациентов рекомендуют врача на основе <?getTerminationEx($arRaing['COUNT'])?><a href="#full-feedback">Все отзывы о враче</a></p>
-            <ul class="doctor-card_options-list">
-                <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
-                    <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["VALUE"]=='Y'):?>
-                    <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["DMC"]["VALUE"]=='Y'):?>
-                    <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DMC"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["UMC"]["VALUE"]=='Y'):?>
-                    <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["UMC"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["ONLINE"]["VALUE"]=='Y'):?>
-                    <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["ONLINE"]["NAME"]?></li>
-                <?endif;?>
-                <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
-                    <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["NAME"]?></li>
-                <?endif;?>
-            </ul>
-            <p class="doctor-card__position-desc"><?=$arResult['PREVIEW_TEXT']?></p>
-            <a href="#anchor-spec-info" class="doctor-card__metro-list-show_more go-to">Подробная информация о специалисте</a>
-        </div>
-        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
             <div class="doctor-card-popUp-group">
-                <a class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
+                <?if(empty($arResult["PROPERTIES"]["NOT_ON"]["VALUE"])){?>
+                    <a class="doctor-card-popUp-group__reception popup-reception-click"><span>Записаться на прием</span></a>
+                <?}?>
+                <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
+                    <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
+                <?endif;?>
+                <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
+                    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
+                <?endif;?>
             </div>
-        <?endif;?>
-        <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord!=NULL):?>
-        <div class="map-wrapper">
-
-                <div class="popup-box">
-					<div class="close"></div>
-                    <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%; height: 500px;"></div>
-                    <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%; height: 500px;"></div>
-                    <script type="text/javascript">
-                        ymaps.ready(init);
-                        function init() {
-                            var myMap_<?=$arResult['ID']?> = new ymaps.Map("map_<?=$arResult['ID']?>", {
-                                center: [<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>],
-                                zoom: 12,
-                                controls: [
-                                    'zoomControl', // Ползунок масштаба
-                                    'rulerControl', // Линейка
-                                    'routeButtonControl', // Панель маршрутизации
-                                    'trafficControl', // Пробки
-                                    'typeSelector', // Переключатель слоев карты
-                                    'fullscreenControl', // Полноэкранный режим
-                                    new ymaps.control.SearchControl({
-                                        options: {
-                                            size: 'large',
-                                            provider: 'yandex#search'
-                                        }
-                                    })
-                                ]
-                            });
-                            var myPlacemark_<?=$arResult['ID']?> = new ymaps.Placemark([<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>], {
-                                hintContent: '<?=$arResult["NAME"]?>'
-                            });
-                            myMap_<?=$arResult['ID']?>.geoObjects.add(myPlacemark_<?=$arResult['ID']?>);
-
-                            var myMap_track_<?=$arResult['ID']?> = new ymaps.Map('map_track_<?=$arResult["ID"]?>', {
-                                center: [<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>],
-                                zoom: 12,
-                                controls: ['routePanelControl']
-                            });
-
-                            var control_track_<?=$arResult["ID"]?> = myMap_track_<?=$arResult["ID"]?>.controls.get('routePanelControl');
-                            control_track_<?=$arResult["ID"]?>.routePanel.state.set({
-                                type: 'masstransit',
-                                fromEnabled: true,
-                                toEnabled: false,
-                                to: '<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>'
-                            });
-                            control_track_<?=$arResult["ID"]?>.routePanel.options.set({
-                                allowSwitch: false,
-                                reverseGeocoding: true,
-                                types: { masstransit: true, pedestrian: true, taxi: true }
-                            });
-
-                            var switchPointsButton = new ymaps.control.Button({
-                                data: {content: "Поменять местами", title: "Поменять точки местами"},
-                                // options: {selectOnClick: false, maxWidth: 160}
-                            });
-                            switchPointsButton.events.add('click', function () {
-                                control_track_<?=$arResult["ID"]?>.routePanel.switchPoints();
-                            });
-                            myMap_track_<?=$arResult["ID"]?>.controls.add(switchPointsButton);
-                        }
-                    </script>
-				</div>
+                    <ul class="sharding-block sharding-block-doctor-detail sharding-block-doctor-detail-ghost">
+                    <!--            <li class="sharding-item">-->
+                    <!--                <a class="sharding-item-link" href="#">-->
+                    <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-mail.svg" alt="mail">-->
+                    <!--                </a>-->
+                    <!--            </li>-->
+                    <!--            <li class="sharding-item">-->
+                    <!--                <a class="sharding-item-link" href="#">-->
+                    <!--                    <img class="sharding-item-img" src="--><?//= SITE_TEMPLATE_PATH ?><!--/assets/images/sharing-wtf.svg" alt="wtf">-->
+                    <!--                </a>-->
+                    <!--            </li>-->
+                    <li class="sharding-item">
+                        <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://www.facebook.com/sharer.php?src=sp&u=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" target="_blank" title="Facebook">
+                            <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-fb.svg" alt="fb">
+                        </a>
+                    </li>
+                    <li class="sharding-item">
+                        <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://vk.com/share.php?url=<?=$_SERVER["SCRIPT_URI"]?>&title=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="ВКонтакте">
+                            <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-vk.svg" alt="vk">
+                        </a>
+                    </li>
+                    <li class="sharding-item">
+                        <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://t.me/share/url?url=<?=$_SERVER["SCRIPT_URI"]?>&text=<?=$arResult["NAME"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"  href="" rel="nofollow noopener"title="Telegram">
+                            <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tele.svg" alt="tele">
+                        </a>
+                    </li>
+                    <li class="sharding-item">
+                        <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://api.whatsapp.com/send?text=<?=$arResult["NAME"]?> <?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'top=25%,left=25,location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="WhatsApp">
+                            <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-wu.svg" alt="wu">
+                        </a>
+                    </li>
+                    <li class="sharding-item">
+                        <a class="sharding-item-link" onclick="event.preventDefault();window.open('https://twitter.com/intent/tweet?text=<?=$arResult["NAME"]?>&url=<?=$_SERVER["SCRIPT_URI"]?>&utm_source=share2', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" rel="nofollow noopener" title="Twitter">
+                            <img class="sharding-item-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/sharing-tw.svg" alt="tw">
+                        </a>
+                    </li>
+                    </ul>
+        </div>
+        <div class="flex-right">
+            <div class="doctor-card-top-content">
+                <div class="doctor-card__title">
+                    <h3 class="title-h3">Информация о враче</h3>
+                    <div class="doctor-card__img-info-ratings">
+                        <?if(CModule::IncludeModule('api.reviews')) {$arRaing = CApiReviews::getElementRating($arResult['ID']);} ?>
+                        <?if($arRaing['RATING']>=1){?>
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-1">
+                        <?}if ($arRaing['RATING']>=2){?>
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-2">
+                        <?}if ($arRaing['RATING']>=3){?>
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-3">
+                        <?}if ($arRaing['RATING']>=4){?>
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-4">
+                        <?}if ($arRaing['RATING']>=5){?>
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/filled-star.svg" alt="star-5">
+                        <?}?>
+                    </div>
+                </div>
+<!--                <p class="doctor-card__img-info-commend">--><?//=$arRaing['PERCENT']?><!-- пациентов рекомендуют врача на основе --><?//getTerminationEx($arRaing['COUNT'])?><!--<a href="#full-feedback">Все отзывы о враче</a></p>-->
+                <ul class="doctor-card_options-list">
+                    <?if($arResult["PROPERTIES"]["DIAGNOSTICS"]["VALUE"]=='Y'):?>
+                        <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DIAGNOSTICS"]["NAME"]?></li>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["VALUE"]=='Y'):?>
+                        <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["CHILDREN_DOCTOR"]["NAME"]?></li>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["DMC"]["VALUE"]=='Y'):?>
+                        <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DMC"]["NAME"]?></li>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["UMC"]["VALUE"]=='Y'):?>
+                        <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["UMC"]["NAME"]?></li>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["ONLINE"]["VALUE"]=='Y'):?>
+                        <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["ONLINE"]["NAME"]?></li>
+                    <?endif;?>
+                    <?if($arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["VALUE"]=='Y'):?>
+                        <li class="doctor-card_options-list-item"><?=$arResult["PROPERTIES"]["DEPARTURE_HOUSE"]["NAME"]?></li>
+                    <?endif;?>
+                </ul>
+                <p class="doctor-card__position-desc"><?=$arResult['PREVIEW_TEXT']?></p>
+                <a href="#anchor-spec-info" class="doctor-card__metro-list-show_more go-to">Подробная информация о специалисте</a>
             </div>
-        <?endif;?>
+            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
+                <div class="doctor-card-popUp-group">
+                    <a class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
+                </div>
+            <?endif;?>
+            <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord!=NULL):?>
+            <div class="map-wrapper">
+
+                    <div class="popup-box">
+                        <div class="close"></div>
+                        <div class="map-popup-marker" id="map_<?=$arResult['ID']?>"  style="width: 100%; height: 500px;"></div>
+                        <div class="map-popup" id="map_track_<?=$arResult["ID"]?>"  style="width: 100%; height: 500px;"></div>
+                        <script type="text/javascript">
+                            ymaps.ready(init);
+                            function init() {
+                                var myMap_<?=$arResult['ID']?> = new ymaps.Map("map_<?=$arResult['ID']?>", {
+                                    center: [<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>],
+                                    zoom: 12,
+                                    controls: [
+                                        'zoomControl', // Ползунок масштаба
+                                        'rulerControl', // Линейка
+                                        'routeButtonControl', // Панель маршрутизации
+                                        'trafficControl', // Пробки
+                                        'typeSelector', // Переключатель слоев карты
+                                        'fullscreenControl', // Полноэкранный режим
+                                        new ymaps.control.SearchControl({
+                                            options: {
+                                                size: 'large',
+                                                provider: 'yandex#search'
+                                            }
+                                        })
+                                    ]
+                                });
+                                var myPlacemark_<?=$arResult['ID']?> = new ymaps.Placemark([<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>], {
+                                    hintContent: '<?=$arResult["NAME"]?>'
+                                });
+                                myMap_<?=$arResult['ID']?>.geoObjects.add(myPlacemark_<?=$arResult['ID']?>);
+
+                                var myMap_track_<?=$arResult['ID']?> = new ymaps.Map('map_track_<?=$arResult["ID"]?>', {
+                                    center: [<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>],
+                                    zoom: 12,
+                                    controls: ['routePanelControl']
+                                });
+
+                                var control_track_<?=$arResult["ID"]?> = myMap_track_<?=$arResult["ID"]?>.controls.get('routePanelControl');
+                                control_track_<?=$arResult["ID"]?>.routePanel.state.set({
+                                    type: 'masstransit',
+                                    fromEnabled: true,
+                                    toEnabled: false,
+                                    to: '<?=$arResult["PROPERTIES"]["MAP"]["VALUE"]?>'
+                                });
+                                control_track_<?=$arResult["ID"]?>.routePanel.options.set({
+                                    allowSwitch: false,
+                                    reverseGeocoding: true,
+                                    types: { masstransit: true, pedestrian: true, taxi: true }
+                                });
+
+                                var switchPointsButton = new ymaps.control.Button({
+                                    data: {content: "Поменять местами", title: "Поменять точки местами"},
+                                    // options: {selectOnClick: false, maxWidth: 160}
+                                });
+                                switchPointsButton.events.add('click', function () {
+                                    control_track_<?=$arResult["ID"]?>.routePanel.switchPoints();
+                                });
+                                myMap_track_<?=$arResult["ID"]?>.controls.add(switchPointsButton);
+                            }
+                        </script>
+                    </div>
+                </div>
+            <?endif;?>
+        </div>
     </div>
 </section>
 <?include $_SERVER['DOCUMENT_ROOT'].'/include/result_record_in_form.php';?>

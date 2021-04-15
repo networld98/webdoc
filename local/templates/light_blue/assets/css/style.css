@@ -6730,6 +6730,13 @@ button:focus {
     }
     .doctor-card {
         flex-direction: column;
+
+    }
+    .clinic-card .doctor-card {
+        padding: 10px;
+        box-shadow: 0px 4px 30px rgb(0 0 0 / 10%);
+        border-radius: 10px;
+        margin-bottom: 20px;
     }
     .doctor-card .flex-left {
         max-width: 100%;
@@ -8644,8 +8651,17 @@ button:focus {
     .doctor-card__img {
         /*height: 112px;*/
         height: auto;
-        max-width: 68px;
+        max-width: 103px;
         background: 0;
+    }
+    .doctor-card__img .doctors-list-item__img-info {
+        padding: 0;
+    }
+    .doctor-card__img .doctors-list-item__img-info .commend-logo {
+        height: 23px;
+    }
+    .doctor-card__img .doctors-list-item__img-info .doctors-list-item__img-info-ratings {
+        text-align: center;
     }
     .photo-back-image {
         height: 112px;
@@ -8696,7 +8712,8 @@ button:focus {
     }
     .doctor-card-favorites {
         position: initial;
-        margin-left: 16px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 13px;
     }
    /* .doctor-card__description > .doctor-card__description__adapt{
@@ -8704,6 +8721,14 @@ button:focus {
     }*/
     .doctor-card .flex-left > .doctor-card__description__adapt {
         display: block;
+    }
+    .doctor-card__description__adapt .doctor-card-location-map {
+        position: static;
+        margin-top: 10px;
+        margin-left: auto;
+    }
+    .doctor-card .doctor-card-top-content > .doctor-card-location-map {
+        display: none;
     }
     .doctor-card__description-position,.doctor-card__clinic-adress,.doctor-card__description ul {
         font-size: 13px;
