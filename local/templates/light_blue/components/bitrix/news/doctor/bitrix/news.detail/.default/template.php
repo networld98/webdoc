@@ -45,7 +45,6 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
             </div>
-<!--            <p class="doctors-list-item__img-info-commend">--><?//=$arRaing['PERCENT']?><!-- пациентов рекомендуют врача на основе --><?//getTerminationEx($arRaing['COUNT'])?><!--</p>-->
             <p class="doctors-list-item__img-info-commend"><a href="#full-feedback">Все отзывы о враче</a></p>
         </div>
     </div>
@@ -73,7 +72,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
             <p class="doctors-list-item__description-price"><?=$arResult["PROPERTIES"]["PRICE"]["VALUE"]?> Р<span>Цена приема в клинике</span></p>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["PHONE"]["VALUE"]):?>
-            <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctors-list-item__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
+            <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctors-list-item__description-phone"><span></span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
             <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
@@ -235,7 +234,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                             <?}?>
                         </ul>
                     <?endif;?>
-                        <div class="doctor-card-location-map"></div>
+                        <div class="doctor-card-location-map popup-link-marker"></div>
                     <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
                         <ul class="sharding-block sharding-block-doctor-detail">
                             <!--            <li class="sharding-item">-->

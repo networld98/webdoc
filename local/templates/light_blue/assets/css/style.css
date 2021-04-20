@@ -1997,7 +1997,7 @@ main {
 .doctor-card-popUp-group {
     display: flex;
     justify-content: space-between;
-    margin-top: auto;
+    margin-top: 38px;
 }
 .doctor-card-popUp-group__reception {
     font-family: "Ubuntu";

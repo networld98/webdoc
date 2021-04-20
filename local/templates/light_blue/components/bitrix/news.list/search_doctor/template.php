@@ -89,8 +89,7 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<? if ($arRaing['RATING']>='5') { ?>filled-star.svg<? } else { ?>unfilled-star.svg<? } ?>"
                                      alt="star">
                             </div>
-                            <p class="doctors-list-item__img-info-commend"><?= $arRaing['PERCENT'] ?> пациентов
-                                рекомендуют врача на основе <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>#otzivy-yakor"><?= $arRaing['COUNT'] ?> отзывов</a></p>
+                            <p class="doctors-list-item__img-info-commend"><?=$arRaing['COUNT']?> пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Все отзывы о враче</a></p>
                         </div>
                     </div>
                     <div class="doctors-list-item__description">
@@ -113,9 +112,11 @@ $this->SetViewTarget('searchCountDoctor'); ?>
                             <p class="doctors-list-item__description-price"><?= $arItem['PROPERTIES']['PRICE']['VALUE'] ?>
                                 Р<span>Цена приема в клинике</span></p>
                         <? endif; ?>
-                        <a href="tel:<?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>"
-                           class="doctors-list-item__description-phone"><span></span><?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>
-                        </a>
+                        <? if ($arItem["PROPERTIES"]["PHONE"]["VALUE"]): ?>
+                            <a href="tel:<?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>"
+                               class="doctors-list-item__description-phone"><span></span><?= $arItem['PROPERTIES']['PHONE']['VALUE'] ?>
+                            </a>
+                        <? endif; ?>
                         <?
                         $FORM_ID = 4;
                         $arFilter = array(
