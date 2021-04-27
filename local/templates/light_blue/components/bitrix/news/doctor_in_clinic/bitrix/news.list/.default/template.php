@@ -71,7 +71,7 @@ $daterange = new DatePeriod($begin, $interval ,$end);
                         <?if($arItem["PROPERTIES"]["STANDING"]["VALUE"]):?>
                             <p class="doctors-list-item__description-exp">Стаж по специальности <?=$arItem['PROPERTIES']['STANDING']['VALUE']?></p>
                         <?endif;?>
-                        <?if($arItem["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]):?>
+                        <?if($arItem["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"] && $arItem["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"] != "-"):?>
                             <p class="doctors-list-item__description-degree"><?=($arItem['PROPERTIES']['SCIENCE_DEGREE']['VALUE']!='-' ? $arItem['PROPERTIES']['SCIENCE_DEGREE']['VALUE']: ' ')?></p>
                         <?endif;?>
                         <?if($arItem["PROPERTIES"]["PRICE"]["VALUE"]):?>
