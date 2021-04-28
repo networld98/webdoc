@@ -6281,9 +6281,6 @@ button:focus {
     padding-left: 0;
     padding-right: 0;
 }
-.bx_filter .main-filter .bx_filter_select_arrow {
-    display: none;
-}
 /*.bx_filter.bx_blue.bx_horizontal {*/
     /*background: #F3F4EF;*/
     /*}*/
@@ -9858,6 +9855,7 @@ button:focus {
 }
 
 .city_input {
+    display: none;
     background: transparent;
     border: none;
     position: absolute;

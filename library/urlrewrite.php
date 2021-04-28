@@ -1,5 +1,13 @@
 <?php
 $arUrlRewrite=array (
+    21 =>
+    array (
+        'CONDITION' => '#^/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/404.php',
+        'SORT' => 100,
+    ),
   22 => 
   array (
     'CONDITION' => '#^/symptoms/#',
@@ -24,20 +32,13 @@ $arUrlRewrite=array (
     'PATH' => '/index.php',
     'SORT' => 100,
   ),
-  21 => 
-  array (
-    'CONDITION' => '#^/#',
-    'RULE' => '',
-    'ID' => '',
-    'PATH' => '/404.php',
-    'SORT' => 100,
-  ),
-25 =>
-array (
-    'CONDITION' => '#^/cosmetic/#',
-    'RULE' => '',
-    'ID' => 'bitrix:news',
-    'PATH' => '/cosmetic/index.php',
-    'SORT' => 100,
-),
+    25 =>
+    array (
+        'CONDITION' => '#^/cosmetic/#',
+        'RULE' => '',
+        'ID' => 'bitrix:news',
+        'PATH' => '/cosmetic/index.php',
+        'SORT' => 100,
+    ),
+
 );

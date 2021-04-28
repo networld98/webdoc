@@ -893,7 +893,6 @@ while($ob = $res->GetNextElement()){
     var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
     $(document).ready(function () {
         geoCity = getCookie('bxmaker.geoip.2.4.2_city');
-        console.log( geoCity);
         if(getCookie('displayBtnSearch') == 'false') {
             $('.search-doctors').hide();
             $('.clinic-card .main-filter').css({'padding-top': '32px', 'padding-bottom': '29px'});
