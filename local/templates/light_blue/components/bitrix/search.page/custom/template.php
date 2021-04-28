@@ -137,7 +137,7 @@ $noneSearch = 0;
                     "IBLOCK_TYPE" => "content",
                     "IBLOCK_ID" => $iblockId,
                     "PAGER_SHOW_ALL" => "Y",
-                    "NEWS_COUNT" => "999999",
+                    "NEWS_COUNT" => "50",
                     "SORT_BY1" => "property_SECT_RATING",
                     "SORT_ORDER1" => "DESC",
                     "SORT_BY2" => "SORT",
@@ -206,9 +206,23 @@ $noneSearch = 0;
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_ADDITIONAL" => ""
                 )
-            );
-        }
-        ?>
+            );?>
+            <?if ($iblockId == 9){
+                $link ='/clinics/';
+            }elseif ($iblockId == 10){
+                $link ='/doctors/';
+            }elseif ($iblockId == 18 || $iblockId == 19){
+                $link ='/services/';
+            }elseif ($iblockId == 20){
+                $link ='lib.webdoc.clinic/articles/';
+            }elseif ($iblockId == 21){
+                $link ='lib.webdoc.clinic/illness/';
+            }elseif ($iblockId == 22){
+                $link ='lib.webdoc.clinic/symptoms/';
+            }
+            ?>
+            <a href="<?=$link?>" class="load_more">Показать всё</a>
+        <?}?>
 	<?elseif(count($arResult["SEARCH"])>0):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"] != "N") echo $arResult["NAV_STRING"]?>
 		<?
@@ -288,7 +302,7 @@ $noneSearch = 0;
                     "IBLOCK_TYPE" => "content",
                     "IBLOCK_ID" => $iblockId,
                     "PAGER_SHOW_ALL" => "Y",
-                    "NEWS_COUNT" => "999999",
+                    "NEWS_COUNT" => "50",
                     "SORT_BY1" => "property_SECT_RATING",
                     "SORT_ORDER1" => "DESC",
                     "SORT_BY2" => "SORT",
@@ -357,9 +371,23 @@ $noneSearch = 0;
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_ADDITIONAL" => ""
                 )
-            );
-          }
-          ?>
+            );?>
+              <?if ($iblockId == 9){
+                  $link ='/clinics/';
+              }elseif ($iblockId == 10){
+                  $link ='/doctors/';
+              }elseif ($iblockId == 18 || $iblockId == 19){
+                  $link ='/services/';
+              }elseif ($iblockId == 20){
+                  $link ='lib.webdoc.clinic/articles/';
+              }elseif ($iblockId == 21){
+                  $link ='lib.webdoc.clinic/illness/';
+              }elseif ($iblockId == 22){
+                  $link ='lib.webdoc.clinic/symptoms/';
+              }
+              ?>
+              <a href="<?=$link?>" class="load_more">Показать все</a>
+          <?}?>
 	<?endif;?>
         <?
         if($noneSearch == 0){?>

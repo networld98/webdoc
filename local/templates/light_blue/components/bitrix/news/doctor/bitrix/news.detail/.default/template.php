@@ -159,14 +159,14 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                         if($ar_res = $res->GetNext()){?>
                             <?=$ar_res['NAME']?>
                         <?}?>
-                        <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"]):?>
+                        <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"] && $arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"] != '-'):?>
                             <?echo " · "?>
                             <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
                             if($ar_res = $res->GetNext()){?>
                                 <?=$ar_res['NAME']?>
                             <?}?>
                         <?endif;?>
-                        <?if($arResult["PROPERTIES"]["RANK"]["VALUE"]):?>
+                        <?if($arResult["PROPERTIES"]["RANK"]["VALUE"] && $arResult["PROPERTIES"]["RANK"]["VALUE"] != '-' ):?>
                             <?= " · "?>
                             <?=$arResult['PROPERTIES']['RANK']['VALUE']?>
                         <?endif;?>
@@ -175,7 +175,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                     <?if($arResult["PROPERTIES"]["STANDING"]["VALUE"]):?>
                         <p class="doctor-card__description-exp">Стаж <?=$arResult['PROPERTIES']['STANDING']['VALUE']?></p>
                     <?endif;?>
-                    <?if($arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]):?>
+                    <?if($arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"] && $arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]!= '-'):?>
                         <p class="doctor-card__description-degree"><?=$arResult["PROPERTIES"]["SCIENCE_DEGREE"]["VALUE"]?></p>
                     <?endif;?>
                     <?if($arResult["PROPERTIES"]["PRICE"]["VALUE"]):?>
@@ -234,7 +234,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                             <?}?>
                         </ul>
                     <?endif;?>
-                        <div class="doctor-card-location-map popup-link-marker"></div>
+                        <div class="doctor-card-location-map popup-link-marker d-lg-none d-md-none"></div>
                     <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
                         <ul class="sharding-block sharding-block-doctor-detail">
                             <!--            <li class="sharding-item">-->
