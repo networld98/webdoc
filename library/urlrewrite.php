@@ -1,13 +1,5 @@
 <?php
 $arUrlRewrite=array (
-    21 =>
-    array (
-        'CONDITION' => '#^/#',
-        'RULE' => '',
-        'ID' => '',
-        'PATH' => '/404.php',
-        'SORT' => 100,
-    ),
   22 => 
   array (
     'CONDITION' => '#^/symptoms/#',
@@ -40,5 +32,12 @@ $arUrlRewrite=array (
         'PATH' => '/cosmetic/index.php',
         'SORT' => 100,
     ),
-
+    26 =>
+    array (
+        'CONDITION' => '#^/#',
+        'RULE' => '',
+        'ID' => '',
+        'PATH' => '/404.php',
+        'SORT' => 100,
+    ),
 );

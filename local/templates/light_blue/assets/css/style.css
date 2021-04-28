@@ -6404,6 +6404,16 @@ button:focus {
         background-color: #fff;
     }
 }
+@media (max-width: 1024px) {
+    .specializations .nav-pills > li {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    .specializations .nav-pills > li:last-child {
+        margin-bottom: 0;
+    }
+}
 @media (max-width: 1430px) {
 
     .logo-clinic-in-cabinet {
@@ -7155,9 +7165,6 @@ button:focus {
     .statistics__items {
         grid-row-gap: 54px;
     }
-    .specializations .nav-pills > li:last-child {
-        margin-left: 13px;
-    }
     .contacts__social {
         padding-top: 21px;
     }
@@ -7291,13 +7298,9 @@ button:focus {
     }
 }
 @media (max-width: 768px) {
-    .specializations .nav-pills > li {
-        width: 100%;
-        margin-bottom: 10px;
-        margin-right: 0;
-    }
-    .specializations .nav-pills > li:last-child {
-        margin-bottom: 0;
+    .anchor-block.fixed-block,.anchor-block.fixed-block-alp {
+        margin-bottom: 20px;
+        max-width: 100%;
     }
     .specializations .nav-pills .nav-link {
         justify-content: center;

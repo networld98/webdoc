@@ -9,20 +9,20 @@ $curPagePath = explode("/", $curPagePath);
 <div class="full-screen__filter-bg services-filter">
     <section class="container">
         <? $APPLICATION->IncludeComponent(
-            "bitrix:catalog.smart.filter",
-            "custom",
+            "webnauts:catalog.smart.filter",
+            "search_filter_area_metro",
             array(
                 "CACHE_GROUPS" => "Y",
                 "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "N",
-                "COMPONENT_TEMPLATE" => "custom",
+                "CACHE_TYPE" => "A",
+                "COMPONENT_TEMPLATE" => "search_filter_area_metro",
                 "CONVERT_CURRENCY" => "N",
                 "DISPLAY_ELEMENT_COUNT" => "N",
                 "FILTER_NAME" => $arParams["FILTER_NAME"],
                 "FILTER_VIEW_MODE" => "vertical",
                 "HIDE_NOT_AVAILABLE" => "N",
                 "IBLOCK_TYPE" => "content",
-                "IBLOCK_ID" => 9,
+                "IBLOCK_ID" => "9",
                 "PAGER_PARAMS_NAME" => "arrPager",
                 "PREFILTER_NAME" => "",
                 "SAVE_IN_SESSION" => "N",

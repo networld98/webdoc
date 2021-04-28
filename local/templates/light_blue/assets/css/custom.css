@@ -720,11 +720,10 @@ main >.main-seo-text {
 }
 #modef {
     display: flex;
-    max-width: ;
 }
 .metro-block .metro-container .metro-city-select-block {
     padding: 10px;
-    box-shadow: 0px 4px 30px rgb(0 0 0 / 10%);
+    box-shadow: 0px 4px 30px rgba(0 0 0 0.1);
     border-radius: 10px;
     background: #FFFFFF;
     margin-bottom: 20px;
@@ -746,17 +745,14 @@ main >.main-seo-text {
 }
 
 @media (max-width: 992px) {
-.services-detail ul.anchor-block-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-bottom: 5px;
-}
-.services-detail ul li {
-    margin-right: 10px;
-}
-.services-detail > .row > div:last-child {
-    margin-top: 60px;
-}
+    .services-detail ul.anchor-block-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-bottom: 5px;
+    }
+    .services-detail ul li {
+        margin-right: 10px;
+    }
 }
 @media (max-width: 768px) {
     .container-flex .title-h2{
@@ -811,22 +807,18 @@ label.photoFile-label {
 }
 }
 @media (max-width: 576px) {
-.place-schedule-block select:first-child, .place-schedule-block input:first-child {
-    margin-bottom: 20px;
-}
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
-    text-align: left;
-}
-.personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span {
-    text-align: left;
-    margin-right: 0;
-    margin-bottom: 10px;
-    display: block;
-}
-.services-detail > .row > div {
-    padding-left: 0;
-    padding-right: 0;
-}
+    .place-schedule-block select:first-child, .place-schedule-block input:first-child {
+        margin-bottom: 20px;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span:first-child {
+        text-align: left;
+    }
+    .personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row span {
+        text-align: left;
+        margin-right: 0;
+        margin-bottom: 10px;
+        display: block;
+    }
 }
 @media (min-width: 450px) {
     .desktop-none {
@@ -836,6 +828,12 @@ label.photoFile-label {
 @media (max-width: 450px) {
     .container-flex .title-h2{
         margin: 0;
+    }
+    .services-detail h1, .library .title-h2 {
+        font-size: 28px;
+        line-height: 38px;
+        word-break: break-word;
+        margin-bottom: 5px;
     }
     #title-search-input {
         font-size: 13px;
