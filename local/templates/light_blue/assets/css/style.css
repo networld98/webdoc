@@ -388,7 +388,7 @@ main > .container:last-child {
     height: 38px;
 }
 .popup-window {
-    max-height: 90vh;
+    max-height: 40vh;
     overflow: auto;
 }
 
@@ -7063,7 +7063,8 @@ button:focus {
         left: 20px;
     }
     .header {
-
+        max-width: 100%;
+        display: inline-table;
     }
     .nav__item {
         padding-left: 0;
@@ -7273,6 +7274,7 @@ button:focus {
     }
     .specializations .nav-pills .nav-link, .specializations .nav-pills .nav-link.active {
         padding-left: 19px;
+        justify-content: center;
     }
     .tab-content > .tab-pane .row > div:nth-child(2) {
         padding-left: 20px;
@@ -7635,7 +7637,8 @@ button:focus {
     .alphabet-block-list {
         flex-wrap: wrap;
     }
-    .popup-window {left: 15px!important;
+    .popup-window {
+        left: 15px!important;
         max-width: calc(100% - 30px)!important;
     }
 
@@ -8541,6 +8544,7 @@ button:focus {
         height: 19px;
         margin-bottom: 4px;
         margin-top: 4px;
+        background-size: contain;
     }
     .doctors-list-item__description-exp,.doctors-list-item__clinic-name {
         font-size: 15px;
@@ -9708,86 +9712,6 @@ button:focus {
         padding-bottom: 0;
     }
 }
-
-    /* .tab-content > .tab-pane .row > div {
-        padding-left: 44px;
-    }
-    .tab-content > .tab-pane .row > div:nth-child(even) {
-        padding-left: 16px;
-    }
-    .specializations .load_more {
-        margin-top: 33px;
-    }
-    .specializations {
-        margin-bottom: 60px;
-    }
-    .contacts__phone, .contacts__social {
-        padding-top: 19px;
-    }
-    .contacts__line img {
-        padding-right: 14px;
-    }
-    .footer__col-3 {
-        padding-left: 21px;
-        padding-top: 34px !important;
-    }
-    .footer__col-4 {
-        padding-left: 8px;
-        padding-top: 34px !important;
-    }
-    .col-header {
-        font-size: 15px;
-        line-height: 24px;
-    }
-    .politics {
-        font-size: 12px;
-        line-height: 14px;
-    }
-    .politics > span {
-        margin-top: 22px;
-    }
-    .footer {
-        padding-bottom: 41px;
-    }
-    .specializations {
-        margin-top: 43px;
-    }
-    .specializations .col__item {
-        padding-top: 17px;
-    }
-    /* .specializations .col__item:first-child {
-        padding-top: 17px;
-    }
-    .footer .col__block ul li:last-child {
-        padding-bottom: 0;
-    }
-    .politics {
-        padding-top: 5px;
-    }
-    .statistics__item:nth-child(3) .statistics__icon {
-        padding-left: 0;
-    }
-}*/
-/* @media (max-width: 404px) {
-    .statistics__header > img {
-        padding-left: 24px;
-    }
-}
-@media (max-width: 395px) {
-    .statistics__header > img {
-        padding-left: 18px;
-    }
-}
-@media (max-width: 390px) {
-    .statistics__header > img {
-        padding-left: 8px;
-    }
-}
-@media (max-width: 380px) {
-    .statistics__header > img {
-        padding-left: 0;
-    }
-} */
 @media (max-width: 414px) {
     .statistics__item:nth-child(3) {
         padding-right: 11px;
