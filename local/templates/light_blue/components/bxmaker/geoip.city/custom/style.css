@@ -207,6 +207,7 @@
   padding: 4px 5px;
   cursor: pointer;
   font-size: 14px;
+  text-align: center;
 }
 .bxmaker__geoip__popup-option.bxmaker__geoip__popup-option--bold,
 .bxmaker__geoip__popup-option.bxmaker__geoip__popup-option--bold span {
@@ -254,5 +255,10 @@
   }
   body .bxmaker__geoip__popup-option:nth-child(1) {
     display: block;
+  }
+}
+@media (max-width: 576px) {
+  .bxmaker__geoip__popup-options-col {
+    width: 50%;
   }
 }

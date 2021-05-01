@@ -64,7 +64,7 @@ global $clinic_spec;
                             <h6 class="title-h3 title-h3-top to-choice">К какому врачу обратиться при <?= mb_strtolower(mb_substr($doctorName,0,-1));?>е?</h6>
                         <?}
                     }?>
-                    <p>С помощью нашего сервиса вы можете найти хорошего ортопеда или ортопедическую клинику, где можно пройти полное обследование по поводу искривления позвоночника. Если вам требуется операция, ознакомьтесь с отзывами и выберете хорошую ортопедическую больницу.</p>
+                    <p><?= $arResult["PREVIEW_TEXT"];?></p>
                     <h6 class="title-h3 title-h3-top to-choice">Врачи по профилю</h6>
                     <? if ($arResult['PROPERTIES']['DOCTORS_TEXT']['VALUE']): ?>
                         <p><?= html_entity_decode($arResult['PROPERTIES']['DOCTORS_TEXT']['VALUE']['TEXT'])?></p>

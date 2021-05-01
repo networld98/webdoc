@@ -35,7 +35,7 @@ $(document).ready(()=>{
             var widthDevice = 20;
             $(window).scroll(function () {
                 if($(window).width() <= 992 && $(window).width() > 500) {
-                    widthDevice = -20; 
+                    widthDevice = -20;
                 }
                 if($(window).width() <= 500) {
                     widthDevice = -20;
@@ -70,7 +70,7 @@ $(document).ready(()=>{
                                 // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                                 // console.log("FIXED");
                                 $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
-                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().outerWidth()}px`});
+                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `85vw`});
                             } else {
                                 $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
                                 // console.log('ABSOLUTED');
@@ -82,7 +82,7 @@ $(document).ready(()=>{
                                 // console.log((top + $('#header').innerHeight() + $('.fixed-block').innerHeight()));
                                 // console.log("FIXED");
                                 $('.fixed-block-ghost').css({height: $('.fixed-block').innerHeight()+'px', display: 'block'});
-                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `${elem.parent().outerWidth()}px`});
+                                elem.css({top: topfixed, position: 'fixed', backgroundColor: '#fff', bottom: 'initial', width: `92vw`});
                             } else {
                                 // console.log('ABSOLUTED');
                                 elem.css({top: 'initial', position: 'absolute', backgroundColor: '#fff', bottom: '20px'});
