@@ -64,3 +64,17 @@ if($countSearchService==NULL && ($arParams['IBLOCK_ID'] == 18 || $arParams['IBLO
         <br /><?=$arResult["NAV_STRING"]?>
     <?endif;?>
 </div>
+
+<?if ($iblockId == 18 || $iblockId == 19){
+    $link ='/services/';
+}elseif ($iblockId == 20){
+    $link ='lib.webdoc.clinic/articles/';
+}elseif ($iblockId == 21){
+    $link ='lib.webdoc.clinic/illness/';
+}elseif ($iblockId == 22){
+    $link ='lib.webdoc.clinic/symptoms/';
+}
+?>
+<?if($arResult['ITEMS']!=NULL){?>
+    <a href="<?=$link?>" class="load_more">Показать все</a>
+<?}?>

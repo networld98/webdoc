@@ -372,21 +372,6 @@ $noneSearch = 0;
                     "AJAX_OPTION_ADDITIONAL" => ""
                 )
             );?>
-              <?if ($iblockId == 9){
-                  $link ='/clinics/';
-              }elseif ($iblockId == 10){
-                  $link ='/doctors/';
-              }elseif ($iblockId == 18 || $iblockId == 19){
-                  $link ='/services/';
-              }elseif ($iblockId == 20){
-                  $link ='lib.webdoc.clinic/articles/';
-              }elseif ($iblockId == 21){
-                  $link ='lib.webdoc.clinic/illness/';
-              }elseif ($iblockId == 22){
-                  $link ='lib.webdoc.clinic/symptoms/';
-              }
-              ?>
-              <a href="<?=$link?>" class="load_more">Показать все</a>
           <?}?>
 	<?endif;?>
         <?

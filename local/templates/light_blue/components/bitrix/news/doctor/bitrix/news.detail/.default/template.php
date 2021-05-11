@@ -86,7 +86,11 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         <?}?>
         <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
             <p class="doctor-card__clinic-adress">
-                <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
+                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
+                <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
+                    echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
+                <?}?>
+                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
             </p>
         <?endif;?>
         <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
@@ -220,7 +224,11 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                         <?}?>
                     <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
                         <p class="doctor-card__clinic-adress">
-                            <?=str_replace('/',', ',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])?>
+                            <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
+                            <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
+                                echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
+                            <?}?>
+                            <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
                         </p>
                     <?endif;?>
 

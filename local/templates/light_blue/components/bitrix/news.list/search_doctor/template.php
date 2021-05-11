@@ -335,4 +335,5 @@ $this->SetViewTarget('searchCountDoctor'); ?>
 <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
     <?= $arResult["NAV_STRING"] ?>
 <? endif; ?>
+    <a href="/doctors/" class="load_more">Показать все</a>
 <?}?>

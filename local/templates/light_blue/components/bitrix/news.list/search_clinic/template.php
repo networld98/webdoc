@@ -373,5 +373,6 @@ if($arResult['ITEMS']!=NULL) {
     <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
         <br /><?=$arResult["NAV_STRING"]?>
     <?endif;?>
+    <a href="/clinics/" class="load_more">Показать все</a>
 <?}?>
 
