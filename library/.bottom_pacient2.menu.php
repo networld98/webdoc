@@ -9,14 +9,14 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Все врачи",
-		"https://webdoc.clinic/doctors/",
+		"https://doctora.clinic/doctors/",
 		Array(), 
 		Array(), 
 		"" 
 	),
     Array(
         "Все клиники",
-        "https://webdoc.clinic/clinics/",
+        "https://doctora.clinic/clinics/",
         Array(),
         Array(),
         ""

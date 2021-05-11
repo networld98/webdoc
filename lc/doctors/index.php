@@ -7,7 +7,7 @@ CModule::IncludeModule('iblock');
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
 if($arUser['UF_TYPE_USER']!=6) {
-    header('Location: https://webdoc.clinic/lc/');
+    header('Location: https://doctora.clinic/lc/');
     exit;
 }
 global $idClinic;

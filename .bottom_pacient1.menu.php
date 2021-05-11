@@ -30,7 +30,7 @@ $aMenuLinks = Array(
     ),
     Array(
         "Медицинская библиотека",
-        "https://lib.webdoc.clinic/",
+        "https://lib.doctora.clinic/",
         Array(),
         Array(),
         ""

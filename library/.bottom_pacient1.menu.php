@@ -2,28 +2,28 @@
 $aMenuLinks = Array(
 	Array(
 		"Врачи",
-		"https://webdoc.clinic/doctors/",
+		"https://doctora.clinic/doctors/",
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
 		"Клиники",
-		"https://webdoc.clinic/clinics/",
+		"https://doctora.clinic/clinics/",
 		Array(), 
 		Array(), 
 		"" 
 	),
     Array(
         "Диагностика",
-        "https://webdoc.clinic/services/",
+        "https://doctora.clinic/services/",
         Array(),
         Array(),
         ""
     ),
     Array(
         "Услуги",
-        "https://webdoc.clinic/services/",
+        "https://doctora.clinic/services/",
         Array(),
         Array(),
         ""

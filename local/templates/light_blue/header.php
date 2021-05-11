@@ -12,7 +12,7 @@ CJSCore::Init("popup", "jquery");
     <link rel="icon" type="image/png" sizes="32x32" href="<?= SITE_TEMPLATE_PATH ?>/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= SITE_TEMPLATE_PATH ?>/favicon-16x16.png">
     <link rel="shortcut icon" href="<?= SITE_TEMPLATE_PATH ?>/favicon.ico" type="image/x-icon">
-    <link rel="manifest" href="https://webdoc.clinic/">
+    <link rel="manifest" href="https://doctora.clinic/">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <? $APPLICATION->ShowHead(); ?>
@@ -110,7 +110,7 @@ CJSCore::Init("popup", "jquery");
         </div>
     </div>
     <div class="container <?if(CSite::InDir('/lc/')){?>cabinet<?}?>">
-        <a href="<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/<?}else{?>https://webdoc.clinic/<?}?>" class="logo">
+        <a href="<?if($_SERVER["SERVER_NAME"]==="doctora.clinic"){?>/<?}else{?>https://doctora.clinic/<?}?>" class="logo">
             <img class="desktop" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO.svg" alt="logo">
             <img class="mobile" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/LOGO-mobile.svg" alt="logo">
         </a>
@@ -170,12 +170,12 @@ CJSCore::Init("popup", "jquery");
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </div>
                 <?}else{?>
-                    <a class="header-auth" href=" <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>/lc/<?}elseif($_SERVER["SERVER_NAME"]==="www.webdoc.btx.bz" || $_SERVER["SERVER_NAME"]==="webdoc.btx.bz" ){?>/lc/<?}else{?>https://webdoc.clinic/lc/<?}?>">
+                    <a class="header-auth" href=" <?if($_SERVER["SERVER_NAME"]==="doctora.clinic"){?>/lc/<?}elseif($_SERVER["SERVER_NAME"]==="www.webdoc.btx.bz" || $_SERVER["SERVER_NAME"]==="webdoc.btx.bz" ){?>/lc/<?}else{?>https://doctora.clinic/lc/<?}?>">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/bx_bx-user-circle_new.svg" alt="user">
                     </a>
                 <?}?>
-                <?if($_SERVER["SERVER_NAME"] ==="webdoc.clinic"){?>
-                    <a id="header-records" href="https://lib.webdoc.clinic/">
+                <?if($_SERVER["SERVER_NAME"] ==="doctora.clinic"){?>
+                    <a id="header-records" href="https://lib.doctora.clinic/">
                         <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/medical_records_1_new.svg" alt="folder" class="records">
                     </a>
                 <?}?>

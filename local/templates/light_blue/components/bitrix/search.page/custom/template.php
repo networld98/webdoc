@@ -214,11 +214,11 @@ $noneSearch = 0;
             }elseif ($iblockId == 18 || $iblockId == 19){
                 $link ='/services/';
             }elseif ($iblockId == 20){
-                $link ='lib.webdoc.clinic/articles/';
+                $link ='lib.doctora.clinic/articles/';
             }elseif ($iblockId == 21){
-                $link ='lib.webdoc.clinic/illness/';
+                $link ='lib.doctora.clinic/illness/';
             }elseif ($iblockId == 22){
-                $link ='lib.webdoc.clinic/symptoms/';
+                $link ='lib.doctora.clinic/symptoms/';
             }
             ?>
             <a href="<?=$link?>" class="load_more">Показать всё</a>

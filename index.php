@@ -1,6 +1,6 @@
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("description", "Выбор врача и клиники по отзывам от настоящих пользователей, по месторасположению и ценам. Актуальные контактные данные клиник, статьи по медицине и полезные материалы.");
-$APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
+$APPLICATION->SetTitle("doctora.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
 <?/*
     $url = explode('/',$_SERVER['SCRIPT_URL']);
     $param = strpos($_SERVER['QUERY_STRING'], 'arrFilter');
