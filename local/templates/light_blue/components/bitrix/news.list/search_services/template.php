@@ -55,7 +55,7 @@ if($countSearchService==NULL && ($arParams['IBLOCK_ID'] == 18 || $arParams['IBLO
         ?>
         <div class="col-lg-12">
             <div class="variable-block-item">
-                <h3 class="title-article"><a href="<?if($arParams['IBLOCK_ID'] == 20 || $arParams['IBLOCK_ID'] == 21 || $arParams['IBLOCK_ID'] == 22 ){?>https://lib.webdoc.clinic<?}?><?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem['NAME']?></a></h3>
+                <h3 class="title-article"><a href="<?if($arParams['IBLOCK_ID'] == 20 || $arParams['IBLOCK_ID'] == 21 || $arParams['IBLOCK_ID'] == 22 ){?>https://lib.doctora.clinic<?}?><?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem['NAME']?></a></h3>
                 <p class="article-preview"><?=$arItem["PREVIEW_TEXT"]?></p>
             </div>
         </div>
@@ -64,3 +64,17 @@ if($countSearchService==NULL && ($arParams['IBLOCK_ID'] == 18 || $arParams['IBLO
         <br /><?=$arResult["NAV_STRING"]?>
     <?endif;?>
 </div>
+
+<?if ($iblockId == 18 || $iblockId == 19){
+    $link ='/services/';
+}elseif ($iblockId == 20){
+    $link ='lib.doctora.clinic/articles/';
+}elseif ($iblockId == 21){
+    $link ='lib.doctora.clinic/illness/';
+}elseif ($iblockId == 22){
+    $link ='lib.doctora.clinic/symptoms/';
+}
+?>
+<?if($arResult['ITEMS']!=NULL){?>
+    <a href="<?=$link?>" class="load_more">Показать все</a>
+<?}?>

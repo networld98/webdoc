@@ -76,7 +76,7 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
                     }
                 }
             }?>
-            <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
+            <a href="https://doctora.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                 <p class="doctors-list-item__description-title"><?=$arItem['NAME']?></p>
             </a>
             <? if ($arItem["PROPERTIES"]["STANDING"]["VALUE"]): ?>

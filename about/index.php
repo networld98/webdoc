@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("О сервисе WebDoc.Clinic");
+$APPLICATION->SetTitle("О сервисе doctora.clinic");
 ?><section class="container about-page">
 <?$APPLICATION->IncludeComponent(
 	"bitrix:breadcrumb",

@@ -15,9 +15,9 @@ if(!empty($arResult["CATEGORIES"]) && $arResult['CATEGORIES_ITEMS_EXISTS']):?>
                         <th>&nbsp;</th>
                     <?endif?>
                     <?if(isset($arItem["ICON"])):?>
-                        <td class="title-search-item"><a href="<?if($arItem['PARAM2'] == 20 || $arItem['PARAM2'] == 21 || $arItem['PARAM2'] == 22 ){?>https://lib.webdoc.clinic<?}?><?echo $arItem["URL"]?>"><?echo $arItem["NAME"]?> <?if($arItem['SPEC'] != NULL && $arItem['PARAM2'] == 10){?>(<?=$arItem['SPEC']?>)<?}?></a></td>
+                        <td class="title-search-item"><a href="<?if($arItem['PARAM2'] == 20 || $arItem['PARAM2'] == 21 || $arItem['PARAM2'] == 22 ){?>https://lib.doctora.clinic<?}?><?echo $arItem["URL"]?>"><?echo $arItem["NAME"]?> <?if($arItem['SPEC'] != NULL && $arItem['PARAM2'] == 10){?>(<?=$arItem['SPEC']?>)<?}?></a></td>
                     <?else:?>
-                        <td class="title-search-more"><a href="<?if($arItem['PARAM2'] == 20 || $arItem['PARAM2'] == 21 || $arItem['PARAM2'] == 22 ){?>https://lib.webdoc.clinic<?}?><?echo $arItem["URL"]?>"><?echo $arItem["NAME"]?></a></td>
+                        <td class="title-search-more"><a href="<?if($arItem['PARAM2'] == 20 || $arItem['PARAM2'] == 21 || $arItem['PARAM2'] == 22 ){?>https://lib.doctora.clinic<?}?><?echo $arItem["URL"]?>"><?echo $arItem["NAME"]?></a></td>
                     <?endif;?>
                 </tr>
             <?endforeach;?>

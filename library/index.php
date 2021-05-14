@@ -2,9 +2,9 @@
 define("NEED_AUTH", false);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("description", "Выбор врача и клиники по отзывам от настоящих пользователей, по месторасположению и ценам. Актуальные контактные данные клиник, статьи по медицине и полезные материалы.");
-$APPLICATION->SetTitle("Webdoc.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
-<?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){
-    header('Location: http://lib.webdoc.clinic/');
+$APPLICATION->SetTitle("doctora.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
+<?if($_SERVER["SERVER_NAME"]==="doctora.clinic"){
+    header('Location: http://lib.doctora.clinic/');
     exit;
 }?>
 

@@ -367,7 +367,7 @@ $linkFile = '/upload/invoces/'.$trans.'.pdf';
 file_put_contents($_SERVER["DOCUMENT_ROOT"]. $linkFile, $pdf);
 $el = new CIBlockElement;
 $PROP = array();
-$PROP[165] = 'https://webdoc.clinic'.$linkFile;
+$PROP[165] = 'https://doctora.clinic'.$linkFile;
 $PROP[166] = $_POST["NAME"];
 $PROP[167] = $cnt;
 $PROP[169] = $itemPrice;

@@ -78,13 +78,13 @@ if($days_between<=0){
     <div class="personal-cabinet-content__price-page">
         <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
         <div class="personal-cabinet-content__schedule-page__block no-border-padding">
-            <?if($subscrube==NULL){?><h5>Выберите вариант платного размещения на Webdoc.clinic</h5><?}?>
+            <?if($subscrube==NULL){?><h5>Выберите вариант платного размещения на doctora</h5><?}?>
             <?
             $res = CIBlockElement::GetByID($subscrube);
             if($ar_res = $res->GetNext())
               echo '<h5>Вы подписаны на тарифный план "'.$ar_res['NAME'].'" '.$subscrubeDate.'</h5>';
             ?>
-            <?if($subscrube!=NULL){?><p><span style="color:red">Вы можете выписать счёт только для продление тарифа на который уже подписаны, сменить тарифный план вы можете связавшись с администрацией</span> <a href="mailto:info@webdoc.clinic">info@webdoc.clinic</a>.</p><?}?>
+            <?if($subscrube!=NULL){?><p><span style="color:red">Вы можете выписать счёт только для продление тарифа на который уже подписаны, сменить тарифный план вы можете связавшись с администрацией</span> <a href="mailto:info@doctora.clinic">info@doctora.clinic</a>.</p><?}?>
             <form id="form_requisites" name="form_requisites" action="" method="post" class="form-requistment">
                 <input type="hidden" name="CLIENT" value="<?=$arProps['OFFICIAL_NAME']['VALUE']?>, ИНН: <?=$arProps['INN']['VALUE']?>, <?=$arProps['URADRESS']['VALUE']?>">
                 <input type="hidden" name="NAME" value="<?=$arProps['OFFICIAL_NAME']['VALUE']?>">
