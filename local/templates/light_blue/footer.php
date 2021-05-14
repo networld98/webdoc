@@ -100,7 +100,7 @@ IncludeTemplateLangFile(__FILE__);
                 ); ?>
             </div>
             <div class="col-lg-12 text-center">
-                <?if($_SERVER["SERVER_NAME"]==="doctora.clinic"){?>
+                <?if($_SERVER["SERVER_NAME"]==="webdoc.clinic"){?>
                     <? $APPLICATION->IncludeComponent(
                         "bitrix:main.include",
                         ".default",
