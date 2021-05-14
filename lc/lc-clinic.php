@@ -273,7 +273,7 @@ $days_between = ceil(($end - $start) / 86400);
         </div>
         <div class="personal-cabinet-content__my-profile__services link-checkbox">
             <div class="personal-cabinet-content__my-profile__services-col">
-                <p>Услуги медицинского центра «Иммунитет»:</p>
+                <p>Услуги медицинского центра:</p>
                 <ul>
                     <?$arFilter = Array("IBLOCK_ID"=>"13","ACTIVE"=>"Y");
                     $arSelect = Array("NAME","CODE","ID");
