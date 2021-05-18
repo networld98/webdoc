@@ -6494,7 +6494,7 @@ button:focus {
         width: 100%;
     }
     .header .container,.header .container.cabinet {
-        padding-bottom: 20px !important;
+        padding-bottom: 35px !important;
     }
     .header .container.mobile {
         padding-left: 0;
