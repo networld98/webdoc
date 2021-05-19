@@ -207,21 +207,6 @@ $noneSearch = 0;
                     "AJAX_OPTION_ADDITIONAL" => ""
                 )
             );?>
-            <?if ($iblockId == 9){
-                $link ='/clinics/';
-            }elseif ($iblockId == 10){
-                $link ='/doctors/';
-            }elseif ($iblockId == 18 || $iblockId == 19){
-                $link ='/services/';
-            }elseif ($iblockId == 20){
-                $link ='lib.doctora.clinic/articles/';
-            }elseif ($iblockId == 21){
-                $link ='lib.doctora.clinic/illness/';
-            }elseif ($iblockId == 22){
-                $link ='lib.doctora.clinic/symptoms/';
-            }
-            ?>
-            <a href="<?=$link?>" class="load_more">Показать всё</a>
         <?}?>
 	<?elseif(count($arResult["SEARCH"])>0):?>
 		<?if($arParams["DISPLAY_TOP_PAGER"] != "N") echo $arResult["NAV_STRING"]?>
