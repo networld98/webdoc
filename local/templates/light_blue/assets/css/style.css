@@ -6494,7 +6494,7 @@ button:focus {
         width: 100%;
     }
     .header .container,.header .container.cabinet {
-        padding-bottom: 35px !important;
+        padding-bottom: 20px !important;
     }
     .header .container.mobile {
         padding-left: 0;
@@ -9197,12 +9197,13 @@ button:focus {
         margin-top: 0;
     }
     .header .container {
-        padding-bottom: 0 !important;
+        padding-top: 10px !important;
+        padding-bottom: 17px !important;
     }
     .container.main__header {
         padding-top: 0;
     }
-    .header .container,.header .container.cabinet {
+    .header .container.cabinet {
         padding-top: 28px;
     }
     .header .container .logo img {
@@ -9245,7 +9246,7 @@ button:focus {
     }
     .burger__btn {
         background-color: #fff;
-        top: 40px;
+        top: 24px;
         left: 15px;
         width: 36px;
         height: 36px;
