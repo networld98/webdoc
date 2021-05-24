@@ -13,6 +13,9 @@ div.search-item h4 a { text-decoration:none;}
 div.search-item h4 img { border:0px;vertical-align:middle;}
 div.search-item h4 span { vertical-align:middle;text-decoration:underline;}
 div.search-result { margin: 0;}
+div.search-result > a {
+    color: #9DD4B3;
+}
 div.search-preview {margin: 0.5em 0;}
 
 div.search-item-meta { margin: 1em 0 0 0; overflow: hidden; zoom: 1;}

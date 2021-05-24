@@ -1248,47 +1248,49 @@ main {
     /*margin-bottom: 2px;*/
     display: block;
     content: '';
-    margin-right: 10px;
-    width: 26px;
-    height: 24px;
+    margin-left: 20px;
+    width: 28px;
+    height: 28px;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue.svg);
+    background-size: contain;
+    /*background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue.svg);*/
+    background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue-new.svg);
 }
 .doctors-list-item__description-counts {
-    font-family: "Ubuntu-Light";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 15px;
-    color: #8A8A8A;
-    display: block;
-    margin-top: 24px;
-    display: flex;
-    align-items: center;
+font-family: "Ubuntu-Light";
+font-style: normal;
+font-weight: 300;
+font-size: 13px;
+line-height: 15px;
+color: #8A8A8A;
+display: block;
+margin-top: 24px;
+display: flex;
+align-items: center;
 }
 .doctors-list-item__description-counts::before {
-    content: '';
-    display: block;
-    background-image: url(../images/solid_check_green-unfilled.svg);
-    width: 16px;
-    height: 12px;
-    margin-right: 10px;
-    flex: none;
+content: '';
+display: block;
+background-image: url(../images/solid_check_green-unfilled.svg);
+width: 16px;
+height: 12px;
+margin-right: 10px;
+flex: none;
 }
 
 .doctors-list-item_timing {
-    font-family: "Ubuntu-Light";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 24px;
-    color: #000000;
-    margin-bottom: 20px;
-    padding-left: 9px;
+font-family: "Ubuntu-Light";
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 24px;
+color: #000000;
+margin-bottom: 20px;
+padding-left: 9px;
 }
 .doctors-list-item__description .doctors-list-item__days-list {
-    /*padding-left: 9px;*/
+/*padding-left: 9px;*/
     margin-bottom: 27px;
 }
 .doctors-list-item__days-list-item {
@@ -2960,7 +2962,7 @@ main {
 /*clinincs-card */
 .clinic-card-item {
     display: flex;
-    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);*/
     border-radius: 10px;
     background: #fff;
     padding: 40px;
@@ -3256,6 +3258,9 @@ main {
 }
 .clinic-card-desc-detail .doctor-card-location-map {
     top: 0;
+}
+.doctor-card__description__adapt .doctor-card-location-map {
+    display: none;
 }
 .clinic-card .load_more {
     padding: 15px 25px;
@@ -7640,6 +7645,7 @@ button:focus {
     .popup-window {
         left: 15px!important;
         max-width: calc(100% - 30px)!important;
+        max-height: initial;
     }
 
     /*.bx_filter_section .smartfilter.main-filter .row > div:first-child > div:first-child {*/
@@ -8556,6 +8562,12 @@ button:focus {
         line-height: 18px;
         font-weight: 600;
     }
+    .doctors-list-item__description-phone {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+    }
     .doctors-list-item__img-info-commend,.doctors-list-item__days-list-item {
         font-size: 12px;
         line-height: 14px;
@@ -8730,6 +8742,7 @@ button:focus {
         position: static;
         margin-top: 10px;
         margin-left: auto;
+        display: block;
     }
     .doctor-card .doctor-card-top-content > .doctor-card-location-map {
         display: none;

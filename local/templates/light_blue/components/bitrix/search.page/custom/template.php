@@ -216,7 +216,7 @@ $noneSearch = 0;
 
                 $searchArray[$arItem['PARAM2']][] = $arItem['ITEM_ID'];
 		endforeach;?>
-        <div class="search-result"><?echo GetMessage("CT_BSP_FOUND")?>:
+        <div class="search-result testclass1"><?echo GetMessage("CT_BSP_FOUND")?>:
             <? $APPLICATION->ShowViewContent('searchCountClinic'); ?>
             <? $APPLICATION->ShowViewContent('searchCountDoctor'); ?>
             <? $APPLICATION->ShowViewContent('searchCountService'); ?>
