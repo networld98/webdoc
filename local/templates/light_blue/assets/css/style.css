@@ -502,8 +502,8 @@ main > .container:last-child {
     background-color: RGBA(255,255,255,0);
 }
 .popup-box.popup-library .close {
-    top: 82px;
-    right: 80px;
+    top: 20px;
+    right: 25px;
     width: 42px;
     height: 42px;
     background-size: 33px 33px;
