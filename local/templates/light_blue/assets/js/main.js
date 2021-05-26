@@ -766,6 +766,27 @@ $(document).ready(()=>{
         /* Убираем баг в Firefox */
         $('html').scrollTop(scrollPos);
     });
+    $('.doctor-card__metro-list-show_more').click(function(e) {
+        /* Предотвращаем действия по умолчанию */
+        e.preventDefault();
+        e.stopPropagation();
+
+        /* Получаем id (последний номер в имени класса ссылки) */
+        var name = $(this).attr('class');
+        var id = name[name.length - 1];
+        var scrollPos = $(window).scrollTop();
+
+        /* Корректный вывод popup окна, накрытие тенью, предотвращение скроллинга */
+        $('.popup-box .more-adress-content').css('display', 'block');
+        console.log($(this).parents('.clinic-card'));
+        // $($(this).parent().parent().parent().find('.map-wrapper .popup-box')).show();
+        $($(this).parents('main').find('.more-adress-popup .popup-box')).show();
+        $('#blackout').show();
+        $('html,body').css('overflow', 'hidden');
+
+        /* Убираем баг в Firefox */
+        $('html').scrollTop(scrollPos);
+    });
 
     $('.popup-call-click').click(function(e) {
      
@@ -858,6 +879,8 @@ $(document).ready(()=>{
         $('.popup-box .doctors-list.reception').css('display', 'none');
         $('.popup-box .doctors-list.call').css('display', 'none');
         $('.popup-box .message-to-doctor').css('display', 'none');
+        $('.popup-box .more-adress-content').css('display', 'none');
+
         $('#blackout').hide(); 
         $("html,body").css("overflow","auto");
         $('html').scrollTop(scrollPos);
@@ -870,6 +893,8 @@ $(document).ready(()=>{
         $('.popup-box .doctors-list.reception').css('display', 'none');
         $('.popup-box .doctors-list.call').css('display', 'none');
         $('.popup-box .message-to-doctor').css('display', 'none');
+        $('.popup-box .more-adress-content').css('display', 'none');
+
         $('#blackout').hide(); 
         $("html,body").css("overflow","auto");
         $('html').scrollTop(scrollPos);

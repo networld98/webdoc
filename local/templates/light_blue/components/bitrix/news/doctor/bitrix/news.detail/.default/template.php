@@ -25,6 +25,12 @@ global $period;
 $doctorName = $arResult['NAME'];
 $doctorId = $arResult['ID'];
 $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
+function console_log( $data ){
+    echo '<script>';
+    echo 'console.log('. json_encode( $data ) .')';
+    echo '</script>';
+}
+console_log($arResult);
 ?>
 <?function formRecord($arResult, $mobileTitle){?>
     <div class="doctors-list-item__img">
@@ -243,7 +249,7 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
                         </ul>
                     <?endif;?>
                         <div class="doctor-card-location-map popup-link-marker d-lg-none d-md-none"></div>
-                    <?/*<a href="" class="doctor-card__metro-list-show_more">ещё адреса приёма</a>*/?>
+                        <a class="doctor-card__metro-list-show_more">ещё адреса приёма</a>
                         <ul class="sharding-block sharding-block-doctor-detail">
                             <!--            <li class="sharding-item">-->
                             <!--                <a class="sharding-item-link" href="#">-->
@@ -627,6 +633,42 @@ $doctorTime = $arResult["PROPERTIES"]["RECEPTION_SCHEDULE"]["VALUE"];
         </div>
     </div>
 </div>
+<div class="more-adress-popup">
+                <div class="popup-box popup-scroll">
+                    <div class="close"></div>
+                    <div class="more-adress-content">
+                        <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
+                            <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
+                                <?$res = CIBlockElement::GetByID($item);
+                                if($ar_res = $res->GetNext()){?>
+                                    <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctor-card__clinic-name"><?=$ar_res['NAME']?></p></a>
+                                    <?break;}?>
+                            <?}?>
+                        <?}else{?>
+                            <p class="doctor-card__clinic-name">Адрес</p>
+                        <?}?>
+                        <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
+                            <p class="doctor-card__clinic-adress">
+                                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
+                                <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
+                                    echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
+                                <?}?>
+                                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
+                            </p>
+                        <?endif;?>
+                        <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
+                            <ul class="doctor-card__metro-list">
+                                <?foreach ($arResult["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
+                                    <?$res = CIBlockElement::GetByID($item);
+                                    if($ar_res = $res->GetNext()){?>
+                                        <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                                    <?}?>
+                                <?}?>
+                            </ul>
+                        <?endif;?>
+                    </div>
+                </div>
+            </div>
 <div class="call-popup">
     <div class="popup-box popup-scroll">
         <div class="close"></div>

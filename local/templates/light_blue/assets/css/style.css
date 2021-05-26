@@ -508,6 +508,19 @@ main > .container:last-child {
     height: 42px;
     background-size: 33px 33px;
 }
+.more-adress-popup .popup-box .close {
+    width: 16px;
+    height: 16px;
+    top: 20px;
+    right: 20px;
+    background-image: url(/local/templates/light_blue/assets/images/emojione-monotone_cross-mark.svg);
+}
+.more-adress-popup .popup-box {
+    max-width: 440px;
+}
+.more-adress-content {
+    padding: 30px;
+}
 .popup-box .close:hover {
     color: #000;
 }
@@ -1895,6 +1908,7 @@ padding-left: 9px;
     font-size: 15px;
     line-height: 24px;
     color: #000000;
+    padding-left: 0;
 }
 .clinic-card-item .clone-adapt {
     display: none;
@@ -1982,7 +1996,7 @@ padding-left: 9px;
     right: 0;
     cursor: pointer;
 }
-.doctor-card__metro-list-show_more {
+a.doctor-card__metro-list-show_more {
     color: #32B4C3;
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
@@ -1991,8 +2005,12 @@ padding-left: 9px;
     font-weight: 300;
     font-size: 15px;
     line-height: 24px;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: 0.3s;
+    cursor: pointer;
 }
-.doctor-card__metro-list-show_more:hover {
+a.doctor-card__metro-list-show_more:hover {
     text-decoration: none;
     color: #32B4C3;
 }
