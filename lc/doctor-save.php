@@ -59,9 +59,11 @@ foreach ($_POST as $key => $data){
         if (is_array($data)) {
             $city = explode('/', $data[0]);
             $area = explode('/', $data[2]);
+            $metro = explode('/', $data[3]);
             $PROPS['RECEPTION_ADDRESSES'][] = $city[1].'/'.$data[1].'/'.$area[1].'/'.$metro[1];
             $PROPS['CITY'][] = $city[0];
             $PROPS['AREA'][] = $area[0];
+            $PROPS['METRO'][] = $metro[0];
         }
     } else {
         $PROPS[$key] = $data;
@@ -96,30 +98,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $obEl = new CIBlockElement();
     $arParams = array("replace_space"=>"-","replace_other"=>"-");
     $trans = Cutil::translit($_POST['NAME_DOCTOR'],"ru",$arParams);
-        CIBlockElement::SetPropertyValuesEx($_POST['ID_DOCTOR'], false, $PROPS);
-        $nameClinic = $obEl->Update($_POST['ID_DOCTOR'],array('NAME' => $_POST['NAME_DOCTOR'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT'], 'PREVIEW_TEXT' => $_POST['PREVIEW_TEXT'], "DETAIL_PICTURE" => CFile::MakeFileArray($_POST['PHOTO'])));
+    CIBlockElement::SetPropertyValuesEx($_POST['ID_DOCTOR'], false, $PROPS);
+    $nameClinic = $obEl->Update($_POST['ID_DOCTOR'],array('NAME' => $_POST['NAME_DOCTOR'], 'CODE' => $trans, 'DETAIL_TEXT' => $_POST['DETAIL_TEXT'], 'PREVIEW_TEXT' => $_POST['PREVIEW_TEXT'], "DETAIL_PICTURE" => CFile::MakeFileArray($_POST['PHOTO'])));
     unlink($_POST['PHOTO']);
-?>
-<?
+    ?>
+    <?
 //Получаем список городов показываемых в фильтре
-$entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);
-$rsData = $entity_data_class::getList(array(
-    'order' => array('UF_CITY'=>'ASC'),
-    'select' => array('*'),
-    'filter' => array('!UF_CITY'=>false)
-));
-while($el = $rsData->fetch()){
-    $cityKey[$el['ID']] = $el['UF_CITY'];
-}
-foreach($PROPS['CITY'] as $cityDoctor) {
-    if (!in_array($cityDoctor, $cityKey)) {
-        $entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);
-        $result = $entity_data_class::add(array(
-            'UF_CITY' => $cityDoctor,
-            'UF_NAME' => $cityName[$cityDoctor],
-        ));
+    $entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);
+    $rsData = $entity_data_class::getList(array(
+        'order' => array('UF_CITY'=>'ASC'),
+        'select' => array('*'),
+        'filter' => array('!UF_CITY'=>false)
+    ));
+    while($el = $rsData->fetch()){
+        $cityKey[$el['ID']] = $el['UF_CITY'];
     }
-}
-?>
+    foreach($PROPS['CITY'] as $cityDoctor) {
+        if (!in_array($cityDoctor, $cityKey)) {
+            $entity_data_class = GetEntityDataClass(MY_HL_BLOCK_ID);
+            $result = $entity_data_class::add(array(
+                'UF_CITY' => $cityDoctor,
+                'UF_NAME' => $cityName[$cityDoctor],
+            ));
+        }
+    }
+    ?>
     <span style="color:green">Данные сохранены</span>
 <?}?>
