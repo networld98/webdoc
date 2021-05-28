@@ -436,9 +436,6 @@ while($ob = $res->GetNextElement()){
                     let id = $(this).val().split('/')[0];
                     let key = $(this).data('key');
                     let area = $('#area-block-ajax-'+ key);
-                    alert(id);
-                    alert(key);
-                    alert(area);
                     $.ajax({
                         type: "POST",
                         url: '/ajax/ajax_area_doctor.php',
