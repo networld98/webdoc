@@ -60,7 +60,7 @@ while ($item = $res->fetch()) {
 global $transName;
 $arParams = array("replace_space"=>"-","replace_other"=>"-");
 $transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
-if ($_COOKIE['old-city']==NULL || $_COOKIE['bxmaker_geoip_2_4_2_city']!== $_COOKIE['old-city']){
+if ($APPLICATION->GetCurDir() != '/' && ($_COOKIE['old-city']==NULL || $_COOKIE['bxmaker_geoip_2_4_2_city']!== $_COOKIE['old-city'])){
     $arParams = array("replace_space"=>"-","replace_other"=>"-");
     $transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
     setcookie("old-city", $_COOKIE['bxmaker_geoip_2_4_2_city'], time()+3600, "/", "",  0);
