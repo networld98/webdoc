@@ -42,6 +42,9 @@ foreach ($_POST as $key => $data){
             $PROPS['SPECIALIZATIONS'][] = explode('/', $dataProp)[0];
             $specialization_technical_text[] = explode('/',$dataProp)[1];
         }
+    }elseif (strpos($key, 'METRO') !== false) {
+        $PROPS['METRO'][] = explode('/', $data)[1];
+        $metroArray[explode('/', $data)[0]][] =explode('/', $data)[1];
     }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]==NULL ) {
         $PROPS['RECEPTION_SCHEDULE'][] = $data[0];
     }elseif (strpos($key, 'RECEPTION_SCHEDULE') !== false && $data[0]!=NULL && $data[1]!=NULL ) {
@@ -59,15 +62,17 @@ foreach ($_POST as $key => $data){
         if (is_array($data)) {
             $city = explode('/', $data[0]);
             $area = explode('/', $data[2]);
-            $metro = explode('/', $data[3]);
-            $PROPS['RECEPTION_ADDRESSES'][] = $city[1].'/'.$data[1].'/'.$area[1].'/'.$metro[1];
+            $PROPS['ADDRESSES'][] = $city[1].'/'.$data[1].'/'.$area[1];
             $PROPS['CITY'][] = $city[0];
             $PROPS['AREA'][] = $area[0];
-            $PROPS['METRO'][] = $metro[0];
         }
     } else {
         $PROPS[$key] = $data;
     }
+}
+foreach ($PROPS['ADDRESSES'] as $key => $propItem){
+    $metro = implode(",", $metroArray['ADDRESSES_'.$key]);
+    $PROPS['RECEPTION_ADDRESSES'][] = $propItem.'/'.$metro;
 }
 
 if($ar_res = CIBlockSection::GetByID($_POST['SPECIALIZATION_MAIN'])->GetNext())
@@ -91,6 +96,9 @@ if ($PROPS['EXPERIENCE'] == NULL) {
 }
 if ($PROPS['EDUCATION'] == NULL) {
     $PROPS['EDUCATION'] = NULL;
+}
+if ($PROPS['METRO'] == NULL) {
+    $PROPS['METRO'] = NULL;
 }
 $PROPS['RECEPTION_SCHEDULE'] = array_unique($PROPS['RECEPTION_SCHEDULE']);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

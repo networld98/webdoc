@@ -11,3 +11,6 @@ div.news-detail img.detail_picture
 {
 	color:#486DAA;
 }
+.more-adress-content hr:first-child, .more-adress-content hr:last-child{
+	display: none;
+}

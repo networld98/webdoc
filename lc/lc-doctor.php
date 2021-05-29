@@ -372,7 +372,7 @@ while($ob = $res->GetNextElement()){
                                                             <div class="col-lg-6 metro-block">
                                                                 <label for=""><?=$arProps['METRO']['NAME']?>(обновляется, после сохранения и обновления страницы):</label>
                                                                 <div class="metro-container">
-                                                                        <? function metroDoctor($iblock,$sectionId,$arProps){?>
+                                                                        <? function metroDoctor($iblock,$sectionId,$arProps,$i){?>
                                                                             <ul class="checkbox-group">
                                                                                 <?$arSelect = array("ID", "NAME");
                                                                                 $arFilter = array("IBLOCK_ID"=>$iblock, 'SECTION_ID'=> $sectionId, 'INCLUDE_SUBSECTIONS' => 'Y');
@@ -383,7 +383,7 @@ while($ob = $res->GetNextElement()){
                                                                                     <li>
                                                                                         <label data-role="label_<?=$arField['ID']?>" class="bx_filter_param_label " for="<?=$arField['ID']?>">
                                                                                         <span class="bx_filter_input_checkbox">
-                                                                                            <input type="checkbox" <?if(in_array($arField['ID'],$arProps['METRO']['VALUE'])){?>checked<?}?> value="<?=$arField['ID']?>" name="<?=$arProps['METRO']['CODE']?>_<?=$arField['ID']?>" id="<?=$arField['ID']?>">
+                                                                                            <input type="checkbox" <?if(in_array($arField['ID'],$arProps['METRO']['VALUE'])){?>checked<?}?> value="ADDRESSES_<?=$i?>/<?=$arField['ID']?>" name="<?=$arProps['METRO']['CODE']?>_ADDRESSES_<?=$i?>_<?=$arField['ID']?>" id="<?=$arField['ID']?>">
                                                                                                 <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
                                                                                             <span class="bx_filter_param_text"><?=$arField["NAME"]?></span>
                                                                                         </span>
@@ -392,10 +392,12 @@ while($ob = $res->GetNextElement()){
                                                                                 <?}?>
                                                                             </ul>
                                                                         <?}?>
-                                                                        <? foreach ($selectCityArray as $key => $city){?>
+                                                                        <? $i=-1;
+                                                                        foreach ($selectCityArray as $key => $city){
+                                                                            $i++;?>
                                                                             <div class="metro-city-select-block">
                                                                                 <label for=""><?=$key?>:</label>
-                                                                                <? metroDoctor(14,$city,$arProps);?>
+                                                                                <? metroDoctor(14,$city,$arProps,$i);?>
                                                                             </div>
                                                                         <?}?>
                                                                     </ul>

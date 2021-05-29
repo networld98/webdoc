@@ -90,7 +90,7 @@ console_log($arResult);
         <?}else{?>
             <p class="doctor-card__clinic-name">Адрес</p>
         <?}?>
-        <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
+        <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
             <p class="doctor-card__clinic-adress">
                 <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
                 <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
@@ -98,10 +98,28 @@ console_log($arResult);
                 <?}?>
                 <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
             </p>
+        <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]):
+            global $clinicAddress;?>
+            <p class="doctor-card__clinic-adress">
+                <?=$clinicAddress[0]['CITY']?>,
+                <?if($clinicAddress[0]['AREA']!=NULL){
+                    echo $clinicAddress[0]['AREA'];?>,
+                <?}?>
+                <?=$clinicAddress[0]['ADDRESS']?>
+            </p>
         <?endif;?>
-        <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
+        <?if($arResult["PROPERTIES"]["METRO"]["VALUE"] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
             <ul class="doctor-card__metro-list">
                 <?foreach ($arResult["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
+                    <?$res = CIBlockElement::GetByID($item);
+                    if($ar_res = $res->GetNext()){?>
+                        <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                    <?}?>
+                <?}?>
+            </ul>
+        <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]!=NULL):?>
+            <ul class="doctor-card__metro-list">
+                <?foreach ($clinicAddress[0]['METRO'] as $key => $item){?>
                     <?$res = CIBlockElement::GetByID($item);
                     if($ar_res = $res->GetNext()){?>
                         <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
@@ -197,7 +215,8 @@ console_log($arResult);
                     <div class="doctor-card__description__adapt">
                         <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
                             <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
-                                <?$res = CIBlockElement::GetByID($item);
+                                <?
+                                $res = CIBlockElement::GetByID($item);
                                 if($ar_res = $res->GetNext()){
                                     $db_props = CIBlockElement::GetProperty(9, $ar_res['ID'], array("sort" => "asc"), Array("CODE"=>"PHONE"));
                                     if($ar_props = $db_props->Fetch()) {
@@ -212,6 +231,15 @@ console_log($arResult);
                                         $address = $ar_props["VALUE"];
                                     }
                                     $doctorClinic[] = array("NAME" => $ar_res['NAME'], "PHONE" => $phone, "URL" => $ar_res['DETAIL_PAGE_URL'], "ID" => $ar_res['ID']);
+                                    $prop=CIBlockElement::GetByID($item)->GetNextElement()->GetProperties();
+                                    $nameCity=CIBlockSection::GetByID($prop['CITY']['VALUE']);
+                                        if($ar_res = $nameCity->GetNext())
+                                            $nameCityClinic = $ar_res['NAME'];
+                                    $nameArea=CIBlockSection::GetByID($prop['AREA']['VALUE']);
+                                        if($ar_res = $nameArea->GetNext())
+                                            $nameAreaClinic = $ar_res['NAME'];
+                                    global $clinicAddress;
+                                    $clinicAddress[] = array('CITY'=>  $nameCityClinic ,'AREA'=> $nameAreaClinic, 'ADDRESS' => $prop['ADDRESS']['VALUE'], 'METRO' => $prop['METRO']['VALUE']);
                                 }?>
                             <?}?>
 
@@ -222,13 +250,14 @@ console_log($arResult);
                                     <? $arResult["PROPERTIES"]["MAP"]["VALUE"] = $cord?>
                                 <?}?>
                             <?}?>
+
                             <a href="<?=$doctorClinic[0]['URL']?>"><p class="doctor-card__clinic-name"><?=$doctorClinic[0]['NAME']?></p></a>
                         <?}else{
                             $noneClinic = "Y";
                             ?>
                             <p class="doctor-card__clinic-name">Адрес</p>
                         <?}?>
-                    <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
+                    <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
                         <p class="doctor-card__clinic-adress">
                             <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
                             <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
@@ -236,9 +265,16 @@ console_log($arResult);
                             <?}?>
                             <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
                         </p>
+                    <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]):?>
+                        <p class="doctor-card__clinic-adress">
+                            <?=$clinicAddress[0]['CITY']?>,
+                            <?if($clinicAddress[0]['AREA']!=NULL){
+                                echo $clinicAddress[0]['AREA'];?>,
+                            <?}?>
+                            <?=$clinicAddress[0]['ADDRESS']?>
+                        </p>
                     <?endif;?>
-
-                    <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
+                    <?if($arResult["PROPERTIES"]["METRO"]["VALUE"] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
                         <ul class="doctor-card__metro-list">
                             <?foreach ($arResult["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
                                 <?$res = CIBlockElement::GetByID($item);
@@ -247,9 +283,20 @@ console_log($arResult);
                                 <?}?>
                             <?}?>
                         </ul>
+                    <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]!=NULL):?>
+                        <ul class="doctor-card__metro-list">
+                            <?foreach ($clinicAddress[0]['METRO'] as $key => $item){?>
+                                <?$res = CIBlockElement::GetByID($item);
+                                if($ar_res = $res->GetNext()){?>
+                                    <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                                <?}?>
+                            <?}?>
+                        </ul>
                     <?endif;?>
                         <div class="doctor-card-location-map popup-link-marker d-lg-none d-md-none"></div>
-                        <a class="doctor-card__metro-list-show_more">ещё адреса приёма</a>
+                        <?if(count($arResult["PROPERTIES"]["CLINIK"]["VALUE"])>1 || count($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"])>1){?>
+                            <a class="doctor-card__metro-list-show_more">ещё адреса приёма</a>
+                        <?}?>
                         <ul class="sharding-block sharding-block-doctor-detail">
                             <!--            <li class="sharding-item">-->
                             <!--                <a class="sharding-item-link" href="#">-->
@@ -634,41 +681,80 @@ console_log($arResult);
     </div>
 </div>
 <div class="more-adress-popup">
-                <div class="popup-box popup-scroll">
-                    <div class="close"></div>
-                    <div class="more-adress-content">
-                        <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
-                            <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $item){?>
+    <div class="popup-box popup-scroll">
+        <div class="close"></div>
+        <div class="more-adress-content">
+            <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
+                <?foreach ($arResult["PROPERTIES"]["CLINIK"]["VALUE"] as $key => $item){?>
+                    <?
+                    $clinicAddress = NULL;
+                    $res = CIBlockElement::GetByID($item);
+                    if($ar_res = $res->GetNext()){
+                        if($key>0){?>
+                        <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctor-card__clinic-name"><?=$ar_res['NAME']?></p></a>
+                       <? $prop=CIBlockElement::GetByID($item)->GetNextElement()->GetProperties();
+                            $nameCity=CIBlockSection::GetByID($prop['CITY']['VALUE']);
+                            if($ar_res = $nameCity->GetNext())
+                                $nameCityClinic = $ar_res['NAME'];
+                                $fullCity[] = $ar_res['NAME'];
+                            $nameArea=CIBlockSection::GetByID($prop['AREA']['VALUE']);
+                                if($ar_res = $nameArea->GetNext())
+                                $nameAreaClinic = $ar_res['NAME'];
+                            $fullAddress[] = $prop['ADDRESS']['VALUE'];
+                            ?>
+                            <?if($prop['ADDRESS']['VALUE']):?>
+                                <p class="doctor-card__clinic-adress">
+                                    <?=$nameCityClinic?>,
+                                    <?if($nameAreaClinic!=NULL){
+                                        echo $nameAreaClinic;?>,
+                                    <?}?>
+                                    <?=$prop['ADDRESS']['VALUE']?>
+                                </p>
+                            <?endif;?>
+                            <?if($prop['METRO']['VALUE']):?>
+                                <ul class="doctor-card__metro-list">
+                                    <?foreach ($prop['METRO']['VALUE'] as $key => $item){?>
+                                        <?$res = CIBlockElement::GetByID($item);
+                                        if($ar_res = $res->GetNext()){?>
+                                            <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                                        <?}?>
+                                    <?}?>
+                                </ul>
+                            <?endif;?>
+                        <?}?>
+                        <hr>
+                   <?}?>
+                <?}?>
+            <?}?>
+            <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"]):
+                foreach ($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] as $adr){
+                    if(!in_array(explode('/',$adr)[1],$fullAddress)){?>
+                    <p class="doctor-card__clinic-adress">
+                        <?=explode('/',$adr)[0]?>,
+                        <?if(explode('/',$adr)[2]!=''){
+                            echo explode('/',$adr)[2];?>,
+                        <?}?>
+                        <?=explode('/',$adr)[1]?>
+                    </p>
+                    <?$metroDoctor = explode('/',$adr)[3];?>
+                    <?if(explode(',',$metroDoctor)[0]!=NULL):?>
+                        <ul class="doctor-card__metro-list">
+
+                            <?foreach (explode(',',$metroDoctor) as $key => $item){?>
                                 <?$res = CIBlockElement::GetByID($item);
                                 if($ar_res = $res->GetNext()){?>
-                                    <a href="<?=$ar_res['DETAIL_PAGE_URL']?>"><p class="doctor-card__clinic-name"><?=$ar_res['NAME']?></p></a>
-                                    <?break;}?>
+                                    <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
+                                <?}?>
                             <?}?>
-                        <?}else{?>
-                            <p class="doctor-card__clinic-name">Адрес</p>
-                        <?}?>
-                        <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]):?>
-                            <p class="doctor-card__clinic-adress">
-                                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
-                                <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
-                                    echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
-                                <?}?>
-                                <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[1]?>
-                            </p>
-                        <?endif;?>
-                        <?if($arResult["PROPERTIES"]["METRO"]["VALUE"]):?>
-                            <ul class="doctor-card__metro-list">
-                                <?foreach ($arResult["PROPERTIES"]["METRO"]["VALUE"] as $key => $item){?>
-                                    <?$res = CIBlockElement::GetByID($item);
-                                    if($ar_res = $res->GetNext()){?>
-                                        <li class="doctor-card_metro-list-item <?if(($key % 2)==0 && $key!=0){?>metro1<?}elseif(($key % 3)==0||$key===0){?>metro2<?}else{?>metro3<?}?>"><?=$ar_res['NAME']?></li>
-                                    <?}?>
-                                <?}?>
-                            </ul>
-                        <?endif;?>
-                    </div>
-                </div>
-            </div>
+                        </ul>
+                    <?endif;?>
+                    <?}
+                }?>
+                <hr>
+            <?endif;?>
+        </div>
+    </div>
+</div>
 <div class="call-popup">
     <div class="popup-box popup-scroll">
         <div class="close"></div>
