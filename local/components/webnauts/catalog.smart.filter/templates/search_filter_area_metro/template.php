@@ -68,9 +68,7 @@ if ($_COOKIE['old-city']==NULL || $_COOKIE['bxmaker_geoip_2_4_2_city']!== $_COOK
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_115=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_115='.$transName.'&set_filter=y');
     }elseif($APPLICATION->GetCurDir() == '/clinics/'){
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
-    }else{
-        header("Refresh: 0");
-    }  exit;
+    }
 }
 ///Получить айди текущего города
 $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
