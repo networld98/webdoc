@@ -84,7 +84,7 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
-    $('a').not('.api_modal .api_modal_close').on('click', function() {
+    $('main a').not('.api_modal .api_modal_close').on('click', function() {
         href = $(this).attr('href');
         tel = href.indexOf('tel:')!==-1 ;
             if(tel===true){

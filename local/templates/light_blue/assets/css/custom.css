@@ -820,6 +820,9 @@ label.photoFile-label {
         display: block;
     }
 }
+.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.none-area-fix {
+    max-width: 100%;
+}
 @media (min-width: 450px) {
     .desktop-none {
         display: none!important;

@@ -1088,6 +1088,10 @@
 .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.non-metro {
 	max-width: 46%;
 }
+.bx_filter .main-filter .disabled .bx_filter_input_checkbox .bx_filter_param_text {
+	pointer-events: none;
+	cursor: default;
+}
 @media (max-width: 530px) {
 	.bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box {
 		max-width: 100%!important;
