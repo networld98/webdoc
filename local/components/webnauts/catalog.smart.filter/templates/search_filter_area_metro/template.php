@@ -80,7 +80,7 @@ while($ob = $res->GetNextElement()){
 }
 ?>
 
-<div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal">
+<div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal <?if($APPLICATION->GetCurDir() == '/doctors/'){?>doctor-page<?}?>">
     <div class="bx_filter_section container">
         <?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
         <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter main-filter">
@@ -637,7 +637,7 @@ while($ob = $res->GetNextElement()){
                                 <span class="bx_filter_container_modef"></span>
                                 <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">--><?//=$arItem["NAME"]?><!--</div>-->
                                 <div class="bx_filter_block">
-                                    <div class="bx_filter_parameters_box_container checkboxes 1">
+                                    <div class="bx_filter_parameters_box_container checkboxes">
                                         <?
                                         $arCur = current($arItem["VALUES"]);
                                         switch ($arItem["DISPLAY_TYPE"])
@@ -860,7 +860,11 @@ while($ob = $res->GetNextElement()){
 										<span class="bx_filter_input_checkbox">
 											<input type="checkbox" disabled="disabled"/>
 											        <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
-											<span class="bx_filter_param_text" ><?=$arItem["NAME"]?></span>
+											<?
+                                            $search  = array('По полису');
+                                            $replace = array('Полис');
+                                            ?>
+                                            <span class="bx_filter_param_text" ><?= str_replace($search, $replace, $arItem["NAME"])?></span>
 										</span>
                                             </label>
 
@@ -879,7 +883,7 @@ while($ob = $res->GetNextElement()){
                                                     onclick="smartFilter.click(this)"
                                             />
 											        <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
-											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"onclick="smartFilter.hideFilterProps(this)"><?=$arItem["NAME"]?></span>
+											<span class="bx_filter_param_text" title="<?=$ar["VALUE"];?>"onclick="smartFilter.hideFilterProps(this)"><?= str_replace($search, $replace, $arItem["NAME"])?></span>
 										</span>
                                             </label>
                                         <?endforeach;?>

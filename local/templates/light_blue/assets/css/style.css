@@ -7930,9 +7930,16 @@ button:focus {
         width: 30% !important;
         margin-right: 0;
     }
+    .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal.doctor-page  .bx_filter_parameters_box.active:nth-last-of-type(8)  {
+        width: 32% !important;
+        margin-right: 0;
+    }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9) {
         width: 36% !important;
         margin-right: 0;
+    }
+    .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(9) {
+        width: 30% !important;
     }
     .personal-cabinet-content__doctors-page__filter__options .bx_filter.bx_horizontal .bx_filter_parameters_box {
         float: left;
@@ -9759,7 +9766,15 @@ button:focus {
     }
 }
 @media (max-width: 380px) {
-
+    .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(2), .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(8) {
+        width: 36% !important;
+    }
+    .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(4), .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(9) {
+        width: 31% !important;
+    }
+    .bx_filter_parameters_box.active:nth-last-of-type(11)  {
+        margin-right: 10px;
+    }
     .top-menu-mobile .nav .nav__item:nth-child(4),.top-menu-mobile .nav .nav__item:nth-child(3) {
         padding-left: 10px;
     }
@@ -9799,6 +9814,12 @@ button:focus {
     }
 }
 @media (max-width: 320px) {
+    .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(2), .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(8) {
+        width: 48% !important;
+    }
+    .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(4), .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(9) {
+        width: 43% !important;
+    }
     .statistics__item:nth-child(3) {
         width: 97%;
     }
