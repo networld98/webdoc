@@ -152,10 +152,15 @@
 
 .bx_filter .main-filter .bx_filter_param_label input:checked + .checkbox {
 	background: #9DD4B3;
-	border-radius: 5px 0px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	position: absolute;
+	width: 100%;
+	height: 24px;
+	transition: 0.3s;
 }
 .bx_filter .main-filter .bx_filter_param_label input:checked + .checkbox img {
-	opacity: 1;
+	/* old */
+	/*opacity: 1;*/
 }
 
 .bx_filter .bx_filter_parameters_box_title:after {
@@ -672,8 +677,11 @@
 }
 
 .bx_filter .bx_filter_param_label.disabled .bx_filter_param_text {
-	color: #6c6c6c;
+	color: #E795AC;
 	/*text-decoration: line-through;*/
+}
+.bx_filter .main-filter .bx_filter_param_label.disabled .checkbox {
+	border: 2px solid #E795AC;
 }
 
 .bx_filter_select_popup .bx_filter_param_label.active {

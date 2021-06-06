@@ -2110,7 +2110,7 @@ a.doctor-card__metro-list-show_more:hover {
     margin-bottom: 20px;
 }
 .commend-logo {
-    background-image: url("../images/commend-logo.svg");
+    background-image: url("../images/commend-logo-new.svg");
     flex: none;
     flex: none;
     display: inline-block;
@@ -6152,7 +6152,7 @@ button:focus {
 }
 .doctors-slider-item .doctors-list-item__img-info{
     position: initial;
-    padding: 10px 10px 20px;
+    padding: 10px 0px 20px 10px;
 }
 .doctors-slider-item .doctors-list-item__description {
     max-width: 100%;
@@ -6197,6 +6197,8 @@ button:focus {
 }
 .doctors-slider-item .doctors-list-item__img-info-ratings {
     margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
 }
 .api-reviews-form .api-star-rating i {
     margin-right: 5px;
@@ -7495,6 +7497,10 @@ button:focus {
     .flex-right .doctors-list-item__description {
         max-width: 100%;
         padding: 20px 42px 30px 20px;
+        display: none;
+    }
+    .doctors-list-item {
+        min-height: max-content;
     }
     .doctors-list-item__worktimming-list-item {
         padding: 5px 9px;
@@ -8572,7 +8578,7 @@ button:focus {
     }
     .doctors-list-item__img-info .commend-logo {
         width: 100%;
-        height: 19px;
+        height: 38px;
         margin-bottom: 4px;
         margin-top: 4px;
         background-size: contain;
@@ -8699,7 +8705,7 @@ button:focus {
         padding: 0;
     }
     .doctor-card__img .doctors-list-item__img-info .commend-logo {
-        height: 23px;
+        height: 38px;
     }
     .doctor-card__img .doctors-list-item__img-info .doctors-list-item__img-info-ratings {
         text-align: center;
