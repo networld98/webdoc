@@ -17,6 +17,7 @@ CJSCore::Init("popup", "jquery");
     <link rel="shortcut icon" href="<?= SITE_TEMPLATE_PATH ?>/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="https://doctora.clinic/">
     <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="application-name" content="DOCTORA">
     <meta name="theme-color" content="#ffffff">
     <? $APPLICATION->ShowHead(); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/bootstrap-4.5.0-dist/css/bootstrap.css", false); ?>
