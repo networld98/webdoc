@@ -856,9 +856,8 @@ while($ob = $res->GetNextElement()){
                                         ?>
                                         <?
                                         if ($arItem["VALUES"]==NULL) {?>
-                                            <label  class="bx_filter_param_label disabled">
+                                            <label class="bx_filter_param_label disabled">
 										<span class="bx_filter_input_checkbox">
-											<input type="checkbox" disabled="disabled"/>
 											        <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
 											<?
                                             $search  = array('По полису');

@@ -280,7 +280,7 @@ function propsClinic($prop){
         </div>
         <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] && $arResult["PROPERTIES"]["RATING"]["VALUE"]=='Y'):?>
                 <div class="doctor-card-popUp-group">
-                    <a id="header-map" class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
+                    <a id="header-map" class="doctor-card-popUp-group__route popup-link">Построить маршрут</a>
                 </div>
         <?endif;?>
     </div>

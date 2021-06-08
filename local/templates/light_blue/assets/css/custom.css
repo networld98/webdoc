@@ -718,6 +718,36 @@ main >.main-seo-text {
     margin-top: 60px;
     color: #9DD4B3;
 }
+
+.bx_filter .bx_filter_param_label.disabled .bx_filter_param_text {
+    color: #E795AC;
+    /*text-decoration: line-through;*/
+}
+.bx_filter .main-filter .bx_filter_param_label.disabled .checkbox {
+    border: 2px solid #E795AC;
+}
+.bx_filter .main-filter .bx_filter_param_label input:checked + .checkbox {
+    background: #9DD4B3;
+    border-radius: 5px 5px 5px 5px;
+    position: absolute;
+    width: 100%;
+    height: 24px;
+    transition: 0.3s;
+}
+.bx_filter .main-filter .bx_filter_param_label input:checked + .checkbox + .bx_filter_param_text {
+    margin: 0 auto;
+}
+.bx_filter .main-filter .bx_filter_param_label input:checked + .checkbox img {
+    /* old */
+    /*opacity: 1;*/
+    opacity: 0;
+}
+.bx_filter .main-filter .bx_filter_input_checkbox .bx_filter_param_text {
+    padding: 5px 0;
+}
+.bx_filter .bx_filter_input_checkbox {
+    min-height: initial;
+}
 #modef {
     display: flex;
 }
@@ -927,7 +957,7 @@ label.photoFile-label {
     }
     .bx_filter .main-filter .bx_filter_input_checkbox {
         margin-right: 10px;
-        margin-left: 10px;
+        margin-left: 7px;
     }
     .mobile-none{
         display: none!important;
