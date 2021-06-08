@@ -17,6 +17,8 @@ CJSCore::Init("popup", "jquery");
     <link rel="shortcut icon" href="<?= SITE_TEMPLATE_PATH ?>/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="https://doctora.clinic/">
     <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="application-name" content="DOCTORA">
+    <meta name="apple-mobile-web-app-title" content="DOCTORA">
     <meta name="theme-color" content="#ffffff">
     <? $APPLICATION->ShowHead(); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/bootstrap-4.5.0-dist/css/bootstrap.css", false); ?>
@@ -25,7 +27,6 @@ CJSCore::Init("popup", "jquery");
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/font-awesome.min.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/style.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/custom.css", false); ?>
-
     <? $APPLICATION->AddHeadScript('https://code.jquery.com/jquery-1.9.1.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/slick/slick.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js', false); ?>
