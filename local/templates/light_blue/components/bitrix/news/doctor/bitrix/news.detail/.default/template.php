@@ -345,7 +345,7 @@ console_log($arResult);
                     <a class="doctor-card-popUp-group__call popup-call-click"><span>Вызвать врача на дом</span></a>
                 <?endif;?>
                 <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
-                    <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
+                    <a class="doctor-card-popUp-group__route popup-link"><span>Построить маршрут</span></a>
                 <?endif;?>
             </div>
                     <ul class="sharding-block sharding-block-doctor-detail sharding-block-doctor-detail-ghost">
@@ -431,7 +431,7 @@ console_log($arResult);
             </div>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
                 <div class="doctor-card-popUp-group">
-                    <a class="doctor-card-popUp-group__route popup-link">Проложить маршрут</a>
+                    <a class="doctor-card-popUp-group__route popup-link">Построить маршрут</a>
                 </div>
             <?endif;?>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord!=NULL):?>
