@@ -64,10 +64,15 @@ if ($APPLICATION->GetCurDir() != '/' && ($_COOKIE['old-city']==NULL || $_COOKIE[
     $arParams = array("replace_space"=>"-","replace_other"=>"-");
     $transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
     setcookie("old-city", $_COOKIE['bxmaker_geoip_2_4_2_city'], time()+3600, "/", "",  0);
-    if($APPLICATION->GetCurDir() == '/doctors/'){
+    if($APPLICATION->GetCurDir() == '/doctors/' && $_GET['arrFilter_194']==NULL){
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_115=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_115='.$transName.'&set_filter=y');
-    }elseif($APPLICATION->GetCurDir() == '/clinics/'){
+    }
+    elseif($APPLICATION->GetCurDir() == '/doctors/' && $_GET['arrFilter_194']!=NULL){
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_115=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_115='.$transName.'&set_filter=y&arrFilter_194='.$_GET['arrFilter_194']);
+    }elseif($APPLICATION->GetCurDir() == '/clinics/' && $_GET['arrFilter_91']==NULL){
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
+    }elseif($APPLICATION->GetCurDir() == '/clinics/' && $_GET['arrFilter_91']!=NULL){
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_91='.$transName.'&set_filter=y&arrFilter_91='.$_GET['arrFilter_194']);
     }
 }
 ///Получить айди текущего города
