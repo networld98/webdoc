@@ -1377,6 +1377,12 @@ padding-left: 9px;
     position: relative;
     cursor: default;
 }
+.pass.slick-slide.slick-active.active {
+    background: transparent;
+    color: #DBDBDB;
+    border: 1px solid #DBDBDB;
+    cursor: pointer;
+}
 .doctors-list-item__worktimming-list-item.pass:hover:before, .choosing-time_block-list-item.pass:hover:before, .doctors-list-item__days-list-item.pass:hover:before  {
     content: '';
     position: absolute;
@@ -6568,6 +6574,13 @@ button:focus {
     }
 }
 @media (max-width: 1200px) {
+    .statistics__item:nth-child(3) .statistics__icon {
+        padding-left: 3px;
+    }
+
+    .statistics__item:nth-child(4) .statistics__icon {
+        padding-left: 8px;
+    }
     .call-popup .clinic-popup.doctors-list .flex-left > .row > div:last-child {
         display: none;
     }
@@ -6745,6 +6758,8 @@ button:focus {
     }
     .statistics__item {
         justify-self: center;
+        width: 100%;
+        max-width: 260px;
     }
     .container {
         max-width: 100%;
@@ -6892,7 +6907,7 @@ button:focus {
         margin-right: 5px;
     }
     .choosing-time_block .slick-list {
-        padding-top: 29px;
+        padding-top: 40px;
     }
     .choosing-time__worktimming-list-item {
         margin-right: 5px;
@@ -8177,9 +8192,9 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
-    .choosing-time_block-list {
-        margin-top: 28px;
-    }
+    /*.choosing-time_block-list {*/
+    /*    margin-top: 15px;*/
+    /*}*/
     .bx_filter .main-filter .bx_filter_select_block {
         margin-bottom: 6px;
     }
@@ -8890,7 +8905,8 @@ button:focus {
         margin-bottom: 13px;
     }
     .choosing-time_block .slick-list {
-        padding-top: 14px;
+        /*padding-top: 14px;*/
+        padding-top: 40px;
     }
     .choosing-time_block-list-item {
         padding: 10px 22px;

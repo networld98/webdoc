@@ -51,7 +51,7 @@ console_log($arResult);
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
             </div>
-            <p class="doctors-list-item__img-info-commend"><a href="#full-feedback">Все отзывы о враче</a></p>
+            <p class="doctors-list-item__img-info-commend"><a href="#full-feedback">Отзывы о враче</a></p>
         </div>
     </div>
     <div class="doctors-list-item__description">
@@ -178,7 +178,7 @@ console_log($arResult);
                                 <img src="/local/templates/light_blue/assets/images/unfilled-star.svg" alt="star">
                             </div>
 
-                            <p class="doctors-list-item__img-info-commend">0 пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Все отзывы о враче</a></p>
+                            <p class="doctors-list-item__img-info-commend">0 пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Отзывы о враче</a></p>
                         </div>
                 </div>
                 <div class="doctor-card__description">
