@@ -313,7 +313,7 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                 </div>
                 <?if($arItem["PROPERTIES"]["MAP"]["VALUE"] && $arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'):?>
                     <div class="doctor-card-popUp-group">
-                        <a class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
+                        <a class="doctor-card-popUp-group__route popup-link"><span>Построить маршрут</span></a>
                     </div>
                 <?endif;?>
             </div>

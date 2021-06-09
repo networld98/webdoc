@@ -7325,6 +7325,9 @@ button:focus {
     }
 }
 @media (max-width: 768px) {
+    .bx_filter .main-filter .bx_filter_param_label {
+        width: 100%;
+    }
     .anchor-block.fixed-block,.anchor-block.fixed-block-alp {
         margin-bottom: 20px;
         max-width: 100%;
