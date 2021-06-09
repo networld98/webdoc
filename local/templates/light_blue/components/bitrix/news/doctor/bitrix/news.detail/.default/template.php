@@ -427,7 +427,7 @@ console_log($arResult);
                     <?endif;?>
                 </ul>
                 <p class="doctor-card__position-desc"><?=$arResult['PREVIEW_TEXT']?></p>
-                <a href="#anchor-spec-info" class="doctor-card__metro-list-show_more go-to">Подробная информация о специалисте</a>
+                <a href="#anchor-spec-info" class="go-to">Подробная информация о специалисте</a>
             </div>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
                 <div class="doctor-card-popUp-group">
@@ -559,7 +559,7 @@ console_log($arResult);
             <?}
             }?>
             <?if($i==0){?>
-            <h6 style="color:red;">В этот день нет приема</h6>
+<!--            <h6 style="color:red;">В этот день нет приема</h6>-->
             <?}?>
         </ul>
 </section>

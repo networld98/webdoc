@@ -2002,7 +2002,7 @@ padding-left: 9px;
     right: 0;
     cursor: pointer;
 }
-a.doctor-card__metro-list-show_more {
+a.doctor-card__metro-list-show_more , a.go-to {
     color: #32B4C3;
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
@@ -2016,7 +2016,7 @@ a.doctor-card__metro-list-show_more {
     transition: 0.3s;
     cursor: pointer;
 }
-a.doctor-card__metro-list-show_more:hover {
+a.doctor-card__metro-list-show_more:hover , a.go-to:hover{
     text-decoration: none;
     color: #32B4C3;
 }
@@ -2164,7 +2164,7 @@ a.doctor-card__metro-list-show_more:hover {
     color: #000000;
     margin-bottom: 10px;
 }
-.doctor-card__metro-list-show_more {
+.doctor-card__metro-list-show_more , a.go-to {
     font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
@@ -2177,7 +2177,7 @@ a.doctor-card__metro-list-show_more:hover {
     -webkit-text-decoration-color: #32B4C3;
             text-decoration-color: #32B4C3;
 }
-.doctor-card__metro-list-show_more:hover {
+.doctor-card__metro-list-show_more:hover , a.go-to:hover {
     border: transparent;
 }
 .doctor-card-popUp-group__route {
@@ -6305,7 +6305,7 @@ button:focus {
     margin-bottom: 80px;
 }
 .container.spec-info {
-    padding-top: 160px;
+    padding-top: 50px;
 }
 
 .fixed-block-alp .container > div {
@@ -6591,7 +6591,7 @@ button:focus {
         left: 20px;
     }
     .container.spec-info {
-        padding-top: 120px;
+        padding-top: 40px;
     }
     .popup-box.popup-scroll {
         max-width: 100%;
@@ -8448,7 +8448,7 @@ button:focus {
         margin-bottom: 30px;
     }
     .container.spec-info {
-        padding-top: 110px;
+        padding-top: 35px;
     }
     .personal-cabinet-content__doctors-page-box-item__desc-switch {
         top: -230px;
