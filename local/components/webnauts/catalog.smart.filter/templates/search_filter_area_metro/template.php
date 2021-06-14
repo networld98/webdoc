@@ -72,7 +72,7 @@ if ($APPLICATION->GetCurDir() != '/' && ($_COOKIE['old-city']==NULL || $_COOKIE[
     }elseif($APPLICATION->GetCurDir() == '/clinics/' && $_GET['arrFilter_91']==NULL){
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
     }elseif($APPLICATION->GetCurDir() == '/clinics/' && $_GET['arrFilter_91']!=NULL){
-        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_91='.$transName.'&set_filter=y&arrFilter_91='.$_GET['arrFilter_194']);
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_91='.$transName.'&set_filter=y&arrFilter_91='.$_GET['arrFilter_91']);
     }
 }
 ///Получить айди текущего города
