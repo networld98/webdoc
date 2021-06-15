@@ -118,6 +118,7 @@ JCSmartFilter.prototype.updateItem = function (PID, arItem)
 					var label = document.querySelector('[data-role="label_'+value.CONTROL_ID+'"]');
 					if (value.DISABLED)
 					{
+                        $('.bx_filter_parameters_box.active.delay').removeClass('delay');
 						if (label)
 							BX.addClass(label, 'disabled');
 						else
@@ -125,6 +126,7 @@ JCSmartFilter.prototype.updateItem = function (PID, arItem)
 					}
 					else
 					{
+                        $('.bx_filter_parameters_box.active.delay').removeClass('delay');
 						if (label)
 							BX.removeClass(label, 'disabled');
 						else
