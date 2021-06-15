@@ -302,6 +302,8 @@ $(document).ready(function () {
         $('html').scrollTop(scrollPos);
     });
 
+
+
     $('.flowing-scroll').on( 'click', function(){
         event.preventDefault();
         console.log('click');

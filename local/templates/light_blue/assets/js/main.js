@@ -901,6 +901,8 @@ $(document).ready(()=>{
     });
 
 
+
+
     $('.personal-cabinet-content__doctors-page-box-item__desc__redactor span').click(function() {
         if($(this).text() === 'Редактировать данные') {
             $(this).text('Закрыть');
@@ -958,6 +960,16 @@ $(document).ready(function () {
             params.set('time', time);
             window.history.replaceState({}, '', `${location.pathname}?${params}`);
         }
+    });
+    // задержка для клика по фильтрам
+
+    $('.bx_filter_parameters_box.active').mouseup(function () {
+        $('.bx_filter_parameters_box.active').addClass('delay')
+        setTimeout(() => {
+            $('.bx_filter_parameters_box.active.delay').removeClass('delay');
+        },770);
+
+        console.log('123');
     });
 });
 

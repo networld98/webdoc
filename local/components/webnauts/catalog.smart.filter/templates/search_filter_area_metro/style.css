@@ -177,6 +177,9 @@
 .bx_filter .bx_filter_parameters_box.active .bx_filter_parameters_box_title:after {
 	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFAgMAAAD09B5LAAAABGdBTUEAALGPC/xhBQAAAAlQTFRF////AAAAAAAAflGpXQAAAAN0Uk5TvwCA2cz+0wAAABdJREFUCNdjCAthiJrCkLWEYdUKBgYGACBrA/l9XbhoAAAAAElFTkSuQmCC");
 }
+.bx_filter_parameters_box.active.delay {
+	pointer-events: none;
+}
 
 .bx_filter .bx_filter_block {
 	display: none;
@@ -660,7 +663,12 @@
 .bx_filter .main-filter .bx_filter_param_label {
 	margin-right: 4px;
 }
-
+.bx_filter .main-filter .bx_filter_param_label.disabled {
+	pointer-events: none;
+}
+.bx_filter_parameters_box.active.delay {
+	pointer-events: none;
+}
 .bx_filter .bx_filter_param_label.dib {
 	display: inline-block;
 }
