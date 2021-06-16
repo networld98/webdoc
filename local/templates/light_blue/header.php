@@ -227,9 +227,9 @@ CJSCore::Init("popup", "jquery");
             "bitrix:system.auth.form",
             "header_auth",
             Array(
-                "FORGOT_PASSWORD_URL" => "/auth/",
-                "PROFILE_URL" => "/lc/",
-                "REGISTER_URL" => "/auth/",
+                "FORGOT_PASSWORD_URL" => "https://doctora.clinic/auth/",
+                "PROFILE_URL" => "https://doctora.clinic/lc/",
+                "REGISTER_URL" => "https://doctora.clinic/auth/",
                 "SHOW_ERRORS" => "Y"
             )
         );?>

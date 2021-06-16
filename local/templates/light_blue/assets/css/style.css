@@ -388,7 +388,7 @@ main > .container:last-child {
     height: 38px;
 }
 .popup-window {
-    max-height: 40vh;
+    max-height: 70vh;
     overflow: auto;
 }
 
