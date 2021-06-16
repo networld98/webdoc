@@ -6706,9 +6706,10 @@ button:focus {
     }
     .reception-popup .doctors-list-item__img-info, .call-popup .doctors-list-item__img-info {
         bottom: 42px;
-        left: 50%;
+        left: 57%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
+        background-color: transparent;
     }
     .reception-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .reception-popup .doctors-list-item__img .doctors-list-item__img-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-photo {
         max-width: 352px;
@@ -8195,6 +8196,9 @@ button:focus {
     /*.choosing-time_block-list {*/
     /*    margin-top: 15px;*/
     /*}*/
+    /*.reception-popup .call-popup .doctors-list-item__img-info {*/
+    /*    background-color: transparent;*/
+    /*}*/
     .bx_filter .main-filter .bx_filter_select_block {
         margin-bottom: 6px;
     }
@@ -8477,6 +8481,7 @@ button:focus {
     .reception-popup .doctors-list-item__img-info, .call-popup .doctors-list-item__img-info {
         -webkit-transform: initial;
         transform: initial;
+        background-color: transparent;
     }
     .reception-popup .logo img, .call-popup .logo img {
         width: 212px;
