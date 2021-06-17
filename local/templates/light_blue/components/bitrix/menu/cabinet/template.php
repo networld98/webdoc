@@ -53,7 +53,7 @@ if (!empty($arResult)): ?>
 foreach ($arResult as $arItem): ?>
         <li class="personal-cabinet-menu__list-item <? if ($arItem["SELECTED"]):?>active<? else:?>unactive<? endif ?>">
             <a href="<?= $arItem["LINK"] ?>">
-                <?if($arItem["LINK"]=="/lc/message/" && $allCount!=0){?>
+                <?if($arItem["LINK"]=="/lc/message/" && $allCount!=0 && !CSite::InDir('/lc/message/')){?>
                     <div class="count-message">
                         <?=$allCount?>
                     </div>
