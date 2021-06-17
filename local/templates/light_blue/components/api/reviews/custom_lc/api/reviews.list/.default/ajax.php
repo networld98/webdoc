@@ -59,12 +59,13 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
 				<?
 				$item_class = '';
 				if($bCanEdit && ($arItem['PUBLISH'] == 'N' || $arItem['ACTIVE'] == 'N')) {
-					$item_class = 'api-item-hidden';
+                    $item_class = 'api-item-hidden';
 				}
 
 				$arElement = $arItem['ELEMENT_FIELDS'];
 				?>
-                <div id="review<?=$arItem['ID']?>" class="<?=$item_class?>" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                <?if($arItem['ACTIVE'] != 'N'){?>
+                    <div id="review<?=$arItem['ID']?>" class="<?=$item_class?>" itemprop="review" itemscope itemtype="http://schema.org/Review">
                     <div class="clinic-card-full-desc__content__feedback-item">
                         <div class="clinic-card-full-desc__content__feedback-item-left">
                             <? if($arItem['GUEST_NAME']): ?>
@@ -215,6 +216,7 @@ if($arParams['DISPLAY_TOP_PAGER'] || $arParams['DISPLAY_BOTTOM_PAGER']) {
                             </div>
                     </div>
                 </div>
+                <?}?>
 			<? endforeach ?>
 		</div>
 		<? if($arParams['DISPLAY_BOTTOM_PAGER'] && $pagenavigation): ?>
