@@ -75,15 +75,6 @@ if ($APPLICATION->GetCurDir() != '/' && ($_COOKIE['old-city']==NULL || $_COOKIE[
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_91='.$transName.'&set_filter=y&arrFilter_94='.$_GET['arrFilter_94']);
     }
 }
-global $USER;
-if ($USER->IsAdmin()) {
-    echo"<pre>";
-    print_r($_COOKIE['bxmaker_geoip_2_4_2_city']);
-    echo"</pre>";
-    echo"<pre>";
-    print_r($transName);
-    echo"</pre>";
-}
 ///Получить айди текущего города
 $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
 while($ob = $res->GetNextElement()){
