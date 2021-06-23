@@ -631,7 +631,7 @@ while($ob = $res->GetNextElement()){
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12">
+                <div class="col-12 col-sm-12 custom-checkbox-wrapper">
                     <?foreach($arResult["HIDDEN"] as $arItem):?>
                         <input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" id="<?echo $arItem["CONTROL_ID"]?>" value="<?echo $arItem["HTML_VALUE"]?>" />
                     <?endforeach;

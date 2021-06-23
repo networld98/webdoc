@@ -59,6 +59,11 @@
 		clear: both;
 	} */
 }
+@media (max-width: 750px) {
+	.custom-checkbox-wrapper {
+		height: 91px;
+	}
+}
 
 @media (max-width: 640px) {
 	.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box {
