@@ -3,13 +3,13 @@ div.title-search-result {
 	display:none;
 	overflow:hidden;
 	z-index:205;
-	margin-left: 93px;
+	margin-left: 74px;
 }
 
 table.title-search-result {
 	border-collapse: collapse;
 	border:none;
-	width:10%;
+	width:100%;
 }
 
 table.title-search-result th {

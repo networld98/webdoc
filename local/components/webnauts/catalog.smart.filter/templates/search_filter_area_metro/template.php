@@ -72,8 +72,17 @@ if ($APPLICATION->GetCurDir() != '/' && ($_COOKIE['old-city']==NULL || $_COOKIE[
     }elseif($APPLICATION->GetCurDir() == '/clinics/' && $_GET['arrFilter_91']==NULL){
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
     }elseif($APPLICATION->GetCurDir() == '/clinics/' && $_GET['arrFilter_91']!=NULL){
-        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_91='.$transName.'&set_filter=y&arrFilter_91='.$_GET['arrFilter_91']);
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_91='.$transName.'&set_filter=y&arrFilter_94='.$_GET['arrFilter_94']);
     }
+}
+global $USER;
+if ($USER->IsAdmin()) {
+    echo"<pre>";
+    print_r($_COOKIE['bxmaker_geoip_2_4_2_city']);
+    echo"</pre>";
+    echo"<pre>";
+    print_r($transName);
+    echo"</pre>";
 }
 ///Получить айди текущего города
 $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
@@ -416,7 +425,7 @@ while($ob = $res->GetNextElement()){
                                                                     $class.= " disabled";
                                                                 ?>
                                                                 <li>
-                                                                    <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?=CUtil::JSEscape($key)?>  bx_filter_param_label_<?echo trim($ar["VALUE"], ".")?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
+                                                                    <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?echo Cutil::translit(trim($ar["VALUE"], "."),"ru",$arParams);?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
                                                                 </li>
                                                             <?endforeach?>
                                                         </ul>
