@@ -36,7 +36,11 @@ CJSCore::Init("popup", "jquery");
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/custom.js', false); ?>
     <? $APPLICATION->AddHeadScript('https://api-maps.yandex.ru/2.1/?apikey=f471c6ff-1ad1-4847-8940-573cea31904e&lang=ru_RU', false); ?>
     <title><? $APPLICATION->ShowTitle() ?><?$APPLICATION->ShowProperty("meta_title");?></title>
-<meta name="yandex-verification" content="4a254ce6a8470c55" />
+    <?if($_SERVER["SERVER_NAME"]==="doctora.clinic"){?>
+        <meta name="yandex-verification" content="4a254ce6a8470c55" />
+    <?}else{?>
+        <meta name="yandex-verification" content="f56487ac6306d79b" />
+    <?}?>
 </head>
 <body>
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
