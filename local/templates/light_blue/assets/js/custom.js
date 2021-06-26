@@ -84,6 +84,9 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
+    $('#title-search-input').keyup(function () {
+        setTimeout( () =>  $('.title-search-result').hide(), 1000)
+    });
     $('main a').not('.api_modal .api_modal_close').on('click', function() {
         href = $(this).attr('href');
         tel = href.indexOf('tel:')!==-1 ;
