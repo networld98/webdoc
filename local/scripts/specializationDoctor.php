@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 $iblock = 10;
 if(CModule::IncludeModule('iblock')) {
     $arFilter = Array("IBLOCK_ID" => $iblock, "PROPERTY_SPECIALIZATION_TECHNICAL_FIELD_VALUE" => false);
-    $res = CIBlockElement::GetList(Array(), $arFilter, false, array(), Array());
+    $res = CIBlockElement::GetList(Array("RAND"=>"ASC"), $arFilter, false, array(), Array());
     while ($ob = $res->GetNextElement()) {
         $specClinicNames = [];
         $doctorAddress = [];
