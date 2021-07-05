@@ -42,9 +42,9 @@ $rating = $arResult['COUNT_REVIEWS'];
 
 			<span class="api-hidden" itemprop="ratingValue"><?=$arResult['MIN_AVERAGE_RATING']?></span>
 			<span class="api-hidden" itemprop="bestRating"><?=Loc::getMessage('API_REVIEWS_STAT_5')?></span>
-			<span class="api-hidden" itemprop="reviewCount"><?=$arResult['COUNT_ITEMS']?></span>
+			<span class="api-hidden" itemprop="reviewCount"><?=count($arResult['ITEMS'])?></span>
 		</div>
-		<div class="api-subtitle"><?=str_replace('#N#', $arResult['COUNT_ITEMS'], $arParams['MESS_CUSTOMER_RATING'])?></div>
+		<div class="api-subtitle"><?=str_replace('#N#', count($arResult['ITEMS']), $arParams['MESS_CUSTOMER_RATING'])?></div>
 	</div>
 	<div class="api-right-stat">
 		<div class="api-info">

@@ -24,10 +24,10 @@ require($_SERVER["DOCUMENT_ROOT"].'/include/terminationEx.php');
     <div class="doctors-slider-item">
         <div class="doctors-list-item__img">
                 <? if ($arItem['DETAIL_PICTURE']['SRC'] != NULL) { ?>
-                    <a style="background-image: url('<?= $arItem['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image" href="<?= $arItem['DETAIL_PAGE_URL'] ?>">
+                    <a style="background-image: url('<?= $arItem['DETAIL_PICTURE']['SRC'] ?>')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image" href="https://doctora.clinic<?= $arItem['DETAIL_PAGE_URL'] ?>">
                     </a>
                 <? } elseif ($arItem['PROPERTIES']['GENDER']['VALUE'] == NULL || $arItem['PROPERTIES']['GENDER']['VALUE'] == "Мужчина") { ?>
-                    <a style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image photo-back-image-contain" href="<?= $arItem['DETAIL_PAGE_URL'] ?>">
+                    <a style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/male.svg')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image photo-back-image-contain" href="https://doctora.clinic<?= $arItem['DETAIL_PAGE_URL'] ?>">
                     </a>
                 <? } elseif ($arItem['PROPERTIES']['GENDER']['VALUE'] == "Женщина") { ?>
                     <a style="background-image: url('<?= SITE_TEMPLATE_PATH ?>/icon/female-new.svg')" class="doctor-card__img-link doctors-list-item__img-photo photo-back-image photo-back-image-contain" href="<?= $arItem['DETAIL_PAGE_URL'] ?>">

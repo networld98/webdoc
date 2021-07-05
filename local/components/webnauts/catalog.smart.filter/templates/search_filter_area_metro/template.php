@@ -64,12 +64,24 @@ if ($APPLICATION->GetCurDir() != '/' && ($_COOKIE['old-city']==NULL || $_COOKIE[
     $arParams = array("replace_space"=>"-","replace_other"=>"-");
     $transName = Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_city'],"ru",$arParams);
     setcookie("old-city", $_COOKIE['bxmaker_geoip_2_4_2_city'], time()+3600, "/", "",  0);
-    if($APPLICATION->GetCurDir() == '/doctors/'){
+    if($APPLICATION->GetCurDir() == '/doctors/' && $_GET['arrFilter_194']==NULL){
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_115=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_115='.$transName.'&set_filter=y');
-    }elseif($APPLICATION->GetCurDir() == '/clinics/'){
-        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y');
+    }
+    elseif($APPLICATION->GetCurDir() == '/doctors/' && $_GET['arrFilter_194']!=NULL){
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_115=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_115='.$transName.'&set_filter=y&arrFilter_194='.$_GET['arrFilter_194']);
+    }elseif($APPLICATION->GetCurDir() == '/clinics/' && $_GET['arrFilter_91']!=NULL){
+        header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y&arrFilter_91='.$_GET['arrFilter_91']);
     }
 }
+/*global $USER;
+if ($USER->IsAdmin()) {
+    echo"<pre>";
+    print_r($_COOKIE['bxmaker_geoip_2_4_2_city']);
+    echo"</pre>";
+    echo"<pre>";
+    print_r($_COOKIE['bxmaker.geoip.2.4.2_region']);
+    echo"</pre>";
+}*/
 ///Получить айди текущего города
 $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
 while($ob = $res->GetNextElement()){
@@ -411,7 +423,7 @@ while($ob = $res->GetNextElement()){
                                                                     $class.= " disabled";
                                                                 ?>
                                                                 <li>
-                                                                    <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?=CUtil::JSEscape($key)?>  bx_filter_param_label_<?echo trim($ar["VALUE"], ".")?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
+                                                                    <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?echo Cutil::translit(trim($ar["VALUE"], "."),"ru",$arParams);?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
                                                                 </li>
                                                             <?endforeach?>
                                                         </ul>
@@ -633,7 +645,7 @@ while($ob = $res->GetNextElement()){
                         )
                             continue;
                         if (strpos($arItem["CODE"], 'NOT') === false) {?>
-                            <div class="bx_filter_parameters_box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>active<?endif?>" <?if ($arItem["DISPLAY_TYPE"] == "P") :?>style="display: none"<?endif?>>
+                            <div class="bx_filter_parameters_box delay <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>active<?endif?>" <?if ($arItem["DISPLAY_TYPE"] == "P") :?>style="display: none"<?endif?>>
                                 <span class="bx_filter_container_modef"></span>
                                 <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">--><?//=$arItem["NAME"]?><!--</div>-->
                                 <div class="bx_filter_block">

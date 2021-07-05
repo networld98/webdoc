@@ -51,7 +51,7 @@ console_log($arResult);
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='4'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
                 <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/<?if($arRaing['RATING']>='5'){?>filled-star.svg<?}else{?>unfilled-star.svg<?}?>" alt="star">
             </div>
-            <p class="doctors-list-item__img-info-commend"><a href="#full-feedback">Все отзывы о враче</a></p>
+            <p class="doctors-list-item__img-info-commend"><a href="#full-feedback">Отзывы о враче</a></p>
         </div>
     </div>
     <div class="doctors-list-item__description">
@@ -178,7 +178,7 @@ console_log($arResult);
                                 <img src="/local/templates/light_blue/assets/images/unfilled-star.svg" alt="star">
                             </div>
 
-                            <p class="doctors-list-item__img-info-commend">0 пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Все отзывы о враче</a></p>
+                            <p class="doctors-list-item__img-info-commend">0 пациентов записались к врачу через <span class="commend-logo"></span><a href="#full-feedback">Отзывы о враче</a></p>
                         </div>
                 </div>
                 <div class="doctor-card__description">
@@ -427,7 +427,7 @@ console_log($arResult);
                     <?endif;?>
                 </ul>
                 <p class="doctor-card__position-desc"><?=$arResult['PREVIEW_TEXT']?></p>
-                <a href="#anchor-spec-info" class="doctor-card__metro-list-show_more go-to">Подробная информация о специалисте</a>
+                <a href="#anchor-spec-info" class="go-to">Подробная информация о специалисте</a>
             </div>
             <?if($arResult["PROPERTIES"]["MAP"]["VALUE"] || $cord[0]!=NULL):?>
                 <div class="doctor-card-popUp-group">
@@ -559,7 +559,7 @@ console_log($arResult);
             <?}
             }?>
             <?if($i==0){?>
-            <h6 style="color:red;">В этот день нет приема</h6>
+<!--            <h6 style="color:red;">В этот день нет приема</h6>-->
             <?}?>
         </ul>
 </section>

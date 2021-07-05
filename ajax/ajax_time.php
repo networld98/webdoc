@@ -30,6 +30,6 @@ foreach ($times as $item){
     <?}
 }?>
 <?if($i==0){?>
-    <h6 style="color:red;">В этот день нет приема</h6>
+<!--    <h6 style="color:red;">В этот день нет приема</h6>-->
 <?}
 

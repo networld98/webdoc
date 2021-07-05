@@ -21,13 +21,14 @@ CJSCore::Init("popup", "jquery");
     <meta name="apple-mobile-web-app-title" content="DOCTORA">
     <meta name="theme-color" content="#ffffff">
     <? $APPLICATION->ShowHead(); ?>
+    <? $APPLICATION->SetPageProperty("canonical", "https://doctora.clinic".$_SERVER["SCRIPT_URL"]);?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/bootstrap-4.5.0-dist/css/bootstrap.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/slick/slick.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/slick/slick-theme.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/font-awesome.min.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/style.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/custom.css", false); ?>
-    <? $APPLICATION->AddHeadScript('https://code.jquery.com/jquery-1.9.1.min.js', false); ?>
+    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery-1.9.1.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/slick/slick.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/main.js', false); ?>
@@ -35,7 +36,11 @@ CJSCore::Init("popup", "jquery");
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/custom.js', false); ?>
     <? $APPLICATION->AddHeadScript('https://api-maps.yandex.ru/2.1/?apikey=f471c6ff-1ad1-4847-8940-573cea31904e&lang=ru_RU', false); ?>
     <title><? $APPLICATION->ShowTitle() ?><?$APPLICATION->ShowProperty("meta_title");?></title>
-<meta name="yandex-verification" content="4a254ce6a8470c55" />
+    <?if($_SERVER["SERVER_NAME"]==="doctora.clinic"){?>
+        <meta name="yandex-verification" content="4a254ce6a8470c55" />
+    <?}else{?>
+        <meta name="yandex-verification" content="f56487ac6306d79b" />
+    <?}?>
 </head>
 <body>
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
@@ -226,9 +231,9 @@ CJSCore::Init("popup", "jquery");
             "bitrix:system.auth.form",
             "header_auth",
             Array(
-                "FORGOT_PASSWORD_URL" => "/auth/",
-                "PROFILE_URL" => "/lc/",
-                "REGISTER_URL" => "/auth/",
+                "FORGOT_PASSWORD_URL" => "https://doctora.clinic/auth/",
+                "PROFILE_URL" => "https://doctora.clinic/lc/",
+                "REGISTER_URL" => "https://doctora.clinic/auth/",
                 "SHOW_ERRORS" => "Y"
             )
         );?>

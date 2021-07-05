@@ -84,6 +84,9 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
+    $('#title-search-input').keyup(function () {
+        setTimeout( () =>  $('.title-search-result').hide(), 1000)
+    });
     $('main a').not('.api_modal .api_modal_close').on('click', function() {
         href = $(this).attr('href');
         tel = href.indexOf('tel:')!==-1 ;
@@ -301,6 +304,8 @@ $(document).ready(function () {
         /* Убираем баг в Firefox */
         $('html').scrollTop(scrollPos);
     });
+
+
 
     $('.flowing-scroll').on( 'click', function(){
         event.preventDefault();

@@ -161,7 +161,7 @@ $APPLICATION->SetTitle("деталка-болезни");
                 </div>
             </div>
             <div class="illness-detail-block">
-            <h4 class="title-h4">Возможно, Вам также будет интересно прочитать</h3>
+            <h4 class="title-h4">Возможно, Вам также будет интересно прочитать</h4>
                 <div class="row">
                     <div class="col-lg-4">
                         <a href="" class="blog-item">

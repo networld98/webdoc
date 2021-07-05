@@ -64,4 +64,4 @@ Allow: /local/*.jpeg
 Allow: /local/*.png
 Allow: /local/*.gif
 # Укажите один или несколько файлов Sitemap
-Sitemap: https://doctora.clinic
+Sitemap: https://lib.doctora.clinic

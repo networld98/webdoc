@@ -388,7 +388,7 @@ main > .container:last-child {
     height: 38px;
 }
 .popup-window {
-    max-height: 40vh;
+    max-height: 70vh;
     overflow: auto;
 }
 
@@ -1377,6 +1377,12 @@ padding-left: 9px;
     position: relative;
     cursor: default;
 }
+.pass.slick-slide.slick-active.active {
+    background: transparent;
+    color: #DBDBDB;
+    border: 1px solid #DBDBDB;
+    cursor: pointer;
+}
 .doctors-list-item__worktimming-list-item.pass:hover:before, .choosing-time_block-list-item.pass:hover:before, .doctors-list-item__days-list-item.pass:hover:before  {
     content: '';
     position: absolute;
@@ -1996,7 +2002,7 @@ padding-left: 9px;
     right: 0;
     cursor: pointer;
 }
-a.doctor-card__metro-list-show_more {
+a.doctor-card__metro-list-show_more , a.go-to {
     color: #32B4C3;
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
@@ -2010,7 +2016,7 @@ a.doctor-card__metro-list-show_more {
     transition: 0.3s;
     cursor: pointer;
 }
-a.doctor-card__metro-list-show_more:hover {
+a.doctor-card__metro-list-show_more:hover , a.go-to:hover{
     text-decoration: none;
     color: #32B4C3;
 }
@@ -2158,7 +2164,7 @@ a.doctor-card__metro-list-show_more:hover {
     color: #000000;
     margin-bottom: 10px;
 }
-.doctor-card__metro-list-show_more {
+.doctor-card__metro-list-show_more , a.go-to {
     font-family: "Ubuntu-Light";
     font-style: normal;
     font-weight: 300;
@@ -2171,7 +2177,7 @@ a.doctor-card__metro-list-show_more:hover {
     -webkit-text-decoration-color: #32B4C3;
             text-decoration-color: #32B4C3;
 }
-.doctor-card__metro-list-show_more:hover {
+.doctor-card__metro-list-show_more:hover , a.go-to:hover {
     border: transparent;
 }
 .doctor-card-popUp-group__route {
@@ -6299,7 +6305,7 @@ button:focus {
     margin-bottom: 80px;
 }
 .container.spec-info {
-    padding-top: 160px;
+    padding-top: 50px;
 }
 
 .fixed-block-alp .container > div {
@@ -6568,6 +6574,13 @@ button:focus {
     }
 }
 @media (max-width: 1200px) {
+    .statistics__item:nth-child(3) .statistics__icon {
+        padding-left: 3px;
+    }
+
+    .statistics__item:nth-child(4) .statistics__icon {
+        padding-left: 8px;
+    }
     .call-popup .clinic-popup.doctors-list .flex-left > .row > div:last-child {
         display: none;
     }
@@ -6578,7 +6591,7 @@ button:focus {
         left: 20px;
     }
     .container.spec-info {
-        padding-top: 120px;
+        padding-top: 40px;
     }
     .popup-box.popup-scroll {
         max-width: 100%;
@@ -6693,9 +6706,10 @@ button:focus {
     }
     .reception-popup .doctors-list-item__img-info, .call-popup .doctors-list-item__img-info {
         bottom: 42px;
-        left: 50%;
+        left: 57%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
+        background-color: transparent;
     }
     .reception-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .reception-popup .doctors-list-item__img .doctors-list-item__img-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-none-photo, .call-popup .doctors-list-item__img .doctors-list-item__img-photo {
         max-width: 352px;
@@ -6745,6 +6759,8 @@ button:focus {
     }
     .statistics__item {
         justify-self: center;
+        width: 100%;
+        max-width: 260px;
     }
     .container {
         max-width: 100%;
@@ -6892,7 +6908,7 @@ button:focus {
         margin-right: 5px;
     }
     .choosing-time_block .slick-list {
-        padding-top: 29px;
+        padding-top: 40px;
     }
     .choosing-time__worktimming-list-item {
         margin-right: 5px;
@@ -8177,9 +8193,12 @@ button:focus {
     }
 }
 @media (max-width: 576px) {
-    .choosing-time_block-list {
-        margin-top: 28px;
-    }
+    /*.choosing-time_block-list {*/
+    /*    margin-top: 15px;*/
+    /*}*/
+    /*.reception-popup .call-popup .doctors-list-item__img-info {*/
+    /*    background-color: transparent;*/
+    /*}*/
     .bx_filter .main-filter .bx_filter_select_block {
         margin-bottom: 6px;
     }
@@ -8433,7 +8452,7 @@ button:focus {
         margin-bottom: 30px;
     }
     .container.spec-info {
-        padding-top: 110px;
+        padding-top: 35px;
     }
     .personal-cabinet-content__doctors-page-box-item__desc-switch {
         top: -230px;
@@ -8462,6 +8481,7 @@ button:focus {
     .reception-popup .doctors-list-item__img-info, .call-popup .doctors-list-item__img-info {
         -webkit-transform: initial;
         transform: initial;
+        background-color: transparent;
     }
     .reception-popup .logo img, .call-popup .logo img {
         width: 212px;
@@ -8890,7 +8910,8 @@ button:focus {
         margin-bottom: 13px;
     }
     .choosing-time_block .slick-list {
-        padding-top: 14px;
+        /*padding-top: 14px;*/
+        padding-top: 40px;
     }
     .choosing-time_block-list-item {
         padding: 10px 22px;
