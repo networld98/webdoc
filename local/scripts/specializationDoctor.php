@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 $iblock = 10;
 if(CModule::IncludeModule('iblock')) {
     $arFilter = Array("IBLOCK_ID" => $iblock, "PROPERTY_SPECIALIZATION_TECHNICAL_FIELD_VALUE" => false);
-    $res = CIBlockElement::GetList(Array("RAND"=>"ASC"), $arFilter, false, array(), Array());
+    $res = CIBlockElement::GetList(Array("RAND"=>"ASC"), $arFilter, false, array("nTopCount" => 2000), Array());
     while ($ob = $res->GetNextElement()) {
         $specClinicNames = [];
         $doctorAddress = [];
@@ -59,8 +59,7 @@ if(CModule::IncludeModule('iblock')) {
                    $specClinicNames[] = $arEl["NAME"];
            }
        }
-           $specClinicNamesText = implode(" ", $specClinicNames);
-           CIBlockElement::SetPropertyValuesEx($Element['ID'], false, array("SPECIALIZATION_TECHNICAL_FIELD" => $specClinicNamesText, "SPECIALIZATION_FULL" => $specClinic, "RECEPTION_ADDRESSES" => $doctorFullAddress));
+           CIBlockElement::SetPropertyValuesEx($Element['ID'], false, array("SPECIALIZATION_TECHNICAL_FIELD" => $specClinicNames, "SPECIALIZATION_FULL" => $specClinic, "RECEPTION_ADDRESSES" => $doctorFullAddress));
     }
 }
 print "Отработал";
