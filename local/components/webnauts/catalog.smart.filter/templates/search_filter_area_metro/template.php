@@ -73,15 +73,6 @@ if ($APPLICATION->GetCurDir() != '/' && ($_COOKIE['old-city']==NULL || $_COOKIE[
         header('Location:'.$_SERVER['SCRIPT_URI'].'?'.explode('arrFilter_94=',$_SERVER['QUERY_STRING'] )[0].'arrFilter_94='.$transName.'&set_filter=y&arrFilter_91='.$_GET['arrFilter_91']);
     }
 }
-/*global $USER;
-if ($USER->IsAdmin()) {
-    echo"<pre>";
-    print_r($_COOKIE['bxmaker_geoip_2_4_2_city']);
-    echo"</pre>";
-    echo"<pre>";
-    print_r($_COOKIE['bxmaker.geoip.2.4.2_region']);
-    echo"</pre>";
-}*/
 ///Получить айди текущего города
 $res = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14, 'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city']),false, false, Array("ID"));
 while($ob = $res->GetNextElement()){
@@ -410,7 +401,7 @@ while($ob = $res->GetNextElement()){
                                                     <div class="bx_filter_select_popup" data-role="dropdownContent" style="display: none;">
                                                         <ul>
                                                             <li>
-                                                                <label for="<?="all_".$arCur["CONTROL_ID"]?>" class="bx_filter_param_label" data-role="label_<?="all_".$arCur["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape("all_".$arCur["CONTROL_ID"])?>')">
+                                                                <label for="<?="all_".$arCur["CONTROL_ID"]?>" class="bx_filter_param_label_<?=$arCur["CONTROL_NAME_ALT"]?>" data-role="label_<?="all_".$arCur["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape("all_".$arCur["CONTROL_ID"])?>')">
                                                                     <? echo GetMessage("CT_BCSF_FILTER_ALL"); ?>
                                                                 </label>
                                                             </li>

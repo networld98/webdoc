@@ -52,7 +52,7 @@ console_log($arResult);
     ?>
     <div class="doctors-slider-item">
         <div class="doctors-list-item__img <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){?>logo<?}?>">
-            <a href="https://doctora.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
+            <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                 <?if($arItem["PROPERTIES"]["LOGO"]["VALUE"]){
                     $file = CFile::ResizeImageGet($arItem["PROPERTIES"]["LOGO"]["VALUE"], array('width'=>153, 'height'=>153), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                     ?>
@@ -79,14 +79,14 @@ console_log($arResult);
                          alt="star">
                 </div>
             </div>
-                <a class="clinic-card-img__link" href="https://doctora.clinic<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
+                <a class="clinic-card-img__link" href="https://webdoc.clinic<?=$arItem['DETAIL_PAGE_URL']?>#otzivy-yakor"><?getTermination($arRaing['COUNT'])?></a>
             </div>
         </div>
         <div class="doctors-list-item__description">
                 <?
                 $res = CIBlockElement::GetByID($arItem["PROPERTIES"]["MAIN_SPECIALIZATION"]["VALUE"]);
                 if($ar_res = $res->GetNext()){?>
-                    <a href="https://doctora.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
+                    <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                         <span class="main-spec"><?=$ar_res['NAME']?></span>
                     </a>
                 <?}
@@ -96,7 +96,7 @@ console_log($arResult);
                         if(in_array($item, $clinic_spec)){
                             $res = CIBlockElement::GetByID($item);
                             if ($ar_res = $res->GetNext()) {?>
-                                <a href="https://doctora.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
+                                <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                                     <span class="main-spec"><?=$ar_res['NAME']?></span>
                                 </a>
                             <?}
@@ -105,7 +105,7 @@ console_log($arResult);
                     }
                 }?>
                 <p class="doctors-list-item__description-exp">
-                    <a href="https://doctora.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
+                    <a href="https://webdoc.clinic<?=$arItem["DETAIL_PAGE_URL"]?>">
                        <?=$arItem["NAME"]?>
                     </a>
                 </p>

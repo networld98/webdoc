@@ -3,6 +3,7 @@ define("NEED_AUTH", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Выбор услуг клиники");
 CModule::IncludeModule('iblock');
+global $priceClinic;
 $rsUser = CUser::GetByID($USER->GetID());
 $arUser = $rsUser->Fetch();
 
@@ -109,7 +110,7 @@ while($ob = $res->GetNextElement())
                 </div>
             <?}?>
             <?if($i>0){?>
-                <div class="personal-cabinet-content__price-page__content__list-box">
+                <div class="personal-cabinet-content__price-page__content__list-box list-item">
                     <form id="form_clinic_PRICE_DIAGNOST" name="form_clinic_PRICE_DIAGNOST" action="" method="post">
                     <?
                     foreach($formList_diagnost as $key => $formItem){?>
@@ -118,7 +119,66 @@ while($ob = $res->GetNextElement())
                         <div class="personal-cabinet-content__price-page__content__list-content <?if($key==0){?>active<?}?>" data-tabs="<?=$formItem['ID']?>">
                             <div class="personal-cabinet-content__price-page__content__list-content__price">
                                 <h4 class="title-h4">Цены на <?=$formItem['NAME']?></h4>
-                                   <?tablePrice($formItem, 18, $priceClinic)?>
+                                    <?
+                                    global $formItem;
+                                    $APPLICATION->IncludeComponent("bitrix:news.list","price_lc",Array(
+                                            "DISPLAY_DATE" => "Y",
+                                            "DISPLAY_NAME" => "Y",
+                                            "DISPLAY_PICTURE" => "N",
+                                            "DISPLAY_PREVIEW_TEXT" => "N",
+                                            "AJAX_MODE" => "N",
+                                            "IBLOCK_TYPE" => "content",
+                                            "IBLOCK_ID" => "18",
+                                            "NEWS_COUNT" => "10",
+                                            "SORT_BY1" => "ACTIVE_FROM",
+                                            "SORT_ORDER1" => "DESC",
+                                            "SORT_BY2" => "SORT",
+                                            "SORT_ORDER2" => "ASC",
+                                            "FILTER_NAME" => "",
+                                            "FIELD_CODE" => Array("ID"),
+                                            "PROPERTY_CODE" => Array("DESCRIPTION"),
+                                            "CHECK_DATES" => "Y",
+                                            "DETAIL_URL" => "",
+                                            "PREVIEW_TRUNCATE_LEN" => "",
+                                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                            "SET_TITLE" => "Y",
+                                            "SET_BROWSER_TITLE" => "Y",
+                                            "SET_META_KEYWORDS" => "Y",
+                                            "SET_META_DESCRIPTION" => "Y",
+                                            "SET_LAST_MODIFIED" => "Y",
+                                            "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                                            "ADD_SECTIONS_CHAIN" => "Y",
+                                            "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                                            "PARENT_SECTION" => $formItem['ID'],
+                                            "PARENT_SECTION_NAME" => $formItem['NAME'],
+                                            "PARENT_SECTION_CODE" => "",
+                                            "INCLUDE_SUBSECTIONS" => "Y",
+                                            "CACHE_TYPE" => "N",
+                                            "CACHE_TIME" => "3600",
+                                            "CACHE_FILTER" => "N",
+                                            "CACHE_GROUPS" => "N",
+                                            "DISPLAY_TOP_PAGER" => "",
+                                            "DISPLAY_BOTTOM_PAGER" => "Y",
+                                            "PAGER_TITLE" => "Новости",
+                                            "PAGER_SHOW_ALWAYS" => "N",
+                                            "PAGER_TEMPLATE" => "show_more_lc_price",
+                                            "PAGER_DESC_NUMBERING" => "N",
+                                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                                            "PAGER_SHOW_ALL" => "Y",
+                                            "PAGER_BASE_LINK_ENABLE" => "N",
+                                            "SET_STATUS_404" => "Y",
+                                            "SHOW_404" => "Y",
+                                            "MESSAGE_404" => "",
+                                            "PAGER_BASE_LINK" => "/lc/price/",
+                                            "PAGER_PARAMS_NAME" => "",
+                                            "AJAX_OPTION_JUMP" => "N",
+                                            "AJAX_OPTION_STYLE" => "Y",
+                                            "AJAX_OPTION_HISTORY" => "N",
+                                            "AJAX_OPTION_ADDITIONAL" => ""
+                                        )
+                                    );
+                                    unset($formItem);
+                                    ?>
                                 </div>
                             </div>
                         <?}?>
@@ -160,12 +220,70 @@ while($ob = $res->GetNextElement())
                     <form id="form_clinic_PRICE_DOCTOR" name="form_clinic_PRICE_DOCTOR" action="" method="post">
                         <input type="hidden" name="PROPS" value="PRICE_DOCTOR">
                         <input type="hidden" name="ID_CLINIC" value="<?=$idClinic?>">
-                    <?
-                    foreach($formList_uslugi as $key => $formItem){?>
-                        <div class="personal-cabinet-content__price-page__content__list-content <?if($key==0){?>active<?}?>" data-tabs="<?=$formItem['ID']?>">
-                            <div class="personal-cabinet-content__price-page__content__list-content__price">
-                                <h4 class="title-h4">Цены на <?=$formItem['NAME']?></h4>
-                                    <?tablePrice($formItem, 19, $priceClinic)?>
+                        <?foreach($formList_uslugi as $key => $formItem){?>
+                            <div class="personal-cabinet-content__price-page__content__list-content <?if($key==0){?>active<?}?>" data-tabs="<?=$formItem['ID']?>">
+                                <div class="personal-cabinet-content__price-page__content__list-content__price">
+                                    <h4 class="title-h4">Цены на <?=$formItem['NAME']?></h4>
+                                        <?
+                                        global $formItem;
+                                        $APPLICATION->IncludeComponent("bitrix:news.list","price_lc",Array(
+                                                "DISPLAY_DATE" => "Y",
+                                                "DISPLAY_NAME" => "Y",
+                                                "DISPLAY_PICTURE" => "N",
+                                                "DISPLAY_PREVIEW_TEXT" => "N",
+                                                "AJAX_MODE" => "N",
+                                                "IBLOCK_TYPE" => "content",
+                                                "IBLOCK_ID" => "19",
+                                                "NEWS_COUNT" => "10",
+                                                "SORT_BY1" => "ACTIVE_FROM",
+                                                "SORT_ORDER1" => "DESC",
+                                                "SORT_BY2" => "SORT",
+                                                "SORT_ORDER2" => "ASC",
+                                                "FILTER_NAME" => "",
+                                                "FIELD_CODE" => Array("ID"),
+                                                "PROPERTY_CODE" => Array("DESCRIPTION"),
+                                                "CHECK_DATES" => "Y",
+                                                "DETAIL_URL" => "",
+                                                "PREVIEW_TRUNCATE_LEN" => "",
+                                                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                                "SET_TITLE" => "Y",
+                                                "SET_BROWSER_TITLE" => "Y",
+                                                "SET_META_KEYWORDS" => "Y",
+                                                "SET_META_DESCRIPTION" => "Y",
+                                                "SET_LAST_MODIFIED" => "Y",
+                                                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                                                "ADD_SECTIONS_CHAIN" => "Y",
+                                                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                                                "PARENT_SECTION" => $formItem['ID'],
+                                                "PARENT_SECTION_NAME" => $formItem['NAME'],
+                                                "PARENT_SECTION_CODE" => "",
+                                                "INCLUDE_SUBSECTIONS" => "Y",
+                                                "CACHE_TYPE" => "N",
+                                                "CACHE_TIME" => "3600",
+                                                "CACHE_FILTER" => "N",
+                                                "CACHE_GROUPS" => "N",
+                                                "DISPLAY_TOP_PAGER" => "",
+                                                "DISPLAY_BOTTOM_PAGER" => "Y",
+                                                "PAGER_TITLE" => "Новости",
+                                                "PAGER_SHOW_ALWAYS" => "N",
+                                                "PAGER_TEMPLATE" => "show_more_lc_price",
+                                                "PAGER_DESC_NUMBERING" => "N",
+                                                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                                                "PAGER_SHOW_ALL" => "Y",
+                                                "PAGER_BASE_LINK_ENABLE" => "N",
+                                                "SET_STATUS_404" => "Y",
+                                                "SHOW_404" => "Y",
+                                                "MESSAGE_404" => "",
+                                                "PAGER_BASE_LINK" => "/lc/price/",
+                                                "PAGER_PARAMS_NAME" => "",
+                                                "AJAX_OPTION_JUMP" => "N",
+                                                "AJAX_OPTION_STYLE" => "Y",
+                                                "AJAX_OPTION_HISTORY" => "N",
+                                                "AJAX_OPTION_ADDITIONAL" => ""
+                                            )
+                                        );
+                                        unset($formItem);
+                                        ?>
                                 </div>
                             </div>
                         <?}?>

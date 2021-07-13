@@ -363,7 +363,7 @@ if($arResult['ITEMS']!=NULL) {
                     <? if ($arItem["PROPERTIES"]["MAP"]["VALUE"] && $arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'):?>
                         <div class="doctor-card-popUp-group">
                             <a id="header-map"
-                               class="doctor-card-popUp-group__route popup-link"><span>Построить маршрут</span></a>
+                               class="doctor-card-popUp-group__route popup-link"><span>Проложить маршрут</span></a>
                         </div>
                     <? endif; ?>
                 </div>
