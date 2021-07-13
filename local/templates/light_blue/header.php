@@ -21,7 +21,10 @@ CJSCore::Init("popup", "jquery");
     <meta name="apple-mobile-web-app-title" content="DOCTORA">
     <meta name="theme-color" content="#ffffff">
     <? $APPLICATION->ShowHead(); ?>
-    <?$APPLICATION->SetPageProperty("canonical", "https://doctora.clinic".$_SERVER["SCRIPT_URL"]);?>
+    <?if($_GET){?>
+        <? $APPLICATION->SetPageProperty("robots", "noindex, nofollow");?>
+        <? $APPLICATION->SetPageProperty("canonical", "https://doctora.clinic".$_SERVER["SCRIPT_URL"]);?>
+    <?}?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/bootstrap-4.5.0-dist/css/bootstrap.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/slick/slick.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/libraries/slick/slick-theme.css", false); ?>
