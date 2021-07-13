@@ -1,7 +1,9 @@
-User-Agent: *
+User-agent: *
 Disallow: /cgi-bin
 Disallow: /bitrix/
+Disallow: *bitrix_*=
 Disallow: /local/
+Disallow: /*index.php$
 Disallow: /auth/
 Disallow: *auth=
 Disallow: /personal/
@@ -63,5 +65,6 @@ Allow: /local/*.jpg
 Allow: /local/*.jpeg
 Allow: /local/*.png
 Allow: /local/*.gif
+
 # Укажите один или несколько файлов Sitemap
-Sitemap: https://lib.doctora.clinic
+Sitemap: https://lib.webdoc.clinic
