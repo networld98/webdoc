@@ -257,8 +257,3 @@
     display: block;
   }
 }
-@media (max-width: 576px) {
-  .bxmaker__geoip__popup-options-col {
-    width: 50%;
-  }
-}

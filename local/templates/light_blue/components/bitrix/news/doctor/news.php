@@ -49,8 +49,21 @@ while ($arSection=$rsSection->fetch())
 {
     $cityId = $arSection['ID'];
 }
+$dbItems = \Bitrix\Iblock\ElementTable::getList(array(
+    'filter' => array(
+        'IBLOCK_ID' => 27,
+        'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_region'],
+    ),
+    'select' =>  array('ID'),
+));
+while ($arElement=$dbItems->fetch())
+{
+    $regionId = $arElement['ID'];
+}
+
 $smartPreFilter = $smartPreFilter = [
     'PROPERTY_CITY' => $cityId,
+    'PROPERTY_REGION' => $regionId
 ];?>
 <? $APPLICATION->IncludeComponent(
     "webnauts:catalog.smart.filter",
