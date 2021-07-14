@@ -63,8 +63,9 @@ if(CModule::IncludeModule('iblock')) {
         }
         $specClinicNamesText = implode(", ", $specClinicNames);
         CIBlockElement::SetPropertyValuesEx($Element['ID'], false, array("SPECIALIZATION_TECHNICAL_FIELD" => $specClinicNamesText, "SPECIALIZATION_FULL" => $specClinic, "RECEPTION_ADDRESSES" => $doctorFullAddress));
-        $el->Update($Element['ID'], Array('TIMESTAMP_X' => true));
         \Bitrix\Iblock\PropertyIndex\Manager::updateElementIndex($iblock, $Element['ID']);
+        $el->Update($Element['ID'], Array('TIMESTAMP_X' => true, "MODIFIED_BY" => $USER->GetID()));
+
     }
 }
 print "Отработал";
