@@ -7947,12 +7947,29 @@ button:focus {
     /*    width: 34% !important;*/
     /*    margin-right: 0;*/
     /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(1),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) {*/
+    /*    width: 34% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {*/
+    /*    width: 30% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal.doctor-page  .bx_filter_parameters_box.active:nth-last-of-type(8)  {*/
+    /*    width: 32% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9) {*/
+    /*    width: 36% !important;*/
+    /*    margin-right: 0;*/
+    /*}*/
+    /*custom-changes*/
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(1),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(7) {
-        width: 34% !important;
+        width: 100% !important;
         margin-right: 0;
     }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(8) {
-        width: 30% !important;
+        width: 100% !important;
         margin-right: 0;
     }
     .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(2),.bx-touch .bx_filter.bx_horizontal.doctor-page  .bx_filter_parameters_box.active:nth-last-of-type(8)  {
@@ -7960,7 +7977,7 @@ button:focus {
         margin-right: 0;
     }
     .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box.active:nth-last-of-type(9) {
-        width: 36% !important;
+        width: 100% !important;
         margin-right: 0;
     }
     .bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(4),.bx-touch .bx_filter.bx_horizontal.doctor-page .bx_filter_parameters_box.active:nth-last-of-type(9) {

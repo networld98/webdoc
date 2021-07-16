@@ -763,6 +763,7 @@ main >.main-seo-text {
     overflow: auto;
     overflow-x: hidden;
 }
+
 @media (max-width: 1430px) {
 .personal-cabinet-content__my-profile .contacts-group {
     width: 100%;
@@ -849,6 +850,29 @@ label.photoFile-label {
         margin-bottom: 10px;
         display: block;
     }
+    .bx_filter_parameters_box.active{
+        text-align: center;
+        /*white-space: pre;*/
+        width: 100%;
+    }
+    .col-sm-12.custom__col-sm-12 {
+        display: grid;
+        grid-template-columns: 37% 1fr 1fr;
+        align-items: center;
+    }
+    .bx_filter .main-filter .bx_filter_param_label input:checked + .checkbox + .bx_filter_param_text {
+        white-space: pre;
+    }
+    .bx_filter .main-filter .bx_filter_input_checkbox .bx_filter_param_text {
+        white-space: pre;
+    }
+    .bx_filter .bx_filter_input_checkbox {
+        overflow: visible;
+    }
+    .main-filter .row > div:last-child .bx_filter_parameters_box.active {
+        margin-right: 0;
+    }
+
 }
 .bx_filter.bx_horizontal .main-filter .bx_filter_parameters_box.none-area-fix {
     max-width: 100%;
@@ -936,6 +960,10 @@ label.photoFile-label {
         text-align: left;
         margin-bottom: 10px;
     }
+
+}
+.bx_filter_parameters_box.delay:nth-child(8n) {
+    display: none;
 }
 .search-block-hidden {
     display: none;
