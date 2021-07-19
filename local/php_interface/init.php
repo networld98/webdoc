@@ -1,4 +1,39 @@
 <?php
+use \Bitrix\Main\Loader;
+AddEventHandler("search", "BeforeIndex", Array("SearchItem", "BeforeIndexHandler"));
+
+class SearchItem
+{
+    // создаем обработчик события "BeforeIndex"
+    function BeforeIndexHandler($arFields)
+    {
+        if($arFields["MODULE_ID"] == "iblock")
+        {
+            if(array_key_exists("BODY", $arFields) && $arFields["PARAM2"] == 9)
+            {
+                if(CModule::IncludeModule('iblock')) {
+                    $arFilter = Array("IBLOCK_ID" => $arFields["PARAM2"], "ID" => $arFields["ITEM_ID"]);
+                    $res = CIBlockElement::GetList(Array("RAND"=>"ASC"), $arFilter, false, array(), Array('NAME', 'ID', 'PROPERTY_SPECIALIZATION'));
+                    while ($ob = $res->GetNextElement()) {
+                        $Element = $ob->GetFields();
+                        if ($Element['PROPERTY_SPECIALIZATION_VALUE']!= NULL) {
+                            $obElement = CIBlockElement::GetByID($Element['PROPERTY_SPECIALIZATION_VALUE']);
+                            if ($arEl = $obElement->GetNext())
+                                $specClinicNames[$Element['ID']][] = $arEl["NAME"];
+                        }
+                    }
+                    foreach ($specClinicNames as $key => $item){
+                        $specClinicNamesText = implode("\n", $item);
+                    }
+                }
+                $arFields["BODY"] .= ' '.$specClinicNamesText;
+                $arFields["TAGS"] .= ' '.$specClinicNamesText;
+            }
+        }
+        return $arFields;
+    }
+}
+
 AddEventHandler("main", "OnAfterUserAuthorize", Array("UserGroup", "OnAfterUserAuthorizeHandler"));
 
 class UserGroup
