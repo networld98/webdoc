@@ -14,6 +14,26 @@ while($ob = $res->GetNextElement()){
     $idDoctor = $arFields['ID'];
     $IBLOCK_ID = $arFields['IBLOCK_ID'];
 }?>
+<?function metroDoctor($iblock,$sectionId,$arProps,$i){?>
+    <ul class="checkbox-group">
+        <?$arSelect = array("ID", "NAME");
+        $arFilter = array("IBLOCK_ID"=>$iblock, 'SECTION_ID'=> $sectionId, 'INCLUDE_SUBSECTIONS' => 'Y');
+        $res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);
+        while($ob = $res->GetNextElement()){
+            $arField = $ob->GetFields();
+            ?>
+            <li>
+                <label data-role="label_<?=$arField['ID']?>" class="bx_filter_param_label " for="<?=$arField['ID']?>">
+                    <span class="bx_filter_input_checkbox">
+                        <input type="checkbox" <?if(in_array($arField['ID'],$arProps['METRO']['VALUE'])){?>checked<?}?> value="ADDRESSES_<?=$i?>/<?=$arField['ID']?>" name="<?=$arProps['METRO']['CODE']?>_ADDRESSES_<?=$i?>_<?=$arField['ID']?>" id="<?=$arField['ID']?>">
+                            <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
+                        <span class="bx_filter_param_text"><?=$arField["NAME"]?></span>
+                    </span>
+                </label>
+            </li>
+        <?}?>
+    </ul>
+<?}?>
 <?function propview($prop,$id,$iblock){
     $db_enum_list = CIBlockProperty::GetPropertyEnum($prop["CODE"], Array(), Array("IBLOCK_ID"=>$iblock, "VALUE"=>"Y"));
     if($ar_enum_list = $db_enum_list->GetNext()) ?>
@@ -308,6 +328,7 @@ while($ob = $res->GetNextElement()){
                                                                 $city = $str[0];
                                                                 $addr = $str[1];
                                                                 $area = $str[2];
+                                                                $region = $str[3];
                                                                 ?>
                                                                 <div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row">
                                                                     <div class="del-city close" data-val="<?=$key?>" title="Удалить адрес"></div>
@@ -330,7 +351,7 @@ while($ob = $res->GetNextElement()){
                                                                         </select>
                                                                         <span class="doctor-adress">Адрес</span>
                                                                         <input type="text" class="input-doctor-address" id="address_<?=$key?>" name="ADDRESSES_<?=$key?>[]" value="<?=$addr?>">
-                                                                        <div id="area-block-ajax-<?=$key?>">
+                                                                        <div id="area-block-ajax-<?=$key?>" class="area-block-ajax">
                                                                             <?
                                                                             $areaCount =  CIBlockSection::GetCount(array("IBLOCK_ID"=>14, "SECTION_ID"=>$selectCity));
                                                                             if($areaCount>0):?>
@@ -349,6 +370,18 @@ while($ob = $res->GetNextElement()){
                                                                                 </select>
                                                                             <?endif;?>
                                                                         </div>
+                                                                        <span><?=$arProps['REGION']['NAME']?></span>
+                                                                        <select name="ADDRESSES_<?=$key?>[]" data-key="<?=$key?>" value="">
+                                                                            <option value="" <?if($arProps['REGION']['VALUE']=='-'){?>selected<?}?>>-</option>
+                                                                            <?
+                                                                            $arSelect = array("ID", "NAME");
+                                                                            $arFilter = array("IBLOCK_ID"=>27);
+                                                                            $res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);
+                                                                            while($ar_result = $res->GetNext())
+                                                                            {?>
+                                                                                <option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>" <?if($ar_result['NAME']==$region){?>selected<?}?>><?=$ar_result['NAME']?></option>
+                                                                            <?}?>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <?
@@ -372,34 +405,19 @@ while($ob = $res->GetNextElement()){
                                                             <div class="col-lg-6 metro-block">
                                                                 <label for=""><?=$arProps['METRO']['NAME']?>(обновляется, после сохранения и обновления страницы):</label>
                                                                 <div class="metro-container">
-                                                                        <? function metroDoctor($iblock,$sectionId,$arProps,$i){?>
-                                                                            <ul class="checkbox-group">
-                                                                                <?$arSelect = array("ID", "NAME");
-                                                                                $arFilter = array("IBLOCK_ID"=>$iblock, 'SECTION_ID'=> $sectionId, 'INCLUDE_SUBSECTIONS' => 'Y');
-                                                                                $res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);
-                                                                                while($ob = $res->GetNextElement()){
-                                                                                    $arField = $ob->GetFields();
-                                                                                    ?>
-                                                                                    <li>
-                                                                                        <label data-role="label_<?=$arField['ID']?>" class="bx_filter_param_label " for="<?=$arField['ID']?>">
-                                                                                        <span class="bx_filter_input_checkbox">
-                                                                                            <input type="checkbox" <?if(in_array($arField['ID'],$arProps['METRO']['VALUE'])){?>checked<?}?> value="ADDRESSES_<?=$i?>/<?=$arField['ID']?>" name="<?=$arProps['METRO']['CODE']?>_ADDRESSES_<?=$i?>_<?=$arField['ID']?>" id="<?=$arField['ID']?>">
-                                                                                                <div class="checkbox"><img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/checkbox.svg" alt=""></div>
-                                                                                            <span class="bx_filter_param_text"><?=$arField["NAME"]?></span>
-                                                                                        </span>
-                                                                                        </label>
-                                                                                    </li>
-                                                                                <?}?>
-                                                                            </ul>
-                                                                        <?}?>
                                                                         <? $i=-1;
-                                                                        foreach ($selectCityArray as $key => $city){
-                                                                            $i++;?>
-                                                                            <div class="metro-city-select-block">
-                                                                                <label for=""><?=$key?>:</label>
-                                                                                <? metroDoctor(14,$city,$arProps,$i);?>
-                                                                            </div>
-                                                                        <?}?>
+                                                                        foreach ($selectCityArray as $key => $city) {
+                                                                            $activeElements = CIBlockSection::GetSectionElementsCount($city, Array("CNT_ACTIVE" => "Y"));
+                                                                            $i++;
+                                                                            if ($activeElements != 0) {
+                                                                                ?>
+                                                                                <div class="metro-city-select-block">
+                                                                                    <label for=""><?= $key ?>:</label>
+                                                                                    <? metroDoctor(14, $city, $arProps, $i); ?>
+                                                                                </div>
+                                                                            <?
+                                                                            }
+                                                                        }?>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -520,7 +538,7 @@ while($ob = $res->GetNextElement()){
             let w = <?=$address_key_last?>;
             $('.add-address').on('click', function () {
                 if (w < 10) {
-                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Город</span><select name="ADDRESSES_' + (w + 1) + '[]" class="citys" data-key="' + (w + 1) + '" value=""><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>14, 'DEPTH_LEVEL' => 1);$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);while($ar_result = $obSections->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select><span class="doctor-adress">Адрес</span><input type="text" class="place-education-block_place" name="ADDRESSES_' + (w + 1) + '[]"><div id="area-block-ajax-' + (w + 1) + '"></div></div><div id="input_address' + id + (w + 1) + '"></div>';
+                    let str = '<div class="personal-cabinet-content__doctors-page-box-item__desc__redactor__drop__content-row"><span>Город</span><select name="ADDRESSES_' + (w + 1) + '[]" class="citys" data-key="' + (w + 1) + '" value=""><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>14, 'DEPTH_LEVEL' => 1);$obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);while($ar_result = $obSections->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select><span class="doctor-adress">Адрес</span><input type="text" class="place-education-block_place" name="ADDRESSES_' + (w + 1) + '[]"><div id="area-block-ajax-' + (w + 1) + '"><span>Район</span><input name="ADDRESSES_' + (w + 1) + '[]" data-key="' + (w + 1) + '" value="-/-" readonly></div><span>Регион/Область</span><select name="ADDRESSES_' + (w + 1) + '[]" data-key="' + (w + 1) + '" value=""><option value="-/-">-</option><?$arSelect = array("ID", "NAME");$arFilter = array("IBLOCK_ID"=>27);$res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);while($ar_result = $res->GetNext()){?><option value="<?=$ar_result['ID']?>/<?=$ar_result['NAME']?>"><?=$ar_result['NAME']?></option><?}?></select> </div><div id="input_address' + id + (w + 1) + '"></div>';
                     document.getElementById('input_address' + id + w).innerHTML = str;
                     w++;
                 }else{

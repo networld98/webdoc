@@ -92,6 +92,9 @@ console_log($arResult);
         <?}?>
         <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
             <p class="doctor-card__clinic-adress">
+                <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=''){
+                    echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3];?>,
+                <?}?>
                 <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
                 <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
                     echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
@@ -101,6 +104,9 @@ console_log($arResult);
         <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]):
             global $clinicAddress;?>
             <p class="doctor-card__clinic-adress">
+                <?if($clinicAddress[0]['REGION']!=NULL){
+                    echo $clinicAddress[0]['REGION'];?>,
+                <?}?>
                 <?=$clinicAddress[0]['CITY']?>,
                 <?if($clinicAddress[0]['AREA']!=NULL){
                     echo $clinicAddress[0]['AREA'];?>,
@@ -238,8 +244,11 @@ console_log($arResult);
                                     $nameArea=CIBlockSection::GetByID($prop['AREA']['VALUE']);
                                         if($ar_res = $nameArea->GetNext())
                                             $nameAreaClinic = $ar_res['NAME'];
+                                    $nameRegion=CIBlockElement::GetByID($prop['REGION']['VALUE']);
+                                    if($ar_res = $nameRegion->GetNext())
+                                        $nameRegionClinic = $ar_res['NAME'];
                                     global $clinicAddress;
-                                    $clinicAddress[] = array('CITY'=>  $nameCityClinic ,'AREA'=> $nameAreaClinic, 'ADDRESS' => $prop['ADDRESS']['VALUE'], 'METRO' => $prop['METRO']['VALUE']);
+                                    $clinicAddress[] = array('REGION'=>  $nameRegionClinic, 'CITY'=>  $nameCityClinic ,'AREA'=> $nameAreaClinic, 'ADDRESS' => $prop['ADDRESS']['VALUE'], 'METRO' => $prop['METRO']['VALUE']);
                                 }?>
                             <?}?>
 
@@ -257,8 +266,12 @@ console_log($arResult);
                             ?>
                             <p class="doctor-card__clinic-name">Адрес</p>
                         <?}?>
+
                     <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
                         <p class="doctor-card__clinic-adress">
+                            <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=''){
+                                echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3];?>,
+                            <?}?>
                             <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
                             <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2]!=''){
                                 echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[2];?>,
@@ -267,6 +280,9 @@ console_log($arResult);
                         </p>
                     <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]):?>
                         <p class="doctor-card__clinic-adress">
+                            <?if($clinicAddress[0]['REGION']!=NULL){
+                                echo $clinicAddress[0]['REGION'];?>,
+                            <?}?>
                             <?=$clinicAddress[0]['CITY']?>,
                             <?if($clinicAddress[0]['AREA']!=NULL){
                                 echo $clinicAddress[0]['AREA'];?>,
@@ -698,12 +714,16 @@ console_log($arResult);
                                 $nameCityClinic = $ar_res['NAME'];
                                 $fullCity[] = $ar_res['NAME'];
                             $nameArea=CIBlockSection::GetByID($prop['AREA']['VALUE']);
+                            $nameRegion=CIBlockSection::GetByID($prop['REGION']['VALUE']);
                                 if($ar_res = $nameArea->GetNext())
                                 $nameAreaClinic = $ar_res['NAME'];
-                            $fullAddress[] = $prop['ADDRESS']['VALUE'];
+                                 $fullAddress[] = $prop['ADDRESS']['VALUE'];
                             ?>
                             <?if($prop['ADDRESS']['VALUE']):?>
                                 <p class="doctor-card__clinic-adress">
+                                    <?if($nameRegion!=NULL){
+                                        echo $nameRegion;?>,
+                                    <?}?>
                                     <?=$nameCityClinic?>,
                                     <?if($nameAreaClinic!=NULL){
                                         echo $nameAreaClinic;?>,
@@ -730,6 +750,9 @@ console_log($arResult);
                 foreach ($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] as $adr){
                     if(!in_array(explode('/',$adr)[1],$fullAddress)){?>
                     <p class="doctor-card__clinic-adress">
+                        <?if(explode('/',$adr)[3]!=''){
+                            echo explode('/',$adr)[3];?>,
+                        <?}?>
                         <?=explode('/',$adr)[0]?>,
                         <?if(explode('/',$adr)[2]!=''){
                             echo explode('/',$adr)[2];?>,

@@ -1,3 +1,6 @@
+.area-block-ajax {
+    display: contents;
+}
 .container-flex {
     display: flex;
     justify-content: space-between;
@@ -433,6 +436,11 @@ label.photoFile-label:hover {
 }
 .place-education-block span:first-child {
     max-width: 100px;
+    margin-right: 20px;
+}
+.place-education-block .metro-container  span {
+    max-width: inherit;
+    width: auto;
 }
 .card-item:last-child{
     border: none;
