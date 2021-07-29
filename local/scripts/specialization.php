@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-$iblock = 9;
+/*$iblock = 9;
 use \Bitrix\Main\Loader;
 if(CModule::IncludeModule('iblock')) {
     $el = new CIBlockElement;
@@ -8,12 +8,9 @@ if(CModule::IncludeModule('iblock')) {
     $res = CIBlockElement::GetList(Array("RAND"=>"ASC"), $arFilter, false, array(), Array('ID','TIMESTAMP_X'));
     while ($ob = $res->GetNextElement()) {
         $Element = $ob->GetFields();
-        if(strtotime($Element['TIMESTAMP_X'])<strtotime('-2 day')){
             $el = new CIBlockElement;
             $el->Update($Element['ID'], Array('TIMESTAMP_X' => true, "MODIFIED_BY" => $USER->GetID()));
-        }
-
     }
-}
+}*/
 print "Отработал";
 ?>
