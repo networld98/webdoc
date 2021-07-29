@@ -93,6 +93,20 @@ $days_between = ceil(($end - $start) / 86400);
                     <? propofficial($arProps['SITE']);?>
                     <? propofficial($arProps['OFFICIAL_NAME']);?>
                     <li>
+                        <label for=""><?=$arProps['REGION']['NAME']?></label>
+                        <select name="REGION">
+                            <option value="" <?if($ar_result['ID']==$arProps['REGION']['VALUE']){?>selected<?}?>>-</option>
+                            <?
+                            $arSelect = array("ID", "NAME");
+                            $arFilter = array("IBLOCK_ID"=>27);
+                            $res = CIBlockElement::GetList(Array("name"=>"ASC"), $arFilter,false, false, $arSelect);
+                            while($ar_result = $res->GetNext())
+                            {?>
+                                <option value="<?=$ar_result['ID']?>" <?if($ar_result['ID']==$arProps['REGION']['VALUE']){?>selected<?}?>><?=$ar_result['NAME']?></option>
+                            <?}?>
+                        </select>
+                    </li>
+                    <li>
                         <label for=""><?=$arProps['CITY']['NAME']?></label>
                         <select name="CITY" id="city">
                             <?
@@ -114,7 +128,7 @@ $days_between = ceil(($end - $start) / 86400);
                         <select name="AREA" id="area">
                             <?
                             $arSelect = array("ID", "NAME");
-                            $arFilter = array("IBLOCK_ID"=>14, 'DEPTH_LEVEL' => 1, 'SECTION_ID' => $cityId);
+                            $arFilter = array("IBLOCK_ID"=>14, 'SECTION_ID' => $cityId);
                             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                             while($ar_result = $obSections->GetNext())
                             {
@@ -209,12 +223,6 @@ $days_between = ceil(($end - $start) / 86400);
                             <? propview($arProps["EMAIL_MESSAGE"])?>
                         </ul>
                     </li>
-                    <!--                        <li>-->
-                    <!--                            <label for="mail-mess">Почтовые сообщения</label>-->
-                    <!--                            <select name="mail-mess" id="">-->
-                    <!--                                <option value="">Максимум полезного</option>-->
-                    <!--                            </select>-->
-                    <!--                        </li>-->
                 </ul>
                 <div class="text-view mobile-none">
                     <div id="message-form"></div>
@@ -224,10 +232,6 @@ $days_between = ceil(($end - $start) / 86400);
             </div>
             <div class="personal-cabinet-content__my-profile__info-desc">
                 <ul>
-                    <!--                        <li>-->
-                    <!--                            <label for="">Тип клиники:</label>-->
-                    <!--                            <p>Клиника</p>-->
-                    <!--                        </li>-->
                     <li>
                         <label for="">Название клиники:</label>
                         <input type="text" name="NAME_CLINIC" value="<?=$arFields['NAME']?>">
