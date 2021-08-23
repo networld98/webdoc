@@ -61,14 +61,13 @@ console_log($arResult);
             if($ar_res = $res->GetNext()){?>
                 <?=$ar_res['NAME']?>
             <?}?>
-            <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"]):?>
-                <?echo " · "?>
+            <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"] && $arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"] != '-'):?>                <?echo " · "?>
                 <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
                 if($ar_res = $res->GetNext()){?>
                     <?=$ar_res['NAME']?>
                 <?}?>
             <?endif;?>
-            <?if($arResult["PROPERTIES"]["RANK"]["VALUE"]):?>
+            <?if($arResult["PROPERTIES"]["RANK"]["VALUE"] && $arResult["PROPERTIES"]["RANK"]["VALUE"] != '-'):?>
                 <?= " · "?>
                 <?=$arResult['PROPERTIES']['RANK']['VALUE']?>
             <?endif;?>
