@@ -970,6 +970,13 @@ label.photoFile-label {
         text-align: left;
         margin-bottom: 10px;
     }
+    .pagination-lc .load_more {
+        margin-top: 24px;
+    }
+    footer.footer {
+        position: relative;
+        z-index: -1;
+    }
 
 }
 /*.smartfilter.main-filter .bx_filter_parameters_box.delay:nth-child(8n) {*/
@@ -1032,3 +1039,52 @@ label.photoFile-label {
     cursor: default;
     background: #ececec;
 }
+/*POPUP*/
+
+@media (min-width: 1202px){
+    .call-popup .popup-box.custom__popup-box {
+        width: 95vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .flex-right.custom__flex-right {
+        height: 95vh;
+        overflow-y: auto;
+    }
+    .close.custom__close {
+        top: 27px;
+        right: 55px;
+    }
+    .flex-left .doctors-list-item__description {
+        padding: 40px 20px 25px 32px;
+    }
+    .doctors-list-item__description-phone {
+        font-size: 22px;
+        vertical-align: middle;
+        margin-left: 20px;
+        position: relative;
+    }
+    .doctors-list-item__description-phone span{
+        position: absolute;
+        left: -33px;
+        content: '';
+        display: inline-block;
+        /*margin-left: 20px;*/
+        /*margin-right: 4px;*/
+        width: 28px;
+        height: 28px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue-new.svg);
+    }
+    .clinic-card .call-popup .title-h2 {
+        margin-bottom: 55px;
+    }
+
+}
+
+
+
+
+

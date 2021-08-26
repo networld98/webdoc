@@ -61,14 +61,13 @@ console_log($arResult);
             if($ar_res = $res->GetNext()){?>
                 <?=$ar_res['NAME']?>
             <?}?>
-            <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"]):?>
-                <?echo " · "?>
+            <?if($arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"] && $arResult["PROPERTIES"]["SPECIALIZATION_DOP"]["VALUE"] != '-'):?>                <?echo " · "?>
                 <?$res = CIBlockSection::GetByID($arResult['PROPERTIES']['SPECIALIZATION_DOP']['VALUE']);
                 if($ar_res = $res->GetNext()){?>
                     <?=$ar_res['NAME']?>
                 <?}?>
             <?endif;?>
-            <?if($arResult["PROPERTIES"]["RANK"]["VALUE"]):?>
+            <?if($arResult["PROPERTIES"]["RANK"]["VALUE"] && $arResult["PROPERTIES"]["RANK"]["VALUE"] != '-'):?>
                 <?= " · "?>
                 <?=$arResult['PROPERTIES']['RANK']['VALUE']?>
             <?endif;?>
@@ -779,8 +778,8 @@ console_log($arResult);
     </div>
 </div>
 <div class="call-popup">
-    <div class="popup-box popup-scroll">
-        <div class="close"></div>
+    <div class="popup-box popup-scroll custom__popup-box">
+        <div class="close custom__close"></div>
         <div class="doctors-list call" style="width: 100%;">
             <div class="doctors-list-item">
                 <div class="flex-content">
@@ -792,7 +791,7 @@ console_log($arResult);
                         <?formRecord($arResult,'Вызов врача на дом')?>
                     </div>
                 </div>
-                <div class="flex-right">
+                <div class="flex-right custom__flex-right">
                     <h2 class="title-h2">Вызов врача на дом</h2>
                     <?$APPLICATION->IncludeComponent("bitrix:form.result.new","doctor_home",Array(
                             "SEF_MODE" => "N",

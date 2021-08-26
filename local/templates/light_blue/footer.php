@@ -160,6 +160,7 @@ IncludeTemplateLangFile(__FILE__);
         if (!content) {
             return false;
         } else if (content.classList.contains('expand')) {
+            console.log(321);
             if($(this).text() == "Показать ещё") {
                 $(content).slideToggle();
                 $(this).text('Свернуть');

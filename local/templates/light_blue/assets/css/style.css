@@ -464,6 +464,7 @@ main > .container:last-child {
     max-width: 1200px;
     height: 70%;
 }
+
 .map-wrapper .popup-box {
     max-height: 500px;
 }
@@ -1250,26 +1251,26 @@ main {
     color: #000000;
 }
 
-.doctors-list-item__description-phone span {
-    /*font-family: "Ubuntu-Light";*/
-    /*font-style: normal;*/
-    /*font-weight: 300;*/
-    /*font-size: 13px;*/
-    /*line-height: 15px;*/
-    /*color: #8A8A8A;*/
-    /*display: block;*/
-    /*margin-bottom: 2px;*/
-    display: block;
-    content: '';
-    margin-left: 20px;
-    width: 28px;
-    height: 28px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    /*background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue.svg);*/
-    background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue-new.svg);
-}
+/*.doctors-list-item__description-phone span {*/
+/*    !*font-family: "Ubuntu-Light";*!*/
+/*    !*font-style: normal;*!*/
+/*    !*font-weight: 300;*!*/
+/*    !*font-size: 13px;*!*/
+/*    !*line-height: 15px;*!*/
+/*    !*color: #8A8A8A;*!*/
+/*    !*display: block;*!*/
+/*    !*margin-bottom: 2px;*!*/
+/*    display: block;*/
+/*    content: '';*/
+/*    margin-left: 20px;*/
+/*    width: 28px;*/
+/*    height: 28px;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center;*/
+/*    background-size: contain;*/
+/*    background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue-new.svg);*/
+/*    !*background-image: url(/local/templates/light_blue/assets/css/../images/phone-ico-blue.svg);*!*/
+/*}*/
 .doctors-list-item__description-counts {
 font-family: "Ubuntu-Light";
 font-style: normal;
@@ -4595,6 +4596,7 @@ button:focus {
 }
 .personal-cabinet-content__price-page__content.active {
     display: flex;
+    /*display: block;*/
 }
 .personal-cabinet-content__price-page__content__list {
     display: flex;
@@ -8138,6 +8140,7 @@ button:focus {
         margin-bottom: 0;
     }
 }
+
 @media (max-width: 600px) {
     .popup-box {
         max-width: 414px;
@@ -9347,6 +9350,13 @@ button:focus {
     }
 }
 @media (max-width: 450px) {
+
+    .personal-cabinet-content__price-page__content__list-box {
+        position: inherit;
+    }
+    .personal-cabinet-content__price-page__content.active {
+        display: block;
+    }
     .personal-cabinet .del-city {
         right: -20px;
     }
