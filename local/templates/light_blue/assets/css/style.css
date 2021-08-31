@@ -7690,7 +7690,8 @@ button:focus {
     .popup-window {
         left: 15px!important;
         max-width: calc(100% - 30px)!important;
-        max-height: initial;
+        /*max-height: initial;*/
+        max-height: 55vh;
     }
 
     /*.bx_filter_section .smartfilter.main-filter .row > div:first-child > div:first-child {*/
