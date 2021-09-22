@@ -231,7 +231,7 @@ CModule::IncludeModule("form"); ?>
                                     <? } ?>
                                     <? if ($arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && count(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0]))>1){?>
                                         <p class="doctor-card__clinic-adress">
-                                            <?if(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=''){
+                                            <?if(explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!='' && explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]){
                                                 echo explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3];?>,
                                             <?}?>
                                             <?=explode('/',$arItem["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,

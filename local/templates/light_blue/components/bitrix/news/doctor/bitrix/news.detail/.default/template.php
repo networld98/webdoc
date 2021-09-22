@@ -91,7 +91,7 @@ console_log($arResult);
         <?}?>
         <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
             <p class="doctor-card__clinic-adress">
-                <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=''){
+                <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!='' && explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]){
                     echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3];?>,
                 <?}?>
                 <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
@@ -103,7 +103,7 @@ console_log($arResult);
         <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]):
             global $clinicAddress;?>
             <p class="doctor-card__clinic-adress">
-                <?if($clinicAddress[0]['REGION']!=NULL){
+                <?if($clinicAddress[0]['REGION']!=NULL && $clinicAddress[0]['REGION']!=$clinicAddress[0]['CITY']){
                     echo $clinicAddress[0]['REGION'];?>,
                 <?}?>
                 <?=$clinicAddress[0]['CITY']?>,
@@ -268,7 +268,7 @@ console_log($arResult);
 
                     <?if($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0] && $arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]==NULL):?>
                         <p class="doctor-card__clinic-adress">
-                            <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=''){
+                            <?if(explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!='' && explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3]!=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]){
                                 echo explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[3];?>,
                             <?}?>
                             <?=explode('/',$arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"][0])[0]?>,
@@ -279,7 +279,7 @@ console_log($arResult);
                         </p>
                     <?elseif($arResult["PROPERTIES"]["CLINIK"]["VALUE"][0]):?>
                         <p class="doctor-card__clinic-adress">
-                            <?if($clinicAddress[0]['REGION']!=NULL){
+                            <?if($clinicAddress[0]['REGION']!=NULL && $clinicAddress[0]['REGION']!=$clinicAddress[0]['CITY']){
                                 echo $clinicAddress[0]['REGION'];?>,
                             <?}?>
                             <?=$clinicAddress[0]['CITY']?>,
@@ -720,7 +720,7 @@ console_log($arResult);
                             ?>
                             <?if($prop['ADDRESS']['VALUE']):?>
                                 <p class="doctor-card__clinic-adress">
-                                    <?if($nameRegion!=NULL){
+                                    <?if($nameRegion!=NULL && $nameRegion!=$nameCityClinic){
                                         echo $nameRegion;?>,
                                     <?}?>
                                     <?=$nameCityClinic?>,
@@ -749,7 +749,7 @@ console_log($arResult);
                 foreach ($arResult["PROPERTIES"]["RECEPTION_ADDRESSES"]["VALUE"] as $adr){
                     if(!in_array(explode('/',$adr)[1],$fullAddress)){?>
                     <p class="doctor-card__clinic-adress">
-                        <?if(explode('/',$adr)[3]!=''){
+                        <?if(explode('/',$adr)[3]!='' && explode('/',$adr)[3]!=explode('/',$adr)[0]){
                             echo explode('/',$adr)[3];?>,
                         <?}?>
                         <?=explode('/',$adr)[0]?>,

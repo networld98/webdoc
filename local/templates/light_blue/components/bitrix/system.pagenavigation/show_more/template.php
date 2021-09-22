@@ -24,8 +24,6 @@ $this->createFrame()->begin("Загрузка навигации");
                 url: url,
                 dataType: 'html',
                 success: function(data){
-                    console.log('qweqwe')
-
                     //  Удаляем старую навигацию
                     $('.load_page').remove();
                     var elements = $(data).find('.card-item'),  //  Ищем элементы

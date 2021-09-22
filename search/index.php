@@ -51,7 +51,7 @@ $APPLICATION->SetTitle("Поиск");
     <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
     <?$APPLICATION->IncludeComponent(
 	"bitrix:search.page", 
-	"custom", 
+	"custom_v3",
 	array(
 		"TAGS_SORT" => "NAME",
 		"TAGS_PAGE_ELEMENTS" => "150",

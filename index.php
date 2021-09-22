@@ -1,15 +1,6 @@
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("description", "Выбор врача и клиники по отзывам от настоящих пользователей, по месторасположению и ценам. Актуальные контактные данные клиник, статьи по медицине и полезные материалы.");
 $APPLICATION->SetTitle("doctora.clinic - осознанный выбор врача, клиники и медицинских услуг в вашем городе"); ?>
-<?/*
-    $url = explode('/',$_SERVER['SCRIPT_URL']);
-    $param = strpos($_SERVER['QUERY_STRING'], 'arrFilter');
-    if($url[1]!=="clinics" && $param!==NULL){
-    header("HTTP/1.1 301 Moved Permanently");
-    header('Location: http://doc.btx.bz/clinics/?'.$_SERVER['QUERY_STRING']);
-        exit;
-    }
-*/?>
 <div class="container main__header">
     <div class="head">
         <h1 class="head__text">
@@ -43,7 +34,7 @@ $APPLICATION->SetTitle("doctora.clinic - осознанный выбор вра�
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "9",
 		"PAGER_PARAMS_NAME" => "arrPager",
-		"PREFILTER_NAME" => "",
+        "PREFILTER_NAME" => "smartPreFilter",
 		"SAVE_IN_SESSION" => "N",
 		"SECTION_CODE" => "search",
 		"SECTION_DESCRIPTION" => "-",

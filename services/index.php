@@ -1,8 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Услуги");
-?>
-<?
+global $smartPreFilter;
 $curPagePath = $APPLICATION->GetCurDir();
 $curPagePath = explode("/", $curPagePath);
 function services_list($iblock){
@@ -18,8 +16,8 @@ function services_list($iblock){
             $arItem = $ob->GetFields();
             $services[$ar_result['NAME']][] = array("NAME" => $arItem['NAME'], "URL" => $arItem['DETAIL_PAGE_URL']);
         }
-    }?>
-    <?foreach ($services as $key=> $service){?>
+    }
+    foreach ($services as $key=> $service){?>
         <div class="services-list-item">
             <h3 class="title-h3"><?=$key?><span class="services-list-item__count"><?=count($service)?></span></h3>
             <ul class="services-list-item__list">
@@ -28,8 +26,7 @@ function services_list($iblock){
                 <?}?>
         </div>
     <?}
-}
-?>
+}?>
 <div class="full-screen__filter-bg services-filter">
     <section class="container">
         <? $APPLICATION->IncludeComponent(
@@ -48,7 +45,7 @@ function services_list($iblock){
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "9",
 		"PAGER_PARAMS_NAME" => "arrPager",
-		"PREFILTER_NAME" => "",
+        "PREFILTER_NAME" => "smartPreFilter",
 		"SAVE_IN_SESSION" => "N",
 		"SECTION_CODE" => "",
 		"SECTION_DESCRIPTION" => "-",
