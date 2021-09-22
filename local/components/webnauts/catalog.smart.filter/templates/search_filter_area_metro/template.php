@@ -85,11 +85,10 @@ while($ob = $res->GetNextElement()){
 
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal <?if($APPLICATION->GetCurDir() == '/doctors/'){?>doctor-page<?}?>">
     <div class="bx_filter_section container">
-        <?/*	<div class="bx_filter_title"><?echo GetMessage("CT_BCSF_FILTER_TITLE")?></div>*/?>
         <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter main-filter">
             <div class="row">
                 <div class="col-12 col-sm-11">
-                    <div class="bx_filter_parameters_box active <?if($metroCount == 0):?>non-metro<?endif ?> col-12 <?if(($APPLICATION->GetCurDir() == '/doctors/' || $APPLICATION->GetCurDir() == '/clinics/') && $areaCount == 0 && $metroCount == 0){?>col-sm-11 none-area-fix<?}else{?>col-sm-6<?}?> search-order">
+                    <div class="bx_filter_parameters_box active <?if($metroCount == 0):?>non-metro<?endif ?> col-12 <?if($areaCount == 0 && $metroCount == 0){?>col-sm-11 none-area-fix<?}else{?>col-sm-6<?}?> search-order">
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container checkboxes">
                                 <?$APPLICATION->IncludeComponent(
@@ -207,8 +206,6 @@ while($ob = $res->GetNextElement()){
                             if ($arItem["DISPLAY_EXPANDED"] == "Y"): ?>active<?endif ?> <?
                             if ($arItem["DISPLAY_TYPE"] == "P"):?>col-12 col-sm-6<?endif ?> <?if($arItem['CODE'] == "AREA" && $metroCount == 0):?>non-metro<?endif ?>" <?if(($arItem['CODE'] != "METRO" && $arItem['CODE'] != "AREA") || ($arItem['CODE'] == "METRO" && $metroCount == 0) ){?>style="display:none;"<?}?>>
                                 <span class="bx_filter_container_modef"></span>
-                                <!--					<div class="bx_filter_parameters_box_title" onclick="smartFilter.hideFilterProps(this)">-->
-                                <?//=$arItem["NAME"]?><!--</div>-->
                                 <div class="bx_filter_block">
                                     <div class="bx_filter_parameters_box_container checkboxes">
                                         <?
