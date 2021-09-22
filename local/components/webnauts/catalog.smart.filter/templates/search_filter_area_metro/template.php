@@ -88,7 +88,7 @@ while($ob = $res->GetNextElement()){
         <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter main-filter">
             <div class="row">
                 <div class="col-12 col-sm-11">
-                    <div class="bx_filter_parameters_box active <?if($metroCount == 0):?>non-metro<?endif ?> col-12 <?if($areaCount == 0 && $metroCount == 0){?>col-sm-11 none-area-fix<?}else{?>col-sm-6<?}?> search-order">
+                    <div class="bx_filter_parameters_box active <?if($metroCount == 0):?>non-metro<?endif ?> col-12 <?if($areaCount == 0 && $metroCount == 0){?>col-sm-6<?}else{?>col-sm-6<?}?> search-order">
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container checkboxes">
                                 <?$APPLICATION->IncludeComponent(
@@ -603,6 +603,23 @@ while($ob = $res->GetNextElement()){
                         }
                     }
                     ?>
+                    <?if($areaCount == 0 && $metroCount == 0){?>
+                    <div class="bx_filter_parameters_box active col-12 col-sm-6 non-metro">
+                        <span class="bx_filter_container_modef"></span>
+                        <div class="bx_filter_block">
+                            <div class="bx_filter_parameters_box_container checkboxes">
+                                <div class="bx_filter_select_container" id="input_93">
+                                    <div class="bx_filter_select_block disabled" >
+                                        <input type="text" class="city_input city_input_93" onkeyup="smartFilter.showDropDownPopup(this, '93')" "="">
+                                        <div class="bx_filter_select_text" data-role="currentOption">Район</div>
+                                        <div class="bx_filter_select_arrow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clb"></div>
+                        </div>
+                    </div>
+                    <?}?>
                 </div>
                 <div class="col-12 col-sm-1">
                     <div class="bx_filter_button_box active">
