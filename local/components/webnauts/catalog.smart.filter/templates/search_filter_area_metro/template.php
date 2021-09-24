@@ -618,23 +618,6 @@ while($ob = $res->GetNextElement()){
                         }
                     }
                     ?>
-                    <?if($areaCount == 0 && $metroCount == 0){?>
-                    <div class="bx_filter_parameters_box active col-12 col-sm-6 non-metro">
-                        <span class="bx_filter_container_modef"></span>
-                        <div class="bx_filter_block">
-                            <div class="bx_filter_parameters_box_container checkboxes">
-                                <div class="bx_filter_select_container" id="input_93">
-                                    <div class="bx_filter_select_block disabled" >
-                                        <input type="text" class="city_input city_input_93" onkeyup="smartFilter.showDropDownPopup(this, '93')" "="">
-                                        <div class="bx_filter_select_text" data-role="currentOption">Район</div>
-                                        <div class="bx_filter_select_arrow"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clb"></div>
-                        </div>
-                    </div>
-                    <?}?>
                 </div>
                 <div class="col-12 col-sm-1">
                     <div class="bx_filter_button_box active">

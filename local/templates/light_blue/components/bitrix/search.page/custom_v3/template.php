@@ -21,7 +21,12 @@
 		<?echo GetMessage("CT_BSP_KEYBOARD_WARNING", array("#query#"=>'<a href="'.$arResult["ORIGINAL_QUERY_URL"].'">'.$arResult["REQUEST"]["ORIGINAL_QUERY"].'</a>'))?>
 	</div><br />
 <?endif;?>
-    <?foreach ($arResult['SEARCH'] as $item){
+
+    <?
+    foreach ($arResult['SEARCH'] as $item){
+        $cityCodes = [];
+        $metroCodes = [];
+        $areaCodes[] = [];
         $cityId=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['CITY']['VALUE'];
         $areaId=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['AREA']['VALUE'];
         $metroIds=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['METRO']['VALUE'];
@@ -30,7 +35,7 @@
         }
         if (is_array($cityId)){
             foreach ($cityId as $city){
-                $cityCodes[] = CIBlockSection::GetByID($city)->GetNext()['CODE'];
+                $cityCodes[] = str_replace('-','',CIBlockSection::GetByID($city)->GetNext()['CODE']) ;
             }
         }
         if (is_array($areaId)){
@@ -39,12 +44,12 @@
             }
         }
         if ($item['PARAM2'] == '9'){
-            if($_GET['arrFilter_94'] == CIBlockSection::GetByID($cityId)->GetNext()['CODE'] ){
+            if($_GET['arrFilter_94'] == str_replace('-','',CIBlockSection::GetByID($cityId)->GetNext()['CODE']) ){
                 $search[$item['PARAM2']][] = $item['ITEM_ID'];
             }
         }
         if ($item['PARAM2'] == '10'){
-            if($_GET['arrFilter_94'] == CIBlockSection::GetByID($cityId[0])->GetNext()['CODE']){
+            if(in_array(['arrFilter_94'],$cityCodes)){
                 $search[$item['PARAM2']][] = $item['ITEM_ID'];
             }
         }
@@ -52,6 +57,7 @@
             $search[$item['PARAM2']][] = $item['ITEM_ID'];
         }
     }
+
     ?>
     <? if (!empty($_GET['q']) && count($search) != 0){?>
         <div class="search-result"><?echo GetMessage("CT_BSP_FOUND")?>:
