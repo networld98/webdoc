@@ -14,14 +14,7 @@ $this->setFrameMode(true);
 require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
 ?>
 <?
-global $noneSearch;
-$countSearchClinic = count($arResult['ITEMS']);
-$this->SetViewTarget('searchCountClinic'); ?>
-<?if ($countSearchClinic!=NULL){?><a href="#blockClinic"><strong><?= $countSearchClinic?></strong> клиник(а)/врачей(а); <?}?></a>
-<?$this->EndViewTarget();?>
-<?
-if($arResult['ITEMS']!=NULL) {
-    $noneSearch++; ?>
+if($arResult['ITEMS']!=NULL) {?>
     <div id="blockClinic">
         <h2>Клиники/Врачи</h2>
     </div>
@@ -31,9 +24,7 @@ if($arResult['ITEMS']!=NULL) {
             <li class="doctors-list-item_options-list-item"><?= $prop["NAME"] ?></li>
         <?endif;
     }
-
     ?>
-
     <div class="list-item clinic-list">
         <? foreach ($arResult["ITEMS"] as $arItem):?>
             <?
@@ -373,6 +364,5 @@ if($arResult['ITEMS']!=NULL) {
     <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
         <br /><?=$arResult["NAV_STRING"]?>
     <?endif;?>
-    <a href="/clinics/" class="load_more">Показать все</a>
 <?}?>
 

@@ -13,47 +13,11 @@
 $this->setFrameMode(true);
 CModule::IncludeModule("iblock");
 CModule::IncludeModule("form"); ?>
-<?
-global $noneSearch;
-$countSearchDoctor = count($arResult['ITEMS']);
-$this->SetViewTarget('searchCountDoctor'); ?>
-<?if ($countSearchDoctor!=NULL){?><a href="#blockDoctor"><strong><?= $countSearchDoctor?></strong> врач(а); <?}?></a>
-<?$this->EndViewTarget();?>
-<?if($arResult['ITEMS']!=NULL){
-    $noneSearch++; ?>
-<style>
-    .card-item:last-child {
-        border-radius: 10px;
-        margin-bottom: 30px;
-    }
-</style>
+<?if($arResult['ITEMS']!=NULL){?>
 <div id="blockDoctor">
     <h2>Врачи</h2>
 </div>
 <section class="result-filter">
-    <? /* <div class="options-block">
-		<div class="sort-block">
-			<ul class="sort-block-list">
-				<li class="sort-block-list-item active">Популярные</li>
-				<li class="sort-block-list-item">Рейтинг</li>
-				<li class="sort-block-list-item">Стаж</li>
-				<li class="sort-block-list-item">Стоимость</li>
-				<li class="sort-block-list-item">Отзывы</li>
-			</ul>
-			<select name="" id="" class="sort-block-list__select">
-				<option value="">Популярные</option>
-				<option value="">Рейтинг</option>
-				<option value="">Стаж</option>
-				<option value="">Стоимость</option>
-				<option value="">Отзывы</option>
-			</select>
-		</div>
-		<div class="calendar-block">
-			<select class="calendar">
-				<option value="">Расписание на <a href="">все дни</a></option>
-			</select>
-		</div>
-	</div>*/ ?>
     <div class="list-item doctors-list">
         <? foreach ($arResult["ITEMS"] as $arItem): ?>
             <?
@@ -308,35 +272,8 @@ $this->SetViewTarget('searchCountDoctor'); ?>
             </script>
         <? endforeach; ?>
     </div>
-    <!--
-
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    Кусок кода по макету , но я не разобрался где отрисовывается .show-more , чтобы подставить все
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    <div class="doctor-pagination">
-		<div class="doctor-pagination_show-more">
-			<button>Показать ещё</button>
-		</div>
-		<div class="doctor-pagination_block">
-			<span class="doctor-pagination_block__arrows arrow-left"></span>
-			<ul class="doctor-pagination_block-list">
-				<li class="doctor-pagination_block-list-item">1</li>
-				<li class="doctor-pagination_block-list-item active">2</li>
-				<li class="doctor-pagination_block-list-item">3</li>
-				<li class="doctor-pagination_block-list-item">4</li>
-				<li class="doctor-pagination_block-list-item">5</li>
-				<li class="doctor-pagination_block-list-item">6</li>
-				<li class="doctor-pagination_block-list-item">7</li>
-				<li class="doctor-pagination_block-list-item">...</li>
-				<li class="doctor-pagination_block-list-item">25</li>
-			</ul>
-			<span class="doctor-pagination_block__arrows arrow-right"></span>
-		</div>
-	</div> -->
 </section>
 <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
     <?= $arResult["NAV_STRING"] ?>
 <? endif; ?>
-    <a href="/doctors/" class="load_more">Показать все</a>
 <?}?>

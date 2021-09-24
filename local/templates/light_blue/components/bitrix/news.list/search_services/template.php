@@ -12,69 +12,25 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<?
-global $noneSearch;
-global $countSearchService;
-global $countSearchIllness;
-global $countSearchArticles;
-global $countSearchSymptoms;
-if($countSearchService==NULL && ($arParams['IBLOCK_ID'] == 18 || $arParams['IBLOCK_ID'] == 19)){
-    $countSearchService = count($arResult['ITEMS']);
-    $noneSearch++;
-    $this->SetViewTarget('searchCountService'); ?>
-    <? if ($countSearchService != NULL) { ?><a href="#blockService">
-        <strong><?= $countSearchService ?></strong> услуг(а); <? } ?></a>
-    <? $this->EndViewTarget();
-}elseif($countSearchIllness==NULL && $arParams['IBLOCK_ID'] == 21){
-    $countSearchIllness = count($arResult['ITEMS']);
-    $noneSearch++;
-    $this->SetViewTarget('searchCountService'); ?>
-    <? if ($countSearchIllness != NULL) { ?><a href="#blockIllness">
-        <strong><?= $countSearchIllness ?></strong> болезнь(ей); <? } ?></a>
-    <? $this->EndViewTarget();
-}elseif($countSearchSymptoms==NULL && $arParams['IBLOCK_ID'] == 22){
-    $countSearchSymptoms = count($arResult['ITEMS']);
-    $noneSearch++;
-    $this->SetViewTarget('searchCountService'); ?>
-    <? if ($countSearchSymptoms != NULL) { ?><a href="#blockSymptoms">
-        <strong><?= $countSearchSymptoms ?></strong> симптом(ов); <? } ?></a>
-    <? $this->EndViewTarget();
-}elseif($countSearchArticles==NULL && $arParams['IBLOCK_ID'] == 21){
-    $countSearchArticles = count($arResult['ITEMS']);
-    $noneSearch++;
-    $this->SetViewTarget('searchCountService'); ?>
-    <? if ($countSearchArticles != NULL) { ?><a href="#blockArticles">
-        <strong><?= $countSearchArticles ?></strong> статья(и); <? } ?></a>
-    <? $this->EndViewTarget();
-}?>
-<div class="row">
-    <?foreach($arResult["ITEMS"] as $arItem):?>
-        <?
-        $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-        $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-        ?>
-        <div class="col-lg-12">
-            <div class="variable-block-item">
-                <h3 class="title-article"><a href="<?if($arParams['IBLOCK_ID'] == 20 || $arParams['IBLOCK_ID'] == 21 || $arParams['IBLOCK_ID'] == 22 ){?>https://lib.webdoc.clinic<?}?><?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem['NAME']?></a></h3>
-                <p class="article-preview"><?=$arItem["PREVIEW_TEXT"]?></p>
+<?if($arResult['ITEMS']!=NULL){?>
+<section class="result-filter">
+    <div class="row list-item">
+        <?foreach($arResult["ITEMS"] as $arItem):?>
+            <?
+            $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+            $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+            ?>
+            <div class="col-lg-12 card-item">
+                <div class="variable-block-item">
+                    <h3 class="title-article"><a href="<?if($arParams['IBLOCK_ID'] == 20 || $arParams['IBLOCK_ID'] == 21 || $arParams['IBLOCK_ID'] == 22 ){?>https://lib.webdoc.clinic<?}?><?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem['NAME']?></a></h3>
+                    <p class="article-preview"><?=$arItem["PREVIEW_TEXT"]?></p>
+                </div>
             </div>
-        </div>
-    <?endforeach;?>
+        <?endforeach;?>
+    </div>
+</section>
     <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
         <br /><?=$arResult["NAV_STRING"]?>
     <?endif;?>
-</div>
-
-<?if ($iblockId == 18 || $iblockId == 19){
-    $link ='/services/';
-}elseif ($iblockId == 20){
-    $link ='lib.webdoc.clinic/articles/';
-}elseif ($iblockId == 21){
-    $link ='lib.webdoc.clinic/illness/';
-}elseif ($iblockId == 22){
-    $link ='lib.webdoc.clinic/symptoms/';
-}
-?>
-<?if($arResult['ITEMS']!=NULL){?>
-    <a href="<?=$link?>" class="load_more">Показать все</a>
 <?}?>
+

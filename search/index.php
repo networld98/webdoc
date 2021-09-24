@@ -2,6 +2,39 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Поиск");
 ?>
+<?
+global $smartPreFilter;
+if($_COOKIE['bxmaker_geoip_2_4_2_city'] == NULL){
+    $_COOKIE['bxmaker_geoip_2_4_2_city'] = $_COOKIE[bxmaker_geoip_2_4_2_city];
+}
+if($_COOKIE['bxmaker_geoip_2_4_2_region'] == NULL){
+    $_COOKIE['bxmaker_geoip_2_4_2_region'] = $_COOKIE[bxmaker_geoip_2_4_2_region];
+}
+\Bitrix\Main\Loader::includeModule('iblock');
+$rsSection = \Bitrix\Iblock\SectionTable::getList(array(
+    'filter' => array(
+        'IBLOCK_ID' => 14,
+        'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_city'],
+    ),
+    'select' =>  array('ID'),
+));
+while ($arSection=$rsSection->fetch())
+{
+    $cityId = $arSection['ID'];
+}
+$dbItems = \Bitrix\Iblock\ElementTable::getList(array(
+    'filter' => array(
+        'IBLOCK_ID' => 27,
+        'NAME' => $_COOKIE['bxmaker_geoip_2_4_2_region'],
+    ),
+    'select' =>  array('ID'),
+));
+while ($arElement=$dbItems->fetch())
+{
+    $regionId = $arElement['ID'];
+}
+
+$smartPreFilter = array("PROPERTY_CITY" => $cityId, "PROPERTY_REGION" => $regionId);?>
 <section class="clinic-card">
     <? $APPLICATION->IncludeComponent(
 	"webnauts:catalog.smart.filter",
@@ -19,7 +52,7 @@ $APPLICATION->SetTitle("Поиск");
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "9,10,18,19,20,21,22",
 		"PAGER_PARAMS_NAME" => "arrPager",
-		"PREFILTER_NAME" => "",
+        "PREFILTER_NAME" => "smartPreFilter",
 		"SAVE_IN_SESSION" => "N",
 		"SECTION_CODE" => "",
 		"SECTION_DESCRIPTION" => "-",
