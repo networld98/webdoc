@@ -50,7 +50,7 @@ $smartPreFilter = array("PROPERTY_CITY" => $cityId, "PROPERTY_REGION" => $region
 		"FILTER_VIEW_MODE" => "vertical",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"IBLOCK_TYPE" => "content",
-		"IBLOCK_ID" => "9,10,18,19,20,21,22",
+		"IBLOCK_ID" => '10',
 		"PAGER_PARAMS_NAME" => "arrPager",
         "PREFILTER_NAME" => "smartPreFilter",
 		"SAVE_IN_SESSION" => "N",
@@ -84,7 +84,7 @@ $smartPreFilter = array("PROPERTY_CITY" => $cityId, "PROPERTY_REGION" => $region
     <h1 class="title-h2"><?$APPLICATION->ShowTitle()?></h1>
     <?$APPLICATION->IncludeComponent(
 	"bitrix:search.page", 
-	"custom_v3",
+	"custom",
 	array(
 		"TAGS_SORT" => "NAME",
 		"TAGS_PAGE_ELEMENTS" => "150",

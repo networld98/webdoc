@@ -32,7 +32,7 @@ $APPLICATION->SetTitle("doctora.clinic - осознанный выбор вра�
 		"FILTER_VIEW_MODE" => "vertical",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"IBLOCK_TYPE" => "content",
-		"IBLOCK_ID" => "9",
+		"IBLOCK_ID" => "10",
 		"PAGER_PARAMS_NAME" => "arrPager",
         "PREFILTER_NAME" => "smartPreFilter",
 		"SAVE_IN_SESSION" => "N",
