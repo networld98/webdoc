@@ -379,21 +379,27 @@ $(document).ready(()=>{
         var data = $(this).data('tabs');
         $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
         $(this).on("click" ,function () {
+            console.log('click!');
 
             if(window.outerWidth <= 650) {
                 var box = $(this).parents('.personal-cabinet-content__price-page__content').find('.personal-cabinet-content__price-page__content__list-box');
                 console.log($(this)[0]);
                 var calcHeight = $(this)[0].offsetTop + $(this).outerHeight() + box.outerHeight();
                 console.log(calcHeight);
+                $(this).css({'margin-bottom': 'unset'});
+
                 if($(this).delay(500).hasClass('active')){
                     $(this).parent().children().removeClass('active');
                     box.hide();
                     $(this).parents('.personal-cabinet-content__price-page__content').height('auto');
+                    // console.log($(this));
+
                 } else {
                     $(this).addClass('active');
                     var offsetTopLi = $(this)[0].offsetTop + $(this).outerHeight();
                     box.css({top: offsetTopLi + 'px'});
                     box.show();
+                    $(this).css({'margin-bottom': box.outerHeight()});
                    // $(this).parents('.personal-cabinet-content__price-page__content').height(calcHeight);
                     $(this).parents('.personal-cabinet-content__price-page__content').height('auto');
                     // $(this).on('click','.load_page-1007',function (){

@@ -9353,7 +9353,7 @@ button:focus {
 @media (max-width: 450px) {
 
     .personal-cabinet-content__price-page__content__list-box {
-        position: inherit;
+        /*position: inherit;*/
     }
     .personal-cabinet-content__price-page__content.active {
         display: block;
