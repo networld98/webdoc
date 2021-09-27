@@ -353,7 +353,6 @@ while($ob = $res->GetNextElement()){
                                                 <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && $areaCount == 0) || ($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                     <input type="text" class="city_input city_input_<?=mb_strtolower(CUtil::JSEscape($key))?>" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" <?/*id="city_input_search_<?=CUtil::JSEscape($key)?>*/?>">
                                                     <div class="bx_filter_select_text" data-role="currentOption"><?
-                                                        $allMetro=[];
                                                         foreach (array_unique($arItem["VALUES"]) as $val => $ar)
                                                         {
                                                             if ($ar["CHECKED"])
@@ -404,7 +403,7 @@ while($ob = $res->GetNextElement()){
                                                                 </label>
                                                             </li>
                                                             <?
-                                                            $allMetro = NULL;
+                                                            $allMetro=[];
                                                             foreach ($arItem["VALUES"] as $val => $ar):
                                                                 if($arItem['CODE'] == "METRO" && $allMetro != $ar["VALUE"]) {
                                                                     $allMetro = $ar["VALUE"];
@@ -618,6 +617,23 @@ while($ob = $res->GetNextElement()){
                         }
                     }
                     ?>
+                    <?if($areaCount == 0 && $metroCount == 0){?>
+                        <div class="bx_filter_parameters_box active col-12 col-sm-6 non-metro">
+                            <span class="bx_filter_container_modef"></span>
+                            <div class="bx_filter_block">
+                                <div class="bx_filter_parameters_box_container checkboxes">
+                                    <div class="bx_filter_select_container" id="input_93">
+                                        <div class="bx_filter_select_block disabled" >
+                                            <input type="text" class="city_input city_input_93" onkeyup="smartFilter.showDropDownPopup(this, '93')" "="">
+                                            <div class="bx_filter_select_text" data-role="currentOption">Район</div>
+                                            <div class="bx_filter_select_arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clb"></div>
+                            </div>
+                        </div>
+                    <?}?>
                 </div>
                 <div class="col-12 col-sm-1">
                     <div class="bx_filter_button_box active">
@@ -874,7 +890,7 @@ while($ob = $res->GetNextElement()){
                                             <label class="bx_filter_param_label disabled">
 										<span class="bx_filter_input_checkbox">
 											        <div class="checkbox"><img src="/local/templates/light_blue/assets/images/checkbox.svg" alt=""></div>
-											<?
+                                            <?
                                             $search  = array('По полису');
                                             $replace = array('Полис');
                                             ?>
@@ -884,7 +900,7 @@ while($ob = $res->GetNextElement()){
 
 
                                         <?}?>
-                                        <?foreach($arItem["VALUES"] as $val => $ar):?>
+                                            <?foreach($arItem["VALUES"] as $val => $ar):?>
 
                                             <label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label <? echo $ar["DISABLED"] ? 'disabled': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
 										<span class="bx_filter_input_checkbox">

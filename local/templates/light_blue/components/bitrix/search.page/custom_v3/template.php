@@ -26,7 +26,7 @@
     foreach ($arResult['SEARCH'] as $item){
         $cityCodes = [];
         $metroCodes = [];
-        $areaCodes[] = [];
+        $areaCodes = [];
         $cityId=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['CITY']['VALUE'];
         $areaId=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['AREA']['VALUE'];
         $metroIds=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['METRO']['VALUE'];
@@ -49,7 +49,7 @@
             }
         }
         if ($item['PARAM2'] == '10'){
-            if(in_array(['arrFilter_94'],$cityCodes)){
+            if(in_array($_GET['arrFilter_94'],$cityCodes)){
                 $search[$item['PARAM2']][] = $item['ITEM_ID'];
             }
         }
