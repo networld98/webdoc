@@ -349,8 +349,8 @@ while($ob = $res->GetNextElement()){
                                                 }
                                             }
                                         }?>
-                                            <div class="bx_filter_select_container" id="input_<?=CUtil::JSEscape($key)?>">
-                                                <div class="bx_filter_select_block <?if(($arItem['CODE'] == "AREA" && $areaCount == 0) || ($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>disabled<?}?>" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
+                                            <div class="bx_filter_select_container" <?if(($arItem['CODE'] == "AREA" && $areaCount == 0) || ($arItem['CODE'] == "AREA" && $showArea == 0) || ($arItem['CODE'] == "METRO" && $metroCount == 0)){?>style="display: none"<?}?> id="input_<?=CUtil::JSEscape($key)?>">
+                                                <div class="bx_filter_select_block" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                     <input type="text" class="city_input city_input_<?=mb_strtolower(CUtil::JSEscape($key))?>" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" <?/*id="city_input_search_<?=CUtil::JSEscape($key)?>*/?>">
                                                     <div class="bx_filter_select_text" data-role="currentOption"><?
                                                         foreach (array_unique($arItem["VALUES"]) as $val => $ar)
@@ -417,15 +417,15 @@ while($ob = $res->GetNextElement()){
                                                                         <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?echo Cutil::translit(trim($ar["VALUE"], "."),"ru",$arParams);?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
                                                                     </li>
                                                                 <?}elseif($arItem['CODE'] != "METRO" ){
-                                                                $class = "";
-                                                                if ($ar["CHECKED"])
-                                                                    $class.= " selected";
-                                                                if ($ar["DISABLED"])
-                                                                    $class.= " disabled";
-                                                                ?>
-                                                                <li>
-                                                                    <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?echo Cutil::translit(trim($ar["VALUE"], "."),"ru",$arParams);?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
-                                                                </li>
+                                                                    $class = "";
+                                                                    if ($ar["CHECKED"])
+                                                                        $class.= " selected";
+                                                                    if ($ar["DISABLED"])
+                                                                        $class.= " disabled";
+                                                                    ?>
+                                                                    <li>
+                                                                        <label for="<?=$ar["CONTROL_ID"]?>" class="bx_filter_param_label<?=$class?> bx_filter_param_label_<?echo Cutil::translit(trim($ar["VALUE"], "."),"ru",$arParams);?>" data-role="label_<?=$ar["CONTROL_ID"]?>" onclick="smartFilter.selectDropDownItem(this, '<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')"><?echo trim($ar["VALUE"], ".")?></label>
+                                                                    </li>
                                                                 <?}
                                                             endforeach?>
                                                         </ul>
