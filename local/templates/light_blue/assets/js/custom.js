@@ -84,15 +84,6 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
-    if ($(".side-menu .bxmaker__geoip__city__line-question.js-bxmaker__geoip__city__line-question").css("display") === "block"){
-        $('.burger__btn').trigger('click');
-        $('.js-bxmaker__geoip__city__line-question-btn-yes').click(function () {
-            $('.burger__btn').trigger('click');
-        });
-        $('.js-bxmaker__geoip__city__line-question-btn-no').click(function () {
-            $('.burger__btn').trigger('click');
-        })
-    }
     $('#title-search-input').keyup(function () {
         setTimeout( () =>  $('.title-search-result').hide(), 1000)
     });
