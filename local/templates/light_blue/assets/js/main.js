@@ -380,13 +380,15 @@ $(document).ready(()=>{
         $(`.personal-cabinet-content__price-page__content__list-content[data-tabs="${data}"]`).toggleClass('active');
         $(this).on("click" ,function () {
             console.log('click!');
-
+            if($('.personal-cabinet-content__price-page__content__list > li').hasClass('active')){
+                $('.personal-cabinet-content__price-page__content__list > li').css({'margin-bottom': '0'});
+            }
             if(window.outerWidth <= 650) {
                 var box = $(this).parents('.personal-cabinet-content__price-page__content').find('.personal-cabinet-content__price-page__content__list-box');
                 console.log($(this)[0]);
                 var calcHeight = $(this)[0].offsetTop + $(this).outerHeight() + box.outerHeight();
                 console.log(calcHeight);
-                $(this).css({'margin-bottom': 'unset'});
+                // $(this).css({'margin-bottom': ''});
 
                 if($(this).delay(500).hasClass('active')){
                     $(this).parent().children().removeClass('active');
