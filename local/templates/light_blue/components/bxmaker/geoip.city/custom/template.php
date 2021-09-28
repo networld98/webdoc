@@ -108,7 +108,6 @@
             $('.bx_filter_param_label_<?=Cutil::translit($_COOKIE['bxmaker_geoip_2_4_2_region'],"ru",$arParams);?>').trigger('click');
         }else{
             $('.bx_filter_param_label_arrFilter_95').trigger('click');
-
         }
         $('.popup-window').hide();
     })
