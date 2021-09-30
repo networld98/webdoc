@@ -772,10 +772,13 @@ main >.main-seo-text {
     overflow-x: hidden;
 }
 .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box:nth-last-child(5){
-    display: none;
+display: none;
+}
+.bx_filter_parameters_box.active.non-metro.search-order {
+    display: block!important;
 }
 @media (max-width: 1430px) {
-.personal-cabinet-content__my-profile .contacts-group {
+    .personal-cabinet-content__my-profile .contacts-group {
     width: 100%;
 }
 }
