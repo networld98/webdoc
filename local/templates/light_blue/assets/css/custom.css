@@ -893,6 +893,10 @@ label.photoFile-label {
     }
 }
 @media (max-width: 450px) {
+    .col-12.col-sm-12.custom-col-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
     .container-flex .title-h2{
         margin: 0;
     }
