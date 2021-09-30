@@ -204,7 +204,7 @@ while($ob = $res->GetNextElement()){
                         if ($arItem['CODE'] != "SPECIALIZATION" && $arItem['CODE'] != "SPECIALIZATION_FULL") { ?>
                             <div class="bx_filter_parameters_box <?
                             if ($arItem["DISPLAY_EXPANDED"] == "Y"): ?>active<?endif ?> <?
-                            if ($arItem["DISPLAY_TYPE"] == "P"):?>col-12 col-sm-6<?endif ?> <?if($arItem['CODE'] == "AREA" && $metroCount == 0):?>non-metro<?endif ?>" <?if(($arItem['CODE'] != "METRO" && $arItem['CODE'] != "AREA") || ($arItem['CODE'] == "METRO" && $metroCount == 0) ){?>style="display:none;"<?}?>>
+                            if ($arItem["DISPLAY_TYPE"] == "P"):?>col-12 col-sm-6<?endif ?> <?if($arItem['CODE'] == "AREA" && $metroCount == 0):?>non-metro<?endif ?>" <?if(($arItem['CODE'] != "METRO" && $arItem['CODE'] != "AREA") || ($arItem['CODE'] == "METRO" && $metroCount == 0) || ($arItem['CODE'] == "AREA" && $areaCount == 0) ){?>style="display:none;"<?}?>>
                                 <span class="bx_filter_container_modef"></span>
                                 <div class="bx_filter_block">
                                     <div class="bx_filter_parameters_box_container checkboxes">
