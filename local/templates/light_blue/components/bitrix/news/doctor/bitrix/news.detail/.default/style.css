@@ -14,3 +14,7 @@ div.news-detail img.detail_picture
 .more-adress-content hr:first-child, .more-adress-content hr:last-child{
 	display: none;
 }
+.custom_tel_icon {
+	margin-left: 10px;
+	margin-bottom: 5px
+}

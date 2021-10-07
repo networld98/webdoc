@@ -215,7 +215,9 @@ console_log($arResult);
                         <p class="doctor-card__description-price"><?=$arResult["PROPERTIES"]["PRICE"]["VALUE"]?> Р<span>Цена приема в клинике</span></p>
                     <?endif;?>
                     <?if($arResult["PROPERTIES"]["PHONE"]["VALUE"]):?>
-                        <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctor-card__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?></a>
+                        <a href="tel:<?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>" class="doctor-card__description-phone"><span>Телефон для записи:</span><?=$arResult["PROPERTIES"]["PHONE"]["VALUE"]?>
+                            <img class="custom_tel_icon" src="/local/templates/light_blue/assets/images/custom_tel.svg" alt="tel">
+                        </a>
                     <?endif;?>
                     <div class="doctor-card__description__adapt">
                         <?if($arResult["PROPERTIES"]["CLINIK"]["VALUE"]){?>
