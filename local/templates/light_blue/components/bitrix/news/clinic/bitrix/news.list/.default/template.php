@@ -268,8 +268,9 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
                 <div class="grey-block">
                     <div class="clinic-card-info__block">
                         <?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]):?>
+                        <?echo "<pre>";print_r($arItem["DISPLAY_PROPERTIES"]["CITY"]['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]["CITY"]['VALUE']]['NAME']);echo "</pre>";?>
                             <p class="clinic-card-info__title map">Адрес</p>
-                            <span><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?> <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
+                            <span><?if($arItem["DISPLAY_PROPERTIES"]["REGION"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["REGION"]['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]["REGION"]['VALUE']]['NAME']?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["CITY"]["DISPLAY_VALUE"]){?> <?=$arItem["DISPLAY_PROPERTIES"]["CITY"]['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]["CITY"]['VALUE']]['NAME']?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["AREA"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["AREA"]['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]["AREA"]['VALUE']]['NAME']?>, <?}?><?if($arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]){?><?=$arItem["DISPLAY_PROPERTIES"]["ADDRESS"]["DISPLAY_VALUE"]?><?}?></span>
                         <?endif;?>
                     </div>
                     <?if($arItem["PROPERTIES"]["RATING"]["VALUE"]=='Y'){?>
