@@ -353,11 +353,11 @@ while($ob = $res->GetNextElement()){
                                                 <div class="bx_filter_select_block" placeholder="" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                     <input type="text" class="city_input city_input_<?=mb_strtolower(CUtil::JSEscape($key))?>" onkeyup="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')" <?/*id="city_input_search_<?=CUtil::JSEscape($key)?>*/?>">
                                                     <div class="bx_filter_select_text" data-role="currentOption"><?
-                                                        foreach (array_unique($arItem["VALUES"]) as $val => $ar)
+                                                        foreach ($arItem["VALUES"] as $val => $ar)
                                                         {
                                                             if ($ar["CHECKED"])
                                                             {
-                                                                echo trim($ar["VALUE"], ".");
+                                                                echo trim($ar["VALUE"], "..");
                                                                 $checkedItemExist = true;
                                                             }
                                                         }
@@ -944,5 +944,6 @@ while($ob = $res->GetNextElement()){
         }
         $('.bx_filter_param_label_'+geoCity).trigger('click');
         $('.popup-window').hide();
+        $('#input_92 .bx_filter_select_block.disabled .bx_filter_select_text').text('Метро');
     });
 </script>
