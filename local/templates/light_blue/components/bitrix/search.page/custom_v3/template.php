@@ -62,11 +62,13 @@
     <? if (!empty($_GET['q']) && count($search) != 0){?>
         <div class="search-result"><?echo GetMessage("CT_BSP_FOUND")?>:
             <? if ($search[9]){?><a <?if (!empty($_GET['page']) && count($search[9])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>"<?}?>><strong><?=count($search[9])?></strong> клиник(а)/врачей(а);</a><?}?>
-            <? if ($search[10]){?><a <?if ($_GET['page'] != 'doctors' && count($search[10])>0){?>href="<?=$APPLICATION->GetCurPageParam('page=doctors',array('page'));?>"<?}?>><strong><?=count($search[10])?></strong> врач(а);</a><?}?>
-            <? if ($search[18] || $search[19]){?><a <?if ($_GET['page'] != 'services' && (count($search[18])>0 || $search[19]>0)){?>href="<?=$APPLICATION->GetCurPageParam('page=services',array('page'));?>"<?}?>><strong><?=count($search[18])+count($search[19])?></strong> услуг(а);</a><?}?>
-            <? if ($search[21]){?><a <?if ($_GET['page'] != 'illness' && count($search[21])>0){?>href="<?=$APPLICATION->GetCurPageParam('page=illness',array('page'));?>"<?}?>><strong><?=count($search[21])?></strong> болезнь(ей);</a><?}?>
-            <? if ($search[22]){?><a <?if ($_GET['page'] != 'symptoms' && count($search[22])>0){?>href="<?=$APPLICATION->GetCurPageParam('page=symptoms',array('page'));?>"<?}?>><strong><?=count($search[22])?></strong> симптом(ов);</a><?}?>
-            <? if ($search[20]){?><a <?if ($_GET['page'] != 'articles' && count($search[20])>0){?>href="<?=$APPLICATION->GetCurPageParam('page=articles',array('page'));?>"<?}?>><strong><?=count($search[20])?></strong> статья(и);</a><?}?>
+            <? if ($search[10]){?><a <?if ($_GET['page'] != 'doctors' && count($search[10])>0){?>href="<?=$APPLICATION->GetCurPageParam('', array('page'));?>&page=doctors"<?}?>><strong><?=count($search[10])?></strong> врач(а);</a><?}?>
+            <? if ($search[18] || $search[19]){?><a <?if ($_GET['page'] != 'services' && (count($search[18])>0 || $search[19]>0)){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=services"<?}?>><strong><?=count($search[18])+count($search[19])?></strong> услуг(а);</a><?}?>
+            <? if ($search[21]){?><a <?if ($_GET['page'] != 'illness' && count($search[21])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=illness"<?}?>><strong><?=count($search[21])?></strong> болезнь(ей);</a><?}?>
+            <? if ($search[22]){?><a <?if ($_GET['page'] != 'symptoms' && count($search[22])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=symptoms"<?}?>><strong><?=count($search[22])?></strong> симптом(ов);</a><?}?>
+            <? if ($search[20]){?><a <?if ($_GET['page'] != 'articles' && count($search[20])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=articles"<?}?>><strong><?=count($search[20])?></strong> статья(и);</a><?}?>
+            <?if ($_GET['page']!=='doctors' && count($search[9])==0 && count($search[10])!=0){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=doctors');}
+            elseif ($_GET['page']!=='services' && count($search[9])==0 && count($search[10])==0 && (count($search[18])>0 || $search[19]>0)){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=services');}?>
         </div>
     <?}?>
 	<div class="search-result">
@@ -338,27 +340,27 @@
                 </a>
             <?}?>
             <?if ($_GET['page'] != 'doctors' && count($search[10])>0){?>
-                <a href="<?=$APPLICATION->GetCurPageParam('page=doctors',array('page'))?>" class="show_search">
+                <a href="<?=$APPLICATION->GetCurPageParam('',array('page'))?>&page=doctors" class="show_search">
                     Показать Докторов
                 </a>
             <?}?>
             <?if ($_GET['page'] != 'articles' && count($search[20])>0){?>
-                <a href="<?=$APPLICATION->GetCurPageParam('page=articles',array('page'))?>" class="show_search" >
+                <a href="<?=$APPLICATION->GetCurPageParam('',array('page'))?>&page=articles" class="show_search" >
                     Показать Статьи
                 </a>
             <?}
             if($_GET['page'] != 'illness'  && count($search[21])>0){?>
-                <a href="<?=$APPLICATION->GetCurPageParam('page=illness',array('page'))?>" class="show_search">
+                <a href="<?=$APPLICATION->GetCurPageParam('',array('page'))?>&page=illness" class="show_search">
                     Показать Болезни
                 </a>
             <?}
             if($_GET['page'] != 'symptoms' && count($search[22])>0){?>
-                <a href="<?=$APPLICATION->GetCurPageParam('page=symptoms',array('page'))?>" class="show_search" >
+                <a href="<?=$APPLICATION->GetCurPageParam('',array('page'))?>&page=symptoms" class="show_search" >
                     Показать Симптомы
                 </a>
             <?}
             if ($_GET['page'] != 'services' && (count($search[18])>0 || count($search[19])>0)){?>
-                <a href="<?=$APPLICATION->GetCurPageParam('page=services',array('page'));?>" class="show_search">
+                <a href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=services" class="show_search">
                     Показать Услуги
                 </a>
             <?}?>
