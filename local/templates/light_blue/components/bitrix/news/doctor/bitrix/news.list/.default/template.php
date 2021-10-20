@@ -347,10 +347,22 @@ CModule::IncludeModule("form"); ?>
     <? $this->EndViewTarget(); ?>
     <?$APPLICATION->SetPageProperty("description", "Врачи-" . mb_strtolower(mb_substr($GLOBALS['titleFilterClinic'], 1)) . "и отзывы, контактные телефоны, время и место работы.");
     $APPLICATION->SetTitle("Врачи-" . mb_strtolower(mb_substr($GLOBALS['titleFilterClinic'], 1)) . "и, отзывы, время работы, запись на прием.");?>
- <?} else { ?>
-    <? $this->SetViewTarget('filterTitle'); ?>
-    <? $this->EndViewTarget(); ?>
-<? } ?>
+<?}elseif(!empty($_GET['arrFilter_194']) && !empty($_GET['set_filter'])){
+    $objFindTools = new CIBlockFindTools();
+    $elementID = $objFindTools->GetElementID(false, $_GET['arrFilter_91'], false, false, array("IBLOCK_ID" =>13));
+    $res = CIBlockElement::GetByID($elementID);
+    if($ar_res = $res->GetNext())?>
+    <?$this->SetViewTarget('filterTitle');?>
+        <h1 class="title-h2">Врач-<?=$ar_res['NAME']?> - (0)</h1>
+    <?$this->EndViewTarget();?>
+    <script>
+        $('.sort').remove();
+        $('.list-item ').remove();
+        $(document).ready(function (){
+            $('.clinic-card .load_more').remove();
+        })
+    </script>
+<?}?>
 <? if ($arParams["DISPLAY_BOTTOM_PAGER"] && ($GLOBALS['titleFilterClinic'] != NULL || $_GET['arrFilter_194'] == NULL)): ?>
     <?= $arResult["NAV_STRING"] ?>
 <? endif; ?>

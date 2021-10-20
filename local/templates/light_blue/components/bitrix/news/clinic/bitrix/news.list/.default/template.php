@@ -327,10 +327,19 @@ require($_SERVER["DOCUMENT_ROOT"] .'/include/termination.php');
     <?
     $APPLICATION->SetPageProperty("description", "Клиники " .$GLOBALS['titleFilterClinic']." информация о врачах, отзывы, услуги, актуальная информация, контактные данные.");
     $APPLICATION->SetTitle("Клиники ".$GLOBALS['titleFilterClinic'].", отзывы, время работы, запись на прием."); ?>
-<?}else{?>
+<?}elseif(!empty($_GET['arrFilter_91']) && !empty($_GET['set_filter'])){
+    $objFindTools = new CIBlockFindTools();
+    $elementID = $objFindTools->GetElementID(false, $_GET['arrFilter_91'], false, false, array("IBLOCK_ID" =>13));
+    $res = CIBlockElement::GetByID($elementID);
+        if($ar_res = $res->GetNext())?>
     <?$this->SetViewTarget('filterTitle');?>
+        <h1 class="title-h2"><?=$ar_res['NAME']?> - (0)</h1>
     <?$this->EndViewTarget();?>
+    <script>
+        $('.sort').remove();
+        $('.list-item ').remove();
+    </script>
 <?}?>
-<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><?=$arResult["NAV_STRING"]?>
+<?if($arParams["DISPLAY_BOTTOM_PAGER"] && $GLOBALS['titleFilterClinic']!=NULL || empty($_GET['set_filter'])):?>
+    <br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>
