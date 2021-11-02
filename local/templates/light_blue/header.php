@@ -31,7 +31,12 @@ CJSCore::Init("popup", "jquery");
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/font-awesome.min.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/style.css", false); ?>
     <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/assets/css/custom.css", false); ?>
-    <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery-1.9.1.min.js', false); ?>
+    <?if(!CSite::InDir('/clinics/') && !CSite::InDir('/doctors/')) {
+        $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery-1.9.1.min.js', false);
+    }?>
+    <?if(CSite::InDir('/clinics/index.php') || CSite::InDir('/doctors/index.php')) {
+        $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/jquery-1.9.1.min.js', false);
+    }?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/slick/slick.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/libraries/bootstrap-4.5.0-dist/js/bootstrap.bundle.min.js', false); ?>
     <? $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/assets/js/main.js', false); ?>

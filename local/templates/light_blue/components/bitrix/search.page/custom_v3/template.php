@@ -30,8 +30,12 @@
         $cityId=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['CITY']['VALUE'];
         $areaId=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['AREA']['VALUE'];
         $metroIds=CIBlockElement::GetByID($item['ITEM_ID'])->GetNextElement()->GetProperties()['METRO']['VALUE'];
-        foreach ($metroIds as $metro){
-            $metroCodes[] = CIBlockElement::GetByID($metro)->GetNextElement()->GetFields()['CODE'];
+        if(!empty($metroIds)){
+            foreach ($metroIds as $metro){
+                if (preg_match('/^\w+$/',$metro)) {
+                    $metroCodes[] = CIBlockElement::GetByID($metro)->GetNextElement()->GetFields()['CODE'];
+                }
+            }
         }
         if (is_array($cityId)){
             foreach ($cityId as $city){
@@ -68,7 +72,12 @@
             <? if ($search[22]){?><a <?if ($_GET['page'] != 'symptoms' && count($search[22])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=symptoms"<?}?>><strong><?=count($search[22])?></strong> симптом(ов);</a><?}?>
             <? if ($search[20]){?><a <?if ($_GET['page'] != 'articles' && count($search[20])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=articles"<?}?>><strong><?=count($search[20])?></strong> статья(и);</a><?}?>
             <?if ($_GET['page']!=='doctors' && count($search[9])==0 && count($search[10])!=0){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=doctors');}
-            elseif ($_GET['page']!=='services' && count($search[9])==0 && count($search[10])==0 && (count($search[18])>0 || $search[19]>0)){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=services');}?>
+            elseif ($_GET['page']!=='services' && count($search[9])==0 && count($search[10])==0 && (count($search[18])==0 && $search[19]==0)){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=services');}
+            elseif ($_GET['page']!=='illness' && count($search[9])==0 && count($search[10])==0 && (count($search[18])==0 && $search[19]==0) && count($search[21])>0){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=&page=illness');}
+            elseif ($_GET['page']!=='symptoms' && count($search[9])==0 && count($search[10])==0 && (count($search[18])==0 && $search[19]==0) && count($search[21])==0 && count($search[22])>0){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=symptoms');}
+            elseif ($_GET['page']!=='articles' && count($search[9])==0 && count($search[10])==0 && (count($search[18])==0 && $search[19]==0) && count($search[21])==0 && count($search[22])==0 && count($search[20])>0){header("Location:". $APPLICATION->GetCurPageParam('',array('page')).'&page=articles');}
+            ?>
+
         </div>
     <?}?>
 	<div class="search-result">
