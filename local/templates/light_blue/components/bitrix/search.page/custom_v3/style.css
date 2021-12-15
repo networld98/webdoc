@@ -13,6 +13,10 @@ div.search-item h4 a { text-decoration:none;}
 div.search-item h4 img { border:0px;vertical-align:middle;}
 div.search-item h4 span { vertical-align:middle;text-decoration:underline;}
 div.search-result { margin: 0;}
+div.search-result.find-name {display: inline-flex;}
+div.search-result.find-name > a {
+    margin-left: 5px;
+}
 div.search-result > a {
     color: #9DD4B3;
 }
@@ -78,7 +82,7 @@ div.search-result > a:not([href]), div.search-result > a:not([href]):hover, div.
     padding: 14px 23px;
     color: var(--primary);
     font-size: 18px;
-    line-height: 19px;
+    line-height: 26px;
     letter-spacing: 0.25em;
     border: 1px solid #98D7DC;
     border-radius: 5px;
@@ -89,6 +93,4 @@ div.search-result > a:not([href]), div.search-result > a:not([href]):hover, div.
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 44%;
-    text-align: center;
 }
