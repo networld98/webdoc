@@ -53,6 +53,18 @@
             }else{
                 $areaCodes[$item['PARAM2']][CIBlockSection::GetByID($areaId)->GetNext()['CODE']][] = $item['ITEM_ID'];
             }
+            if ($_GET['q']==NULL){
+                if ($item['PARAM2'] == '9'){
+                    if((empty($_GET['arrFilter_92']) && empty($_GET['arrFilter_93']) && $_GET['arrFilter_94'] == str_replace('-','',CIBlockSection::GetByID($cityId)->GetNext()['CODE'])) || (empty($_GET['arrFilter_93']) && !empty($_GET['arrFilter_93']) && $_GET['arrFilter_94'] == str_replace('-','',CIBlockSection::GetByID($cityId)->GetNext()['CODE']) && in_array($_GET['arrFilter_93'],$areaCodes)) || (!empty($_GET['arrFilter_92']) && !empty($_GET['arrFilter_93']) && $_GET['arrFilter_94'] == str_replace('-','',CIBlockSection::GetByID($cityId)->GetNext()['CODE']) && in_array($_GET['arrFilter_93'],$areaCodes) && in_array($_GET['arrFilter_92'],$metroCodes)) ){
+                        $search[$item['PARAM2']][] = $item['ITEM_ID'];
+                    }
+                }
+                if ($item['PARAM2'] == '10'){
+                    if((empty($_GET['arrFilter_92']) && empty($_GET['arrFilter_93']) && in_array($_GET['arrFilter_94'],$cityCodes))||(empty($_GET['arrFilter_92']) && !empty($_GET['arrFilter_93']) && in_array($_GET['arrFilter_94'],$cityCodes) && in_array($_GET['arrFilter_93'],$areaCodes)) || (!empty($_GET['arrFilter_92']) && !empty($_GET['arrFilter_93']) && in_array($_GET['arrFilter_94'],$cityCodes) && in_array($_GET['arrFilter_93'],$areaCodes) && in_array($_GET['arrFilter_92'],$metroCodes)) ){
+                        $search[$item['PARAM2']][] = $item['ITEM_ID'];
+                    }
+                }
+            }
             if ($item['PARAM2'] == '18' || $item['PARAM2'] == '19' || $item['PARAM2'] == '20' || $item['PARAM2'] == '21' || $item['PARAM2'] == '22') {
                 $search[$item['PARAM2']][] = $item['ITEM_ID'];
             }
@@ -73,28 +85,32 @@
             $metroFilter[$key] = $item[$_GET['arrFilter_92']];
         }
     }
-    if (empty($_GET['arrFilter_93']) && empty($_GET['arrFilter_92'])){
-        $search[10] = $cityFilter[10];
-        $search[9] = $cityFilter[9];
-    }
-    if(!empty($_GET['arrFilter_93']) && empty($_GET['arrFilter_92'])){
-        $search[10] = array_intersect($cityFilter[10],$areaFilter[10]);
-        $search[9] = array_intersect($cityFilter[9],$areaFilter[9]);
-    }
-    if(!empty($_GET['arrFilter_93']) && !empty($_GET['arrFilter_92'])){
-        $search[10] = array_intersect($cityFilter[10],$areaFilter[10],$metroFilter[10]);
-        $search[9] = array_intersect($cityFilter[9],$areaFilter[9],$metroFilter[9]);
-    }
-    if(empty($_GET['arrFilter_93']) && !empty($_GET['arrFilter_92'])){
-        $search[10] = array_intersect($cityFilter[10],$metroFilter[10]);
-        $search[9] = array_intersect($cityFilter[9],$metroFilter[9]);
+    if ($_GET['q']!=NULL) {
+        if (empty($_GET['arrFilter_93']) && empty($_GET['arrFilter_92'])) {
+            $search[10] = $cityFilter[10];
+            $search[9] = $cityFilter[9];
+        }
+        if (!empty($_GET['arrFilter_93']) && empty($_GET['arrFilter_92'])) {
+            $search[10] = array_intersect($cityFilter[10], $areaFilter[10]);
+            $search[9] = array_intersect($cityFilter[9], $areaFilter[9]);
+        }
+        if (!empty($_GET['arrFilter_93']) && !empty($_GET['arrFilter_92'])) {
+            $search[10] = array_intersect($cityFilter[10], $areaFilter[10], $metroFilter[10]);
+            $search[9] = array_intersect($cityFilter[9], $areaFilter[9], $metroFilter[9]);
+        }
+        if (empty($_GET['arrFilter_93']) && !empty($_GET['arrFilter_92'])) {
+            $search[10] = array_intersect($cityFilter[10], $metroFilter[10]);
+            $search[9] = array_intersect($cityFilter[9], $metroFilter[9]);
+        }
     }
    if($search == NULL){
         global $arrFilter, $count;
         $keyArray = array_keys($search);
         $keySort = sort($keyArray);
         ?>
-        <div class="search-result find-name"><?echo GetMessage("CT_BSP_FOUND")?>:
+        <?if ($_GET['q']!=NULL) {?>
+            <div class="search-result find-name"><?echo GetMessage("CT_BSP_FOUND")?>:
+        <?}?>
             <?foreach ($keyArray as $item) {
             $arrFilter['=ID'] = $search[$item];
             $APPLICATION->IncludeComponent("bitrix:news.list", "search_cnt", Array(
