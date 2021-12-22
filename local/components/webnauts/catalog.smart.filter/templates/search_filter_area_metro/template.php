@@ -80,6 +80,11 @@ while($ob = $res->GetNextElement()){
     $metroCount = CIBlockSection::GetSectionElementsCount($arFields['ID'], Array("CNT_ACTIVE"=>"Y"));
     $cityId = $arFields['ID'];
 }
+$resArea = CIBlockSection::GetList(Array("SORT"=>"ASC"), Array('IBLOCK_ID' => 14,  "SECTION_ID"=>$cityId),false, false, Array("CODE"));
+while($ob = $res->GetNextElement()){
+    $arFields = $ob->GetFields();
+    $areaArray[] = $arFields["CODE"];
+}
 ?>
 
 <div class="bx_filter <?=$templateData["TEMPLATE_CLASS"]?> bx_horizontal <?if($APPLICATION->GetCurDir() == '/doctors/'){?>doctor-page<?}?>">

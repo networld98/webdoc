@@ -103,14 +103,15 @@
             $search[9] = array_intersect($cityFilter[9], $metroFilter[9]);
         }
     }
-   if($search == NULL){
+    if($search == NULL){
         global $arrFilter, $count;
         $keyArray = array_keys($search);
         $keySort = sort($keyArray);
         ?>
         <?if ($_GET['q']!=NULL) {?>
             <div class="search-result find-name"><?echo GetMessage("CT_BSP_FOUND")?>:
-        <?}?>
+        <?}
+        if(empty($_GET['q']) && !empty($_GET['page'])){header("Location:". $APPLICATION->GetCurPageParam('',array('page')));}?>
             <?foreach ($keyArray as $item) {
             $arrFilter['=ID'] = $search[$item];
             $APPLICATION->IncludeComponent("bitrix:news.list", "search_cnt", Array(
@@ -184,7 +185,9 @@
         </div>
    <?}else{
     if (!empty($_GET['q']) && count($search) != 0){?>
-    <div class="search-result"><?echo GetMessage("CT_BSP_FOUND")?>:
+    <div class="search-result"><?if($search[9]>0 || $search[10]>0 || $search[18]>0 || $search[20]>0 || $search[21]>0 || $search[22]>0){echo GetMessage("CT_BSP_FOUND");echo":";}else{?>
+            <?ShowNote(GetMessage("CT_BSP_NOTHING_TO_FOUND"));?>
+        <?}?>
         <? if ($search[9]){?><a <?if (!empty($_GET['page']) && count($search[9])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>"<?}?>><strong><?=count($search[9])?></strong> клиник(а)/врачей(а);</a><?}?>
         <? if ($search[10]){?><a <?if ($_GET['page'] != 'doctors' && count($search[10])>0){?>href="<?=$APPLICATION->GetCurPageParam('', array('page'));?>&page=doctors"<?}?>><strong><?=count($search[10])?></strong> врач(а);</a><?}?>
         <? if ($search[18] || $search[19]){?><a <?if ($_GET['page'] != 'services' && (count($search[18])>0 || $search[19]>0)){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>&page=services"<?}?>><strong><?=count($search[18])+count($search[19])?></strong> услуг(а);</a><?}?>
