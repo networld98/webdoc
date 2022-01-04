@@ -10,6 +10,10 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+//Проверяем с какого раздела пришел пользователь
+$doctors = stripos($_SERVER['HTTP_REFERER'], '/doctors/');
+$clinics = stripos($_SERVER['HTTP_REFERER'], '/clinics/');
+$services = stripos($_SERVER['HTTP_REFERER'], '/services/');
 ?>
 <div class="search-page">
 	<form action="" method="get">
@@ -207,15 +211,15 @@
 	<div class="search-result">
 		<?if($arParams["DISPLAY_TOP_PAGER"] != "N") echo $arResult["NAV_STRING"]?>
         <?
-              if (empty($_GET['page']) || $_GET['page'] == NULL){
+              if (empty($_GET['page']) || $_GET['page'] == NULL || $clinics!== false){
                   $template = "search_clinic";
                   $iblockId = 9;
               }
-              if ($_GET['page'] == 'doctors'){
+              if ($_GET['page'] == 'doctors' || $doctors!== false) {
                   $iblockId = 10;
                   $template = "search_doctor";
               }
-                if ($_GET['page'] == 'services' || $_GET['page'] == 'articles' || $_GET['page'] == 'illness' || $_GET['page'] == 'symptoms') {
+                if ($_GET['page'] == 'services' || $_GET['page'] == 'articles' || $_GET['page'] == 'illness' || $_GET['page'] == 'symptoms' || $services!== false) {
                     $template = "search_services";
                 }
                 if ($_GET['page'] == 'articles'){
@@ -227,10 +231,10 @@
                 if($_GET['page'] == 'symptoms') {
                     $iblockId = 22;
                 }
-                if ($_GET['page'] == 'services'){
+                if ($_GET['page'] == 'services' || $services!== false){
                     $iblockId = 19;
                 }
-              if ($_GET['page'] == 'services'){?>
+              if ($_GET['page'] == 'services' || $services!== false ){?>
                   <div class="container" id="blockService">
                       <h2>Услуги</h2>
                   </div>
