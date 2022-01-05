@@ -189,7 +189,7 @@ $services = stripos($_SERVER['HTTP_REFERER'], '/services/');
         </div>
    <?}else{
     if (!empty($_GET['q']) && count($search) != 0){?>
-    <div class="search-result"><?if($search[9]>0 || $search[10]>0 || $search[18]>0 || $search[20]>0 || $search[21]>0 || $search[22]>0){echo GetMessage("CT_BSP_FOUND");echo":";}else{?>
+    <div class="search-result"><?if($search[9]>0 || $search[10]>0 || $search[18]>0 || $search[19]>0 || $search[20]>0 || $search[21]>0 || $search[22]>0){echo GetMessage("CT_BSP_FOUND");echo":";}else{?>
             <?ShowNote(GetMessage("CT_BSP_NOTHING_TO_FOUND"));?>
         <?}?>
         <? if ($search[9]){?><a <?if (!empty($_GET['page']) && count($search[9])>0){?>href="<?=$APPLICATION->GetCurPageParam('',array('page'));?>"<?}?>><strong><?=count($search[9])?></strong> клиник(а)/врачей(а);</a><?}?>

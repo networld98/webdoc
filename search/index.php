@@ -9,7 +9,7 @@ $APPLICATION->SetTitle("Поиск");
 	array(
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
+		"CACHE_TYPE" => "N",
 		"COMPONENT_TEMPLATE" => "search_filter_area_metro",
 		"CONVERT_CURRENCY" => "N",
 		"DISPLAY_ELEMENT_COUNT" => "N",
